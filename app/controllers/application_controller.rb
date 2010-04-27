@@ -8,7 +8,14 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation
   helper_method :current_user_session, :current_user
 
+  after_filter :log_user
+
  private
+
+  def log_user
+    current_user.user_audits.create(:request => params)
+  end
+
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find

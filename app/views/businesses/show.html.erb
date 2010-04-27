@@ -1,0 +1,63 @@
+<p>
+  <b>Name:</b>
+  <%=h @business.name %>
+</p>
+
+<p>
+  <b>Street address 1:</b>
+  <%=h @business.street_address_1 %>
+</p>
+
+<p>
+  <b>Street address 2:</b>
+  <%=h @business.street_address_2 %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @business.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @business.state %>
+</p>
+
+<p>
+  <b>Postal code:</b>
+  <%=h @business.postal_code %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%=h @business.country %>
+</p>
+
+<p>
+  <b>Phone 1:</b>
+  <%=h @business.phone_1 %>
+</p>
+
+<p>
+  <b>Phone 2:</b>
+  <%=h @business.phone_2 %>
+</p>
+
+<p>
+  <b>Fax:</b>
+  <%=h @business.fax %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @business.url %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%=h @business.parent_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_business_path(@business) %> |
+<%= link_to 'Back', businesses_path %>

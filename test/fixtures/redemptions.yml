@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  qty: 1
+  user_id: 1
+  offer_id: 1
+  transaction_number: MyString
+
+two:
+  qty: 1
+  user_id: 1
+  offer_id: 1
+  transaction_number: MyString

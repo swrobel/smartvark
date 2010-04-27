@@ -1,0 +1,23 @@
+<p>
+  <b>Qty:</b>
+  <%=h @redemption.qty %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @redemption.user_id %>
+</p>
+
+<p>
+  <b>Offer:</b>
+  <%=h @redemption.offer_id %>
+</p>
+
+<p>
+  <b>Transaction number:</b>
+  <%=h @redemption.transaction_number %>
+</p>
+
+
+<%= link_to 'Edit', edit_redemption_path(@redemption) %> |
+<%= link_to 'Back', redemptions_path %>

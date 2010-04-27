@@ -33,6 +33,13 @@
   <%=h @offer.business_id %>
 </p>
 
+<p>
+  <b>Coupons</b>
+  <%= image_tag @user.avatar.url %>
+  <%= image_tag @user.avatar.url(:medium) %>
+  <%= image_tag @user.avatar.url(:thumb) %>
+</p>
+
 
 <%= link_to 'Edit', edit_offer_path(@offer) %> |
 <%= link_to 'Back', offers_path %>

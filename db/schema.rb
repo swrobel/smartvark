@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100427060334) do
+ActiveRecord::Schema.define(:version => 20100427063804) do
 
   create_table "businesses", :force => true do |t|
     t.string   "name",             :limit => 50
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20100427060334) do
     t.string   "coupon_content_type"
     t.integer  "coupon_file_size"
     t.datetime "coupon_updated_at"
+    t.string   "redemption_code",     :limit => 50
   end
 
   create_table "opinions", :force => true do |t|

@@ -1,0 +1,38 @@
+<p>
+  <b>Lead:</b>
+  <%=h @offer.lead %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @offer.description %>
+</p>
+
+<p>
+  <b>Exclusivity text:</b>
+  <%=h @offer.exclusivity_text %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%=h @offer.quantity %>
+</p>
+
+<p>
+  <b>Expiry datetime:</b>
+  <%=h @offer.expiry_datetime %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%=h @offer.category_id %>
+</p>
+
+<p>
+  <b>Business:</b>
+  <%=h @offer.business_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_offer_path(@offer) %> |
+<%= link_to 'Back', offers_path %>

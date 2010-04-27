@@ -1,0 +1,32 @@
+<h1>Listing offers</h1>
+
+<table>
+  <tr>
+    <th>Lead</th>
+    <th>Description</th>
+    <th>Exclusivity text</th>
+    <th>Quantity</th>
+    <th>Expiry datetime</th>
+    <th>Category</th>
+    <th>Business</th>
+  </tr>
+
+<% @offers.each do |offer| %>
+  <tr>
+    <td><%=h offer.lead %></td>
+    <td><%=h offer.description %></td>
+    <td><%=h offer.exclusivity_text %></td>
+    <td><%=h offer.quantity %></td>
+    <td><%=h offer.expiry_datetime %></td>
+    <td><%=h offer.category_id %></td>
+    <td><%=h offer.business_id %></td>
+    <td><%= link_to 'Show', offer %></td>
+    <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
+    <td><%= link_to 'Destroy', offer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New offer', new_offer_path %>

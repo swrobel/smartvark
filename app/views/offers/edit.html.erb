@@ -1,0 +1,40 @@
+<h1>Editing offer</h1>
+
+<% form_for(@offer) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :lead %><br />
+    <%= f.text_field :lead %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :exclusivity_text %><br />
+    <%= f.text_field :exclusivity_text %>
+  </p>
+  <p>
+    <%= f.label :quantity %><br />
+    <%= f.text_field :quantity %>
+  </p>
+  <p>
+    <%= f.label :expiry_datetime %><br />
+    <%= f.datetime_select :expiry_datetime %>
+  </p>
+  <p>
+    <%= f.label :category_id %><br />
+    <%= f.text_field :category_id %>
+  </p>
+  <p>
+    <%= f.label :business_id %><br />
+    <%= f.text_field :business_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @offer %> |
+<%= link_to 'Back', offers_path %>

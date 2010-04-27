@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  text: MyString
+  active: false
+  parent_id: 1
+  offer_id: 1
+  business_id: 1
+  user_id: 1
+
+two:
+  text: MyString
+  active: false
+  parent_id: 1
+  offer_id: 1
+  business_id: 1
+  user_id: 1

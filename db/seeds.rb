@@ -2,6 +2,9 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 # Examples:
-#   
+#
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+%w(All Food Clothes Services Entertainment Beauty/Spa).each do |name|
+  Category.find_or_create_by_name(name)
+end

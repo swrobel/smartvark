@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
   has_many :redemptions
   has_many :user_audits
 
+  def set_opinion(params)
+    self.opinions.build( :offer_id => params[:offer_id],
+                        :liked => params[:liked]=='true')
+  end
 end

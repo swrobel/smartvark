@@ -50,7 +50,9 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing or commenting them out if you're using named routes and resources.
   # config/routes.rb
   map.resource :user_session
-  map.root :controller => "user_sessions", :action => "new" # optional, this just sets the root route
+
+  map.mydeals 'mydeals', :controller => "welcome", :action => :mydeals
+  map.root :controller => "welcome"
   # config/routes.rb
   map.resource :account, :controller => "users"
   map.resources :users

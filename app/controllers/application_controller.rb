@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
  private
 
   def log_user
-    current_user.user_audits.create(:request => params)
+    current_user && current_user.user_audits.create(:request => params)
   end
 
   def current_user_session

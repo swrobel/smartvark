@@ -30,19 +30,17 @@
 
 <p>
   <b>Category:</b>
-  <%=h @offer.category_id %>
+  <%=h @offer.category.name %>
 </p>
 
 <p>
   <b>Business:</b>
-  <%=h @offer.business_id %>
+  <%=h @offer.business.name %>
 </p>
 
 <p>
   <b>Coupons</b>
-  <%= image_tag @user.avatar.url %>
-  <%= image_tag @user.avatar.url(:medium) %>
-  <%= image_tag @user.avatar.url(:thumb) %>
+  <%= image_tag @offer.coupon.url %>
 </p>
 
 

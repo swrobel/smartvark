@@ -1,0 +1,16 @@
+<!-- nav -->
+<div class="nav">
+  <div>
+    <ul>
+      <% Category.all.each_with_index do |category, index| %>
+        <% html_class = begin
+                  end
+        %>
+        <li class="<%= li_class(index) %>">
+          <%= link_to "<span class='#{link_class(index)}'>#{category.name}</span>", category %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+

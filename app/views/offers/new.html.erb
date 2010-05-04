@@ -1,6 +1,6 @@
 <h1>New offer</h1>
 
-<% form_for(@offer) do |f| %>
+<% form_for(@offer,  :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -28,16 +28,16 @@
     <%= f.datetime_select :expiry_datetime %>
   </p>
   <p>
-    <%= f.label :category_id %><br />
-    <%= f.text_field :category_id %>
+    <%= f.label :category %>
+    <%= f.select :category_id, options_from_collection_for_select(Category.all, 'id', 'name', @offer.category_id)%>
   </p>
   <p>
-    <%= f.label :business_id %><br />
-    <%= f.text_field :business_id %>
+    <%= f.label :business %>
+    <%= f.select :business_id, options_from_collection_for_select(Business.all, 'id', 'name', @offer.business_id)%>
   </p>
   <p>
     <%= f.label :coupon, 'Coupon Image' %><br />
-      <%= form.file_field :coupon %>
+      <%= f.file_field :coupon %>
   </p>
   <p>
     <%= f.submit 'Create' %>

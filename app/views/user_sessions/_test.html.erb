@@ -1,0 +1,23 @@
+<style type='text/css'>
+  div.output {
+    border: 1px solid #F00;
+    min-width: 600px;
+    width: 600px;
+    min-height: 200px;
+    height: 200px;
+  }
+</style>
+<script>
+  function shrink_and_move(x) {
+    Effect.Shrink('b_'+x)
+    Effect.Move('b_'+x+1, { x: -180, y: 0, mode: 'relative' })
+  }
+</script>
+
+<div style='height:200px;border: 1px solid #F00;'>
+  <div id='b_1' onclick="shrink_and_move('1')" style='float: left;height:160px;width:160px;margin: 20px;border: 2px solid #4F0;' ></div>
+  <div id='b_2' onclick="shrink_and_move('2')" style='float: left;height:160px;width:160px;margin: 20px;border: 2px solid #05F;' ></div>
+  <div id='b_3' onclick="shrink_and_move('3')" style='float: left;height:160px;width:160px;margin: 20px;border: 2px solid #B06;' ></div>
+  <div id='b_4' onclick="shrink_and_move('4')" style='float: left;height:160px;width:160px;margin: 20px;border: 2px solid #5D0;' ></div>
+  <div id='b_5' onclick="shrink_and_move('5')" style='float: left;height:160px;width:160px;margin: 20px;border: 2px solid #056;' ></div>
+</div>

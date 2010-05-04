@@ -76,54 +76,14 @@
 											</div>
 											<!-- gallery -->
 											<div class="gallery">
-												<ul>
-													<li>
-														<div class="frame">
-															<div>
-																<a href="http://www.codemyconcept.com/projects/155/inner.html#"><img src="images/img06.jpg" alt="image" /></a>
-															</div>
-														</div>
-														<div class="rate">
-															<a href="http://www.codemyconcept.com/projects/155/inner.html#"><img src="images/btn-good.gif" alt="+" /></a>
-															<a href="http://www.codemyconcept.com/projects/155/inner.html#"><img src="images/btn-bad.gif" alt="-" /></a>
-														</div>
-													</li>
-													<li>
-														<div class="frame">
-															<div>
-																<a href="http://www.codemyconcept.com/projects/155/inner.html#"><img src="images/img07.jpg" alt="image" /></a>
-															</div>
-														</div>
-														<div class="rate">
-															<a href="http://www.codemyconcept.com/projects/155/inner.html#"><img src="images/btn-good.gif" alt="+" /></a>
-															<a href="http://www.codemyconcept.com/projects/155/inner.html#"><img src="images/btn-bad.gif" alt="-" /></a>
-														</div>
-													</li>
-												</ul>
-												<ul>
-													<li>
-														<div class="frame">
-															<div>
-																<a href="http://www.codemyconcept.com/projects/155/inner.html#"><img src="images/img08.jpg" alt="image" /></a>
-															</div>
-														</div>
-														<div class="rate">
-															<a href="http://www.codemyconcept.com/projects/155/inner.html#"><img src="images/btn-good.gif" alt="+" /></a>
-															<a href="http://www.codemyconcept.com/projects/155/inner.html#"><img src="images/btn-bad.gif" alt="-" /></a>
-														</div>
-													</li>
-													<li>
-														<div class="frame">
-															<div>
-																<a href="http://www.codemyconcept.com/projects/155/inner.html#"><img src="images/img09.jpg" alt="image" /></a>
-															</div>
-														</div>
-														<div class="rate">
-															<a href="http://www.codemyconcept.com/projects/155/inner.html#"><img src="images/btn-good.gif" alt="+" /></a>
-															<a href="http://www.codemyconcept.com/projects/155/inner.html#"><img src="images/btn-bad.gif" alt="-" /></a>
-														</div>
-													</li>
-												</ul>
+                                                                                          <ul>
+                                                                                            <%= display_offer(@offers, 0) %>
+                                                                                            <%= display_offer(@offers, 1) %>
+                                                                                          </ul>
+                                                                                          <ul>
+                                                                                            <%= display_offer(@offers, 2) %>
+                                                                                            <%= display_offer(@offers, 3) %>
+                                                                                          </ul>
 											</div>
 										</div>
 									</div>
@@ -135,27 +95,7 @@
 										</div>
 										<span class="mark">You added XYZ deal to My Picks. <a href="http://www.codemyconcept.com/projects/155/inner.html#">Undo</a> or <a href="http://www.codemyconcept.com/projects/155/inner.html#">Use It Now</a>.</span>
 										<!-- list -->
-										<ul class="list">
-											<li>
-												<h3><a href="http://www.codemyconcept.com/projects/155/inner.html#">DSW Shoes- 50% OFF on everything.</a></h3>
-												<p>Flat $6.95 Shipping. Shop Today!</p>
-												<p>Exp. 5/21/10</p>
-											</li>
-											<li>
-												<h3><a href="http://www.codemyconcept.com/projects/155/inner.html#">Bob's Burritos- Buy One Get One Free.</a></h3>
-												<p>Good at Westwood location only</p>
-												<p>Exp. 6/11/10</p>
-											</li>
-											<li>
-												<h3><a href="http://www.codemyconcept.com/projects/155/inner.html#">Uncle Sam's Quick Lube- $7 off your Next Oil Change.</a></h3>
-												<p>Offer not valid with any other offers.</p>
-												<p>Exp. 6/18/10</p>
-											</li>
-											<li>
-												<h3><a href="http://www.codemyconcept.com/projects/155/inner.html#">Moondance- 20% OFF all silver jewelry.</a></h3>
-												<p>Good at Montana Ave. location only</p>
-												<p>Exp. 8/11/10</p>
-											</li>
+										<ul id='my_list' class="list">
 										</ul>
 									</div>
 								</div>

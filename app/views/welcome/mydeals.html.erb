@@ -6,12 +6,6 @@
         <%= stylesheet_link_tag 'web' %>
         <%= javascript_include_tag :defaults, 'main', 'inputs' %>
 	<!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
-  <script>
-    function shrink_and_move(x) {
-      Effect.Shrink('offer_'+x)
-      Effect.Move('offer_'+x+1, { x: -180, y: 0, mode: 'relative' })
-    }
-  </script>
 </head>
 <body>
 	<!-- wrapper -->
@@ -77,13 +71,13 @@
 											<!-- gallery -->
 											<div class="gallery">
                                                                                           <ul>
-                                                                                            <%= display_offer(@offers[0]) %>
-                                                                                            <%= display_offer(@offers[1]) %>
+                                                                                            <%= display_offer(@offers, 0) %>
+                                                                                            <%= display_offer(@offers, 1) %>
                                                                                           </ul>
                                                                                           <ul>
-                                                                                            <%= display_offer(@offers[2]) %>
-                                                                                            <%= display_offer(@offers[3]) %>
-												</ul>
+                                                                                            <%= display_offer(@offers, 2) %>
+                                                                                            <%= display_offer(@offers, 3) %>
+                                                                                          </ul>
 											</div>
 										</div>
 									</div>
@@ -95,27 +89,7 @@
 										</div>
 										<span class="mark">You added XYZ deal to My Picks. <a href="http://www.codemyconcept.com/projects/155/inner.html#">Undo</a> or <a href="http://www.codemyconcept.com/projects/155/inner.html#">Use It Now</a>.</span>
 										<!-- list -->
-										<ul class="list">
-											<li>
-												<h3><a href="http://www.codemyconcept.com/projects/155/inner.html#">DSW Shoes- 50% OFF on everything.</a></h3>
-												<p>Flat $6.95 Shipping. Shop Today!</p>
-												<p>Exp. 5/21/10</p>
-											</li>
-											<li>
-												<h3><a href="http://www.codemyconcept.com/projects/155/inner.html#">Bob's Burritos- Buy One Get One Free.</a></h3>
-												<p>Good at Westwood location only</p>
-												<p>Exp. 6/11/10</p>
-											</li>
-											<li>
-												<h3><a href="http://www.codemyconcept.com/projects/155/inner.html#">Uncle Sam's Quick Lube- $7 off your Next Oil Change.</a></h3>
-												<p>Offer not valid with any other offers.</p>
-												<p>Exp. 6/18/10</p>
-											</li>
-											<li>
-												<h3><a href="http://www.codemyconcept.com/projects/155/inner.html#">Moondance- 20% OFF all silver jewelry.</a></h3>
-												<p>Good at Montana Ave. location only</p>
-												<p>Exp. 8/11/10</p>
-											</li>
+										<ul id='my_list' class="list">
 										</ul>
 									</div>
 								</div>

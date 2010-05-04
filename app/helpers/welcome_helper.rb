@@ -20,7 +20,9 @@ module WelcomeHelper
     'active' if index.zero?
   end
 
-  def display_offer(offer)
+  def display_offer(offers, index)
+
+    offer = offers[index]
 "<li id='offer_#{offer.id}'>"  +
   '<div class="frame">
     <div>
@@ -31,13 +33,19 @@ module WelcomeHelper
   </div>
   <div class="rate">' +
     link_to_remote(image_tag('/images/btn-good.gif', :alt => "+"),
-                   :url => { :action => "set_opinion", :offer_id => offer.id, :liked => 'true' },
-                   :complete => "shrink_and_move(#{offer.id})") +
+                   :url => { :action => "set_opinion", :offer_id => offer.id, :liked => 'true' }) +
     link_to_remote(image_tag('/images/btn-bad.gif', :alt => "+"),
-                   :url => { :action => "set_opinion", :offer_id => offer.id, :liked => 'false' },
-                   :complete => "shrink_and_move(#{offer.id})" ) +
+                   :url => { :action => "set_opinion", :offer_id => offer.id, :liked => 'false' }) +
   '</div>
 </li>'
+  end
+
+  def list_offer(offer)
+    "<li id='offer_#{offer.id}'>" +
+    hidden_field_tag("user[offer_ids][]", offer.id) +
+    link_to("<h3>#{offer.lead}</h3>", offer) +
+      "<p>#{offer.exclusivity_text}</p>" +
+      "<p>Expiration: #{offer.expiry_datetime.strftime('%B %d, %Y')}</p></li>"
   end
 
 end

@@ -1,10 +1,12 @@
 class WelcomeController < ApplicationController
 
   def index
+    session[:liked] = 0
     @offers = Offer.all(:limit => 4)
   end
 
   def mydeals
+    session[:liked] = 0
     @offers = Offer.all(:limit => 4)
   end
 
@@ -20,7 +22,11 @@ class WelcomeController < ApplicationController
     render :update do |page|
       page << "Effect.Shrink('offer_#{offer.id}');"
       if params[:liked]=='true'
+
         page.insert_html :bottom, 'my_list', list_offer(offer)
+
+        session[:liked]+=1
+        page << "alert('Time to sign up son!')" if session[:liked] > 2
       end
     end
   end

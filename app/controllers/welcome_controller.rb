@@ -19,7 +19,9 @@ class WelcomeController < ApplicationController
     offer= Offer.find params[:offer_id]
     render :update do |page|
       page << "Effect.Shrink('offer_#{offer.id}');"
-      page.insert_html :bottom, 'my_list', list_offer(offer)
+      if params[:liked]=='true'
+        page.insert_html :bottom, 'my_list', list_offer(offer)
+      end
     end
   end
 

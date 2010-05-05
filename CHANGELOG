@@ -1,3 +1,4 @@
++ Search box functionality, search results page, linked view deals
 + route '/admin' to get to offers page and admin backend
 + User authentication with redirection
 + Viewdeals page

@@ -551,9 +551,9 @@ form, fieldset{
 .gallery ul .frame a:hover img{border-color:#add2ee;}
 /* rate box */
 .gallery .rate{
-	position:absolute;
+	position:relative;
 	bottom:16px;
-	padding:0 0 0 36px;
+	padding:15px 0 0 26px;
 	text-align:center;
 }
 .gallery .rate a{margin:0 15px;}

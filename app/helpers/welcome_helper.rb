@@ -26,11 +26,9 @@ module WelcomeHelper
     return if offer.nil?
 "<li id='offer_#{offer.id}' #{"style='display:none'" if hidden} >"  +
   '<div class="frame">
-    <div>
-      <a href="http://www.codemyconcept.com/projects/155/inner.html#">' +
-        image_tag(offer.coupon.url, :width => 175, :height => 100) +
-      '</a>
-    </div>
+    <div>' +
+      link_to(image_tag(offer.coupon.url, :width => 175, :height => 100), viewdeal_url(offer.to_param)) +
+    '</div>
   </div>
   <div class="rate">' +
     link_to_remote(image_tag('/images/btn-good.gif', :alt => "+"),

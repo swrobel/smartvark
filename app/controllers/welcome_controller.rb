@@ -16,6 +16,13 @@ class WelcomeController < ApplicationController
     @offer = Offer.find(params[:id])
   end
 
+  def search_results
+    @search_terms = params[:search_terms]
+    @location = params[:location]
+    @search_results = []
+    @offers = Offer.all
+  end
+
   def mydeals
     session[:liked] = 0
     category_id = params[:category_id].to_i

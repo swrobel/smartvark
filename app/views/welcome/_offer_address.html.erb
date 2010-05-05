@@ -1,0 +1,10 @@
+<address>
+  <span><%= offer_address.business.name %></span>
+  <span><%= offer_address.business.street_address_1 %></span>
+  <% if offer_address.business.street_address_2 %>
+    <span><%= offer_address.business.street_address_2 %></span>
+  <% end %>
+  <span><%= offer_address.business.city %>, <%= offer_address.business.state %></span>
+  <span><%= offer_address.business.postal_code%></span>
+</address>
+

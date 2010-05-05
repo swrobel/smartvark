@@ -55,6 +55,7 @@ ActionController::Routing::Routes.draw do |map|
   map.mydeals 'mydeals/:category_id', :controller => "welcome", :action => :mydeals
   map.viewdeal 'viewdeal/:id', :controller => "welcome", :action => :viewdeal
   map.deals 'deals', :controller => "welcome", :action => :deals
+  map.search 'search_results', :controller => "welcome", :action => :search_results, :conditions => { :method => :post }
   map.admin 'admin', :controller => "offers"
 
   map.root :controller => "welcome"

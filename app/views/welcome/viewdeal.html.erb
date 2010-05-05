@@ -3,9 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>smartvark - view deal</title>
-        <%= stylesheet_link_tag 'web' %>
-        <%= javascript_include_tag :defaults, 'main', 'inputs' %>
-	<!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
+        <%= render :partial => 'common_header' %>
 </head>
 <body>
 	<!-- wrapper -->
@@ -25,19 +23,7 @@
 				<div class="main-holder">
 					<!-- main-frame -->
 					<div class="main-frame">
-						<!-- search -->
-						<div class="search">
-							<!-- search-holder -->
-							<div class="search-holder">
-								<form action="#">
-									<fieldset>
-										<input type="text" class="text" value="search terms"/>
-										<input type="text" class="text" value="city/state or zip"/>
-										<input type="image" src="images/btn-search.gif" class="button" alt="Search"/>
-									</fieldset>
-								</form>
-							</div>
-						</div>
+                                                <%= render :partial => 'search_box' %>
 						<!-- two-columns -->
 						<div class="two-columns">
 							<div class="t"></div>
@@ -85,7 +71,7 @@
 											</div>
 											<!-- info-box -->
                                                                                         <div class="info-box">
-                                                                                          <%= render :partial => 'viewdeal_address' %>
+                                                                                          <%= render :partial => 'offer_address', :object => @offer %>
 												<p><a href="http://www.codemyconcept.com/projects/155/inner2.html#">Map It</a></p>
 												<a href="http://www.codemyconcept.com/projects/155/inner2.html#" class="btn">Redeem</a>
 											</div>

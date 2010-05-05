@@ -3,9 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>smartvark - my deals</title>
-        <%= stylesheet_link_tag 'web' %>
-        <%= javascript_include_tag :defaults, 'main', 'inputs' %>
-	<!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
+        <%= render :partial => 'common_header' %>
 </head>
 <body>
 	<!-- wrapper -->
@@ -33,20 +31,8 @@
 				<!-- main-holder -->
 				<div class="main-holder">
 					<!-- main-frame -->
-					<div class="main-frame">
-						<!-- search -->
-						<div class="search">
-							<!-- search-holder -->
-							<div class="search-holder">
-								<form action="#">
-									<fieldset>
-										<input type="text" class="text" value="search terms"/>
-										<input type="text" class="text" value="city, state or zip"/>
-										<input type="image" src="images/btn-search.gif" class="button" alt="Search"/>
-									</fieldset>
-								</form>
-							</div>
-                                                </div>
+                                        <div class="main-frame">
+                                                <%= render :partial => 'search_box' %>
                                                 <%= render :partial => 'nav' %>
 						<!-- two-columns -->
 						<div class="two-columns">

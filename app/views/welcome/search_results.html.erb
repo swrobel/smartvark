@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>smartvark - search results</title>
+        <%= render :partial => 'common_header' %>
+</head>
+<body>
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- wrapper-holder -->
+		<div class="wrapper-holder">
+			<!-- header -->
+			<div id="header">
+				<!-- logo -->
+                                <h1 class="logo"><a href="/">Smartvark</a></h1>
+                                <%= render :partial => 'login' %>
+			</div>
+			<!-- main -->
+			<div id="main">
+				<!-- main-holder -->
+				<div class="main-holder">
+					<!-- main-frame -->
+                                        <div class="main-frame">
+                                          <%= render :partial => 'search_box' %>
+						<!-- nav -->
+						<div class="nav">
+							<div>
+								<ul>
+									<li class="active"><a href="http://www.codemyconcept.com/projects/155/search-results.html#"><span class="first">All</span></a></li>
+									<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#"><span>Food</span></a></li>
+									<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#"><span>Clothes</span></a></li>
+									<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#"><span>Services</span></a></li>
+									<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#"><span>Entertainment</span></a></li>
+									<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#"><span class="last">Beauty/Spa</span></a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- wrap -->
+						<div class="wrap">
+							<!-- content -->
+							<div id="content">
+								<!-- content-holder -->
+								<div class="content-holder">
+									<!-- content-frame -->
+									<div class="content-frame">
+										<h2>Search Results</h2>
+										<!-- search-results -->
+										<div class="search-results">
+                                                                                  <strong class="title"><%=h @search_terms %> - <span><%=h @location %></span></strong>
+                                                                                  <% if @offers.empty? %>
+                                                                                    Zero offers found for this search criteria
+                                                                                  <% else %>
+                                                                                    <%= render :partial => 'search_offer', :collection => @offers %>
+                                                                                  <% end%>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- aside -->
+							<div class="aside">
+								<div class="map-holder">
+									<a href="http://www.codemyconcept.com/projects/155/search-results.html#"><img src="images/img04.gif" alt="image" /></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- footer -->
+	<div id="footer">
+		<ul>
+			<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#">what’s a smartvark anyway?</a></li>
+			<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#">what about my privacy?</a></li>
+			<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#">contact</a></li>
+			<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#">twitter</a></li>
+			<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#">facebook</a></li>
+			<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#">smartvark for business</a></li>
+		</ul>
+		<p>&copy; 2010  Smartvark, Inc.</p>
+	</div>
+</body>
+</html>

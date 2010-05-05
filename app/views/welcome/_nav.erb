@@ -7,7 +7,7 @@
                   end
         %>
         <li class="<%= li_class(index) %>">
-          <%= link_to "<span class='#{link_class(index)}'>#{category.name}</span>", category %>
+          <%= link_to "<span class='#{link_class(index)}'>#{category.name}</span>", mydeals_path(category.to_param) %>
         </li>
       <% end %>
     </ul>

@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>smartvark - try it</title>
+        <%= stylesheet_link_tag 'web' %>
+        <%= javascript_include_tag 'main', 'inputs' %>
+	<!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
+</head>
+<body>
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- wrapper-holder -->
+		<div class="wrapper-holder">
+			<!-- header -->
+			<div id="header">
+				<!-- logo -->
+				<h1 class="logo"><a href="/">Smartvark</a></h1>
+				<!-- login-box popup-holder -->
+                                <%= render :partial => 'login' %>
+			</div>
+			<!-- main -->
+			<div id="main">
+				<!-- main-holder -->
+				<div class="main-holder">
+					<!-- main-frame -->
+					<div class="main-frame">
+                    	<!-- welcome-box -->
+						<div class="tryit-box">
+							<!-- text -->
+							<div class="text">
+                                                          <p>It looks like you're in <strong><%= location %></strong>. If we're wrong, let us know.</p>
+							</div>
+							<!-- promo-box -->
+                                                        <div class="promo-box">
+                                                          <% form_tag do %>
+                                                            <%= text_field_tag 'location', 'city, state or zip', :class => 'text-input' %>
+                                                            <%= image_submit_tag "/images/btn-update.gif", :class => 'button', :alt => 'Update' %>
+                                                          <% end %>
+                            <!--
+								<strong class="ttl-give-a-try">Give it a try</strong>
+								<a href="http://www.codemyconcept.com/projects/155/#" class="btn-show-deals">Show me the deals!</a>
+                            -->
+							</div>
+						</div>
+						<!-- two-columns -->
+						<div class="two-columns">
+							<div class="t"></div>
+							<div class="c">
+								<!-- holder -->
+								<div class="holder">
+									<!-- l-side -->
+									<div class="l-side">
+										<!-- ttl-holder -->
+										<div class="ttl-holder">
+											<h2>Artie's Picks</h2>
+										</div>
+										<strong class="ttl">Just rate the deals below and Artie will sniff out more that you'll probably like.  The more you rate, the better we get to know you!</strong>
+										<!-- info-section -->
+										<div class="info-section">
+											<div class="info">
+												<strong class="title">Sports Authority:</strong>
+												<p>$25 off $100, expires 6/11/10.</p>
+												<p>To redeem online, use code TSA8977 or send to your phone.</p>
+												<p>Some Dick's Sporting Goods and other similar stores *may* accept this coupon.</p>
+											</div>
+											<!-- gallery -->
+											<div class="gallery">
+                                                                                          <ul>
+                                                                                            <%= display_offer(@offers, 0) %>
+                                                                                            <%= display_offer(@offers, 1) %>
+                                                                                          </ul>
+                                                                                          <ul>
+                                                                                            <%= display_offer(@offers, 2) %>
+                                                                                            <%= display_offer(@offers, 3) %>
+                                                                                          </ul>
+											</div>
+										</div>
+									</div>
+									<!-- r-side -->
+									<div class="r-side">
+										<!-- ttl-holder -->
+										<div class="ttl-holder">
+											<h2>My Picks</h2>
+										</div>
+										<span class="mark">You added XYZ deal to My Picks. <a href="http://www.codemyconcept.com/projects/155/inner.html#">Undo</a> or <a href="http://www.codemyconcept.com/projects/155/inner.html#">Use It Now</a>.</span>
+										<!-- list -->
+										<ul id='my_list' class="list">
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="b"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- footer -->
+	<div id="footer">
+		<ul>
+			<li><a href="http://www.codemyconcept.com/projects/155/inner.html#">what’s a smartvark anyway?</a></li>
+			<li><a href="http://www.codemyconcept.com/projects/155/inner.html#">what about my privacy?</a></li>
+			<li><a href="http://www.codemyconcept.com/projects/155/inner.html#">contact</a></li>
+			<li><a href="http://www.codemyconcept.com/projects/155/inner.html#">twitter</a></li>
+			<li><a href="http://www.codemyconcept.com/projects/155/inner.html#">facebook</a></li>
+			<li><a href="http://www.codemyconcept.com/projects/155/inner.html#">smartvark for business</a></li>
+		</ul>
+		<p>&copy; 2010  Smartvark, Inc.</p>
+	</div>
+</body>
+</html>

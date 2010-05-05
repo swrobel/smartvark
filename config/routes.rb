@@ -52,7 +52,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_session
 
   map.mydeals 'mydeals', :controller => "welcome", :action => :mydeals
+  map.mydeals 'mydeals/:category_id', :controller => "welcome", :action => :mydeals
+  map.viewdeal 'viewdeal/:id', :controller => "welcome", :action => :viewdeal
+  map.deals 'deals', :controller => "welcome", :action => :deals
+  map.admin 'admin', :controller => "offers"
+
   map.root :controller => "welcome"
+
   # config/routes.rb
   map.resource :account, :controller => "users"
   map.resources :users

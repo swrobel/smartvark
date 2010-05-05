@@ -20,10 +20,11 @@ module WelcomeHelper
     'active' if index.zero?
   end
 
-  def display_offer(offers, index)
+  def display_offer(offers, index, hidden=false)
 
     offer = offers[index]
-"<li id='offer_#{offer.id}'>"  +
+    return if offer.nil?
+"<li id='offer_#{offer.id}' #{"style='display:none'" if hidden} >"  +
   '<div class="frame">
     <div>
       <a href="http://www.codemyconcept.com/projects/155/inner.html#">' +

@@ -1,0 +1,8 @@
++ route '/admin' to get to offers page and admin backend
++ User authentication with redirection
++ Viewdeals page
++ Pretty urls for offer, categories
++ Location change with default to Los Angeles, CA
++ More implementation to mydeals page
++ More implementation to deals page
+

@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+=begin
 %w(All Food Clothes Services Entertainment Beauty/Spa).each do |name|
   Category.find_or_create_by_name(name)
 end
@@ -33,4 +34,18 @@ m,d,y = arr.last.split('/')
  })
 end
 
+=end
 
+pw = 'password'
+%w(username@smartvark.com ted.price@gmail.com swrobel@smartvark.com).each do |login|
+  hsh = {
+    :login => login,
+    :email => login,
+    :password => pw,
+    :password_confirmation => pw,
+  }
+  u=User.new(hsh)
+  unless u.save
+    u.errors.each_full { |x| puts x }
+  end
+end

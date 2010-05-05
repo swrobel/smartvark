@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>smartvark - view deal</title>
+        <%= stylesheet_link_tag 'web' %>
+        <%= javascript_include_tag :defaults, 'main', 'inputs' %>
+	<!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
+</head>
+<body>
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- wrapper-holder -->
+		<div class="wrapper-holder">
+			<!-- header -->
+			<div id="header">
+				<!-- logo -->
+				<h1 class="logo"><a href="/">Smartvark</a></h1>
+                                <!-- login-box -->
+                                <%= render :partial => 'login' %>
+			</div>
+			<!-- main -->
+			<div id="main">
+				<!-- main-holder -->
+				<div class="main-holder">
+					<!-- main-frame -->
+					<div class="main-frame">
+						<!-- search -->
+						<div class="search">
+							<!-- search-holder -->
+							<div class="search-holder">
+								<form action="#">
+									<fieldset>
+										<input type="text" class="text" value="search terms"/>
+										<input type="text" class="text" value="city/state or zip"/>
+										<input type="image" src="images/btn-search.gif" class="button" alt="Search"/>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+						<!-- two-columns -->
+						<div class="two-columns">
+							<div class="t"></div>
+							<div class="c">
+								<!-- holder -->
+								<div class="holder">
+									<!-- l-side -->
+									<div class="l-side">
+										<!-- ttl-holder -->
+										<div class="ttl-holder">
+                                                                                  <h2><%=h @offer.lead %></h2>
+										</div>
+										<!-- share -->
+										<div class="share">
+											<!-- share-holder -->
+											<div class="share-holder">
+												<strong class="title">Share the Love:</strong>
+												<ul>
+													<li>
+														<a href="http://www.codemyconcept.com/projects/155/inner2.html#">
+															<img src="/images/ico-twitter.gif" alt="Twitter" />
+															<span>Tweet</span>
+														</a>
+													</li>
+													<li>
+														<a href="http://www.codemyconcept.com/projects/155/inner2.html#">
+															<img src="/images/ico-facebook.gif" alt="Facebook" />
+															<span>Post</span>
+														</a>
+													</li>
+													<li>
+														<a href="http://www.codemyconcept.com/projects/155/inner2.html#">
+															<img src="/images/ico-mail.gif" alt="Mail" />
+															<span>Email</span>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<!-- info-area -->
+										<div class="info-area">
+											<!-- img -->
+                                                                                        <div class="img">
+                                                                                          <%= image_tag @offer.coupon.url, :alt => 'image' %>
+											</div>
+											<!-- info-box -->
+                                                                                        <div class="info-box">
+                                                                                          <%= render :partial => 'viewdeal_address' %>
+												<p><a href="http://www.codemyconcept.com/projects/155/inner2.html#">Map It</a></p>
+												<a href="http://www.codemyconcept.com/projects/155/inner2.html#" class="btn">Redeem</a>
+											</div>
+										</div>
+										<!-- information -->
+										<div class="information">
+                                                                                    <h3>Expires: <%= std_date(@offer.expiry_datetime) %></h3>
+                                                                                        <p><%=h @offer.exclusivity_text %></p>
+										</div>
+									</div>
+									<!-- r-side -->
+									<div class="r-side">
+										<!-- ttl-holder -->
+										<div class="ttl-holder">
+											<h2>Shout About It</h2>
+										</div>
+										<!-- frame -->
+										<div class="frame">
+											<div class="row">
+												<strong class="bubble"><strong><strong>Lots of food for cheap!</strong></strong></strong>
+												<p><span>Allen R.</span> West Hills</p>
+											</div>
+											<div class="row">
+												<strong class="bubble blue-bubble"><strong><strong>Can't beat this deal. <br />I love Quiznos.</strong></strong></strong>
+												<p><span>Stefan W.</span> Santa Monica</p>
+											</div>
+											<div class="row">
+												<strong class="bubble"><strong><strong>Quiznos Rocks!<br />Better than Subway.</strong></strong></strong>
+												<p><span>Melissa P.</span> Westwood</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="b"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- footer -->
+	<div id="footer">
+		<ul>
+			<li><a href="http://www.codemyconcept.com/projects/155/inner2.html#">what’s a smartvark anyway?</a></li>
+			<li><a href="http://www.codemyconcept.com/projects/155/inner2.html#">what about my privacy?</a></li>
+			<li><a href="http://www.codemyconcept.com/projects/155/inner2.html#">contact</a></li>
+			<li><a href="http://www.codemyconcept.com/projects/155/inner2.html#">twitter</a></li>
+			<li><a href="http://www.codemyconcept.com/projects/155/inner2.html#">facebook</a></li>
+			<li><a href="http://www.codemyconcept.com/projects/155/inner2.html#">smartvark for business</a></li>
+		</ul>
+		<p>&copy; 2010  Smartvark, Inc.</p>
+	</div>
+</body>
+</html>

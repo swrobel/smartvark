@@ -15,12 +15,13 @@
 			<!-- header -->
 			<div id="header">
 				<!-- logo -->
-				<h1 class="logo"><a href="/">Smartvark</a></h1>
+                                <h1 class="logo"><a href="/">Smartvark</a></h1>
+                                <%= render :partial => 'login' %>
 				<!-- login-box -->
 				<div class="login-box">
 					<!-- holder -->
 					<div class="holder">
-						<strong class="ttl">Welcome <span>Stefan!</span></strong>
+                                            <strong class="ttl">Welcome <span><%= current_user.login %></span></strong>
 						<!-- progress-bar -->
 						<div class="progress-bar"><span style="width:78px">&nbsp;</span></div>
 					</div>

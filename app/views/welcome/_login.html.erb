@@ -1,0 +1,19 @@
+<% if logged_in? %>
+  <!-- login-box -->
+  <div class="login-box">
+    <!-- holder -->
+    <div class="holder">
+      <strong class="ttl">Welcome <span><%= current_user.login %></span></strong>
+      <!-- progress-bar -->
+      <div class="progress-bar"><span style="width:78px">&nbsp;</span></div>
+    </div>
+    <p>profile completion</p>
+  </div>
+<% else %>
+  <!-- login-box popup-holder -->
+  <div class="login-box popup-holder">
+    <a href="http://www.codemyconcept.com/projects/155/#" class="btn-login open">Log in</a>
+    <!-- popup -->
+    <%= render :partial => 'user_sessions/popup' %>
+  </div>
+<% end %>

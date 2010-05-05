@@ -6,11 +6,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   filter_parameter_logging :password, :password_confirmation
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :logged_in?
 
   after_filter :log_user
 
  private
+
+
+  def logged_in?
+    current_user
+  end
 
   def log_user
     current_user && current_user.user_audits.create(:request => params)

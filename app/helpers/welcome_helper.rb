@@ -20,6 +20,10 @@ module WelcomeHelper
     'active' if index+1 == (category_id || 1).to_i
   end
 
+  def info_for_rollover(offer)
+    "<strong class=\"title\">#{offer.business.name}:</strong><p>#{offer.lead}, expires #{std_date(offer.expiry_datetime)}.</p><p>To redeem online, use code #{offer.redemption_code} or send to your phone.</p><p>#{offer.exclusivity_text}</p>".gsub(/'/,"\\\'")
+  end
+
   def display_offer(offers, index, hidden=false)
 
     offer = offers[index]
@@ -27,7 +31,9 @@ module WelcomeHelper
 "<li id='offer_#{offer.id}' #{"style='display:none'" if hidden} >"  +
   '<div class="frame">
     <div>' +
-      link_to(image_tag(offer.coupon.url, :width => 175, :height => 100), viewdeal_url(offer.to_param)) +
+      link_to(image_tag(offer.coupon.url, :width => 175, :height => 100), viewdeal_url(offer.to_param),
+              :onMouseOver => "$('offer_info_rollover').update('#{info_for_rollover(offer)}');"
+             )+
     '</div>
   </div>
   <div class="rate">' +

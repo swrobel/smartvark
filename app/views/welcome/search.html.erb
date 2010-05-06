@@ -23,19 +23,8 @@
 					<!-- main-frame -->
                                         <div class="main-frame">
                                           <%= render :partial => 'search_box' %>
-						<!-- nav -->
-						<div class="nav">
-							<div>
-								<ul>
-									<li class="active"><a href="http://www.codemyconcept.com/projects/155/search-results.html#"><span class="first">All</span></a></li>
-									<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#"><span>Food</span></a></li>
-									<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#"><span>Clothes</span></a></li>
-									<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#"><span>Services</span></a></li>
-									<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#"><span>Entertainment</span></a></li>
-									<li><a href="http://www.codemyconcept.com/projects/155/search-results.html#"><span class="last">Beauty/Spa</span></a></li>
-								</ul>
-							</div>
-						</div>
+                                          <!-- nav -->
+                                          <%= render :partial => 'nav', :locals =>  { :is_search => true } %>
 						<!-- wrap -->
 						<div class="wrap">
 							<!-- content -->
@@ -47,7 +36,7 @@
 										<h2>Search Results</h2>
 										<!-- search-results -->
 										<div class="search-results">
-                                                                                  <strong class="title"><%=h @search_terms %> - <span><%=h @location %></span></strong>
+                                                                                  <strong class="title"><%=h params[:search_terms] %> - <span><%=h params[:location] %></span></strong>
                                                                                   <% if @offers.empty? %>
                                                                                     Zero offers found for this search criteria
                                                                                   <% else %>

@@ -3,6 +3,14 @@ class WelcomeController < ApplicationController
   helper_method :location
 
   after_filter :init_user_session
+  before_filter :authenticated?, :only => [ :mydeals]
+  before_filter :redirect_if_logged_in,  :only => [ :deals, :index ]
+
+  def redirect_if_logged_in
+    if logged_in?
+      redirect_to mydeals_url
+    end
+  end
 
   def deals
     if request.post?
@@ -16,11 +24,8 @@ class WelcomeController < ApplicationController
     @offer = Offer.find(params[:id])
   end
 
-  def search_results
-    @search_terms = params[:search_terms]
-    @location = params[:location]
-    @search_results = []
-    @offers = Offer.all
+  def search
+    @offers = Offer.search(params)
   end
 
   def mydeals
@@ -69,6 +74,12 @@ class WelcomeController < ApplicationController
 
   def init_user_session
     @user_session = UserSession.new
+  end
+
+  def authenticated?
+    unless logged_in?
+      redirect_to deals_url
+    end
   end
 
 end

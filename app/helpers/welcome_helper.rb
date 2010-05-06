@@ -16,8 +16,8 @@ module WelcomeHelper
     end
   end
 
-  def li_class(index)
-    'active' if index.zero?
+  def li_class(index, category_id=nil)
+    'active' if index+1 == (category_id || 1).to_i
   end
 
   def display_offer(offers, index, hidden=false)
@@ -46,5 +46,4 @@ module WelcomeHelper
       "<p>#{offer.exclusivity_text}</p>" +
       "<p>Expiration: #{offer.expiry_datetime.strftime('%B %d, %Y')}</p></li>"
   end
-
 end

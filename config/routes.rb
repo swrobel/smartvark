@@ -52,13 +52,16 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_session
 
   map.mydeals 'mydeals', :controller => "welcome", :action => :mydeals
-  map.mydeals 'mydeals/:category_id', :controller => "welcome", :action => :mydeals
+  map.category_mydeals 'mydeals/:category_id', :controller => "welcome", :action => :mydeals
   map.viewdeal 'viewdeal/:id', :controller => "welcome", :action => :viewdeal
   map.deals 'deals', :controller => "welcome", :action => :deals
-  map.search 'search_results', :controller => "welcome", :action => :search_results, :conditions => { :method => :post }
+  map.search 'search/:category_id', :controller => "welcome", :action => :search, :conditions => { :method => :get }
   map.admin 'admin', :controller => "offers"
 
   map.root :controller => "welcome"
+
+  map.login '/login', :controller => 'user_sessions', :action => :new
+  map.logout '/logout',:controller => 'user_sessions', :action => :destroy
 
   # config/routes.rb
   map.resource :account, :controller => "users"

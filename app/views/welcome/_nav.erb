@@ -6,8 +6,12 @@
         <% html_class = begin
                   end
         %>
-        <li class="<%= li_class(index) %>">
-          <%= link_to "<span class='#{link_class(index)}'>#{category.name}</span>", mydeals_path(category.to_param) %>
+        <li class="<%= li_class(index, params[:category_id]) %>">
+        <% if defined?(is_search) %>
+          <%= link_to "<span class='#{link_class(index)}'>#{category.name}</span>", search_path(category.to_param) %>
+        <% else %>
+          <%= link_to "<span class='#{link_class(index)}'>#{category.name}</span>", category_mydeals_path(category.to_param) %>
+        <% end %>
         </li>
       <% end %>
     </ul>

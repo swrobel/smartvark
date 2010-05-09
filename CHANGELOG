@@ -1,3 +1,4 @@
++ Google Geocoder plugin
 + Geokit plugin, run "rake gems:install"
 + Added GMap plugin and set keys
 ! Search defaults to first category "All"

@@ -26,6 +26,12 @@ class WelcomeController < ApplicationController
 
   def search
     @offers = Offer.search(params)
+    coordinates = [41.8921254,-87.6096669]
+
+    @map = GMap.new("map")
+    @map.control_init(:large_map => true, :map_type => true)
+    @map.center_zoom_init(coordinates,14)
+    @map.overlay_init(GMarker.new(coordinates,:title => "Navy Pier", :info_window => "Navy Pier"))
   end
 
   def mydeals

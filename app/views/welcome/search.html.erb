@@ -48,9 +48,10 @@
 							</div>
 							<!-- aside -->
 							<div class="aside">
-								<div class="map-holder">
+                                                          <div class="map-holder">
                                                                   <%= @map.to_html %>
-								</div>
+                                                                  <%= @map.div(:width => 270, :height => 180) %>
+                                                          </div>
 							</div>
 						</div>
 					</div>

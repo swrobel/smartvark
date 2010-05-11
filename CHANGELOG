@@ -1,3 +1,5 @@
++ Integrated geo maps, with listing
++ Integrated business geocoder callback
 + Google Geocoder plugin
 + Geokit plugin, run "rake gems:install"
 + Added GMap plugin and set keys

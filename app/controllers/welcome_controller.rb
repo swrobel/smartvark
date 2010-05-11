@@ -30,14 +30,16 @@ class WelcomeController < ApplicationController
 
     @map = GMap.new("map")
     @map.control_init(:large_map => true, :map_type => true)
-    @map.center_zoom_init(coordinates,14)
+    coordinates =  []
     @offers.each do |offer|
+      coordinates = [ offer.business.lat, offer.business.lng]
       gmarker = GMarker.new(
-        [ offer.business.lat, offer.business.lng],
-        :title => @offer.business.news,
-        :info_window => @offer.lead)
+        coordinates,
+        :title => offer.business.try(:name),
+        :info_window => offer.lead)
       @map.overlay_init(gmarker)
     end
+    @map.center_zoom_init(coordinates,14)
   end
 
   def mydeals

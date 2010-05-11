@@ -16,9 +16,9 @@ class Offer < ActiveRecord::Base
     conditions = []
     args = []
 
-    if options[:category_id].to_i > 2
+    if (category = options[:category_id].to_i) > 1
       conditions << 'category_id = ?'
-      args << options[:category_id].to_i
+      args << category
     end
 
     unless options[:location].blank?
@@ -28,13 +28,13 @@ class Offer < ActiveRecord::Base
       else
         city, state = options[:location].split(/,/,2)
         if city
-          conditions << 'businesses.city = ?'
-          args << city.strip
+          conditions << 'lower(businesses.city) = ?'
+          args << city.strip.downcase
         end
 
         if state
-          conditions << 'businesses.state = ?'
-          args << state.strip
+          conditions << 'lower(businesses.state) = ?'
+          args << state.strip.downcase
         end
       end
     end

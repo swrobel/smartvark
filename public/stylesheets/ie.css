@@ -18,3 +18,4 @@
 	background: url(none.gif);
 	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/bg-two-columns-b.png', sizingmethod='crop');
 }
+.posts li {list-style-type:expression(function(t){t.runtimeStyle.listStyleType = 'none';t.insertAdjacentHTML('afterBegin','<span class="list-item-before">' + (++t.parentNode.IEcounter || (t.parentNode.IEcounter = 1)) + '. </span>');}(this));}

@@ -1,0 +1,21 @@
+* html .logo a { 
+	background:none;
+	filter:progid:dximagetransform.microsoft.alphaimageloader(src='images/logo.png', sizingmethod='crop');
+}
+* html .nav ul li{border-left: expression( (this===this.parentNode.childNodes[0]) ? "0" : "auto");}
+* html #footer ul li {
+	background-image: expression( (this===this.parentNode.childNodes[0]) ? 'none' : 'auto');
+	padding-left: expression( (this===this.parentNode.childNodes[0]) ? '0' : 'auto');
+}
+* html .promo-section a { margin-top: expression(this.parentNode.offsetHeight > this.offsetHeight ? ((this.parentNode.offsetHeight-this.offsetHeight)/2 + "px") : "0"); }
+* html .gallery ul .frame div{ margin-top: expression(this.parentNode.offsetHeight > this.offsetHeight ? ((this.parentNode.offsetHeight-this.offsetHeight)/2 + "px") : "0"); }
+*+html .gallery ul .frame div{ margin-top: expression(this.parentNode.offsetHeight > this.offsetHeight ? ((this.parentNode.offsetHeight-this.offsetHeight)/2 + "px") : "0"); }
+* html .two-columns .t {
+	background: url(none.gif);
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/bg-two-columns-t.png', sizingmethod='crop');
+}
+* html .two-columns .b {
+	background: url(none.gif);
+	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/bg-two-columns-b.png', sizingmethod='crop');
+}
+.posts li {list-style-type:expression(function(t){t.runtimeStyle.listStyleType = 'none';t.insertAdjacentHTML('afterBegin','<span class="list-item-before">' + (++t.parentNode.IEcounter || (t.parentNode.IEcounter = 1)) + '. </span>');}(this));}

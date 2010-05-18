@@ -1,3 +1,4 @@
+! Fixed the js,css mix up with javascripts, stylesheets
 + Implemented myprofile
 + Implemented viewbusiness
 ! Fixed CamelCase page titles

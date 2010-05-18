@@ -80,7 +80,10 @@
 										</div>
 										<span class="mark">You added XYZ deal to My Picks. <a href="http://www.codemyconcept.com/projects/155/inner.html#">Undo</a> or <a href="http://www.codemyconcept.com/projects/155/inner.html#">Use It Now</a>.</span>
 										<!-- list -->
-										<ul id='my_list' class="list">
+                                                                                <ul id='my_list' class="list">
+                                                                                  <% @likes.each do |offer| %>
+                                                                                    <%= list_offer(offer) %>
+                                                                                  <% end %>
 										</ul>
 									</div>
 								</div>

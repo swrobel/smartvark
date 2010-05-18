@@ -36,8 +36,10 @@ class WelcomeController < ApplicationController
     if request.post?
       cookies[:location] = params[:location] if params[:location]
     end
-    session[:liked] = 0
     @offers = Offer.all
+    session[:liked] ||= []
+
+    @likes = Offer.find_all_by_id(session[:liked])
   end
 
   def viewdeal
@@ -62,7 +64,7 @@ class WelcomeController < ApplicationController
   end
 
   def mydeals
-    session[:liked] = 0
+    session.delete(:liked)
     category_id = params[:category_id].to_i
     @offers = begin
                 if (category_id <= 1)
@@ -82,15 +84,24 @@ class WelcomeController < ApplicationController
       session[:user] = User.new
       session[:user].set_opinion(params)
     end
+
     offer= Offer.find params[:offer_id]
     render :update do |page|
-      page << "Effect.Shrink('offer_#{offer.id}');"
       if params[:liked]=='true'
+        if session[:liked].length > 2
+          page << "alert('Time to sign up son!')"
+        else
+          page << "Effect.Shrink('offer_#{offer.id}');"
 
-        page.insert_html :bottom, 'my_list', list_offer(offer)
+          page.insert_html :bottom, 'my_list', list_offer(offer)
 
-        session[:liked]+=1
-        page << "alert('Time to sign up son!')" if session[:liked] > 2
+          unless current_user
+            session[:liked] << params[:offer_id]
+            page << "alert('Time to sign up son!')" if session[:liked].length > 2
+          end
+        end
+      else
+        page << "Effect.Shrink('offer_#{offer.id}');"
       end
     end
   end

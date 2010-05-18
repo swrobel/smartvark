@@ -48,7 +48,8 @@ module WelcomeHelper
   def list_offer(offer)
     "<li id='offer_#{offer.id}'>" +
     hidden_field_tag("user[offer_ids][]", offer.id) +
-    link_to("<h3>#{offer.lead}</h3>", offer) +
+    link_to("<h3>#{offer.lead}</h3>", offer,
+      :onMouseOver => "$('offer_info_rollover').update('#{info_for_rollover(offer)}');") +
       "<p>#{offer.exclusivity_text}</p>" +
       "<p>Expiration: #{offer.expiry_datetime.strftime('%B %d, %Y')}</p></li>"
   end

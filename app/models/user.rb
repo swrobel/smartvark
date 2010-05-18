@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
     self.opinions.build( :offer_id => params[:offer_id],
                         :liked => params[:liked]=='true')
   end
+
+  def likes_offers
+    @likes_offers = opinions.likes.collect(&:offer)
+  end
 end

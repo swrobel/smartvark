@@ -74,6 +74,7 @@ class WelcomeController < ApplicationController
                 end
               end
 
+    @likes = current_user.likes_offers[0,7]
   end
 
   def set_opinion

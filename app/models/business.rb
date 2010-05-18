@@ -9,7 +9,7 @@ class Business < ActiveRecord::Base
   validates_presence_of :street_address_1, :city, :state, :postal_code
 
   def address_as_string
-    [ street_address_1, city, state] .join(',') << postal_code
+    [ street_address_1, city, state] .join(',') << ' ' << postal_code
   end
 
   def set_lat_lng

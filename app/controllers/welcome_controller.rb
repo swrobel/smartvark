@@ -89,12 +89,12 @@ class WelcomeController < ApplicationController
     offer= Offer.find params[:offer_id]
     render :update do |page|
       if params[:liked]=='true'
-        if session[:liked].length > 2
+        if session[:liked] && session[:liked].length > 2
           page << "alert('Time to sign up son!')"
         else
           page << "Effect.Shrink('offer_#{offer.id}');"
 
-          page.insert_html :bottom, 'my_list', list_offer(offer)
+          page.insert_html :top, 'my_list', list_offer(offer)
 
           unless current_user
             session[:liked] << params[:offer_id]

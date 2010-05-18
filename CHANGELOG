@@ -1,3 +1,4 @@
+! Bugfix issues with like session cookie
 + Last 7 liked offers show on mydeals
 + Offers are held in the session variable
 + Implemented 'Map It' button on viewdeals page

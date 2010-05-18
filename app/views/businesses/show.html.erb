@@ -4,6 +4,12 @@
 </p>
 
 <p>
+<b>Hours:</b>
+<br/>
+  <%= @business.hours.gsub(/;/,'<br/>')%>
+</p>
+
+<p>
   <b>Street address 1:</b>
   <%=h @business.street_address_1 %>
 </p>

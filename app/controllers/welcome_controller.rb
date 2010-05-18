@@ -13,6 +13,25 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def viewbusiness
+    @business = Business.find(params[:id])
+    @map = GMap.new("map")
+    @map.control_init(:large_map => true, :map_type => true)
+
+      coordinates = [ @business.lat, @business.lng]
+    gmarker = GMarker.new(
+      coordinates,
+      :title => @business.try(:name),
+      :info_window => @business.try(:name)
+    )
+    @map.overlay_init(gmarker)
+    @map.center_zoom_init(coordinates,14)
+  end
+
+  def myprofile
+    @user = current_user
+  end
+
   def deals
     if request.post?
       cookies[:location] = params[:location] if params[:location]

@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Smartvark</title>
+        <%= render :partial => 'common_header' %>
+	<script type="text/javascript" src="js/inputs.js"></script>
+	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.accordion.js"></script>
+	<script type="text/javascript" src="js/jquery.main.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- wrapper-holder -->
+		<div class="wrapper-holder">
+			<!-- header -->
+			<div id="header">
+				<!-- logo -->
+				<h1 class="logo"><a href="#">Smartvark</a></h1>
+				<div>
+                                <%= render :partial => 'login' %>
+				<div>
+					<!-- login-box -->
+					<div class="login-box">
+					<!-- holder -->
+					<div class="holder">
+                                            <strong class="ttl">Welcome <span><%= current_user.login %></span></strong>
+								<!-- progress-bar -->
+								<div class="progress-bar"><span style="width:78px">&nbsp;</span></div>
+							</div>
+							<p>profile completion</p>
+						</div>
+					</div>
+					<div class="frame">
+						<!-- menu -->
+						<ul class="menu">
+							<li><%= link_to 'my deals', mydeals_url %></li>
+							<li><%= link_to 'my profile', myprofile_url %></li>
+							<li><a href="#">recommend a business</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- main -->
+			<div id="main">
+				<!-- main-holder -->
+				<div class="main-holder">
+					<!-- main-frame -->
+					<div class="main-frame">
+                                                <%= render :partial => 'search_box' %>
+						<!-- two-columns -->
+						<div class="two-columns">
+							<div class="t"></div>
+							<div class="c">
+								<!-- holder -->
+								<div class="holder">
+									<!-- l-side -->
+									<div class="l-side">
+										<!-- ttl-holder -->
+										<div class="ttl-holder">
+											<h2>My Profile</h2>
+										</div>
+										<!-- profile-form -->
+										<%= render :partial => 'my_profile' %>
+									</div>
+									<!-- r-side -->
+									<div class="r-side">
+										<!-- ttl-holder -->
+										<div class="ttl-holder">
+											<h2>My Tastes</h2>
+										</div>
+										<!-- accordion -->
+										<ul class="accordion">
+											<li>
+												<a href="#" class="opener">Food</a>
+												<div class="slide"></div>
+											</li>
+											<li>
+												<a href="#" class="opener">Clothes </a>
+												<div class="slide"></div>
+											</li>
+											<li>
+												<a href="#" class="opener">Services</a>
+												<div class="slide"></div>
+											</li>
+											<li>
+												<a href="#" class="opener">Entertainment</a>
+												<div class="slide"></div>
+											</li>
+											<li>
+												<a href="#" class="opener">Beauty/Spa</a>
+												<div class="slide"></div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="b"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- footer -->
+	<div id="footer">
+		<ul>
+			<li><a href="#">what’s a smartvark anyway?</a></li>
+			<li><a href="#">what about my privacy?</a></li>
+			<li><a href="#">contact</a></li>
+			<li><a href="#">twitter</a></li>
+			<li><a href="#">facebook</a></li>
+			<li><a href="#">smartvark for business</a></li>
+		</ul>
+		<p>&copy; 2010  Smartvark, Inc.</p>
+	</div>
+</body>
+</html>

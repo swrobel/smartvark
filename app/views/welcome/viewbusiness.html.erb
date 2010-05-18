@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Smartvark</title>
+        <%= render :partial => 'common_header' %>
+</head>
+<body>
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- wrapper-holder -->
+		<div class="wrapper-holder">
+			<!-- header -->
+			<div id="header">
+				<!-- logo -->
+				<h1 class="logo"><a href="#">Smartvark</a></h1>
+				<!-- sign-in popup-holder -->
+                                <%= render :partial => 'login' %>
+			</div>
+			<!-- main -->
+			<div id="main">
+				<!-- main-holder -->
+				<div class="main-holder">
+					<!-- main-frame -->
+					<div class="main-frame">
+                                                <%= render :partial => 'search_box' %>
+						<!-- wrap -->
+						<div class="merchant-area">
+							<!-- content -->
+							<div id="content">
+								<!-- content-holder -->
+								<div class="content-holder">
+									<!-- content-frame -->
+									<div class="content-frame">
+                                                                          <h2><%=h @business.name %> - <%=h @business.city %></h2>
+										<!-- info -->
+										<div class="info">
+											<div class="contact">
+												<ul class="rate">
+													<li><a href="#" class="for">For</a></li>
+													<li><a href="#" class="for">For</a></li>
+													<li><a href="#" class="for">For</a></li>
+													<li><a href="#">Against</a></li>
+													<li><a href="#">Against</a></li>
+												</ul>
+                                                                                                <address><strong><%= @business.street_address_1 %></strong><strong><%= @business.city %>, <%= @business.state %> <%= @business.postal_code %></strong></address>
+												<strong class="phone"><%= @business.phone_1 %></strong>
+                                                                                                <a href="www.quiznos.com"><%= link_to @business.url, {}, :href => "http://#{@business.url}" %></a>
+												<ul class="social">
+													<li><a href="#"><img src="/images/ico-twitter2.gif" alt="twitter" width="23" height="24" /></a></li>
+													<li><a href="#"><img src="/images/ico-facebook2.gif" alt="facebook" width="23" height="24" /></a></li>
+													<li><a href="#"><img src="/images/ico-yelp.gif" alt="yelp" width="24" height="24" /></a></li>
+												</ul>
+												<dl>
+													<dt>Hours:</dt>
+                                                                                                        <dd><%= @business.hours.gsub(/;/,'<br/>') %></dd>
+												</dl>
+											</div>
+											<strong class="logo-quiznos-sub"><a href="#">Quiznos Sub</a></strong>
+										</div>
+                                                                                <ol class="posts">
+                                                                                  <%= render :partial => 'business_offer', :collection => @business.offers %>
+										</ol>
+									</div>
+								</div>
+							</div>
+							<!-- aside -->
+							<div class="aside">
+								<div class="map-holder">
+                                                                  <%= @map.to_html %>
+                                                                  <%= @map.div(:width => 270, :height => 180) %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- footer -->
+	<div id="footer">
+		<ul>
+			<li><a href="#">what’s a smartvark anyway?</a></li>
+			<li><a href="#">what about my privacy?</a></li>
+			<li><a href="#">contact</a></li>
+			<li><a href="#">twitter</a></li>
+			<li><a href="#">facebook</a></li>
+			<li><a href="#">smartvark for business</a></li>
+		</ul>
+		<p>&copy; 2010  Smartvark, Inc.</p>
+	</div>
+</body>
+</html>

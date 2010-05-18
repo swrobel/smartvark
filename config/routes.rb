@@ -51,6 +51,9 @@ ActionController::Routing::Routes.draw do |map|
   # config/routes.rb
   map.resource :user_session
 
+  map.dealdashboard 'dealdashboard', :controller => "welcome", :action => :dealdashboard
+  map.myprofile 'myprofile', :controller => "welcome", :action => :myprofile
+  map.viewbusiness 'viewbusiness/:id', :controller => "welcome", :action => :viewbusiness
   map.mydeals 'mydeals', :controller => "welcome", :action => :mydeals
   map.category_mydeals 'mydeals/:category_id', :controller => "welcome", :action => :mydeals
   map.viewdeal 'viewdeal/:id', :controller => "welcome", :action => :viewdeal

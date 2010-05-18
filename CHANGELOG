@@ -1,3 +1,5 @@
++ Implemented myprofile
++ Implemented viewbusiness
 + Updated search logic, added test"
 + Integrated geo maps, with listing
 + Integrated business geocoder callback

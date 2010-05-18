@@ -8,7 +8,7 @@
         %>
         <li class="<%= li_class(index, params[:category_id]) %>">
         <% if defined?(is_search) %>
-          <%= link_to "<span class='#{link_class(index)}'>#{category.name}</span>", search_path(category.to_param) %>
+          <%= link_to "<span class='#{link_class(index)}'>#{category.name}</span>", search_path(category.to_param, {:search_terms => params[:search_terms], :location => params[:location]}) %>
         <% else %>
           <%= link_to "<span class='#{link_class(index)}'>#{category.name}</span>", category_mydeals_path(category.to_param) %>
         <% end %>

@@ -1,5 +1,10 @@
 + Implemented myprofile
 + Implemented viewbusiness
+! Fixed CamelCase page titles
+! Moved footer to a partial
+! Search terms persist when switching categories
+! Updated CSS for new pages
+! Added html for new pages
 + Updated search logic, added test"
 + Integrated geo maps, with listing
 + Integrated business geocoder callback

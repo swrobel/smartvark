@@ -529,7 +529,12 @@ td, th{padding:0;}
 	overflow:hidden;
 	background:url(../images/bg-info-section.gif) repeat-y 370px 0;
 }
-.gallery{float:left;}
+.gallery{
+  float:left;
+  max-width:375px;
+  max-height:315px;
+  overflow:hidden;
+}
 /* gallery list */
 .gallery ul{
 	margin:0;

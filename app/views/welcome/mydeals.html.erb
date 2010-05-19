@@ -54,12 +54,9 @@
 											<!-- gallery -->
 											<div class="gallery">
                                                                                           <ul>
-                                                                                            <%= display_offer(@offers, 0) %>
-                                                                                            <%= display_offer(@offers, 1) %>
-                                                                                          </ul>
-                                                                                          <ul>
-                                                                                            <%= display_offer(@offers, 2) %>
-                                                                                            <%= display_offer(@offers, 3) %>
+                                                                                            <% @offers.length.times do |n| %>
+                                                                                              <%= display_offer(@offers, n) %>
+                                                                                            <% end %>
                                                                                           </ul>
 											</div>
 										</div>

@@ -37,7 +37,9 @@ class WelcomeController < ApplicationController
       cookies[:location] = params[:location] if params[:location]
     end
     @offers = Offer.all
-    session[:liked] ||= []
+    if session[:liked].blank? || params[:kill]
+      session[:liked] = []
+    end
 
     @likes = Offer.find_all_by_id(session[:liked])
   end
@@ -92,7 +94,7 @@ class WelcomeController < ApplicationController
         if session[:liked] && session[:liked].length > 2
           page << "alert('Time to sign up son!')"
         else
-          page << "Effect.Shrink('offer_#{offer.id}');"
+          shrink_it = true
 
           page.insert_html :top, 'my_list', list_offer(offer)
 
@@ -102,8 +104,13 @@ class WelcomeController < ApplicationController
           end
         end
       else
+        shrink_it = true
+      end
+
+      if shrink_it
         page << "Effect.Shrink('offer_#{offer.id}');"
       end
+
     end
   end
 

@@ -1,7 +1,7 @@
 module WelcomeHelper
 
   def categories
-    @categories ||=Category.all
+    @categories ||=Category.find_all_by_parent_id(nil)
   end
 
   def categories_count
@@ -32,7 +32,8 @@ module WelcomeHelper
   '<div class="frame">
     <div>' +
       link_to(image_tag(offer.coupon.url, :width => 175, :height => 100), viewdeal_url(offer.to_param),
-              :onMouseOver => "$('offer_info_rollover').update('#{info_for_rollover(offer)}');"
+              :onMouseOver => "$('offer_info_rollover').update('#{info_for_rollover(offer)}');",
+              :onMouseOut => "$('offer_info_rollover').update('');"
              )+
     '</div>
   </div>
@@ -48,8 +49,10 @@ module WelcomeHelper
   def list_offer(offer)
     "<li id='offer_#{offer.id}'>" +
     hidden_field_tag("user[offer_ids][]", offer.id) +
-    link_to("<h3>#{offer.lead}</h3>", offer,
-      :onMouseOver => "$('offer_info_rollover').update('#{info_for_rollover(offer)}');") +
+    link_to("<h3>#{offer.lead}</h3>", viewdeal_url(offer.to_param),
+      :onMouseOver => "$('offer_info_rollover').update('#{info_for_rollover(offer)}');",
+      :onMouseOut => "$('offer_info_rollover').update('');"
+    ) +
       "<p>#{offer.exclusivity_text}</p>" +
       "<p>Expiration: #{offer.expiry_datetime.strftime('%B %d, %Y')}</p></li>"
   end

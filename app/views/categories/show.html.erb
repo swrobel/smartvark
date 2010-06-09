@@ -4,6 +4,10 @@
 </p>
 
 <p>
+  <b>Parent:</b>
+  <%=h @category.parent.try(:name) || 'n/a'%>
+</p>
+<p>
   <b>Active:</b>
   <%=h @category.active %>
 </p>

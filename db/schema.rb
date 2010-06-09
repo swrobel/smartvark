@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100609062408) do
+ActiveRecord::Schema.define(:version => 20100609075231) do
 
   create_table "businesses", :force => true do |t|
     t.string   "name",                :limit => 50
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20100609062408) do
     t.string   "zipcode",             :limit => 11
     t.string   "phone",               :limit => 15
     t.integer  "carrier",             :limit => 2
+    t.integer  "facebook_uid",        :limit => 8
   end
 
 end

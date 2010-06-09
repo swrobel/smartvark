@@ -15,5 +15,8 @@
     <a href="http://www.codemyconcept.com/projects/155/#" class="btn-login open">Log in</a>
     <!-- popup -->
     <%= render :partial => 'user_sessions/popup' %>
+    <%= fb_connect_javascript_tag %>
+    <%= init_fb_connect "XFBML" %>
+    <%= authlogic_facebook_login_button %>
   </div>
 <% end %>

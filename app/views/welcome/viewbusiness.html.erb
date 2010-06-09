@@ -63,7 +63,7 @@
 												</ul>
 												<dl>
 													<dt>Hours:</dt>
-                                                                                                        <dd><%= @business.hours.gsub(/;/,'<br/>') %></dd>
+                                                                                                        <dd><%= (@business.hours || 'n/a').gsub(/;/,'<br/>') %></dd>
 												</dl>
 											</div>
 											<strong class="logo-quiznos-sub"><a href="#">Quiznos Sub</a></strong>

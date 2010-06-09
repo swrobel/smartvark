@@ -6,7 +6,7 @@
 <p>
 <b>Hours:</b>
 <br/>
-  <%= @business.hours.gsub(/;/,'<br/>')%>
+  <%= (@business.hours || 'n/a').gsub(/;/,'<br/>')%>
 </p>
 
 <p>

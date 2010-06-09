@@ -42,8 +42,10 @@
                                                                                             <% end %>
                                                                                           </ul>
                                                                                                 <address><strong><%= @business.street_address_1 %></strong><strong><%= @business.city %>, <%= @business.state %> <%= @business.postal_code %></strong></address>
-												<strong class="phone"><%= @business.phone_1 %></strong>
-                                                                                                <%= link_to @business.url, {}, :href => "http://#{@business.url}" %>
+                                                                                                <strong class="phone"><%= @business.phone_1 %></strong>
+                                                                                                <% if @business.url.present? %>
+                                                                                                  <%= link_to @business.url, {}, :href => "http://#{@business.url}" %>
+                                                                                                <% end %>
 												<ul class="social">
                                                                                                   <li>
                                                                                                   <% if @business.twitter_link.present? %>

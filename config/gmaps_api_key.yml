@@ -13,4 +13,4 @@ test:
 
 production:
   smartvark.com: ABQIAAAAEMbemat33qvavk--Q6bCBxSsF2k8qpl-Tfv9NRaGXej5SVLL8hSY7aT6RqN2BJuX6LlS7LF9PsnTlw
-  martvark.heroku.com: ABQIAAAAEMbemat33qvavk--Q6bCBxTtJQQB_WIlsDAx_F1jTRdqS00xChTo3XeNebS75lm74lbbk9CeyKL0cA
+  heroku.com: ABQIAAAAEMbemat33qvavk--Q6bCBxTtJQQB_WIlsDAx_F1jTRdqS00xChTo3XeNebS75lm74lbbk9CeyKL0cA

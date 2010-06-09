@@ -75,10 +75,10 @@ class OffersController < ApplicationController
   # DELETE /offers/1.xml
   def destroy
     @offer = Offer.find(params[:id])
-    @offer.destroy
+    @offer.update_attribute(:archived, true)
 
     respond_to do |format|
-      format.html { redirect_to(offers_url) }
+      format.html { redirect_to(dealdashboard_url(:id => @offer.business_id)) }
       format.xml  { head :ok }
     end
   end

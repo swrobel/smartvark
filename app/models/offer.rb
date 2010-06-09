@@ -1,7 +1,22 @@
 class Offer < ActiveRecord::Base
+
   belongs_to :category
-  has_many :comments
   belongs_to :business
+
+  has_many :comments
+  has_many :redemptions
+
+  has_many :opinions
+  has_many :users, :through => :opinions
+
+  has_many :likes,
+    :class_name => 'Opinion',
+    :conditions => { :liked =>true }
+
+  has_many :dislikes,
+    :class_name => 'Opinion',
+    :conditions => { :liked => false }
+
 
   has_attached_file :coupon, :whiny_thumbnails => true
 

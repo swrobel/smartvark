@@ -58,6 +58,8 @@ ActionController::Routing::Routes.draw do |map|
   map.category_mydeals 'mydeals/:category_id', :controller => "welcome", :action => :mydeals
   map.viewdeal 'viewdeal/:id', :controller => "welcome", :action => :viewdeal
   map.deals 'deals', :controller => "welcome", :action => :deals
+  map.deals 'dealdashboard/:id', :controller => "welcome", :action => :dealdashboard
+  #TODO account based map.deals 'dealdashboard/', :controller => "welcome", :action => :dealdashboard
   map.search 'search/:category_id', :controller => "welcome", :action => :search, :conditions => { :method => :get }
   map.admin 'admin', :controller => "offers"
 

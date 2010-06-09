@@ -1,3 +1,6 @@
+.archived  {
+  background-color: #DDD
+}
 .tryit-box {
 	background:url(../images/bg-welcome-box.gif) no-repeat;
 	background-position: 0 -42px;

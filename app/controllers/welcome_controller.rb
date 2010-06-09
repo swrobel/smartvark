@@ -4,13 +4,19 @@ class WelcomeController < ApplicationController
   helper_method :location
 
   after_filter :init_user_session
-  before_filter :authenticated?, :only => [ :mydeals]
+  before_filter :authenticated?, :only => [ :mydeals, :dealdashboard ]
   before_filter :redirect_if_logged_in,  :only => [ :deals, :index ]
 
   def redirect_if_logged_in
     if logged_in?
       redirect_to mydeals_url
     end
+  end
+
+  def dealdashboard
+    #TODO : Make this the owners business  check config/routes
+    #@business = current_user.business
+    @business = Business.find(params[:id])
   end
 
   def viewbusiness

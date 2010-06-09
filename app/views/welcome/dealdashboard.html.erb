@@ -37,7 +37,7 @@
 										<div class="heading">
 											<div class="frame-b">
 												<div class="frame-t">
-													<h2>Quiznos</h2>
+                                                                                                  <h2><%=h @business.name %> </h2>
 												</div>
 											</div>
 										</div>
@@ -71,107 +71,17 @@
 											</form>
 										 </div>
 										<!-- location -->
-										<table class="location">
-											<tr>
-												<th class="loc">Location</th>
-												<th class="offer">Offer</th>
-												<th class="expiration">Expiration</th>
-												<th class="used">Used</th>
-												<th><img src="images/ico-for.gif" alt="" width="15" height="16" /></th>
-												<th><img src="images/ico-against.gif" alt="" width="15" height="16" /></th>
-												<th class="actions">Actions</th>
-											</tr>
-											<tr>
-												<td>Westwood</td>
-												<td>10% Off everything</td>
-												<td>6/30/10 </td>
-												<td>46</td>
-												<td>55 </td>
-												<td>21</td>
-												<td>
-													<a href="#" class="left"><img src="images/ico01.gif" alt="" width="17" height="17" /></a>
-													<a href="#" class="left"><img src="images/ico02.gif" alt="" width="17" height="17" /></a>
-													<a href="#" class="left"><img src="images/ico03.gif" alt="" width="17" height="17" /></a>
-												</td>
-											</tr>
-											<tr>
-												<td>Beverly Hills</td>
-												<td>Buy One Get one</td>
-												<td>6/30/10</td>
-												<td>116</td>
-												<td>255</td>
-												<td>3</td>
-												<td>
-													<a href="#" class="left"><img src="images/ico01.gif" alt="" width="17" height="17" /></a>
-													<a href="#" class="left"><img src="images/ico02.gif" alt="" width="17" height="17" /></a>
-													<a href="#" class="left"><img src="images/ico03.gif" alt="" width="17" height="17" /></a>
-												</td>
-											</tr>
-											<tr>
-												<td>Beverly Hills</td>
-												<td>Fall Sale</td>
-												<td>9/30/10</td>
-												<td>46</td>
-												<td>233</td>
-												<td>1</td>
-												<td>
-													<a href="#" class="left"><img src="images/ico01.gif" alt="" width="17" height="17" /></a>
-													<a href="#" class="left"><img src="images/ico02.gif" alt="" width="17" height="17" /></a>
-													<a href="#" class="left"><img src="images/ico03.gif" alt="" width="17" height="17" /></a>
-												</td>
-											</tr>
-											<tr>
-												<td>Malibu</td>
-												<td>20% Off</td>
-												<td>6/30/10</td>
-												<td>46</td>
-												<td>55</td>
-												<td>26</td>
-												<td>
-													<a href="#" class="left"><img src="images/ico01.gif" alt="" width="17" height="17" /></a>
-													<a href="#" class="left"><img src="images/ico02.gif" alt="" width="17" height="17" /></a>
-													<a href="#" class="left"><img src="images/ico03.gif" alt="" width="17" height="17" /></a>
-												</td>
-											</tr>
-											<tr>
-												<td>Melrose</td>
-												<td>10% Off</td>
-												<td>6/30/10</td>
-												<td>46</td>
-												<td>75</td>
-												<td>41</td>
-												<td>
-													<a href="#" class="left"><img src="images/ico01.gif" alt="" width="17" height="17" /></a>
-													<a href="#" class="left"><img src="images/ico02.gif" alt="" width="17" height="17" /></a>
-													<a href="#" class="left"><img src="images/ico03.gif" alt="" width="17" height="17" /></a>
-												</td>
-											</tr>
-											<tr>
-												<td>Melrose</td>
-												<td>Fall Sale</td>
-												<td>9/30/10</td>
-												<td>46</td>
-												<td>233</td>
-												<td>1</td>
-												<td>
-													<a href="#" class="left"><img src="images/ico01.gif" alt="" width="17" height="17" /></a>
-													<a href="#" class="left"><img src="images/ico02.gif" alt="" width="17" height="17" /></a>
-													<a href="#" class="left"><img src="images/ico03.gif" alt="" width="17" height="17" /></a>
-												</td>
-											</tr>
-											<tr>
-												<td>Malibu</td>
-												<td>Buy One Get one</td>
-												<td>6/30/10</td>
-												<td>46</td>
-												<td>55</td>
-												<td>26</td>
-												<td>
-													<a href="#" class="left"><img src="images/ico01.gif" alt="" width="17" height="17" /></a>
-													<a href="#" class="left"><img src="images/ico02.gif" alt="" width="17" height="17" /></a>
-													<a href="#" class="left"><img src="images/ico03.gif" alt="" width="17" height="17" /></a>
-												</td>
-											</tr>
+                                                                                <table class="location">
+<tr>
+  <th class="loc">Location</th>
+  <th class="offer">Offer</th>
+  <th class="expiration">Expiration</th>
+  <th class="used">Used</th>
+  <th><img src="/images/ico-for.gif" alt="" width="15" height="16" /></th>
+  <th><img src="/images/ico-against.gif" alt="" width="15" height="16" /></th>
+  <th class="actions">Actions</th>
+</tr>
+                                                                                  <%= render :partial => 'deal_on_dashboard', :collection => @business.offers %>
 										</table>
 									</div>
 								</div>

@@ -1,0 +1,134 @@
+--- !ruby/object:Gem::Specification 
+name: yelp
+version: !ruby/object:Gem::Version 
+  hash: 23
+  prerelease: false
+  segments: 
+  - 1
+  - 0
+  - 0
+  version: 1.0.0
+platform: ruby
+authors: 
+- Walter Korman
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2009-10-19 00:00:00 -07:00
+default_executable: 
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: json
+  prerelease: false
+  requirement: &id001 !ruby/object:Gem::Requirement 
+    none: false
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        hash: 17
+        segments: 
+        - 1
+        - 1
+        - 1
+        version: 1.1.1
+  type: :runtime
+  version_requirements: *id001
+- !ruby/object:Gem::Dependency 
+  name: hoe
+  prerelease: false
+  requirement: &id002 !ruby/object:Gem::Requirement 
+    none: false
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        hash: 5
+        segments: 
+        - 2
+        - 3
+        - 3
+        version: 2.3.3
+  type: :development
+  version_requirements: *id002
+description: |
+  The yelp rubygem provides a Ruby object-oriented interface to the Yelp 
+  REST API described in detail at:
+  
+  http://www.yelp.com/developers/getting_started
+
+email: shaper@fatgoose.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: 
+- LICENSE.txt
+- Manifest.txt
+- TODO.txt
+- CHANGELOG.rdoc
+- README.rdoc
+files: 
+- CHANGELOG.rdoc
+- LICENSE.txt
+- Manifest.txt
+- README.rdoc
+- Rakefile
+- TODO.txt
+- lib/yelp.rb
+- lib/yelp/client.rb
+- lib/yelp/record.rb
+- lib/yelp/response_format.rb
+- lib/yelp/request.rb
+- lib/yelp/neighborhood/request/base.rb
+- lib/yelp/neighborhood/request/geo_point.rb
+- lib/yelp/neighborhood/request/location.rb
+- lib/yelp/phone/request/number.rb
+- lib/yelp/review/request/base.rb
+- lib/yelp/review/request/bounding_box.rb
+- lib/yelp/review/request/geo_point.rb
+- lib/yelp/review/request/location.rb
+- test/test_client.rb
+- test/test_neighborhood_search.rb
+- test/test_phone_search.rb
+- test/test_review_search.rb
+- test/yelp_helper.rb
+has_rdoc: true
+homepage: http://rubyforge.org/projects/yelp
+licenses: []
+
+post_install_message: 
+rdoc_options: 
+- --main
+- README.rdoc
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  none: false
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      hash: 3
+      segments: 
+      - 0
+      version: "0"
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  none: false
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      hash: 3
+      segments: 
+      - 0
+      version: "0"
+requirements: []
+
+rubyforge_project: yelp
+rubygems_version: 1.3.7
+signing_key: 
+specification_version: 3
+summary: An object-oriented interface to the Yelp Developer API.
+test_files: 
+- test/test_client.rb
+- test/test_neighborhood_search.rb
+- test/test_phone_search.rb
+- test/test_review_search.rb

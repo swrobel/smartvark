@@ -1,3 +1,4 @@
+! Added entries to config/facebooker.yml production section for Heroku
 + Facebook connect first pass
 ! Fixed hours stuff
 ! Added business hours

@@ -6,10 +6,30 @@ class Business < ActiveRecord::Base
 
   before_save :set_lat_lng
 
+  before_update :set_yelp_rating
+
   validates_presence_of :street_address_1, :city, :state, :postal_code
 
   def address_as_string
     [ street_address_1, city, state] .join(',') << ' ' << postal_code
+  end
+
+  def facebook_link
+    return '' if link_facebook.blank?
+    if link_facebook.starts_with?('http://facebook.com/')
+      link_facebook
+    else
+      'http://facebook.com/' + link_facebook
+    end
+  end
+
+  def twitter_link
+    return '' if link_twitter.blank?
+    if link_twitter.starts_with?('http://twitter.com/')
+      link_twitter
+    else
+      'http://twitter.com/' + link_twitter
+    end
   end
 
   def set_lat_lng
@@ -19,5 +39,16 @@ class Business < ActiveRecord::Base
         self.lat, self.lng = loc.lat, loc.lng
       end
     end
+  end
+
+  def set_yelp_rating
+    return true if phone_1.nil?
+    client = Yelp::Client.new
+    request = Yelp::Phone::Request::Number.new(
+      :phone_number => phone_1.gsub(/\(|\)|\s|-/,''),
+      :yws_id => YELP_ID)
+    response =  client.search(request)['businesses'].first
+    self.yelp_url = response['url']
+    self.yelp_avg_rating_url = response['rating_img_url']
   end
 end

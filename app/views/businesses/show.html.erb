@@ -65,6 +65,27 @@
   </p>
 
 <p>
+  <b>Facebook:</b>
+  <%=h @business.link_facebook %>
+</p>
+
+<p>
+  <b>Twitter:</b>
+  <%=h @business.link_twitter %>
+</p>
+
+<p>
+  <b>Yelp:</b>
+  <%=h @business.yelp_url %>
+</p>
+
+<p>
+  <b>Yelp Avg Rating Img Url:</b>
+  <%= @business.yelp_avg_rating_url %>
+  <%= image_tag @business.yelp_avg_rating_url || ''%>
+</p>
+
+<p>
   <b>Parent:</b>
   <%=h @business.parent_id %>
 </p>

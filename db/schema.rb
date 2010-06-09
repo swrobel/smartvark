@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file,
+# This file is auto-generated from the current state of the database. Instead of editing this file, 
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -9,26 +9,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100609060035) do
+ActiveRecord::Schema.define(:version => 20100609062408) do
 
   create_table "businesses", :force => true do |t|
-    t.string   "name",             :limit => 50
-    t.string   "street_address_1", :limit => 100
-    t.string   "street_address_2", :limit => 20
-    t.string   "city",             :limit => 50
-    t.string   "state",            :limit => 20
-    t.string   "postal_code",      :limit => 15
-    t.string   "country",          :limit => 3
-    t.string   "phone_1",          :limit => 15
-    t.string   "phone_2",          :limit => 15
-    t.string   "fax",              :limit => 15
-    t.string   "url",              :limit => 50
+    t.string   "name",                :limit => 50
+    t.string   "street_address_1",    :limit => 100
+    t.string   "street_address_2",    :limit => 20
+    t.string   "city",                :limit => 50
+    t.string   "state",               :limit => 20
+    t.string   "postal_code",         :limit => 15
+    t.string   "country",             :limit => 3
+    t.string   "phone_1",             :limit => 15
+    t.string   "phone_2",             :limit => 15
+    t.string   "fax",                 :limit => 15
+    t.string   "url",                 :limit => 50
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "lat"
     t.float    "lng"
     t.string   "hours"
+    t.string   "link_facebook",       :limit => 50
+    t.string   "link_twitter",        :limit => 50
+    t.string   "yelp_url",            :limit => 50
+    t.string   "yelp_avg_rating_url", :limit => 50
   end
 
   create_table "categories", :force => true do |t|

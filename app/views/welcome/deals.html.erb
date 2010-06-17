@@ -32,12 +32,12 @@
 							<!-- promo-box -->
                                                         <div class="promo-box">
                                                           <% form_tag do %>
-                                                            <%= text_field_tag 'location', 'city, state or zip', :class => 'text-input' %>
+                                                            <%= text_field_tag 'location', nil, :class => 'text-input', :placeholder => 'city, state or zip' %>
                                                             <%= image_submit_tag "/images/btn-update.gif", :class => 'button', :alt => 'Update' %>
                                                           <% end %>
                             <!--
 								<strong class="ttl-give-a-try">Give it a try</strong>
-								<a href="http://www.codemyconcept.com/projects/155/#" class="btn-show-deals">Show me the deals!</a>
+								<a href="#" class="btn-show-deals">Show me the deals!</a>
                             -->
 							</div>
 						</div>
@@ -53,7 +53,7 @@
 										<div class="ttl-holder">
 											<h2>Artie's Picks</h2>
 										</div>
-										<strong class="ttl">Just rate the deals below and Artie will sniff out more that you'll probably like.  The more you rate, the better we get to know you!</strong>
+										<strong class="ttl">Just rate the deals below and Artie will sniff out more that you'll probably like.  The more you rate, the better we get to know your tastes!</strong>
 										<!-- info-section -->
 										<div class="info-section">
                                                                                         <div id='offer_info_rollover' class="info">
@@ -75,7 +75,7 @@
 										<div class="ttl-holder">
 											<h2>My Picks</h2>
 										</div>
-										<span class="mark">You added XYZ deal to My Picks. <a href="http://www.codemyconcept.com/projects/155/inner.html#">Undo</a> or <a href="http://www.codemyconcept.com/projects/155/inner.html#">Use It Now</a>.</span>
+										<span class="mark">You added XYZ deal to My Picks. <a href="#">Undo</a> or <a href="#">Use It Now</a>.</span>
 										<!-- list -->
                                                                                 <ul id='my_list' class="list">
                                                                                   <% @likes.each do |offer| %>

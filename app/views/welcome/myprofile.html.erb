@@ -4,7 +4,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Smartvark</title>
         <%= render :partial => 'common_header' %>
-        <%= javascript_include_tag 'inputs', 'jquery-1.4.2.min', 'jquery.accordion', 'jquery.main', 'main' %>
 </head>
 <body>
 	<!-- wrapper -->
@@ -100,17 +99,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- footer -->
-	<div id="footer">
-		<ul>
-			<li><a href="#">what’s a smartvark anyway?</a></li>
-			<li><a href="#">what about my privacy?</a></li>
-			<li><a href="#">contact</a></li>
-			<li><a href="#">twitter</a></li>
-			<li><a href="#">facebook</a></li>
-			<li><a href="#">smartvark for business</a></li>
-		</ul>
-		<p>&copy; 2010  Smartvark, Inc.</p>
-	</div>
+	<%= render :partial => 'common_footer' %>
 </body>
 </html>

@@ -1,3 +1,10 @@
++ Added TODO file (please review & update consistently)
++ Added partial for signup process: users/_signup.html.erb (broken because my skillz in rails = fail)
++ Moved FB connect button to signin popup (doesn't show up due to unknown problem - localhost issue?)
++ Cleaned up js & css files
++ Removed link references to codemyconcept.com
++ Updated input fields to include HTML5 placeholders
++ Added new GMaps API key for smartvark.heroku.com
 ! Added entries to config/facebooker.yml production section for Heroku
 + Facebook connect first pass
 ! Fixed hours stuff

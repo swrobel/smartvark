@@ -1,0 +1,26 @@
+<div class="signin-popup">
+  <% form_for @user, :url => account_path do |f| %>
+    <fieldset>
+      <h3>Sign up</h3>
+      <div class="signin-row">
+        <p>In order to use the deals you've collected and start getting more, you just need to tell us a few things so we can set up an account for you! Of course you can trust that we won't give any of it away without your permission</p>
+      </div>
+      <div class="signin-row">
+      	<label for="login">email</label>
+      	<%= f.text_field :login, :class => 'txt', :placeholder => 'email' %>
+      </div>
+      <div class="signin-row">
+      	<label for="password">password</label>
+      	<%= f.password_field :password, :class => 'txt', :placeholder => 'password' %>
+      </div>
+      <div class="signin-row">
+      	<label for="password_confirmation">re-enter password</label>
+      	<%= f.password_field :password_confirmation, :class => 'txt', :placeholder => 're-enter password' %>
+      </div>
+      <div class="signin-buttons">
+        <%= f.submit "Sign up", :class => 'btn-signup' %>
+        <input class="btn-signin-cancel simplemodal-close" type="submit" value="Cancel" />
+      </div>
+    </fieldset>
+  <% end %>
+</div>

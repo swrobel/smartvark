@@ -1,0 +1,3 @@
+* Pages take about 10sec longer to load when no network connection is available (possibly waiting on GMaps or Facebook)
+* Facebook connect button doesn't show up in signin popup
+* Signup form doesn't work right due to some problem with the form_for tag

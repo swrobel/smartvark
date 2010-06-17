@@ -15,16 +15,6 @@
 				<!-- logo -->
                                 <h1 class="logo"><a href="/">Smartvark</a></h1>
                                 <%= render :partial => 'login' %>
-				<!-- login-box -->
-				<div class="login-box">
-					<!-- holder -->
-					<div class="holder">
-                                            <strong class="ttl">Welcome <span><%= current_user.login %></span></strong>
-						<!-- progress-bar -->
-						<div class="progress-bar"><span style="width:78px">&nbsp;</span></div>
-					</div>
-					<p>profile completion</p>
-				</div>
 			</div>
 			<!-- main -->
 			<div id="main">
@@ -67,7 +57,7 @@
 										<div class="ttl-holder">
 											<h2>My Picks</h2>
 										</div>
-										<span class="mark">You added XYZ deal to My Picks. <a href="http://www.codemyconcept.com/projects/155/inner.html#">Undo</a> or <a href="http://www.codemyconcept.com/projects/155/inner.html#">Use It Now</a>.</span>
+										<span class="mark">You added XYZ deal to My Picks. <a href="#">Undo</a> or <a href="#">Use It Now</a>.</span>
 										<!-- list -->
 										<ul id='my_list' class="list">
                                                                                   <% @likes.each do |offer| %>

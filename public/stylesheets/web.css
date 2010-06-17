@@ -13,7 +13,7 @@
 .tryit-box .text {
 	float:left;
 	width:512px;
-	font:16px/19px "Trebuchet MS", Helvetica, sans-serif;
+	font:16px/19px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	color:#fff;
 	padding:53px 20px 0;
 }
@@ -50,6 +50,18 @@
 	padding:5px 8px;
 	margin:0 0 0 7px;
 	font:14px/16px Arial, Helvetica, sans-serif;
+}
+
+.tryit-box .placeheld{
+	width:125px;
+	height:16px;
+	float:left;
+	display:inline;
+	background:#f7f8f8;
+	border:1px solid #7abadf;
+	padding:5px 8px;
+	margin:0 0 0 7px;
+	font:14px/16px Arial, Helvetica, sans-serif;
 	color:#999;
 }
 
@@ -76,7 +88,6 @@ a:focus{outline:none;}
 input, textarea, select{
 	font:100% Arial, Helvetica, sans-serif;
 	vertical-align:middle;
-	color:#9d9d9d;
 	margin:0;
 }
 form, fieldset{
@@ -231,7 +242,7 @@ td, th{padding:0;}
 .welcome-box .text {
 	float:left;
 	width:512px;
-	font:16px/19px "Trebuchet MS", Helvetica, sans-serif;
+	font:16px/19px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	color:#fff;
 	padding:53px 20px 0;
 }
@@ -278,7 +289,18 @@ td, th{padding:0;}
 	padding:5px 8px;
 	margin:0 0 0 7px;
 	font:14px/16px Arial, Helvetica, sans-serif;
+}
+.search .placeheld{
+	width:125px;
+	height:16px;
+	float:left;
+	display:inline;
+	background:#f7f8f8;
+	border:1px solid #7abadf;
+	padding:5px 8px;
+	margin:0 0 0 7px;
 	color:#999;
+	font:14px/16px Arial, Helvetica, sans-serif;
 }
 .search .button{
 	float:left;
@@ -350,7 +372,7 @@ td, th{padding:0;}
 }
 .wide-box h2 {
 	margin:0 0 31px;
-	font: normal 24px/28px "Trebuchet MS", Helvetica, sans-serif;
+	font: normal 24px/28px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	color:#2264a6;
 	text-shadow: 2px 1px 2px #CCC;
 }
@@ -413,7 +435,7 @@ td, th{padding:0;}
 #content h2 {
 	padding:0 0 16px;
 	margin:0;
-	font:normal 26px/32px "Trebuchet MS", Helvetica, sans-serif;
+	font:normal 26px/32px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	color:#1b7ddf;
 	text-shadow: 2px 1px 2px #CCC;
 }
@@ -808,7 +830,7 @@ td, th{padding:0;}
 	padding:5px 0 0;
 	text-align:center;
 	color:#fff;
-	font:12px/22px "Trebuchet MS", Helvetica, sans-serif;
+	font:12px/22px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	overflow:hidden;
 	height:44px;
 	margin:-49px auto 0;
@@ -834,7 +856,6 @@ td, th{padding:0;}
 /* header */
 #header .menu{
 	margin:0 -5px 0 0;
-	padding:61px 0 0;
 	list-style:none;
 	float:right;
 	overflow:hidden;
@@ -1107,59 +1128,73 @@ td, th{padding:0;}
 	overflow:auto;
 }
 /* viewbusiness page styles*/
-/* sign in popup */
-.sign-in{
+/* signin/account area */
+.account-area{
 	float:right;
-	font-size:24px;
+	font:24px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	line-height:28px;
 	position:relative;
-	padding:13px 21px 0 0;
 }
-.sign-in .btn-signin{
+.btn-signin-open{
 	color:#2264a6;
 	text-decoration:underline;
 }
-.sign-in .btn-signin:hover{text-decoration:none;}
-.sign-in .popup{
-	background:#56b1e5 url(../images/bg-popup-bottom.gif) no-repeat 0 100%;
-	width:236px;
-	padding:0;
-	position:absolute;
-	top:13px;
-	right:6px;
-	z-index:99;
+.btn-signin-open:hover{text-decoration:none;}
+.account-area .holder{
+	float:right;
+	padding:15px 0 4px;
 }
-.sign-in .popup .frame-t{
-	overflow:hidden;
-	background:url(../images/bg-popup-top.gif) no-repeat;
+.account-area .ttl{
+	float:left;
+	margin:0 10px 0 0;
+	font:16px/25px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color:#238ecb;
+}
+.account-area .holder img{float:left;}
+.account-area p{
+	margin:0 14px 0 0;
+	text-align:right;
+	color:#4cb1d1;
+	clear:both;
+	font:12px/15px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+/* sign in popup */
+.signin-popup{
+	background:#238ecb;
+	border: 10px solid #56b1e5;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	display:none;
+	width:236px;
 	padding:0 12px;
 }
-.sign-in h3{
+#simplemodal-overlay {background-color:#000;}
+.signin-popup h3{
 	margin:0;
-	font:16px/23px Arial, Helvetica, sans-serif;
-	color:#2264a6;
+	font:bold 20px/26px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color:#fff;
 	text-align:center;
 }
-.sign-in .row{
+.signin-row{
 	width:100%;
 	overflow:hidden;
-	margin:0 0 15px;
+	margin:0 0 10px;
 }
-.sign-in .txt{
+.signin-row .txt{
 	float:left;
-	width:186px;
+	width:210px;
 	font:14px Arial, Helvetica, sans-serif;
-	color:#999;
 	border:1px solid #999;
 	padding:4px 12px;
 	margin:0;
 }
-.sign-in .btns-holder{
+.signin-buttons{
 	overflow:hidden;
 	height:1%;
-	padding:0 24px 3px 19px;
+	padding:6px 24px 3px 19px;
 }
-.sign-in .btn-sign-in{
+.btn-signin{
 	float:left;
 	background:url(../images/btn-sign-in.gif) no-repeat;
 	width:70px;
@@ -1170,29 +1205,58 @@ td, th{padding:0;}
 	cursor:pointer;
 	padding:0;
 }
-.sign-in .btn-cancel{
+.btn-signup{
+	float:left;
+	background:url(../images/btn-sign-up.gif) no-repeat;
+	width:70px;
+	height:27px;
+	text-indent:-9999px;
+	line-height:0;
+	border:0;
+	cursor:pointer;
+	padding:0;
+}
+.btn-signin-cancel{
 	float:right;
 	background:url(../images/btn-cancel3.gif) no-repeat;
 	width:70px;
 	height:27px;
 	text-indent:-9999px;
+	line-height:0;
+	border:0;
+	cursor:pointer;
+	padding:0;
 }
-.sign-in .remember{
-	width:106px;
-	margin:0 auto;
+.remember{
+	margin:0px auto;
 	overflow:hidden;
 }
-.sign-in .chk{
+.signin-popup .chk{
 	float:left;
 	margin:4px 4px 0 0;
 	padding:0;
 	width:16px;
 	height:15px;
 }
-.sign-in label{
+.signin-popup label{
 	float:left;
-	font:10px/22px Arial, Helvetica, sans-serif;
+	font:14px/22px Arial, Helvetica, sans-serif;
 	color:#fff;
+}
+/* progress-bar */
+.progress-bar {
+	float:left;
+	background:url(../images/progress-bar.gif) no-repeat;
+	width:128px;
+	height:25px;
+}
+.progress-bar span {
+	display:block;
+	height:25px;
+	background:url(../images/progress-bar.gif) no-repeat 0 100%;
+	text-indent:-9999px;
+	font-size:0;
+	line-height:0;
 }
 /* merchant-area */
 .merchant-area{

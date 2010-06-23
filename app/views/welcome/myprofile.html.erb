@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Smartvark</title>
-        <%= render :partial => 'common_header' %>
+  <%= render :partial => 'common_header' %>
 </head>
 <body>
 	<!-- wrapper -->
@@ -14,29 +14,7 @@
 			<div id="header">
 				<!-- logo -->
 				<h1 class="logo"><a href="#">Smartvark</a></h1>
-				<div>
-                                <%= render :partial => 'login' %>
-				<div>
-					<!-- login-box -->
-					<div class="login-box">
-					<!-- holder -->
-					<div class="holder">
-                                            <strong class="ttl">Welcome <span><%= current_user.login %></span></strong>
-								<!-- progress-bar -->
-								<div class="progress-bar"><span style="width:78px">&nbsp;</span></div>
-							</div>
-							<p>profile completion</p>
-						</div>
-					</div>
-					<div class="frame">
-						<!-- menu -->
-						<ul class="menu">
-							<li><%= link_to 'my deals', mydeals_url %></li>
-							<li><%= link_to 'my profile', myprofile_url %></li>
-							<li><a href="#">recommend a business</a></li>
-						</ul>
-					</div>
-				</div>
+				<%= render :partial => 'login' %>
 			</div>
 			<!-- main -->
 			<div id="main">
@@ -44,7 +22,7 @@
 				<div class="main-holder">
 					<!-- main-frame -->
 					<div class="main-frame">
-                                                <%= render :partial => 'search_box' %>
+            <%= render :partial => 'search_box' %>
 						<!-- two-columns -->
 						<div class="two-columns">
 							<div class="t"></div>

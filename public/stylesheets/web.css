@@ -130,6 +130,7 @@ td, th{padding:0;}
 	cursor:pointer;
 }
 /* login-box */
+/*
 .login-box {
 	position:absolute;
 	top:6px;
@@ -145,7 +146,9 @@ td, th{padding:0;}
 }
 .active .btn-login {display:none;}
 .btn-login:hover {text-decoration:none;}
+*/
 /* popup */
+/*
 .popup {
 	width:272px;
 	height:172px;
@@ -202,7 +205,9 @@ td, th{padding:0;}
 	clear:both;
 	font:12px/15px "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
+*/
 /* progress-bar */
+/*
 .progress-bar {
 	float:left;
 	background:url(../images/progress-bar.gif) no-repeat;
@@ -217,6 +222,7 @@ td, th{padding:0;}
 	font-size:0;
 	line-height:0;
 }
+*/
 /* main */
 #main {
 	width:100%;
@@ -1152,14 +1158,14 @@ td, th{padding:0;}
 }
 .account-area .holder img{float:left;}
 .account-area p{
-	margin:0 14px 0 0;
+	margin:0 4px 0 0;
 	text-align:right;
 	color:#4cb1d1;
 	clear:both;
 	font:12px/15px "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
-/* sign in popup */
-.signin-popup{
+/* simplemodal popup */
+.popup{
 	background:#238ecb;
 	border: 10px solid #56b1e5;
 	-moz-border-radius: 10px;
@@ -1170,18 +1176,18 @@ td, th{padding:0;}
 	padding:0 12px;
 }
 #simplemodal-overlay {background-color:#000;}
-.signin-popup h3{
+.popup h3{
 	margin:0;
 	font:bold 20px/26px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	color:#fff;
 	text-align:center;
 }
-.signin-row{
+.popup-row{
 	width:100%;
 	overflow:hidden;
 	margin:0 0 10px;
 }
-.signin-row .txt{
+.popup .txt{
 	float:left;
 	width:210px;
 	font:14px Arial, Helvetica, sans-serif;
@@ -1189,7 +1195,7 @@ td, th{padding:0;}
 	padding:4px 12px;
 	margin:0;
 }
-.signin-buttons{
+.popup-buttons{
 	overflow:hidden;
 	height:1%;
 	padding:6px 24px 3px 19px;
@@ -1231,14 +1237,14 @@ td, th{padding:0;}
 	margin:0px auto;
 	overflow:hidden;
 }
-.signin-popup .chk{
+.popup .chk{
 	float:left;
 	margin:4px 4px 0 0;
 	padding:0;
 	width:16px;
 	height:15px;
 }
-.signin-popup label{
+.popup label{
 	float:left;
 	font:14px/22px Arial, Helvetica, sans-serif;
 	color:#fff;

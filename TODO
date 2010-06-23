@@ -2,3 +2,5 @@
 * Facebook connect button doesn't show up in signin popup
 * Signup form doesn't work right due to some problem with the form_for tag
 * Deal description should show when mousing over deal image or thumbs up/down buttons - doesn't show at all when anything moused over now
+* Homepage doesn't show random selection of 3 local deals
+* Search/homepage/try it need to be location radius-aware

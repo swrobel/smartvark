@@ -18,8 +18,7 @@ $(document).ready(function(){
 });
 $(function ($) {
 	$('.btn-signin-open').click(function (e) {
-		$('.signin-popup').modal();
-		
+		$('.popup').modal();
 		  return false;
 	});
 });

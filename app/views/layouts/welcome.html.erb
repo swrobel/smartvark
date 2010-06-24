@@ -10,7 +10,9 @@
   <%= GMap.header(:with_vml => false, :host => request.host) %>
 </head>
 <body>
-<p style="color: green"><%= flash[:notice] %></p>
+  <p style="color: green"><%= flash[:notice] %></p>
+  <%= fb_connect_javascript_tag %>
+  <%= init_fb_connect "XFBML" %>
 
 <%= yield %>
 

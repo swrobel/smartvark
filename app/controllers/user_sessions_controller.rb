@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    @user_session = UserSession.new(params[:user_session])
+    @user_session = facebook_session || UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = "Login successful!"
       redirect_to mydeals_url

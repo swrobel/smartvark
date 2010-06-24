@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
   has_many :user_audits
 
   def before_connect(facebook_session)
-    self.name ||= facebook_session.user.name
+    self.name = facebook_session.user.name
+    self.persistence_token = reset_persistence_token
+    logger.info("HEY FACEBOOK, HOW'S IT GOING? SO LOVELY TO SEE: #{facebook_session.user.name}")
   end
 
   def set_opinion(params)

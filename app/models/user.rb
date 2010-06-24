@@ -6,6 +6,12 @@ class User < ActiveRecord::Base
   has_many :redemptions
   has_many :user_audits
 
+  before_validation :set_email, :on => :create
+
+  def set_email
+    self.email ||= login
+  end
+
   def before_connect(facebook_session)
     self.name = facebook_session.user.name
     self.persistence_token = reset_persistence_token

@@ -1,4 +1,5 @@
-<div class="popup">
+<div class="signup-popup">
+  <% @user ||= User.new %>
   <% form_for @user, :url => account_path do |f| %>
     <fieldset>
       <h3>Sign up</h3>

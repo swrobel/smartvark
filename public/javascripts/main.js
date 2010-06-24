@@ -1,5 +1,6 @@
-$(document).ready(function(){
-	$('ul.accordion').accordion({
+jQuery.noConflict();
+jQuery(document).ready(function(){
+	jQuery('ul.accordion').accordion({
 		active: ".selected",
 		autoHeight: false,
 		header: ".opener",
@@ -7,7 +8,7 @@ $(document).ready(function(){
 		event: "click"
 	});
 
-	$('ul.accordion2').accordion({
+	jQuery('ul.accordion2').accordion({
 		autoHeight: false,
 		header: ".opener",
 		collapsible: true,
@@ -16,15 +17,15 @@ $(document).ready(function(){
 	});
 
 });
-$(function ($) {
-	$('.btn-signin-open').click(function (e) {
-		$('.popup').modal();
+jQuery(function (jQuery) {
+	jQuery('.btn-signin-open').click(function (e) {
+		jQuery('#signin-popup').modal();
 		  return false;
 	});
 });
-$(function() {
+jQuery(function() {
 	//abort if browser supports HTML5 placeholder attribute
 	if ('placeholder' in document.createElement('input')) return;
-	$("#search_terms").placeHeld();
-	$("#location").placeHeld();
+	jQuery("#search_terms").placeHeld();
+	jQuery("#location").placeHeld();
 });

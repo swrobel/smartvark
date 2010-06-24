@@ -102,7 +102,7 @@ class WelcomeController < ApplicationController
         session[:liked] << params[:offer_id] unless current_user
 
         if session[:liked] && (session[:liked].length % 3 == 0 )
-          page << "alert('Time to sign up son!')"
+          page << "jQuery('#signup-popup').modal();"
         end
 
         page.insert_html :top, 'my_list', list_offer(offer)

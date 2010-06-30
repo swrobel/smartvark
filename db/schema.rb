@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100624040514) do
+ActiveRecord::Schema.define(:version => 20100630062446) do
 
   create_table "businesses", :force => true do |t|
     t.string   "name",                :limit => 50
@@ -22,17 +22,17 @@ ActiveRecord::Schema.define(:version => 20100624040514) do
     t.string   "phone_1",             :limit => 15
     t.string   "phone_2",             :limit => 15
     t.string   "fax",                 :limit => 15
-    t.string   "url",                 :limit => 50
+    t.string   "url",                 :limit => 500
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "lat"
     t.float    "lng"
     t.string   "hours"
-    t.string   "link_facebook",       :limit => 50
-    t.string   "link_twitter",        :limit => 50
-    t.string   "yelp_url",            :limit => 50
-    t.string   "yelp_avg_rating_url", :limit => 50
+    t.string   "link_facebook",       :limit => 500
+    t.string   "link_twitter",        :limit => 500
+    t.string   "yelp_url",            :limit => 500
+    t.string   "yelp_avg_rating_url", :limit => 500
   end
 
   create_table "categories", :force => true do |t|

@@ -1,3 +1,6 @@
++ Update TODO
++ New views/welcome/printdeal.html.erb for printable view for deals
++ New views/welcome/_redeem.html.erb lightbox code
 ! Increase length of url cols in businesses to bring schema into compliance
 + Signup form pops up every 3 thumbs up
 + Fix signup form

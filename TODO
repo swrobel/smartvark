@@ -1,6 +1,6 @@
 * Pages take about 10sec longer to load when no network connection is available (possibly waiting on GMaps or Facebook)
-* Facebook connect button doesn't show up in signin popup
-* Signup form doesn't work right due to some problem with the form_for tag
-* Deal description should show when mousing over deal image or thumbs up/down buttons - doesn't show at all when anything moused over now
+* Deal description should show when mousing over deal image or thumbs up/down buttons
 * Homepage doesn't show random selection of 3 local deals
 * Search/homepage/try it need to be location radius-aware
+* Redeem button on viewdeal should prompt for signup if user is not signed in, otherwise show new redeem form
+* Signup should carryover history of liked/disliked deals

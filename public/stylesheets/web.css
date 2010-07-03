@@ -406,6 +406,7 @@ td, th{padding:0;}
 	vertical-align:middle;
 }
 * html .promo-section .item {
+
 	float:left;
 	height:181px;
 }
@@ -1181,6 +1182,9 @@ td, th{padding:0;}
 	font:bold 20px/26px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	color:#fff;
 	text-align:center;
+}
+.popup p{
+    color:#FFF;
 }
 .popup-row{
 	width:100%;

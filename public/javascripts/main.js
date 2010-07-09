@@ -23,6 +23,12 @@ jQuery(function (jQuery) {
 		  return false;
 	});
 });
+jQuery(function (jQuery) {
+	jQuery('#btn-redeem-open').click(function (e) {
+		jQuery('#redeem-popup').modal();
+		  return false;
+	});
+});
 jQuery(function() {
 	//abort if browser supports HTML5 placeholder attribute
 	if ('placeholder' in document.createElement('input')) return;

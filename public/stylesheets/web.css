@@ -1176,6 +1176,9 @@ td, th{padding:0;}
 	width:236px;
 	padding:0 12px;
 }
+#redeem-popup {
+  height:400px;
+}
 #simplemodal-overlay {background-color:#000;}
 .popup h3{
 	margin:0;

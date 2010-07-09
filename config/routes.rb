@@ -51,15 +51,16 @@ ActionController::Routing::Routes.draw do |map|
   # config/routes.rb
   map.resource :user_session
 
-  map.dealdashboard 'dealdashboard', :controller => "welcome", :action => :dealdashboard
-  map.myprofile 'myprofile', :controller => "welcome", :action => :myprofile
-  map.viewbusiness 'viewbusiness/:id', :controller => "welcome", :action => :viewbusiness
-  map.mydeals 'mydeals', :controller => "welcome", :action => :mydeals
-  map.category_mydeals 'mydeals/:category_id', :controller => "welcome", :action => :mydeals
-  map.viewdeal 'viewdeal/:id', :controller => "welcome", :action => :viewdeal
-  map.deals 'deals', :controller => "welcome", :action => :deals
-  map.search 'search/:category_id', :controller => "welcome", :action => :search, :conditions => { :method => :get }
-  map.admin 'admin', :controller => "offers"
+  map.admin             'admin', :controller => "offers"
+  map.category_mydeals  'mydeals/:category_id', :controller => "welcome", :action => :mydeals
+  map.dealdashboard     'dealdashboard', :controller => "welcome", :action => :dealdashboard
+  map.deals             'deals', :controller => "welcome", :action => :deals
+  map.mydeals           'mydeals', :controller => "welcome", :action => :mydeals
+  map.myprofile         'myprofile', :controller => "welcome", :action => :myprofile
+  map.printdeal         'printdeal/:id', :controller => "welcome", :action => :printdeal
+  map.search            'search/:category_id', :controller => "welcome", :action => :search, :conditions => { :method => :get }
+  map.viewbusiness      'viewbusiness/:id', :controller => "welcome", :action => :viewbusiness
+  map.viewdeal          'viewdeal/:id', :controller => "welcome", :action => :viewdeal
 
   map.root :controller => "welcome"
 

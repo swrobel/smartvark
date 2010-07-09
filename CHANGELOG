@@ -1,3 +1,5 @@
++ Implemented printdeal
++ Implemented viewdeal redemption button
 + Update TODO
 + New views/welcome/printdeal.html.erb for printable view for deals
 + New views/welcome/_redeem.html.erb lightbox code

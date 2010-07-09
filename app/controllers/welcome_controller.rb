@@ -19,6 +19,10 @@ class WelcomeController < ApplicationController
     @business = Business.find(params[:id])
   end
 
+  def printdeal
+    @offer = Offer.find params[:id]
+  end
+
   def viewbusiness
     @business = Business.find(params[:id])
     @map = GMap.new("map")

@@ -1,47 +1,7 @@
 <h1>Editing offer</h1>
 
 <% form_for(@offer,  :html => {:multipart => true}) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :lead %><br />
-    <%= f.text_field :lead %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.label :exclusivity_text %><br />
-    <%= f.text_field :exclusivity_text %>
-  </p>
-  <p>
-  <p>
-    <%= f.label :redemption_code %><br />
-    <%= f.text_field :redemption_code %>
-  </p>
-    <%= f.label :quantity %><br />
-    <%= f.text_field :quantity %>
-  </p>
-  <p>
-    <%= f.label :expiry_datetime %><br />
-    <%= f.datetime_select :expiry_datetime %>
-  </p>
-  <p>
-    <%= f.label :category %>
-    <%= f.select :category_id, options_from_collection_for_select(Category.all, 'id', 'name', @offer.category_id)%>
-  </p>
-  <p>
-    <%= f.label :business %>
-    <%= f.select :business_id, options_from_collection_for_select(Business.all, 'id', 'name', @offer.business_id)%>
-  </p>
-  <p>
-    <%= f.label :coupon, 'Coupon Image' %><br />
-      <%= f.file_field :coupon %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+  <%= render :partial => 'form', :locals => { :f => f } %>
 <% end %>
 
 <%= link_to 'Show', @offer %> |

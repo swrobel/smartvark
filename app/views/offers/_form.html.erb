@@ -1,0 +1,57 @@
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :lead %><br />
+    <%= f.text_field :lead %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :exclusivity_text %><br />
+    <%= f.text_field :exclusivity_text %>
+  </p>
+  <p>
+    <%= f.label :redemption_code %><br />
+    <%= f.text_field :redemption_code %>
+  </p>
+  <p>
+    <%= f.label :quantity %><br />
+    <%= f.text_field :quantity %>
+  </p>
+  <p>
+    <%= f.label :expiry_datetime %><br />
+    <%= f.datetime_select :expiry_datetime %>
+  </p>
+  <p>
+    <%= f.label :category %>
+    <%= f.select :category_id, options_from_collection_for_select(Category.all, 'id', 'name', @offer.category_id)%>
+  </p>
+  <p>
+    <%= f.label :business %>
+    <%= f.select :business_id, options_from_collection_for_select(Business.all, 'id', 'name', @offer.business_id)%>
+  </p>
+  <p>
+    <%= f.label :offer_active_on %><br />
+    <%= f.unobtrusive_date_picker :offer_active_on %>
+  </p>
+  <p>
+    <%= f.label :offer_type, 'Offer type' %>
+    <%= f.select :offer_type, options_for_select(OfferTypes) %>
+  </p>
+  <p>
+    <%= f.check_box :allow_print %>
+    <%= f.label :allow_print, 'Redeem by print?' %><br />
+  </p>
+  <p>
+    <%= f.check_box :allow_mobile %>
+    <%= f.label :allow_mobile, 'Redeem by mobile?' %><br />
+  </p>
+  <p>
+    <%= f.label :coupon, 'Coupon Image' %><br />
+      <%= f.file_field :coupon %>
+  </p>
+  <p>
+    <%= f.submit @offer.new_record? ? 'Create' : 'Update' %>
+  </p>

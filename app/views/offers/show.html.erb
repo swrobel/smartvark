@@ -1,6 +1,23 @@
 <p>
   <b>Lead:</b>
   <%=h @offer.lead %>
+  </p>
+
+<p>
+  <b>Offer Type:</b>
+  <%=h @offer.offer_type %>
+</p>
+
+<p>
+  <b>Offer Becomes Active On:</b>
+  <%=h @offer.offer_active_on.try(:strftime,'%B %d, %Y') %>
+</p>
+
+<p><b>Redemption by:</b>
+  <ul>
+    <li>'print' <%= 'NOT' unless @offer.allow_print? %> allowed
+    <li>'mobile' <%= 'NOT' unless @offer.allow_mobile? %> allowed
+  </ul>
 </p>
 
 <p>

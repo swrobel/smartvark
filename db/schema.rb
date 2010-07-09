@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file,
+# This file is auto-generated from the current state of the database. Instead of editing this file, 
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100630062446) do
+ActiveRecord::Schema.define(:version => 20100709063129) do
 
   create_table "businesses", :force => true do |t|
     t.string   "name",                :limit => 50
@@ -70,6 +70,10 @@ ActiveRecord::Schema.define(:version => 20100630062446) do
     t.datetime "coupon_updated_at"
     t.string   "redemption_code",     :limit => 50
     t.boolean  "archived"
+    t.date     "offer_active_on"
+    t.string   "offer_type",          :limit => 20
+    t.boolean  "allow_print"
+    t.boolean  "allow_mobile"
   end
 
   create_table "opinions", :force => true do |t|

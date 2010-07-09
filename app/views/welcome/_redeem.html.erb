@@ -1,15 +1,19 @@
 <div id='redeem-popup' class="popup">
   <h3><%= @offer.lead %></h3>
   <% form_for @offer, :url => printdeal_path do |f| %>
-      <div class="popup-row">
-        <%= f.submit "Print deal", :class => 'simplemodel-close' %>
-      </div>
-      <div class="popup-row">
-        <%= f.submit "Send to phone via text", :class => 'simplemodel-close' %>
-      </div>
-      <div class="popup-row">
-        <%= f.submit "Send to mobile device via email", :class => 'simplemodel-close' %>
-      </div>
+      <% if @offer.allow_print? %>
+        <div class="popup-row">
+          <%= f.submit "Print deal", :class => 'simplemodel-close' %>
+        </div>
+      <% end %>
+      <% if @offer.allow_mobile? %>
+        <div class="popup-row">
+          <%= f.submit "Send to phone via text", :class => 'simplemodel-close' %>
+        </div>
+        <div class="popup-row">
+          <%= f.submit "Send to mobile device via email", :class => 'simplemodel-close' %>
+        </div>
+      <% end %>
       <div class="popup-row">
         <input class="btn-signin-cancel simplemodal-close" type="submit" value="Not now, I changed my mind" />
       </div>

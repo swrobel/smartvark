@@ -18,11 +18,20 @@ jQuery(document).ready(function(){
 
 });
 jQuery(function (jQuery) {
-	jQuery('.btn-signin-open').click(function (e) {
+	jQuery('#btn-signin-open').click(function (e) {
 		jQuery('#signin-popup').modal();
 		  return false;
 	});
 });
+/********HACK  BEGIN****/
+//If user not logged in, and hits redeem show signin
+jQuery(function (jQuery) {
+	jQuery('#btn-redeem-signin-open').click(function (e) {
+		jQuery('#signin-popup').modal();
+		  return false;
+	});
+});
+/********HACK  END****/
 jQuery(function (jQuery) {
 	jQuery('#btn-redeem-open').click(function (e) {
 		jQuery('#redeem-popup').modal();

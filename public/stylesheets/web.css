@@ -1137,10 +1137,16 @@ td, th{padding:0;}
 /* viewbusiness page styles*/
 /* signin/account area */
 .account-area{
+        margin-right: 10px;
 	float:right;
 	font:24px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	line-height:28px;
 	position:relative;
+}
+.btn-signup-open{
+        float:right;
+	color:#2264a6;
+	text-decoration:underline;
 }
 .btn-signin-open{
 	color:#2264a6;

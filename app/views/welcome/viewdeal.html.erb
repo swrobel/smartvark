@@ -14,7 +14,8 @@
 			<div id="header">
 				<!-- logo -->
 				<h1 class="logo"><a href="/">Smartvark</a></h1>
-        <%= render :partial => 'login' %>
+                                <%= render :partial => 'users/signup' %>
+                                <%= render :partial => 'login' %>
 			</div>
 			<!-- main -->
 			<div id="main">
@@ -74,7 +75,7 @@
                                                                                           <p>
                                                                                           <%= link_to 'Map It', {}, :target => '_new', :href => "http://maps.google.com?q=#{@offer.business.address_as_string}" %>
                                                                                           </p>
-                                                                                          <a href="" id="btn-redeem<%= '-signin' unless logged_in? %>-open" class="btn">Redeem</a>
+                                                                                          <a href="" id="btn-redeem<%= '-signup' unless logged_in? %>-open" class="btn">Redeem</a>
                                                                                               <!-- Redeem popup -->
                                                                                               <%= render :partial => 'redeem' %>
 											</div>

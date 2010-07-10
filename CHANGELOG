@@ -1,4 +1,5 @@
-+ Redeem button opens login model if user not logged in
++ Redeem button opens "signup" modal if user not logged in
++ Redeem button opens login modal if user not logged in
 + User must be logged in to redeem, print deal opens new window
 + Added and tied in offer type, active on, redeem by mobile/print
 + Implemented printdeal

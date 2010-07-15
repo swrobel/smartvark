@@ -1,5 +1,6 @@
 class Business < ActiveRecord::Base
   include Geokit::Geocoders
+
   acts_as_mappable
   has_many :offers
   has_many :comments

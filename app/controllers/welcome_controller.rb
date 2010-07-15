@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   include Geokit::Geocoders
+  RADIUS=50
 
   helper_method :location
 
@@ -46,7 +47,13 @@ class WelcomeController < ApplicationController
     if request.post?
       cookies[:location] = params[:location] if params[:location]
     end
-    @offers = Offer.all
+
+    if location
+      @offers = Offer.all(:conditions => { :business_id => close_business_ids })
+    else
+      @offers = Offer.all
+    end
+
     if session[:liked].blank? || params[:kill]
       session[:liked] = []
     end
@@ -75,14 +82,20 @@ class WelcomeController < ApplicationController
     @map.center_zoom_init(coordinates,14)
   end
 
+  def close_business_ids
+    # business_ids = Business.all(:select => 'id', :origin => location, :within => RADIUS)  #TODO:  Sqlite not map supported
+    @close_business_ids ||= Business.all(:select => 'id')
+  end
+
   def mydeals
     session.delete(:liked)
     category_id = params[:category_id].to_i
     @offers = begin
                 if (category_id <= 1)
-                  Offer.all
+                  Offer.all(:conditions => { :business_id => close_business_ids })
                 else
-                  Offer.find_all_by_category_id(category_id)
+                  Offer.all(:conditions => { :category_id => category_id,
+                            :business_id => close_business_ids  })
                 end
               end
 

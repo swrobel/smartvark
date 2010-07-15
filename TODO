@@ -1,3 +1,2 @@
 * Signup: should carryover history of liked/disliked deals
-* Signup: if passwords do not match, the page redirects to the backend rather than showing an error in the form
 * Pages take about 10sec longer to load when no network connection is available (possibly waiting on GMaps or Facebook) - need this fixed for demoing purposes

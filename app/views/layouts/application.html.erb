@@ -11,7 +11,8 @@
 </head>
 <body>
   <p style="color: green"><%= flash[:notice] %></p>
-  <%= render :partial => 'layouts/menu' %>
+  <% if params[:admin] %><%= render :partial => 'layouts/menu' %><% end %>
+
   <%= yield %>
 
 </body>

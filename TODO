@@ -1,4 +1,3 @@
 * Signup: should carryover history of liked/disliked deals
 * Signup: if passwords do not match, the page redirects to the backend rather than showing an error in the form
-* My Deals/Search: Category navigation bar highlights the wrong category after clicking (deals shown are right category, but orange highlighted element is the wrong one, ex: clicking Food highlights Beauty/Spa)
 * Pages take about 10sec longer to load when no network connection is available (possibly waiting on GMaps or Facebook) - need this fixed for demoing purposes

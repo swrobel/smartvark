@@ -38,10 +38,16 @@ module WelcomeHelper
     '</div>
   </div>
   <div class="rate">' +
+    "<span onMouseOver=\"$('offer_info_rollover').update('"+ CGI.escapeHTML(info_for_rollover(offer))+ "');\"
+           onMouseOut=\"$('offer_info_rollover').update('')\" >" +
     link_to_remote(image_tag('/images/btn-good.gif', :alt => "+"),
                    :url => { :action => "set_opinion", :offer_id => offer.id, :liked => 'true' }) +
+    "</span>" +
+    "<span onMouseOver=\"$('offer_info_rollover').update('"+ CGI.escapeHTML(info_for_rollover(offer))+ "');\"
+           onMouseOut=\"$('offer_info_rollover').update('')\" >" +
     link_to_remote(image_tag('/images/btn-bad.gif', :alt => "+"),
                    :url => { :action => "set_opinion", :offer_id => offer.id, :liked => 'false' }) +
+    "</span>" +
   '</div>
 </li>'
   end

@@ -57,6 +57,9 @@ class Offer < ActiveRecord::Base
     if options[:search_terms]
       conditions <<  'lead like ?'
       args << "%#{options[:search_terms]}%"
+
+      conditions << 'businesses.name like ?'
+      args << "%#{options[:search_terms]}%"
     end
 
     Offer.all(:conditions => [ conditions.join(' AND '), *args ], :include => [:business ], :limit => LIMIT)

@@ -6,9 +6,21 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def handle_session_stuffs
+    session.delete(:user)
+  end
+
   def create
-    @user = User.new(params[:user])
-    if @user.save
+    @user = session[:user] || User.new
+    @user.attributes = params[:user]
+
+    unless @user.valid?
+      @user.errors.each_full { |msg| logger.info msg }
+    end
+
+    if @user.update_attributes(params[:user])
+      handle_session_stuffs
+
       flash[:notice] = "Account registered!"
       UserSession.new(params[:user])
       redirect_to mydeals_url

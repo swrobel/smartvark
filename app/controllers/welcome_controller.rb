@@ -55,6 +55,7 @@ class WelcomeController < ApplicationController
     end
 
     if session[:liked].blank? || params[:kill]
+      session[:user] = User.new
       session[:liked] = []
     end
 
@@ -107,7 +108,7 @@ class WelcomeController < ApplicationController
       current_user.set_opinion(params)
       current_user.save
     else
-      session[:user] = User.new
+      session[:user] ||= User.new
       session[:user].set_opinion(params)
     end
 

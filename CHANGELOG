@@ -1,3 +1,4 @@
++ Offer opinions transfer to new user
 + Added hooks for search via business distance, to be added when not running on sqlite
 + Signup failure redirects to backend
 + Ordered category numerically

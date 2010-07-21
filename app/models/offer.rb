@@ -39,7 +39,7 @@ class Offer < ActiveRecord::Base
     unless options[:location].blank?
       if options[:location] =~ /\d{5}/
         conditions << 'businesses.postal_code = ?'
-        args << options[:location].to_i
+        args << options[:location]
       else
         city, state = options[:location].split(/,/,2)
         if city
@@ -55,19 +55,12 @@ class Offer < ActiveRecord::Base
     end
 
     if options[:search_terms]
-      conditions <<  'lead like ?'
-      args << "%#{options[:search_terms]}%"
-
-      conditions << 'businesses.name like ?'
-      args << "%#{options[:search_terms]}%"
+      conditions <<  '(lead like ? OR businesses.name like ?)'
+      2.times { args << "%#{options[:search_terms]}%" }
     end
-
     Offer.all(:conditions => [ conditions.join(' AND '), *args ],
               :include => [:business ], :limit => LIMIT)
 
   end
-
-
-
 
 end

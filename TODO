@@ -1,1 +1,3 @@
+* Revert error condition behavior on signup form to original (show error message on page that it redirects to)
+* Show Deal Description on View Deal page above Exclusivity Text
 * Pages take about 10sec longer to load when no network connection is available (possibly waiting on GMaps or Facebook) - need this fixed for demoing purposes

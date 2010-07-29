@@ -1,3 +1,5 @@
+! New HTML in app/views/welcome/: bizprofile.html & dealbuilder.html
+! Added input box to viewdeal.html.erb for discussion board
 + Offer opinions transfer to new user
 + Added hooks for search via business distance, to be added when not running on sqlite
 + Signup failure redirects to backend

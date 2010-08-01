@@ -25,8 +25,7 @@ class UsersController < ApplicationController
       UserSession.new(params[:user])
       redirect_to mydeals_url
     else
-      #render :action => :new  TODO: Are you sure?
-      redirect_to new_user_path
+      render :action => :new
     end
   end
 

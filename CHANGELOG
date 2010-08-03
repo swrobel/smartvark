@@ -1,3 +1,4 @@
++ Started deal builder, first pass.  Needs submit functionality.
 + Added bizprofile creator
 ! New HTML in app/views/welcome/: bizprofile.html & dealbuilder.html
 ! Added input box to viewdeal.html.erb for discussion board

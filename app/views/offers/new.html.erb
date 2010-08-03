@@ -1,7 +1,116 @@
-<h1>New offer</h1>
-
-<% form_for(@offer,  :html => {:multipart => true}) do |f| %>
-  <%= render :partial => 'form', :locals => { :f => f } %>
-<% end %>
-
-<%= link_to 'Back', offers_path %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Smartvark</title>
+        <%= render :partial => 'welcome/common_header' %>
+	<%= javascript_include_tag 'inputs'%>
+	<!--[if IE]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
+</head>
+<body>
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- wrapper-holder -->
+		<div class="wrapper-holder">
+			<!-- header -->
+			<div id="header">
+				<!-- logo -->
+				<h1 class="logo"><a href="#">Smartvark</a></h1>
+				<div class="account-area">
+					<!-- holder -->
+					<div class="holder">
+						<strong class="ttl">Welcome <span>Merchant!</span></strong>
+					</div>
+					<div class="frame">
+					<ul class="menu">
+						<li><a href="#">deal dashboard</a></li>
+						<li><a href="#">business profile</a></li>
+					</ul>
+					</div>
+				</div><!-- /account-area end -->
+			</div>
+			<!-- main -->
+			<div id="main">
+				<!-- main-holder -->
+				<div class="main-holder">
+					<!-- main-frame -->
+					<div class="main-frame">
+						<!-- twocolumns -->
+						<div class="offer-box">
+							<div class="twocolumns">
+								<div class="holder">
+									<!-- left-col -->
+									<div class="left-col">
+										<div class="frame-b">
+											<div class="heading">
+												<div class="frame-b">
+													<div class="frame-t">
+														<h2>Create an Offer</h2>
+													</div>
+												</div>
+											</div>
+                                                                                        <%= render :partial => 'dealbuilder_form' %>
+											<!-- location -->
+										</div>
+									</div>
+									<!-- right-col -->
+									<div class="right-col">
+										<div class="heading">
+											<div class="frame-b">
+												<div class="frame-t">
+													<h3>Smart Tips</h3>
+												</div>
+											</div>
+										</div>
+										<!-- tips -->
+										<ul class="tips">
+											<li><a href="#">50% off coupons are achieving a 20% redemption rate at restaurants.</a></li>
+											<li><a href="#">The best day to release offers is Thursday. Why? Most coupons are used during the weekend.</a></li>
+										</ul>
+									</div><!-- /right-col end -->
+									<div class="right-col">
+										<div class="heading">
+											<div class="frame-b">
+												<div class="frame-t">
+													<h3>View Your Offer</h3>
+												</div>
+											</div>
+										</div>
+										<div class="coupon">
+											<h4>COUPON</h4>
+											<div class="holder">
+												<div class="center">
+													<div class="add-logo">
+														<a href="#">Add Logo</a>
+													</div>
+												</div>
+											</div>
+											<span class="subttl">Save Big on Our 50% <br />off Fall Sale!</span>
+											<p>You’ll find a wide variety of great fall <br />fashions on sale from now until <br />September 1st. Bring a friend and<br />get an additional 10% off. <br />Offer expires Sept. 1, 2010</p>
+											<div class="code">
+												<p>HALFOFFJULY2010</p>
+											</div>
+										</div>
+									</div><!-- /right-col end -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- footer -->
+	<div id="footer">
+		<ul>
+			<li><a href="#">what’s a smartvark anyway?</a></li>
+			<li><a href="#">what about my privacy?</a></li>
+			<li><a href="#">contact</a></li>
+			<li><a href="#">twitter</a></li>
+			<li><a href="#">facebook</a></li>
+			<li><a href="#">smartvark for business</a></li>
+		</ul>
+		<p>&copy; 2010  Smartvark, Inc.</p>
+	</div>
+</body>
+</html>

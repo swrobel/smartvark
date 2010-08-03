@@ -1,0 +1,132 @@
+<% form_for(@offer,  :html => {:multipart => true}) do |f| %>
+<fieldset>
+  <div class="offer-form">
+    <p>Enter the details of your offer and then choose a redemption code for.  Most merchants select a code that works with their store’s point of sale system.  Typically redemption codes that are easy to say and remember work best, like HALFOFFJULY2010.  Don’t hesitate to <a href="#">contact us</a> if you have any questions</p>
+    <div class="row">
+      <%= f.label :offer_type, 'Offer type', :class => :width1 %>
+      <%= f.select :offer_type, options_for_select(OfferTypes), {}, {:class => :sel } %>
+      <div class="caption two-lines">
+        <span>Deals: sales, happy hours specials and other non-coupons Events: infrequent special promotions (ex: loyal shopper party)</span>
+      </div>
+    </div>
+    <div class="row">
+      <%= f.label :category_id, 'Category', :class => :width1 %>
+      <%= f.select :category_id, options_from_collection_for_select(Category.all,'id','name',@offer.category_id),{}, {:class => :sel } %>
+      <div class="caption">
+        <span>Category the deal will show up in on our site</span>
+      </div>
+    </div>
+    <div class="row">
+      <%= f.label :offer_active_on, 'Begin Date' %>
+      <%= f.unobtrusive_date_picker :offer_active_on %>
+      <div class="caption sp1">
+        <span>Date deal becomes active</span>
+      </div>
+    </div>
+    <div class="row">
+      <%= f.label :expiry_datetime , 'Expiry Date' %>
+      <%= f.unobtrusive_date_picker :expiry_datetime %>
+      <div class="caption sp1">
+        <span>Date deal expires (end of day)</span>
+      </div>
+    </div>
+  </div><!-- /offer-form end -->
+
+  <div>
+    <div class="text-box text1">
+      <div class="title">
+        <h3>Title of Offer (50 character maximum)</h3>
+      </div>
+      <div class="text text2">
+        <%= f.text_area :lead %>
+      </div>
+    </div><!-- /text-box end -->
+    <div class="text-box">
+      <div class="title">
+        <h3>Details of Offer (200 character maximum)</h3>
+      </div>
+      <div class="text text1">
+          <%= f.text_area :description %>
+      </div>
+    </div><!-- /text-box end -->
+    <div class="text-box">
+      <div class="title">
+        <h3>Fine Print (200 character maximum)</h3>
+      </div>
+      <div class="text text1">
+          <%= f.text_area :exclusivity_text %>
+      </div>
+    </div><!-- /text-box end -->
+    <div class="text-box">
+      <div class="title">
+        <h3>Valid at the following locations</h3>
+      </div>
+      <div class="text">
+        <div class="options-form">
+          <ul class="options">
+          <li class="active"><a href="#">Select All </a></li>
+            <li><a href="#">Select None</a></li>
+          </ul>
+          <ul class="row">
+          <li>
+            <input id="chk1" class="chk" type="checkbox" />
+            <label for="chk1">Westwood</label>
+          </li>
+          <li>
+            <input id="chk2" class="chk" type="checkbox" />
+            <label for="chk2">Beverly Hills</label>
+          <li>
+        </ul>
+      </div><!-- /options-form end -->
+    </div>
+  </div><!-- /text-box end -->
+
+  <div class='form1'>
+    <div class="row">
+      <div class="left">
+        <%= f.label :redemption_code %>
+        <%= f.text_field :redemption_code, :class => :txt %>
+      </div>
+      <div class="right">
+        <span>Code for tracking this deal in your system</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="left">
+        <%= f.label :quantity, 'Redemption Limit' %>
+        <%= f.text_field :quantity, :class => 'txt w1' %>
+      </div>
+      <div class="right">
+        <span>Maximum number of redemptions - blank for unlimited</span>
+      </div>
+    </div>
+    <div class="row check">
+      <div class="left">
+        <%= f.check_box :allow_print, :class => :chk %>
+        <%= f.label :allow_print, 'Make This a Printable Offer' %>
+      </div>
+      <div class="right">
+        <span>Allow redemptions from a computer printout</span>
+      </div>
+    </div>
+    <div class="row check">
+    <div class="left">
+        <%= f.check_box :allow_mobile, :class => :chk %>
+        <%= f.label :allow_mobile, 'Make This a Mobile Offer' %>
+    </div>
+    <div class="right">
+    <span>Allow redemptions from a mobile device screen</span>
+    </div>
+    </div>
+    <div class="btns-holder">
+    <div class="center">
+    <ul class="btns">
+    <li><a href="#" class="activate-deal">Activate Deal</a></li>
+    <li><a href="#" class="save-draft">Save as Draft</a></li>
+    <li><a href="#" class="cancel">Cancel</a></li>
+    </ul><!-- /btns end -->
+    </div>
+  </div><!-- /btns-holder end -->
+</div><!-- /form1 end -->
+</fieldset>
+<% end %>

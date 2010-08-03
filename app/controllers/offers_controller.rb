@@ -24,7 +24,11 @@ class OffersController < ApplicationController
   # GET /offers/new
   # GET /offers/new.xml
   def new
-    @offer = Offer.new
+    @offer = Offer.new(
+    :lead => 'Save Big on Our 50% off Fall Sale!',
+    :description => "You'll find a wide variety of great fall fashions on sale from now until September 1st. Bring a friend and get an additional 10% off. Offer expires Sept. 1, 2010.",
+    :exclusivity_text => 'Offer valid Monday-Thursday. Not valid with any other offers.',
+    )
 
     respond_to do |format|
       format.html # new.html.erb

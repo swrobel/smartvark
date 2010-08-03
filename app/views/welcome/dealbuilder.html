@@ -3,9 +3,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Smartvark</title>
-	<link href="stylesheets/web.css" rel="stylesheet" type="text/css" media="all"/>
-	<script type="text/javascript" src="js/inputs.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+        <%= render :partial => 'common_header' %>
+	<%= javascript_include_tag 'inputs'%>
 	<!--[if IE]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
 </head>
 <body>
@@ -157,7 +156,7 @@
 																		<li>
 																			<input id="chk4" class="chk" type="checkbox" />
 																			<label for="chk4">Melrose</label>
-																		</li>	
+																		</li>
 																			<li>
 																				<input id="chk1" class="chk" type="checkbox" />
 																				<label for="chk1">Westwood</label>

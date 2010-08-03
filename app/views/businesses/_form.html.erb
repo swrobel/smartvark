@@ -1,73 +1,36 @@
-<% form_for(@business) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :hours%> (semi-colon-delimit)<br />
-    <%= f.text_field :hours %>
-  </p>
-  <p>
-    <%= f.label :street_address_1 %><br />
-    <%= f.text_field :street_address_1 %>
-  </p>
-  <p>
-    <%= f.label :street_address_2 %><br />
-    <%= f.text_field :street_address_2 %>
-  </p>
-  <p>
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </p>
-  <p>
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
-  </p>
-  <p>
-    <%= f.label :postal_code %><br />
-    <%= f.text_field :postal_code %>
-  </p>
-  <p>
-    <%= f.label :country %><br />
-    <%= f.text_field :country %>
-  </p>
-  <p>
-    <%= f.label :phone_1 %> (*yelp)<br />
-    <%= f.text_field :phone_1 %>
-  </p>
-  <p>
-    <%= f.label :phone_2 %><br />
-    <%= f.text_field :phone_2 %>
-  </p>
-  <p>
-    <%= f.label :fax %><br />
-    <%= f.text_field :fax %>
-  </p>
-  <p>
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-    </p>
-<%
-  # social media
-%>
-  <p>
-    <%= f.label :link_twitter %><br />
-    http://twitter.com/<%= f.text_field :link_twitter %>
-  </p>
-
-  <p>
-    <%= f.label :link_facebook %><br />
-    http://facebook.com/<%= f.text_field :link_facebook %>
-  </p>
-
-  <p>
-    <%= f.label :parent_id %><br />
-    <%= f.text_field :parent_id %>
-  </p>
-  <p>
-    <%= f.submit (@business.new_record? ? 'Create' : 'Update') %>
-  </p>
-<% end %>
-
+<div class="bottom">
+<!-- profile-form -->
+  <div class="profile-form">
+    <% form_for(@business) do |f| %>
+      <%= f.error_messages %>
+      <fieldset>
+        <%= form_row f, :name, 'Location Name' %>
+        <%= form_row f, :short_name, 'Nick Name' %>
+        <%= form_row f, :street_address_1, 'Address 1' %>
+        <%= form_row f, :street_address_2, 'Address 2' %>
+        <div class="row">
+          <%= f.label :city, 'City' %>
+          <div class="right width1">
+            <%= f.text_field :city, :class => 'txt' %>
+            <div class="select-area">
+              <%= f.label :state, 'State' %>
+              <%= f.select :state, States::abbrevs, :class => 'sel' %>
+            </div>
+          </div>
+        </div>
+        <%= form_row f, :postal_code, 'Zip Code',{ :tdc => ' width2', } %>
+        <%= form_row f, :phone_1, 'Phone', { :tdc => ' width3', }%>
+        <%= form_row f, :hours, 'Hours (semi-colon-delimit)' %>
+        <%= form_row f, :link_twitter, 'Twitter', { :tdc => ' width4', :bf => '<p>http://twitter.com/</p>' } %>
+        <%= form_row f, :link_facebook, 'Facebook', { :tdc => ' width5', :bf => '<p>http://facebook.com/</p>' } %>
+        <%= form_row f, :yelp_url, 'Yelp', { :tdc => ' width6', :bf => '<p>http://yelp.com/biz/</p>' } %>
+        <div class="btns-holder">
+          <div class="btns">
+            <input class="btn-clear" type="reset" value="Clear" />
+            <%= f.submit 'Save', :class => 'btn-save' %>
+          </div>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>

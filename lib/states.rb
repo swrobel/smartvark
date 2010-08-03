@@ -52,4 +52,9 @@ module States
     ['Wisconsin', 'WI'],
     ['Wyoming', 'WY']
   ]
+
+  def self.abbrevs
+    @abbrevs ||= STATES.collect(&:last)
+  end
+
 end

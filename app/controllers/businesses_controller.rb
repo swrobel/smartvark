@@ -2,7 +2,7 @@ class BusinessesController < ApplicationController
   # GET /businesses
   # GET /businesses.xml
   def index
-    @businesses = Business.all
+    @businesss = Business.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,11 +25,6 @@ class BusinessesController < ApplicationController
   # GET /businesses/new.xml
   def new
     @business = Business.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @business }
-    end
   end
 
   # GET /businesses/1/edit

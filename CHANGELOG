@@ -1,3 +1,4 @@
++ Added bizprofile creator
 ! New HTML in app/views/welcome/: bizprofile.html & dealbuilder.html
 ! Added input box to viewdeal.html.erb for discussion board
 + Bug fix on search

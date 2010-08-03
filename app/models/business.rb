@@ -51,5 +51,7 @@ class Business < ActiveRecord::Base
     response =  client.search(request)['businesses'].first
     self.yelp_url = response['url']
     self.yelp_avg_rating_url = response['rating_img_url']
+    rescue
+      logger.info "Could't create yelp rating"
   end
 end

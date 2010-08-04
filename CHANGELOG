@@ -1,3 +1,4 @@
++ OfferTypes now a model
 + Real-time updates for coupon on deal builder
 + Another pass of DealBuilder, deals now use coupon format, needs reformatting
 + Coupon helper

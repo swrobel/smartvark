@@ -6,7 +6,7 @@ module ApplicationHelper
 
   def coupon_body(offer)
      "<span id='#{offer.id}_lead' class='subttl'>#{offer.lead}</span>
-     <p id='#{offer.id}_diz'>#{offer.description}</p>
+     <p id='#{offer.id}_diz'>#{offer.description}  Offer expires <span id='#{offer.id}_ed'>#{offer.expiry_datetime.try(:strftime,('%b. %d, %Y'))}<span></p>
      <div class='code'>
        <p id='#{offer.id}_rc'>#{offer.redemption_code}</p>
      </div>"

@@ -1,1 +1,1 @@
-OfferTypes = %w(coupon deal event)
+OfferTypes = OfferType.all.collect(&:name) #Backwards compatibility

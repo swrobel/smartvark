@@ -5,10 +5,10 @@ module ApplicationHelper
   end
 
   def coupon_body(offer)
-     "<span class='subttl'>#{offer.lead}</span>
-     <p>#{offer.description}</p>
+     "<span id='#{offer.id}_lead' class='subttl'>#{offer.lead}</span>
+     <p id='#{offer.id}_diz'>#{offer.description}</p>
      <div class='code'>
-       <p>#{offer.redemption_code}</p>
+       <p id='#{offer.id}_rc'>#{offer.redemption_code}</p>
      </div>"
   end
 

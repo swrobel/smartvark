@@ -20,7 +20,7 @@ module ApplicationHelper
           <div class='center'>
             <div class='add-logo'>
             " +
-      link_to(image_tag(offer.coupon.url, :width => 175, :height => 100), viewdeal_url(offer.to_param),
+      link_to(image_tag(offer.coupon.url, :width => 120, :height => 120), viewdeal_url(offer.to_param),
               :onMouseOver => "$('offer_info_rollover').update('#{info_for_rollover(offer)}');",
               :onMouseOut => "$('offer_info_rollover').update('');"
              )+
@@ -34,13 +34,14 @@ module ApplicationHelper
   end
 
   def coupon(offer)
+    logo = offer.coupon ? image_tag(offer.coupon.url, :width => 120, :height => 120) : "Your Logo"
     "
     <div class='coupon'>
       <h4>COUPON</h4>
         <div class='holder'>
           <div class='center'>
             <div class='add-logo'>
-            <a>Your Logo</a>
+            <a>#{logo}</a>
             </div>
           </div>
        </div>

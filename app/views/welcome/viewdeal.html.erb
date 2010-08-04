@@ -83,35 +83,12 @@
 										<!-- information -->
 										<div class="information">
                                                                                     <h3>Expires: <%= std_date(@offer.expiry_datetime) %></h3>
+                                                                                    <p><%=h @offer.description %></p>
                                                                                         <p><%=h @offer.exclusivity_text %></p>
 										</div>
 									</div>
-									<!-- r-side -->
-									<div class="r-side">
-										<!-- ttl-holder -->
-										<div class="ttl-holder">
-											<h2>Shout About It</h2>
-										</div>
-										<!-- frame -->
-										<div class="frame">
-											<div class="row">
-												<strong class="bubble"><strong><strong>This is one of my favorite places to go!</strong></strong></strong>
-												<p><span>Allen R.</span> West Hills</p>
-											</div>
-											<div class="row">
-												<strong class="bubble blue-bubble"><strong><strong>Can't beat this deal!</strong></strong></strong>
-												<p><span>Stefan W.</span> Santa Monica</p>
-											</div>
-											<div class="row">
-												<strong class="bubble"><strong><strong>Too good to pass up. Make sure to bring a friend!</strong></strong></strong>
-												<p><span>Melissa P.</span> Westwood</p>
-											</div>
-											<div class="row">
-  											<textarea id="shoutbox" style="width:100%"></textarea>
-  											<button id="shout">Shout!</button>
-											</div>
-										</div>
-									</div>
+                                                                        <!-- r-side -->
+                                                                        <%= render :partial => 'shout' %>
 								</div>
 							</div>
 							<div class="b"></div>

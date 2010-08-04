@@ -4,6 +4,11 @@ class Offer < ActiveRecord::Base
   belongs_to :business
 
   has_many :comments
+  has_many :commenters,
+    :through => :comments,
+    :source => :user,
+    :class_name => 'User'
+
   has_many :redemptions
 
   has_many :opinions

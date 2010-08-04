@@ -1,0 +1,25 @@
+<div class="r-side">
+  <!-- ttl-holder -->
+  <div class="ttl-holder">
+    <h2>Shout About It</h2>
+  </div>
+  <!-- frame -->
+  <div class="frame">
+    <div class="row">
+      <!--- TODO: Put this in a helper -->
+      <% @offer.comments.each_with_index do |comment,index| %>
+        <strong class="bubble<%= " blue-bubble" if ((index+1)%2).zero? %>"><strong><strong><%= comment.text %></strong></strong></strong>
+        <p><%= "<span>#{comment.commenter.first}</span>#{comment.commenter.last}" %></p>
+      <% end %>
+    </div>
+    <% unless @offer.commenters.include?(current_user) %>
+      <div class="row">
+        <% form_tag shout_url(@offer.id) do %>
+          <%= text_area_tag 'comment[text]', '',:style => "width:100%", :id => 'shoutbox', :size => '40x3' %>
+          <%= submit_tag 'Shout!', :id => :shout %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

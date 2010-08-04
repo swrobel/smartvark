@@ -61,6 +61,7 @@ ActionController::Routing::Routes.draw do |map|
   map.search            'search/:category_id', :controller => "welcome", :action => :search, :conditions => { :method => :get }
   map.viewbusiness      'viewbusiness/:id', :controller => "welcome", :action => :viewbusiness
   map.viewdeal          'viewdeal/:id', :controller => "welcome", :action => :viewdeal
+  map.shout             'shout/:id', :controller => "welcome", :action => :shout, :conditions => { :method => :post }
 
   map.root :controller => "welcome"
 

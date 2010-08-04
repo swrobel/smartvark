@@ -63,7 +63,7 @@ class WelcomeController < ApplicationController
   end
 
   def viewdeal
-    @offer = Offer.find(params[:id])
+    @offer = Offer.find(params[:id], :include => [ :business, :comments ])
   end
 
   def search
@@ -138,6 +138,23 @@ class WelcomeController < ApplicationController
   def location
     (cookies[:location] ||= 'Los Angeles, CA').to_str
   end
+
+  def shout
+    @offer = Offer.find(params[:id], :include => [ :business, :commenters ])
+
+    logger.info @offer.description
+    logger.info @offer.to_xml
+    logger.info @offer.commenters.to_xml
+    unless @offer.commenters.include?(current_user)
+      params[:comment][:offer_id] = @offer.id
+      params[:comment][:business_id] = @offer.business_id
+      params[:comment][:user_id] = current_user.id
+
+      @offer.comments.create(params[:comment])
+    end
+    redirect_to :viewdeal, :id => @offer
+  end
+
 
   private
 

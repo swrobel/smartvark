@@ -1,3 +1,5 @@
++ Added shout functionality.  User can only shout once per offer.
++ Added "description" under expires
 + Started deal builder, first pass.  Needs submit functionality.
 + Added bizprofile creator
 ! New HTML in app/views/welcome/: bizprofile.html & dealbuilder.html

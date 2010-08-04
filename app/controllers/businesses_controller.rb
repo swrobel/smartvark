@@ -2,7 +2,7 @@ class BusinessesController < ApplicationController
   # GET /businesses
   # GET /businesses.xml
   def index
-    @business = Business.all
+    @businesses = Business.all
 
     respond_to do |format|
       format.html # index.html.erb

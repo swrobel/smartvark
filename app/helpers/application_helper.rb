@@ -4,23 +4,73 @@ module ApplicationHelper
     date ?  date.strftime('%m/%d/%y') : 'N/A'
   end
 
-  def coupon(offer=nil)
-    "
-  <div class='coupon'>
-    <h4>COUPON</h4>
-      <div class='holder'>
-        <div class='center'>
-          <div class='add-logo'>
-            <a>Your Logo</a>
-          </div>
-        </div>
-     </div>
-     <span class='subttl'>#{offer.lead}</span>
+  def coupon_body(offer)
+     "<span class='subttl'>#{offer.lead}</span>
      <p>#{offer.description}</p>
      <div class='code'>
        <p>#{offer.redemption_code}</p>
-     </div>
-   </div>
-    "
-    end
+     </div>"
   end
+
+  def deal_coupon(offer)
+    "
+    <div class='coupon'>
+      <h4>COUPON</h4>
+        <div class='holder'>
+          <div class='center'>
+            <div class='add-logo'>
+            " +
+      link_to(image_tag(offer.coupon.url, :width => 175, :height => 100), viewdeal_url(offer.to_param),
+              :onMouseOver => "$('offer_info_rollover').update('#{info_for_rollover(offer)}');",
+              :onMouseOut => "$('offer_info_rollover').update('');"
+             )+
+              "
+            </div>
+          </div>
+       </div>
+       #{coupon_body offer}
+     </div>
+    "
+  end
+
+  def coupon(offer)
+    "
+    <div class='coupon'>
+      <h4>COUPON</h4>
+        <div class='holder'>
+          <div class='center'>
+            <div class='add-logo'>
+            <a>Your Logo</a>
+            </div>
+          </div>
+       </div>
+       #{coupon_body offer}
+     </div>
+    "
+  end
+
+  def display_offer(offers, index, hidden=false)
+
+    offer = offers[index]
+    return if offer.nil?
+"<li id='offer_#{offer.id}' #{"style='display:none'" if hidden} >"  +
+  '<div class="frame">
+    <div>' +
+      deal_coupon(offer) +
+    '</div>
+  </div>
+  <div class="rate">' +
+    "<span onMouseOver=\"$('offer_info_rollover').update('"+ CGI.escapeHTML(info_for_rollover(offer))+ "');\"
+           onMouseOut=\"$('offer_info_rollover').update('')\" >" +
+    link_to_remote(image_tag('/images/btn-good.gif', :alt => "+"),
+                   :url => { :action => "set_opinion", :offer_id => offer.id, :liked => 'true' }) +
+    "</span>" +
+    "<span onMouseOver=\"$('offer_info_rollover').update('"+ CGI.escapeHTML(info_for_rollover(offer))+ "');\"
+           onMouseOut=\"$('offer_info_rollover').update('')\" >" +
+    link_to_remote(image_tag('/images/btn-bad.gif', :alt => "+"),
+                   :url => { :action => "set_opinion", :offer_id => offer.id, :liked => 'false' }) +
+    "</span>" +
+  '</div>
+</li>'
+  end
+end

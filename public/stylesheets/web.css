@@ -565,8 +565,9 @@ td, th{padding:0;}
 }
 .gallery{
   float:left;
+  padding-right:10px;
   max-width:375px;
-  max-height:315px;
+  max-height:515px;
   overflow:hidden;
 }
 /* gallery list */
@@ -1528,7 +1529,7 @@ td, th{padding:0;}
     color: #000;
     border: none;
     width: 563px;
-    
+
 
 }
 .text-box .text textarea{

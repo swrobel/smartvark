@@ -1,3 +1,4 @@
++ Another pass of DealBuilder, deals now use coupon format, needs reformatting
 + Coupon helper
 + Added shout functionality.  User can only shout once per offer.
 + Added "description" under expires

@@ -24,10 +24,13 @@ class OffersController < ApplicationController
   # GET /offers/new
   # GET /offers/new.xml
   def new
+    tmp = 6.months.from_now
     @offer = Offer.new(
     :lead => 'Save Big on Our 50% off Fall Sale!',
-    :description => "You'll find a wide variety of great fall fashions on sale from now until September 1st. Bring a friend and get an additional 10% off. Offer expires Sept. 1, 2010.",
+    :description => "You'll find a wide variety of great fall fashions on sale from now until September 1st. Bring a friend and get an additional 10% off. Offer expires " + tmp.strftime('%b. %d, %Y'),
     :exclusivity_text => 'Offer valid Monday-Thursday. Not valid with any other offers.',
+    :redemption_code => "HALFOFFJULY2010",
+    :expiry_datetime => tmp,
     )
 
     respond_to do |format|

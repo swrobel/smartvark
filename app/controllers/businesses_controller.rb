@@ -1,6 +1,9 @@
 class BusinessesController < ApplicationController
   # GET /businesses
   # GET /businesses.xml
+  #
+  before_filter :set_user
+
   def index
     @businesses = Business.all
 
@@ -24,18 +27,21 @@ class BusinessesController < ApplicationController
   # GET /businesses/new
   # GET /businesses/new.xml
   def new
-    @business = Business.new
+    @businesses = current_user.businesses
+    @business = current_user.businesses.build
   end
 
   # GET /businesses/1/edit
   def edit
-    @business = Business.find(params[:id])
+    @businesses = current_user.businesses
+    @business = current_user.businesses.find(params[:id])
   end
 
   # POST /businesses
   # POST /businesses.xml
   def create
-    @business = Business.new(params[:business])
+    @business = current_user.businesses.build(params[:business])
+    logger.info @business.to_xml
 
     respond_to do |format|
       if @business.save
@@ -52,7 +58,8 @@ class BusinessesController < ApplicationController
   # PUT /businesses/1
   # PUT /businesses/1.xml
   def update
-    @business = Business.find(params[:id])
+    @business = current_user.businesses.find(params[:id])
+    logger.info @business.to_xml
 
     respond_to do |format|
       if @business.update_attributes(params[:business])
@@ -77,4 +84,9 @@ class BusinessesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def set_user
+    @user = current_user || User.new
+  end
+
 end

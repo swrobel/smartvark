@@ -37,7 +37,7 @@
 										<div class="heading">
 											<div class="frame-b">
 												<div class="frame-t">
-                                                                                                  <h2><%=h @business.name %> </h2>
+                                                                                                  <h2><%=h current_user.name %> </h2>
 												</div>
 											</div>
 										</div>
@@ -46,27 +46,24 @@
 											<form action="#">
 												<fieldset>
 													<ul class="options">
-														<li class="active"><a href="#">Select All </a></li>
-														<li><a href="#">Select None</a></li>
-													</ul>
-													<ul class="row">
-														<li>
-															<input id="chk1" class="chk" type="checkbox" />
-															<label for="chk1">Westwood</label>
-														</li>
-														<li>
-															<input id="chk2" class="chk" type="checkbox" />
-															<label for="chk2">Beverly Hills</label>
-														</li>
-														<li>
-															<input id="chk3" class="chk" type="checkbox" />
-															<label for="chk3">Malibu</label>
-														</li>
-														<li>
-															<input id="chk4" class="chk" type="checkbox" />
-															<label for="chk4">Melrose</label>
-														</li>
-													</ul>
+                                                                                                          <li class="active">
+                                                               <a href="#" onClick="$('businesses_ids').each(function(e){ e.checked = 1 });">Select All </a></li>
+                                                                <li>
+
+                                                                <a href="#" onClick="checkboxes.each(function(e){ e.checked = 0 });">Select None</a></li>
+                                                                                                              </ul>
+<% @businesses.in_groups_of(4) do |group| %>
+<ul class="row">
+<% group.compact.each do |business| %>
+  <li>
+    <label>
+      <%= check_box_tag 'businesses[id]', business.id, business.id == @business.id, :class => 'chk' %>
+      <%= business.name %>
+    </label>
+  </li>
+<% end %>
+<ul>
+<% end %>
 												</fieldset>
 											</form>
 										 </div>

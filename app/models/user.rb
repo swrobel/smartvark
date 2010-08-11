@@ -8,6 +8,19 @@ class User < ActiveRecord::Base
 
   before_validation :set_email, :on => :create
 
+  #######################
+
+  has_many :businesses
+
+  before_validation :set_login
+
+  has_attached_file :logo, :whiny_thumbnails => true
+
+  def set_login
+    self.login ||= email
+  end
+  #######################
+
   def set_email
     self.email ||= login
   end

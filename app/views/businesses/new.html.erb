@@ -17,12 +17,11 @@
 				<div class="account-area">
 					<!-- holder -->
 					<div class="holder">
-						<strong class="ttl">Welcome <span>Merchant!</span></strong>
+                                          <strong class="ttl">Welcome <span><%= @user.name %>!</span></strong>
 					</div>
 					<div class="frame">
 					<ul class="menu">
-						<li><a href="#">deal dashboard</a></li>
-						<li><a href="#">business profile</a></li>
+                                          <li><%= link_to 'deal dashboard', dealdashboard_url %>
 					</ul>
 					</div>
 				</div><!-- /account-area end -->
@@ -44,19 +43,8 @@
 										<!-- l-side -->
 										<div class="l-side">
 											<!-- ttl-holder -->
-											<div class="ttl-holder">
-												<h2>Location Profile</h2>
-												<div class="location-form">
-													<form action="#">
-														<fieldset>
-															<select class="sel">
-																<option>Location</option>
-															</select>
-															<a href="#" class="inf">Info</a>
-														</fieldset>
-													</form>
-												</div><!-- /location-form end -->
-                                                                                              </div>
+                                                                                        <div class="ttl-holder">
+                                                                                          <%= render :partial => 'location_profile' %>
                                                                                               <%= render :partial => 'form' %>
                                                                                 </div>
 										<!-- r-side -->
@@ -67,73 +55,9 @@
 												<a href="#" class="inf">Info</a>
 											</div>
 											<div class="bottom">
-												<div class="bussiness-form">
-													<form action="#">
-														<fieldset>
-															<label for="lb13"><span>Name</span><span class="inf">Info</span></label>
-															<div class="row">
-																<input id="lb13" class="txt" type="text" value="" />
-															</div>
-															<!--
-															<label for="lb14"><span>Address 1</span><span class="inf">Info</span></label>
-															<div class="row">
-																<input id="lb14" class="txt" type="text" value="" />
-															</div>
-															<label for="lb15"><span>Address 2</span><span class="inf">Info</span></label>
-															<div class="row">
-																<input id="lb15" class="txt" type="text" value="" />
-															</div>
-															<label for="lb16"><span>City</span><span class="inf">Info</span></label>
-															<div class="row">
-																<input id="lb16" class="txt" type="text" value="" />
-															</div>
-															<div class="row">
-																<div class="l-col">
-																	<label for="lb17">State</label>
-																	<div class="row">
-																		<select id="lb17" class="sel">
-																			<option>State</option>
-																		</select>
-																	</div>
-																</div>
-																<div class="r-col">
-																	<label for="lb18">Zip Code</label>
-																	<div class="row"><input id="lb18" class="txt" type="text" value="" /></div>
-																</div>
-															</div>
-
-															<label for="lb19"><span>Phone</span><span class="inf">Info</span></label>
-															<div class="row">
-																<input id="lb19" class="txt" type="text" value="" />
-															</div>
-															-->
-															<label for="lb20"><span>Email</span><span class="inf">Info</span></label>
-															<div class="row">
-																<input id="lb20" class="txt" type="text" value="" />
-															</div>
-															<label for="lb21"><span>Password</span><span class="inf">Info</span></label>
-															<div class="row">
-																<input id="lb21" class="txt" type="text" value="" />
-															</div>
-															<label for="lb22"><span>Confirm Password</span><span class="inf">Info</span></label>
-															<div class="row">
-																<input id="lb22" class="txt" type="text" value="" />
-															</div>
-															<label for="lb23"><span>Upload logo</span><span class="inf">Info</span></label>
-															<div class="row">
-															  <input class="txt" type="file" size="13" id="lb23">
-															</div>
-															<div class="row">
-																<div class="btns-holder">
-																	<div class="btns">
-																		<input class="btn-save" type="submit" value="Save" />
-																		<input class="btn-cancel" type="submit" value="Cancel" />
-																	</div>
-																</div>
-															</div>
-														</fieldset>
-													</form>
-												</div><!-- /bussiness-form end -->
+                                                                                          <div class="bussiness-form">
+                                                                                            <%= render :partial => 'business_user_form' %>
+                                                                                          </div><!-- /bussiness-form end -->
 											</div>
 										</div>
 									</div>

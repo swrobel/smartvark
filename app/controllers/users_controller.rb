@@ -18,8 +18,8 @@ class UsersController < ApplicationController
       @user.errors.each_full { |msg| logger.info msg }
     end
 
-    if @user.update_attributes(params[:user])
-      handle_session_stuffs
+    if @user.save
+      handle_session_stuffs  unless params[:user][:type]
 
       flash[:notice] = "Account registered!"
       UserSession.new(params[:user])
@@ -48,4 +48,7 @@ class UsersController < ApplicationController
       render :controller => 'welcome', :action => :myprofile
     end
   end
+
+  private
+
 end

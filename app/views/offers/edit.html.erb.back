@@ -1,0 +1,8 @@
+<h1>Editing offer</h1>
+
+<% form_for(@offer,  :html => {:multipart => true}) do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+<% end %>
+
+<%= link_to 'Show', @offer %> |
+<%= link_to 'Back', offers_path %>

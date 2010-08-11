@@ -1,3 +1,6 @@
++ Deal dashboard changes with location
++ Business creation and location select stuff
++ Business user account creation
 + OfferTypes now a model
 + Real-time updates for coupon on deal builder
 + Another pass of DealBuilder, deals now use coupon format, needs reformatting

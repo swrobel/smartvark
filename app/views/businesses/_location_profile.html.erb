@@ -1,0 +1,25 @@
+<script>
+  function get_url(id) {
+    if (id == '-1')
+      url = '/businesses/new';
+    else
+      url = '/businesses/'+ id +'/edit' ;
+    window.location.href=url;
+  }
+</script>
+
+
+<h2>Location Profile</h2>
+  <div class="location-form">
+    <form action="#">
+      <fieldset>
+        <select class="sel" name='location_select' onchange="get_url(this.form.location_select.options[this.form.location_select.selectedIndex].value)" >
+          <option value='-1'>new location</option>
+          <%= options_from_collection_for_select(@businesses, 'id','name', @business.id) %>
+        </select>
+        <a href="#" class="inf">Info</a>
+      </fieldset>
+    </form>
+  </div><!-- /location-form end -->
+</div>
+

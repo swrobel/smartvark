@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100811062529) do
+ActiveRecord::Schema.define(:version => 20100819065350) do
 
   create_table "businesses", :force => true do |t|
     t.string   "name",                :limit => 50
@@ -135,8 +135,10 @@ ActiveRecord::Schema.define(:version => 20100811062529) do
     t.integer  "facebook_uid",         :limit => 8
     t.string   "facebook_session_key"
     t.string   "type"
-    t.string   "logo_name"
-    t.integer  "logo_size"
+    t.string   "logo_file_name"
+    t.integer  "logo_file_size"
+    t.string   "logo_content_type"
+    t.datetime "logo_updated_at"
   end
 
 end

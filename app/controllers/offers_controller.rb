@@ -33,6 +33,8 @@ class OffersController < ApplicationController
     :expiry_datetime => tmp,
     )
 
+    @businesses = current_user.businesses
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @offer }
@@ -42,6 +44,7 @@ class OffersController < ApplicationController
   # GET /offers/1/edit
   def edit
     @offer = Offer.find(params[:id])
+    @businesses = current_user.businesses
   end
 
   # POST /offers

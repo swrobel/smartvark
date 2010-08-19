@@ -50,3 +50,9 @@ jQuery(function() {
 	jQuery("#search_terms").placeHeld();
 	jQuery("#location").placeHeld();
 });
+function checkall(n) {
+	jQuery("input[name='business_ids[]']").attr('checked',n);
+	jQuery("#biz_"+n).attr('class', 'active')
+	jQuery("#biz_"+!n).attr('class', '')
+}
+

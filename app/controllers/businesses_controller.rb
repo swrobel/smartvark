@@ -28,7 +28,7 @@ class BusinessesController < ApplicationController
   # GET /businesses/new.xml
   def new
     @businesses = current_user.businesses
-    @business = current_user.businesses.build
+    @business = Business.new
   end
 
   # GET /businesses/1/edit

@@ -64,19 +64,25 @@
       <div class="text">
         <div class="options-form">
           <ul class="options">
-          <li class="active"><a href="#">Select All </a></li>
-            <li><a href="#">Select None</a></li>
+              <li class="active" id='biz_true'>
+                <a href="#" onClick="checkall(true)">Select All </a>
+              </li>
+              <li id='biz_false'>
+                <a href="#" onClick="checkall(false)">Select None</a>
+              </li>
           </ul>
-          <ul class="row">
-          <li>
-            <input id="chk1" class="chk" type="checkbox" />
-            <label for="chk1">Westwood</label>
-          </li>
-          <li>
-            <input id="chk2" class="chk" type="checkbox" />
-            <label for="chk2">Beverly Hills</label>
-          <li>
-        </ul>
+<% @businesses.in_groups_of(4) do |group| %>
+<ul class="row">
+<% group.compact.each do |business| %>
+  <li>
+    <label>
+      <%= check_box_tag 'business_ids[]', business.id, false, :class => 'chk' %>
+      <%= business.name %>
+    </label>
+  </li>
+<% end %>
+<ul>
+<% end %>
       </div><!-- /options-form end -->
     </div>
   </div><!-- /text-box end -->

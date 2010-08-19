@@ -43,21 +43,23 @@
 										</div>
 										<!-- options-form -->
 										<div class="options-form">
+													<ul class="options">
+              <li class="active" id='biz_true'>
+                <a href="#" onClick="checkall(true);">Select All </a>
+              </li>
+              <li id='biz_false'>
+                <a href="#" onClick="checkall(false);">Select None</a>
+              </li>
+
+                                                                                                              </ul>
 											<form action="#">
 												<fieldset>
-													<ul class="options">
-                                                                                                          <li class="active">
-                                                               <a href="#" onClick="$('businesses_ids').each(function(e){ e.checked = 1 });">Select All </a></li>
-                                                                <li>
-
-                                                                <a href="#" onClick="checkboxes.each(function(e){ e.checked = 0 });">Select None</a></li>
-                                                                                                              </ul>
 <% @businesses.in_groups_of(4) do |group| %>
 <ul class="row">
 <% group.compact.each do |business| %>
   <li>
     <label>
-      <%= check_box_tag 'businesses[id]', business.id, business.id == @business.id, :class => 'chk' %>
+      <%= check_box_tag 'business_ids[]', business.id, business.id == @business.id, :class => 'chk' %>
       <%= business.name %>
     </label>
   </li>

@@ -1,3 +1,8 @@
-* Revert error condition behavior on signup form to original (show error message on page that it redirects to)
-* Show Deal Description on View Deal page above Exclusivity Text
-* Pages take about 10sec longer to load when no network connection is available (possibly waiting on GMaps or Facebook) - need this fixed for demoing purposes
+* All Biz pages: Link "Deal Dashboard" and "Business Profile" links in upper right to the appropriate pages
+* Deal Dashboard: Link "Create Deal" button to Deal Builder page
+* Deal Dashboard: Should show all deals for selected locations (does not show anything currently)
+* Deal Builder: Do not show All in categories list
+* Deal Builder: Valid at the following locations should show all locations for current user (I believe this is an HTML formatting issue)
+* Deal Builder: "Activate Deal" button should create the deal and redirect to the Deal Dashboard with a success message
+* Deal Builder: Logo should be attached to business account rather than to individual offer
+* View Business: Yelp link should go to Yelp site. Twitter link should open in new window (as should Yelp).

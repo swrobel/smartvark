@@ -15,7 +15,7 @@
       <fieldset>
         <select class="sel" name='location_select' onchange="get_url(this.form.location_select.options[this.form.location_select.selectedIndex].value)" >
           <option value='-1'>new location</option>
-          <%= options_from_collection_for_select(@businesses, 'id','name', @business.id) %>
+          <%= options_from_collection_for_select(@businesses, 'id','short_or_name', @business.id) %>
         </select>
         <a href="#" class="inf">Info</a>
       </fieldset>

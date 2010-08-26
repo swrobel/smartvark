@@ -1,5 +1,5 @@
 <tr class="<%= 'archived' if deal_on_dashboard.archived? %>">
-  <td><%= deal_on_dashboard.business.name%></td>
+  <td><%= deal_on_dashboard.business.short_or_name%></td>
   <td><%= deal_on_dashboard.lead %></td>
   <td><%= deal_on_dashboard.expiry_datetime.try(:strftime, '%m/%d/%Y') %></td>
   <td><%= deal_on_dashboard.redemptions.length %></td>

@@ -12,6 +12,10 @@ class Business < ActiveRecord::Base
 
   validates_presence_of :street_address_1, :city, :state, :postal_code
 
+  def short_or_name
+    short_name.blank? ? name : short_name
+  end
+
   def address_as_string
     [ street_address_1, city, state] .join(',') << ' ' << postal_code
   end
@@ -41,6 +45,10 @@ class Business < ActiveRecord::Base
         self.lat, self.lng = loc.lat, loc.lng
       end
     end
+  end
+
+  def yelp_link
+    'http://yelp.com/biz/' + yelp_url
   end
 
   def set_yelp_rating

@@ -11,14 +11,7 @@
 		<!-- wrapper-holder -->
 		<div class="wrapper-holder">
 			<!-- header -->
-			<div id="header">
-				<!-- logo -->
-				<h1 class="logo"><a href="#">Smartvark</a></h1>
-				<ul class="menu">
-					<li><a href="#">deal dashboard</a></li>
-					<li><a href="#">business profile</a></li>
-				</ul>
-			</div>
+                        <%= render :partial => 'welcome/business_header' %>
 			<!-- main -->
 			<div id="main">
 				<!-- main-holder -->
@@ -27,9 +20,9 @@
 					<div class="main-frame">
 						<!-- twocolumns -->
 						<div class="twocolumns">
-							<div class="deal">
-								<a href="#" class="btn-deal">Create Deal</a>
-							</div>
+                                                    <div class="deal">
+                                                      <%= link_to 'Create Deal', new_offer_url, :class => 'btn-deal' %>
+                                                    </div>
 							<div class="holder">
 								<!-- left-col -->
 								<div class="left-col">
@@ -64,7 +57,7 @@
     </label>
   </li>
 <% end %>
-<ul>
+</ul>
 <% end %>
 												</fieldset>
 											</form>
@@ -80,7 +73,7 @@
   <th><img src="/images/ico-against.gif" alt="" width="15" height="16" /></th>
   <th class="actions">Actions</th>
 </tr>
-                                                                                  <%= render :partial => 'deal_on_dashboard', :collection => @business.offers %>
+                                                                                  <%= render :partial => 'deal_on_dashboard', :collection => @businesses.collect(&:offers).flatten %>
 										</table>
 									</div>
 								</div>

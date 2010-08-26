@@ -10,22 +10,8 @@
 	<div id="wrapper">
 		<!-- wrapper-holder -->
 		<div class="wrapper-holder">
-			<!-- header -->
-			<div id="header">
-				<!-- logo -->
-				<h1 class="logo"><a href="#">Smartvark</a></h1>
-				<div class="account-area">
-					<!-- holder -->
-					<div class="holder">
-                                          <strong class="ttl">Welcome <span><%= @user.name %>!</span></strong>
-					</div>
-					<div class="frame">
-					<ul class="menu">
-                                          <li><%= link_to 'deal dashboard', dealdashboard_url %>
-					</ul>
-					</div>
-				</div><!-- /account-area end -->
-			</div>
+                  <!-- header -->
+                        <%= render :partial => 'welcome/business_header' %>
 			<!-- main -->
 			<div id="main">
 				<!-- main-holder -->

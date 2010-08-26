@@ -27,7 +27,7 @@ class BusinessesController < ApplicationController
   # GET /businesses/new
   # GET /businesses/new.xml
   def new
-    @businesses = current_user.businesses
+    @businesses = current_user.try(:businesses) || []
     @business = Business.new
   end
 

@@ -49,7 +49,7 @@
 												<ul class="social">
                                                                                                   <li>
                                                                                                   <% if @business.twitter_link.present? %>
-                                                                                                    <%= link_to image_tag('ico-twitter2.gif', :alt => 'twitter', :width => '23', :height => '24'),{},  { :href => @business.twitter_link }, :target => :_new %>
+                                                                                                    <%= link_to image_tag('ico-twitter2.gif', :alt => 'twitter', :width => '23', :height => '24'),{},  { :href => @business.twitter_link, :target => :_new } %>
                                                                                                   <% end %>
                                                                                                   </li>
                                                                                                   <li>
@@ -59,7 +59,7 @@
                                                                                                   </li>
                                                                                                   <li>
                                                                                                   <% if @business.yelp_url.present? %>
-                                                                                                    <%= link_to image_tag('ico-yelp.gif', :alt => 'yelp', :width => '23', :height => '24'), {}, { :href => @business.yelp_url, :target => :_new } %>
+                                                                                                    <%= link_to image_tag('ico-yelp.gif', :alt => 'yelp', :width => '23', :height => '24'), {}, { :href => @business.yelp_link, :target => :_new } %>
                                                                                                   <% end %>
                                                                                                   </li>
 												</ul>

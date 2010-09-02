@@ -142,9 +142,6 @@ class WelcomeController < ApplicationController
   def shout
     @offer = Offer.find(params[:id], :include => [ :business, :commenters ])
 
-    logger.info @offer.description
-    logger.info @offer.to_xml
-    logger.info @offer.commenters.to_xml
     unless @offer.commenters.include?(current_user)
       params[:comment][:offer_id] = @offer.id
       params[:comment][:business_id] = @offer.business_id

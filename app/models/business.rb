@@ -4,7 +4,7 @@ class Business < ActiveRecord::Base
   acts_as_mappable
   has_many :offers
   has_many :comments
-  belongs_to :business_user
+  belongs_to :user
 
   before_save :set_lat_lng
 

@@ -1,6 +1,8 @@
++ Bugfixs with user association with business
++ Fixed the image-upload bug:  'formtype mixed'
+
 + Knocked more stuff off the TODO list
 + A lot of changes with Wrobel - Session
-
 + Added data back in
 + Dealdash, new offer reflects businesses
 + Select all, select none

@@ -18,6 +18,8 @@ class WelcomeController < ApplicationController
     #TODO : Make this the owners business  check config/routes
     @businesses = current_user.businesses
     @business = current_user.businesses.first
+
+    @offers = @businesses.collect(&:offers).flatten
   end
 
   def printdeal

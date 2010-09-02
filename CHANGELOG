@@ -1,6 +1,9 @@
++ Added the edit functionality to the deal builder
++ Set all business to be checked by default, deal dashboard
++ All deals show by deal dashboard
+
 + Bugfixs with user association with business
 + Fixed the image-upload bug:  'formtype mixed'
-
 + Knocked more stuff off the TODO list
 + A lot of changes with Wrobel - Session
 + Added data back in

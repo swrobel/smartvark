@@ -52,7 +52,7 @@
 <% group.compact.each do |business| %>
   <li>
     <label>
-      <%= check_box_tag 'business_ids[]', business.id, business.id == @business.id, :class => 'chk' %>
+      <%= check_box_tag 'business_ids[]', business.id, true, :class => 'chk' %>
       <%= business.name %>
     </label>
   </li>

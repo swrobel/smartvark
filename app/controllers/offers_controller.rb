@@ -44,6 +44,7 @@ class OffersController < ApplicationController
   # GET /offers/1/edit
   def edit
     @offer = Offer.find(params[:id])
+    @business = @offer.business
     @businesses = current_user.businesses
   end
 

@@ -1,13 +1,26 @@
-<tr class="<%= 'archived' if deal_on_dashboard.archived? %>">
-  <td><%= deal_on_dashboard.business.short_or_name%></td>
-  <td><%= deal_on_dashboard.lead %></td>
-  <td><%= deal_on_dashboard.expiry_datetime.try(:strftime, '%m/%d/%Y') %></td>
-  <td><%= deal_on_dashboard.redemptions.length %></td>
-  <td><%= deal_on_dashboard.likes.length %></td>
-  <td><%= deal_on_dashboard.dislikes.length %></td>
-  <td>
-    <%= link_to image_tag("ico01.gif", :width =>'17', :height => '17'), viewdeal_path(deal_on_dashboard.to_param), :class => 'left' %>
-    <%= link_to image_tag("ico02.gif", :width =>'17', :height => '17'), viewdeal_path(deal_on_dashboard.to_param), :class => 'left' %>
-    <%= link_to image_tag("ico03.gif", :width =>'17', :height => '17'), deal_on_dashboard, :confirm => 'Are you sure?', :method => :delete, :class => 'left' %>
-</td>
+<table class="location">
+<tr>
+  <th class="loc">Location</th>
+  <th class="offer">Offer</th>
+  <th class="expiration">Expiration</th>
+  <th class="used">Used</th>
+  <th><img src="/images/ico-for.gif" alt="" width="15" height="16" /></th>
+  <th><img src="/images/ico-against.gif" alt="" width="15" height="16" /></th>
+  <th class="actions">Actions</th>
 </tr>
+<% @business.offers.each do |deal_on_dashboard| %>
+  <tr class="<%= 'archived' if deal_on_dashboard.archived? %>">
+    <td><%= deal_on_dashboard.business.short_or_name%></td>
+    <td><%= deal_on_dashboard.lead %></td>
+    <td><%= deal_on_dashboard.expiry_datetime.try(:strftime, '%m/%d/%Y') %></td>
+    <td><%= deal_on_dashboard.redemptions.length %></td>
+    <td><%= deal_on_dashboard.likes.length %></td>
+    <td><%= deal_on_dashboard.dislikes.length %></td>
+    <td>
+      <%= link_to image_tag("ico01.gif", :width =>'17', :height => '17'), viewdeal_path(deal_on_dashboard.to_param), :class => 'left' %>
+      <%= link_to image_tag("ico02.gif", :width =>'17', :height => '17'), viewdeal_path(deal_on_dashboard.to_param), :class => 'left' %>
+      <%= link_to image_tag("ico03.gif", :width =>'17', :height => '17'), deal_on_dashboard, :confirm => 'Are you sure?', :method => :delete, :class => 'left' %>
+    </td>
+  </tr>
+<% end %>
+</table>

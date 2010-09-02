@@ -53,7 +53,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.admin             'admin', :controller => "offers"
   map.category_mydeals  'mydeals/:category_id', :controller => "welcome", :action => :mydeals
-  map.dealdashboard     'dealdashboard/:id', :controller => "welcome", :action => :dealdashboard
+  map.dealdashboard     'dealdashboard/', :controller => "welcome", :action => :dealdashboard
   map.deals             'deals', :controller => "welcome", :action => :deals
   map.mydeals           'mydeals', :controller => "welcome", :action => :mydeals
   map.myprofile         'myprofile', :controller => "welcome", :action => :myprofile

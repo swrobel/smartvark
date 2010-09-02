@@ -10,4 +10,8 @@ class Category < ActiveRecord::Base
   def to_param
     "#{id}-#{CGI.escape(name)}"
   end
+
+  def self.all_except(list)
+    all :conditions => [ 'name not in (?)', list ]
+  end
 end

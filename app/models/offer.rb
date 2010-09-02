@@ -23,7 +23,10 @@ class Offer < ActiveRecord::Base
     :conditions => { :liked => false }
 
 
-  has_attached_file :coupon, :whiny_thumbnails => true
+#  has_attached_file :coupon, :whiny_thumbnails => true
+  def coupon
+    business.user.logo
+  end
 
   LIMIT = 5
 

@@ -1,8 +1,11 @@
+
+*HEAD
+DONE		* Deal Builder: Do not show All in categories list
+DONE		* Deal Builder: Logo should be attached to business account rather than to individual offer
+
 DONE		* All Biz pages: Link "Deal Dashboard" and "Business Profile" links in upper right to the appropriate pages
 DONE 		* Deal Dashboard: Link "Create Deal" button to Deal Builder page
 * Deal Dashboard: Should show all deals for selected locations (does not show anything currently)
-* Deal Builder: Do not show All in categories list
 DONE		* Deal Builder: Valid at the following locations should show all locations for current user (I believe this is an HTML formatting issue)
 * Deal Builder: "Activate Deal" button should create the deal and redirect to the Deal Dashboard with a success message
-* Deal Builder: Logo should be attached to business account rather than to individual offer
 DONE		* View Business: Yelp link should go to Yelp site. Twitter link should open in new window (as should Yelp).

@@ -62,19 +62,10 @@
 												</fieldset>
 											</form>
 										 </div>
-										<!-- location -->
-                                                                                <table class="location">
-<tr>
-  <th class="loc">Location</th>
-  <th class="offer">Offer</th>
-  <th class="expiration">Expiration</th>
-  <th class="used">Used</th>
-  <th><img src="/images/ico-for.gif" alt="" width="15" height="16" /></th>
-  <th><img src="/images/ico-against.gif" alt="" width="15" height="16" /></th>
-  <th class="actions">Actions</th>
-</tr>
-                                                                                  <%= render :partial => 'deal_on_dashboard', :collection => @businesses.collect(&:offers).flatten %>
-										</table>
+                                                                                 <!-- location -->
+                                                                                 <div id='deal_table'>
+                                                                                  <%= render :partial => 'deal_on_dashboard' %>
+                                                                              </div>
 									</div>
 								</div>
 								<!-- right-col -->

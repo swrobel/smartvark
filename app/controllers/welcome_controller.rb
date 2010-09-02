@@ -16,8 +16,8 @@ class WelcomeController < ApplicationController
 
   def dealdashboard
     #TODO : Make this the owners business  check config/routes
-    @business = current_user.businesses.find(params[:id])
     @businesses = current_user.businesses
+    @business = current_user.businesses.first
   end
 
   def printdeal

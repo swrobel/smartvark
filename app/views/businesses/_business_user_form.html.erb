@@ -1,5 +1,5 @@
 
-<% @user ||= BusinessUser.new %>
+<% @user ||= User.new %>
 <% form_for @user, :url => account_path do |f| %>
   <fieldset>
     <%= f.error_messages %>

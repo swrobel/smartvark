@@ -11,7 +11,7 @@
     </div>
     <div class="row">
       <%= f.label :category_id, 'Category', :class => :width1 %>
-      <%= f.select :category_id, options_from_collection_for_select(Category.all,'id','name',@offer.category_id),{}, {:class => :sel } %>
+      <%= f.select :category_id, options_from_collection_for_select(Category.all_except('All'),'id','name',@offer.category_id),{}, {:class => :sel } %>
       <div class="caption">
         <span>Category the deal will show up in on our site</span>
       </div>

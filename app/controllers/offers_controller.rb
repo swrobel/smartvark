@@ -30,7 +30,7 @@ class OffersController < ApplicationController
     :description => "You'll find a wide variety of great fall fashions on sale from now until September 1st. Bring a friend and get an additional 10% off.",
     :exclusivity_text => 'Offer valid Monday-Thursday. Not valid with any other offers.',
     :redemption_code => "HALFOFFJULY2010",
-    :expiry_datetime => 1.month.from_now,
+    :expiry_datetime => 1.month.from_now
     )
 
     @businesses = current_user.businesses

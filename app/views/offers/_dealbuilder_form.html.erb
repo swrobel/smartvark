@@ -76,7 +76,7 @@
 <% group.compact.each do |business| %>
   <li>
     <label>
-      <%= check_box_tag 'business_ids[]', business.id, false, :class => 'chk' %>
+      <%= check_box_tag 'offer[business_ids][]', business.id, false, :class => 'chk' %>
       <%= business.name %>
     </label>
   </li>
@@ -129,12 +129,14 @@
         <%= f.file_field :coupon %>
       </div>
     </div>
+    <%= f.hidden_field :draft %>
     <div class="btns-holder">
     <div class="center">
-    <ul class="btns">
-    <li><a href="#" class="activate-deal">Activate Deal</a></li>
-    <li><a href="#" class="save-draft">Save as Draft</a></li>
-    <li><a href="#" class="cancel">Cancel</a></li>
+      <ul class="btns">
+        <li><%= link_to_function "Activate Deal", "$(this).up('form').submit()", :class => 'activate-deal' %>
+        <li><%= link_to_function "Save as Draft", "$('offer_draft').value='true';$(this).up('form').submit()", :class => 'save-draft' %>
+        <li><%= link_to_function 'cancel', "if (confirm('Are you sure?')) { window.location.href='#{dealdashboard_url}';return true; } else { return false; }", :class => 'cancel' %></li>
+
     </ul><!-- /btns end -->
     </div>
   </div><!-- /btns-holder end -->

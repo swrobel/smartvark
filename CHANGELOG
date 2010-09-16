@@ -1,7 +1,12 @@
+Head
++ Added logic to show user name only when user logged in for business
++ Added require_user before filter to offers
++ Update to make activate, draft delete work
++ Offers created by business, NOTE: No error handling
+
 + Added the edit functionality to the deal builder
 + Set all business to be checked by default, deal dashboard
 + All deals show by deal dashboard
-
 + Bugfixs with user association with business
 + Fixed the image-upload bug:  'formtype mixed'
 + Knocked more stuff off the TODO list

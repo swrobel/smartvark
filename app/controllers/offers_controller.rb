@@ -1,4 +1,6 @@
 class OffersController < ApplicationController
+
+  before_filter :require_user
   # GET /offers
   # GET /offers.xml
   def index
@@ -51,12 +53,13 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.xml
   def create
-    @offer = Offer.new(params[:offer])
+
+    @offer = Offer.create_many_by_user_and_params(current_user, params[:offer])
 
     respond_to do |format|
-      if @offer.save
+      if @offer
         flash[:notice] = 'Offer was successfully created.'
-        format.html { redirect_to(@offer) }
+        format.html { redirect_to dealdashboard_path }
         format.xml  { render :xml => @offer, :status => :created, :location => @offer }
       else
         format.html { render :action => "new" }

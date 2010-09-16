@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100819065350) do
+ActiveRecord::Schema.define(:version => 20100916032812) do
 
   create_table "businesses", :force => true do |t|
     t.string   "name",                :limit => 50
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20100819065350) do
     t.string   "offer_type",          :limit => 20
     t.boolean  "allow_print"
     t.boolean  "allow_mobile"
+    t.boolean  "draft",                               :default => false
   end
 
   create_table "opinions", :force => true do |t|

@@ -71,4 +71,13 @@ class Offer < ActiveRecord::Base
 
   end
 
+  def self.create_many_by_user_and_params(current_user, params)
+    business_ids = params.delete('business_ids')
+    unless business_ids.blank?
+      current_user.businesses.find(business_ids).each do |business|
+        business.offers.create!(params)
+      end
+    end
+  end
+
 end

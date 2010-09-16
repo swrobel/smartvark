@@ -4,7 +4,9 @@
   <div class="account-area">
     <!-- holder -->
     <div class="holder">
-      <strong class="ttl">Welcome <span><%= current_user.name %>!</span></strong>
+      <% if logged_in? %>
+        <strong class="ttl">Welcome <span><%= current_user.name %>!</span></strong>
+      <% end %>
     </div>
     <div class="frame">
       <ul class="menu">

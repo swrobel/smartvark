@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100916032812) do
+ActiveRecord::Schema.define(:version => 20100916043654) do
 
   create_table "businesses", :force => true do |t|
     t.string   "name",                :limit => 50
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(:version => 20100916032812) do
     t.integer  "coupon_file_size"
     t.datetime "coupon_updated_at"
     t.string   "redemption_code",     :limit => 50
-    t.boolean  "archived"
+    t.boolean  "archived",                            :default => true
     t.date     "offer_active_on"
     t.string   "offer_type",          :limit => 20
     t.boolean  "allow_print"

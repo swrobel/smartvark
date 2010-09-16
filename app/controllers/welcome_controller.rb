@@ -51,9 +51,9 @@ class WelcomeController < ApplicationController
     end
 
     if location
-      @offers = Offer.all(:conditions => { :business_id => close_business_ids })
+      @offers = Offer.active.all(:conditions => { :business_id => close_business_ids })
     else
-      @offers = Offer.all
+      @offers = Offer.active
     end
 
     if session[:liked].blank? || params[:kill]
@@ -95,9 +95,9 @@ class WelcomeController < ApplicationController
     category_id = params[:category_id].to_i
     @offers = begin
                 if (category_id <= 1)
-                  Offer.all(:conditions => { :business_id => close_business_ids })
+                  Offer.active.all(:conditions => { :business_id => close_business_ids })
                 else
-                  Offer.all(:conditions => { :category_id => category_id,
+                  Offer.active.all(:conditions => { :category_id => category_id,
                             :business_id => close_business_ids  })
                 end
               end

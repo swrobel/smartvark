@@ -1,4 +1,5 @@
 class Offer < ActiveRecord::Base
+  named_scope :active, :conditions => {:archived => [false], :draft => false}, :order => 'created_at DESC'
 
   belongs_to :category
   belongs_to :business
@@ -78,6 +79,10 @@ class Offer < ActiveRecord::Base
         business.offers.create!(params)
       end
     end
+  end
+
+  def active?
+    !(draft? || archived?)
   end
 
   def status

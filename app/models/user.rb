@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
   has_many :comments
   has_many :opinions
+  has_many :all_opinions, :class_name => 'Opinion'
+
   has_many :redemptions
   has_many :user_audits
 
@@ -36,6 +38,6 @@ class User < ActiveRecord::Base
   end
 
   def likes_offers
-    @likes_offers = opinions.likes.collect(&:offer)
+    @likes_offers = opinions.likes.collect(&:offer).delete_if { |b| !b.active? }
   end
 end

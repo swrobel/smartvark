@@ -80,4 +80,12 @@ class Offer < ActiveRecord::Base
     end
   end
 
+  def status
+    if draft?
+      :draft
+    elsif archived?
+      :archived
+    end
+  end
+
 end

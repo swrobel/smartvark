@@ -1,5 +1,8 @@
 .archived  {
-  background-color: #DDD
+  background-color: #DDD;
+}
+.draft {
+  color: #F90;
 }
 .tryit-box {
 	background:url(../images/bg-welcome-box.gif) no-repeat;

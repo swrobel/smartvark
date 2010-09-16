@@ -1,4 +1,5 @@
 Head
++ Deal dashboard: Orange text for draft offers
 + Added logic to show user name only when user logged in for business
 + Added require_user before filter to offers
 + Update to make activate, draft delete work

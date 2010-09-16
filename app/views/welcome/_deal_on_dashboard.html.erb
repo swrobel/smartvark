@@ -9,7 +9,7 @@
   <th class="actions">Actions</th>
 </tr>
 <% @offers.each do |deal_on_dashboard| %>
-  <tr class="<%= 'archived' if deal_on_dashboard.archived? %>">
+  <tr class="<%= deal_on_dashboard.status %>">
     <td><%= deal_on_dashboard.business.short_or_name%></td>
     <td><%= deal_on_dashboard.lead %></td>
     <td><%= deal_on_dashboard.expiry_datetime.try(:strftime, '%m/%d/%Y') %></td>

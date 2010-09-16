@@ -1,9 +1,8 @@
 *HEAD
 
 * Deal Dashboard: Should show all deals for selected locations (does not show anything currently)
-View Deal page -- Get "Expired" icon in place of Deal
-* need expired icon
 
+DONE		View Deal page -- Get "Expired" icon in place of Deal
 DONE 		*New offer
 			-- show all locations
 			-- create offer for each location

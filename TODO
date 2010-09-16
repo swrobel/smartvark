@@ -1,9 +1,15 @@
 *HEAD
-Nothing for this commit
 
 * Deal Dashboard: Should show all deals for selected locations (does not show anything currently)
-* Deal Builder: "Activate Deal" button should create the deal and redirect to the Deal Dashboard with a success message
+View Deal page -- Get "Expired" icon in place of Deal
+* need expired icon
 
+DONE 		*New offer
+			-- show all locations
+			-- create offer for each location
+DONE		* Edit offer -- show uneditable specific location
+DONE	 	* Delete/Archive offer -- Don't show in users deal cart thing
+DONE		* Deal Builder: "Activate Deal" button should create the deal and redirect to the Deal Dashboard with a success message
 DONE		* Deal Builder: Do not show All in categories list
 DONE		* Deal Builder: Logo should be attached to business account rather than to individual offer
 DONE		* All Biz pages: Link "Deal Dashboard" and "Business Profile" links in upper right to the appropriate pages

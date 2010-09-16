@@ -70,18 +70,23 @@
               <li id='biz_false'>
                 <a href="#" onClick="checkall(false)">Select None</a>
               </li>
-          </ul>
-<% @businesses.in_groups_of(4) do |group| %>
-<ul class="row">
-<% group.compact.each do |business| %>
-  <li>
-    <label>
-      <%= check_box_tag 'offer[business_ids][]', business.id, false, :class => 'chk' %>
-      <%= business.name %>
-    </label>
-  </li>
-<% end %>
-</ul>
+            </ul>
+            <% if @offer.new_record? %>
+  <% @businesses.in_groups_of(4) do |group| %>
+  <ul class="row">
+  <% group.compact.each do |business| %>
+    <li>
+      <label>
+        <%= check_box_tag 'offer[business_ids][]', business.id, false, :class => 'chk' %>
+        <%= business.name %>
+      </label>
+    </li>
+  <% end %>
+  </ul>
+  <% end %>
+<% else %>
+  <%= check_box_tag 'business_id_holder', @offer.business.id, true, :class => 'chk', :disabled => true %>
+  <%= @offer.business.name %>
 <% end %>
       </div><!-- /options-form end -->
     </div>

@@ -1,5 +1,9 @@
 
 Head
+
++ Fixed expire/redemption image issue
++ Added a little security to the dealdashboard offers
+
 + Added expires image on viewdeal where applicable
 + Added order for dealdashbord
 

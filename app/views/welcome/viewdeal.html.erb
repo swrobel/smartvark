@@ -67,7 +67,7 @@
 										<div class="info-area">
 											<!-- img -->
                                                                                         <div class="img">
-                                                                                          <%= image_tag @offer.proper_image, :alt => 'image', :width => 350, :height => 200 %>
+                                                                                          <%= image_tag @offer.coupon.url, :alt => 'image', :width => 350, :height => 200 %>
 											</div>
 											<!-- info-box -->
                                                                                         <div class="info-box">
@@ -75,9 +75,13 @@
                                                                                           <p>
                                                                                           <%= link_to 'Map It', {}, :target => '_new', :href => "http://maps.google.com?q=#{@offer.business.address_as_string}" %>
                                                                                           </p>
-                                                                                          <a href="" id="btn-redeem<%= '-signup' unless logged_in? %>-open" class="btn">Redeem</a>
+                                                                                          <% if @offer.expired? %>
+                                                                                            <%= image_tag('btn-expired.gif') %>
+                                                                                          <% else %>
+                                                                                            <a href="" id="btn-redeem<%= '-signup' unless logged_in? %>-open" class="btn">Redeem</a>
                                                                                               <!-- Redeem popup -->
                                                                                               <%= render :partial => 'redeem' %>
+                                                                                            <% end %>
 											</div>
                                                                                       </div>
 										<!-- information -->

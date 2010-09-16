@@ -41,17 +41,22 @@ class User < ActiveRecord::Base
     @likes_offers = opinions.likes.collect(&:offer).delete_if { |b| !b.active? }
   end
 
-  def offers_sorted_for_dealdashboard
+  def offers_sorted_for_dealdashboard(other_business_ids=nil)
+    these_business_ids = if other_business_ids.blank?
+                           business_ids
+                         else
+                           other_business_ids & business_ids
+                         end
     Offer.active.all(
-      :conditions => { :business_id => business_ids },
+      :conditions => { :business_id => these_business_ids },
       :include => [ :business ],
       :order => "businesses.`name`, offers.`expiry_datetime`") +
     Offer.draft.all(
-      :conditions => { :business_id => business_ids },
+      :conditions => { :business_id => these_business_ids },
       :include => [ :business ],
       :order => "businesses.`name`, offers.`expiry_datetime`") +
     Offer.archived.all(
-      :conditions => { :business_id => business_ids },
+      :conditions => { :business_id => these_business_ids },
       :include => [ :business ],
       :order => "businesses.`name`, offers.`expiry_datetime`")
 

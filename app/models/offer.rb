@@ -95,4 +95,12 @@ class Offer < ActiveRecord::Base
     end
   end
 
+  def proper_image
+    if archived?
+      File.join '/', 'images','btn-expired.gif'
+    else
+      coupon.url
+    end
+  end
+
 end

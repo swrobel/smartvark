@@ -1,5 +1,7 @@
 
 Head
++ Added order for dealdashbord
+
 + Merged notes into TODO
 + Offer "edit" page shows current, disabled, business
 + Mydeals, deals only show active (no drafts, archived)

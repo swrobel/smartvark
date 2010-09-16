@@ -19,7 +19,7 @@ class WelcomeController < ApplicationController
     @businesses = current_user.businesses
     @business = current_user.businesses.first
 
-    @offers = @businesses.collect(&:offers).flatten
+    @offers = current_user.offers_sorted_for_dealdashboard
   end
 
   def printdeal

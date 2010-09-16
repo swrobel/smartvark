@@ -96,7 +96,7 @@ class Offer < ActiveRecord::Base
   end
 
   def expired?
-    (expiry_datetime < DateTime.now) rescue false
+    archived? || ((expiry_datetime < DateTime.now) rescue false)
   end
 
 end

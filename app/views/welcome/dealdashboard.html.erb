@@ -38,21 +38,26 @@
 										<div class="options-form">
 													<ul class="options">
               <li class="active" id='biz_true'>
-                <a href="#" onClick="checkall(true);">Select All </a>
+                <a href="#" onClick="checkall(true); <%= remote_function(:update => "deal_table", :url => { :action => :filter_deals}, :with => "Form.serialize($('business'))") %> ">Select All</a>
               </li>
               <li id='biz_false'>
-                <a href="#" onClick="checkall(false);">Select None</a>
+              <a href="#" onClick="checkall(false); <%= remote_function(:update => "deal_table", :url => { :action => :filter_deals}, :with => "Form.serialize($('business'))") %> ">Select None</a>
               </li>
 
                                                                                                               </ul>
-											<form action="#">
+                                                                                              <form id='business'>
 												<fieldset>
 <% @businesses.in_groups_of(4) do |group| %>
 <ul class="row">
 <% group.compact.each do |business| %>
   <li>
     <label>
-      <%= check_box_tag 'business_ids[]', business.id, true, :class => 'chk' %>
+      <%= check_box_tag 'business_ids[]', business.id, true, :class => 'chk',
+        :onclick => remote_function(:update => "deal_table",
+                                    :url => { :action => :filter_deals},
+                                    :with => "Form.serialize(this.form)"
+                                   )
+      %>
       <%= business.name %>
     </label>
   </li>

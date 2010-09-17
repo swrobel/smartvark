@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   end
 
   def offers_sorted_for_dealdashboard(other_business_ids=nil)
-    these_business_ids = if other_business_ids.blank?
+    these_business_ids = if other_business_ids.nil?
                            business_ids
                          else
                            other_business_ids & business_ids

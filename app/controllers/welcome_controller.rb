@@ -22,6 +22,12 @@ class WelcomeController < ApplicationController
     @offers = current_user.offers_sorted_for_dealdashboard
   end
 
+  def filter_deals
+    business_ids = params[:business_ids].map(&:to_i) rescue []
+    @offers = current_user.offers_sorted_for_dealdashboard(business_ids)
+    render :partial => 'deal_on_dashboard'
+  end
+
   def printdeal
     @offer = Offer.find params[:id]
   end

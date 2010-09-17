@@ -1,12 +1,12 @@
 
 Head
++ AJAXified the select_all, select_none, and business_checkboxes
+  on the deal dashboard page
 
 + Fixed expire/redemption image issue
 + Added a little security to the dealdashboard offers
-
 + Added expires image on viewdeal where applicable
 + Added order for dealdashbord
-
 + Merged notes into TODO
 + Offer "edit" page shows current, disabled, business
 + Mydeals, deals only show active (no drafts, archived)
@@ -15,7 +15,6 @@ Head
 + Added require_user before filter to offers
 + Update to make activate, draft delete work
 + Offers created by business, NOTE: No error handling
-
 + Added the edit functionality to the deal builder
 + Set all business to be checked by default, deal dashboard
 + All deals show by deal dashboard

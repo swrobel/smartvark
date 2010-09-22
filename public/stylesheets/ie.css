@@ -10,6 +10,8 @@
 * html .promo-section a { margin-top: expression(this.parentNode.offsetHeight > this.offsetHeight ? ((this.parentNode.offsetHeight-this.offsetHeight)/2 + "px") : "0"); }
 * html .gallery ul .frame div{ margin-top: expression(this.parentNode.offsetHeight > this.offsetHeight ? ((this.parentNode.offsetHeight-this.offsetHeight)/2 + "px") : "0"); }
 *+html .gallery ul .frame div{ margin-top: expression(this.parentNode.offsetHeight > this.offsetHeight ? ((this.parentNode.offsetHeight-this.offsetHeight)/2 + "px") : "0"); }
+* html .section-inner .gallery ul .frame div{margin-top:0;}
+*+html .section-inner .gallery ul .frame div{margin-top:0;}
 * html .two-columns .t {
 	background: url(none.gif);
 	filter: progid:dximagetransform.microsoft.alphaimageloader(src='images/bg-two-columns-t.png', sizingmethod='crop');

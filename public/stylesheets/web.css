@@ -568,8 +568,6 @@ td, th{padding:0;}
 }
 .gallery{
   float:left;
-  padding-right:10px;
-  max-width:375px;
   max-height:515px;
   overflow:hidden;
 }
@@ -598,7 +596,11 @@ td, th{padding:0;}
 }
 .gallery ul .frame img{
 	vertical-align:top;
-	border:5px solid #fefbfb;
+	border:none;
+}
+.gallery ul .frame .img_box{
+	height:208px;
+	width:200px;
 }
 .gallery ul .frame a:hover img{border-color:#add2ee;}
 /* rate box */
@@ -627,6 +629,87 @@ td, th{padding:0;}
 	font-size:12px;
 }
 .info-section .info p{margin:0 0 18px;}
+.section-inner .info{
+	margin:6px -13px 0 0;
+}
+.section-inner{
+	background-position: 416px 0;
+	margin:0 0 0 -18px;
+	width:559px;
+}
+.section-inner .gallery{
+	margin-top:6px;
+	width:418px;
+}
+.section-inner .gallery ul{padding:0 0 20px 2px;}
+.section-inner .gallery ul li{
+	width:207px;
+	margin: 0;
+	display: inline;
+	padding: 0 0 20px 0;
+}
+.section-inner .gallery ul .frame{
+	width:201px;
+	height:auto;
+	display:block;
+	height: 208px;
+}
+.section-inner .gallery ul .frame a{
+  border:1px solid #7D7D7D;
+  cursor:pointer;
+  display:block;
+  height:208px;
+  position:relative;
+}
+.section-inner .gallery ul .frame a:hover{
+	border-color:#add2ee;
+}
+.section-inner .gallery ul .frame a:hover strong,
+.section-inner .gallery ul .frame a:hover{text-decoration: none;}
+.section-inner .gallery ul .frame a strong{
+  background:none repeat scroll 0 0 #3FB52B;
+  color:#FFFFFF;
+  display:block;
+  font:20px/28px "Trebuchet MS",Arial,Helvetica,sans-serif;
+  height:30px;
+  left:0;
+  overflow:hidden;
+  position:absolute;
+  text-align:center;
+  top:0;
+  width:200px;
+}
+.section-inner .gallery ul .frame a .coupon{background:#3FB52B;}
+.section-inner .gallery ul .frame a .deal{background:#ff5f00;}
+.section-inner .gallery ul .frame a .event{background:#238ecb;}
+.section-inner .gallery ul .frame a span{
+	color: #333;
+	width:180px;
+	height:51px;
+	position: absolute;
+	left: 1px;
+	top: 158px;
+	text-align: center;
+	font:18px/22px Arial, Helvetica, sans-serif;
+	padding: 0 11px;
+}
+.section-inner .gallery .rate{
+	padding:0 0 0 31px;
+	overflow:hidden;
+	width:160px;
+	position:static;
+	margin-top: 6px;
+}
+.section-inner .gallery .rate a{
+	margin:0 5px;
+	float:left;
+}
+.section-inner .gallery .rate .link {
+	color: #666;
+	font-size:13px;
+	line-height:26px;
+	color:#666;
+}
 /* share box */
 .share{
 	width:100%;
@@ -840,6 +923,7 @@ td, th{padding:0;}
 #footer {
 	background:url(../images/bg-footer.gif) no-repeat;
 	width:878px;
+
 	padding:5px 0 0;
 	text-align:center;
 	color:#fff;

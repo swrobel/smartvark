@@ -99,17 +99,14 @@ class WelcomeController < ApplicationController
   def mydeals
     session.delete(:liked)
     category_id = params[:category_id].to_i
-    @offers = begin
-                if (category_id <= 1)
-                  Offer.active.all(:conditions => { :business_id => close_business_ids })
-                  @likes = current_user.likes_offers[0,7]
-                else
-                  @likes = current_user.likes_offers(category_id)[0,7]
-                  Offer.active.all(:conditions => { :category_id => category_id,
+    if (category_id <= 1)
+      @likes = current_user.likes_offers[0,7]
+      @offers = Offer.active.all(:conditions => { :business_id => close_business_ids })
+    else
+      @likes = current_user.likes_offers(category_id)[0,7]
+      @offers = Offer.active.all(:conditions => { :category_id => category_id,
                             :business_id => close_business_ids  })
-                end
-              end
-
+    end
   end
 
   def set_opinion

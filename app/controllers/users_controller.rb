@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
       flash[:notice] = "Account registered!"
       UserSession.new(params[:user])
-      redirect_to mydeals_url
+      redirect_to @user.business? ? mydeals_url : new_business_path
     else
       render :action => :new
     end
@@ -41,8 +41,7 @@ class UsersController < ApplicationController
     @user = @current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
-      #redirect_to account_url
-      redirect_to myprofile_url
+      redirect_to @user.business? ? new_business_path : myprofile_path
     else
       #render :action => :edit
       render :controller => 'welcome', :action => :myprofile

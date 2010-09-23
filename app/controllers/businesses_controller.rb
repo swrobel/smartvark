@@ -45,7 +45,7 @@ class BusinessesController < ApplicationController
     respond_to do |format|
       if @business.save
         flash[:notice] = 'Business was successfully created.'
-        format.html { redirect_to(@business) }
+        format.html { redirect_to new_business_path }
         format.xml  { render :xml => @business, :status => :created, :location => @business }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class BusinessesController < ApplicationController
     respond_to do |format|
       if @business.update_attributes(params[:business])
         flash[:notice] = 'Business was successfully updated.'
-        format.html { redirect_to(@business) }
+        format.html { redirect_to(new_business_path) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

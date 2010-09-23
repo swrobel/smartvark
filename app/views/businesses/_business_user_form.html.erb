@@ -11,6 +11,8 @@
     <div class="row"><%= f.password_field :password, :class => 'txt' %></div>
     <label for='password_confirmation'><span>Password Confirmation</span><span class="inf">Info</span></label>
     <div class="row"><%= f.password_field :password_confirmation, :class => 'txt' %></div>
+
+    <div class='row'><%= image_tag @user.logo.url(:thumb) if @user.logo.exists? %></div>
     <label for='logo'><span>Upload logo</span><span class="inf">Info</span></label>
     <div class='row'><%= f.file_field :logo %></div>
 

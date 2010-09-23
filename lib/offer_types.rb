@@ -1,1 +1,1 @@
-OfferTypes = OfferType.all.collect(&:name) #Backwards compatibility
+OfferTypes = OfferType.all.map { |offer| offer.name.capitalize } #Backwards compatibility

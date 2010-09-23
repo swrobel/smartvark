@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
       flash[:notice] = "Account registered!"
       UserSession.new(params[:user])
-      redirect_to @user.business? ? mydeals_url : new_business_path
+      redirect_to @user.business? ? new_business_path : mydeals_url
     else
       render :action => :new
     end

@@ -78,7 +78,7 @@
     <li>
       <label>
         <%= check_box_tag 'offer[business_ids][]', business.id, true, :class => 'chk' %>
-        <%= business.name %>
+        <%= business.short_or_name %>
       </label>
     </li>
   <% end %>

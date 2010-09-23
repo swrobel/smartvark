@@ -1,6 +1,15 @@
-*HEAD
+* My Deals/Try It: My Picks links should be <Business Name>: <Deal Title>
+* My Deals/Try It: Colored COUPON area should change based on whether it's a DEAL or EVENT or COUPON
+* My Deals/Try It: Coupons - hidden vs overflow
+* My Deals: Category filter should affect My Picks as well
+* Search: Business name should be part of the link as well as the offer title
+* Search: What can we do with the map?
+* Deal Builder: "Save as Draft" should create draft deal and redirect to the Deal Dashboard with a success message (currently redirects but does not show in list - it is in DB)
+* Deal Builder: Newly created deals should not be automatically archived (schema.rb has archived column default = true)
+* User.rb/Offer.rb: use of ` screws up postgres on heroku
+* Add /biz/ login/redirect to dealdashboard
 
-* Deal Dashboard: Should show all deals for selected locations (does not show anything currently)
+DONE        * Deal Dashboard: Should show all deals for selected locations (does not show anything currently)
 
 DONE		View Deal page -- Get "Expired" icon in place of Deal
 DONE 		*New offer

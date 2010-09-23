@@ -1,8 +1,12 @@
 
 Head
+! Updated TODO
+! Added favicon
+! Added new style to mydeals.erb/deals.erb to reflect changes from the designer (also modified css and application_helper)
+! Upgraded paperclip to 2.3.3 to fix upload bug with imagemagick. Added code to user.rb to auto-resize.
+
 + AJAXified the select_all, select_none, and business_checkboxes
   on the deal dashboard page
-
 + Fixed expire/redemption image issue
 + Added a little security to the dealdashboard offers
 + Added expires image on viewdeal where applicable

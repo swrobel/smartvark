@@ -1,5 +1,4 @@
-<div class="account-area">
-  <a href="" id="btn-signup-open" class="btn-signup-open">Sign up</a>
+  <a href="" id="btn-signup-open" class="btn-signup-open">New user</a>
   <div id='signup-popup' class="popup">
     <% @user ||= User.new %>
     <% form_for @user, :url => account_path do |f| %>
@@ -27,4 +26,3 @@
       </fieldset>
     <% end %>
   </div>
-</div>

@@ -9,7 +9,7 @@
           <!-- progress-bar -->
           <div class="progress-bar"><span style="width:78px">&nbsp;</span></div>
         </div>
-        <p>profile 50% complete</p>
+        <p>not you? <%= link_to "log out", logout_url %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;profile 50% complete</p>
       </div>
     </div>
     <div class="frame">
@@ -25,7 +25,8 @@
   <div class="right">
     <div class="frame">
       <div class="account-area">
-        <a href="" id="btn-signin-open" class="btn-signin-open">Sign in</a>
+        <a href="" id="btn-signin-open" class="btn-signin-open">Sign in</a> or
+        <%= render :partial => 'users/signup' %>
         <!-- popup -->
         <%= render :partial => 'user_sessions/popup' %>
       </div>

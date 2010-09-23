@@ -1241,8 +1241,7 @@ td, th{padding:0;}
 	position:relative;
 }
 .btn-signup-open{
-        float:right;
-	color:#2264a6;
+    color:#2264a6;
 	text-decoration:underline;
 }
 .btn-signin-open{
@@ -1250,6 +1249,7 @@ td, th{padding:0;}
 	text-decoration:underline;
 }
 .btn-signin-open:hover{text-decoration:none;}
+.btn-signup-open:hover{text-decoration:none;}
 .account-area .holder{
 	float:right;
 	padding:15px 0 4px;

@@ -1,9 +1,10 @@
 <div class="item">
   <div class="text">
     <h3><span>
-        <%= search_offer_counter +1 %>. <%= search_offer.business.name %>
-      </span>
-      <%= link_to search_offer.lead, viewdeal_url(search_offer.to_param) %></h3>
+        <%= search_offer_counter +1 %>.
+          <%= link_to "#{search_offer.business.name} #{search_offer.lead}" , viewdeal_url(search_offer.to_param) %>
+        </span>
+      </h3>
     <p><%= search_offer.description || 'No description' %></p>
   </div>
   <%= render :partial => 'offer_address', :object=> search_offer %>

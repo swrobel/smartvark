@@ -1,5 +1,4 @@
 * My Deals/Try It: Coupons - hidden vs overflow
-* Search: Business name should be part of the link as well as the offer title
 * Search: What can we do with the map?
 * Biz Profile: Biz Profile save (right save button) -> Redirects to my deals; should stay on same page but show success message
 * Biz Profile: Location Profile save (left save button) -> Redirects to unformatted edit page; should stay on same page but show success message
@@ -16,8 +15,9 @@
 
 DONE
 
-* My Deals: Category filter should affect My Picks as well
+* Search: Business name should be part of the link as well as the offer title
 
+* My Deals: Category filter should affect My Picks as well
 * My Deals/Try It: Colored COUPON area should change based on whether it's a DEAL or EVENT or COUPON
 * Deal Builder: Newly created deals should not be automatically archived (schema.rb has archived column default = true)
 

@@ -76,7 +76,7 @@ class OffersController < ApplicationController
     respond_to do |format|
       if @offer.update_attributes(params[:offer])
         flash[:notice] = 'Offer was successfully updated.'
-        format.html { redirect_to(@offer) }
+        format.html { redirect_to dealdashboard_path }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

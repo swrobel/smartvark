@@ -1,16 +1,20 @@
-* My Deals/Try It: Coupons - hidden vs overflow
-* Search: What can we do with the map?
+
 * Biz Profile: Biz Profile save (right save button) -> Redirects to my deals; should stay on same page but show success message
 * Biz Profile: Location Profile save (left save button) -> Redirects to unformatted edit page; should stay on same page but show success message
 * Biz Profile: Show logo image if it has been uploaded
-* Deal Builder: Activate Deal/Save as Draft -> Redirects to unformatted offer page; should be deal dashboard w/ success message
+
 * Deal Builder: "Save as Draft" should create draft deal and redirect to the Deal Dashboard with a success message (currently redirects but does not show in list - it is in DB)
 * Deal Builder: Editing an archived deal and clicking "Activate Deal" should un-archive it as long as expiration date is in the future
 * Deal Builder: Creating new deal doesn't show logo in bottom right area if available
-* Deal Builder: Dropdowns for "offer type" and "category" should have a blank default selection
-* Deal Builder: Are there other available styles for the datepicker?
+
+Backburner
+* My Deals/Try It: Coupons - hidden vs overflow   	NOTE:  Comeback later
+* Search: What can we do with the map? 			NOTE: Individual pin colors possible?
+* Deal Builder: Are there other available styles for the datepicker?  NOTE: Styles for nonobtrusive datepicker?
 
 DONE
+* Deal Builder: Dropdowns for "offer type" and "category" should have a blank default selection
+* Deal Builder: Activate Deal/Save as Draft -> Redirects to unformatted offer page; should be deal dashboard w/ success message
 
 * Deal Builder: Capitalize "offer type" choices
 * Deal Builder: Logo upload broken; please remove for now

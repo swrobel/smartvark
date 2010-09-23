@@ -17,9 +17,9 @@
     <td><%= deal_on_dashboard.likes.length %></td>
     <td><%= deal_on_dashboard.dislikes.length %></td>
     <td>
-      <%= link_to image_tag("ico01.gif", :width =>'17', :height => '17'), viewdeal_path(deal_on_dashboard.to_param), :class => 'left' %>
-      <%= link_to image_tag("ico02.gif", :width =>'17', :height => '17'), edit_offer_path(deal_on_dashboard.to_param), :class => 'left' %>
-      <%= link_to image_tag("ico03.gif", :width =>'17', :height => '17'), deal_on_dashboard, :confirm => 'Are you sure?', :method => :delete, :class => 'left' %>
+      <%= link_to image_tag("ico-view.png", :width =>'16', :height => '16'), viewdeal_path(deal_on_dashboard.to_param), :class => 'left' %>
+      <%= link_to image_tag("ico-edit.png", :width =>'16', :height => '16'), edit_offer_path(deal_on_dashboard.to_param), :class => 'left' %>
+      <%= link_to image_tag("ico-delete.png", :width =>'16', :height => '16'), deal_on_dashboard, :confirm => 'Are you sure you want to delete this deal?', :method => :delete, :class => 'left' %>
     </td>
   </tr>
 <% end %>

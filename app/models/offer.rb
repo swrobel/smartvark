@@ -25,6 +25,13 @@ class Offer < ActiveRecord::Base
     :class_name => 'Opinion',
     :conditions => { :liked => false }
 
+  before_update :unarchive_if_draft_or_activated
+
+
+  def set_to_archived
+    @do_not_unarchive=true
+    update_attribute(:archived,true)
+  end
 
 #  has_attached_file :coupon, :whiny_thumbnails => true
   def coupon
@@ -95,8 +102,18 @@ class Offer < ActiveRecord::Base
     end
   end
 
-  def expired?
-    archived? || ((expiry_datetime < DateTime.now) rescue false)
+  def expired_by_date?
+    ((expiry_datetime < DateTime.now) rescue false)
   end
 
+  def expired?
+    archived? || expired_by_date?
+  end
+
+  def unarchive_if_draft_or_activated
+    if archived? && !expired_by_date? && @do_not_unarchive.nil?
+      self.archived=false
+    end
+    true
+  end
 end

@@ -55,6 +55,7 @@ class OffersController < ApplicationController
   def create
 
     @offer = Offer.create_many_by_user_and_params(current_user, params[:offer])
+    @business = Business.new  #TODO: Set to incoming business
 
     respond_to do |format|
       if @offer
@@ -72,6 +73,8 @@ class OffersController < ApplicationController
   # PUT /offers/1.xml
   def update
     @offer = Offer.find(params[:id])
+    @business = @offer.business
+    @businesses = current_user.businesses
 
     respond_to do |format|
       if @offer.update_attributes(params[:offer])
@@ -89,7 +92,7 @@ class OffersController < ApplicationController
   # DELETE /offers/1.xml
   def destroy
     @offer = Offer.find(params[:id])
-    @offer.update_attribute(:archived, true)
+    @offer.set_to_archived
 
     respond_to do |format|
       format.html { redirect_to(dealdashboard_url(:id => @offer.business_id)) }

@@ -5,7 +5,11 @@ module ApplicationHelper
   end
 
   def coupon_body(offer)
-     "<span id='#{offer.id}_lead'>#{offer.lead}</span>"
+     "<span id='#{offer.id}_lead' class='subttl'>#{offer.lead}</span>
+     <p id='#{offer.id}_diz'>#{offer.description}  Offer expires <span id='#{offer.id}_ed'>#{offer.expiry_datetime.try(:strftime,('%b. %d, %Y'))}<span></p>
+     <div class='code'>
+       <p id='#{offer.id}_rc'>#{offer.redemption_code}</p>
+     </div>"
   end
 
   def deal_coupon(offer)
@@ -17,7 +21,7 @@ module ApplicationHelper
     "
     </div>
     <strong>COUPON</strong>
-    #{coupon_body offer}
+    <span id='#{offer.id}_lead'>#{offer.lead}</span>
     ", viewdeal_url(offer.to_param),
               :onMouseOver => "$('offer_info_rollover').update('#{info_for_rollover(offer)}');",
               :onMouseOut => "$('offer_info_rollover').update('');"

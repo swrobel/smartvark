@@ -18,14 +18,14 @@
     </div>
     <div class="row">
       <%= f.label :offer_active_on, 'Begin Date' %>
-      <%= f.unobtrusive_date_picker :offer_active_on %>
+      <%= f.unobtrusive_date_picker :offer_active_on, { :use_short_month => true, :order => [:month, :day, :year] } %>
       <div class="caption sp1">
         <span>Date deal becomes active</span>
       </div>
     </div>
     <div class="row">
       <%= f.label :expiry_datetime , 'Expiry Date' %>
-      <%= f.unobtrusive_date_picker :expiry_datetime %>
+      <%= f.unobtrusive_date_picker :expiry_datetime, { :use_short_month => true, :order => [:month, :day, :year] } %>
       <div class="caption sp1">
         <span>Date deal expires (end of day)</span>
       </div>

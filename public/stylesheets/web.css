@@ -1554,7 +1554,7 @@ td, th{padding:0;}
 	font-size:14px;
 	margin:0;
 }
-.offer-form .sp1{padding-top:5px;}
+.offer-form .sp1{padding-top:5px; width:320px;}
 /* text-box */
 .text-box{
 	width:584px;

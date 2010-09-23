@@ -50,7 +50,7 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing or commenting them out if you're using named routes and resources.
   # config/routes.rb
   map.resource :user_session
-
+  map.biz               'biz', :controller => "user_sessions", :action => :new
   map.admin             'admin', :controller => "offers"
   map.category_mydeals  'mydeals/:category_id', :controller => "welcome", :action => :mydeals
   map.dealdashboard     'dealdashboard/', :controller => "welcome", :action => :dealdashboard
@@ -63,9 +63,7 @@ ActionController::Routing::Routes.draw do |map|
   map.viewdeal          'viewdeal/:id', :controller => "welcome", :action => :viewdeal
   map.shout             'shout/:id', :controller => "welcome", :action => :shout, :conditions => { :method => :post }
 
-  map.root :controller => "welcome"
 
-  #map.login '/login', :controller => 'user_sessions', :action => :new
   map.logout '/logout',:controller => 'user_sessions', :action => :destroy
 
   # config/routes.rb
@@ -74,4 +72,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+
+  map.root :controller => "welcome"
 end

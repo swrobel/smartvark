@@ -1,4 +1,4 @@
-<h1>Login</h1>
+<h1>Business Login</h1>
 
 <% form_for @user_session, :url => user_session_path do |f| %>
   <%= f.error_messages %>
@@ -12,5 +12,3 @@
   <br />
   <%= f.submit "Login" %>
 <% end %>
-
-<%= render :partial => 'test' %>

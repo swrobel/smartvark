@@ -11,12 +11,12 @@
 * Deal Builder: Capitalize "offer type" choices
 * Deal Builder: Dropdowns for "offer type" and "category" should have a blank default selection
 * Deal Builder: Are there other available styles for the datepicker?
-* Add /biz/ login/redirect to dealdashboard
 
 DONE
 
-* Search: Business name should be part of the link as well as the offer title
+* Add /biz/ login/redirect to dealdashboard
 
+* Search: Business name should be part of the link as well as the offer title
 * My Deals: Category filter should affect My Picks as well
 * My Deals/Try It: Colored COUPON area should change based on whether it's a DEAL or EVENT or COUPON
 * Deal Builder: Newly created deals should not be automatically archived (schema.rb has archived column default = true)

@@ -50,6 +50,7 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing or commenting them out if you're using named routes and resources.
   # config/routes.rb
   map.resource :user_session
+  map.root              :controller => "welcome", :action => :deals
   map.biz               'biz', :controller => "user_sessions", :action => :new
   map.admin             'admin', :controller => "offers"
   map.category_mydeals  'mydeals/:category_id', :controller => "welcome", :action => :mydeals

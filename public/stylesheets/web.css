@@ -590,8 +590,6 @@ td, th{padding:0;}
 	height:106px;
 }
 .gallery ul .frame div{
-	display:table-cell;
-	vertical-align:middle;
 	text-align:center;
 }
 .gallery ul .frame img{
@@ -599,8 +597,9 @@ td, th{padding:0;}
 	border:none;
 }
 .gallery ul .frame .img_box{
-	height:208px;
-	width:200px;
+	height:120px;
+    margin-top:6px;
+    overflow:hidden;
 }
 .gallery ul .frame a:hover img{border-color:#add2ee;}
 /* rate box */
@@ -652,13 +651,12 @@ td, th{padding:0;}
 	width:201px;
 	height:auto;
 	display:block;
-	height: 208px;
+	height: auto;
 }
 .section-inner .gallery ul .frame a{
   border:1px solid #7D7D7D;
   cursor:pointer;
   display:block;
-  height:208px;
   position:relative;
 }
 .section-inner .gallery ul .frame a:hover{
@@ -667,32 +665,24 @@ td, th{padding:0;}
 .section-inner .gallery ul .frame a:hover strong,
 .section-inner .gallery ul .frame a:hover{text-decoration: none;}
 .section-inner .gallery ul .frame a strong{
-  background:none repeat scroll 0 0 #3FB52B;
+  background:none repeat scroll 0 0;
   color:#FFFFFF;
   display:block;
   font:20px/28px "Trebuchet MS",Arial,Helvetica,sans-serif;
-  height:30px;
-  left:0;
-  overflow:hidden;
-  position:absolute;
   text-align:center;
   text-transform: uppercase;
-  top:0;
-  width:200px;
 }
-.section-inner .gallery ul .frame a strong.c_coupon{background:#3FB52B;}
-.section-inner .gallery ul .frame a strong.c_deal{background:#ff5f00;}
-.section-inner .gallery ul .frame a strong.c_event{background:#238ecb;}
+.section-inner .gallery ul .frame a .c_coupon{background:#3FB52B;}
+.section-inner .gallery ul .frame a .c_deal{background:#ff5f00;}
+.section-inner .gallery ul .frame a .c_event{background:#238ecb;}
 .section-inner .gallery ul .frame a span{
-	color: #333;
-	width:180px;
-	height:51px;
-	position: absolute;
-	left: 1px;
-	top: 158px;
-	text-align: center;
-	font:18px/22px Arial, Helvetica, sans-serif;
-	padding: 0 11px;
+  color:#333333;
+  display:block;
+  font:18px/22px Arial,Helvetica,sans-serif;
+  margin:0 auto;
+  padding:5px 0;
+  text-align:center;
+  width:155px;
 }
 .section-inner .gallery .rate{
 	padding:0 0 0 31px;

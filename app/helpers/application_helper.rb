@@ -29,7 +29,7 @@ module ApplicationHelper
   end
 
   def coupon(offer)
-    logo = (offer.new_record? || offer.coupon.url =~ /missing/) ? "Your Logo" : image_tag(offer.coupon.url, :width => 120, :height => 120)
+    logo = current_user.logo.exists? ? image_tag(current_user.logo.url(:thumb)) : "Your Logo"
     "
     <div class='coupon'>
       <h4>COUPON</h4>

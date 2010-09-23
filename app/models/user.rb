@@ -50,15 +50,15 @@ class User < ActiveRecord::Base
     Offer.active.all(
       :conditions => { :business_id => these_business_ids },
       :include => [ :business ],
-      :order => "businesses.`name`, offers.`expiry_datetime`") +
+      :order => "businesses.name, offers.expiry_datetime") +
     Offer.draft.all(
       :conditions => { :business_id => these_business_ids },
       :include => [ :business ],
-      :order => "businesses.`name`, offers.`expiry_datetime`") +
+      :order => "businesses.name, offers.expiry_datetime") +
     Offer.archived.all(
       :conditions => { :business_id => these_business_ids },
       :include => [ :business ],
-      :order => "businesses.`name`, offers.`expiry_datetime`")
+      :order => "businesses.name, offers.expiry_datetime")
 
   end
 end

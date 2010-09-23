@@ -1,7 +1,7 @@
 class Offer < ActiveRecord::Base
-  named_scope :active, :conditions => {:archived => false, :draft => false}, :order => 'offers.`created_at` DESC'
-  named_scope :draft, :conditions => {:archived => false, :draft => true}, :order => 'offers.`created_at` DESC'
-  named_scope :archived, :conditions => {:archived => true, :draft => false}, :order => 'offers.`created_at` DESC'
+  named_scope :active, :conditions => {:archived => false, :draft => false}, :order => 'offers.created_at DESC'
+  named_scope :draft, :conditions => {:archived => false, :draft => true}, :order => 'offers.created_at DESC'
+  named_scope :archived, :conditions => {:archived => true, :draft => false}, :order => 'offers.created_at DESC'
 
   belongs_to :category
   belongs_to :business

@@ -68,7 +68,7 @@
                                                                                                         <dd><%= (@business.hours || 'n/a').gsub(/;/,'<br/>') %></dd>
 												</dl>
 											</div>
-											<strong class="logo-quiznos-sub"><a href="#">Quiznos Sub</a></strong>
+											<%= image_tag @business.user.logo.url, :alt => 'business-logo' %>
 										</div>
                                                                                 <ol class="posts">
                                                                                   <%= render :partial => 'business_offer', :collection => @business.offers %>

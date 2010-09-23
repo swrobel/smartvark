@@ -89,10 +89,11 @@
                                                                                     <h3>Expires: <%= std_date(@offer.expiry_datetime) %></h3>
                                                                                     <p><%=h @offer.description %></p>
                                                                                     <p><%=h @offer.exclusivity_text %></p>
+                                                                                    <p><%= link_to 'View more deals from ' + @offer.business.name, viewbusiness_url(@offer.business.to_param) %></p>
 										</div>
 									</div>
                                                                         <!-- r-side -->
-                                                                        <%= render :partial => 'shout' %>
+                  <%= render :partial => 'shout' %>
 								</div>
 							</div>
 							<div class="b"></div>

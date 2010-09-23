@@ -1,4 +1,3 @@
-* My Deals/Try It: My Picks links should be <Business Name>: <Deal Title>
 * My Deals/Try It: Colored COUPON area should change based on whether it's a DEAL or EVENT or COUPON
 * My Deals/Try It: Coupons - hidden vs overflow
 * My Deals: Category filter should affect My Picks as well
@@ -16,21 +15,24 @@
 * Deal Builder: Capitalize "offer type" choices
 * Deal Builder: Dropdowns for "offer type" and "category" should have a blank default selection
 * Deal Builder: Are there other available styles for the datepicker?
-* User.rb/Offer.rb: use of ` screws up postgres on heroku
 * Add /biz/ login/redirect to dealdashboard
 
-DONE        * Deal Dashboard: Should show all deals for selected locations (does not show anything currently)
+DONE
 
-DONE		View Deal page -- Get "Expired" icon in place of Deal
-DONE 		*New offer
-			-- show all locations
-			-- create offer for each location
-DONE		* Edit offer -- show uneditable specific location
-DONE	 	* Delete/Archive offer -- Don't show in users deal cart thing
-DONE		* Deal Builder: "Activate Deal" button should create the deal and redirect to the Deal Dashboard with a success message
-DONE		* Deal Builder: Do not show All in categories list
-DONE		* Deal Builder: Logo should be attached to business account rather than to individual offer
-DONE		* All Biz pages: Link "Deal Dashboard" and "Business Profile" links in upper right to the appropriate pages
-DONE 		* Deal Dashboard: Link "Create Deal" button to Deal Builder page
-DONE		* Deal Builder: Valid at the following locations should show all locations for current user (I believe this is an HTML formatting issue)
-DONE		* View Business: Yelp link should go to Yelp site. Twitter link should open in new window (as should Yelp).
+* My Deals/Try It: My Picks links should be <Business Name>: <Deal Title>
+* User.rb/Offer.rb: use of ` screws up postgres on heroku
+
+* Deal Dashboard: Should show all deals for selected locations (does not show anything currently)
+* View Deal page -- Get "Expired" icon in place of Deal
+* New offer
+	-- show all locations
+	-- create offer for each location
+* Edit offer -- show uneditable specific location
+* Delete/Archive offer -- Don't show in users deal cart thing
+* Deal Builder: "Activate Deal" button should create the deal and redirect to the Deal Dashboard with a success message
+* Deal Builder: Do not show All in categories list
+* Deal Builder: Logo should be attached to business account rather than to individual offer
+* All Biz pages: Link "Deal Dashboard" and "Business Profile" links in upper right to the appropriate pages
+* Deal Dashboard: Link "Create Deal" button to Deal Builder page
+* Deal Builder: Valid at the following locations should show all locations for current user (I believe this is an HTML formatting issue)
+* View Business: Yelp link should go to Yelp site. Twitter link should open in new window (as should Yelp).

@@ -27,7 +27,7 @@ module WelcomeHelper
   def list_offer(offer)
     "<li id='offer_#{offer.id}'>" +
     hidden_field_tag("user[offer_ids][]", offer.id) +
-    link_to("<h3>#{offer.lead}</h3>", viewdeal_url(offer.to_param),
+    link_to("<h3>#{offer.business.name}: #{offer.lead}</h3>", viewdeal_url(offer.to_param),
       :onMouseOver => "$('offer_info_rollover').update('#{info_for_rollover(offer)}');",
       :onMouseOut => "$('offer_info_rollover').update('');"
     ) +

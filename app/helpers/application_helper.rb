@@ -20,7 +20,7 @@ module ApplicationHelper
       image_tag(offer.coupon.url(:thumb)) +
     "
     </div>
-    <strong>COUPON</strong>
+    <strong class=\"c_#{offer.offer_type}\">#{offer.offer_type}</strong>
     <span id='#{offer.id}_lead'>#{offer.lead}</span>
     ", viewdeal_url(offer.to_param),
               :onMouseOver => "$('offer_info_rollover').update('#{info_for_rollover(offer)}');",

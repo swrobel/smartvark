@@ -676,12 +676,13 @@ td, th{padding:0;}
   overflow:hidden;
   position:absolute;
   text-align:center;
+  text-transform: uppercase;
   top:0;
   width:200px;
 }
-.section-inner .gallery ul .frame a .coupon{background:#3FB52B;}
-.section-inner .gallery ul .frame a .deal{background:#ff5f00;}
-.section-inner .gallery ul .frame a .event{background:#238ecb;}
+.section-inner .gallery ul .frame a strong.c_coupon{background:#3FB52B;}
+.section-inner .gallery ul .frame a strong.c_deal{background:#ff5f00;}
+.section-inner .gallery ul .frame a strong.c_event{background:#238ecb;}
 .section-inner .gallery ul .frame a span{
 	color: #333;
 	width:180px;

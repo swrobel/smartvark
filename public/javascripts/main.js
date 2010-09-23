@@ -50,6 +50,10 @@ jQuery(function() {
 	jQuery("#search_terms").placeHeld();
 	jQuery("#location").placeHeld();
 });
+function checkall_offer_form(n) {
+	jQuery("input[name='offer[business_ids][]']").attr('checked',n);
+}
+
 function checkall(n) {
 	jQuery("input[name='business_ids[]']").attr('checked',n);
 	jQuery("#biz_"+n).attr('class', 'active')

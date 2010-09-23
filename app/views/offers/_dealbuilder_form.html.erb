@@ -4,7 +4,7 @@
     <p>Enter the details of your offer and then choose a redemption code for.  Most merchants select a code that works with their store’s point of sale system.  Typically redemption codes that are easy to say and remember work best, like HALFOFFJULY2010.  Don’t hesitate to <a href="#">contact us</a> if you have any questions</p>
     <div class="row">
       <%= f.label :offer_type, 'Offer type', :class => :width1 %>
-      <%= f.select :offer_type, options_for_select(OfferTypes), { :include_blank => true }, {:class => :sel } %>
+      <%= f.select :offer_type, options_for_select(OfferTypes, @offer.offer_type), { :include_blank => true }, {:class => :sel } %>
       <div class="caption two-lines">
         <span>Deals: sales, happy hours specials and other non-coupons Events: infrequent special promotions (ex: loyal shopper party)</span>
       </div>
@@ -63,21 +63,21 @@
       </div>
       <div class="text">
         <div class="options-form">
+<% if @offer.new_record? %>
           <ul class="options">
               <li class="active" id='biz_true'>
-                <a href="#" onClick="checkall(true)">Select All </a>
+                <a href="#" onClick="checkall_offer_form(true);return false">Select All </a>
               </li>
               <li id='biz_false'>
-                <a href="#" onClick="checkall(false)">Select None</a>
+                <a href="#" onClick="checkall_offer_form(false);return false;">Select None</a>
               </li>
             </ul>
-            <% if @offer.new_record? %>
   <% @businesses.in_groups_of(4) do |group| %>
   <ul class="row">
   <% group.compact.each do |business| %>
     <li>
       <label>
-        <%= check_box_tag 'offer[business_ids][]', business.id, false, :class => 'chk' %>
+        <%= check_box_tag 'offer[business_ids][]', business.id, true, :class => 'chk' %>
         <%= business.name %>
       </label>
     </li>

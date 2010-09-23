@@ -102,13 +102,14 @@ class WelcomeController < ApplicationController
     @offers = begin
                 if (category_id <= 1)
                   Offer.active.all(:conditions => { :business_id => close_business_ids })
+                  @likes = current_user.likes_offers[0,7]
                 else
+                  @likes = current_user.likes_offers(category_id)[0,7]
                   Offer.active.all(:conditions => { :category_id => category_id,
                             :business_id => close_business_ids  })
                 end
               end
 
-    @likes = current_user.likes_offers[0,7]
   end
 
   def set_opinion

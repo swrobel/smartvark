@@ -130,7 +130,7 @@
     <div class="btns-holder">
     <div class="center">
       <ul class="btns">
-        <li><%= link_to_function "Activate Deal", "$(this).up('form').submit()", :class => 'activate-deal' %>
+        <li><%= link_to_function "Activate Deal", "$('offer_draft').value='false'$(this).up('form').submit()", :class => 'activate-deal' %>
         <li><%= link_to_function "Save as Draft", "$('offer_draft').value='true';$(this).up('form').submit()", :class => 'save-draft' %>
         <li><%= link_to_function 'cancel', "if (confirm('Are you sure?')) { window.location.href='#{dealdashboard_url}';return true; } else { return false; }", :class => 'cancel' %></li>
 

@@ -1,6 +1,8 @@
 
 Head
 ! Updated TODO
+! Changed icons on deal dashboard
+! Removed links from smart tips on deal dashboard & deal builder
 ! Added favicon
 ! Added new style to mydeals.erb/deals.erb to reflect changes from the designer (also modified css and application_helper)
 ! Upgraded paperclip to 2.3.3 to fix upload bug with imagemagick. Added code to user.rb to auto-resize.

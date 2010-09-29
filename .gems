@@ -2,3 +2,4 @@ rails -v 2.3.5
 pg
 geokit
 facebooker
+sqlite3-ruby

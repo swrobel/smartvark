@@ -16,7 +16,7 @@ module ApplicationHelper
     link_to(
     "
     <strong class=\"c_#{offer.offer_type.downcase}\">#{offer.offer_type}</strong>
-    <div class='img_box'>
+    <div class=""img_box"">
       " +
       image_tag(offer.coupon.url(:thumb)) +
     "
@@ -32,7 +32,7 @@ module ApplicationHelper
     logo = current_user.logo.exists? ? image_tag(current_user.logo.url(:thumb)) : "Your Logo"
     "
     <div class='coupon'>
-      <h4>COUPON</h4>
+      <h4 id='#{offer.id}_type' class='c_coupon'></h4>
         <div class='holder'>
           <div class='center'>
             <div class='add-logo'>

@@ -4,7 +4,7 @@
     <p>Enter the details of your offer and then choose a redemption code for.  Most merchants select a code that works with their store’s point of sale system.  Typically redemption codes that are easy to say and remember work best, like HALFOFFJULY2010.  Don’t hesitate to <a href="#">contact us</a> if you have any questions</p>
     <div class="row">
       <%= f.label :offer_type, 'Offer type', :class => :width1 %>
-      <%= f.select :offer_type, options_for_select(OfferTypes, @offer.offer_type), { :include_blank => true }, {:class => :sel } %>
+      <%= f.select :offer_type, options_for_select(OfferTypes, @offer.offer_type), { :include_blank => true }, {:class => :sel, :onchange => "$('#{@offer.id}_type').update($('offer_offer_type').value)"} %>
       <div class="caption two-lines">
         <span>Deals: sales, happy hours specials and other non-coupons Events: infrequent special promotions (ex: loyal shopper party)</span>
       </div>
@@ -38,7 +38,7 @@
         <h3>Title of Offer (50 character maximum)</h3>
       </div>
       <div class="text text2">
-        <%= f.text_area :lead, :onchange => "$('#{@offer.id}_lead').update($('offer_lead').value)" %>
+        <%= f.text_area :lead, :onchange => "$('#{@offer.id}_lead').update($('offer_lead').value)", :placeholder => "Example: Save 50% on any full-price item" %>
       </div>
     </div><!-- /text-box end -->
     <div class="text-box">
@@ -46,7 +46,7 @@
         <h3>Details of Offer (200 character maximum)</h3>
       </div>
       <div class="text text1">
-          <%= f.text_area :description, :onchange => "$('#{@offer.id}_diz').update($('offer_description').value)" %>
+          <%= f.text_area :description, :onchange => "$('#{@offer.id}_diz').update($('offer_description').value)", :placeholder => "Example: You'll find a wide variety of fashions in stock to get you ready for the season!" %>
       </div>
     </div><!-- /text-box end -->
     <div class="text-box">
@@ -54,7 +54,7 @@
         <h3>Fine Print (200 character maximum)</h3>
       </div>
       <div class="text text1">
-          <%= f.text_area :exclusivity_text %>
+          <%= f.text_area :exclusivity_text, :placeholder => "Example: Not valid with any other offer. Not valid on already marked-down items" %>
       </div>
     </div><!-- /text-box end -->
     <div class="text-box">
@@ -96,7 +96,7 @@
     <div class="row">
       <div class="left">
         <%= f.label :redemption_code %>
-        <%= f.text_field :redemption_code, :class => :txt, :onchange => "$('#{@offer.id}_rc').update($('offer_redemption_code').value)" %>
+        <%= f.text_field :redemption_code, :class => :txt, :onchange => "$('#{@offer.id}_rc').update($('offer_redemption_code').value)", :placeholder => "Ex: HALFOFF" %>
       </div>
       <div class="right">
         <span>Code for tracking this deal in your system</span>
@@ -113,7 +113,7 @@
     </div>
     <div class="row check">
       <div class="left">
-        <%= f.check_box :allow_print, :class => :chk %>
+        <%= f.check_box :allow_print, {:class => :chk, :checked => "checked"} %>
         <%= f.label :allow_print, 'Make This a Printable Offer' %>
       </div>
       <div class="right">

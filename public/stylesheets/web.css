@@ -592,14 +592,16 @@ td, th{padding:0;}
 .gallery ul .frame div{
 	text-align:center;
 }
-.gallery ul .frame img{
-	vertical-align:top;
-	border:none;
-}
 .gallery ul .frame .img_box{
-	height:120px;
-    margin-top:6px;
-    overflow:hidden;
+  height:120px;
+  line-height:120px;
+  margin-top:6px;
+  overflow:hidden;
+}
+
+.gallery ul .frame img{
+    vertical-align:middle;
+    border:none;
 }
 .gallery ul .frame a:hover img{border-color:#add2ee;}
 /* rate box */
@@ -1226,6 +1228,8 @@ td, th{padding:0;}
 .account-area{
         margin-right: 10px;
 	float:right;
+
+
 	font:24px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	line-height:28px;
 	position:relative;
@@ -1601,16 +1605,15 @@ td, th{padding:0;}
 
 
 }
+.text-box .placeheld{color:#999}
 .text-box .text textarea{
 	border:medium none;
-	color:#000000;
 	height:76px;
 	width:563px;
 	overflow:auto;
    }
 .text-box .text2 textarea{
 	border:medium none;
-	color:#000000;
 	height:44px;
 	width:563px;
    }
@@ -1669,6 +1672,7 @@ td, th{padding:0;}
 	height:1%;
 }
 .form1 .check{margin:0 0 26px;}
+
 .form1 .check .left{margin:0;}
 .form1 .check .right{
 	float:right;
@@ -1728,6 +1732,7 @@ td, th{padding:0;}
 	background:url(../images/btn-cancel4.gif) no-repeat;
 	width:73px;
 }
+.form1 .placeheld{color:#999}
 /* coupon */
 .coupon{
 	overflow:hidden;
@@ -1739,14 +1744,17 @@ td, th{padding:0;}
 	margin:26px 0 0 13px;
 }
 .coupon h4{
-	background:#3fb52b;
 	color:#fff;
 	text-align:center;
 	width:201px;
 	margin:0 -8px 5px -11px;
 	font:20px/22px 'Trebuchet MS', Arial, sans-serif;
 	padding:5px 0 3px;
+	text-transform: uppercase;
 }
+.coupon .c_coupon{background:#3FB52B;}
+.coupon .c_deal{background:#ff5f00;}
+.coupon .c_event{background:#238ecb;}
 .coupon .holder{
 	width:100%;
 	overflow:hidden;
@@ -1761,7 +1769,7 @@ td, th{padding:0;}
 	float:left;
 	position:relative;
 	left:-50%;
-	background:#ccc;
+	/*background:#ccc;*/
 }
 
 .coupon .add-logo a{

@@ -3,3 +3,4 @@ pg
 geokit
 facebooker
 sqlite3-ruby
+aws-s3

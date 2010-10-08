@@ -16,7 +16,13 @@ class User < ActiveRecord::Base
 
   before_validation :set_login
 
-  has_attached_file :logo, :styles => { :thumb => ["120x120>", :png], :full => ["380x160>", :png] }, :default_style => :full, :whiny_thumbnails => true
+  has_attached_file :logo,
+    :styles => { :thumb => ["120x120>", :png], :full => ["380x160>", :png] },
+    :default_style => :full,
+    :whiny_thumbnails => true,
+    :storage => :s3,
+    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+    :path => "/logos/:id/:style/:filename"
 
   def set_login
     self.login ||= email

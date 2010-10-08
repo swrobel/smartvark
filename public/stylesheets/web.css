@@ -675,9 +675,9 @@ td, th{padding:0;}
   text-align:center;
   text-transform: uppercase;
 }
-.section-inner .gallery ul .frame a .c_coupon{background:#3FB52B;}
-.section-inner .gallery ul .frame a .c_deal{background:#ff5f00;}
-.section-inner .gallery ul .frame a .c_event{background:#238ecb;}
+.section-inner .gallery ul .frame a .c_Coupon{background:#3FB52B;}
+.section-inner .gallery ul .frame a .c_Deal{background:#ff5f00;}
+.section-inner .gallery ul .frame a .c_Event{background:#238ecb;}
 .section-inner .gallery ul .frame a span{
   color:#333333;
   display:block;
@@ -1753,9 +1753,9 @@ td, th{padding:0;}
 	padding:5px 0 3px;
 	text-transform: uppercase;
 }
-.coupon .c_coupon{background:#3FB52B;}
-.coupon .c_deal{background:#ff5f00;}
-.coupon .c_event{background:#238ecb;}
+.coupon .c_Coupon{background:#3FB52B;}
+.coupon .c_Deal{background:#ff5f00;}
+.coupon .c_Event{background:#238ecb;}
 .coupon .holder{
 	width:100%;
 	overflow:hidden;

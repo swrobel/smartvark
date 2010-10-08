@@ -14,9 +14,9 @@
   </h3>
 
 
-  <%= image_tag @offer.coupon.url, :alt => @offer.lead + ' coupon', :width => 350, :height => 200 %>
+  <%= image_tag @offer.coupon.url, :alt => @offer.business.name + ' logo' %>
   <p><%= @offer.description %></p>
-  <p>Expires on: <%= @offer.expiry_datetime.try(:strftime, '%B %d, %Y %I:%m%P') %></p>
+  <p>Last day to redeem: <%= @offer.expiry_datetime.try(:strftime, '%B %d, %Y') %></p>
   <p>Fine print: <%= @offer.exclusivity_text %></p>
   <h2>Cashier use code: <%= @offer.redemption_code %></h2>
 </body>

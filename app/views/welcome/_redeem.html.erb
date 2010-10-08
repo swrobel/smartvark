@@ -5,7 +5,7 @@
         <% if @offer.allow_print? %>
           <div class="popup-row">
             <%=
-              f.submit "Print deal", :class => 'simplemodel-close',
+              f.submit "Print deal", :class => 'simplemodal-close',
                 :onclick => "window.open('#{printdeal_path}');return false;"
             %>
 

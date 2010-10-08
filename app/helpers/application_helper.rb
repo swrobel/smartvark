@@ -32,7 +32,7 @@ module ApplicationHelper
     logo = current_user.logo.exists? ? image_tag(current_user.logo.url(:thumb)) : "Your Logo"
     "
     <div class='coupon'>
-      <h4 id='#{offer.id}_type' class='c_coupon'></h4>
+      <h4 id='#{offer.id}_type' class='c_#{offer.offer_type.downcase}'>#{offer.offer_type}</h4>
         <div class='holder'>
           <div class='center'>
             <div class='add-logo'>

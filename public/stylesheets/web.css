@@ -660,6 +660,7 @@ td, th{padding:0;}
   cursor:pointer;
   display:block;
   position:relative;
+  min-height:209px;
 }
 .section-inner .gallery ul .frame a:hover{
 	border-color:#add2ee;

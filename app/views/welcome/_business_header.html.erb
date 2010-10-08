@@ -6,6 +6,7 @@
     <div class="holder">
       <% if logged_in? %>
         <strong class="ttl">Welcome <span><%= current_user.name %>!</span></strong>
+        <p><%= link_to "log out", logout_url %>&nbsp;&nbsp;</p>
       <% end %>
     </div>
     <div class="frame">

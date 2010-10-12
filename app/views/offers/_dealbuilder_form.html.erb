@@ -4,7 +4,7 @@
     <p>Enter the details of your offer and then choose a redemption code for.  Most merchants select a code that works with their store’s point of sale system.  Typically redemption codes that are easy to say and remember work best, like HALFOFFJULY2010.  Don’t hesitate to <a href="#">contact us</a> if you have any questions</p>
     <div class="row">
       <%= f.label :offer_type, 'Offer type', :class => :width1 %>
-      <%= f.select :offer_type, options_for_select(OfferTypes, @offer.offer_type), { :include_blank => true }, {:class => :sel, :onchange => "$('#{@offer.id}_type').update($('offer_offer_type').value)"} %>
+      <%= f.select :offer_type, options_for_select(OfferTypes, @offer.offer_type), { :include_blank => true }, {:class => :sel, :onchange => "$('#{@offer.id}_type').update($('offer_offer_type').value);$('#{@offer.id}_type').className='c_'+$('offer_offer_type').value"} %>
       <div class="caption two-lines">
         <span>Deals: sales, happy hours specials and other non-coupons Events: infrequent special promotions (ex: loyal shopper party)</span>
       </div>

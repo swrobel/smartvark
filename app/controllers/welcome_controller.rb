@@ -10,7 +10,11 @@ class WelcomeController < ApplicationController
 
   def redirect_if_logged_in
     if logged_in?
-      redirect_to mydeals_url
+      if current_user.business?
+        redirect_to dealdashboard_url
+      else
+        redirect_to mydeals_url
+      end
     end
   end
 

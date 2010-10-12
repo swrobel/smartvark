@@ -10,8 +10,8 @@
 
 <% @offers.each do |offer| %>
   <tr>
-    <td><%=link_to offer.business.name, offer.business %></td>
-    <td><%=link_to offer.category.name, offer.category %></td>
+    <td><%=link_to offer.business.try(:name), offer.business %></td>
+    <td><%=link_to offer.category.try(:name), offer.category %></td>
     <td><%=h offer.lead %></td>
     <td><%=h offer.expiry_datetime %></td>
     <td><%= link_to 'Show', offer %></td>

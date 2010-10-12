@@ -13,7 +13,7 @@ class Comment < ActiveRecord::Base
   def commenter
     @commenter ||= begin
       commenter = [user.name.blank? ? user.email.split(/@/,2).first : user.name]
-      commenter << user.city unless user.city.blank?
+      commenter << user.city
       commenter
                    end
   end

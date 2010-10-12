@@ -1,5 +1,9 @@
++ Biz route redirect for logged in business owners (-> dealdashboard)
++ Coupon type color change
++ Removed dual name on shout box
++ Added conditional, shout box won't show unless logged in
++ Fixed admin error
 
-Head
 ! Updated TODO
 ! Changed icons on deal dashboard
 ! Removed links from smart tips on deal dashboard & deal builder

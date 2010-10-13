@@ -1,3 +1,5 @@
++ Bug fixed when invalid business attempted to be added
+
 + Biz route redirect for logged in business owners (-> dealdashboard)
 + Coupon type color change
 + Removed dual name on shout box

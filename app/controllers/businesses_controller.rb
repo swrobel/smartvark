@@ -41,6 +41,7 @@ class BusinessesController < ApplicationController
   # POST /businesses.xml
   def create
     @business = current_user.businesses.build(params[:business])
+    @businesses = current_user.try(:businesses) || []
 
     respond_to do |format|
       if @business.save
@@ -58,6 +59,7 @@ class BusinessesController < ApplicationController
   # PUT /businesses/1.xml
   def update
     @business = current_user.businesses.find(params[:id])
+    @businesses = current_user.try(:businesses) || []
 
     respond_to do |format|
       if @business.update_attributes(params[:business])

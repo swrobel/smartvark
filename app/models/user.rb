@@ -33,10 +33,6 @@ class User < ActiveRecord::Base
     self.email ||= login
   end
 
-  def business?
-    business_ids.present?
-  end
-
   def before_connect(facebook_session)
     self.name = facebook_session.user.name
     self.persistence_token = reset_persistence_token

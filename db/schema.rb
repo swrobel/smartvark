@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100916043654) do
+ActiveRecord::Schema.define(:version => 20101013030219) do
 
   create_table "businesses", :force => true do |t|
     t.string   "name",                :limit => 50
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20100916043654) do
     t.integer  "logo_file_size"
     t.string   "logo_content_type"
     t.datetime "logo_updated_at"
+    t.boolean  "business"
   end
 
 end

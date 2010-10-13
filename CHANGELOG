@@ -1,3 +1,5 @@
++ Added business boolean to user model instead of relying on whether the user
+	has any business locations
 + Bug fixed when invalid business attempted to be added
 
 + Biz route redirect for logged in business owners (-> dealdashboard)

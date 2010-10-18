@@ -8,12 +8,16 @@
     <%= f.text_field :name %>
   </p>
   <p>
+    <%= f.label :clever_name %><br />
+    <%= f.text_field :clever_name %>
+  </p>
+  <p>
     <%= f.label :active %><br />
     <%= f.check_box :active %>
   </p>
   <p>
     <%= f.label :parent %>
-    <%= f.select :parent_id, options_from_collection_for_select(Category.all, 'id', 'name', @category.parent_id)%>
+    <%= f.select :parent_id, options_from_collection_for_select(Category.all, 'id', 'name', @category.parent_id), { :include_blank => true } %>
   </p>
   <p>
     <%= f.submit 'Create' %>

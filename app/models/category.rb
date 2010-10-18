@@ -14,4 +14,8 @@ class Category < ActiveRecord::Base
   def self.all_except(list)
     all :conditions => [ 'name not in (?)', list ]
   end
+  
+  def clever_or_name
+    clever_name.blank? ? name : clever_name
+  end
 end

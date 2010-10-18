@@ -1305,6 +1305,9 @@ td, th{padding:0;}
 	height:1%;
 	padding:6px 24px 3px 19px;
 }
+#RES_ID_fb_login_image{
+   padding:6px 24px 3px 45px; 
+}
 .btn-signin{
 	float:left;
 	background:url(../images/btn-sign-in.gif) no-repeat;
@@ -1329,10 +1332,11 @@ td, th{padding:0;}
 }
 .btn-signin-cancel{
 	float:right;
-	background:url(../images/btn-cancel3.gif) no-repeat;
+	/*background:url(../images/btn-cancel3.gif) no-repeat;*/
+	background-color:#238ecb;
+	color:#CCC;
 	width:70px;
 	height:27px;
-	text-indent:-9999px;
 	line-height:0;
 	border:0;
 	cursor:pointer;

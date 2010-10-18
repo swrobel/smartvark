@@ -1,0 +1,14 @@
+<!-- ttl-holder -->
+<div class="ttl-holder">
+	<h2>My Tastes</h2>
+</div>
+<!-- accordion -->
+<ul class="accordion">
+  <% Category.parents.each_with_index do |category, index| %>
+  <% next if category.name == "All" %>
+	<li>
+		<%= link_to category.clever_or_name, "#", {:class => "opener"} %>
+		<div class="slide"></div>
+	</li>
+	<% end %>
+</ul>

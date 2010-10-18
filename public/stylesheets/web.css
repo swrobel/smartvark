@@ -1175,6 +1175,9 @@ td, th{padding:0;}
 	overflow:hidden;
 	padding:4px 0 0;
 }
+.profile-form a{
+	float:right;
+}
 .profile-form .btn-clear{
 	float:right;
 	background:url(../images/btn-cancel2.gif) no-repeat;
@@ -1188,7 +1191,7 @@ td, th{padding:0;}
 	display:inline;
 }
 .profile-form .btn-save{
-	float:right;
+	float:left;
 	text-indent:-9999px;
 	background:url(../images/btn-save.gif) no-repeat;
 	width:74px;

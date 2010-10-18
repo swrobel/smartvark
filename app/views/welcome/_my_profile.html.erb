@@ -18,7 +18,7 @@
       <%= f.label :city %>
       <div class="right">
         <%= f.text_field :city, :class => 'txt' %>
-        <%= select :user, :state, States::STATES, { :include_blank => true } %>
+        <%= select :user, :state, States::STATES, { :include_blank => true }, :class => 'sel' %>
       </div>
     </div>
     <div class="row">
@@ -31,7 +31,7 @@
       <%= f.label :phone%>
       <div class="right">
         <%= f.text_field :phone, :class => 'txt', :maxlength => 15 %>
-        <%= select :user, :carrier, Carriers::CARRIERS, { :include_blank => true } %>
+        <%= select :user, :carrier, Carriers::CARRIERS, { :include_blank => true }, :class => 'sel' %>
       </div>
     </div>
     <div class="row">
@@ -47,12 +47,17 @@
       </div>
     </div>
     <div class="row">
-      <%= f.label :password_confirmation %>
+      <%= f.label :password_confirmation, "Confirm Password" %>
       <div class="right">
         <%= f.text_field :password_confirmation, :class => 'txt' %>
       </div>
     </div>
-    <%= f.submit "Save" %>
+    <div class="row">
+      <div class="btns">
+        <%= f.submit "Save", :class => "btn-save" %>
+        <%= link_to "Cancel", mydeals_path %>
+      </div>
+    </div>
 </fieldset>
 <% end %>
 </div>

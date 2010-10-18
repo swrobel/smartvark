@@ -1,3 +1,5 @@
+! My Profile categories accordion is dynamic
+! My Profile style cleanup
 ! Linkified Use It Now on deals/mydeals
 ! Added clever name to categories to be shown on user-side pages and updated category admin pages
 + Added business boolean to user model instead of relying on whether the user

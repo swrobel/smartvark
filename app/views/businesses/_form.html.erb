@@ -5,7 +5,7 @@
       <%= f.error_messages %>
       <fieldset>
         <%= form_row f, :name, 'Location Name' %>
-        <%= form_row f, :short_name, 'Nick Name' %>
+        <%= form_row f, :short_name, 'Nickname' %>
         <%= form_row f, :street_address_1, 'Address 1' %>
         <%= form_row f, :street_address_2, 'Address 2' %>
         <div class="row">
@@ -14,13 +14,13 @@
             <%= f.text_field :city, :class => 'txt' %>
             <div class="select-area">
               <%= f.label :state, 'State' %>
-              <%= f.select :state, States::abbrevs, :class => 'sel' %>
+              <%= f.select :state, States::abbrevs, :class => 'sel', :selected => 'CA' %>
             </div>
           </div>
         </div>
         <%= form_row f, :postal_code, 'Zip Code',{ :tdc => ' width2', } %>
         <%= form_row f, :phone_1, 'Phone', { :tdc => ' width3', }%>
-        <%= form_row f, :hours, 'Hours (semi-colon-delimit)' %>
+        <%= form_row f, :hours, 'Hours' %>
         <%= form_row f, :link_twitter, 'Twitter', { :tdc => ' width4', :bf => '<p>http://twitter.com/</p>' } %>
         <%= form_row f, :link_facebook, 'Facebook', { :tdc => ' width5', :bf => '<p>http://facebook.com/</p>' } %>
         <%= form_row f, :yelp_url, 'Yelp', { :tdc => ' width6', :bf => '<p>http://yelp.com/biz/</p>' } %>

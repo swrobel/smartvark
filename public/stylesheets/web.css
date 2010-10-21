@@ -620,7 +620,7 @@ td, th{padding:0;}
 .info-section .info{
 	float:right;
 	display:inline;
-	width:150px;
+	width:138px;
 	margin:2px 10px 0 -30px;
 	color:#333;
 }
@@ -630,7 +630,7 @@ td, th{padding:0;}
 }
 .info-section .info p{margin:0 0 18px;}
 .section-inner .info{
-	margin:6px -13px 0 0;
+	margin:6px -1px 0 0;
 }
 .section-inner{
 	background-position: 416px 0;

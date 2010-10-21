@@ -21,7 +21,7 @@ module WelcomeHelper
   end
 
   def info_for_rollover(offer)
-    "<strong class=\"title\">#{offer.business.name}:</strong><p>#{offer.lead}, expires #{std_date(offer.expiry_datetime)}.</p><p>To redeem online, use code #{offer.redemption_code} or send to your phone.</p><p>#{offer.exclusivity_text}</p>".gsub(/'/,"\\\'")
+    "<strong class=\"title\">#{offer.business.name}: #{offer.lead}</strong><p>#{offer.description}</p><p>#{offer.exclusivity_text}</p><p>#{offer.business.city}, #{offer.business.state} #{offer.business.postal_code}</p><p>Expires #{std_date(offer.expiry_datetime)}</p>".gsub(/'/,"\\\'")
   end
 
   def list_offer(offer)
@@ -31,7 +31,6 @@ module WelcomeHelper
       :onMouseOver => "$('offer_info_rollover').update('#{info_for_rollover(offer)}');",
       :onMouseOut => "$('offer_info_rollover').update('');"
     ) +
-      "<p>#{offer.exclusivity_text}</p>" +
-      "<p>Expiration: #{offer.expiry_datetime.strftime('%B %d, %Y')}</p></li>"
+      "<p>Expires #{offer.expiry_datetime.strftime('%B %d, %Y')}</p></li>"
   end
 end

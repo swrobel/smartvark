@@ -337,7 +337,6 @@ td, th{padding:0;}
 	position:relative;
 	height:33px;
 	font:bold 18px/20px "Trebuchet MS", Arial, Helvetica, sans-serif;
-	text-shadow: 1px 1px 1px #CCC;
 }
 .nav ul li{
 	float:left;

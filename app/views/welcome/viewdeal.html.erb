@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>smartvark - view deal</title>
   <%= render :partial => 'common_header' %>
+  <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </head>
 <body>
 	<!-- wrapper -->
@@ -42,23 +43,19 @@
 												<strong class="title">Share the Love:</strong>
 												<ul>
 													<li>
-														<a href="#">
-															<img src="/images/ico-twitter.gif" alt="Twitter" />
-															<span>Tweet</span>
-														</a>
+														<a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="smartvark">Tweet</a>
 													</li>
 													<li>
-														<a href="#">
-															<img src="/images/ico-facebook.gif" alt="Facebook" />
-															<span>Post</span>
-														</a>
+														<%= fb_share_button(request.url) %>
 													</li>
+													<!--
 													<li>
 														<a href="#">
 															<img src="/images/ico-mail.gif" alt="Mail" />
 															<span>Email</span>
 														</a>
 													</li>
+													-->
 												</ul>
 											</div>
 										</div>

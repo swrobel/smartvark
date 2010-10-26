@@ -1,3 +1,13 @@
+* Deals: Clicking on a deal and going to the viewdeal page then back should not clear out the My Picks area (they come back if you refresh the page)
+* Deals: Clicking "Use it Now" should show the registration popup only if not logged in
+* Search: crashes if no results - undefined method `lat' for nil:NilClass
+* Search: use geographic radius, test on Heroku
+* My Profile: Add subcategories to accordion
+* Biz Profile: Update helper to set TITLE attribute for tooltips for each form row
+* Biz Profile: Yelp links should not have http://yelp.com/biz/ prepended to them automatically
+* Biz Profile: After saving edits to a location, the page should refresh to show that location still selected in the dropdown with its updated information filled in the form
+* Add error-checking to forms
+* Clean up page titles
 
 Backburner
 * My Deals/Try It: Coupons - hidden vs overflow   	NOTE:  Comeback later

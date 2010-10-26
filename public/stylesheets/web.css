@@ -1531,6 +1531,13 @@ td, th{padding:0;}
 	color:#333;
 	margin:0;
 }
+.offer-form .sel2{
+	float:left;
+	width:150px;
+	font-size:14px;
+	color:#333;
+	margin:0;
+}
 .offer-form .width1{
 	width:70px;
 	padding-top:2px;
@@ -1555,7 +1562,8 @@ td, th{padding:0;}
 	font-size:14px;
 	margin:0;
 }
-.offer-form .sp1{padding-top:5px; width:320px;}
+.offer-form .sp1{padding-top:5px; width:310px;}
+.offer-form .sp2{padding-top:5px; width:345px;}
 /* text-box */
 .text-box{
 	width:584px;
@@ -1664,7 +1672,6 @@ td, th{padding:0;}
 	width:145px;
 	padding:4px 5px;
 	font:14px Arial, Helvetica, sans-serif;
-	color:#333;
 	margin:0;
 }
 .form1 .w1{width:55px;}
@@ -1683,7 +1690,7 @@ td, th{padding:0;}
 .form1 .check .left{margin:0;}
 .form1 .check .right{
 	float:right;
-	width:364px;
+	width:440px;
 	padding:0;
 }
 .form1 .check label{
@@ -2050,4 +2057,57 @@ td, th{padding:0;}
 	margin:0 0 0 19px;
 	display:inline;
 }
+/* business-box */
+.business-box{margin-top:49px;}
+.business-box .frame{
+	padding: 12px 33px 39px;
+	width:auto;
+	overflow: hidden;
+}
+.business-holder{
+	width: 100%;
+	overflow: hidden;
+}
+.business-box .frame h2{
+	font-size:28px;
+	color: #1b7ddf;
+	margin: 0 0 24px -16px;
+}
 
+.business-box .col-r{
+	width:266px;
+	float: right;
+	padding:0 11px 0 20px;
+}
+.business-box .col-r img{vertical-align:top;}
+.btn-contact{
+	width:150px;
+	text-align: center;
+	display: block;
+	overflow: hidden;
+	color: #fff;
+	font-size:20px;
+	background: url(../images/btn-contact.gif) no-repeat;
+	margin:43px auto 0;
+	padding:24px 0 30px;
+}
+.business-holder p, ul{
+	color: #1b1718;
+	font-size:14px;
+	line-height:17px;
+	margin: 0 0 22px;
+}
+.business-holder p strong em{color: #0079c2;}
+.business-holder p span em{
+	color: #ff5c16;
+	font-weight: bold;
+}
+.business-holder h3{
+	font:24px/25px Arial, Helvetica, sans-serif;
+	margin: 0;
+}
+.connect-hold h3{color: #0079c2;}
+.engage-hold h3{color: #ff5c16;}
+.business-holder .engage-hold p{margin-bottom:13px;}
+.business-holder .engage-hold p a{text-decoration: underline;}
+.business-holder .engage-hold p a:hover{text-decoration: none;}

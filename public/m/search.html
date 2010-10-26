@@ -14,21 +14,23 @@
 <body> 
  
 <div data-role="page"> 
- 
-	<div data-role="header" data-theme="c"> 
-		<h1>Offer Lead</h1> 
-	</div><!-- /header --> 
- 
-	<div data-role="content" data-theme="b">
-	  <div class="ui-body">
-		<img src="http://s3.amazonaws.com/smartvark-dev/logos/1/thumb/smartvarklogo.png?1286834065" class="logo" /> 
-		<h2>Description</h2>
-		<h3>Expires: 1/1/11</h3>
-		<h4>Exclusivity text</h4>
-		<a href="#" data-role="button">Redeem</a>
-		</div>
+	<div data-role="content" data-theme="a"> 
+		<h3>Search</h3>
+		<form>
+		  <label for="search_terms">Search For:</label> 
+	    <input type="search" name="search_terms" id="search_terms" value="" placeholder="search terms"  />
+	    <label for="location">Location:</label> 
+	    <input type="search" name="location" id="location" value="" placeholder="city, state or zip"  />  
+		   		  
+		  <fieldset class="ui-grid-a"> 
+				<div class="ui-block-a"><button type="submit" data-theme="a">Search</button></div>	   
+				<div class="ui-block-b"><button type="submit" data-theme="d">Cancel</button></div>
+	    </fieldset>    
+		</form>
+	</div> 
+</div> 
 	</div><!-- /content --> 
 </div><!-- /page --> 
  
 </body> 
-</html> 
+</html>

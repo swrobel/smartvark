@@ -52,7 +52,6 @@ jQuery(function() {
 	jQuery("#offer_lead").placeHeld();
 	jQuery("#offer_description").placeHeld();
 	jQuery("#offer_exclusivity_text").placeHeld();
-	jQuery("#offer_redemption_code").placeHeld();
 });
 function checkall_offer_form(n) {
 	jQuery("input[name='offer[business_ids][]']").attr('checked',n);

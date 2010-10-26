@@ -4,8 +4,8 @@
   <div class="search-holder">
     <% form_tag(search_url((params[:category_id] || 1).to_i), :method => :get) do %>
       <fieldset>
-        <%= text_field_tag 'search_terms', params[:search_terms], :class => 'text', :placeholder => 'search terms' %>
-        <%= text_field_tag 'location', params[:location], :class => 'text', :placeholder => 'city, state or zip' %>
+        <%= text_field_tag 'search_terms', params[:search_terms], :class => 'text placeheld', :placeholder => 'search terms' %>
+        <%= text_field_tag 'location', params[:location], :class => 'text placeheld', :placeholder => 'city, state or zip' %>
        <%= image_submit_tag "/images/btn-search.gif", :class => 'button', :alt => 'Search' %>
       </fieldset>
     <% end %>

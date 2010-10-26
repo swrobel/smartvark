@@ -4,17 +4,17 @@
   <fieldset>
     <%= f.error_messages %>
     <%= f.hidden_field :business, :value => true %>
-    <label for='name'><span>Name</span><span class="inf">Info</span></label>
+    <label for='name'><span>Name</span><span class="inf vtip" title="Name of the business entity">Info</span></label>
     <div class="row"><%= f.text_field :name, :class => 'txt' %></div>
-    <label for='email'><span>Email</span><span class="inf">Info</span></label>
+    <label for='email'><span>Email</span><span class="inf" title="Email used for login and communication">Info</span></label>
     <div class="row"><%= f.text_field :email, :class => 'txt' %></div>
-    <label for='password'><span>Password</span><span class="inf">Info</span></label>
+    <label for='password'><span>Password</span><span class="inf" title="Only fill this in if you want to update your password">Info</span></label>
     <div class="row"><%= f.password_field :password, :class => 'txt' %></div>
-    <label for='password_confirmation'><span>Password Confirmation</span><span class="inf">Info</span></label>
+    <label for='password_confirmation'><span>Confirm Password</span><span class="inf" title="This must match the previous field">Info</span></label>
     <div class="row"><%= f.password_field :password_confirmation, :class => 'txt' %></div>
 
     <div class='row'><%= image_tag @user.logo.url(:thumb) if @user.logo.exists? %></div>
-    <label for='logo'><span>Upload logo</span><span class="inf">Info</span></label>
+    <label for='logo'><span>Upload logo</span><span class="inf" title="Logo that will be shown to users">Info</span></label>
     <div class='row'><%= f.file_field :logo %></div>
 
     <div class="row">

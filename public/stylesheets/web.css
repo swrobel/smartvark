@@ -408,9 +408,6 @@ td, th{padding:0;}
 	vertical-align:middle;
 }
 * html .promo-section .item {
-
-
-
 	float:left;
 	height:181px;
 }
@@ -448,6 +445,8 @@ td, th{padding:0;}
 	margin:0;
 	font:normal 26px/32px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	color:#1b7ddf;
+	overflow:hidden;
+	white-space:nowrap;
 	text-shadow: 2px 1px 2px #CCC;
 }
 /* search-results */
@@ -483,7 +482,6 @@ td, th{padding:0;}
 	font-style:normal;
 	float:right;
 	width:130px;
-	padding:17px 10px 0 0;
 }
 .search-results .item address span {display:block;}
 /* aside */
@@ -550,6 +548,8 @@ td, th{padding:0;}
 .two-columns .l-side .ttl-holder{
 	width:560px;
 	margin:-38px -10px 0 -12px;
+	overflow:hidden;
+	white-space:nowrap;
 }
 /* title */
 .l-side .ttl{
@@ -659,7 +659,8 @@ td, th{padding:0;}
   cursor:pointer;
   display:block;
   position:relative;
-  min-height:209px;
+  height:209px;
+  overflow: hidden;
 }
 .section-inner .gallery ul .frame a:hover{
 	border-color:#add2ee;
@@ -684,7 +685,6 @@ td, th{padding:0;}
   margin:0 auto;
   padding:5px 0;
   text-align:center;
-  width:155px;
 }
 .section-inner .gallery .rate{
 	padding:0 0 0 31px;
@@ -1449,18 +1449,13 @@ td, th{padding:0;}
 .contact dd{margin:0;}
 /* posts */
 .posts {
-	counter-reset:section;
-	margin:0 0 0 17px;
 	padding:0;
 	font-size:12px;
 	line-height:15px;
 	list-style:none;
 }
 .posts li {margin:0 0 16px;}
-.posts li:before,
-.posts li .list-item-before {
-	content:counter(section)'.';
-	counter-increment:section;
+.posts li .list-item {
 	margin:0 0 -16px -17px;
 	position:relative;
 	display:block;
@@ -1477,7 +1472,7 @@ td, th{padding:0;}
 .posts h3 a:hover{text-decoration:none;}
 .posts p{
 	text-indent:0;
-	margin:0 0 0 -19px;
+	margin:0;
 }
 /* aside */
 .merchant-area .aside{padding:50px 0 0;}

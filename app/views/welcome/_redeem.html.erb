@@ -8,7 +8,6 @@
               f.submit "Print deal", :class => 'simplemodal-close',
                 :onclick => "window.open('#{printdeal_path}');return false;"
             %>
-
           </div>
         <% end %>
         <% if @offer.allow_mobile? %>
@@ -22,10 +21,10 @@
       <% end %>
     <% else %>
       <p>
-        <h3>D'oh! Please sign-in before redeeming<h3>
+        <h3>Please sign in before redeeming<h3>
       </p>
     <% end %>
     <div class="popup-row">
-      <input class="btn-signin-cancel simplemodal-close" type="submit" value="Not now, I changed my mind" />
+      <input class="btn-signin-cancel simplemodal-close" type="submit" value="Cancel" />
     </div>
 </div>

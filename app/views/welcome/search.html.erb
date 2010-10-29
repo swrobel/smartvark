@@ -36,9 +36,9 @@
 										<h2>Search Results</h2>
 										<!-- search-results -->
 										<div class="search-results">
-                                                                                  <strong class="title"><%=h params[:search_terms] %> - <span><%=h params[:location] %></span></strong>
+                                                                                  <strong class="title">Results for &quot;<%=h params[:search_terms] %>&quot; near <span><%=h params[:location] %></span></strong>
                                                                                   <% if @offers.empty? %>
-                                                                                    Zero offers found for this search criteria
+                                                                                    We couldn't find any deals for your search. You can search again or go back to <%= link_to 'my deals', mydeals_url %>.
                                                                                   <% else %>
                                                                                     <%= render :partial => 'search_offer', :collection => @offers %>
                                                                                   <% end%>

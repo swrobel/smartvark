@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Smartvark</title>
+	<%= render :partial => 'common_header' %>
+</head>
+<body>
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- wrapper-holder -->
+		<div class="wrapper-holder">
+			<!-- header -->
+			<div id="header">
+				<!-- logo -->
+				<h1 class="logo"><a href="/">Smartvark</a></h1>
+				<!-- login-box popup-holder -->
+        <%= render :partial => 'login' %>
+			</div>
+			<!-- main -->
+			<div id="main">
+				<!-- main-holder -->
+				<div class="main-holder">
+					<!-- main-frame -->
+					<div class="main-frame">
+						<div class="wide-box business-box">
+							<div class="holder">
+								<div class="frame">
+									<h2>What's a Smartvark Anyway?</h2>
+									<div class="business-holder">
+										<div class="col-r">
+											<img src="images/user-funnel.png" alt="Funnel Diagram" />
+										</div><!-- col-r end -->
+										<p>Imagine getting deals for products and services that actually matter to you. No more spam emails, junk mail, and clipping through the Sunday paper. That’s the vision behind Smartvark.</p> 
+										<p>We set out to create a user-friendly, personalized deal-finding experience; one that understands your personal tastes. We’re shoppers too and we hate getting spammed with coupons and offers that we don’t care about, and we’re pretty sure you feel the same way.</p>
+										<p>While the other guys focus on emailing deals they believe shoppers might like, we’re dedicated to delivering the ones you demand. By rating the deals we show you thumbs up or down, we learn what you like and what you don't. Artie the Aardvark scours the local scene and sniffs out the best discounts, sales, special events, and other deals for you.</p>
+										<p>People love Smartvark because we introduce them to new places to shop, eat, and have fun in their community. We are all about supporting local businesses. Sure, there’s probably a lot of money to be made chasing after big box stores, but Smartvark is more interested in introducing shoppers to the hidden gems in their neighborhood. Go on now, give it a try!</p>
+										<a class="btn-contact" style="margin: 0 0 0 175px;" href="/deals">Try it now</a>
+									</div><!-- business-holder end -->
+								</div>
+							</div>
+						</div><!-- business-box end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%= render :partial => 'common_footer' %>
+</body>
+</html>

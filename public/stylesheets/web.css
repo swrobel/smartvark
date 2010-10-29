@@ -945,7 +945,7 @@ td, th{padding:0;}
 	padding-left:0;
 	background:none;
 }
-#footer p{margin:0;}
+#footer p{margin:6px;}
 /* dealdashboard page styles */
 /* header */
 #header .menu{
@@ -2086,10 +2086,11 @@ td, th{padding:0;}
 	display: block;
 	overflow: hidden;
 	color: #fff;
-	font-size:20px;
+	font: 20px/14px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	background: url(../images/btn-contact.gif) no-repeat;
 	margin:43px auto 0;
 	padding:24px 0 30px;
+	text-shadow: 2px 1px 2px #CCC;
 }
 .business-holder p, ul{
 	color: #1b1718;

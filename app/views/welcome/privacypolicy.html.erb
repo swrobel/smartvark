@@ -3,13 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Smartvark</title>
-	<link href="css/all.css" rel="stylesheet" type="text/css" media="all"/>
-	<script type="text/javascript" src="js/inputs.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
-	<!--[if IE]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
-	<style>
-		h3 {
-	</style>
+	<%= render :partial => 'common_header' %>
 </head>
 <body>
 	<!-- wrapper -->
@@ -20,36 +14,7 @@
 			<div id="header">
 				<!-- logo -->
 				<h1 class="logo"><a href="#">Smartvark</a></h1>
-				<!-- sign-in popup-holder -->
-				<div class="sign-in popup-holder">
-					<a href="#" class="btn-signin open">Sign in</a>
-					<!-- popup -->
-					<div class="popup">
-						<div class="frame-t">
-							<form action="#">
-								<fieldset>
-									<h3>Sign in</h3>
-									<div class="row">
-										<p><input class="txt" type="text" value="Username" />
-									</div>
-									<div class="row">
-										<p><input class="txt" type="password" value="Password" />
-									</div>
-									<div class="btns-holder">
-										<p><input class="btn-sign-in" type="submit" value="Sign in" />
-										<p><a href="#" class="btn-cancel close">Cancel</a>
-									</div>
-									<div class="holder">
-										<p><div class="remember">
-										<p>	<input id="chk1" class="chk" type="checkbox" />
-										<p>	<label for="chk1">Remember Me</label>
-										<p></div>
-									</div>
-								</fieldset>
-							</form>
-						</div>
-					</div>
-				</div>
+				<%= render :partial => 'login' %>
 			</div>
 			<!-- main -->
 			<div id="main">
@@ -108,17 +73,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- footer -->
-	<div id="footer">
-		<ul>
-			<li><a href="#">what’s a smartvark anyway?</a></li>
-			<li><a href="#">what about my privacy?</a></li>
-			<li><a href="#">contact</a></li>
-			<li><a href="#">twitter</a></li>
-			<li><a href="#">facebook</a></li>
-			<li><a href="#">smartvark for business</a></li>
-		</ul>
-		<p>&copy; 2010  Smartvark, Inc.</p>
-	</div>
+	<%= render :partial => 'common_footer' %>
 </body>
 </html>

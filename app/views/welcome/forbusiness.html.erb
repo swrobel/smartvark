@@ -3,10 +3,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Smartvark</title>
-	<link href="css/all.css" rel="stylesheet" type="text/css" media="all"/>
-	<script type="text/javascript" src="js/inputs.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
-	<!--[if IE]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
+	<link href="stylesheets/web.css" rel="stylesheet" type="text/css" media="all"/>
+	<!--[if IE]><link rel="stylesheet" type="text/css" href="stylesheets/ie.css" /><![endif]-->
 </head>
 <body>
 	<!-- wrapper -->
@@ -60,8 +58,8 @@
 									<h2>Smartvark for Business</h2>
 									<div class="business-holder">
 										<div class="col-r">
-											<img src="images/img-003.gif" alt="" />
-											<a class="btn-contact" href="#">Contact us</a>
+											<img src="images/biz-funnel.png" alt="Funnel Diagram" />
+											<a class="btn-contact" href="mailto:sales@smartvark.com?subject=Smartvark.com+inquiry">Contact us</a>
 										</div><!-- col-r end -->
 										<p>We are an online marketing company that <strong><em>connects</em></strong> local businesses with motivated consumers who are eager to discover new places to shop and dine. Our mascot, Artie the Aardvark, presents them with discounts, sales, special events, and other smart offers that are tailored to their personal tastes, <span><em>engaging</em></span> casual shoppers and turning them into loyal, long-term customers.</p>
 										<div class="connect-hold">
@@ -71,7 +69,7 @@
 										<div class="engage-hold">
 											<h3>Engage</h3>
 											<p>We know that you&rsquo;re interested in more than a one-time customer looking for a deep discount. That's why we've designed our platform to cultivate long-term, profitable relationships with your audience. SmartConnect enables you to consistently inform customers about your regular happy-hour, end of season sale, or new product launch. Our dashboard interface gives you insight into the effectiveness of each of your offers, as well as local trends to help your campaigns succeed. By keeping customers up-to-date, you keep your business top-of-mind.</p>
-											<p>Limited marketing budgets are no longer a limitation to reaching your audience effectively. <a href="#">Contact us</a> to find out how you can harness the power of SmartConnect to take your marketing to the next level.</p>
+											<p>Limited marketing budgets are no longer a limitation to reaching your audience effectively. <a href="mailto:sales@smartvark.com?subject=Smartvark.com+inquiry">Contact us</a> to find out how you can harness the power of SmartConnect to take your marketing to the next level.</p>
 										</div><!-- engage-hold end -->
 									</div><!-- business-holder end -->
 								</div>
@@ -82,17 +80,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- footer -->
-	<div id="footer">
-		<ul>
-			<li><a href="#">what’s a smartvark anyway?</a></li>
-			<li><a href="#">what about my privacy?</a></li>
-			<li><a href="#">contact</a></li>
-			<li><a href="#">twitter</a></li>
-			<li><a href="#">facebook</a></li>
-			<li><a href="#">smartvark for business</a></li>
-		</ul>
-		<p>&copy; 2010  Smartvark, Inc.</p>
-	</div>
+	<%= render :partial => 'common_footer' %>
 </body>
 </html>

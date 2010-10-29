@@ -52,6 +52,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_session
   map.root              :controller => "welcome", :action => :deals
   map.biz               'biz', :controller => "user_sessions", :action => :new
+  #map.biz               'biz', :controller => "welcome", :action => :forbusiness
+  map.about             'about', :controller => "welcome", :action => :about
+  map.privacy           'privacy', :controller => "welcome", :action => :privacypolicy
   map.admin             'admin', :controller => "offers"
   map.category_mydeals  'mydeals/:category_id', :controller => "welcome", :action => :mydeals
   map.dealdashboard     'dealdashboard/', :controller => "welcome", :action => :dealdashboard

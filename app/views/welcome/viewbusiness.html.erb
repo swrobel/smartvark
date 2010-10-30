@@ -71,7 +71,7 @@
 											<%= image_tag @business.user.logo.url, :alt => 'business-logo' %>
 										</div>
                                                                                 <ul class="posts">
-                                                                                  <%= render :partial => 'business_offer', :collection => @business.offers %>
+                                                                                  <%= render :partial => 'business_offer', :collection => @business.offers.active %>
 										</ul>
 									</div>
 								</div>

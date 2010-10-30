@@ -72,6 +72,11 @@ class Offer < ActiveRecord::Base
       end
     end
 
+    unless params[:user_admin]
+      conditions << "archived=false"
+      conditions << "draft=false"
+    end
+
     if options[:search_terms]
       conditions <<  '(lead like ? OR businesses.name like ?)'
       2.times { args << "%#{options[:search_terms]}%" }

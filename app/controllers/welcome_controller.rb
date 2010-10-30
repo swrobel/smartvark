@@ -85,7 +85,7 @@ class WelcomeController < ApplicationController
     @map.control_init(:large_map => true, :map_type => true)
     coordinates =  []
     @offers.each do |offer|
-      coordinates = [ offer.business.lat, offer.business.lng]
+      coordinates = [ offer.business.try(:lat), offer.business.try(:lng)]
       gmarker = GMarker.new(
         coordinates,
         :title => offer.business.try(:name),

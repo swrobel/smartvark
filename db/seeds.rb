@@ -5,7 +5,6 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
-
 %w(All Food Clothes Services Entertainment Beauty/Spa).each do |name|
   puts Category.find_or_create_by_name(name).name
 end

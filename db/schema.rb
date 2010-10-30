@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101017235433) do
+ActiveRecord::Schema.define(:version => 20101030224955) do
 
   create_table "businesses", :force => true do |t|
     t.string    "name",                :limit => 50
@@ -44,6 +44,11 @@ ActiveRecord::Schema.define(:version => 20101017235433) do
     t.timestamp "updated_at"
     t.integer   "parent_id"
     t.string    "clever_name"
+  end
+
+  create_table "categories_users", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "user_id"
   end
 
   create_table "comments", :force => true do |t|

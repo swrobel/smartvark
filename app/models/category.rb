@@ -6,6 +6,7 @@ class Category < ActiveRecord::Base
 
   has_many :offers
 
+  has_and_belongs_to_many :users
 
   def to_param
     "#{id}-#{CGI.escape(name)}"
@@ -14,7 +15,7 @@ class Category < ActiveRecord::Base
   def self.all_except(list)
     all :conditions => [ 'name not in (?)', list ]
   end
-  
+
   def clever_or_name
     clever_name.blank? ? name : clever_name
   end

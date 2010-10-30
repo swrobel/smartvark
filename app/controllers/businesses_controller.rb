@@ -64,7 +64,7 @@ class BusinessesController < ApplicationController
     respond_to do |format|
       if @business.update_attributes(params[:business])
         flash[:notice] = 'Business was successfully updated.'
-        format.html { redirect_to(new_business_path) }
+        format.html { redirect_to(edit_business_path(@business.id)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

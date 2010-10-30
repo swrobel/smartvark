@@ -22,15 +22,16 @@
  
 <div data-role="page"> 
 	<div data-role="content" data-theme="a"> 
-		<h3>Search</h3>
+		<h3>Sign Up</h3>
 		<form>
-		  <label for="search_terms">Search For:</label> 
-	    <input type="search" name="search_terms" id="search_terms" value="" placeholder="search terms"  />
-	    <label for="location">Location:</label> 
-	    <input type="search" name="location" id="location" value="" placeholder="city, state or zip"  />  
-		   		  
+		  <label for="email">Email:</label> 
+	    <input name="email" id="email" value="" placeholder="email address" />
+	    <label for="password">Password:</label> 
+	    <input type="password" name="password" id="password" value="" placeholder="password"  />  
+		  <label for="password-confirm">Re-enter Password:</label> 
+	    <input type="password" name="password-confirm" id="password-confirm" value="" placeholder="re-enter password"  />   		  
 		  <fieldset class="ui-grid-a"> 
-				<div class="ui-block-a"><button type="submit" data-theme="a">Search</button></div>	   
+				<div class="ui-block-a"><button type="submit" data-theme="a">Sign In</button></div>	   
 				<div class="ui-block-b"><a href='#' class="ui-btn-back" data-role="button" data-theme="d">Cancel</a></div>
 	    </fieldset>    
 		</form>

@@ -11,3 +11,56 @@
 .ui-icon-thumbsdown{background-image: url(/images/icon-thumbsdown-white.png);}
 .ui-icon-thumbsup{background-image: url(/images/icon-thumbsup-white.png);}
 .ui-icon-search-white{background-image: url(/images/icon-search-white.png);}
+/* coupon */
+.coupon{
+	overflow:hidden;
+	width:182px;
+	background:#fff;
+	padding:0 8px 14px 11px;
+	font:11px/12px Arial, Helvetica, sans-serif;
+	color:#999;
+	margin:0 auto;
+}
+.coupon h4{
+	color:#fff;
+	text-align:center;
+	width:201px;
+	margin:0 -8px 5px -11px;
+	font:20px/22px 'Trebuchet MS', Arial, sans-serif;
+	padding:5px 0 3px;
+	text-transform: uppercase;
+}
+.coupon .c_Coupon{background:#3FB52B;}
+.coupon .c_Deal{background:#ff5f00;}
+.coupon .c_Event{background:#238ecb;}
+.coupon .holder{
+	width:100%;
+	overflow:hidden;
+	position:relative;
+}
+.coupon .center{
+	position:relative;
+	float:left;
+	left:50%;
+}
+.coupon .add-logo{
+	float:left;
+	position:relative;
+	left:-50%;
+}
+.coupon .subttl{
+	font-size:18px;
+	line-height:22px;
+	color:#000;
+	text-align:center;
+	display:block;
+	padding:0 0 3px;
+}
+.coupon p{margin:0 0 11px;}
+.coupon .code{
+	border:1px solid #666;
+	color:#666;
+	font:20px/22px 'Trebuchet MS', Arial, sans-serif;
+	text-align:center;
+}
+.coupon .code p{margin:0;}

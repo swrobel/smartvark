@@ -145,7 +145,7 @@ td, th{padding:0;}
 	padding:1px 1px 4px 15px;
 	width:862px;
 }
-.main-frame p {
+.main-frame .filter-results {
     text-align:center;
     font:bold 19px/19px Arial, Helvetica, sans-serif;
     color:#fff;
@@ -1218,6 +1218,7 @@ td, th{padding:0;}
 }
 #RES_ID_fb_login_image{
    padding:6px 24px 3px 45px; 
+
 }
 .btn-signin{
 	float:left;

@@ -16,8 +16,12 @@ class Business < ActiveRecord::Base
     short_name.blank? ? name : short_name
   end
 
+  def city_state_zip
+    [city, state].join(',') << ' ' << postal_code
+  end
+
   def address_as_string
-    [ street_address_1, city, state] .join(',') << ' ' << postal_code
+    [ street_address_1, city_state_zip].join(',')
   end
 
   def facebook_link

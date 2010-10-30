@@ -51,8 +51,8 @@ ActionController::Routing::Routes.draw do |map|
   # config/routes.rb
   map.resource :user_session
   map.root              :controller => "welcome", :action => :deals
-  map.biz               'biz', :controller => "user_sessions", :action => :new
-  #map.biz               'biz', :controller => "welcome", :action => :forbusiness
+  #map.biz               'biz', :controller => "user_sessions", :action => :new
+  map.biz               'biz', :controller => "welcome", :action => :forbusiness
   map.about             'about', :controller => "welcome", :action => :about
   map.privacy           'privacy', :controller => "welcome", :action => :privacypolicy
   map.admin             'admin', :controller => "offers"
@@ -66,6 +66,9 @@ ActionController::Routing::Routes.draw do |map|
   map.viewbusiness      'viewbusiness/:id', :controller => "welcome", :action => :viewbusiness
   map.viewdeal          'viewdeal/:id', :controller => "welcome", :action => :viewdeal
   map.shout             'shout/:id', :controller => "welcome", :action => :shout, :conditions => { :method => :post }
+  map.contact           'contact', :controller => "welcome", :action => :contact, :conditions => { :method => :get }
+  map.mobile_filter     '/m/filter/:category_id', :controller => "m", :action => :filter, :conditions => { :method => :get }
+  map.mobile_search_results     '/m/search_results', :controller => "m", :action => :search_results, :conditions => { :method => :post }
 
 
   map.logout '/logout',:controller => 'user_sessions', :action => :destroy

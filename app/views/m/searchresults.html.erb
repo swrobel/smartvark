@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Smartvark</title>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon-precomposed" href="/images/touch-icon.png" />
+	<link rel="apple-touch-startup-image" href="/images/splash.png" />
+	<link rel="stylesheet"  href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
+	<link rel="stylesheet"  href="/stylesheets/mobile.css" />
+	<script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+</head>
+<body>
+
+<div data-role="page">
+
+	<div data-role="header" data-theme="e">
+		<h1>Search Results</h1>
+		<a href="search.html" data-icon="search-white" data-transition="pop" class="ui-btn-right">Search</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+	  <div data-role="fieldcontain" id="list-header">
+            <p><strong>Results for &quot;<%= params[:search_terms] %>&quot; near <%= params[:location] %></strong></p>
+	    <label for="category-filter" class="select">Category:</label>
+            <%= render :partial => 'category_filter' %>
+	  </div>
+		<ul data-role="listview" data-theme="d" id='offers_list'>
+                  <%= render :partial => 'offers', :collection => @offers || [] %>
+		</ul>
+	</div><!-- /content -->
+</div><!-- /page -->
+
+</body>
+</html>

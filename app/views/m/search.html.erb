@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Smartvark</title>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon-precomposed" href="/images/touch-icon.png" />
+	<link rel="apple-touch-startup-image" href="/images/splash.png" />
+	<link rel="stylesheet"  href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
+	<link rel="stylesheet"  href="/stylesheets/mobile.css" />
+	<script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+	<script language="javascript">
+	  $jQuery('.ui-btn-back').live('tap',function() {
+      history.back(); return false;
+    }).live('click',function() {
+      return false;
+    });
+  </script>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+</head>
+<body>
+
+<div data-role="page">
+	<div data-role="content" data-theme="a">
+		<h3>Search</h3>
+    <% form_tag(mobile_search_results_url) do %>
+            <label for="search_terms">Search For:</label>
+            <%= text_field_tag 'search_terms', params[:search_terms], :placeholder => 'search terms' %>
+	    <label for="location">Location:</label>
+            <%= text_field_tag 'location', params[:location], :placeholder => 'city, state or zip' %>
+
+		  <fieldset class="ui-grid-a">
+				<div class="ui-block-a"><button type="submit" data-theme="a">Search</button></div>
+				<div class="ui-block-b"><a href='#' class="ui-btn-back" data-role="button" data-theme="d">Cancel</a></div>
+	    </fieldset>
+    <% end %>
+	</div><!-- /content -->
+</div><!-- /page -->
+
+</body>
+</html>

@@ -7,3 +7,7 @@
 .list_Coupon{background:#3FB52B;}
 .list_Deal{background:#ff5f00;}
 .list_Event{background:#238ecb;}
+#list-header{padding: 0px 0px 1.5em 0px;}
+.ui-icon-thumbsdown{background-image: url(/images/icon-thumbsdown-white.png);}
+.ui-icon-thumbsup{background-image: url(/images/icon-thumbsup-white.png);}
+.ui-icon-search-white{background-image: url(/images/icon-search-white.png);}

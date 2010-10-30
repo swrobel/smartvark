@@ -22,14 +22,11 @@
 	</div><!-- /header --> 
  
 	<div data-role="content">
-	  <div data-role="fieldcontain" id="list-header">
-	    <label for="category-filter" class="select">Category:</label>
-	    <select name="category-filter" id="category-filter">
-		    <option value="all">All</option>
-		    <option value="food">Feed Me</option>
-		    <option value="clothes">Dress Me</option>
-		    <option value="shopping">Retail Me</option>
-	    </select> 
+	  <div data-role="collapsible" data-state="collapsed" id="list-header">
+	    <h3>Deals for Los Angeles, CA</h3>
+	    <label for="location" class="select">It looks like you're in Los Angeles, CA</label>
+	    <input type="text" name="location" id="location" value="" placeholder="Wrong! I'm actually in..."  />
+	    <button type="submit" data-theme="d">Update</button> 
 	  </div>	
 		<ul data-role="listview" data-theme="d"> 
 			<li> 

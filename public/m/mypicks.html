@@ -17,11 +17,19 @@
  
 	<div data-role="header" data-theme="e"> 
 		<h1>My Picks</h1>
-		<a href="search.html" data-icon="search" data-transition="pop" class="ui-btn-right">Search</a>
+		<a href="search.html" data-icon="search-white" data-transition="pop" class="ui-btn-right">Search</a>
 	</div><!-- /header --> 
  
 	<div data-role="content">
-		
+		<div data-role="fieldcontain" id="list-header">
+	    <label for="category-filter" class="select">Category:</label>
+	    <select name="category-filter" id="category-filter">
+		    <option value="all">All</option>
+		    <option value="food">Feed Me</option>
+		    <option value="clothes">Dress Me</option>
+		    <option value="shopping">Retail Me</option>
+	    </select> 
+	  </div>
 		<ul data-role="listview" data-theme="d" data-filter="true"> 
 			<li> 
 				<h3><a href="viewdeal.html">Offer Lead</a></h3>

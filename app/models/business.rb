@@ -52,7 +52,11 @@ class Business < ActiveRecord::Base
   end
 
   def yelp_link
-    'http://yelp.com/biz/' + yelp_url
+    if yelp_url.starts_with?('http://yelp.com/biz')
+      yelp_url
+    else
+      'http://yelp.com/biz' + yelp_url
+    end
   end
 
   def set_yelp_rating

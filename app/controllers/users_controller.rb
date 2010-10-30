@@ -44,7 +44,12 @@ class UsersController < ApplicationController
       redirect_to @user.business? ? new_business_path : myprofile_path
     else
       #render :action => :edit
-      render :controller => 'welcome', :action => :myprofile
+      flash[:notice] = @user.errors.collect { |var, msg| "#{var.capitalize} #{msg}" }.join("<br/>")
+      if @user.business?
+        redirect_to  new_business_path
+      else
+        myprofile_path
+      end
     end
   end
 

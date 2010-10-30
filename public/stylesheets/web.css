@@ -132,100 +132,6 @@ td, th{padding:0;}
 	height:116px;
 	cursor:pointer;
 }
-/* login-box */
-/*
-.login-box {
-	position:absolute;
-	top:6px;
-	right:0;
-}
-.btn-login {
-	color:#2264a6;
-	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-	text-decoration:underline;
-	font-size:24px;
-	line-height:28px;
-	margin:0 27px 0 0;
-}
-.active .btn-login {display:none;}
-.btn-login:hover {text-decoration:none;}
-*/
-/* popup */
-/*
-.popup {
-	width:272px;
-	height:172px;
-	background:#238ecb;
-	display:none;
-	padding:15px 0 0 35px;
-}
-.active .popup {display:block;}
-.popup .txt {
-	float:left;
-	border:1px solid #7abadf;
-	width:211px;
-	padding:3px 11px 6px;
-	font-size:24px;
-	margin:0 0 13px;
-}
-.popup .sbm {
-	float:left;
-	border:0;
-	background:url(../images/btn-login.gif) no-repeat;
-	width:74px;
-	height:28px;
-	text-indent:-9999px;
-	font-size:0;
-	line-height:0;
-	cursor:pointer;
-	margin:9px 40px 0  22px;
-	display:inline;
-}
-.popup .cancel {
-	background:url(../images/btn-cancel.gif) no-repeat;
-	width:74px;
-	height:28px;
-	float:left;
-	margin:9px 0 0;
-	text-indent:-9999px;
-	overflow:hidden;
-}
-.login-box .holder{
-	float:right;
-	padding:15px 0 4px;
-}
-.login-box .ttl{
-	float:left;
-	margin:0 10px 0 0;
-	font:16px/25px "Trebuchet MS", Arial, Helvetica, sans-serif;
-	color:#238ecb;
-}
-.login-box .holder img{float:left;}
-.login-box p{
-	margin:0 14px 0 0;
-	text-align:right;
-	color:#4cb1d1;
-	clear:both;
-	font:12px/15px "Trebuchet MS", Arial, Helvetica, sans-serif;
-}
-*/
-/* progress-bar */
-/*
-.progress-bar {
-	float:left;
-	background:url(../images/progress-bar.gif) no-repeat;
-	width:128px;
-	height:25px;
-}
-.progress-bar span {
-	display:block;
-	height:25px;
-	background:url(../images/progress-bar.gif) no-repeat 0 100%;
-	text-indent:-9999px;
-	font-size:0;
-	line-height:0;
-}
-*/
 /* main */
 #main {
 	width:100%;
@@ -238,6 +144,12 @@ td, th{padding:0;}
 	background:url(../images/bg-main.gif) no-repeat;
 	padding:1px 1px 4px 15px;
 	width:862px;
+}
+.main-frame p {
+    text-align:center;
+    font:bold 19px/19px Arial, Helvetica, sans-serif;
+    color:#fff;
+    text-shadow: 1px 1px 1px #CCC;
 }
 /* welcome-box */
 .welcome-box {

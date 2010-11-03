@@ -13,7 +13,7 @@
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-  <p style="color: green"><%= flash[:notice] %></p>
+  <p class="flash-notice"><%= flash[:notice] %></p>
   <%= fb_connect_javascript_tag %>
   <%= init_fb_connect "XFBML" %>
 

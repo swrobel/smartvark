@@ -1,3 +1,7 @@
+.flash-notice {
+    color: green;
+    text-align: center;
+}
 .archived  {
   background-color: #DDD;
 }
@@ -397,6 +401,7 @@ td, th{padding:0;}
 }
 .search-results .item address span {display:block;}
 /* aside */
+
 .aside {
 	float:right;
 	width:281px;
@@ -1141,10 +1146,8 @@ td, th{padding:0;}
 /* viewbusiness page styles*/
 /* signin/account area */
 .account-area{
-        margin-right: 10px;
+    margin-right: 10px;
 	float:right;
-
-
 	font:24px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	line-height:28px;
 	position:relative;
@@ -1161,7 +1164,7 @@ td, th{padding:0;}
 .btn-signup-open:hover{text-decoration:none;}
 .account-area .holder{
 	float:right;
-	padding:15px 0 4px;
+	padding:4px 0 4px;
 }
 .account-area .ttl{
 	float:left;

@@ -1,10 +1,11 @@
 <% if logged_in? %>
-  <!-- login-box -->
+  <!-- account-area -->
   <div class="right">
     <div class="frame">
       <div class="account-area">
         <!-- holder -->
         <div class="holder">
+          <p><%= link_to 'phone number (+10%)', myprofile_url %></p>
           <strong class="ttl">Welcome <span><%= current_user.login %></span></strong>
           <!-- progress-bar -->
           <div class="progress-bar"><span style="width:78px">&nbsp;</span></div>

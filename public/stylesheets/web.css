@@ -1124,7 +1124,6 @@ td, th{padding:0;}
 	margin:23px 0 0;
 	padding:0;
 	list-style:none;
-	font:18px/23px 'Trebuchet MS', Arial, sans-serif;
 }
 .accordion .opener{
 	display:block;
@@ -1139,10 +1138,8 @@ td, th{padding:0;}
 	background-position:0 -26px;
 	text-decoration:none;
 }
-.accordion .slide{
-	height:160px;
-	overflow:auto;
-}
+.accordion .slide{overflow:auto;}
+.accordion a{font:18px/23px 'Trebuchet MS', Arial, sans-serif;}
 /* viewbusiness page styles*/
 /* signin/account area */
 .account-area{

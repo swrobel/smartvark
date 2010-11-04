@@ -72,10 +72,11 @@ class Offer < ActiveRecord::Base
       end
     end
 
-    unless params[:user_admin]
-      conditions << "archived=false"
-      conditions << "draft=false"
-    end
+# This is breaking search w/ error WelcomeController#search (NameError) "undefined local variable or method `params' for #<Class:0x00000003f45238>"
+#    unless params[:user_admin]
+#      conditions << "archived=false"
+#      conditions << "draft=false"
+#    end
 
     if options[:search_terms]
       conditions <<  '(lead like ? OR businesses.name like ?)'

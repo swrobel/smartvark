@@ -5,3 +5,4 @@ facebooker
 aws-s3
 rspec --version 1.3.1
 moonshado-sms
+sqlite3-ruby

@@ -19,7 +19,6 @@ class WelcomeController < ApplicationController
   end
 
   def dealdashboard
-    #TODO : Make this the owners business  check config/routes
     @businesses = current_user.businesses
     @business = current_user.businesses.first || current_user.businesses.build
 

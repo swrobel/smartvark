@@ -2,7 +2,7 @@
 <div class="search">
   <!-- search-holder -->
   <div class="search-holder">
-    <% form_tag(search_url((params[:category_id] || 1).to_i), :method => :get) do %>
+    <% form_tag(search_url(1), :method => :get) do %>
       <fieldset>
         <%= text_field_tag 'search_terms', params[:search_terms], :class => 'text', :placeholder => 'search terms' %>
         <%= text_field_tag 'location', params[:location], :class => 'text', :placeholder => 'city, state or zip' %>

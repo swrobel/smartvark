@@ -41,11 +41,11 @@ class Offer < ActiveRecord::Base
   LIMIT = 5
 
   def to_param
-    "#{id}-#{CGI.escape(lead)}"
+    "#{id}-#{URI.escape(CGI.escape(lead),'.')}"
   end
 
   def self.search(options = {})
-    # TODO Refactory with merge_conditions
+    # TODO Refactor with merge_conditions
     conditions = []
     args = []
 
@@ -72,11 +72,11 @@ class Offer < ActiveRecord::Base
       end
     end
 
-# This is breaking search w/ error WelcomeController#search (NameError) "undefined local variable or method `params' for #<Class:0x00000003f45238>"
-#    unless params[:user_admin]
-#      conditions << "archived=false"
-#      conditions << "draft=false"
-#    end
+    unless options[:user_admin]
+      conditions << "archived <> ?"
+      conditions << "draft <> ?"
+      args << true << true
+    end
 
     if options[:search_terms]
       conditions <<  '(lead like ? OR businesses.name like ?)'

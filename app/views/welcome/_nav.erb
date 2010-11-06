@@ -2,7 +2,7 @@
 <div class="nav">
   <div>
     <ul>
-      <% Category.parents.each_with_index do |category, index| %>
+      <% Category.all_parents.each_with_index do |category, index| %>
         <% html_class = begin
                   end
         %>

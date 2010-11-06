@@ -4,7 +4,7 @@
 </div>
 <!-- accordion -->
 <ul class="accordion">
-  <% Category.parents.each_with_index do |category, index| %>
+  <% Category.all_parents.each_with_index do |category, index| %>
   <% next if category.name == "All" %>
 	<li>
 		<%= link_to category.clever_or_name, "#", {:class => "opener"} %>

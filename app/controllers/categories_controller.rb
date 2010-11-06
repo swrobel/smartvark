@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.xml
   def index
-    @categories = Category.parents
+    @categories = Category.all_parents
 
     respond_to do |format|
       format.html # index.html.erb

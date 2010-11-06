@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   end
 
   def likes_offers(category=nil)
-    @likes_offers = opinions.likes.collect(&:offer).delete_if { |b| !b.active? || (category && b.category_id != category) }
+    @likes_offers = opinions.likes.collect(&:offer).delete_if { |b| b.nil? || !b.active? || (category && b.category_id != category) }
   end
 
   def offers_sorted_for_dealdashboard(other_business_ids=nil)

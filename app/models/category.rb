@@ -1,7 +1,6 @@
 class Category < ActiveRecord::Base
-  acts_as_tree :order => 'id DESC'
+  acts_as_tree :order => 'name'
 
-  default_scope :order => 'name'
   named_scope :all_parents, :conditions => { :parent_id => nil }, :order => :id
 
   has_many :offers

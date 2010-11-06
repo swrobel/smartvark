@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
   helper_method :location
 
   after_filter :init_user_session
-  before_filter :authenticated?, :only => [ :mydeals, :dealdashboard ]
+  before_filter :authenticated?, :only => [ :mydeals, :dealdashboard, :myprofile ]
   before_filter :redirect_if_logged_in,  :only => [ :deals, :index ]
 
   def redirect_if_logged_in

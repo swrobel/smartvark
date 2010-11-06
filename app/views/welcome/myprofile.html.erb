@@ -30,18 +30,21 @@
 								<!-- holder -->
 								<div class="holder">
 									<!-- l-side -->
+  <% form_for @user, :url => account_path do |f| %>
+  <%= f.error_messages %>
 									<div class="l-side">
 										<!-- ttl-holder -->
 										<div class="ttl-holder">
 											<h2>My Profile</h2>
 										</div>
 										<!-- profile-form -->
-										<%= render :partial => 'my_profile' %>
+                                                                                <%= render :partial => 'my_profile', :locals => { :f => f } %>
 									</div>
 									<!-- r-side -->
 									<div class="r-side">
 										<%= render :partial => "my_tastes" %>
 									</div>
+<% end %>
 								</div>
 							</div>
 							<div class="b"></div>

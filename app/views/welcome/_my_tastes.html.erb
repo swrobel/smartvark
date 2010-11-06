@@ -10,7 +10,9 @@
 		<%= link_to category.clever_or_name, "#", {:class => "opener"} %>
                 <div class="slide">
                   <% category.children.each do |sub_category| %>
-                    <%= check_box_tag 'user[category_ids]', sub_category.id, @user.categories.include?(sub_category) %><%= sub_category.name %><br/>
+                    <label>
+                      <%= check_box_tag 'user[category_ids][]', sub_category.id, @user.categories.include?(sub_category) %><%= sub_category.name %><br/>
+                    </label>
                   <% end %>
                 </div>
 	</li>

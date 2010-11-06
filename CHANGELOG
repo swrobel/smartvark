@@ -1,3 +1,6 @@
+! Subcats A-Z sort
+! Adds subcats on submit from user profile, wrapped in label so user can click cat name
+
 ! Merchant, View deal bug (URI escape periods in url slug)
 ! Fix the params[:user_admin] => options[:user_admin] bug in offer.rb
 ! New search sets category back to all.

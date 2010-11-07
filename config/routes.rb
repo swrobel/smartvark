@@ -51,8 +51,7 @@ ActionController::Routing::Routes.draw do |map|
   # config/routes.rb
   map.resource :user_session
   map.root              :controller => "welcome", :action => :deals
-  map.biz               'biz', :controller => "user_sessions", :action => :new
-  #map.biz               'biz', :controller => "welcome", :action => :forbusiness
+  map.biz               'biz', :controller => "welcome", :action => :forbusiness
   map.about             'about', :controller => "welcome", :action => :about
   map.privacy           'privacy', :controller => "welcome", :action => :privacypolicy
   map.admin             'admin', :controller => "offers"

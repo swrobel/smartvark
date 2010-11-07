@@ -26,8 +26,10 @@
   <div class="right">
     <div class="frame">
       <div class="account-area">
-        <a href="" id="btn-signin-open" class="btn-signin-open">Sign in</a> or
-        <%= render :partial => 'users/signup' %>
+        <a href="" id="btn-signin-open" class="btn-signin-open">Sign in</a>
+        <% if new_user %> or
+          <%= render :partial => 'users/signup' %>
+        <% end %>
         <!-- popup -->
         <%= render :partial => 'user_sessions/popup' %>
       </div>

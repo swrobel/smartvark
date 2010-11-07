@@ -15,35 +15,7 @@
 			<div id="header">
 				<!-- logo -->
 				<h1 class="logo"><a href="#">Smartvark</a></h1>
-				<!-- sign-in popup-holder -->
-				<div class="sign-in popup-holder">
-					<a href="#" class="btn-signin open">Sign in</a>
-					<!-- popup -->
-					<div class="popup">
-						<div class="frame-t">
-							<form action="#">
-								<fieldset>
-									<h3>Sign in</h3>
-									<div class="row">
-										<input class="txt" type="text" value="Username" />
-									</div>
-									<div class="row">
-										<input class="txt" type="password" value="Password" />
-									</div>
-									<div class="btns-holder">
-										<input class="btn-sign-in" type="submit" value="Sign in" />
-										<a href="#" class="btn-cancel close">Cancel</a>
-									</div>
-									<div class="holder">
-										<div class="remember">
-											<input id="chk1" class="chk" type="checkbox" />
-											<label for="chk1">Remember Me</label>
-										</div>
-									</div>
-								</fieldset>
-							</form>
-						</div>
-					</div>
+                                <%= render :partial => 'login', :locals => { :new_user => false } %>
 				</div>
 			</div>
 			<!-- main -->

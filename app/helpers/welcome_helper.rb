@@ -41,7 +41,6 @@ module WelcomeHelper
       link_to_remote("undo", :url => undo_last_action_path(offer.id)) + " or " +
       use_it_now_link(offer) + "."
     else
-      logger.info "GOT HERE!!!!"
       res << "You removed \"#{offer.lead}\" deal from Artie's Picks. " +
       link_to_remote("undo", :url => undo_last_action_path(offer.id)) + "."
     end

@@ -129,7 +129,6 @@ class WelcomeController < ApplicationController
       current_user.set_opinion(params)
       current_user.save
     else
-      10.times { logger.info "GOT HERE" }
       session[:user] ||= User.new
       session[:user].set_opinion(params)
     end

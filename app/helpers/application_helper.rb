@@ -45,16 +45,18 @@ module ApplicationHelper
     "
   end
 
-  def display_offer(offers, index, hidden=false)
-
-    offer = offers[index]
-    return if offer.nil?
-
-    use_it_now_function = if logged_in?
+  def use_it_now_link offer
+    if logged_in?
       link_to("Use It Now", viewdeal_url(offer.to_param), {:class => "link"})
     else
       link_to_function("Use It Now", "jQuery('#signup-popup').modal();", {:class => "link"})
     end
+  end
+
+  def display_offer(offers, index, hidden=false)
+
+    offer = offers[index]
+    return if offer.nil?
 
 "<li id='offer_#{offer.id}' #{"style='display:none'" if hidden} >"  +
   '<div class="frame">
@@ -67,7 +69,7 @@ module ApplicationHelper
            onMouseOut=\"$('offer_info_rollover').update('')\" >" +
     link_to_remote(image_tag('/images/btn-good.gif', :alt => "+"),
                    :url => { :action => "set_opinion", :offer_id => offer.id, :liked => 'true' }) +
-    "</span>" + use_it_now_function +
+    "</span>" + use_it_now_link(offer) +
     "<span onMouseOver=\"$('offer_info_rollover').update('"+ CGI.escapeHTML(info_for_rollover(offer))+ "');\"
            onMouseOut=\"$('offer_info_rollover').update('')\" >" +
     link_to_remote(image_tag('/images/btn-bad.gif', :alt => "+"),

@@ -67,6 +67,7 @@ ActionController::Routing::Routes.draw do |map|
   map.viewdeal          'viewdeal/:id', :controller => "welcome", :action => :viewdeal
   map.shout             'shout/:id', :controller => "welcome", :action => :shout, :conditions => { :method => :post }
   map.contact           'contact', :controller => "welcome", :action => :contact, :conditions => { :method => :get }
+  map.undo_last_action  'undo_last_action/:id', :controller => "welcome", :action => :undo_last_action
   map.mobile_filter     '/m/filter/:category_id', :controller => "m", :action => :filter, :conditions => { :method => :get }
   map.mobile_search_results     '/m/search_results', :controller => "m", :action => :search_results, :conditions => { :method => :post }
 

@@ -33,4 +33,18 @@ module WelcomeHelper
     ) +
       "<p>Expires #{offer.expiry_datetime.strftime('%B %d, %Y')}</p></li>"
   end
+
+  def undo_last_action_link(offer, liked=true)
+    res = '<span class="mark">'
+    if liked
+      res << "You added \"#{offer.lead}\" deal to My Picks. " +
+      link_to_remote("undo", :url => undo_last_action_path(offer.id)) + " or " +
+      use_it_now_link(offer) + "."
+    else
+      logger.info "GOT HERE!!!!"
+      res << "You removed \"#{offer.lead}\" deal from Artie's Picks. " +
+      link_to_remote("undo", :url => undo_last_action_path(offer.id)) + "."
+    end
+    res << "</span>"
+  end
 end

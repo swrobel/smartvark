@@ -7,6 +7,7 @@ class UserSessionsController < ApplicationController
   end
 
   def create
+    session.clear
     @user_session = facebook_session || UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = "Login successful!"

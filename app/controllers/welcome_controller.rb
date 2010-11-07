@@ -112,19 +112,32 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def undo_last_action
+    if current_user
+      current_user.opinions.find_by_offer_id(params[:id]).delete
+    elsif session[:user]
+      session[:user].opinions.last.delete
+    end
+    render :update do |page|
+      page.replace_html 'undo_last_action', ''
+      page << "Effect.Grow('offer_#{params[:id]}');"
+    end
+  end
+
   def set_opinion
     if current_user
       current_user.set_opinion(params)
       current_user.save
     else
+      10.times { logger.info "GOT HERE" }
       session[:user] ||= User.new
       session[:user].set_opinion(params)
     end
 
-    offer= Offer.find params[:offer_id]
+    offer=Offer.find params[:offer_id]
     render :update do |page|
+      page.replace_html 'undo_last_action', undo_last_action_link(offer, params[:liked]=='true')
       if params[:liked]=='true'
-
 
         session[:liked] << params[:offer_id] unless current_user
 

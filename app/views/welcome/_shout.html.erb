@@ -9,14 +9,14 @@
       <!--- TODO: Put this in a helper -->
       <% @offer.comments.each_with_index do |comment,index| %>
         <strong class="bubble<%= " blue-bubble" if ((index+1)%2).zero? %>"><strong><strong><%= comment.text %></strong></strong></strong>
-        <p><%= "<span>#{comment.commenter.first}</span>#{comment.commenter.last}" %></p>
+        <p><%= raw "<span>#{comment.commenter.first}</span>#{comment.commenter.last}" %></p>
       <% end %>
     </div>
     <% if !logged_in? %>
       <i>You must be logged in to shout</i>
     <% elsif !@offer.commenters.include?(current_user) %>
       <div class="row">
-        <% form_tag shout_url(@offer.id) do %>
+        <%= form_tag shout_url(@offer.id) do %>
           <%= text_area_tag 'comment[text]', '',:style => "width:100%", :id => 'shoutbox', :size => '40x3' %>
           <%= submit_tag 'Shout!', :id => :shout %>
         <% end %>

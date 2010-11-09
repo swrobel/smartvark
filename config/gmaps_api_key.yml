@@ -13,4 +13,5 @@ test:
 
 production:
   smartvark.com: ABQIAAAAEMbemat33qvavk--Q6bCBxSsF2k8qpl-Tfv9NRaGXej5SVLL8hSY7aT6RqN2BJuX6LlS7LF9PsnTlw
-  heroku.com: ABQIAAAAEMbemat33qvavk--Q6bCBxQ8nda2l8z-oXOZMhvo4DA8FzaARRQqjIEkDpQZqmXmk39iPsostVD9wA
+  smartvark.heroku.com: ABQIAAAAEMbemat33qvavk--Q6bCBxQ8nda2l8z-oXOZMhvo4DA8FzaARRQqjIEkDpQZqmXmk39iPsostVD9wA
+  smartvark192.heroku.com: ABQIAAAAEMbemat33qvavk--Q6bCBxQ8nda2l8z-oXOZMhvo4DA8FzaARRQqjIEkDpQZqmXmk39iPsostVD9wA

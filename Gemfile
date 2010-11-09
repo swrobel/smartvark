@@ -1,11 +1,14 @@
 source :rubygems
 
-gem "sqlite3-ruby", :group => :development
+gem "rails", "3.0.1"
+gem "acts_as_tree_rails3"
 gem "paperclip"
 gem "geokit"
-gem "facebooker"
+gem "geokit-rails3"
 gem "moonshado-sms"
-gem "rails", "2.3.5"
-gem "pg", :group => :production
 gem "aws-s3"
-gem "rspec", "1.3.1"
+gem "authlogic"
+gem "jquery-rails"
+gem "yelp"
+gem "pg", :group => :production
+gem "sqlite3-ruby", :group => [:development, :test]

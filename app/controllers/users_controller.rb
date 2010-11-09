@@ -18,14 +18,16 @@ class UsersController < ApplicationController
       @user.errors.each_full { |msg| logger.info msg }
     end
 
-    if @user.save
-      handle_session_stuffs  unless params[:user][:type]
+    @user.save do |result|
+      if result
+        handle_session_stuffs  unless params[:user][:type]
 
-      flash[:notice] = "Account registered!"
-      UserSession.new(params[:user])
-      redirect_to @user.business? ? new_business_path : mydeals_url
-    else
-      render :action => :new
+        flash[:notice] = "Account registered!"
+        UserSession.new(params[:user])
+        redirect_to @user.business? ? new_business_path : mydeals_url
+      else
+        render :action => :new
+      end
     end
   end
 
@@ -39,16 +41,18 @@ class UsersController < ApplicationController
 
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
-    if @user.update_attributes(params[:user])
-      flash[:notice] = "Account updated!"
-      redirect_to @user.business? ? new_business_path : myprofile_path
-    else
-      #render :action => :edit
-      flash[:notice] = @user.errors.collect { |var, msg| "#{var.capitalize} #{msg}" }.join("<br/>")
-      if @user.business?
-        redirect_to  new_business_path
+    @user.update_attributes(params[:user]) do |result|
+      if result
+        flash[:notice] = "Account updated!"
+        redirect_to @user.business? ? new_business_path : myprofile_path
       else
-        myprofile_path
+        #render :action => :edit
+        flash[:notice] = @user.errors.collect { |var, msg| "#{var.capitalize} #{msg}" }.join("<br/>")
+        if @user.business?
+          redirect_to  new_business_path
+        else
+          myprofile_path
+        end
       end
     end
   end

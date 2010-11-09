@@ -9,6 +9,5 @@ gem "moonshado-sms"
 gem "aws-s3"
 gem "authlogic"
 gem "jquery-rails"
-gem "yelp"
 gem "pg", :group => :production
 gem "sqlite3-ruby", :group => [:development, :test]

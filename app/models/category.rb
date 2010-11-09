@@ -1,7 +1,7 @@
 class Category < ActiveRecord::Base
   acts_as_tree :order => 'name'
 
-  named_scope :all_parents, :conditions => { :parent_id => nil }, :order => :id
+  scope :all_parents, :conditions => { :parent_id => nil }, :order => :id
 
   has_many :offers
 

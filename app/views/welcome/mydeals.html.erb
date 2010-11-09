@@ -45,7 +45,7 @@
 											<div class="gallery">
                                                                                           <ul>
                                                                                             <% @offers.length.times do |n| %>
-                                                                                              <%= display_offer(@offers, n) %>
+                                                                                              <%= raw display_offer(@offers, n) %>
                                                                                             <% end %>
                                                                                           </ul>
 											</div>
@@ -61,7 +61,7 @@
 										<!-- list -->
 										<ul id='my_list' class="list">
                                                                                   <% @likes.each do |offer| %>
-                                                                                    <%= list_offer(offer) %>
+                                                                                    <%= raw list_offer(offer) %>
                                                                                   <% end %>
 										</ul>
 									</div>

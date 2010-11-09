@@ -1,7 +1,7 @@
 <div class="bottom">
 <!-- profile-form -->
   <div class="profile-form">
-    <% form_for(@business) do |f| %>
+    <%= form_for(@business) do |f| %>
       <%= f.error_messages %>
       <fieldset>
         <%= form_row f, :name, 'Location Name' %>

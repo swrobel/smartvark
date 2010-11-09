@@ -4,7 +4,7 @@
     <p>Enter the details of your offer and then choose a redemption code for.  Most merchants select a code that works with their store’s point of sale system.  Typically redemption codes that are easy to say and remember work best, like HALFOFFJULY2010.  Don’t hesitate to <a href="#">contact us</a> if you have any questions</p>
     <div class="row">
       <%= f.label :offer_type, 'Offer type', :class => :width1 %>
-      <%= f.select :offer_type, options_for_select(OfferTypes, @offer.offer_type), { :include_blank => true }, {:class => :sel, :onchange => "$('#{@offer.id}_type').update($('offer_offer_type').value);$('#{@offer.id}_type').className='c_'+$('offer_offer_type').value"} %>
+      <%= f.select :offer_type, options_for_select(OfferTypes, @offer.offer_type), { :include_blank => true }, {:class => :sel, :onchange => "jQuery('##{@offer.id}_type').html(jQuery('#offer_offer_type').val());jQuery('##{@offer.id}_type').removeClass();jQuery('##{@offer.id}_type').addClass('c_'+jQuery('#offer_offer_type').val())"} %>
       <div class="caption two-lines">
         <span>Deals: sales, happy hours specials and other non-coupons Events: infrequent special promotions (ex: loyal shopper party)</span>
       </div>
@@ -18,14 +18,14 @@
     </div>
     <div class="row">
       <%= f.label :offer_active_on, 'Begin Date' %>
-      <%= f.unobtrusive_date_picker :offer_active_on, { :use_short_month => true, :order => [:month, :day, :year] } %>
+      <%= f.date_select :offer_active_on, :class => 'txt' %>
       <div class="caption sp1">
         <span>Date deal becomes active</span>
       </div>
     </div>
     <div class="row">
       <%= f.label :expiry_datetime , 'Expiry Date' %>
-      <%= f.unobtrusive_date_picker :expiry_datetime, { :use_short_month => true, :order => [:month, :day, :year] } %>
+      <%= f.text_field :expiry_datetime, :class => 'txt' %>
       <div class="caption sp1">
         <span>Date deal expires (end of day)</span>
       </div>
@@ -38,7 +38,7 @@
         <h3>Title of Offer (50 character maximum)</h3>
       </div>
       <div class="text text2">
-        <%= f.text_area :lead, :onchange => "$('#{@offer.id}_lead').update($('offer_lead').value)", :class=> 'placeheld', :placeholder => "Example: Save 50% on any full-price item" %>
+        <%= f.text_area :lead, :onchange => "jQuery('##{@offer.id}_lead').html(jQuery('#offer_lead').val())", :placeholder => "Example: Save 50% on any full-price item" %>
       </div>
     </div><!-- /text-box end -->
     <div class="text-box">
@@ -46,7 +46,7 @@
         <h3>Details of Offer (200 character maximum)</h3>
       </div>
       <div class="text text1">
-          <%= f.text_area :description, :onchange => "$('#{@offer.id}_diz').update($('offer_description').value)", :class=> 'placeheld', :placeholder => "Example: You'll find a wide variety of fashions in stock to get you ready for the season!" %>
+          <%= f.text_area :description, :onchange => "jQuery('##{@offer.id}_diz').html(jQuery('#offer_description').val())", :placeholder => "Example: You'll find a wide variety of fashions in stock to get you ready for the season!" %>
       </div>
     </div><!-- /text-box end -->
     <div class="text-box">
@@ -54,7 +54,7 @@
         <h3>Fine Print (200 character maximum)</h3>
       </div>
       <div class="text text1">
-          <%= f.text_area :exclusivity_text, :class=> 'placeheld', :placeholder => "Example: Not valid with any other offer. Not valid on already marked-down items" %>
+          <%= f.text_area :exclusivity_text, :placeholder => "Example: Not valid with any other offer. Not valid on already marked-down items" %>
       </div>
     </div><!-- /text-box end -->
     <div class="text-box">
@@ -65,11 +65,11 @@
         <div class="options-form">
 <% if @offer.new_record? %>
           <ul class="options">
-              <li class="active" id='biz_true'>
-                <a href="#" onClick="checkall_offer_form(true);return false">Select All </a>
+              <li id='biz_true'>
+                <a href="" onClick="checkall_offer_form(true);return false">Select All </a>
               </li>
               <li id='biz_false'>
-                <a href="#" onClick="checkall_offer_form(false);return false;">Select None</a>
+                <a href="" onClick="checkall_offer_form(false);return false;">Select None</a>
               </li>
             </ul>
   <% @businesses.in_groups_of(4) do |group| %>
@@ -77,7 +77,7 @@
   <% group.compact.each do |business| %>
     <li>
       <label>
-        <%= check_box_tag 'offer[business_ids][]', business.id, true, :class => 'chk' %>
+        <%= check_box_tag 'offer[business_ids][]', business.id, true, :class => 'chk location_chk' %>
         <%= business.short_or_name %>
       </label>
     </li>
@@ -96,7 +96,7 @@
     <div class="row">
       <div class="left">
         <%= f.label :redemption_code %>
-        <%= f.text_field :redemption_code, :class => :txt, :onchange => "$('#{@offer.id}_rc').update($('offer_redemption_code').value)" %>
+        <%= f.text_field :redemption_code, :class => :txt, :onchange => "jQuery('##{@offer.id}_rc').html(jQuery('#offer_redemption_code').val())" %>
       </div>
       <div class="right">
         <span>Code for tracking this deal in your system</span>
@@ -133,8 +133,8 @@
     <div class="btns-holder">
     <div class="center">
       <ul class="btns">
-        <li><%= link_to_function "Activate Deal", "$('offer_draft').value='false';$(this).up('form').submit()", :class => 'activate-deal' %>
-        <li><%= link_to_function "Save as Draft", "$('offer_draft').value='true';$(this).up('form').submit()", :class => 'save-draft' %>
+        <li><%= link_to_function "Activate Deal", "jQuery('#offer_draft').val('false');jQuery('form:first').submit();return false;", :class => 'activate-deal' %>
+        <li><%= link_to_function "Save as Draft", "jQuery('#offer_draft').val('true');jQuery('form:first').submit();return false;", :class => 'save-draft' %>
         <li><%= link_to_function 'cancel', "if (confirm('Are you sure?')) { window.location.href='#{dealdashboard_url}';return true; } else { return false; }", :class => 'cancel' %></li>
 
     </ul><!-- /btns end -->

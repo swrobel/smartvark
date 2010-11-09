@@ -37,11 +37,11 @@
 										<!-- options-form -->
 										<div class="options-form">
 													<ul class="options">
-              <li class="active" id='biz_true'>
-                <a href="#" onClick="checkall(true); <%= remote_function(:update => "deal_table", :url => { :action => :filter_deals}, :with => "Form.serialize($('business'))") %> ">Select All</a>
+              <li id='biz_true'>
+                <a href="#" onClick="checkall(true);return false;">Select All</a>
               </li>
               <li id='biz_false'>
-              <a href="#" onClick="checkall(false); <%= remote_function(:update => "deal_table", :url => { :action => :filter_deals}, :with => "Form.serialize($('business'))") %> ">Select None</a>
+              <a href="#" onClick="checkall(false);return false;">Select None</a>
               </li>
 
                                                                                                               </ul>
@@ -52,12 +52,7 @@
 <% group.compact.each do |business| %>
   <li>
     <label>
-      <%= check_box_tag 'business_ids[]', business.id, true, :class => 'chk',
-        :onclick => remote_function(:update => "deal_table",
-                                    :url => { :action => :filter_deals},
-                                    :with => "Form.serialize(this.form)"
-                                   )
-      %>
+      <%= check_box_tag 'business_ids[]', business.id, true, :class => 'chk dashboard_chk' %>
       <%= business.short_or_name %>
     </label>
   </li>

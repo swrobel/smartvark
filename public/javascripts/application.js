@@ -45,6 +45,10 @@ jQuery(function (jQuery) {
 	});
 });
 jQuery(function() {
+	jQuery("#offer_offer_active_on").datepicker();
+	jQuery("#offer_expiry_datetime").datepicker();
+});
+jQuery(function() {
 	//abort if browser supports HTML5 placeholder attribute
 	if ('placeholder' in document.createElement('input')) return;
 	jQuery("#search_terms").placeHeld();
@@ -53,12 +57,20 @@ jQuery(function() {
 	jQuery("#offer_description").placeHeld();
 	jQuery("#offer_exclusivity_text").placeHeld();
 });
+jQuery(function (jQuery) {
+    jQuery(".dashboard_chk").change(function(){
+        isChecked = jQuery(this).attr("checked");
+        locName = jQuery(this).parent().text().trim();
+        jQuery(".location").find("td").each(function(){
+            if(jQuery(this).text() == locName) if(isChecked) jQuery(this).parent().show(); else jQuery(this).parent().hide();
+        });
+    });
+});
 function checkall_offer_form(n) {
-	jQuery("input[name='offer[business_ids][]']").attr('checked',n);
+	jQuery(".location_chk").attr('checked',n);
 }
-
 function checkall(n) {
-	jQuery("input[name='business_ids[]']").attr('checked',n);
-	jQuery("#biz_"+n).attr('class', 'active')
-	jQuery("#biz_"+!n).attr('class', '')
+	jQuery(".chk").attr('checked',n);
+	if (n) jQuery(".dashboard_row").show();
+	else jQuery(".dashboard_row").hide();
 }

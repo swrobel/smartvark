@@ -1,0 +1,8 @@
+jQuery("#undo_last_action").html("<%= escape_javascript(undo_last_action_link(@offer, @liked).html_safe) %>")
+<% if @liked %>
+  jQuery("#my_list").prepend(jQuery("<%= escape_javascript(list_offer(@offer).html_safe) %>").fadeIn("slow"));
+<% end %>
+<% if @prompt_signup %>
+  jQuery("#signup-popup").modal();
+<% end %>
+jQuery("#offer_<%= @offer.id %>").hide("shrink");

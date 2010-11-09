@@ -15,6 +15,10 @@ class Business < ActiveRecord::Base
   def short_or_name
     short_name.blank? ? name : short_name
   end
+  
+  def to_param
+    "#{id}-#{URI.escape(CGI.escape(name),'.')}"
+  end
 
   def city_state_zip
     [city, state].join(',') << ' ' << postal_code

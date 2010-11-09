@@ -25,11 +25,11 @@ module WelcomeHelper
   end
 
   def list_offer(offer)
-    "<li id='offer_#{offer.id}'>" +
+    "<li id='my_offer_#{offer.id}'>" +
     hidden_field_tag("user[offer_ids][]", offer.id) +
-    link_to("<h3>#{offer.business.name}: #{offer.lead}</h3>", viewdeal_url(offer.to_param),
-      :onMouseOver => "$('offer_info_rollover').update('#{info_for_rollover(offer)}');",
-      :onMouseOut => "$('offer_info_rollover').update('');"
+    link_to("<h3>#{offer.business.name}: #{offer.lead}</h3>".html_safe, viewdeal_url(offer.to_param),
+      :onMouseOver => "jQuery('#offer_info_rollover').html('#{info_for_rollover(offer)}');",
+      :onMouseOut => "jQuery('#offer_info_rollover').empty();"
     ) +
       "<p>Expires #{offer.expiry_datetime.strftime('%B %d, %Y')}</p></li>"
   end
@@ -38,11 +38,11 @@ module WelcomeHelper
     res = '<span class="mark">'
     if liked
       res << "You added \"#{offer.lead}\" deal to My Picks. " +
-      link_to_remote("undo", :url => undo_last_action_path(offer.id)) + " or " +
+      link_to("Undo", { :controller => "welcome", :action => "undo_last_action", :offer_id => offer.id }, :remote => true) + " or " +
       use_it_now_link(offer) + "."
     else
       res << "You removed \"#{offer.lead}\" deal from Artie's Picks. " +
-      link_to_remote("undo", :url => undo_last_action_path(offer.id)) + "."
+      link_to("Undo", { :controller => "welcome", :action => "undo_last_action", :offer_id => offer.id }, :remote => true) + "."
     end
     res << "</span>"
   end

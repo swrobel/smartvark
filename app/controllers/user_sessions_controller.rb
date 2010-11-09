@@ -8,7 +8,8 @@ class UserSessionsController < ApplicationController
 
   def create
     session.clear
-    @user_session = facebook_session || UserSession.new(params[:user_session])
+    #@user_session = facebook_session || UserSession.new(params[:user_session])
+    @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = "Login successful!"
       redirect_to @user_session.record.business? ? dealdashboard_url : mydeals_url

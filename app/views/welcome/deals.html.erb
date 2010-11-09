@@ -35,10 +35,6 @@
                                                             <%= text_field_tag 'location', nil, :class => 'text-input', :placeholder => 'city, state or zip' %>
                                                             <%= image_submit_tag "/images/btn-update.gif", :class => 'button', :alt => 'Update' %>
                                                           <% end %>
-                            <!--
-								<strong class="ttl-give-a-try">Give it a try</strong>
-								<a href="#" class="btn-show-deals">Show me the deals!</a>
-                            -->
 							</div>
 						</div>
 						<!-- two-columns -->
@@ -63,7 +59,7 @@
 											<div class="gallery">
                                                                                           <ul>
                                                                                             <% @offers.length.times do |n| %>
-                                                                                              <%= display_offer(@offers, n) %>
+                                                                                              <%= raw display_offer(@offers, n) %>
                                                                                             <% end %>
                                                                                           </ul>
 											</div>
@@ -79,7 +75,7 @@
 										<!-- list -->
                                                                                 <ul id='my_list' class="list">
                                                                                   <% @likes.each do |offer| %>
-                                                                                    <%= list_offer(offer) %>
+                                                                                    <%= raw list_offer(offer) %>
                                                                                   <% end %>
 										</ul>
 									</div>

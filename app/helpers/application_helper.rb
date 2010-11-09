@@ -17,15 +17,10 @@ module ApplicationHelper
     "
     <strong class=\"c_#{offer.offer_type}\">#{offer.offer_type}</strong>
     <div class=""img_box"">
-      " +
-      image_tag(offer.coupon.url(:thumb)) +
-    "
+      #{image_tag(offer.coupon.url(:thumb))}
     </div>
-    <span id='#{offer.id}_lead'>#{offer.lead}</span>
-    ", viewdeal_url(offer.to_param),
-              :onMouseOver => "$('offer_info_rollover').update('#{info_for_rollover(offer)}');",
-              :onMouseOut => "$('offer_info_rollover').update('');"
-             )
+    <span id='#{offer.id}_lead'>#{offer.lead}</span>".html_safe,
+    viewdeal_url(offer.to_param))
   end
 
   def coupon(offer)
@@ -58,23 +53,19 @@ module ApplicationHelper
     offer = offers[index]
     return if offer.nil?
 
-"<li id='offer_#{offer.id}' #{"style='display:none'" if hidden} >"  +
+"<li id='offer_#{offer.id}' #{"style='display:none;'" if hidden} onmouseover=\"jQuery('#offer_info_rollover').html('"+ CGI.escapeHTML(info_for_rollover(offer))+ "');\"
+           onmouseout=\"jQuery('#offer_info_rollover').empty()\" >"  +
   '<div class="frame">
     <div>' +
       deal_coupon(offer) +
     '</div>
   </div>
   <div class="rate">' +
-    "<span onMouseOver=\"$('offer_info_rollover').update('"+ CGI.escapeHTML(info_for_rollover(offer))+ "');\"
-           onMouseOut=\"$('offer_info_rollover').update('')\" >" +
-    link_to_remote(image_tag('/images/btn-good.gif', :alt => "+"),
-                   :url => { :action => "set_opinion", :offer_id => offer.id, :liked => 'true' }) +
-    "</span>" + use_it_now_link(offer) +
-    "<span onMouseOver=\"$('offer_info_rollover').update('"+ CGI.escapeHTML(info_for_rollover(offer))+ "');\"
-           onMouseOut=\"$('offer_info_rollover').update('')\" >" +
-    link_to_remote(image_tag('/images/btn-bad.gif', :alt => "+"),
-                   :url => { :action => "set_opinion", :offer_id => offer.id, :liked => 'false' }) +
-    "</span>" +
+    link_to(image_tag('/images/btn-good.gif', :alt => "+"),
+                   { :controller => "welcome", :action => "set_opinion", :offer_id => offer.id, :liked => true }, :remote => true) +
+    use_it_now_link(offer) +
+    link_to(image_tag('/images/btn-bad.gif', :alt => "-"),
+                   { :controller => "welcome", :action => "set_opinion", :offer_id => offer.id, :liked => false }, :remote => true) +
   '</div>
 </li>'
   end

@@ -114,13 +114,13 @@ class WelcomeController < ApplicationController
 
   def undo_last_action
     if current_user
-      current_user.opinions.find_by_offer_id(params[:id]).delete
+      current_user.opinions.find_by_offer_id(params[:offer_id]).delete
     elsif session[:user]
       session[:user].opinions.last.delete
     end
-    render :update do |page|
-      page.replace_html 'undo_last_action', ''
-      page << "Effect.Grow('offer_#{params[:id]}');"
+    
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -133,22 +133,18 @@ class WelcomeController < ApplicationController
       session[:user].set_opinion(params)
     end
 
-    offer=Offer.find params[:offer_id]
-    render :update do |page|
-      page.replace_html 'undo_last_action', undo_last_action_link(offer, params[:liked]=='true')
-      if params[:liked]=='true'
-
+    @liked=params[:liked]
+    @offer=Offer.find params[:offer_id]
+    @prompt_signup=false
+    respond_to do |format|
+      if @liked
         session[:liked] << params[:offer_id] unless current_user
 
-        if session[:liked] && (session[:liked].length % 3 == 0 )
-          page << "jQuery('#signup-popup').modal();"
+        if (session[:liked] && session[:liked].length % 3 == 0 )
+          @prompt_signup=true
         end
-
-        page.insert_html :top, 'my_list', list_offer(offer)
       end
-
-      page << "Effect.Shrink('offer_#{offer.id}');"
-
+      format.js
     end
   end
 

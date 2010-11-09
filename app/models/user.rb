@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
     :default_style => :full,
     :whiny_thumbnails => true,
     :storage => :s3,
-    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+    :s3_credentials => "#{Rails.root}/config/s3.yml",
     :path => "/logos/:id/:style/:filename"
 
   def set_login
@@ -32,12 +32,6 @@ class User < ActiveRecord::Base
 
   def set_email
     self.email ||= login
-  end
-
-  def before_connect(facebook_session)
-    self.name = facebook_session.user.name
-    self.persistence_token = reset_persistence_token
-    logger.info("HEY FACEBOOK, HOW'S IT GOING? SO LOVELY TO SEE: #{facebook_session.user.name}")
   end
 
   def set_opinion(params)

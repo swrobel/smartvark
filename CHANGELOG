@@ -1,3 +1,11 @@
++--------------------------------
++ Rails 3 conversion
++--------------------------------
++ Using Ruby 1.9.2/Rails 3.0.1
++ Using JQuery instead of Prototype javascript
++ Using gems whenever possible instead of plugins (many plugins removed)
++--------------------------------
+
 ! Undo last action
 
 ! Subcats A-Z sort

@@ -4,8 +4,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>smartvark - view deal</title>
   <%= render :partial => 'common_header' %>
-  <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-  <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
 </head>
 <body>
 	<!-- wrapper -->
@@ -47,7 +45,7 @@
 														<a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="smartvark">Tweet</a>
 													</li>
 													<li>
-														
+														<fb:like layout="button_count"></fb:like>
 													</li>
 													<!--
 													<li>
@@ -101,5 +99,7 @@
 		</div>
 	</div>
 	<%= render :partial => 'common_footer' %>
+	<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+	<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
 </body>
 </html>

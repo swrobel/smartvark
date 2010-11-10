@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  acts_as_authentic
+  acts_as_authentic do |config|
+    config.validate_email_field = false
+    config.validate_login_field = false
+  end
 
   has_many :comments
   has_many :opinions
@@ -11,7 +14,6 @@ class User < ActiveRecord::Base
   before_validation :set_email, :on => :create
 
   has_and_belongs_to_many :categories
-  #######################
 
   has_many :businesses
 

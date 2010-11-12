@@ -68,7 +68,11 @@
                                                                                                         <dd><%= (@business.hours || 'n/a').gsub(/;/,'<br/>') %></dd>
 												</dl>
 											</div>
-											<%= image_tag @business.user.logo.url, :alt => 'business-logo' %>
+											<% if @business.user.logo.present? %>
+											<div class="img">
+											  <%= image_tag @business.user.logo.url, :alt => @business.user.name + " logo" %>
+											</div>
+											<% end %>
 										</div>
                                                                                 <ul class="posts">
                                                                                   <%= render :partial => 'business_offer', :collection => @business.offers.active %>

@@ -65,7 +65,7 @@
 										<div class="info-area">
 											<!-- img -->
                                                                                         <div class="img">
-                                                                                          <%= image_tag @offer.coupon.url, :alt => 'business-logo' %>
+                                                                                          <%= image_tag @offer.coupon.url, :alt => @offer.business.user.name + " logo" %>
 											</div>
 											<!-- info-box -->
                                                                                         <div class="info-box">

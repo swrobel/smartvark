@@ -1307,8 +1307,15 @@ td, th{padding:0;}
 /* contact */
 .merchant-area .contact{
 	float:left;
-	width:160px;
 	font:14px/16px Arial, Helvetica, sans-serif;
+}
+.merchant-area .img{
+	float:right;
+	display:inline;
+	margin:2px 10px 0;
+}
+.merchant-area .img img{
+	display:block;
 }
 /* rate */
 .merchant-area .rate{

@@ -6,15 +6,13 @@
 </head>
 <body>
   <h1><%= @offer.lead %></h1>
+  <%= image_tag @offer.coupon.url, :alt => @offer.business.user.name + " logo" %>
   <h2><%= @offer.business.name %></h2>
   <h3>
     <%=
-    [ @offer.business.address_as_string, @offer.business.phone_1 ].join('<br/>')
+    [ @offer.business.street_address_1, @offer.business.street_address_2, @offer.business.city_state_zip, @offer.business.phone_1 ].delete_if {|x| x.empty?}.join('<br/>').html_safe
     %>
   </h3>
-
-
-  <%= image_tag @offer.coupon.url, :alt => @offer.business.name + ' logo' %>
   <p><%= @offer.description %></p>
   <p>Last day to redeem: <%= @offer.expiry_datetime.try(:strftime, '%B %d, %Y') %></p>
   <p>Fine print: <%= @offer.exclusivity_text %></p>

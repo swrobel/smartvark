@@ -6,7 +6,7 @@
           <div class="popup-row">
             <%=
               f.submit "Print deal", :class => 'simplemodal-close',
-                :onclick => "window.open('#{printdeal_path}');return false;"
+                :onclick => "window.open('#{printdeal_url(@offer.to_param)}');return false;"
             %>
           </div>
         <% end %>

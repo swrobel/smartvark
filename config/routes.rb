@@ -60,7 +60,7 @@ ActionController::Routing::Routes.draw do |map|
   map.deals             'deals', :controller => "welcome", :action => :deals
   map.mydeals           'mydeals', :controller => "welcome", :action => :mydeals
   map.myprofile         'myprofile', :controller => "welcome", :action => :myprofile
-  map.printdeal         'printdeal/:id', :controller => "welcome", :action => :printdeal
+  map.printdeal         'printdeal/:id', :controller => "welcome", :action => :printdeal, :requirements => { :id => /.*/ }
   map.search            'search/:category_id', :controller => "welcome", :action => :search, :conditions => { :method => :get }
   map.viewbusiness      'viewbusiness/:id', :controller => "welcome", :action => :viewbusiness, :requirements => { :id => /.*/ }
   map.viewdeal          'viewdeal/:id', :controller => "welcome", :action => :viewdeal, :requirements => { :id => /.*/ }

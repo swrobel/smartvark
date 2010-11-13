@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
 
   def create
     session.clear
-    logger.info params.inspect
+    logger.info "TESTING " + params.inspect
     @user_session = UserSession.new(params[:user_session])
     @user_session.save do |result|
       if result

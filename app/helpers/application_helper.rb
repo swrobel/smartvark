@@ -53,7 +53,7 @@ module ApplicationHelper
     offer = offers[index]
     return if offer.nil?
 
-"<li id='offer_#{offer.id}' #{"style='display:none;'" if hidden} onmouseover=\"jQuery('#offer_info_rollover').html('"+ CGI.escapeHTML(info_for_rollover(offer))+ "');\"
+"<li id='offer_#{offer.id}' #{"style='display:none;'" if hidden} onmouseover=\"jQuery('#offer_info_rollover').html('"+ h(info_for_rollover(offer))+ "');\"
            onmouseout=\"jQuery('#offer_info_rollover').empty()\" >"  +
   '<div class="frame">
     <div>' +

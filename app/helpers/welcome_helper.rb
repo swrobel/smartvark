@@ -21,7 +21,7 @@ module WelcomeHelper
   end
 
   def info_for_rollover(offer)
-    "<strong class=\"title\">#{offer.business.name}: #{offer.lead}</strong><p>#{offer.description}</p><p>#{offer.exclusivity_text}</p><p>#{offer.business.city}, #{offer.business.state} #{offer.business.postal_code}</p><p>Expires #{std_date(offer.expiry_datetime)}</p>".gsub(/'/,"\\\'")
+    escape_javascript("<strong class=\"title\">#{offer.business.name}: #{offer.lead}</strong><p>#{offer.description}</p><p>#{offer.exclusivity_text}</p><p>#{offer.business.city}, #{offer.business.state} #{offer.business.postal_code}</p><p>Expires #{std_date(offer.expiry_datetime)}</p>")
   end
 
   def list_offer(offer)

@@ -1,4 +1,5 @@
 class MController < ApplicationController
+  layout 'mobile'
   def index
   end
 

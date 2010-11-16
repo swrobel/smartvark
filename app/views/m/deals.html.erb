@@ -1,42 +1,26 @@
-<!DOCTYPE html> 
-<html> 
-	<head> 
-	<title>Smartvark</title> 
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-	<link rel="apple-touch-icon-precomposed" href="/images/touch-icon.png" />
-	<link rel="apple-touch-startup-image" href="/images/splash.png" />
-	<link rel="stylesheet"  href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
-	<link rel="stylesheet"  href="/stylesheets/mobile.css" />  
-	<script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script> 
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-</head> 
-<body> 
- 
-<div data-role="page"> 
- 
-	<div data-role="header" data-theme="b"> 
+
+<div data-role="page">
+
+	<div data-role="header" data-theme="b">
 	  <a href="mypicks.html" data-icon="star">My Picks</a>
-		<h1>Artie's Picks</h1> 
+		<h1>Artie's Picks</h1>
 		<a href="search.html" data-icon="search-white" data-transition="pop" class="ui-btn-right">Search</a>
-	</div><!-- /header --> 
- 
+	</div><!-- /header -->
+
 	<div data-role="content">
 	  <div data-role="collapsible" data-state="collapsed" id="list-header">
 	    <h3>Deals for Los Angeles, CA</h3>
 	    <label for="location" class="select">It looks like you're in Los Angeles, CA</label>
 	    <input type="text" name="location" id="location" value="" placeholder="Wrong! I'm actually in..."  />
-	    <button type="submit" data-theme="d">Update</button> 
-	  </div>	
-		<ul data-role="listview" data-theme="d"> 
-			<li> 
+	    <button type="submit" data-theme="d">Update</button>
+	  </div>
+		<ul data-role="listview" data-theme="d">
+			<li>
 				<h3><a href="viewdeal.html">Offer Lead</a></h3>
 				<p><strong>Business Name</strong></p>
 				<p>City, State Zip</p>
-			</li> 
-		</ul> 
-	</div><!-- /content --> 
-</div><!-- /page --> 
- 
-</body> 
-</html> 
+			</li>
+		</ul>
+	</div><!-- /content -->
+</div><!-- /page -->
+

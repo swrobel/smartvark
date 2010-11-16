@@ -36,7 +36,10 @@ class MController < ApplicationController
   end
 
   def mobile_filter
-    render(:partial => 'offers', :collection => Offer.active.find_all_by_category_id(params[:category_id]))
+    @offers = Offer.active.find_all_by_category_id(params[:category_id])
+    respond_to do |format|
+      format.html #if you don't like, you could delete this line
+      format.js # auto call cities/show.js.erb
+    end
   end
-
 end

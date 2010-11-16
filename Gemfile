@@ -16,3 +16,4 @@ gem "authlogic-connect"
 gem "jquery-rails"
 gem "pg", :group => :production
 gem "sqlite3-ruby", :group => [:development, :test]
+gem "active_device"

@@ -2,7 +2,9 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  has_mobile_fu
+  include ActiveDevice
+  skip_before_filter :set_mobile_format # instead of requiring mobile pages to be .mobile.erb use .html.erb
+  
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 

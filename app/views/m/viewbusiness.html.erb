@@ -8,19 +8,16 @@
 	<div data-role="content" data-theme="b">
 	  <div class="ui-body">
 		  <a href="index.html"><img src="http://s3.amazonaws.com/smartvark-dev/logos/1/thumb/smartvarklogo.png?1286834065" class="logo" /></a>
-		  <h2>Biz Name</h2>
-		  <p>
-		    (310) 439-8933<br/>
-		    45 Thornton Ave<br/>
-		    Venice, CA 90291<br/>
-		    <a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=Venice,+CA+90291&sll=33.996214,-118.468878&sspn=0.067887,0.169086&ie=UTF8&hq=&hnear=California+90291&z=13">Map It</a>
-		  </p>
+                  <h2><%= @business.name %></h2>
+                  <%= render :partial => 'business', :locals => { :business => @business } %>
 		</div>
-		<ul data-role="listview" data-inset="true" data-theme="d">
-	    <li>
-		    <h3><a href="viewdeal.html">Offer Lead</a></h3>
-		    <p>Description</p>
-	    </li>
-		</ul>
+                <ul data-role="listview" data-inset="true" data-theme="d">
+                  <% @business.offers.each do |offer| %>
+              <li>
+              <h3><a href="/m/viewdeal/<%= offer.id %>"><%= offer.lead %></a></h3>
+              <p><%= offer.description %></p>
+              </li>
+            </ul>
+          <% end %>
 	</div><!-- /content -->
 </div><!-- /page -->

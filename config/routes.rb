@@ -68,6 +68,8 @@ ActionController::Routing::Routes.draw do |map|
   map.contact           'contact', :controller => "welcome", :action => :contact, :conditions => { :method => :get }
   map.mobile_filter     '/m/filter/:category_id', :controller => "m", :action => :filter, :conditions => { :method => :get }
   map.mobile_search     '/m/search_results', :controller => "m", :action => :search_results, :conditions => { :method => :post }
+  map.mobile_viewbusiness      '/m/viewbusiness/:id', :controller => "m", :action => :viewbusiness, :requirements => { :id => /.*/ }
+  map.mobile_viewdeal      '/m/viewdeal/:id', :controller => "m", :action => :viewdeal, :requirements => { :id => /.*/ }
 
 
   map.logout '/logout',:controller => 'user_sessions', :action => :destroy

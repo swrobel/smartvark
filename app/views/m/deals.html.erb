@@ -2,25 +2,23 @@
 <div data-role="page">
 
 	<div data-role="header" data-theme="b">
-	  <a href="mypicks.html" data-icon="star">My Picks</a>
+	  <a href="/m/mypicks" data-icon="star">My Picks</a>
 		<h1>Artie's Picks</h1>
 		<a href="search.html" data-icon="search-white" data-transition="pop" class="ui-btn-right">Search</a>
 	</div><!-- /header -->
 
 	<div data-role="content">
 	  <div data-role="collapsible" data-state="collapsed" id="list-header">
-	    <h3>Deals for Los Angeles, CA</h3>
-	    <label for="location" class="select">It looks like you're in Los Angeles, CA</label>
-	    <input type="text" name="location" id="location" value="" placeholder="Wrong! I'm actually in..."  />
-	    <button type="submit" data-theme="d">Update</button>
+            <h3>Deals for <%= cookies[:location] %></h3>
+	    <label for="location" class="select">It looks like you're in <%= cookies[:location] %></label>
+            <% form_tag do %>
+              <%= text_field_tag 'location', nil, :placeholder => "Wrong! I'm actually in..." %>
+              <button type="submit" data-theme="d">Update</button>
+            <% end %>
 	  </div>
-		<ul data-role="listview" data-theme="d">
-			<li>
-				<h3><a href="viewdeal.html">Offer Lead</a></h3>
-				<p><strong>Business Name</strong></p>
-				<p>City, State Zip</p>
-			</li>
-		</ul>
+          <ul data-role="listview" data-theme="d">
+            <%= render :partial => 'offers', :collection => @offers %>
+          </ul>
 	</div><!-- /content -->
 </div><!-- /page -->
 

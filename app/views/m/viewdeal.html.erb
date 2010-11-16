@@ -8,14 +8,10 @@
 	<div data-role="content" data-theme="b">
 	  <div class="ui-body">
 		  <img src="http://s3.amazonaws.com/smartvark-dev/logos/1/thumb/smartvarklogo.png?1286834065" class="logo" />
-		  <h2>Lead</h2>
-		  <h3>Description of the offer to make the text really long to see how it wraps and affects the jquery mobile list view</h3>
-		  <h4>Expires 1/1/11</h3>
-		  <p>
-		    45 Thornton Ave<br/>
-		    Venice, CA 90291<br/>
-		    <a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=Venice,+CA+90291&sll=33.996214,-118.468878&sspn=0.067887,0.169086&ie=UTF8&hq=&hnear=California+90291&z=13">Map It</a>
-		  </p>
+                  <h2><%= @offer.lead %></h2>
+                  <h3><%= @offer.description %></h3>
+                  <h4>Expires <%= @offer.expiry_datetime.try(:strftime, '%m/%d/%Y') %></h3>
+                  <%= render :partial => 'business', :locals => { :business => @offer.business } %>
 	    <div data-role="controlgroup" data-type="horizontal" >
 			  <a href="index.html" data-role="button" data-icon="thumbsup">.</a>
 			  <a href="index.html" data-role="button">Redeem</a>
@@ -26,8 +22,8 @@
       <script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
       <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=swrobel"></script>
       <!-- AddThis Button END -->
-		  <p>Exclusivity Text</p>
-		  <a href="viewbusiness.html" data-role="button">Biz info and other deals</a>
+                  <p><%=h @offer.exclusivity_text %></p>
+                  <a href="/m/viewbusiness/<%= @offer.business_id %>" data-role="button">Biz info and other deals</a>
 		  <div data-role="collapsible" data-state="collapsed">
 		    <h3>Shout about it</h3>
 		    <ul data-role="listview" data-inset="true" data-theme="d">

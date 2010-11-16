@@ -94,11 +94,6 @@ class WelcomeController < ApplicationController
     @map.center_zoom_init(coordinates,14)
   end
 
-  def close_business_ids
-    # business_ids = Business.all(:select => 'id', :origin => location, :within => RADIUS)  #TODO:  Sqlite not map supported
-    @close_business_ids ||= Business.all(:select => 'id')
-  end
-
   def mydeals
     session.delete(:liked)
     category_id = params[:category_id].to_i
@@ -118,7 +113,7 @@ class WelcomeController < ApplicationController
     elsif session[:user]
       session[:user].opinions.last.delete
     end
-    
+
     respond_to do |format|
       format.js
     end
@@ -146,14 +141,6 @@ class WelcomeController < ApplicationController
       end
       format.js
     end
-  end
-
-  def set_location
-    cookies[:location] = { :value => params[:location], :expires => 1.day.from_now }
-  end
-
-  def location
-    (cookies[:location] ||= 'Los Angeles, CA').to_str
   end
 
   def shout

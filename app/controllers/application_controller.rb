@@ -59,4 +59,18 @@ class ApplicationController < ActionController::Base
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
+
+  def set_location
+    cookies[:location] = { :value => params[:location], :expires => 1.day.from_now }
+  end
+
+  def location
+    (cookies[:location] ||= 'Los Angeles, CA').to_str
+  end
+
+  def close_business_ids
+    # business_ids = Business.all(:select => 'id', :origin => location, :within => RADIUS)  #TODO:  Sqlite not map supported
+    @close_business_ids ||= Business.all(:select => 'id')
+  end
+
 end

@@ -4,9 +4,32 @@ class MController < ApplicationController
   end
 
   def deals
+    if request.post?
+      set_location if params[:location]
+    end
+
+    if location
+      @offers = Offer.active.all(:conditions => { :business_id => close_business_ids })
+    else
+      @offers = Offer.active
+    end
   end
 
   def mypicks
+    session.delete(:liked)
+    category_id = params[:category_id].to_i
+    if (category_id <= 1)
+      @likes = current_user.likes_offers[0,7]
+      @offers = Offer.active.all(:conditions => { :business_id => close_business_ids })
+    else
+      @likes = current_user.likes_offers(category_id)[0,7]
+      @offers = Offer.active.all(:conditions => { :category_id => category_id,
+                            :business_id => close_business_ids  })
+    end
+  end
+
+  def viewbusiness
+    @business = Business.find(params[:id])
   end
 
   def search_results
@@ -29,10 +52,8 @@ class MController < ApplicationController
   def searchresults
   end
 
-  def viewbusiness
-  end
-
   def viewdeal
+    @offer = Offer.find(params[:id], :include => [ :business, :comments ])
   end
 
   def mobile_filter

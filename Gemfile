@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "rails", "3.0.1"
+gem "rails", "3.0.3"
 gem "acts_as_tree_rails3"
 gem "paperclip"
 gem "geokit"
@@ -17,3 +17,4 @@ gem "jquery-rails"
 gem "pg", :group => :production
 gem "sqlite3-ruby", :group => [:development, :test]
 gem "active_device"
+gem "thin", :group => :development

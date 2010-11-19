@@ -1,5 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
+require 'home_run'
+Date::Format::STYLE[:slash] = :mdy # use mm/dd/yyyy format for parse
+
 require 'rails/all'
 
 # If you have a Gemfile, require the gems listed there, including any gems

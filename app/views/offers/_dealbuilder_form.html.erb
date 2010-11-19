@@ -11,21 +11,21 @@
     </div>
     <div class="row">
       <%= f.label :category_id, 'Category', :class => :width1 %>
-      <%= f.select :category_id, options_from_collection_for_select(Category.all_except('All'),'id','name',@offer.category_id),{ :include_blank => true }, {:class => :sel2 } %>
+      <%= f.select :category_id, options_from_collection_for_select(Category.all_parents,'id','name',@offer.category_id),{ :include_blank => true }, {:class => :sel2 } %>
       <div class="caption sp2">
         <span>Category the deal will show up in on our site</span>
       </div>
     </div>
     <div class="row">
       <%= f.label :offer_active_on, 'Begin Date' %>
-      <%= f.date_select :offer_active_on, :class => 'txt' %>
+      <%= f.text_field :offer_active_on, :format => :us_date, :class => 'txt' %>
       <div class="caption sp1">
         <span>Date deal becomes active</span>
       </div>
     </div>
     <div class="row">
       <%= f.label :expiry_datetime , 'Expiry Date' %>
-      <%= f.text_field :expiry_datetime, :class => 'txt' %>
+      <%= f.text_field :expiry_datetime, :format => :us_date, :class => 'txt' %>
       <div class="caption sp1">
         <span>Date deal expires (end of day)</span>
       </div>

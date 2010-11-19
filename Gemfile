@@ -18,3 +18,5 @@ gem "pg", :group => :production
 gem "sqlite3-ruby", :group => [:development, :test]
 gem "active_device"
 gem "thin", :group => :development
+gem "delocalize"
+gem "home_run"

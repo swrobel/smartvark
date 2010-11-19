@@ -15,7 +15,22 @@ class ApplicationController < ActionController::Base
 
   after_filter :log_user
 
- private
+  protected
+
+  def set_location
+    cookies[:location] = { :value => params[:location], :expires => 1.day.from_now }
+  end
+
+  def location
+    (cookies[:location] ||= 'Los Angeles, CA').to_str
+  end
+
+  def close_business_ids
+    # business_ids = Business.all(:select => 'id', :origin => location, :within => RADIUS)  #TODO:  Sqlite not map supported
+    @close_business_ids ||= Business.all(:select => 'id')
+  end
+
+  private
 
   def logged_in?
     current_user
@@ -60,19 +75,6 @@ class ApplicationController < ActionController::Base
   def redirect_back_or_default(default)
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
-  end
-
-  def set_location
-    cookies[:location] = { :value => params[:location], :expires => 1.day.from_now }
-  end
-
-  def location
-    (cookies[:location] ||= 'Los Angeles, CA').to_str
-  end
-
-  def close_business_ids
-    # business_ids = Business.all(:select => 'id', :origin => location, :within => RADIUS)  #TODO:  Sqlite not map supported
-    @close_business_ids ||= Business.all(:select => 'id')
   end
 
 end

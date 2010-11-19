@@ -4,14 +4,14 @@
 class ApplicationController < ActionController::Base
   include ActiveDevice
   skip_before_filter :set_mobile_format # instead of requiring mobile pages to be .mobile.erb use .html.erb
-  
+
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   filter_parameter_logging :password, :password_confirmation
   filter_parameter_logging :fb_sig_friends
 
-  helper_method :current_user_session, :current_user, :logged_in?
+  helper_method :current_user_session, :current_user, :logged_in?, :location
 
   after_filter :log_user
 

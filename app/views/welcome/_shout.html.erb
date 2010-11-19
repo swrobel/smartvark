@@ -5,13 +5,12 @@
   </div>
   <!-- frame -->
   <div class="frame">
+    <% @offer.comments.each_with_index do |comment,index| %>
     <div class="row">
-      <!--- TODO: Put this in a helper -->
-      <% @offer.comments.each_with_index do |comment,index| %>
         <strong class="bubble<%= " blue-bubble" if ((index+1)%2).zero? %>"><strong><strong><%= comment.text %></strong></strong></strong>
         <p><%= raw "<span>#{comment.commenter.first}</span>#{comment.commenter.last}" %></p>
-      <% end %>
     </div>
+    <% end %>
     <% if !logged_in? %>
       <i>You must be logged in to shout</i>
     <% elsif !@offer.commenters.include?(current_user) %>

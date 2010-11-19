@@ -1193,7 +1193,7 @@ td, th{padding:0;}
 	color:#fff;
 	text-align:center;
 }
-.popup p{
+.popup a,p{
     color:#FFF;
 }
 .popup-row{
@@ -1213,10 +1213,6 @@ td, th{padding:0;}
 	overflow:hidden;
 	height:1%;
 	padding:6px 24px 3px 19px;
-}
-#RES_ID_fb_login_image{
-   padding:6px 24px 3px 45px; 
-
 }
 .btn-signin{
 	float:left;

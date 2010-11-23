@@ -20,3 +20,4 @@ gem "active_device"
 gem "thin", :group => :development
 gem "delocalize"
 gem "home_run"
+gem "dynamic_form"

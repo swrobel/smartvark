@@ -3,6 +3,10 @@ module ApplicationHelper
   def std_date(date)
     date ?  date.strftime('%m/%d/%y') : 'N/A'
   end
+  
+  def title(page_title)
+    content_for(:title) { page_title }
+  end
 
   def coupon_body(offer)
      "<span id='#{offer.id}_lead' class='subttl'>#{offer.lead}</span>

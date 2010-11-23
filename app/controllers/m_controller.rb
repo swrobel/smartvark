@@ -1,5 +1,6 @@
 class MController < ApplicationController
   layout 'mobile'
+  before_filter :authenticated?, :only => [ :redeem ]
   def index
   end
 
@@ -52,6 +53,10 @@ class MController < ApplicationController
   def searchresults
   end
 
+  def redeem
+    @offer = Offer.find params[:id]
+  end
+
   def viewdeal
     @offer = Offer.find(params[:id], :include => [ :business, :comments ])
   end
@@ -61,6 +66,12 @@ class MController < ApplicationController
     respond_to do |format|
       format.html #if you don't like, you could delete this line
       format.js # auto call cities/show.js.erb
+    end
+  end
+
+  def authenticated?
+    unless logged_in?
+      redirect_to index
     end
   end
 end

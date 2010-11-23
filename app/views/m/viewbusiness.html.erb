@@ -2,7 +2,7 @@
 
 	<div data-role="header" data-theme="c">
 		<h1>Offer Lead</h1>
-		<a href="search.html" data-icon="search-white" data-transition="pop" class="ui-btn-right">Search</a>
+		<a href="/m/search" data-icon="search-white" data-transition="pop" class="ui-btn-right">Search</a>
 	</div><!-- /header -->
 
 	<div data-role="content" data-theme="b">
@@ -12,7 +12,7 @@
       <%= render :partial => 'business', :locals => { :business => @business } %>
     </div>
       <ul data-role="listview" data-theme="d">
-        <li data-role="list-divider">Deals available at this business</li> 
+        <li data-role="list-divider">Deals available at this business</li>
       <% @business.offers.each do |offer| %>
         <li>
           <h3><a href="/m/viewdeal/<%= offer.id %>"><%= offer.lead %></a></h3>

@@ -14,7 +14,7 @@
                   <%= render :partial => 'business', :locals => { :business => @offer.business } %>
 	    <div data-role="controlgroup" data-type="horizontal" >
 			  <a href="index.html" data-role="button" data-icon="thumbsup">.</a>
-			  <a href="index.html" data-role="button">Redeem</a>
+                          <a href="/m/redeem/<%= offer.id %>" data-role="button">Redeem</a>
 			  <a href="index.html" data-role="button" data-icon="thumbsdown">.</a>
 		  </div>
 		  <!-- AddThis Button BEGIN -->

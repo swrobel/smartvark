@@ -2,7 +2,7 @@
 
 	<div data-role="header" data-theme="c">
 		<h1>Deal Detail</h1>
-		<a href="search.html" data-icon="search-white" data-transition="pop" class="ui-btn-right">Search</a>
+		<a href="/m/search" data-icon="search-white" data-transition="pop" class="ui-btn-right">Search</a>
 	</div><!-- /header -->
 
 	<div data-role="content" data-theme="b">
@@ -14,7 +14,7 @@
                   <%= render :partial => 'business', :locals => { :business => @offer.business } %>
 	    <div data-role="controlgroup" data-type="horizontal" >
 			  <a href="index.html" data-role="button" data-icon="thumbsup">.</a>
-			  <a href="index.html" data-role="button">Redeem</a>
+                          <a href="/m/redeem/<%= offer.id %>" data-role="button">Redeem</a>
 			  <a href="index.html" data-role="button" data-icon="thumbsdown">.</a>
 		  </div>
 		  <!-- AddThis Button BEGIN -->

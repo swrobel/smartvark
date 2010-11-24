@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<div data-role="page">
+	<div data-role="content" data-theme="a">
+		<h3>Sign Up</h3>
+		<form>
+    <% @user ||= User.new %>
+    <%= form_for @user, :url => account_path do |f| %>
+            <label for="login">Email:</label>
+            <%= f.text_field :login, :id => 'email', :placeholder => 'email adress' %>
+            <label for="password">Password:</label>
+            <%= f.password_field :password, :placeholder => 'password' %>
+            <label for="password_confirmation">Re-enter Password:</label>
+            <%= f.password_field :password_confirmation, :placeholder => 're-enter password' %>
+
+            <fieldset class="ui-grid-a">
+              <div class="ui-block-a">
+                <%= f.submit "Sign up", :'data-theme' => 'a' %>
+              </div>
+              <div class="ui-block-b">
+                <a href='#' class="ui-btn-back" data-role="button" data-theme="d">Cancel</a>
+              </div>
+            </fieldset>
+            <% end %>
+	</div><!-- /content -->
+</div><!-- /page -->

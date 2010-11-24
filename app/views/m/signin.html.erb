@@ -1,0 +1,19 @@
+<div data-role="page">
+	<div data-role="content" data-theme="a">
+		<h3>Sign In</h3>
+		<a href="/m/signup">Don't have an account yet? Sign up!</a>
+                <%= form_for get_user_session, :url => user_session_path do |f| %>
+		  <label for="email">Email:</label>
+      	          <%= f.text_field :login, :placeholder => 'email address' %>
+	    <label for="password">Password:</label>
+      	    <%= f.password_field :password, :placeholder => 'password' %>
+
+    <fieldset class="ui-grid-a">
+    <div class="ui-block-a">
+      <%= f.submit "Sign in", :'data-theme' => 'a' %>
+    </div>
+    <div class="ui-block-b"><a href='#' class="ui-btn-back" data-role="button" data-theme="d">Cancel</a></div>
+    </fieldset>
+		</form>
+	</div><!-- /content -->
+</div><!-- /page -->

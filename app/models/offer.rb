@@ -26,7 +26,8 @@ class Offer < ActiveRecord::Base
     :conditions => { :liked => false }
 
   before_update :unarchive_if_draft_or_activated
-
+  
+  validates_presence_of :offer_type, :category_id, :lead, :offer_active_on, :expiry_datetime
 
   def set_to_archived
     @do_not_unarchive=true

@@ -1,6 +1,7 @@
 <% form_for(@offer,  :html => {:multipart => true}) do |f| %>
 <fieldset>
   <div class="offer-form">
+    <%= f.error_messages %>
     <p>Enter the details of your offer and then choose a redemption code for.  Most merchants select a code that works with their store’s point of sale system.  Typically redemption codes that are easy to say and remember work best, like HALFOFFJULY2010.  Don’t hesitate to <a href="#">contact us</a> if you have any questions</p>
     <div class="row">
       <%= f.label :offer_type, 'Offer type', :class => :width1 %>
@@ -24,7 +25,7 @@
       </div>
     </div>
     <div class="row">
-      <%= f.label :expiry_datetime , 'Expiry Date' %>
+      <%= f.label :expiry_datetime , 'Expire Date' %>
       <%= f.text_field :expiry_datetime, :format => :us_date, :class => 'txt' %>
       <div class="caption sp1">
         <span>Date deal expires (end of day)</span>

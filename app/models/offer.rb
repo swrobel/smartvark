@@ -122,4 +122,8 @@ class Offer < ActiveRecord::Base
     end
     true
   end
+  
+  def self.archive_expired
+    connection.execute("update offers set archived = true where expiry_datetime <= current_date")
+  end
 end

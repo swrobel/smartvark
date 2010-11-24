@@ -4,12 +4,10 @@
 class ApplicationController < ActionController::Base
   include ActiveDevice
   skip_before_filter :set_mobile_format # instead of requiring mobile pages to be .mobile.erb use .html.erb
+  before_filter :mobile_redirect # check for mobile browser and redirect to mobile page
 
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-
-  filter_parameter_logging :password, :password_confirmation
-  filter_parameter_logging :fb_sig_friends
 
   helper_method :current_user_session, :current_user, :logged_in?, :location
 
@@ -32,6 +30,13 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def mobile_redirect
+    # only redirect to mobile site if mobile browser detected and not already on mobile site
+    if is_mobile_browser? && !(request.request_uri+"/").include?("/m/")
+      redirect_to "/m" + request.request_uri
+    end
+  end
+  
   def logged_in?
     current_user
   end

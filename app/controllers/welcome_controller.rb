@@ -100,6 +100,7 @@ class WelcomeController < ApplicationController
     if (category_id <= 1)
       @likes = current_user.likes_offers[0,7]
       @offers = Offer.active.all(:conditions => { :business_id => close_business_ids })
+      # ['id not in (?)', current_user.opinions.collect {|x| x.offer_id}]
     else
       @likes = current_user.likes_offers(category_id)[0,7]
       @offers = Offer.active.all(:conditions => { :category_id => category_id,

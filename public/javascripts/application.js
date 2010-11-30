@@ -46,8 +46,15 @@ jQuery(function (jQuery) {
 });
 jQuery(function (jQuery) {
 	jQuery('#signin-from-signup').click(function () {
-		jQuery('.simplemodal-wrap').html('<div class="popup simplemodal-data" id="signin-popup" style="display: block;">'+jQuery("#signin-popup").html()+'</div>');
-		jQuery('.simplemodal-close').click(function() {jQuery.modal.close(); return false;});
+		jQuery.modal.close();
+		window.setTimeout(function() {jQuery('#signin-popup').modal()}, 250);
+		  return false;
+	});
+});
+jQuery(function (jQuery) {
+	jQuery('#signup-from-signin').click(function () {
+		jQuery.modal.close();
+		window.setTimeout(function() {jQuery('#signup-popup').modal()}, 250);
 		  return false;
 	});
 });

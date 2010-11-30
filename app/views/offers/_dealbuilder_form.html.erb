@@ -33,7 +33,6 @@
     </div>
   </div><!-- /offer-form end -->
 
-  <div>
     <div class="text-box text1">
       <div class="title">
         <h3>Title of Offer (50 character maximum)</h3>
@@ -134,10 +133,9 @@
     <div class="btns-holder">
     <div class="center">
       <ul class="btns">
-        <li><%= link_to_function "Activate Deal", "jQuery('#offer_draft').val('false');jQuery('form:first').submit();return false;", :class => 'activate-deal' %>
-        <li><%= link_to_function "Save as Draft", "jQuery('#offer_draft').val('true');jQuery('form:first').submit();return false;", :class => 'save-draft' %>
+        <li><%= link_to_function "Activate Deal", "jQuery('#offer_draft').val('false');jQuery('form:first').submit();return false;", :class => 'activate-deal' %></li>
+        <li><%= link_to_function "Save as Draft", "jQuery('#offer_draft').val('true');jQuery('form:first').submit();return false;", :class => 'save-draft' %></li>
         <li><%= link_to_function 'cancel', "if (confirm('Are you sure?')) { window.location.href='#{dealdashboard_url}';return true; } else { return false; }", :class => 'cancel' %></li>
-
     </ul><!-- /btns end -->
     </div>
   </div><!-- /btns-holder end -->

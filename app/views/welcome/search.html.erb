@@ -1,27 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>smartvark - search results</title>
-        <%= render :partial => 'common_header' %>
-</head>
-<body>
-	<!-- wrapper -->
-	<div id="wrapper">
-		<!-- wrapper-holder -->
-		<div class="wrapper-holder">
-			<!-- header -->
-			<div id="header">
-				<!-- logo -->
-        <h1 class="logo"><a href="/">Smartvark</a></h1>
-        <%= render :partial => 'login' %>
-			</div>
-			<!-- main -->
-			<div id="main">
-				<!-- main-holder -->
-				<div class="main-holder">
-					<!-- main-frame -->
-                                        <div class="main-frame">
+<% title params[:search_terms] + " near " + params[:location] %>
                                           <%= render :partial => 'search_box' %>
                                           <!-- nav -->
                                           <p class="filter-results">Filter these results:</p>
@@ -50,16 +27,9 @@
 							<!-- aside -->
 							<div class="aside">
                                                           <div class="map-holder">
+																  <%= raw GMap.header(:with_vml => false, :host => request.host) %>
                                                                   <%= raw @map.to_html %>
                                                                   <%= raw @map.div(:width => 270, :height => 360) %>
                                                           </div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<%= render :partial => 'common_footer' %>
-</body>
-</html>

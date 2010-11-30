@@ -1193,7 +1193,7 @@ td, th{padding:0;}
 	color:#fff;
 	text-align:center;
 }
-.popup a,p{
+.popup a, .popup p{
     color:#FFF;
 }
 .popup-row{

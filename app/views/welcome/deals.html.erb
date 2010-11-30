@@ -1,28 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>smartvark - try it</title>
-        <%= render :partial => 'common_header' %>
-</head>
-<body>
-	<!-- wrapper -->
-	<div id="wrapper">
-		<!-- wrapper-holder -->
-		<div class="wrapper-holder">
-			<!-- header -->
-			<div id="header">
-				<!-- logo -->
-				<h1 class="logo"><a href="/">Smartvark</a></h1>
-				<!-- login-box popup-holder -->
-                                <%= render :partial => 'login', :locals => { :new_user => true } %>
-			</div>
-			<!-- main -->
-			<div id="main">
-				<!-- main-holder -->
-				<div class="main-holder">
-					<!-- main-frame -->
-					<div class="main-frame">
+<% title "Deals near you" %>
                     	<!-- welcome-box -->
 						<div class="tryit-box">
 							<!-- text -->
@@ -83,11 +59,3 @@
 							</div>
 							<div class="b"></div>
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<%= render :partial => 'common_footer' %>
-</body>
-</html>

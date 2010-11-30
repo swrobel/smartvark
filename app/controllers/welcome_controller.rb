@@ -33,6 +33,7 @@ class WelcomeController < ApplicationController
 
   def printdeal
     @offer = Offer.find params[:id]
+    render :layout => false
   end
 
   def viewbusiness

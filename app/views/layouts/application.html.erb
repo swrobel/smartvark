@@ -7,13 +7,36 @@
   <title><%= content_for?(:title) ? yield(:title) : controller.action_name.titlecase %> - smartvark</title>
   <%= stylesheet_link_tag 'web' %>
   <!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
+  <%= content_for?(:head_additions) ? yield(:head_additions) : nil -%>
+  <%= favicon_link_tag %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <p style="color: green"><%= flash[:notice] %></p>
-  <% if params[:admin] %><%= render :partial => 'layouts/menu' %><% end %>
-  <%= yield %>
-  <%= render :partial => 'common_footer' %>
-  <%= javascript_include_tag :defaults, 'jquery-plugins' %>
+	<% if params[:admin] %><%= render :partial => 'layouts/menu' %><% end %>
+	<p class="flash-notice"><%= flash[:notice] %></p> 
+	<!-- wrapper -->
+	<div id="wrapper">
+		<!-- wrapper-holder -->
+		<div class="wrapper-holder">
+			<!-- header -->
+			<div id="header">
+				<!-- logo -->
+      			<h1 class="logo"><a href="/">Smartvark</a></h1>
+      			<%= render :partial => 'layouts/account_area' %>
+			</div>
+			<!-- main -->
+			<div id="main">
+				<!-- main-holder -->
+				<div class="main-holder">
+					<!-- main-frame -->
+                    <div class="main-frame">
+  						<%= yield %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%= render :partial => 'layouts/common_footer' %>
+	<%= javascript_include_tag :defaults, 'jquery-plugins' %>
 </body>
 </html>

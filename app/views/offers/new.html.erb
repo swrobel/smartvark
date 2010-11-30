@@ -1,25 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Smartvark</title>
-        <%= render :partial => 'welcome/common_header' %>
-        <%= stylesheet_link_tag 'jquery-ui' %>
-	<!--[if IE]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
-</head>
-<body>
-	<!-- wrapper -->
-	<div id="wrapper">
-		<!-- wrapper-holder -->
-		<div class="wrapper-holder">
-                  <!-- header -->
-                    <%= render :partial => 'welcome/business_header' %>
-			<!-- main -->
-			<div id="main">
-				<!-- main-holder -->
-				<div class="main-holder">
-					<!-- main-frame -->
-					<div class="main-frame">
+<% title "Deal Builder" %>
+<% head_additions stylesheet_link_tag 'jquery-ui' %>
 						<!-- twocolumns -->
 						<div class="offer-box">
 							<div class="twocolumns">
@@ -66,22 +46,3 @@
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- footer -->
-	<div id="footer">
-		<ul>
-			<li><a href="#">what’s a smartvark anyway?</a></li>
-			<li><a href="#">what about my privacy?</a></li>
-			<li><a href="#">contact</a></li>
-			<li><a href="#">twitter</a></li>
-			<li><a href="#">facebook</a></li>
-			<li><a href="#">smartvark for business</a></li>
-		</ul>
-		<p>&copy; 2010  Smartvark, Inc.</p>
-	</div>
-</body>
-</html>

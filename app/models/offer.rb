@@ -110,7 +110,7 @@ class Offer < ActiveRecord::Base
   end
 
   def expired_by_date?
-    ((expiry_datetime < DateTime.now) rescue false)
+    ((expiry_datetime < Date.today) rescue false)
   end
 
   def expired?

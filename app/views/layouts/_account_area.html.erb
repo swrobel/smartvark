@@ -1,39 +1,52 @@
 <% new_user = true if local_assigns[:new_user].nil? %>
+<div class="right">
 <% if logged_in? %>
-  <!-- account-area -->
-  <div class="right">
+  <% if current_user.business %>
     <div class="frame">
       <div class="account-area">
         <!-- holder -->
         <div class="holder">
+          <strong class="ttl">Welcome <span><%= current_user.name %></span></strong>
+        </div>
+        <p><%= link_to "log out", logout_url %>&nbsp;&nbsp;</p>
+      </div>
+    </div>
+    <div class="frame">
+	    &nbsp;
+	</div>
+    <div class="frame">
+      <ul class="menu">
+        <li><%= link_to_unless_current 'deal dashboard', dealdashboard_url %></li>
+        <li><%= link_to_unless_current 'business profile', @business.new_record? ? new_business_url : edit_business_url(@business.id) %></li>
+      </ul>
+    </div>
+  <% else %>
+    <div class="frame">
+      <div class="account-area">
+        <div class="holder">
           <p><%= link_to 'phone number (+10%)', myprofile_url %></p>
           <strong class="ttl">Welcome <span><%= current_user.login %></span></strong>
-          <!-- progress-bar -->
           <div class="progress-bar"><span style="width:78px">&nbsp;</span></div>
         </div>
         <p>not you? <%= link_to "log out", logout_url %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;profile 50% complete</p>
       </div>
     </div>
     <div class="frame">
-		  <!-- menu -->
 		  <ul class="menu">
-			  <li><%= link_to 'my deals', mydeals_url %></li>
-			  <li><%= link_to 'my profile', myprofile_url %></li>
+			  <li><%= link_to_unless_current 'my deals', mydeals_url %></li>
+			  <li><%= link_to_unless_current 'my profile', myprofile_url %></li>
 		  </ul>
-	  </div>
 	</div>
+	<% end %>
 <% else %>
-  <!-- sign-in -->
-  <div class="right">
     <div class="frame">
       <div class="account-area">
         <a href="" id="btn-signin-open" class="btn-signin-open">Sign in</a>
         <% if new_user %> or
           <%= render :partial => 'users/signup' %>
         <% end %>
-        <!-- popup -->
         <%= render :partial => 'user_sessions/signin' %>
       </div>
     </div>
-	</div>
 <% end %>
+</div>

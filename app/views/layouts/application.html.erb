@@ -14,21 +14,14 @@
 <body>
 	<% if params[:admin] %><%= render :partial => 'layouts/menu' %><% end %>
 	<p class="flash-notice"><%= flash[:notice] %></p> 
-	<!-- wrapper -->
 	<div id="wrapper">
-		<!-- wrapper-holder -->
 		<div class="wrapper-holder">
-			<!-- header -->
 			<div id="header">
-				<!-- logo -->
       			<h1 class="logo"><a href="/">Smartvark</a></h1>
       			<%= render :partial => 'layouts/account_area' %>
 			</div>
-			<!-- main -->
 			<div id="main">
-				<!-- main-holder -->
 				<div class="main-holder">
-					<!-- main-frame -->
                     <div class="main-frame">
   						<%= yield %>
 					</div>

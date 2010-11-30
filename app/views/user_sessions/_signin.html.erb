@@ -3,11 +3,11 @@
     <fieldset>
       <h3>Sign in</h3>
       <div class="popup-row">
-      	<label for="login">email</label>
+      	<%= f.label :login, "email" %>
       	<%= f.text_field :login, :class => 'txt', :placeholder => 'email' %>
       </div>
       <div class="popup-row">
-      	<label for="password">password</label>
+      	<%= f.label :password %>
       	<%= f.password_field :password, :class => 'txt', :placeholder => 'password' %>
       </div>
       <div class="remember">

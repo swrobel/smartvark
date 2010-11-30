@@ -8,15 +8,15 @@
           <p>To use the deals you've collected, just fill this out to create your account! You can trust that we won't give your info away.</p>
         </div>
         <div class="popup-row">
-          <label for="login">email</label>
+          <%= f.label :login, "email" %>
           <%= f.text_field :login, :class => 'txt', :placeholder => 'email' %>
         </div>
         <div class="popup-row">
-          <label for="password">password</label>
+          <%= f.label :password %>
           <%= f.password_field :password, :class => 'txt', :placeholder => 'password' %>
         </div>
         <div class="popup-row">
-          <label for="password_confirmation">re-enter password</label>
+          <%= f.label :password_confirmation, "re-enter password" %>
           <%= f.password_field :password_confirmation, :class => 'txt', :placeholder => 're-enter password' %>
         </div>
         <div class="popup-buttons">

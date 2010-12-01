@@ -13,11 +13,14 @@
 </head>
 <body>
 	<% if params[:admin] %><%= render :partial => 'layouts/menu' %><% end %>
-	<p class="flash-notice"><%= flash[:notice] %></p> 
 	<div id="wrapper">
 		<div class="wrapper-holder">
 			<div id="header">
       			<h1 class="logo"><a href="/">Smartvark</a></h1>
+                <div class="flash-holder">
+                  <p class="flash-notice"><%= notice %></p> 
+                  <p class="flash-alert"><%= alert %></p>
+                </div>
       			<%= render :partial => 'layouts/account_area' %>
 			</div>
 			<div id="main">

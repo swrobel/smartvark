@@ -17,7 +17,7 @@
     <div class="frame">
       <ul class="menu">
         <li><%= link_to_unless_current 'deal dashboard', dealdashboard_url %></li>
-        <li><%= link_to_unless_current 'business profile', @business.new_record? ? new_business_url : edit_business_url(@business.id) %></li>
+        <li><%= link_to_unless_current 'business profile', new_business_url %></li>
       </ul>
     </div>
   <% else %>

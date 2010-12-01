@@ -38,22 +38,27 @@
         <%= f.text_field :email, :class => 'txt' %>
       </div>
     </div>
-    <div class="row">
-      <%= f.label :password %>
-      <div class="right">
-        <%= f.text_field :password, :class => 'txt' %>
-      </div>
-    </div>
-    <div class="row">
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <div class="right">
-        <%= f.text_field :password_confirmation, :class => 'txt' %>
-      </div>
+    <div class="row" id="show_password_fields">
+		<a href="#" onClick="jQuery('#password_fields').show();jQuery('#show_password_fields').hide();return false;">Change password</a>
+	</div>
+    <div id="password_fields" style="display:none;">
+	    <div class="row">
+	      <%= f.label :password %>
+	      <div class="right">
+	        <%= f.password_field :password, :class => 'txt' %>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <%= f.label :password_confirmation, "Re-enter Password" %>
+	      <div class="right">
+	        <%= f.password_field :password_confirmation, :class => 'txt' %>
+	      </div>
+	    </div>
     </div>
     <div class="row">
       <div class="btns">
         <%= f.submit "Save", :class => "btn-save" %>
-        <%= link_to "Cancel", mydeals_path %>
+        <%= link_to "Cancel", "#", :onClick => "javascript:history.back();return false;" %>
       </div>
     </div>
 </fieldset>

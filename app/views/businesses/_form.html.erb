@@ -4,10 +4,10 @@
     <%= form_for(@business) do |f| %>
       <%= f.error_messages %>
       <fieldset>
-        <%= form_row f, :name, 'Location Name' %>
-        <%= form_row f, :short_name, 'Nickname' %>
-        <%= form_row f, :street_address_1, 'Address 1' %>
-        <%= form_row f, :street_address_2, 'Address 2' %>
+        <%= form_row f, :name, 'Location Name', {}, '(Required) Name that users will see' %>
+        <%= form_row f, :short_name, 'Nickname', {}, '(Optional) Short name only used by your account' %>
+        <%= form_row f, :street_address_1, 'Address 1', {}, '(Required) Street address' %>
+        <%= form_row f, :street_address_2, 'Address 2', {}, '(Optional) Unit or Suite number, etc' %>
         <div class="row">
           <%= f.label :city, 'City' %>
           <div class="right width1">
@@ -18,12 +18,12 @@
             </div>
           </div>
         </div>
-        <%= form_row f, :postal_code, 'Zip Code',{ :tdc => ' width2', } %>
-        <%= form_row f, :phone_1, 'Phone', { :tdc => ' width3', }%>
-        <%= form_row f, :hours, 'Hours', {}, "tool tip" %>
-        <%= form_row f, :link_twitter, 'Twitter', { :tdc => ' width4', :bf => '<p>http://twitter.com/</p>' } %>
-        <%= form_row f, :link_facebook, 'Facebook', { :tdc => ' width5', :bf => '<p>http://facebook.com/</p>' } %>
-        <%= form_row f, :yelp_url, 'Yelp', { :tdc => ' width6', :bf => '<p>http://yelp.com/biz/</p>' } %>
+        <%= form_row f, :postal_code, 'Zip Code',{ :tdc => ' width2' }, '(Required) Zip code' %>
+        <%= form_row f, :phone_1, 'Phone', { :tdc => ' width3' }, '(Required) Phone number so that users can call you' %>
+        <%= form_row f, :hours, 'Hours', {}, '(Optional) Separate hours with a semicolon, ex: M-F 9-5;Sat-Sun 10-4' %>
+        <%= form_row f, :link_twitter, 'Twitter', { :tdc => ' width4', :bf => '<p>http://twitter.com/</p>' }, '(Optional) Twitter username for this location' %>
+        <%= form_row f, :link_facebook, 'Facebook', { :tdc => ' width5', :bf => '<p>http://facebook.com/</p>' }, '(Optional) Facebook page name for this location' %>
+        <%= form_row f, :yelp_url, 'Yelp', { :tdc => ' width6', :bf => '<p>http://yelp.com/biz/</p>' }, '(Optional) Yelp business ID for this location' %>
         <div class="btns-holder">
           <div class="btns">
             <input class="btn-clear" type="reset" value="Clear" />

@@ -10,7 +10,7 @@ class Business < ActiveRecord::Base
 
   before_update :set_yelp_rating
 
-  validates_presence_of :street_address_1, :city, :state, :postal_code
+  validates_presence_of :name, :street_address_1, :city, :state, :postal_code, :phone_1
 
   def short_or_name
     short_name.blank? ? name : short_name
@@ -30,7 +30,7 @@ class Business < ActiveRecord::Base
 
   def facebook_link
     return '' if link_facebook.blank?
-    if link_facebook.starts_with?('http://facebook.com/')
+    if link_facebook.include?('facebook.com/')
       link_facebook
     else
       'http://facebook.com/' + link_facebook
@@ -39,10 +39,18 @@ class Business < ActiveRecord::Base
 
   def twitter_link
     return '' if link_twitter.blank?
-    if link_twitter.starts_with?('http://twitter.com/')
+    if link_twitter.include?('twitter.com/')
       link_twitter
     else
       'http://twitter.com/' + link_twitter
+    end
+  end
+  
+  def yelp_link
+    if yelp_url.include?('yelp.com/')
+      yelp_url
+    else
+      'http://yelp.com/biz/' + yelp_url
     end
   end
 
@@ -52,14 +60,6 @@ class Business < ActiveRecord::Base
       if loc.success
         self.lat, self.lng = loc.lat, loc.lng
       end
-    end
-  end
-
-  def yelp_link
-    if yelp_url.starts_with?('http://yelp.com/biz')
-      yelp_url
-    else
-      'http://yelp.com/biz' + yelp_url
     end
   end
 

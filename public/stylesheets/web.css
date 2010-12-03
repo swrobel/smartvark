@@ -1,16 +1,31 @@
 .flash-holder {
 	float:left;
-	margin: 10px 0 0 100px;
+	margin:-10px 0 0 60px;
+	padding-top:5px;
+	width:300px;
+	text-align:center;
+	color:white;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	display:none;
+	-moz-box-shadow: 2px 2px 2px #000;
+	-webkit-box-shadow: 2px 2px 2px #000;
+	box-shadow: 2px 2px 2px #000;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
 }
-.flash-alert {
-    color: red;
-    text-align: center;
-	margin-top: 0;
+
 }
-.flash-notice {
-    color: green;
-    text-align: center;
-	margin-top: 0;
+#flash-notice {
+    background:green;
+	border:10px solid green;
+}
+#flash-alert {
+    background:red;
+	border:10px solid red;
 }
 .archived  {
   background-color: #DDD;
@@ -1044,7 +1059,7 @@ td, th{padding:0;}
 /* header */
 #header .right{
 	float:right;
-	width:500px;
+	width:495px;
 }
 .right .frame{
 	width:100%;

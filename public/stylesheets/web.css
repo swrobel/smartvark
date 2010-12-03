@@ -621,7 +621,7 @@ td, th{padding:0;}
 .section-inner .gallery ul .frame a span{
   color:#333333;
   display:block;
-  font:18px/22px Arial,Helvetica,sans-serif;
+  font:16px/18px "Trebuchet MS",Arial,Helvetica,sans-serif;
   margin:0 auto;
   padding:5px 0;
   text-align:center;
@@ -2027,7 +2027,7 @@ td, th{padding:0;}
 	padding:24px 0 30px;
 	text-shadow: 2px 1px 2px #CCC;
 }
-.business-holder p, ul{
+.business-holder p, .business-holder ul{
 	color: #1b1718;
 	font-size:14px;
 	line-height:17px;

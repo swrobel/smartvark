@@ -67,7 +67,7 @@ $(function(){
         isChecked = $(this).attr("checked");
         locName = $(this).parent().text().trim();
         $(".location").find("td").each(function(){
-            if($(this).text() == locName) if(isChecked) $(this).parent().show(); else $(this).parent().hide();
+            if($(this).text() == locName) if(isChecked) $(this).parent().fadeIn('fast'); else $(this).parent().fadeOut('fast');
         });
     });
     
@@ -80,6 +80,6 @@ function checkall_offer_form(n) {
 }
 function checkall(n) {
 	$(".chk").attr('checked',n);
-	if (n) $(".dashboard_row").show();
-	else $(".dashboard_row").hide();
+	if (n) $(".dashboard_row").fadeIn('fast');
+	else $(".dashboard_row").fadeOut('fast');
 }

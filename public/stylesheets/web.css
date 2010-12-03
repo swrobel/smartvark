@@ -17,8 +17,6 @@
 	/* For IE 5.5 - 7 */
 	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
 }
-
-}
 #flash-notice {
     background:green;
 	border:10px solid green;

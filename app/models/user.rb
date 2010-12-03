@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
-  acts_as_authentic do |config|
-    config.validate_email_field = false
-    config.validate_login_field = false
-  end
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :encryptable, :encryptor => :authlogic_sha512#, :omniauthable
+  
+  attr_accessible :email, :password, :password_confirmation
 
   has_many :comments
   has_many :opinions
@@ -11,13 +10,9 @@ class User < ActiveRecord::Base
   has_many :redemptions
   has_many :user_audits
 
-  before_validation :set_email, :on => :create
-
   has_and_belongs_to_many :categories
 
   has_many :businesses
-
-  before_validation :set_login
 
   has_attached_file :logo,
     :styles => { :thumb => ["120x120>", :png], :full => ["320x200>", :png] },
@@ -27,15 +22,10 @@ class User < ActiveRecord::Base
     :s3_credentials => "#{Rails.root}/config/s3.yml",
     :path => "/logos/:id/:style/:filename"
 
-  def set_login
-    self.login ||= email
+  def name_or_email
+    name.blank? ? email : name
   end
-  #######################
-
-  def set_email
-    self.email ||= login
-  end
-
+  
   def set_opinion(params)
     self.opinions.build(:offer_id => params[:offer_id], :liked => params[:liked]=='true')
   end

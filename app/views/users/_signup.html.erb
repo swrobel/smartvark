@@ -1,15 +1,14 @@
   <a href="" id="btn-signup-open" class="btn-signup-open">New user</a>
   <div id='signup-popup' class="popup">
-    <% @user ||= User.new %>
-    <%= form_for @user, :url => account_path do |f| %>
+    <%= form_for :user, :url => registration_path(:user) do |f| %>
       <fieldset>
         <h3>Sign up</h3>
         <div class="popup-row">
           <p>To use the deals you've collected, just fill this out to create your account! You can trust that we won't give your info away.</p>
         </div>
         <div class="popup-row">
-          <%= f.label :login, "email" %>
-          <%= f.text_field :login, :class => 'txt', :placeholder => 'email' %>
+          <%= f.label :email, "email" %>
+          <%= f.text_field :email, :class => 'txt', :placeholder => 'email' %>
         </div>
         <div class="popup-row">
           <%= f.label :password %>

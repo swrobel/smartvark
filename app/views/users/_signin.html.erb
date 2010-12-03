@@ -1,10 +1,10 @@
 <div id="signin-popup" class="popup">
-  <%= form_for get_user_session, :url => user_session_path do |f| %>
+  <%= form_for :user, :url => session_path(:user) do |f| %>
     <fieldset>
       <h3>Sign in</h3>
       <div class="popup-row">
-      	<%= f.label :login, "email" %>
-      	<%= f.text_field :login, :class => 'txt', :placeholder => 'email' %>
+      	<%= f.label :email, "email" %>
+      	<%= f.text_field :email, :class => 'txt', :placeholder => 'email' %>
       </div>
       <div class="popup-row">
       	<%= f.label :password %>

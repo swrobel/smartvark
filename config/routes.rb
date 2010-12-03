@@ -1,14 +1,12 @@
 Smartvark::Application.routes.draw do
-  match '/:controller(/:action(/:id))'
   root :to => 'welcome#deals'
   resources :comments
   resources :redemptions
   resources :businesses
   resources :offers
   resources :categories
-  resource :user_session
-  resource :account
-  resources :users
+  #resources :users
+  devise_for :users
   match 'biz' => 'welcome#forbusiness', :as => :biz
   match 'about' => 'welcome#about', :as => :about
   match 'privacy' => 'welcome#privacypolicy', :as => :privacy
@@ -30,5 +28,5 @@ Smartvark::Application.routes.draw do
   match '/m/viewdeal/:id' => 'm#viewdeal', :as => :mobile_viewdeal, :constraints => { :id => /.*/ }
   match '/m/redeem/:id' => 'm#redeem', :as => :mobile_redeem, :constraints => { :id => /.*/ }
   match '/m/search_results' => 'm#search_results', :as => :mobile_search_results, :via => :post
-  match '/logout' => 'user_sessions#destroy', :as => :logout
+  match '/:controller(/:action(/:id))'
 end

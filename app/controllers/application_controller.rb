@@ -9,12 +9,12 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  helper_method :current_user_session, :current_user, :logged_in?, :location
+  helper_method :logged_in?, :location
 
   after_filter :log_user
 
   protected
-
+  
   def set_location
     cookies[:location] = { :value => params[:location], :expires => 1.day.from_now }
   end
@@ -29,6 +29,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  
+  def after_sign_in_path_for(resource)
+    logger.info "YOU WERE @ " + stored_location_for(:user).to_s
+    redirect_to stored_location_for(:user) || root_path
+  end
 
   def mobile_redirect
     # only redirect to mobile site if mobile browser detected and not already on mobile site
@@ -43,16 +48,6 @@ class ApplicationController < ActionController::Base
 
   def log_user
     current_user && current_user.user_audits.create(:request => params)
-  end
-
-  def current_user_session
-    return @current_user_session if defined?(@current_user_session)
-    @current_user_session = UserSession.find
-  end
-
-  def current_user
-    return @current_user if defined?(@current_user)
-    @current_user = current_user_session && current_user_session.record
   end
 
   def require_user

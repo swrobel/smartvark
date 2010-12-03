@@ -10,20 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101109085119) do
-
-  create_table "access_tokens", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "type",       :limit => 30
-    t.string   "key"
-    t.string   "token",      :limit => 1024
-    t.string   "secret"
-    t.boolean  "active"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "access_tokens", ["key"], :name => "index_access_tokens_on_key", :unique => true
+ActiveRecord::Schema.define(:version => 20101201144642) do
 
   create_table "businesses", :force => true do |t|
     t.string    "name",                :limit => 50
@@ -83,22 +70,26 @@ ActiveRecord::Schema.define(:version => 20101109085119) do
   end
 
   create_table "offers", :force => true do |t|
-    t.string    "lead",             :limit => 100
-    t.string    "description",      :limit => 1000
-    t.string    "exclusivity_text", :limit => 100
+    t.string    "lead",                :limit => 100
+    t.string    "description",         :limit => 1000
+    t.string    "exclusivity_text",    :limit => 100
     t.integer   "quantity"
     t.timestamp "expiry_datetime"
     t.integer   "category_id"
     t.integer   "business_id"
     t.timestamp "created_at"
     t.timestamp "updated_at"
-    t.string    "redemption_code",  :limit => 50
-    t.boolean   "archived",                         :default => false
+    t.string    "coupon_file_name"
+    t.string    "coupon_content_type"
+    t.integer   "coupon_file_size"
+    t.timestamp "coupon_updated_at"
+    t.string    "redemption_code",     :limit => 50
+    t.boolean   "archived",                            :default => false
     t.date      "offer_active_on"
-    t.string    "offer_type",       :limit => 20
+    t.string    "offer_type",          :limit => 20
     t.boolean   "allow_print"
     t.boolean   "allow_mobile"
-    t.boolean   "draft",                            :default => false
+    t.boolean   "draft",                               :default => false
   end
 
   create_table "opinions", :force => true do |t|
@@ -126,38 +117,36 @@ ActiveRecord::Schema.define(:version => 20101109085119) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login",                                            :null => false
-    t.string   "email"
-    t.string   "crypted_password"
+    t.string   "email",                               :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
     t.string   "password_salt"
-    t.string   "persistence_token"
-    t.string   "single_access_token"
-    t.string   "perishable_token"
-    t.integer  "login_count",                       :default => 0, :null => false
-    t.integer  "failed_login_count",                :default => 0, :null => false
-    t.datetime "last_request_at"
-    t.datetime "current_login_at"
-    t.datetime "last_login_at"
-    t.string   "current_login_ip"
-    t.string   "last_login_ip"
+    t.integer  "sign_in_count",                       :default => 0,  :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name",                :limit => 50
-    t.string   "address",             :limit => 50
-    t.string   "city",                :limit => 50
-    t.string   "state",               :limit => 2
-    t.string   "zipcode",             :limit => 11
-    t.string   "phone",               :limit => 15
+    t.string   "name",                 :limit => 50
+    t.string   "address",              :limit => 50
+    t.string   "city",                 :limit => 50
+    t.string   "state",                :limit => 2
+    t.string   "zipcode",              :limit => 11
+    t.string   "phone",                :limit => 15
     t.integer  "carrier"
+    t.integer  "facebook_uid"
+    t.string   "facebook_session_key"
     t.string   "type"
     t.string   "logo_file_name"
     t.integer  "logo_file_size"
     t.string   "logo_content_type"
     t.datetime "logo_updated_at"
     t.boolean  "business"
-    t.integer  "active_token_id"
+    t.string   "reset_password_token"
+    t.datetime "remember_created_at"
   end
 
-  add_index "users", ["active_token_id"], :name => "index_users_on_active_token_id"
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

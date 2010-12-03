@@ -4,9 +4,8 @@ class WelcomeController < ApplicationController
 
   helper_method :location
 
-  after_filter :init_user_session
   before_filter :authenticated?, :only => [ :mydeals, :dealdashboard, :myprofile ]
-  before_filter :redirect_if_logged_in,  :only => [ :deals, :index ]
+  #before_filter :redirect_if_logged_in,  :only => [ :deals, :index ]
 
   def redirect_if_logged_in
     if logged_in?
@@ -160,10 +159,6 @@ class WelcomeController < ApplicationController
 
 
   private
-
-  def init_user_session
-    @user_session = UserSession.new
-  end
 
   def authenticated?
     unless logged_in?

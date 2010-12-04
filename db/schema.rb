@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101201144642) do
+ActiveRecord::Schema.define(:version => 20101203082800) do
 
   create_table "businesses", :force => true do |t|
     t.string    "name",                :limit => 50
@@ -70,26 +70,22 @@ ActiveRecord::Schema.define(:version => 20101201144642) do
   end
 
   create_table "offers", :force => true do |t|
-    t.string    "lead",                :limit => 100
-    t.string    "description",         :limit => 1000
-    t.string    "exclusivity_text",    :limit => 100
-    t.integer   "quantity"
-    t.timestamp "expiry_datetime"
-    t.integer   "category_id"
-    t.integer   "business_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "coupon_file_name"
-    t.string    "coupon_content_type"
-    t.integer   "coupon_file_size"
-    t.timestamp "coupon_updated_at"
-    t.string    "redemption_code",     :limit => 50
-    t.boolean   "archived",                            :default => false
-    t.date      "offer_active_on"
-    t.string    "offer_type",          :limit => 20
-    t.boolean   "allow_print"
-    t.boolean   "allow_mobile"
-    t.boolean   "draft",                               :default => false
+    t.string   "lead",             :limit => 100
+    t.string   "description",      :limit => 1000
+    t.string   "exclusivity_text", :limit => 100
+    t.integer  "quantity"
+    t.datetime "expiry_datetime"
+    t.integer  "category_id"
+    t.integer  "business_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "redemption_code",  :limit => 50
+    t.boolean  "archived",                         :default => false
+    t.date     "offer_active_on"
+    t.string   "offer_type",       :limit => 20
+    t.boolean  "allow_print"
+    t.boolean  "allow_mobile"
+    t.boolean  "draft",                            :default => false
   end
 
   create_table "opinions", :force => true do |t|
@@ -117,10 +113,10 @@ ActiveRecord::Schema.define(:version => 20101201144642) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "email",                               :default => "",     :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "",     :null => false
     t.string   "password_salt"
-    t.integer  "sign_in_count",                       :default => 0,  :null => false
+    t.integer  "sign_in_count",                       :default => 0,      :null => false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -134,8 +130,6 @@ ActiveRecord::Schema.define(:version => 20101201144642) do
     t.string   "zipcode",              :limit => 11
     t.string   "phone",                :limit => 15
     t.integer  "carrier"
-    t.integer  "facebook_uid"
-    t.string   "facebook_session_key"
     t.string   "type"
     t.string   "logo_file_name"
     t.integer  "logo_file_size"
@@ -144,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20101201144642) do
     t.boolean  "business"
     t.string   "reset_password_token"
     t.datetime "remember_created_at"
+    t.string   "role",                                :default => "user"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

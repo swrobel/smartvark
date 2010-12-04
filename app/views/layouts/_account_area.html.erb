@@ -8,7 +8,7 @@
         <div class="holder">
           <strong class="ttl">Welcome <span><%= current_user.name %></span></strong>
         </div>
-        <p><%= link_to "log out", destroy_user_session_path %>&nbsp;&nbsp;</p>
+        <p><%= link_to "sign out", destroy_user_session_path %>&nbsp;&nbsp;</p>
       </div>
     </div>
     <div class="frame">
@@ -28,16 +28,16 @@
           <strong class="ttl">Welcome <span><%= current_user.name_or_email %></span></strong>
           <div class="progress-bar"><span style="width:78px">&nbsp;</span></div>
         </div>
-        <p>not you? <%= link_to "log out", destroy_user_session_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;profile 50% complete</p>
+        <p>not you? <%= link_to "sign out", destroy_user_session_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;profile 50% complete</p>
       </div>
     </div>
     <div class="frame">
-		  <ul class="menu">
-			  <li><%= link_to_unless_current 'my deals', mydeals_url %></li>
-			  <li><%= link_to_unless_current 'my profile', myprofile_url %></li>
-		  </ul>
-	</div>
-	<% end %>
+      <ul class="menu">
+	<li><%= link_to_unless_current 'my deals', mydeals_url %></li>
+	<li><%= link_to_unless_current 'my profile', myprofile_url %></li>
+      </ul>
+  </div>
+  <% end %>
 <% else %>
     <div class="frame">
       <div class="account-area">

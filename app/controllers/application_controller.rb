@@ -29,24 +29,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  
-  def after_sign_in_path_for(resource_or_scope)
-    prev_url = stored_location_for(resource_or_scope)
-#    if prev_url && !(prev_url.equals? root_url)
-#      return prev_url
-#    else
-#      return mydeals_path
-#    end
-  end
-  
-  def after_sign_out_path_for(resource_or_scope)
-    prev_url = stored_location_for(resource_or_scope)
-#    if prev_url && !(prev_url.equals? mydeals_url)
-#      return prev_url
-#    else
-#      return root_path
-#    end
-  end
 
   def mobile_redirect
     # only redirect to mobile site if mobile browser detected and not already on mobile site
@@ -64,7 +46,15 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:alert] = "You are not signed in or are not permitted to do that."
+    logger.info "CanCan access issue"
+    # Don't show error if this redirect is due to sign in/out
+    notice = flash[:notice]
+    if notice && notice.include?("Signed")
+      logger.info "Flash notice: " + notice.to_s
+      flash[:notice] = notice
+    else
+      flash[:alert] = "You are not signed in or are not permitted to do that."
+    end
     if current_user
       if current_user.role == "admin"
         redirect_to admin_path

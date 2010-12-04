@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
+  ROLES = %w[admin business user]
+  
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :encryptable, :encryptor => :authlogic_sha512#, :omniauthable
   
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :comments
   has_many :opinions
-  has_many :all_opinions, :class_name => 'Opinion'
 
   has_many :redemptions
   has_many :user_audits
@@ -23,7 +24,7 @@ class User < ActiveRecord::Base
     :path => "/logos/:id/:style/:filename"
 
   def name_or_email
-    name.blank? ? email : name
+    name.blank? ? email : name.split.first
   end
   
   def set_opinion(params)
@@ -52,6 +53,5 @@ class User < ActiveRecord::Base
       :conditions => { :business_id => these_business_ids },
       :include => [ :business ],
       :order => "businesses.name, offers.expiry_datetime")
-
   end
 end

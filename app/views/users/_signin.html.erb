@@ -1,5 +1,5 @@
 <div id="signin-popup" class="popup">
-  <%= form_for :user, :url => session_path(:user) do |f| %>
+  <%= form_for :user, :as => :user, :url => session_path(:user) do |f| %>
     <fieldset>
       <h3>Sign in</h3>
       <div class="popup-row">

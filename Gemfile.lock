@@ -37,6 +37,7 @@ GEM
       xml-simple
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
+    cancan (1.4.1)
     daemons (1.1.0)
     delocalize (0.2.3)
     devise (1.2.rc)
@@ -113,6 +114,7 @@ DEPENDENCIES
   active_device
   acts_as_tree_rails3
   aws-s3
+  cancan
   delocalize
   devise (= 1.2.rc)
   dynamic_form

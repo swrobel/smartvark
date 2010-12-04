@@ -1,6 +1,6 @@
   <a href="" id="btn-signup-open" class="btn-signup-open">New user</a>
   <div id='signup-popup' class="popup">
-    <%= form_for :user, :url => registration_path(:user) do |f| %>
+    <%= form_for :user, :as => :user, :url => registration_path(:user) do |f| %>
       <fieldset>
         <h3>Sign up</h3>
         <div class="popup-row">

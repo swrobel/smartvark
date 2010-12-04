@@ -15,13 +15,13 @@ class ApplicationController < ActionController::Base
 
   protected
   
-  def set_location
-    cookies[:location] = { :value => params[:location], :expires => 1.day.from_now }
-  end
+#  def set_location
+#    cookies[:geo_location] = { :value => params[:location], :expires => 1.day.from_now }
+#  end
 
-  def location
-    (cookies[:location] ||= 'Los Angeles, CA').to_str
-  end
+#  def location
+#    (cookies[:geo_location] ||= 'Los Angeles, CA').to_str
+#  end
 
   def close_business_ids
     # business_ids = Business.all(:select => 'id', :origin => location, :within => RADIUS)  #TODO:  Sqlite not map supported
@@ -30,9 +30,22 @@ class ApplicationController < ActionController::Base
 
   private
   
-  def after_sign_in_path_for(resource)
-    logger.info "YOU WERE @ " + stored_location_for(:user).to_s
-    redirect_to stored_location_for(:user) || root_path
+  def after_sign_in_path_for(resource_or_scope)
+    prev_url = stored_location_for(resource_or_scope)
+#    if prev_url && !(prev_url.equals? root_url)
+#      return prev_url
+#    else
+#      return mydeals_path
+#    end
+  end
+  
+  def after_sign_out_path_for(resource_or_scope)
+    prev_url = stored_location_for(resource_or_scope)
+#    if prev_url && !(prev_url.equals? mydeals_url)
+#      return prev_url
+#    else
+#      return root_path
+#    end
   end
 
   def mobile_redirect
@@ -41,40 +54,27 @@ class ApplicationController < ActionController::Base
       redirect_to "/m" + request.request_uri
     end
   end
+
+  def log_user
+    current_user && current_user.user_audits.create(:request => params)
+  end
   
   def logged_in?
     current_user
   end
 
-  def log_user
-    current_user && current_user.user_audits.create(:request => params)
-  end
-
-  def require_user
-    unless current_user
-      store_location
-      flash[:notice] = "You must be logged in to access this page"
-      redirect_to deals_url
-      return false
-    end
-  end
-
-  def require_no_user
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:alert] = "You are not signed in or are not permitted to do that."
     if current_user
-      store_location
-      flash[:notice] = "You must be logged out to access this page"
-      redirect_to mydeals_url
-      return false
+      if current_user.role == "admin"
+        redirect_to admin_path
+      elsif current_user.role == "business"
+        redirect_to dealdashboard_path
+      elsif current_user.role == "user"
+        redirect_to mydeals_path
+      end
+    else
+      redirect_to root_path
     end
   end
-
-  def store_location
-    session[:return_to] = request.request_uri
-  end
-
-  def redirect_back_or_default(default)
-    redirect_to(session[:return_to] || default)
-    session[:return_to] = nil
-  end
-
 end

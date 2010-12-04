@@ -3,39 +3,29 @@ class WelcomeController < ApplicationController
   RADIUS=50
 
   helper_method :location
+  
+  before_filter :set_current_page
 
-  before_filter :authenticated?, :only => [ :mydeals, :dealdashboard, :myprofile ]
-  #before_filter :redirect_if_logged_in,  :only => [ :deals, :index ]
-
-  def redirect_if_logged_in
-    if logged_in?
-      if current_user.business?
-        redirect_to dealdashboard_url
-      else
-        redirect_to mydeals_url
-      end
-    end
+  def set_current_page
+    session[:user_return_to] = request.url
   end
-
+  
   def dealdashboard
+    raise CanCan::AccessDenied unless can? :read, :dealdashboard
     @businesses = current_user.businesses
     @business = current_user.businesses.first || current_user.businesses.build
 
     @offers = current_user.offers_sorted_for_dealdashboard
   end
 
-  def filter_deals
-    business_ids = params[:business_ids].map(&:to_i) rescue []
-    @offers = current_user.offers_sorted_for_dealdashboard(business_ids)
-    render :partial => 'deal_on_dashboard'
-  end
-
   def printdeal
+    raise CanCan::AccessDenied unless can? :read, :viewdeal
     @offer = Offer.find params[:id]
     render :layout => false
   end
 
   def viewbusiness
+    raise CanCan::AccessDenied unless can? :read, :viewbusiness
     @business = Business.find(params[:id])
     @map = GMap.new("map")
     @map.control_init(:large_map => true, :map_type => true)
@@ -51,12 +41,14 @@ class WelcomeController < ApplicationController
   end
 
   def myprofile
+    raise CanCan::AccessDenied unless can? :read, :myprofile
     @user = current_user
   end
 
   def deals
+    raise CanCan::AccessDenied unless can? :read, :deals
     if request.post?
-      cookies[:location] = params[:location] if params[:location]
+      cookies[:geo_location] = params[:location] if params[:location]
     end
 
     if location
@@ -74,10 +66,12 @@ class WelcomeController < ApplicationController
   end
 
   def viewdeal
+    raise CanCan::AccessDenied unless can? :read, :viewdeal
     @offer = Offer.find(params[:id], :include => [ :business, :comments ])
   end
 
   def search
+    raise CanCan::AccessDenied unless can? :read, :search
     @offers = Offer.search(params)
 
     @map = GMap.new("map")
@@ -95,6 +89,7 @@ class WelcomeController < ApplicationController
   end
 
   def mydeals
+    raise CanCan::AccessDenied unless can? :read, :mydeals
     session.delete(:liked)
     category_id = params[:category_id].to_i
     if (category_id <= 1)
@@ -155,15 +150,6 @@ class WelcomeController < ApplicationController
       @offer.comments.create(params[:comment])
     end
     redirect_to :viewdeal, :id => @offer
-  end
-
-
-  private
-
-  def authenticated?
-    unless logged_in?
-      redirect_to deals_url
-    end
   end
 
 end

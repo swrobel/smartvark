@@ -30,6 +30,7 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     acts_as_tree_rails3 (0.1.0)
+    addressable (2.2.2)
     arel (2.0.4)
     aws-s3 (0.6.2)
       builder
@@ -48,6 +49,10 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     eventmachine (0.12.10)
+    faraday (0.5.3)
+      addressable (~> 2.2.2)
+      multipart-post (~> 1.0.1)
+      rack (>= 1.1.0, < 2)
     geokit (1.5.0)
     geokit-rails3 (0.1.2)
       geokit (~> 1.5.0)
@@ -66,6 +71,21 @@ GEM
     moonshado-sms (1.1.0)
       rest-client (= 1.6.0)
       yajl-ruby (= 0.7.7)
+    multi_json (0.0.5)
+    multipart-post (1.0.1)
+    nokogiri (1.4.3.1)
+    oa-core (0.1.6)
+      rack (~> 1.1)
+    oa-oauth (0.1.6)
+      multi_json (~> 0.0.2)
+      nokogiri (~> 1.4.2)
+      oa-core (= 0.1.6)
+      oauth (~> 0.4.0)
+      oauth2 (~> 0.1.0)
+    oauth (0.4.4)
+    oauth2 (0.1.0)
+      faraday (~> 0.5.0)
+      multi_json (~> 0.0.4)
     orm_adapter (0.0.3)
     paperclip (2.3.5)
       activerecord
@@ -123,6 +143,7 @@ DEPENDENCIES
   home_run
   jquery-rails
   moonshado-sms
+  oa-oauth
   paperclip
   pg
   rails (= 3.0.3)

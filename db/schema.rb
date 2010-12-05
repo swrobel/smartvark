@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101203082800) do
+ActiveRecord::Schema.define(:version => 20101205025432) do
 
   create_table "businesses", :force => true do |t|
     t.string    "name",                :limit => 50
@@ -110,6 +110,14 @@ ActiveRecord::Schema.define(:version => 20101203082800) do
     t.string    "request",    :limit => 3000
     t.timestamp "created_at"
     t.timestamp "updated_at"
+  end
+
+  create_table "user_tokens", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

@@ -24,8 +24,11 @@ class ApplicationController < ActionController::Base
 #  end
 
   def close_business_ids
-    # business_ids = Business.all(:select => 'id', :origin => location, :within => RADIUS)  #TODO:  Sqlite not map supported
-    @close_business_ids ||= Business.all(:select => 'id')
+    if Rails.env.production?
+      business_ids = Business.all(:select => 'id', :origin => location, :within => RADIUS)
+    else
+      @close_business_ids ||= Business.all(:select => 'id')
+    end
   end
 
   private

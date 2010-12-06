@@ -1,7 +1,4 @@
 class WelcomeController < ApplicationController
-  include Geokit::Geocoders
-  RADIUS=50
-
   helper_method :location
   
   before_filter :set_current_page

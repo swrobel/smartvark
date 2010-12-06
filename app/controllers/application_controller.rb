@@ -2,6 +2,9 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  include Geokit::Geocoders
+  RADIUS=50
+  
   include ActiveDevice
   skip_before_filter :set_mobile_format # instead of requiring mobile pages to be .mobile.erb use .html.erb
   before_filter :mobile_redirect # check for mobile browser and redirect to mobile page

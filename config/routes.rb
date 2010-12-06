@@ -22,6 +22,7 @@ Smartvark::Application.routes.draw do
   match 'viewdeal/:id' => 'welcome#viewdeal', :as => :viewdeal, :constraints => { :id => /.*/ }
   match 'shout/:id' => 'welcome#shout', :as => :shout, :via => :post
   match 'contact' => 'welcome#contact', :as => :contact, :via => :get
+  match '/m' => 'm#deals', :as => :mobile_deals
   match '/m/filter/:category_id' => 'm#filter', :as => :mobile_filter, :via => :get
   match '/m/search_results' => 'm#search_results', :as => :mobile_search, :via => :post
   match '/m/viewbusiness/:id' => 'm#viewbusiness', :as => :mobile_viewbusiness, :constraints => { :id => /.*/ }

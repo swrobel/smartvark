@@ -6,27 +6,34 @@
         <div class="popup-row">
           <p>To use the deals you've collected, just fill this out to create your account! You can trust that we won't give your info away.</p>
         </div>
-        <div class="popup-row">
-          <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+        <div id="facebook-area">
+          <div class="popup-row">
+            <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :class => 'facebook-signin' %>
+          </div>
+          <div class="popup-row">
+            <p><a href="#" onClick="$('#facebook-area').hide('drop',{ direction:'up'});$('#form-area').show('drop',{ direction:'up'});return false;">or create an account on our site</a></p>
+          </div>
         </div>
-        <div class="popup-row">
-          <%= f.label :email, "email" %>
-          <%= f.text_field :email, :class => 'txt', :placeholder => 'email' %>
-        </div>
-        <div class="popup-row">
-          <%= f.label :password %>
-          <%= f.password_field :password, :class => 'txt', :placeholder => 'password' %>
-        </div>
-        <div class="popup-row">
-          <%= f.label :password_confirmation, "re-enter password" %>
-          <%= f.password_field :password_confirmation, :class => 'txt', :placeholder => 're-enter password' %>
-        </div>
-        <div class="popup-buttons">
-          <%= f.submit "Sign up", :class => 'btn-signup' %>
-          <input class="btn-signin-cancel simplemodal-close" type="submit" value="Cancel" />
-        </div>
-        <div class="popup-buttons">
-          <a href="#" id="signin-from-signup">Already have an account? Sign in!</a>
+        <div id="form-area" style="display:none;">
+          <div class="popup-row">
+            <%= f.label :email, "email" %>
+            <%= f.text_field :email, :class => 'txt', :placeholder => 'email' %>
+          </div>
+          <div class="popup-row">
+            <%= f.label :password %>
+            <%= f.password_field :password, :class => 'txt', :placeholder => 'password' %>
+          </div>
+          <div class="popup-row">
+            <%= f.label :password_confirmation, "re-enter password" %>
+            <%= f.password_field :password_confirmation, :class => 'txt', :placeholder => 're-enter password' %>
+          </div>
+          <div class="popup-buttons">
+            <%= f.submit "Sign up", :class => 'btn-signup' %>
+            <input class="btn-signin-cancel simplemodal-close" type="submit" value="Cancel" />
+          </div>
+          <div class="popup-buttons">
+            <a href="#" id="signin-from-signup">Already have an account? Sign in!</a>
+          </div>
         </div>
       </fieldset>
     <% end %>

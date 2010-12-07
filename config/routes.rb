@@ -10,6 +10,7 @@ Smartvark::Application.routes.draw do
   match 'biz' => 'welcome#forbusiness', :as => :biz
   match 'about' => 'welcome#about', :as => :about
   match 'privacy' => 'welcome#privacypolicy', :as => :privacy
+  match 'contact' => 'welcome#contact', :as => :contact, :via => :get
   match 'admin' => 'offers#index', :as => :admin
   match 'mydeals/:category_id' => 'welcome#mydeals', :as => :category_mydeals
   match 'dealdashboard/' => 'welcome#dealdashboard', :as => :dealdashboard
@@ -21,7 +22,8 @@ Smartvark::Application.routes.draw do
   match 'viewbusiness/:id' => 'welcome#viewbusiness', :as => :viewbusiness, :constraints => { :id => /.*/ }
   match 'viewdeal/:id' => 'welcome#viewdeal', :as => :viewdeal, :constraints => { :id => /.*/ }
   match 'shout/:id' => 'welcome#shout', :as => :shout, :via => :post
-  match 'contact' => 'welcome#contact', :as => :contact, :via => :get
+  match 'set_opinion' => 'welcome#set_opinion', :as => :set_opinion, :via => :post
+  match 'undo_last_action' => 'welcome#undo_last_action', :as => :undo_last_action, :via => :post
   match '/m' => 'm#deals', :as => :mobile_deals
   match '/m/filter/:category_id' => 'm#filter', :as => :mobile_filter, :via => :get
   match '/m/search_results' => 'm#search_results', :as => :mobile_search, :via => :post
@@ -29,5 +31,4 @@ Smartvark::Application.routes.draw do
   match '/m/viewdeal/:id' => 'm#viewdeal', :as => :mobile_viewdeal, :constraints => { :id => /.*/ }
   match '/m/redeem/:id' => 'm#redeem', :as => :mobile_redeem, :constraints => { :id => /.*/ }
   match '/m/search_results' => 'm#search_results', :as => :mobile_search_results, :via => :post
-  match '/:controller(/:action(/:id))'
 end

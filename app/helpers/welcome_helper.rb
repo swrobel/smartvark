@@ -38,11 +38,11 @@ module WelcomeHelper
     res = '<span class="mark">'
     if liked
       res << "You added \"#{offer.lead}\" deal to My Picks. " +
-      link_to("Undo", { :controller => "welcome", :action => "undo_last_action", :offer_id => offer.id }, :remote => true) + " or " +
+      link_to("Undo", { :controller => "welcome", :action => "undo_last_action", :offer_id => offer.id }, :method => :post, :remote => true) + " or " +
       use_it_now_link(offer) + "."
     else
       res << "You removed \"#{offer.lead}\" deal from Artie's Picks. " +
-      link_to("Undo", { :controller => "welcome", :action => "undo_last_action", :offer_id => offer.id }, :remote => true) + "."
+      link_to("Undo", { :controller => "welcome", :action => "undo_last_action", :offer_id => offer.id }, :method => :post, :remote => true) + "."
     end
     res << "</span>"
   end

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  helper_method :logged_in?, :location
+  helper_method :logged_in?, :location, :home_path
 
   after_filter :log_user
 
@@ -38,8 +38,8 @@ class ApplicationController < ActionController::Base
 
   def mobile_redirect
     # only redirect to mobile site if mobile browser detected and not already on mobile site
-    if is_mobile_browser? && !(request.request_uri+"/").include?("/m/")
-      redirect_to "/m" + request.request_uri
+    if is_mobile_browser? && !(request.fullpath+"/").include?("/m/")
+      redirect_to "/m" + request.fullpath
     end
   end
 
@@ -50,27 +50,32 @@ class ApplicationController < ActionController::Base
   def logged_in?
     current_user
   end
+  
+  def home_path
+    if current_user
+      if current_user.role == "admin"
+        admin_path
+      elsif current_user.role == "business"
+        dealdashboard_path
+      elsif current_user.role == "user"
+        mydeals_path
+      end
+    else
+      root_path
+    end
+  end
 
   rescue_from CanCan::AccessDenied do |exception|
-    logger.info "CanCan access issue"
+    logger.info "CanCan access issue @ " + request.fullpath
+    
     # Don't show error if this redirect is due to sign in/out
     notice = flash[:notice]
     if notice && notice.include?("Signed")
-      logger.info "Flash notice: " + notice.to_s
       flash[:notice] = notice
-    else
+    # Only show error message if they are accessing a path other than root
+    elsif request.fullpath != "/"
       flash[:alert] = "You are not signed in or are not permitted to do that."
     end
-    if current_user
-      if current_user.role == "admin"
-        redirect_to admin_path
-      elsif current_user.role == "business"
-        redirect_to dealdashboard_path
-      elsif current_user.role == "user"
-        redirect_to mydeals_path
-      end
-    else
-      redirect_to root_path
-    end
+    redirect_to home_path
   end
 end

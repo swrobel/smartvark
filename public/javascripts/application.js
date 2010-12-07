@@ -54,14 +54,11 @@ $(function(){
 	$("#offer_offer_active_on").datepicker();
 	$("#offer_expiry_datetime").datepicker();
 	
-	//abort if browser supports HTML5 placeholder attribute
-	if (!('placeholder' in document.createElement('input'))) {
-	    $("#search_terms").placeHeld();
-	    $("#location").placeHeld();
-	    $("#offer_lead").placeHeld();
-	    $("#offer_description").placeHeld();
-	    $("#offer_exclusivity_text").placeHeld();
-	}
+	$("#search_terms").placehold();
+	$("#location").placehold();
+	$("#offer_lead").placehold();
+	$("#offer_description").placehold();
+	$("#offer_exclusivity_text").placehold();
 	
 	$(".dashboard_chk").change(function(){
         isChecked = $(this).attr("checked");

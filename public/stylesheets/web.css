@@ -82,7 +82,7 @@
 	font:14px/16px Arial, Helvetica, sans-serif;
 }
 
-.tryit-box .placeheld{
+.tryit-box .placeholder{
 	width:125px;
 	height:16px;
 	float:left;
@@ -238,7 +238,7 @@ td, th{padding:0;}
 	margin:0 0 0 7px;
 	font:14px/16px Arial, Helvetica, sans-serif;
 }
-.search .placeheld{
+.search .placeholder{
 	width:125px;
 	height:16px;
 	float:left;
@@ -1567,7 +1567,7 @@ a.facebook-signin {
 
 
 }
-.text-box .placeheld{color:#999}
+.text-box .placeholder{color:#999}
 .text-box .text textarea{
 	border:medium none;
 	height:76px;
@@ -1693,7 +1693,7 @@ a.facebook-signin {
 	background:url(../images/btn-cancel4.gif) no-repeat;
 	width:73px;
 }
-.form1 .placeheld{color:#999}
+.form1 .placeholder{color:#999}
 /* coupon */
 .coupon{
 	overflow:hidden;

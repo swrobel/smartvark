@@ -1,12 +1,9 @@
-/*! 
- * PlaceHeld jQuery plugin by [Max Wheeler](max@makenosound.com)
- *
- * Copyright (c) 2010 Max Wheeler. Licensed under the [WTFPL](http://sam.zoy.org/wtfpl/)
- *
- * Dependencies: jQuery
- */
-(function(a){a.placeHeld=function(c,b){var d=this;d.$el=a(c);d.el=c;d.$el.data("placeHeld",d);d.placeholderText=d.$el.attr("placeholder");d.init=function(){d.options=a.extend({},a.placeHeld.defaultOptions,b);d.$el.bind("blur",d.holdPlace).bind("focus",d.releasePlace).trigger("blur");d.$el.parents("form").bind("submit",d.clearPlace)};d.holdPlace=function(){var e=d.$el.val();if(!e){d.$el.val(d.placeholderText).addClass(d.options.className)}};d.releasePlace=function(){var e=d.$el.val();if(e==d.placeholderText){d.$el.val("").removeClass(d.options.className)}};d.clearPlace=function(){var e=d.$el.val();if(e==d.placeholderText&&d.$el.hasClass(d.options.className)){d.$el.val("")}};d.init()};a.placeHeld.defaultOptions={className:"placeheld"};a.fn.placeHeld=function(b){if(!!("placeholder" in a("<input>")[0])){return}return this.each(function(){(new a.placeHeld(this,b))})}})(jQuery);
-/*
+/************************************************************************************
+** jQuery Placehold version 0.3
+** (cc) Jason Garber (http://sixtwothree.org and http://www.viget.com)
+** Licensed under the CC-GNU GPL (http://creativecommons.org/licenses/GPL/2.0/)
+*************************************************************************************/
+(function(A){A.fn.placehold=function(D){var D=D||"placeholder",C=A.fn.placehold.is_supported();function B(){for(i=0;i<arguments.length;i++){arguments[i].toggle();}}return C?this:this.each(function(){var F=A(this),E=F.attr("placeholder");if(E){if(!F.val()||F.val()==E){F.addClass(D).val(E);}if(F.attr("type")=="password"){var G=A("<input />",{"class":F.attr("class")+" "+D,value:E});G.bind("focus.placehold",function(){B(F,G);F.focus();});F.bind("blur.placehold",function(){if(!F.val()){B(F,G);}});F.hide().after(G);}F.bind({"focus.placehold":function(){if(F.val()==E){F.removeClass(D).val("");}},"blur.placehold":function(){if(!F.val()){F.addClass(D).val(E);}}});F.closest("form").bind("submit.placehold",function(){if(F.val()==E){F.val("");}return true;});}});};A.fn.placehold.is_supported=function(){return"placeholder" in document.createElement("input");};})(jQuery);/*
  * SimpleModal 1.4.1 - jQuery Plugin
  * http://www.ericmmartin.com/projects/simplemodal/
  * Copyright (c) 2010 Eric Martin (http://twitter.com/ericmmartin)

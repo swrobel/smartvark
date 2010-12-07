@@ -16,7 +16,7 @@ class Ability
           business.try(:user) == user
         end
         can :create, Offer
-        can :update, Offer do |offer|
+        can [:edit, :update], Offer do |offer|
           offer.try(:business).try(:user) == user
         end
       end

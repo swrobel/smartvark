@@ -1,5 +1,6 @@
 class OffersController < ApplicationController
-  load_and_authorize_resource
+  load_resource :only => [:edit, :update]
+  authorize_resource
 
   # GET /offers
   # GET /offers.xml
@@ -50,7 +51,6 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.xml
   def create
-
     @offer = Offer.create_many_by_user_and_params(current_user, params[:offer])
     @business = Business.new  #TODO: Set to incoming business
 

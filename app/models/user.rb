@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :encryptable, :omniauthable, :encryptor => :authlogic_sha512
   
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :carrier, :category_ids
 
   has_many :comments
   has_many :opinions
@@ -64,4 +64,13 @@ class User < ActiveRecord::Base
       User.create!(:email => data["email"], :password => Devise.friendly_token[0,20]) 
     end
   end
+  
+  def update_with_password(params={})
+    if params[:password].blank? 
+      params.delete(:password) 
+      params.delete(:password_confirmation) if params[:password_confirmation].blank? 
+    end 
+    update_attributes(params) 
+  end
+
 end

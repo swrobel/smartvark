@@ -1,9 +1,12 @@
 
 <% @user ||= User.new %>
-<%= flash[:notice] %>
-<%= form_for(@user, { :url => account_path, :html => {:multipart => true} }) do |f| %>
+<% if flash[:error] %>
+<div id="errorExplanation">
+  <%= raw flash[:error] %>
+</div>
+<% end %>
+<%= form_for(@user, { :url => registration_path(@user), :html => {:multipart => true} }) do |f| %>
   <fieldset>
-    <%= f.error_messages %>
     <%= f.hidden_field :business, :value => true %>
     <%= f.label :name, '<span>Name</span><span class="inf" title="Name of the business entity (not seen by users)">Info</span>'.html_safe %>
     <div class="row"><%= f.text_field :name, :class => 'txt' %></div>

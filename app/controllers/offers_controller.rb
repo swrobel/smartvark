@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
+  load_and_authorize_resource
 
-  before_filter :require_user
   # GET /offers
   # GET /offers.xml
   def index

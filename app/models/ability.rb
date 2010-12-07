@@ -11,8 +11,14 @@ class Ability
       elsif user.role == "business"
         can :read, :mydeals
         can :read, :dealdashboard
-        can :read, :business
-        can :read, :offer
+        can :create, Business
+        can :update, Business do |business|
+          business.try(:user) == user
+        end
+        can :create, Offer
+        can :update, Offer do |offer|
+          offer.try(:business).try(:user) == user
+        end
       end
     else # "Guest" users
       can :read, :deals

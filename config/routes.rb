@@ -6,7 +6,7 @@ Smartvark::Application.routes.draw do
   resources :offers
   resources :categories
   #resources :users
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations" }
   match 'biz' => 'welcome#forbusiness', :as => :biz
   match 'about' => 'welcome#about', :as => :about
   match 'privacy' => 'welcome#privacypolicy', :as => :privacy

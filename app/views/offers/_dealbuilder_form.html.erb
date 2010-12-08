@@ -1,4 +1,4 @@
-<% form_for(@offer,  :html => {:multipart => true}) do |f| %>
+<%= form_for(@offer,  :html => {:multipart => true}) do |f| %>
 <fieldset>
   <div class="offer-form">
     <%= f.error_messages %>
@@ -12,22 +12,23 @@
     </div>
     <div class="row">
       <%= f.label :category_id, 'Category', :class => :width1 %>
-      <%= f.select :category_id, options_from_collection_for_select(Category.all_parents,'id','name',@offer.category_id),{ :include_blank => true }, {:class => :sel2 } %>
-      <div class="caption sp2">
-        <span>Category the deal will show up in on our site</span>
-      </div>
+      <%= select "category", "parents", options_from_collection_for_select(Category.all_parents.all_except('All'),'id','name',@offer.category.nil? ? nil : @offer.category.parent_or_id),{ :include_blank => true }, {:class => :sel2, :id => "parent_category" } %>
+      <% Category.all_parents.all_except('All').each do |parent_category| %>
+        <%= select "category", "children", options_from_collection_for_select(Category.children_of(parent_category.id),'id','name',@offer.category_id),{ :include_blank => true }, {:class => "sel2 child_select", :id => "children_of_"+parent_category.id.to_s, :style=> ("display:none;" unless @offer.category && @offer.category.parent_id == parent_category.id) } %>
+      <% end %>
+      <%= f.hidden_field :category_id, :value => @offer.category_id %>
     </div>
     <div class="row">
-      <%= f.label :offer_active_on, 'Begin Date' %>
+      <%= f.label :offer_active_on, 'Starts on' %>
       <%= f.text_field :offer_active_on, :format => :us_date, :class => 'txt' %>
-      <div class="caption sp1">
+      <div class="caption">
         <span>Date deal becomes active</span>
       </div>
     </div>
     <div class="row">
-      <%= f.label :expiry_datetime , 'Expire Date' %>
+      <%= f.label :expiry_datetime , 'Ends on' %>
       <%= f.text_field :expiry_datetime, :format => :us_date, :class => 'txt' %>
-      <div class="caption sp1">
+      <div class="caption">
         <span>Date deal expires (end of day)</span>
       </div>
     </div>
@@ -96,7 +97,7 @@
     <div class="row">
       <div class="left">
         <%= f.label :redemption_code %>
-        <%= f.text_field :redemption_code, :class => :txt, :onchange => "jQuery('##{@offer.id}_rc').html(jQuery('#offer_redemption_code').val())" %>
+        <%= f.text_field :redemption_code, :class => :txt, :onchange => "jQuery('##{@offer.id}_rc').html(jQuery('#offer_redemption_code').val())", :placeholder => "Ex: HALFOFFTUES" %>
       </div>
       <div class="right">
         <span>Code for tracking this deal in your system</span>

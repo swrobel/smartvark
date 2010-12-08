@@ -12,19 +12,20 @@ $(function(){
 	        dialog.overlay.fadeIn('fast');
 	        dialog.container.fadeIn('fast');
 	        dialog.data.fadeIn('fast');
-		}, onClose: function (dialog) {
+		},
+		onClose: function (dialog) {
 	        dialog.data.fadeOut('fast');
 		    dialog.container.fadeOut('fast');
 			dialog.overlay.fadeOut('fast', function () {$.modal.close();});
-        }
-    });
+		}
+	});
 
 	$('#btn-signin-open').click(function (e) {
 		$('#signin-popup').modal();
 		  return false;
 	});
     
-    $('#btn-signup-open').click(function (e) {
+	$('#btn-signup-open').click(function (e) {
 		$('#signup-popup').modal();
 		  return false;
 	});
@@ -59,18 +60,28 @@ $(function(){
 	$("#offer_lead").placehold();
 	$("#offer_description").placehold();
 	$("#offer_exclusivity_text").placehold();
+	$("#offer_redemption_code").placehold();
 	
 	$(".dashboard_chk").change(function(){
-        isChecked = $(this).attr("checked");
-        locName = $(this).parent().text().trim();
-        $(".location").find("td").each(function(){
-            if($(this).text() == locName) if(isChecked) $(this).parent().fadeIn('fast'); else $(this).parent().fadeOut('fast');
-        });
-    });
+		isChecked = $(this).attr("checked");
+		locName = $(this).parent().text().trim();
+		$(".location").find("td").each(function(){
+		    if($(this).text() == locName) if(isChecked) $(this).parent().fadeIn('fast'); else $(this).parent().fadeOut('fast');
+		});
+	});
     
-    if ($(".flash-holder").html() != "") {
-        $(".flash-holder").show("drop", { direction: "up" }, 1000).delay(5000).hide("drop", { direction: "up" }, 1000);
-    }
+	if ($(".flash-holder").html() != "") {
+	    $(".flash-holder").show("drop", { direction: "up" }, 1000).delay(5000).hide("drop", { direction: "up" }, 1000);
+	}
+	    
+	$("#parent_category").change(function() {
+		$(".child_select").hide();
+		$("#children_of_"+$(this).val()).show();
+	});
+	
+	$(".child_select").change(function() {
+		$("#offer_category_id").val($(this).val());
+	});
 });
 function checkall_offer_form(n) {
 	$(".location_chk").attr('checked',n);

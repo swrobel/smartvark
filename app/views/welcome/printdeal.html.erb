@@ -6,11 +6,11 @@
 </head>
 <body>
   <h1><%= @offer.lead %></h1>
-  <%= image_tag @offer.coupon.url, :alt => @offer.business.user.name + " logo" %>
-  <h2><%= @offer.business.name %></h2>
+  <%= image_tag @offer.coupon.url, :alt => @offer.businesses.first.user.name + " logo" %>
+  <h2><%= @offer.businesses.first.name %></h2>
   <h3>
     <%=
-    [ @offer.business.street_address_1, @offer.business.street_address_2, @offer.business.city_state_zip, @offer.business.phone_1 ].delete_if {|x| x.empty?}.join('<br/>').html_safe
+    [ @offer.businesses.first.street_address_1, @offer.businesses.first.street_address_2, @offer.businesses.first.city_state_zip, @offer.businesses.first.phone_1 ].delete_if {|x| x.empty?}.join('<br/>').html_safe
     %>
   </h3>
   <p><%= @offer.description %></p>

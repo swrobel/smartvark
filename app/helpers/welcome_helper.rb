@@ -21,13 +21,13 @@ module WelcomeHelper
   end
 
   def info_for_rollover(offer)
-    escape_javascript("<strong class=\"title\">#{offer.business.name}: #{offer.lead}</strong><p>#{offer.description}</p><p>#{offer.exclusivity_text}</p><p>#{offer.business.city}, #{offer.business.state} #{offer.business.postal_code}</p><p>Expires #{std_date(offer.expiry_datetime)}</p>")
+    escape_javascript("<strong class=\"title\">#{offer.businesses.first.name}: #{offer.lead}</strong><p>#{offer.description}</p><p>#{offer.exclusivity_text}</p><p>#{offer.businesses.first.city}, #{offer.businesses.first.state} #{offer.businesses.first.postal_code}</p><p>Expires #{std_date(offer.expiry_datetime)}</p>")
   end
 
   def list_offer(offer)
     "<li id='my_offer_#{offer.id}'>" +
     hidden_field_tag("user[offer_ids][]", offer.id) +
-    link_to("<h3>#{offer.business.name}: #{offer.lead}</h3>".html_safe, viewdeal_url(offer.to_param),
+    link_to("<h3>#{offer.businesses.first.name}: #{offer.lead}</h3>".html_safe, viewdeal_url(offer.to_param),
       :onMouseOver => "jQuery('#offer_info_rollover').html('#{info_for_rollover(offer)}');",
       :onMouseOut => "jQuery('#offer_info_rollover').empty();"
     ) +

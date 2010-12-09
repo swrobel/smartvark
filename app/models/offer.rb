@@ -1,10 +1,12 @@
 class Offer < ActiveRecord::Base
-  scope :active, :conditions => {:archived => false, :draft => false}, :order => 'offers.created_at DESC'
-  scope :draft, :conditions => {:archived => false, :draft => true}, :order => 'offers.created_at DESC'
-  scope :archived, :conditions => {:archived => true, :draft => false}, :order => 'offers.created_at DESC'
+  scope :active, where(:archived => false).where(:draft => false).order('created_at DESC')
+  scope :draft, where(:archived => false).where(:draft => true).order('created_at DESC')
+  scope :archived, where(:archived => true).where(:draft => false).order('created_at DESC')
 
+  validates_presence_of :offer_type, :category_id, :lead, :offer_active_on, :expiry_datetime
+  
   belongs_to :category
-  belongs_to :business
+  has_and_belongs_to_many :businesses
 
   has_many :comments
   has_many :commenters,
@@ -26,8 +28,6 @@ class Offer < ActiveRecord::Base
     :conditions => { :liked => false }
 
   before_update :unarchive_if_draft_or_activated
-  
-  validates_presence_of :offer_type, :category_id, :lead, :offer_active_on, :expiry_datetime
 
   def set_to_archived
     @do_not_unarchive=true
@@ -36,7 +36,7 @@ class Offer < ActiveRecord::Base
 
 #  has_attached_file :coupon, :whiny_thumbnails => true
   def coupon
-    business.user.logo
+    businesses.first.user.logo
   end
 
   LIMIT = 5
@@ -86,15 +86,6 @@ class Offer < ActiveRecord::Base
     Offer.all(:conditions => [ conditions.join(' AND '), *args ],
               :include => [:business ], :limit => LIMIT)
 
-  end
-
-  def self.create_many_by_user_and_params(current_user, params)
-    business_ids = params.delete('business_ids')
-    unless business_ids.blank?
-      current_user.businesses.find(business_ids).each do |business|
-        business.offers.create!(params)
-      end
-    end
   end
 
   def active?

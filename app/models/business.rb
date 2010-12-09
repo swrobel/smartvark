@@ -2,9 +2,9 @@ class Business < ActiveRecord::Base
   include Geokit::Geocoders
 
   acts_as_mappable
-  has_many :offers
   has_many :comments
   belongs_to :user
+  has_and_belongs_to_many :offers
 
   before_save :set_lat_lng
 

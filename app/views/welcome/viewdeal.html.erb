@@ -42,13 +42,13 @@
 										<div class="info-area">
 											<!-- img -->
                                                                                         <div class="img">
-                                                                                          <%= image_tag @offer.coupon.url, :alt => @offer.business.user.name + " logo" %>
+                                                                                          <%= image_tag @offer.coupon.url, :alt => @offer.businesses.first.user.name + " logo" %>
 											</div>
 											<!-- info-box -->
                                                                                         <div class="info-box">
                                                                                           <%= render :partial => 'offer_address', :object => @offer %>
                                                                                           <p>
-                                                                                          <%= link_to 'Map It', {}, :target => '_new', :href => "http://maps.google.com?q=#{@offer.business.address_as_string}" %>
+                                                                                          <%= link_to 'Map It', {}, :target => '_new', :href => "http://maps.google.com?q=#{@offer.businesses.first.address_as_string}" %>
                                                                                           </p>
                                                                                           <% if @offer.expired? %>
                                                                                             <%= image_tag('btn-expired.gif') %>
@@ -64,7 +64,7 @@
                                                                                     <h3>Expires: <%= std_date(@offer.expiry_datetime) %></h3>
                                                                                     <p><%=h @offer.description %></p>
                                                                                     <p><%=h @offer.exclusivity_text %></p>
-                                                                                    <p><%= link_to 'View more deals from ' + @offer.business.name, viewbusiness_url(@offer.business.to_param) %></p>
+                                                                                    <p><%= link_to 'View more deals from ' + @offer.businesses.first.name, viewbusiness_url(@offer.businesses.first.to_param) %></p>
 										</div>
 									</div>
                                                                         <!-- r-side -->

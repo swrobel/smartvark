@@ -1,9 +1,9 @@
 <address>
-  <span><%= offer_address.business.name %></span>
-  <span><%= offer_address.business.street_address_1 %></span>
-  <% if offer_address.business.street_address_2 %>
-  <span><%= offer_address.business.street_address_2 %></span>
+  <span><%= offer_address.businesses.first.name %></span>
+  <span><%= offer_address.businesses.first.street_address_1 %></span>
+  <% if offer_address.businesses.first.street_address_2 %>
+  <span><%= offer_address.businesses.first.street_address_2 %></span>
   <% end %>
-  <span><%= offer_address.business.city %>, <%= offer_address.business.state %> <%= offer_address.business.postal_code%></span>
+  <span><%= offer_address.businesses.first.city %>, <%= offer_address.businesses.first.state %> <%= offer_address.businesses.first.postal_code%></span>
 </address>
 

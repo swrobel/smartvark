@@ -51,7 +51,7 @@ class WelcomeController < ApplicationController
     if location
       @offers = Offer.active.all(:conditions => { :business_id => close_business_ids })
     else
-      @offers = Offer.active
+      @offers = Offer.active.includes([:businesses, :users])
     end
 
     if session[:liked].blank? || params[:kill]
@@ -64,7 +64,7 @@ class WelcomeController < ApplicationController
 
   def viewdeal
     raise CanCan::AccessDenied unless can? :read, :viewdeal
-    @offer = Offer.find(params[:id], :include => [ :business, :comments ])
+    @offer = Offer.find(params[:id], :include => [ :businesses, :comments ])
   end
 
   def search
@@ -75,10 +75,10 @@ class WelcomeController < ApplicationController
     @map.control_init(:large_map => true, :map_type => true)
     coordinates =  []
     @offers.each do |offer|
-      coordinates = [ offer.business.try(:lat), offer.business.try(:lng)]
+      coordinates = [ offer.businesses.first.try(:lat), offer.businesses.first.try(:lng)]
       gmarker = GMarker.new(
         coordinates,
-        :title => offer.business.try(:name),
+        :title => offer.businesses.first.try(:name),
         :info_window => offer.lead)
       @map.overlay_init(gmarker)
     end

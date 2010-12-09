@@ -86,8 +86,8 @@
   </ul>
   <% end %>
 <% else %>
-  <%= check_box_tag 'business_id_holder', @offer.business.id, true, :class => 'chk', :disabled => true %>
-  <%= @offer.business.name %>
+  <%= check_box_tag 'business_id_holder', @offer.businesses.first.id, true, :class => 'chk', :disabled => true %>
+  <%= @offer.businesses.first.name %>
 <% end %>
       </div><!-- /options-form end -->
     </div>

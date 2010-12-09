@@ -51,11 +51,11 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.xml
   def create
-    @offer = Offer.create_many_by_user_and_params(current_user, params[:offer])
-    @business = Business.new  #TODO: Set to incoming business
+    @offer = Offer.new(params[:offer])
+    @businesses = @offer.businesses
 
     respond_to do |format|
-      if @offer
+      if @offer.save
         flash[:notice] = 'Offer was successfully created.'
         format.html { redirect_to dealdashboard_path }
         format.xml  { render :xml => @offer, :status => :created, :location => @offer }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101203082800) do
+ActiveRecord::Schema.define(:version => 20101209065053) do
 
   create_table "businesses", :force => true do |t|
     t.string    "name",                :limit => 50
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(:version => 20101203082800) do
     t.string    "yelp_avg_rating_url", :limit => 500
     t.string    "short_name"
     t.integer   "user_id"
+  end
+
+  create_table "businesses_offers", :id => false, :force => true do |t|
+    t.integer "business_id"
+    t.integer "offer_id"
   end
 
   create_table "categories", :force => true do |t|
@@ -76,7 +81,6 @@ ActiveRecord::Schema.define(:version => 20101203082800) do
     t.integer  "quantity"
     t.datetime "expiry_datetime"
     t.integer  "category_id"
-    t.integer  "business_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "redemption_code",  :limit => 50

@@ -41,18 +41,7 @@ class User < ActiveRecord::Base
                          else
                            other_business_ids & business_ids
                          end
-    Offer.active.all(
-      :conditions => { :business_id => these_business_ids },
-      :include => [ :business ],
-      :order => "businesses.name, offers.expiry_datetime") +
-    Offer.draft.all(
-      :conditions => { :business_id => these_business_ids },
-      :include => [ :business ],
-      :order => "businesses.name, offers.expiry_datetime") +
-    Offer.archived.all(
-      :conditions => { :business_id => these_business_ids },
-      :include => [ :business ],
-      :order => "businesses.name, offers.expiry_datetime")
+    Offer.includes([:businesses,:likes, :dislikes, :redemptions]).joins(:businesses).where("businesses.id" => these_business_ids).order("offers.archived, offers.draft, businesses.name, offers.expiry_datetime")
   end
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)

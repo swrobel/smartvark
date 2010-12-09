@@ -40,10 +40,10 @@ class MController < ApplicationController
     @map.control_init(:large_map => true, :map_type => true)
     coordinates =  []
     @offers.each do |offer|
-      coordinates = [ offer.business.lat, offer.business.lng]
+      coordinates = [ offer.businesses.first.lat, offer.businesses.first.lng]
       gmarker = GMarker.new(
         coordinates,
-        :title => offer.business.try(:name),
+        :title => offer.businesses.first.try(:name),
         :info_window => offer.lead)
       @map.overlay_init(gmarker)
     end

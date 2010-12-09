@@ -48,5 +48,10 @@
         <%= render :partial => 'users/signin' %>
       </div>
     </div>
+    <% if flash[:error] %>
+    <div id="errorExplanation" style="float:right;">
+      <%= raw flash[:error] %>
+    </div>
+    <% end %>
 <% end %>
 </div>

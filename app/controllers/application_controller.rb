@@ -65,6 +65,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_inactive_sign_up_path_for(resource)
+    session[:user_return_to] || root_path
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
     logger.info "CanCan access issue @ " + request.fullpath
     

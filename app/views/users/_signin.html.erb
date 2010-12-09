@@ -7,11 +7,11 @@
       </div>
       <div class="popup-row">
 	<%= f.label :email, "email" %>
-	<%= f.text_field :email, :class => 'txt', :placeholder => 'email' %>
+	<%= f.text_field :email, :class => 'txt', :placeholder => 'must be a valid e-mail address' %>
       </div>
       <div class="popup-row">
-	<%= f.label :password %>
-	<%= f.password_field :password, :class => 'txt', :placeholder => 'password' %>
+	<%= f.label :password, "password" %>
+	<%= f.password_field :password, :class => 'txt', :placeholder => 'minimum of 6 characters' %>
       </div>
       <div class="remember">
 	<%= f.check_box :remember_me, :class => 'chk' %><%= f.label :remember_me %>

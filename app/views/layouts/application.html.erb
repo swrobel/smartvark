@@ -12,24 +12,23 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-	<% if params[:admin] %><%= render :partial => 'layouts/menu' %><% end %>
-	<div id="wrapper">
-		<div class="wrapper-holder">
-			<div id="header">
-        <h1 class="logo"><%= link_to "Smartvark", home_path %></h1>
-        <div class="flash-holder" id="flash-<%=if notice then 'notice' else 'alert' end%>"><%= raw notice %><%= raw alert %></div>
-        <%= render :partial => 'layouts/account_area' %>
-			</div>
-			<div id="main">
-				<div class="main-holder">
-          <div class="main-frame">
-  				  <%= yield %>
-					</div>
-				</div>
-			</div>
-		</div>
+  <div id="wrapper">
+    <div class="wrapper-holder">
+      <div id="header">
+	<h1 class="logo"><%= link_to "Smartvark", home_path %></h1>
+	<div class="flash-holder" id="flash-<%=if notice then 'notice' else 'alert' end%>"><%= raw notice %><%= raw alert %></div>
+	<%= render :partial => 'layouts/account_area' %>
+      </div>
+      <div id="main">
+	<div class="main-holder">
+	  <div class="main-frame">
+	    <%= yield %>
+	  </div>
 	</div>
-	<%= render :partial => 'layouts/common_footer' %>
-	<%= javascript_include_tag :defaults, 'jquery-plugins' %>
+      </div>
+    </div>
+  </div>
+  <%= render :partial => 'layouts/common_footer' %>
+  <%= javascript_include_tag :defaults, 'jquery-plugins' %>
 </body>
 </html>

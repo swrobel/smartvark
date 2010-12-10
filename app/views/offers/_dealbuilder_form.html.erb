@@ -2,7 +2,6 @@
 <fieldset>
   <div class="offer-form">
     <%= f.error_messages %>
-    <p>Enter the details of your offer and then choose a redemption code for.  Most merchants select a code that works with their store’s point of sale system.  Typically redemption codes that are easy to say and remember work best, like HALFOFFJULY2010.  Don’t hesitate to <a href="#">contact us</a> if you have any questions</p>
     <div class="row">
       <%= f.label :offer_type, 'Offer type', :class => :width1 %>
       <%= f.select :offer_type, options_for_select(OfferTypes, @offer.offer_type), { :include_blank => true }, {:class => :sel, :onchange => "jQuery('##{@offer.id}_type').html(jQuery('#offer_offer_type').val());jQuery('##{@offer.id}_type').removeClass();jQuery('##{@offer.id}_type').addClass('c_'+jQuery('#offer_offer_type').val())"} %>
@@ -64,7 +63,6 @@
       </div>
       <div class="text">
         <div class="options-form">
-<% if @offer.new_record? %>
           <ul class="options">
               <li id='biz_true'>
                 <a href="" onClick="checkall_offer_form(true);return false">Select All </a>
@@ -78,17 +76,13 @@
   <% group.compact.each do |business| %>
     <li>
       <label>
-        <%= check_box_tag 'offer[business_ids][]', business.id, true, :class => 'chk location_chk' %>
+        <%= check_box_tag 'offer[business_ids][]', business.id, @offer.new_record? ? true : @offer.business_ids.include?(business.id), :class => 'chk location_chk' %>
         <%= business.short_or_name %>
       </label>
     </li>
   <% end %>
   </ul>
   <% end %>
-<% else %>
-  <%= check_box_tag 'business_id_holder', @offer.businesses.first.id, true, :class => 'chk', :disabled => true %>
-  <%= @offer.businesses.first.name %>
-<% end %>
       </div><!-- /options-form end -->
     </div>
   </div><!-- /text-box end -->

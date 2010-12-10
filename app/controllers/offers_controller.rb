@@ -27,7 +27,6 @@ class OffersController < ApplicationController
   # GET /offers/new
   # GET /offers/new.xml
   def new
-    @business = Business.new  #TODO: Set to incoming business
     @offer = Offer.new(
     :offer_active_on => Time.now,
     :expiry_datetime => 1.month.from_now
@@ -44,7 +43,6 @@ class OffersController < ApplicationController
   # GET /offers/1/edit
   def edit
     @offer = Offer.find(params[:id])
-    @business = @offer.business
     @businesses = current_user.businesses
   end
 
@@ -52,7 +50,7 @@ class OffersController < ApplicationController
   # POST /offers.xml
   def create
     @offer = Offer.new(params[:offer])
-    @businesses = @offer.businesses
+    @businesses = current_user.businesses
 
     respond_to do |format|
       if @offer.save
@@ -70,7 +68,6 @@ class OffersController < ApplicationController
   # PUT /offers/1.xml
   def update
     @offer = Offer.find(params[:id])
-    @business = @offer.business
     @businesses = current_user.businesses
 
     respond_to do |format|

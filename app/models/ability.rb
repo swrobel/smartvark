@@ -17,7 +17,7 @@ class Ability
         end
         can :create, Offer
         can [:edit, :update], Offer do |offer|
-          offer.try(:business).try(:user) == user
+          offer.try(:businesses).try(:first).try(:user) == user
         end
       end
     else # "Guest" users

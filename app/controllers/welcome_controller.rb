@@ -10,7 +10,6 @@ class WelcomeController < ApplicationController
   def dealdashboard
     raise CanCan::AccessDenied unless can? :read, :dealdashboard
     @businesses = current_user.businesses
-    @business = current_user.businesses.first || current_user.businesses.build
 
     @offers = current_user.offers_sorted_for_dealdashboard
   end

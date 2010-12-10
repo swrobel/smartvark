@@ -63,11 +63,9 @@ $(function(){
 	$("#offer_redemption_code").placehold();
 	
 	$(".dashboard_chk").change(function(){
-		isChecked = $(this).attr("checked");
-		locName = $(this).parent().text().trim();
-		$(".location").find("td").each(function(){
-		    if($(this).text() == locName) if(isChecked) $(this).parent().fadeIn('fast'); else $(this).parent().fadeOut('fast');
-		});
+		locID = '.' + $(this).val();
+		if ($(this).attr("checked")) $(locID).fadeIn('fast');
+		else $(locID).fadeOut('fast');
 	});
     
 	if ($(".flash-holder").html() != "") {

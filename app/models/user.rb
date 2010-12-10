@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
                          else
                            other_business_ids & business_ids
                          end
-    Offer.includes([:businesses,:likes, :dislikes, :redemptions]).joins(:businesses).where("businesses.id" => these_business_ids).order("offers.archived, offers.draft, businesses.name, offers.expiry_datetime")
+    Offer.select('DISTINCT offers.*').includes([:businesses,:likes, :dislikes, :redemptions]).joins(:businesses).where("businesses.id" => these_business_ids).order("offers.archived, offers.draft, offers.lead")
   end
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)

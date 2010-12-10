@@ -1,6 +1,5 @@
 <table class="location">
 <tr>
-  <th class="loc">Location</th>
   <th class="offer">Offer</th>
   <th class="expiration">Expiration</th>
   <th class="used">Used</th>
@@ -9,8 +8,7 @@
   <th class="actions">Actions</th>
 </tr>
 <% @offers.each do |deal_on_dashboard| %>
-  <tr class="<%= deal_on_dashboard.status %> dashboard_row">
-    <td><%= deal_on_dashboard.businesses.first.short_or_name%></td>
+  <tr class="<%= deal_on_dashboard.business_ids.join(' ') %> <%= deal_on_dashboard.status -%> dashboard_row">
     <td><%= deal_on_dashboard.lead %></td>
     <td><%= deal_on_dashboard.expiry_datetime.try(:strftime, '%m/%d/%Y') %></td>
     <td><%= deal_on_dashboard.redemptions.length %></td>

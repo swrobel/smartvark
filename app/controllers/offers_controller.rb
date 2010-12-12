@@ -29,7 +29,8 @@ class OffersController < ApplicationController
   def new
     @offer = Offer.new(
     :offer_active_on => Time.now,
-    :expiry_datetime => 1.month.from_now
+    :expiry_datetime => 1.month.from_now,
+    :allow_print => true
     )
 
     @businesses = current_user.businesses

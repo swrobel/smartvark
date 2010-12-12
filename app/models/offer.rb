@@ -3,7 +3,19 @@ class Offer < ActiveRecord::Base
   scope :draft, where(:archived => false).where(:draft => true).order('created_at DESC')
   scope :archived, where(:archived => true).where(:draft => false).order('created_at DESC')
 
-  validates_presence_of :offer_type, :category_id, :lead, :offer_active_on, :expiry_datetime
+  HUMANIZED_ATTRIBUTES = {
+    :allow_mobile => "",
+    :businesses => "",
+    :lead => "Title"
+  }
+  
+  validates :offer_type, :presence => true
+  validates :category_id, :presence => true
+  validates :lead, :presence => true
+  validates :offer_active_on, :presence => true
+  validates :expiry_datetime, :presence => true
+  validates :businesses, :presence => {:message => "You must select at least one location for this offer"}
+  validates :allow_mobile, :presence => {:unless => "allow_print", :message => "You must allow print, mobile or both redemption types"}
   
   belongs_to :category
   has_and_belongs_to_many :businesses
@@ -34,7 +46,6 @@ class Offer < ActiveRecord::Base
     update_attribute(:archived,true)
   end
 
-#  has_attached_file :coupon, :whiny_thumbnails => true
   def coupon
     businesses.first.user.logo
   end
@@ -118,4 +129,9 @@ class Offer < ActiveRecord::Base
   def self.archive_expired
     connection.execute("update offers set archived = true where expiry_datetime <= current_date")
   end
+
+  def self.human_attribute_name(attr, options={})
+    HUMANIZED_ATTRIBUTES[attr.to_sym] || super
+  end
+
 end

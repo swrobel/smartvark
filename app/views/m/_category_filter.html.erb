@@ -1,7 +1,7 @@
 
 <label for="category-filter" class="select">Category:</label>
 <%= select_tag :c_id, options_from_collection_for_select(
-  Category.all_except('All'),'id','name',params[:category_id]),
+  Category.all_parents,'id','clever_or_name',params[:category_id]),
   {
     :class => 'category-filter', :id => 'category-filter',
     :onChange => "remote_function(this, '/m/mobile_filter')",

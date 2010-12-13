@@ -9,10 +9,10 @@
 
 	<div data-role="content">
 	  <div data-role="collapsible" data-state="collapsed" id="list-header">
-            <h3>Deals for <%= cookies[:location] %></h3>
-	    <label for="location" class="select">It looks like you're in <%= cookies[:location] %></label>
-            <% form_tag do %>
-              <%= text_field_tag 'location', nil, :placeholder => "Wrong! I'm actually in..." %>
+            <h3>Deals near <%= cookies[:location] %></h3>
+	    <label for="location" class="select">I'm actually looking for deals near...</label>
+            <%= form_tag do %>
+              <%= text_field_tag 'location', nil, :placeholder => "city, state or zip" %>
               <button type="submit" data-theme="d">Update</button>
             <% end %>
 	  </div>

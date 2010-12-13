@@ -1,8 +1,6 @@
 class MController < ApplicationController
   layout 'mobile'
-  before_filter :authenticated?, :only => [ :redeem ]
-  def index
-  end
+  #before_filter :authenticated?, :only => [ :redeem ]
 
   def deals
     if request.post?
@@ -32,25 +30,12 @@ class MController < ApplicationController
   def viewbusiness
     @business = Business.find(params[:id])
   end
-
-  def search_results
-    @offers = Offer.search(params)
-
-    @map = GMap.new("map")
-    @map.control_init(:large_map => true, :map_type => true)
-    coordinates =  []
-    @offers.each do |offer|
-      coordinates = [ offer.businesses.first.lat, offer.businesses.first.lng]
-      gmarker = GMarker.new(
-        coordinates,
-        :title => offer.businesses.first.try(:name),
-        :info_window => offer.lead)
-      @map.overlay_init(gmarker)
-    end
-    @map.center_zoom_init(coordinates,14)
+  
+  def search_form
   end
 
-  def searchresults
+  def search
+    @offers = Offer.search(params)
   end
 
   def redeem
@@ -58,7 +43,7 @@ class MController < ApplicationController
   end
 
   def viewdeal
-    @offer = Offer.find(params[:id], :include => [ :business, :comments ])
+    @offer = Offer.find(params[:id], :include => [ :businesses, :comments ])
   end
 
   def mobile_filter

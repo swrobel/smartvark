@@ -2,15 +2,14 @@
 <html>
 	<head>
 	<title>Smartvark</title>
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<%= stylesheet_link_tag 'jquery.mobile-1.0a2.min' %>
+	<%= stylesheet_link_tag 'mobile' %>
+	<%= javascript_include_tag 'jquery.min', 'rails', 'jquery.mobile-1.0a2.min', 'misc' %>
+	<%= favicon_link_tag %>
 	<link rel="apple-touch-icon-precomposed" href="/images/touch-icon.png" />
 	<link rel="apple-touch-startup-image" href="/images/splash.png" />
-	<link rel="stylesheet"  href="/stylesheets/jquery.mobile-1.0a2.min.css" />
-	<link rel="stylesheet"  href="/stylesheets/mobile.css" />
-	<script src="/javascripts/jquery.min.js"></script>
-	<script src="/javascripts/jquery.mobile-1.0a2.min.js"></script>
-        <script src="/javascripts/misc.js"></script>
 	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<%= csrf_meta_tag %>
 </head>
 <body>
   <%= yield %>

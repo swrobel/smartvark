@@ -1,5 +1,5 @@
 <li>
   <h3><%= link_to offers.lead, mobile_viewdeal_path(offers.id) %></h3>
-  <p><strong><%= offers.business.try(:name) %></strong></p>
-  <p><%= offers.business.try(:city_state_zip) %></p>
+  <p><strong><%= offers.businesses.first.try(:name) %></strong></p>
+  <p><%= offers.businesses.first.try(:city_state_zip) %></p>
 </li>

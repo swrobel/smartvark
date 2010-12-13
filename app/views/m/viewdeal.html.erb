@@ -11,19 +11,16 @@
                   <h2><%= @offer.lead %></h2>
                   <h3><%= @offer.description %></h3>
                   <h4>Expires <%= @offer.expiry_datetime.try(:strftime, '%m/%d/%Y') %></h3>
-                  <%= render :partial => 'business', :locals => { :business => @offer.business } %>
+                  <%= render :partial => 'business', :locals => { :business => @offer.businesses.first } %>
 	    <div data-role="controlgroup" data-type="horizontal" >
-			  <a href="index.html" data-role="button" data-icon="thumbsup">.</a>
-                          <a href="/m/redeem/<%= @offer.id %>" data-role="button">Redeem</a>
-			  <a href="index.html" data-role="button" data-icon="thumbsdown">.</a>
+			  <%= link_to("+",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.id, :liked => true }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>
+			  <% if @offer.allow_mobile %>
+				<a href="/m/redeem/<%= @offer.id %>" data-role="button">Redeem</a>
+			  <% end %>
+			  <%= link_to("-",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.id, :liked => false }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsdown") %>
 		  </div>
-		  <!-- AddThis Button BEGIN -->
-      <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;username=swrobel"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a>
-      <script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
-      <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=swrobel"></script>
-      <!-- AddThis Button END -->
-                  <p><%=h @offer.exclusivity_text %></p>
-                  <a href="/m/viewbusiness/<%= @offer.business_id %>" data-role="button">Biz info and other deals</a>
+                  <p><%= @offer.exclusivity_text %></p>
+                  <%= link_to "Biz info and other deals", mobile_viewbusiness_path(@offer.businesses.first.id), {"data-role" => "button"} %>
 		  <div data-role="collapsible" data-state="collapsed">
 		    <h3>Shout about it</h3>
 		    <ul data-role="listview" data-inset="true" data-theme="d">

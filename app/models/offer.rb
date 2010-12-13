@@ -95,7 +95,7 @@ class Offer < ActiveRecord::Base
       2.times { args << "%#{options[:search_terms]}%" }
     end
     Offer.all(:conditions => [ conditions.join(' AND '), *args ],
-              :include => [:business ], :limit => LIMIT)
+              :include => [:businesses ], :limit => LIMIT)
 
   end
 

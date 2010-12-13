@@ -26,9 +26,9 @@ Smartvark::Application.routes.draw do
   match 'undo_last_action' => 'welcome#undo_last_action', :as => :undo_last_action, :via => :post
   match '/m' => 'm#deals', :as => :mobile_deals
   match '/m/filter/:category_id' => 'm#filter', :as => :mobile_filter, :via => :get
-  match '/m/search_results' => 'm#search_results', :as => :mobile_search, :via => :post
   match '/m/viewbusiness/:id' => 'm#viewbusiness', :as => :mobile_viewbusiness, :constraints => { :id => /.*/ }
   match '/m/viewdeal/:id' => 'm#viewdeal', :as => :mobile_viewdeal, :constraints => { :id => /.*/ }
   match '/m/redeem/:id' => 'm#redeem', :as => :mobile_redeem, :constraints => { :id => /.*/ }
-  match '/m/search_results' => 'm#search_results', :as => :mobile_search_results, :via => :post
+  match '/m/search_form' => 'm#search_form', :as => :mobile_search_form
+  match '/m/search/:category_id' => 'm#search', :as => :mobile_search, :via => :get
 end

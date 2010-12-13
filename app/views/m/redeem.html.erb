@@ -6,10 +6,12 @@
 	</div><!-- /header -->
 
 	<div data-role="content" data-theme="b">
-          <div class="ui-body">
-
-            <%= coupon @offer %>
-		 <p>Sorry, this deal is not available for mobile redemption. Please print it from your computer</p>
+		<div class="ui-body">
+			<% if @offer.allow_mobile %>
+				<%= raw coupon @offer %>
+			<% else %>
+				<p>Sorry, this deal is not available for mobile redemption. Please print it from your computer</p>
+			<% end %>
 		</div>
 	</div><!-- /content -->
 </div><!-- /page -->

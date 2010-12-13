@@ -35,7 +35,7 @@
 
     <div class="text-box text1">
       <div class="title">
-        <h3>Title of Offer (50 character maximum)</h3>
+        <h3>Title of Offer (<span id="offer_lead_count">50 character maximum</span>)</h3>
       </div>
       <div class="text text2">
         <%= f.text_area :lead, :onchange => "$('##{@offer.id}_lead').html($('#offer_lead').val())", :placeholder => "Example: Save 50% on any full-price item" %>
@@ -43,7 +43,7 @@
     </div><!-- /text-box end -->
     <div class="text-box">
       <div class="title">
-        <h3>Details of Offer (200 character maximum)</h3>
+        <h3>Details of Offer <span id="offer_description_count">(200 character maximum)</span></h3>
       </div>
       <div class="text text1">
           <%= f.text_area :description, :onchange => "$('##{@offer.id}_diz').html($('#offer_description').val())", :placeholder => "Example: You'll find a wide variety of fashions in stock to get you ready for the season!" %>
@@ -51,7 +51,7 @@
     </div><!-- /text-box end -->
     <div class="text-box">
       <div class="title">
-        <h3>Fine Print (200 character maximum)</h3>
+        <h3>Fine Print <span id="offer_exclusivity_text_count">(200 character maximum)</span></h3>
       </div>
       <div class="text text1">
           <%= f.text_area :exclusivity_text, :placeholder => "Example: Not valid with any other offer. Not valid on already marked-down items" %>

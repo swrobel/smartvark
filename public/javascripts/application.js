@@ -62,6 +62,10 @@ $(function(){
 	$("#offer_exclusivity_text").placehold();
 	$("#offer_redemption_code").placehold();
 	
+	$("#offer_lead").textareaCount({maxCharacterSize: 50}, function(data) {$("#offer_lead_count").html(data.left+" characters remaining");});
+	$("#offer_description").textareaCount({maxCharacterSize: 200}, function(data) {$("#offer_description_count").html(data.left+" characters remaining");});
+	$("#offer_exclusivity_text").textareaCount({maxCharacterSize: 200}, function(data) {$("#offer_exclusivity_text_count").html(data.left+" characters remaining");});
+	
 	$(".dashboard_chk").change(function(){
 		locID = '.' + $(this).val();
 		if ($(this).attr("checked")) $(locID).fadeIn('fast');

@@ -623,7 +623,6 @@ td, th{padding:0;}
   display:block;
   font:16px/18px "Trebuchet MS",Arial,Helvetica,sans-serif;
   margin:0 auto;
-  padding:5px 0;
   text-align:center;
 }
 .section-inner .gallery .rate{
@@ -2063,3 +2062,4 @@ a.facebook-signin {
 	margin: 1px;
 }
 #errorExplanation h2 { display:none; }
+.charleft { display:none; }

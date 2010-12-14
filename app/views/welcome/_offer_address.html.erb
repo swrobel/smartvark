@@ -1,9 +1,10 @@
-<address>
-  <span><%= offer_address.businesses.first.name %></span>
-  <span><%= offer_address.businesses.first.street_address_1 %></span>
-  <% if offer_address.businesses.first.street_address_2 %>
-  <span><%= offer_address.businesses.first.street_address_2 %></span>
+<% offer_address.businesses.each do |business| %>
+  <span><%= business.name %></span><br/>
+  <span><%= business.street_address_1 %></span>
+  <% unless business.street_address_2.blank? %>
+    <br/><span><%= business.street_address_2 %></span>
   <% end %>
-  <span><%= offer_address.businesses.first.city %>, <%= offer_address.businesses.first.state %> <%= offer_address.businesses.first.postal_code%></span>
-</address>
-
+  <br/>
+  <span><%= business.city %>, <%= business.state %> <%= business.postal_code%></span>
+  <p><%= link_to 'Map It', {}, :target => '_new', :href => "http://maps.google.com?q=#{business.address_as_string}" %></p>
+<% end %>

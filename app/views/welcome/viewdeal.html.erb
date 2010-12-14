@@ -46,10 +46,8 @@
 											</div>
 											<!-- info-box -->
                                                                                         <div class="info-box">
+																																												  <h3>Valid at these locations:</h3>
                                                                                           <%= render :partial => 'offer_address', :object => @offer %>
-                                                                                          <p>
-                                                                                          <%= link_to 'Map It', {}, :target => '_new', :href => "http://maps.google.com?q=#{@offer.businesses.first.address_as_string}" %>
-                                                                                          </p>
                                                                                           <% if @offer.expired? %>
                                                                                             <%= image_tag('btn-expired.gif') %>
                                                                                           <% else %>

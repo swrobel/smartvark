@@ -12,19 +12,19 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  helper_method :logged_in?, :location, :home_path
+  helper_method :logged_in?, :geo_location, :home_path
 
   after_filter :log_user
 
   protected
   
-#  def set_location
-#    cookies[:geo_location] = { :value => params[:location], :expires => 1.day.from_now }
-#  end
+  def set_location
+    cookies[:geo_location] = { :value => params[:location], :expires => 1.day.from_now }
+  end
 
-#  def location
-#    (cookies[:geo_location] ||= 'Los Angeles, CA').to_str
-#  end
+  def geo_location
+    (cookies[:geo_location] ||= 'Los Angeles, CA').to_str
+  end
 
   def close_business_ids
     if Rails.env.production?
@@ -80,6 +80,7 @@ class ApplicationController < ActionController::Base
     elsif request.fullpath != "/"
       flash[:alert] = "You are not signed in or are not permitted to do that."
     end
+    logger.info "Redirecting to " + home_path
     redirect_to home_path
   end
 end

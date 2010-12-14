@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  helper_method :location
+  helper_method :geo_location
   
   before_filter :set_current_page
 
@@ -47,8 +47,8 @@ class WelcomeController < ApplicationController
       cookies[:geo_location] = params[:location] if params[:location]
     end
 
-    if location
-      @offers = Offer.active.all(:conditions => { :business_id => close_business_ids })
+    if geo_location
+      @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:users]).joins(:businesses).where("businesses.id" => close_business_ids).where("archived" => false).where("draft" => false).order('offers.created_at DESC')
     else
       @offers = Offer.active.includes([:businesses, :users])
     end

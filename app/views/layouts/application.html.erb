@@ -30,7 +30,7 @@
   </div>
   <%= render :partial => 'layouts/common_footer' %>
   <%= javascript_include_tag 'jquery', 'jquery-ui', 'jquery-plugins', 'rails' %>
-	<!--[if IE6]><%= javascript_include_tag 'ie6pngfix' %><script>DD_belatedPNG.fix('.wrapper')</script><![endif]-->
+	<!--[if IE 6]><%= javascript_include_tag 'ie6pngfix' %><script>DD_belatedPNG.fix('.wrapper')</script><![endif]-->
 	<%= content_for?(:footer_additions) ? yield(:footer_additions) : nil -%>
 	<%= javascript_include_tag 'application' %>
 </body>

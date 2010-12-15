@@ -15,21 +15,22 @@
   <div id="wrapper">
     <div class="wrapper-holder">
       <div id="header">
-	<h1 class="logo"><%= link_to "Smartvark", home_path %></h1>
-	<div class="flash-holder" id="flash-<%=if notice then 'notice' else 'alert' end%>"><%= raw notice %><%= raw alert %></div>
-	<%= render :partial => 'layouts/account_area' %>
+				<h1 class="logo"><%= link_to "Smartvark", home_path %></h1>
+				<div class="flash-holder" id="flash-<%=if notice then 'notice' else 'alert' end%>"><%= raw notice %><%= raw alert %></div>
+				<%= render :partial => 'layouts/account_area' %>
       </div>
       <div id="main">
-	<div class="main-holder">
-	  <div class="main-frame">
-	    <%= yield %>
-	  </div>
-	</div>
+				<div class="main-holder">
+					<div class="main-frame">
+						<%= yield %>
+					</div>
+				</div>
       </div>
     </div>
   </div>
   <%= render :partial => 'layouts/common_footer' %>
   <%= javascript_include_tag 'jquery', 'jquery-ui', 'jquery-plugins', 'rails' %>
+	<!--[if IE6]><%= javascript_include_tag 'ie6pngfix' %><script>DD_belatedPNG.fix('.wrapper')</script><![endif]-->
 	<%= content_for?(:footer_additions) ? yield(:footer_additions) : nil -%>
 	<%= javascript_include_tag 'application' %>
 </body>

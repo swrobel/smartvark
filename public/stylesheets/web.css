@@ -2064,3 +2064,8 @@ a.facebook-signin {
 }
 #errorExplanation h2 { display:none; }
 .charleft { display:none; }
+#map {width:270px; height:360px;}
+#map p {
+  color: black;
+}
+#map-side-bar {display: none;}

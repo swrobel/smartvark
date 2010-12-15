@@ -1,4 +1,5 @@
-<% title @business.name %>            
+<% title @business.name %>
+<% footer_additions 'jmapping' %>
 <%= render :partial => 'search_box' %>
 						<!-- wrap -->
 						<div class="merchant-area">
@@ -59,9 +60,11 @@
 							<!-- aside -->
 							<div class="aside">
 								<div class="map-holder">
-									<%= raw GMap.header(:with_vml => false, :host => request.host) %>
-                                    <%= raw @map.to_html %>
-                                    <%= raw @map.div(:width => 270, :height => 360) %>
+									<div id="map"></div>
+									<div id="map-side-bar">
+										<%= render :partial => 'map_business', :object => @business %>
+									</div>
 								</div>
 							</div>
 						</div>
+						

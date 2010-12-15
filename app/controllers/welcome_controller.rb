@@ -23,17 +23,17 @@ class WelcomeController < ApplicationController
   def viewbusiness
     raise CanCan::AccessDenied unless can? :read, :viewbusiness
     @business = Business.find(params[:id])
-    @map = GMap.new("map")
-    @map.control_init(:large_map => true, :map_type => true)
-
-      coordinates = [ @business.lat, @business.lng]
-    gmarker = GMarker.new(
-      coordinates,
-      :title => @business.try(:name),
-      :info_window => @business.try(:name)
-    )
-    @map.overlay_init(gmarker)
-    @map.center_zoom_init(coordinates,14)
+    #@map = GMap.new("map")
+    #@map.control_init(:large_map => true, :map_type => true)
+    #
+    #  coordinates = [ @business.lat, @business.lng]
+    #gmarker = GMarker.new(
+    #  coordinates,
+    #  :title => @business.try(:name),
+    #  :info_window => @business.try(:name)
+    #)
+    #@map.overlay_init(gmarker)
+    #@map.center_zoom_init(coordinates,14)
   end
 
   def myprofile
@@ -70,18 +70,18 @@ class WelcomeController < ApplicationController
     raise CanCan::AccessDenied unless can? :read, :search
     @offers = Offer.search(params)
 
-    @map = GMap.new("map")
-    @map.control_init(:large_map => true, :map_type => true)
-    coordinates =  []
-    @offers.each do |offer|
-      coordinates = [ offer.businesses.first.try(:lat), offer.businesses.first.try(:lng)]
-      gmarker = GMarker.new(
-        coordinates,
-        :title => offer.businesses.first.try(:name),
-        :info_window => offer.lead)
-      @map.overlay_init(gmarker)
-    end
-    @map.center_zoom_init(coordinates,14)
+    #@map = GMap.new("map")
+    #@map.control_init(:large_map => true, :map_type => true)
+    #coordinates =  []
+    #@offers.each do |offer|
+    #  coordinates = [ offer.businesses.first.try(:lat), offer.businesses.first.try(:lng)]
+    #  gmarker = GMarker.new(
+    #    coordinates,
+    #    :title => offer.businesses.first.try(:name),
+    #    :info_window => offer.lead)
+    #  @map.overlay_init(gmarker)
+    #end
+    #@map.center_zoom_init(coordinates,14)
   end
 
   def mydeals

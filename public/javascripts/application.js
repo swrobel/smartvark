@@ -52,6 +52,8 @@ $(function(){
 		  return false;
 	});
 	
+	$('#map').jMapping();
+	
 	$("#offer_offer_active_on").datepicker();
 	$("#offer_expiry_datetime").datepicker();
 	

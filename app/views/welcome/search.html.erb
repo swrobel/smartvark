@@ -1,8 +1,9 @@
 <% title params[:search_terms] + " near " + params[:location] %>
-                                          <%= render :partial => 'search_box' %>
-                                          <!-- nav -->
-                                          <p class="filter-results">Filter these results:</p>
-                                          <%= render :partial => 'nav', :locals =>  { :is_search => true } %>
+<% footer_additions 'jmapping' %>
+<%= render :partial => 'search_box' %>
+<!-- nav -->
+<p class="filter-results">Filter these results:</p>
+<%= render :partial => 'nav', :locals =>  { :is_search => true } %>
 						<!-- wrap -->
 						<div class="wrap">
 							<!-- content -->
@@ -14,22 +15,25 @@
 										<h2>Search Results</h2>
 										<!-- search-results -->
 										<div class="search-results">
-                                                                                  <strong class="title">Results for &quot;<%=h params[:search_terms] %>&quot; near <span><%=h params[:location] %></span></strong>
-                                                                                  <% if @offers.empty? %>
-                                                                                    We couldn't find any deals for your search. You can search again or go back to <%= link_to 'my deals', mydeals_url %>.
-                                                                                  <% else %>
-                                                                                    <%= render :partial => 'search_offer', :collection => @offers %>
-                                                                                  <% end%>
+											<strong class="title">Results for &quot;<%=h params[:search_terms] %>&quot; near <span><%=h params[:location] %></span></strong>
+											<% if @offers.empty? %>
+												We couldn't find any deals for your search. You can search again or go back to <%= link_to 'my deals', mydeals_url %>.
+											<% else %>
+												<%= render :partial => 'search_offer', :collection => @offers %>
+											<% end%>
 										</div>
 									</div>
 								</div>
 							</div>
 							<!-- aside -->
 							<div class="aside">
-                                                          <div class="map-holder">
-																  <%= raw GMap.header(:with_vml => false, :host => request.host) %>
-                                                                  <%= raw @map.to_html %>
-                                                                  <%= raw @map.div(:width => 270, :height => 360) %>
-                                                          </div>
+								<div class="map-holder">
+									<div id="map"></div>
+									<div id="map-side-bar">
+										<% @offers.each do |offer| %>
+										<%= render :partial => 'map_business', :collection => offer.businesses %>
+										<% end %>
+									</div>
+								</div>
 							</div>
 						</div>

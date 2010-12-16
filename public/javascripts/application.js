@@ -54,8 +54,8 @@ $(function(){
 	
 	$('#map').jMapping();
 	
-	$("#offer_offer_active_on").datepicker();
-	$("#offer_expiry_datetime").datepicker();
+	$("#offer_active_date").datepicker();
+	$("#offer_expire_date").datepicker();
 	
 	$("#search_terms").placehold();
 	$("#location").placehold();

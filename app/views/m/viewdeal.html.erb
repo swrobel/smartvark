@@ -10,7 +10,7 @@
 		  <img src="http://s3.amazonaws.com/smartvark-dev/logos/1/thumb/smartvarklogo.png?1286834065" class="logo" />
                   <h2><%= @offer.lead %></h2>
                   <h3><%= @offer.description %></h3>
-                  <h4>Expires <%= @offer.expiry_datetime.try(:strftime, '%m/%d/%Y') %></h3>
+                  <h4>Expires <%= @offer.expire_date.try(:strftime, '%m/%d/%Y') %></h3>
                   <%= render :partial => 'business', :locals => { :business => @offer.businesses.first } %>
 	    <div data-role="controlgroup" data-type="horizontal" >
 			  <%= link_to("+",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.id, :liked => true }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>

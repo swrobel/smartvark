@@ -6,10 +6,10 @@ class OfferTest < ActiveSupport::TestCase
     setup do
       business = Business.create({
         :name => 'Cold Stone',
-        :street_address_1 => '100 Wilshire Blvd.',
+        :address => '100 Wilshire Blvd.',
         :city => 'Santa Monica',
         :state => 'CA',
-        :postal_code => '90401',
+        :zipcode => '90401',
         :lat => 34.016,
         :lng => -118.5
       })

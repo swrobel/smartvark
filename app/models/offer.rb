@@ -12,8 +12,8 @@ class Offer < ActiveRecord::Base
   validates :offer_type, :presence => true
   validates :category_id, :presence => true
   validates :lead, :presence => true
-  validates :offer_active_on, :presence => true
-  validates :expiry_datetime, :presence => true
+  validates :active_date, :presence => true
+  validates :expire_date, :presence => true
   validates :businesses, :presence => {:message => "You must select at least one location for this offer"}
   validates :allow_mobile, :presence => {:unless => "allow_print", :message => "You must allow print, mobile or both redemption types"}
   
@@ -68,7 +68,7 @@ class Offer < ActiveRecord::Base
 
     unless options[:location].blank?
       if options[:location] =~ /\d{5}/
-        conditions << 'businesses.postal_code = ?'
+        conditions << 'businesses.zipcode = ?'
         args << options[:location]
       else
         city, state = options[:location].split(/,/,2)
@@ -112,7 +112,7 @@ class Offer < ActiveRecord::Base
   end
 
   def expired_by_date?
-    ((expiry_datetime < Date.today) rescue false)
+    ((expire_date < Date.today) rescue false)
   end
 
   def expired?
@@ -127,7 +127,7 @@ class Offer < ActiveRecord::Base
   end
   
   def self.archive_expired
-    connection.execute("update offers set archived = true where expiry_datetime <= current_date")
+    connection.execute("update offers set archived = true where expire_date <= current_date")
   end
 
   def self.human_attribute_name(attr, options={})

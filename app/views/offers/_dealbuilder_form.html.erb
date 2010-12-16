@@ -18,15 +18,15 @@
       <%= f.hidden_field :category_id, :value => @offer.category_id %>
     </div>
     <div class="row">
-      <%= f.label :offer_active_on, 'Starts on' %>
-      <%= f.text_field :offer_active_on, :format => :us_date, :class => 'txt' %>
+      <%= f.label :active_date, 'Starts on' %>
+      <%= f.text_field :active_date, :format => :us_date, :class => 'txt' %>
       <div class="caption">
         <span>Date deal becomes active</span>
       </div>
     </div>
     <div class="row">
-      <%= f.label :expiry_datetime , 'Ends on' %>
-      <%= f.text_field :expiry_datetime, :format => :us_date, :class => 'txt' %>
+      <%= f.label :expire_date , 'Ends on' %>
+      <%= f.text_field :expire_date, :format => :us_date, :class => 'txt' %>
       <div class="caption">
         <span>Date deal expires (end of day)</span>
       </div>

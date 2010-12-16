@@ -21,7 +21,7 @@ module WelcomeHelper
   end
 
   def info_for_rollover(offer)
-    escape_javascript("<strong class=\"title\">#{offer.businesses.first.name}: #{offer.lead}</strong><p>#{offer.description}</p><p>#{offer.exclusivity_text}</p><p>#{offer.businesses.first.city}, #{offer.businesses.first.state} #{offer.businesses.first.postal_code}</p><p>Expires #{std_date(offer.expiry_datetime)}</p>")
+    escape_javascript("<strong class=\"title\">#{offer.businesses.first.name}: #{offer.lead}</strong><p>#{offer.description}</p><p>#{offer.exclusivity_text}</p><p>#{offer.businesses.first.city}, #{offer.businesses.first.state} #{offer.businesses.first.zipcode}</p><p>Expires #{std_date(offer.expire_date)}</p>")
   end
 
   def list_offer(offer)
@@ -31,7 +31,7 @@ module WelcomeHelper
       :onMouseOver => "jQuery('#offer_info_rollover').html('#{info_for_rollover(offer)}');",
       :onMouseOut => "jQuery('#offer_info_rollover').empty();"
     ) +
-      "<p>Expires #{offer.expiry_datetime.strftime('%B %d, %Y')}</p></li>"
+      "<p>Expires #{offer.expire_date.strftime('%B %d, %Y')}</p></li>"
   end
 
   def undo_last_action_link(offer, liked=true)

@@ -7,6 +7,10 @@ class CreateOpinions < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+    add_index :opinions, [:user_id, :offer_id], :unique => true
+    add_index :opinions, [:user_id, :liked]
+    add_index :opinions, [:offer_id, :liked]
   end
 
   def self.down

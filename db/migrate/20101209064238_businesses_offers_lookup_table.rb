@@ -4,6 +4,8 @@ class BusinessesOffersLookupTable < ActiveRecord::Migration
       t.integer :business_id
       t.integer :offer_id
     end
+    
+    add_index :businesses_offers, [:business_id, :offer_id], :unique => true
   end
 
   def self.down

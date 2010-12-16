@@ -10,7 +10,7 @@
 
 <p>
   <b>Offer Becomes Active On:</b>
-  <%=h @offer.offer_active_on.try(:strftime,'%B %d, %Y') %>
+  <%=h @offer.active_date.try(:strftime,'%B %d, %Y') %>
 </p>
 
 <p><b>Redemption by:</b>
@@ -42,7 +42,7 @@
 
 <p>
   <b>Expiry datetime:</b>
-  <%=h @offer.expiry_datetime %>
+  <%=h @offer.expire_date %>
 </p>
 
 <p>

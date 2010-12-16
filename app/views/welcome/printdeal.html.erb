@@ -10,11 +10,11 @@
   <h2><%= @offer.businesses.first.name %></h2>
   <h3>
     <%=
-    [ @offer.businesses.first.street_address_1, @offer.businesses.first.street_address_2, @offer.businesses.first.city_state_zip, @offer.businesses.first.phone_1 ].delete_if {|x| x.empty?}.join('<br/>').html_safe
+    [ @offer.businesses.first.address, @offer.businesses.first.address_2, @offer.businesses.first.city_state_zip, @offer.businesses.first.phone_1 ].delete_if {|x| x.empty?}.join('<br/>').html_safe
     %>
   </h3>
   <p><%= @offer.description %></p>
-  <p>Last day to redeem: <%= @offer.expiry_datetime.try(:strftime, '%B %d, %Y') %></p>
+  <p>Last day to redeem: <%= @offer.expire_date.try(:strftime, '%B %d, %Y') %></p>
   <p>Fine print: <%= @offer.exclusivity_text %></p>
   <h2>Cashier use code: <%= @offer.redemption_code %></h2>
 </body>

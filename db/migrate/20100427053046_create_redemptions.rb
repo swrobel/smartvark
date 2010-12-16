@@ -8,6 +8,9 @@ class CreateRedemptions < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+    add_index :redemptions, [:user_id, :offer_id], :unique => true
+    add_index :redemptions, :offer_id
   end
 
   def self.down

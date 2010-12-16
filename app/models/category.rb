@@ -1,7 +1,7 @@
 class Category < ActiveRecord::Base
-  acts_as_tree :order => 'name'
+  has_ancestry :cache_depth => true
 
-  scope :all_parents, :conditions => { :parent_id => nil }, :order => :name
+  scope :all_parents, to_depth(1)
 
   has_many :offers
 

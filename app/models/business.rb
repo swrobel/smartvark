@@ -2,7 +2,6 @@ class Business < ActiveRecord::Base
   include Geokit::Geocoders
 
   acts_as_mappable
-  has_many :comments
   belongs_to :user
   has_and_belongs_to_many :offers
 
@@ -10,7 +9,7 @@ class Business < ActiveRecord::Base
 
   before_update :set_yelp_rating
 
-  validates_presence_of :name, :street_address_1, :city, :state, :postal_code, :phone_1
+  validates_presence_of :name, :address, :city, :state, :zipcode, :phone_1
 
   def short_or_name
     short_name.blank? ? name : short_name
@@ -21,11 +20,11 @@ class Business < ActiveRecord::Base
   end
 
   def city_state_zip
-    [city, state].join(',') << ' ' << postal_code
+    [city, state].join(',') << ' ' << zipcode
   end
 
   def address_as_string
-    [ street_address_1, city_state_zip].join(',')
+    [ address, city_state_zip].join(',')
   end
 
   def facebook_link

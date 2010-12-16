@@ -2,11 +2,11 @@
 
 one:
   name: MyString
-  street_address_1: MyString
-  street_address_2: MyString
+  address: MyString
+  address_2: MyString
   city: MyString
   state: MyString
-  postal_code: MyString
+  zipcode: MyString
   country: MyString
   phone_1: MyString
   phone_2: MyString
@@ -16,11 +16,11 @@ one:
 
 two:
   name: MyString
-  street_address_1: MyString
-  street_address_2: MyString
+  address: MyString
+  address_2: MyString
   city: MyString
   state: MyString
-  postal_code: MyString
+  zipcode: MyString
   country: MyString
   phone_1: MyString
   phone_2: MyString

@@ -4,6 +4,8 @@ class CategoriesUsersLookupTable < ActiveRecord::Migration
       t.integer :category_id
       t.integer :user_id
     end
+    
+    add_index :categories_users, [:user_id, :category_id], :unique => true
   end
 
   def self.down

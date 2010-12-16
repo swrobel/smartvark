@@ -5,53 +5,96 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
-%w(All Food Clothes Services Entertainment Beauty/Spa).each do |name|
-  puts Category.find_or_create_by_name(name).name
-end
+all = Category.create(:name=>"All")
+food = all.children.create(:name=>"Food/Drink", :clever_name => "Feed Me")
+clothes = all.children.create(:name=>"Clothes", :clever_name => "Dress Me")
+services = all.children.create(:name=>"Services", :clever_name => "Serve Me")
+entertainment = all.children.create(:name=>"Entertainment", :clever_name => "Entertain Me")
+health = all.children.create(:name=>"Health/Beauty", :clever_name => "Revitalize Me")
+shopping = all.children.create(:name=>"Shopping", :clever_name => "Retail Me")
+food.children.create(:name=>"Bagels")
+food.children.create(:name=>"Bakeries")
+food.children.create(:name=>"Bar Food")
+food.children.create(:name=>"Caribbean")
+food.children.create(:name=>"Chinese")
+food.children.create(:name=>"Coffee & Tea")
+food.children.create(:name=>"Delis")
+food.children.create(:name=>"Diners")
+food.children.create(:name=>"Donuts")
+food.children.create(:name=>"Fast Food")
+food.children.create(:name=>"French")
+food.children.create(:name=>"German")
+food.children.create(:name=>"Greek")
+food.children.create(:name=>"Ice Cream & Froyo")
+food.children.create(:name=>"Indian")
+food.children.create(:name=>"Italian")
+food.children.create(:name=>"Japanese")
+food.children.create(:name=>"Korean")
+food.children.create(:name=>"Latin American")
+food.children.create(:name=>"Mexican")
+food.children.create(:name=>"Middle Eastern")
+food.children.create(:name=>"Pizza")
+food.children.create(:name=>"Seafood")
+food.children.create(:name=>"Smoothies")
+food.children.create(:name=>"Southern")
+food.children.create(:name=>"Steakhouses")
+food.children.create(:name=>"Sushi")
+food.children.create(:name=>"Thai")
+food.children.create(:name=>"Vegetarian/Vegan")
+food.children.create(:name=>"Wine/Drinks")
+clothes.children.create(:name=>"Accessories")
+clothes.children.create(:name=>"Baby")
+clothes.children.create(:name=>"Boutique")
+clothes.children.create(:name=>"Childrens")
+clothes.children.create(:name=>"Formal")
+clothes.children.create(:name=>"Jewelry")
+clothes.children.create(:name=>"Mens")
+clothes.children.create(:name=>"Shoes")
+clothes.children.create(:name=>"Vintage")
+clothes.children.create(:name=>"Womens")
+services.children.create(:name=>"Appliance Repair")
+services.children.create(:name=>"Automotive")
+services.children.create(:name=>"Car Washes")
+services.children.create(:name=>"Carpet Cleaning")
+services.children.create(:name=>"Child Care & Day Care")
+services.children.create(:name=>"Computer Repair")
+services.children.create(:name=>"Dry Cleaning & Laundry")
+services.children.create(:name=>"Home Cleaning")
+services.children.create(:name=>"Home Repair")
+services.children.create(:name=>"Landscaping")
+services.children.create(:name=>"Movers")
+services.children.create(:name=>"Pet Care")
+entertainment.children.create(:name=>"Amusement Parks")
+entertainment.children.create(:name=>"Bars & Clubs")
+entertainment.children.create(:name=>"Festivals")
+entertainment.children.create(:name=>"Movies")
+entertainment.children.create(:name=>"Museums")
+entertainment.children.create(:name=>"Sports")
+health.children.create(:name=>"Beauty Supply")
+health.children.create(:name=>"Dentists")
+health.children.create(:name=>"Doctors")
+health.children.create(:name=>"Fitness & Instruction")
+health.children.create(:name=>"Hair Salons")
+health.children.create(:name=>"Massage")
+health.children.create(:name=>"Nail Salons")
+health.children.create(:name=>"Piercing & Tattoo")
+health.children.create(:name=>"Skin Care")
+health.children.create(:name=>"Spas")
+health.children.create(:name=>"Sports & Outdoors")
+health.children.create(:name=>"Tanning")
+health.children.create(:name=>"Vision")
+health.children.create(:name=>"Yoga")
+shopping.children.create(:name=>"Arts & Crafts")
+shopping.children.create(:name=>"Baby Gear & Furniture")
+shopping.children.create(:name=>"Books")
+shopping.children.create(:name=>"Department Stores")
+shopping.children.create(:name=>"Electronics")
+shopping.children.create(:name=>"Flowers & Gifts")
+shopping.children.create(:name=>"Garden")
+shopping.children.create(:name=>"Home Funishings")
+shopping.children.create(:name=>"Music")
+shopping.children.create(:name=>"Pet Stores")
+shopping.children.create(:name=>"Sporting Goods")
+shopping.children.create(:name=>"Toys & Games")
 
-pw = 'password'
-%w(username@smartvark.com ted.price@gmail.com swrobel@smartvark.com).each do |login|
-  hsh = {
-    :login => login,
-    :email => login,
-    :password => pw,
-    :password_confirmation => pw,
-  }
-  u=User.new(hsh)
-  unless u.save
-    u.errors.each_full { |x| puts x }
-  end
-end
-
-
-Offer.all.each { |x| x.destroy }
-['DSW Shoes,,Clothes,,30% off on everything,Valid at any location in Southern California,,5/21/2010',
-'El Pollo Loco,,Food,,Buy One Get One Free,Good at Westwood location only,1675,6/30/2010',
-'Friendlys,,Food,,Free Ice Cream Sundae,,,5/31/2010',
-'Gamestop,,Entertainment,,25% off any used game,,,6/30/2010',
-'Jamba Juice,,Food,,Buy One Get One Free,Valid at participating locations,,6/1/2010',
-'Moondance,,Clothes,,20% OFF all silver jewelry,Good at Montana Ave. location only,,8/11/2010',
-'Quizno\'s,,Food,,$5 Toasty Torpedo combo,,5305,8/16/2010',
-'Sports Authority,,Clothes,,$25 off $100,Valid at any location in Southern California,TSA8977,6/11/2010',
-'Toys R Us,,Entertainment,,$5 off your purchase,Valid at participating locations,,5/15/2010',
-'Uncle Sam\'s Quick Lube,,Services,,$7 off your Next Oil Change,Offer not valid with any other offers.,,6/18/2010'
-].each_with_index  do|x, index|
-arr = x.split(/,/)
-m,d,y = arr.last.split('/')
-biz = Business.find_or_create_by_name(arr[0].strip)
-biz.update_attributes({
-    :street_address_1 => "#{(index+1)*200} Wilshire Blvd.",
-    :city => 'Santa Monica',
-    :state => 'CA',
-    :postal_code => '90401'
-})
-
- offer = Offer.create!({
- :lead => arr[4].strip,
- :category => Category.find_or_create_by_name(arr[2].strip),
- :business => biz,
- :description => arr[5],
- :redemption_code => arr[6],
- :expiry_datetime => DateTime.civil(y.to_i,m.to_i,d.to_i)
- })
-end
+%w(coupon deal event).each { |name| OfferType.create(:name => name) }

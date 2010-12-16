@@ -6,6 +6,8 @@ class CreateUserAudits < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+    add_index :user_audits, :user_id
   end
 
   def self.down

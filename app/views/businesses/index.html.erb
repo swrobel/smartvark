@@ -19,11 +19,11 @@
 <% @businesses.each do |business| %>
   <tr>
     <td><%=h business.name %></td>
-    <td><%=h business.street_address_1 %></td>
-    <td><%=h business.street_address_2 %></td>
+    <td><%=h business.address %></td>
+    <td><%=h business.address_2 %></td>
     <td><%=h business.city %></td>
     <td><%=h business.state %></td>
-    <td><%=h business.postal_code %></td>
+    <td><%=h business.zipcode %></td>
     <td><%=h business.country %></td>
     <td><%=h business.phone_1 %></td>
     <td><%=h business.phone_2 %></td>

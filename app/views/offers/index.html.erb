@@ -13,7 +13,7 @@
     <td><%=link_to offer.businesses.first.try(:name), offer.business %></td>
     <td><%=link_to offer.category.try(:name), offer.category %></td>
     <td><%=h offer.lead %></td>
-    <td><%=h offer.expiry_datetime %></td>
+    <td><%=h offer.expire_date %></td>
     <td><%= link_to 'Show', offer %></td>
     <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
     <td><%= link_to 'Destroy', offer, :confirm => 'Are you sure?', :method => :delete %></td>

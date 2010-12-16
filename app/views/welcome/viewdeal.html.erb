@@ -59,7 +59,7 @@
                                                                                       </div>
 										<!-- information -->
 										<div class="information">
-                                                                                    <h3>Expires: <%= std_date(@offer.expiry_datetime) %></h3>
+                                                                                    <h3>Expires: <%= std_date(@offer.expire_date) %></h3>
                                                                                     <p><%=h @offer.description %></p>
                                                                                     <p><%=h @offer.exclusivity_text %></p>
                                                                                     <p><%= link_to 'View more deals from ' + @offer.businesses.first.name, viewbusiness_url(@offer.businesses.first.to_param) %></p>

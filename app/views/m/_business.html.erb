@@ -1,7 +1,7 @@
 
                   <p>
                   <%= business.phone_1 %><br/>
-                  <%= business.street_address_1 %><br/>
+                  <%= business.address %><br/>
                   <%= business.city_state_zip%><br/>
-                  <a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=<%= URI.escape([business.street_address_1, business.city_state_zip ].join(',')) %>">Map It</a>
+                  <a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=<%= URI.escape([business.address, business.city_state_zip ].join(',')) %>">Map It</a>
                   </p>

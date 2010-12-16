@@ -28,8 +28,8 @@ class OffersController < ApplicationController
   # GET /offers/new.xml
   def new
     @offer = Offer.new(
-    :offer_active_on => Time.now,
-    :expiry_datetime => 1.month.from_now,
+    :active_date => Time.now,
+    :expire_date => 1.month.from_now,
     :allow_print => true
     )
 

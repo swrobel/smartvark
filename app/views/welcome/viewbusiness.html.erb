@@ -18,7 +18,7 @@
                                                                                               <%= image_tag @business.yelp_avg_rating_url %>
                                                                                             <% end %>
                                                                                           </ul>
-                                                                                                <address><strong><%= @business.street_address_1 %></strong><strong><%= @business.city %>, <%= @business.state %> <%= @business.postal_code %></strong></address>
+                                                                                                <address><strong><%= @business.address %></strong><strong><%= @business.city %>, <%= @business.state %> <%= @business.zipcode %></strong></address>
                                                                                                 <strong class="phone"><%= @business.phone_1 %></strong>
                                                                                                 <% if @business.url.present? %>
                                                                                                   <%= link_to @business.url, {}, :href => "http://#{@business.url}" %>

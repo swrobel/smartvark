@@ -1,10 +1,10 @@
 <% offer_address.businesses.each do |business| %>
   <span><%= business.name %></span><br/>
-  <span><%= business.street_address_1 %></span>
-  <% unless business.street_address_2.blank? %>
-    <br/><span><%= business.street_address_2 %></span>
+  <span><%= business.address %></span>
+  <% unless business.address_2.blank? %>
+    <br/><span><%= business.address_2 %></span>
   <% end %>
   <br/>
-  <span><%= business.city %>, <%= business.state %> <%= business.postal_code%></span>
+  <span><%= business.city %>, <%= business.state %> <%= business.zipcode%></span>
   <p><%= link_to 'Map It', {}, :target => '_new', :href => "http://maps.google.com?q=#{business.address_as_string}" %></p>
 <% end %>

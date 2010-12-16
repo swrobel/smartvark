@@ -29,7 +29,6 @@ GEM
       activemodel (= 3.0.3)
       activesupport (= 3.0.3)
     activesupport (3.0.3)
-    acts_as_human (2.0.3)
     addressable (2.2.2)
     ancestry (1.2.3)
       activerecord (>= 2.2.2)
@@ -134,7 +133,6 @@ PLATFORMS
 
 DEPENDENCIES
   active_device
-  acts_as_human
   ancestry
   aws-s3
   cancan

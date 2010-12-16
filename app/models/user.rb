@@ -3,8 +3,6 @@ class User < ActiveRecord::Base
   
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   
-  acts_as_human
-  
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :carrier, :category_ids
 
   has_many :comments

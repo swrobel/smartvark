@@ -10,9 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101216224720) do
+ActiveRecord::Schema.define(:version => 20101209064238) do
 
   create_table "businesses", :force => true do |t|
+    t.integer  "user_id"
     t.string   "name",                :limit => 100
     t.string   "short_name",          :limit => 20
     t.string   "address",             :limit => 100
@@ -21,17 +22,16 @@ ActiveRecord::Schema.define(:version => 20101216224720) do
     t.string   "state",               :limit => 2
     t.string   "zipcode",             :limit => 10
     t.string   "phone",               :limit => 12
+    t.string   "hours"
     t.string   "url",                 :limit => 500
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.float    "lat"
-    t.float    "lng"
-    t.string   "link_facebook",       :limit => 500
-    t.string   "link_twitter",        :limit => 500
+    t.string   "facebook_url",        :limit => 500
+    t.string   "twitter_url",         :limit => 500
     t.string   "yelp_url",            :limit => 500
     t.string   "yelp_avg_rating_url", :limit => 500
-    t.string   "hours"
+    t.float    "lat"
+    t.float    "lng"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "businesses", ["user_id"], :name => "index_businesses_on_user_id"

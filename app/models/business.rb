@@ -28,20 +28,20 @@ class Business < ActiveRecord::Base
   end
 
   def facebook_link
-    return '' if link_facebook.blank?
-    if link_facebook.include?('facebook.com/')
-      link_facebook
+    return '' if facebook_url.blank?
+    if facebook_url.include?('facebook.com/')
+      facebook_url
     else
-      'http://facebook.com/' + link_facebook
+      'http://facebook.com/' + facebook_url
     end
   end
 
   def twitter_link
-    return '' if link_twitter.blank?
-    if link_twitter.include?('twitter.com/')
-      link_twitter
+    return '' if twitter_url.blank?
+    if twitter_url.include?('twitter.com/')
+      twitter_url
     else
-      'http://twitter.com/' + link_twitter
+      'http://twitter.com/' + twitter_url
     end
   end
   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101209064238) do
+ActiveRecord::Schema.define(:version => 20101216224720) do
 
   create_table "businesses", :force => true do |t|
     t.string   "name",                :limit => 100
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20101209064238) do
     t.string   "link_twitter",        :limit => 500
     t.string   "yelp_url",            :limit => 500
     t.string   "yelp_avg_rating_url", :limit => 500
+    t.string   "hours"
   end
 
   add_index "businesses", ["user_id"], :name => "index_businesses_on_user_id"

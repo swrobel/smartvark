@@ -10,10 +10,10 @@
 
 <% @redemptions.each do |redemption| %>
   <tr>
-    <td><%=h redemption.qty %></td>
-    <td><%=h redemption.user_id %></td>
-    <td><%=h redemption.offer_id %></td>
-    <td><%=h redemption.transaction_number %></td>
+    <td><%= redemption.qty %></td>
+    <td><%= redemption.user_id %></td>
+    <td><%= redemption.offer_id %></td>
+    <td><%= redemption.transaction_number %></td>
     <td><%= link_to 'Show', redemption %></td>
     <td><%= link_to 'Edit', edit_redemption_path(redemption) %></td>
     <td><%= link_to 'Destroy', redemption, :confirm => 'Are you sure?', :method => :delete %></td>

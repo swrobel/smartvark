@@ -10,7 +10,7 @@
 									<div class="l-side">
 										<!-- ttl-holder -->
 										<div class="ttl-holder">
-                                                                                  <h2><%=h @offer.lead %></h2>
+                                                                                  <h2><%= @offer.lead %></h2>
 										</div>
 										<!-- share -->
 										<div class="share">
@@ -60,8 +60,8 @@
 										<!-- information -->
 										<div class="information">
                                                                                     <h3>Expires: <%= std_date(@offer.expire_date) %></h3>
-                                                                                    <p><%=h @offer.description %></p>
-                                                                                    <p><%=h @offer.exclusivity_text %></p>
+                                                                                    <p><%= @offer.description %></p>
+                                                                                    <p><%= @offer.exclusivity_text %></p>
                                                                                     <p><%= link_to 'View more deals from ' + @offer.businesses.first.name, viewbusiness_url(@offer.businesses.first.to_param) %></p>
 										</div>
 									</div>

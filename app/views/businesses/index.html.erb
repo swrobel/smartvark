@@ -18,18 +18,18 @@
 
 <% @businesses.each do |business| %>
   <tr>
-    <td><%=h business.name %></td>
-    <td><%=h business.address %></td>
-    <td><%=h business.address_2 %></td>
-    <td><%=h business.city %></td>
-    <td><%=h business.state %></td>
-    <td><%=h business.zipcode %></td>
-    <td><%=h business.country %></td>
-    <td><%=h business.phone_1 %></td>
-    <td><%=h business.phone_2 %></td>
-    <td><%=h business.fax %></td>
-    <td><%=h business.url %></td>
-    <td><%=h business.parent_id %></td>
+    <td><%= business.name %></td>
+    <td><%= business.address %></td>
+    <td><%= business.address_2 %></td>
+    <td><%= business.city %></td>
+    <td><%= business.state %></td>
+    <td><%= business.zipcode %></td>
+    <td><%= business.country %></td>
+    <td><%= business.phone_1 %></td>
+    <td><%= business.phone_2 %></td>
+    <td><%= business.fax %></td>
+    <td><%= business.url %></td>
+    <td><%= business.parent_id %></td>
     <td><%= link_to 'Show', business %></td>
     <td><%= link_to 'Edit', edit_business_path(business) %></td>
     <td><%= link_to 'Destroy', business, :confirm => 'Are you sure?', :method => :delete %></td>

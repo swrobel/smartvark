@@ -1,16 +1,16 @@
 <p>
   <b>Lead:</b>
-  <%=h @offer.lead %>
+  <%= @offer.lead %>
   </p>
 
 <p>
   <b>Offer Type:</b>
-  <%=h @offer.offer_type %>
+  <%= @offer.offer_type %>
 </p>
 
 <p>
   <b>Offer Becomes Active On:</b>
-  <%=h @offer.active_date.try(:strftime,'%B %d, %Y') %>
+  <%= @offer.active_date.try(:strftime,'%B %d, %Y') %>
 </p>
 
 <p><b>Redemption by:</b>
@@ -22,37 +22,37 @@
 
 <p>
   <b>Description:</b>
-  <%=h @offer.description %>
+  <%= @offer.description %>
 </p>
 
 <p>
   <b>Exclusivity text:</b>
-  <%=h @offer.exclusivity_text %>
+  <%= @offer.exclusivity_text %>
 </p>
 
 <p>
   <b>Redemption Code:</b>
-  <%=h @offer.redemption_code%>
+  <%= @offer.redemption_code%>
 </p>
 
 <p>
   <b>Quantity:</b>
-  <%=h @offer.quantity %>
+  <%= @offer.quantity %>
 </p>
 
 <p>
   <b>Expiry datetime:</b>
-  <%=h @offer.expire_date %>
+  <%= @offer.expire_date %>
 </p>
 
 <p>
   <b>Category:</b>
-  <%=h @offer.category.name %>
+  <%= @offer.category.name %>
 </p>
 
 <p>
   <b>Business:</b>
-  <%=h @offer.businesses.first.name %>
+  <%= @offer.businesses.first.name %>
 </p>
 
 <p>

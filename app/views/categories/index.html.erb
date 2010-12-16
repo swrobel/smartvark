@@ -9,16 +9,16 @@
 
 <% @categories.each do |category| %>
   <tr>
-    <td><b><%=h category.name %></b></td>
-    <td><%=h category.active %></td>
+    <td><b><%= category.name %></b></td>
+    <td><%= category.active %></td>
     <td><%= link_to 'Show', category %></td>
     <td><%= link_to 'Edit', edit_category_path(category) %></td>
     <td><%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% category.children.each do |child| %>
   <tr>
-    <td>- <%=h child.name %></td>
-    <td><%=h child.active %></td>
+    <td>- <%= child.name %></td>
+    <td><%= child.active %></td>
     <td><%= link_to 'Show', child %></td>
     <td><%= link_to 'Edit', edit_category_path(child) %></td>
     <td><%= link_to 'Destroy', child, :confirm => 'Are you sure?', :method => :delete %></td>

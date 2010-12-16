@@ -1,15 +1,15 @@
 <p>
   <b>Name:</b>
-  <%=h @category.name %>
+  <%= @category.name %>
 </p>
 
 <p>
   <b>Parent:</b>
-  <%=h @category.parent.try(:name) || 'n/a'%>
+  <%= @category.parent.try(:name) || 'n/a'%>
 </p>
 <p>
   <b>Active:</b>
-  <%=h @category.active %>
+  <%= @category.active %>
 </p>
 
 

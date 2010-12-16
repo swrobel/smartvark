@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(:version => 20101209064238) do
     t.string   "email",                               :default => "",     :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "",     :null => false
     t.string   "first_name",           :limit => 50
-    t.string   "middle_name",          :limit => 50
+    t.string   "middle_names",         :limit => 50
     t.string   "last_name",            :limit => 50
     t.string   "nickname",             :limit => 20
     t.string   "address",              :limit => 100

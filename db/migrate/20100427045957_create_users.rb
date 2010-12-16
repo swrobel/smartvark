@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.database_authenticatable
       t.string :first_name, :limit => 50
-      t.string :middle_name, :limit => 50
+      t.string :middle_names, :limit => 50
       t.string :last_name, :limit => 50
       t.string :nickname, :limit => 20
       t.string :address, :limit => 100

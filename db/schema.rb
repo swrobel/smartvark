@@ -140,10 +140,7 @@ ActiveRecord::Schema.define(:version => 20101209064238) do
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "",     :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "",     :null => false
-    t.string   "first_name",           :limit => 50
-    t.string   "middle_names",         :limit => 50
-    t.string   "last_name",            :limit => 50
-    t.string   "nickname",             :limit => 20
+    t.string   "name",                 :limit => 100
     t.string   "address",              :limit => 100
     t.string   "city",                 :limit => 50
     t.string   "state",                :limit => 2
@@ -166,7 +163,6 @@ ActiveRecord::Schema.define(:version => 20101209064238) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["nickname"], :name => "index_users_on_nickname", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

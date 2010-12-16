@@ -1,7 +1,7 @@
 <% new_user = true if local_assigns[:new_user].nil? %>
 <div class="right">
 <% if logged_in? %>
-  <% if current_user.business %>
+  <% if current_user.role == "business" %>
     <div class="frame">
       <div class="account-area">
         <!-- holder -->

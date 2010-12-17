@@ -44,11 +44,13 @@ class ApplicationController < ActionController::Base
   end
 
   def log_user
-    current_user && current_user.user_audits.create(:request => params)
+    if current_user && params[:controller] && !params[:controller].include?("devise") && !params[:controller].include?("registrations")
+      current_user.user_audits.create(:controller => params[:controller], :action => params[:action], :request => params)
+    end
   end
   
   def logged_in?
-    current_user
+    user_signed_in?
   end
   
   def home_path

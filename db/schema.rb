@@ -131,11 +131,15 @@ ActiveRecord::Schema.define(:version => 20101209064238) do
 
   create_table "user_audits", :force => true do |t|
     t.integer  "user_id"
+    t.string   "controller"
+    t.string   "action"
     t.string   "request",    :limit => 3000
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "user_audits", ["action"], :name => "index_user_audits_on_action"
+  add_index "user_audits", ["controller", "action"], :name => "index_user_audits_on_controller_and_action"
   add_index "user_audits", ["user_id"], :name => "index_user_audits_on_user_id"
 
   create_table "users", :force => true do |t|

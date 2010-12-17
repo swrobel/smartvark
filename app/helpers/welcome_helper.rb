@@ -28,8 +28,8 @@ module WelcomeHelper
     "<li id='my_offer_#{offer.id}'>" +
     hidden_field_tag("user[offer_ids][]", offer.id) +
     link_to("<h3>#{offer.businesses.first.name}: #{offer.lead}</h3>".html_safe, viewdeal_url(offer.to_param),
-      :onMouseOver => "jQuery('#offer_info_rollover').html('#{info_for_rollover(offer)}');",
-      :onMouseOut => "jQuery('#offer_info_rollover').empty();"
+      :onMouseOver => "$('#offer_info_rollover').html('#{info_for_rollover(offer)}');",
+      :onMouseOut => "$('#offer_info_rollover').empty();"
     ) +
       "<p>Expires #{offer.expire_date.strftime('%B %d, %Y')}</p></li>"
   end

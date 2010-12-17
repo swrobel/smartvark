@@ -1,3 +1,3 @@
-jQuery("#undo_last_action").empty();
-jQuery("#my_offer_<%= params[:offer_id] %>").fadeOut("slow", function() { jQuery(this).remove()});
-jQuery("#offer_<%= params[:offer_id] %>").show("scale");
+$("#undo_last_action").empty();
+$("#my_offer_<%= params[:offer_id] %>").fadeOut("slow", function() { $(this).remove()});
+$("#offer_<%= params[:offer_id] %>").show("scale");

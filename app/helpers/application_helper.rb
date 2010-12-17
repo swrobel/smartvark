@@ -59,7 +59,7 @@ module ApplicationHelper
     if logged_in?
       link_to("Use It Now", viewdeal_url(offer.to_param), {:class => "link"})
     else
-      link_to_function("Use It Now", "jQuery('#signup-popup').modal();", {:class => "link"})
+      link_to_function("Use It Now", "$('#signup-popup').modal();", {:class => "link"})
     end
   end
 
@@ -68,8 +68,8 @@ module ApplicationHelper
     offer = offers[index]
     return if offer.nil?
 
-"<li id='offer_#{offer.id}' #{"style='display:none;'" if hidden} onmouseover=\"jQuery('#offer_info_rollover').html('"+ h(info_for_rollover(offer))+ "');\"
-           onmouseout=\"jQuery('#offer_info_rollover').empty()\" >"  +
+"<li id='offer_#{offer.id}' #{"style='display:none;'" if hidden} onmouseover=\"$('#offer_info_rollover').html('"+ h(info_for_rollover(offer))+ "');\"
+           onmouseout=\"$('#offer_info_rollover').empty()\" >"  +
   '<div class="frame">
     <div>' +
       deal_coupon(offer) +

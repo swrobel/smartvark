@@ -16,20 +16,19 @@
       <%= f.label :city %>
       <div class="right">
         <%= f.text_field :city, :class => 'txt' %>
-        <%= select :user, :state, States::STATES, { :include_blank => true }, :class => 'sel' %>
-      </div>
-    </div>
-    <div class="row">
-      <%= f.label :zipcode %>
-      <div class="right">
-        <%= f.text_field :zipcode, :class => 'txt', :maxlength => 11 %>
+        <%= select :user, :state, States::STATES, { :include_blank => true }, :class => 'sel', :selected => 'CA' %>
       </div>
     </div>
     <div class="row short">
-      <%= f.label :phone%>
+      <%= f.label :zipcode, 'Zip' %>
+      <div class="right">
+        <%= f.text_field :zipcode, :class => 'txt', :maxlength => 10 %>
+      </div>
+    </div>
+    <div class="row short">
+      <%= f.label :phone, "Mobile Phone" %>
       <div class="right">
         <%= f.text_field :phone, :class => 'txt', :maxlength => 15 %>
-        <%= select :user, :carrier, Carriers::CARRIERS, { :include_blank => true }, :class => 'sel' %>
       </div>
     </div>
     <div class="row">
@@ -39,7 +38,7 @@
       </div>
     </div>
     <div class="row" id="show_password_fields">
-		<a href="#" onClick="jQuery('#password_fields').show();jQuery('#show_password_fields').hide();return false;">Change password</a>
+		<a href="#" onClick="$('#password_fields').show();$('#show_password_fields').hide();return false;">Change password</a>
 	</div>
     <div id="password_fields" style="display:none;">
 	    <div class="row">

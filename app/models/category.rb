@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
   scope :all_parents, to_depth(1)
 
   has_many :offers
-
+  has_many :users
   has_and_belongs_to_many :users
 
   def to_param

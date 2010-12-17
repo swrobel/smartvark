@@ -16,7 +16,7 @@
       <%= f.label :city %>
       <div class="right">
         <%= f.text_field :city, :class => 'txt' %>
-        <%= select :user, :state, States::STATES, { :include_blank => true }, :class => 'sel', :selected => 'CA' %>
+        <%= select :user, :state, States::STATES, :class => 'sel', :selected => 'CA' %>
       </div>
     </div>
     <div class="row short">
@@ -42,13 +42,13 @@
 	</div>
     <div id="password_fields" style="display:none;">
 	    <div class="row">
-	      <%= f.label :password %>
+	      <%= f.label :password, "New Password" %>
 	      <div class="right">
 	        <%= f.password_field :password, :class => 'txt' %>
 	      </div>
 	    </div>
 	    <div class="row">
-	      <%= f.label :password_confirmation, "Re-enter Password" %>
+	      <%= f.label :password_confirmation, "Re-enter New Password" %>
 	      <div class="right">
 	        <%= f.password_field :password_confirmation, :class => 'txt' %>
 	      </div>

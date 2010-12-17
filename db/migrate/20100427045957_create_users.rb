@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :zipcode, :limit => 10
       t.string :phone, :limit => 12
       t.string :role, :default => "user"
+      t.integer :category_id
       t.rememberable
       t.trackable
       t.recoverable

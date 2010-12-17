@@ -418,12 +418,12 @@ td, th{padding:0;}
 .search-results .item .text p {
 	margin:0;
 }
-.search-results .item address {
+.search-results .item .address {
 	font-style:normal;
 	float:right;
 	width:130px;
 }
-.search-results .item address span {display:block;}
+.search-results .item .address span {display:block;}
 /* aside */
 
 .aside {
@@ -705,12 +705,12 @@ td, th{padding:0;}
 	height:1%;
 }
 /* address */
-.info-box address{
+.info-box .address{
 	width:100%;
 	padding:0;
 	font-style:normal;
 }
-.info-box address span{
+.info-box .address span{
 	display:block;
 	font-size:14px;
 	line-height:16px;
@@ -1355,29 +1355,18 @@ a.facebook-signin {
 .merchant-area .rate{
 	margin:0;
 	padding:0 0 3px;
-	list-style:none;
 	width:100%;
 	overflow:hidden;
+	font-size:9px;
 }
-.merchant-area .rate li{
-	float:left;
-	padding:0 2px 0 0;
-}
-.merchant-area .rate a{
-	display:block;
-	text-indent:-9999px;
-	background:url(../images/bg-rate.gif) no-repeat;
-	width:15px;
-	height:15px;
-}
-.merchant-area .rate .for{background:url(../images/bg-rate-for.gif) no-repeat;}
-.merchant-area .contact address{
+.merchant-area .rate img{vertical-align:bottom;}
+.merchant-area .contact .address{
 	padding:0;
 	font-style:normal;
 	display:block;
 	font-weight:bold;
 }
-.merchant-area .contact address strong{display:block;}
+.merchant-area .contact .address strong{display:block;}
 .merchant-area .contact .phone{display:block;}
 .merchant-area .contact a{text-decoration:underline;}
 .merchant-area .contact a:hover{text-decoration:none;}

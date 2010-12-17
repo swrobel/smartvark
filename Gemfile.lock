@@ -74,6 +74,9 @@ GEM
       yajl-ruby (= 0.7.7)
     multi_json (0.0.5)
     multipart-post (1.0.1)
+    nilify_blanks (1.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
     nokogiri (1.4.4)
     oa-core (0.1.6)
       rack (~> 1.1)
@@ -144,9 +147,12 @@ DEPENDENCIES
   home_run
   jquery-rails
   moonshado-sms
+  nilify_blanks
   oa-oauth
+  oauth
   paperclip
   pg
   phone
   rails (= 3.0.3)
   thin
+  yajl-ruby

@@ -9,40 +9,46 @@
 								<div class="content-holder">
 									<!-- content-frame -->
 									<div class="content-frame">
-                                                                          <h2><%= @business.name %> - <%= @business.city %></h2>
+                    <h2><%= @business.name %></h2>
 										<!-- info -->
 										<div class="info">
 											<div class="contact">
-                                                                                          <ul class="rate">
-                                                                                            <% if @business.yelp_avg_rating_url.present? %>
-                                                                                              <%= image_tag @business.yelp_avg_rating_url %>
-                                                                                            <% end %>
-                                                                                          </ul>
-                                                                                                <address><strong><%= @business.address %></strong><strong><%= @business.city %>, <%= @business.state %> <%= @business.zipcode %></strong></address>
-                                                                                                <strong class="phone"><%= @business.phone_1 %></strong>
-                                                                                                <% if @business.url.present? %>
-                                                                                                  <%= link_to @business.url, {}, :href => "http://#{@business.url}" %>
-                                                                                                <% end %>
+												<div class="rate">
+													<% if @business.yelp_rating_img_url.present? %>
+														<%= image_tag @business.yelp_rating_img_url %> (<%= @business.yelp_review_count %> review<%= "s" unless @business.yelp_review_count <= 1 %>)
+													<% end %>
+												</div>
+												<div class="address">
+													<strong><%= @business.address %></strong>
+													<% if @business.address_2 %>
+														<strong><%= @business.address_2 %></strong>
+													<% end %>
+													<strong><%= @business.city %>, <%= @business.state %> <%= @business.zipcode %></strong>
+												</div>
+												<strong class="phone"><%= @business.phone %></strong>
+												<% if @business.url.present? %>
+													<%= link_to @business.url, {}, :href => @business.url %>
+												<% end %>
 												<ul class="social">
-                                                                                                  <li>
-                                                                                                  <% if @business.twitter_link.present? %>
-                                                                                                    <%= link_to image_tag('ico-twitter2.gif', :alt => 'twitter', :width => '23', :height => '24'),{},  { :href => @business.twitter_link, :target => :_new } %>
-                                                                                                  <% end %>
-                                                                                                  </li>
-                                                                                                  <li>
-                                                                                                  <% if @business.facebook_link.present? %>
-                                                                                                    <%= link_to image_tag('ico-facebook2.gif', :alt => 'facebook', :width => '23', :height => '24'), {}, { :href => @business.facebook_link, :target => :_new } %>
-                                                                                                  <% end %>
-                                                                                                  </li>
-                                                                                                  <li>
-                                                                                                  <% if @business.yelp_url.present? %>
-                                                                                                    <%= link_to image_tag('ico-yelp.gif', :alt => 'yelp', :width => '23', :height => '24'), {}, { :href => @business.yelp_link, :target => :_new } %>
-                                                                                                  <% end %>
-                                                                                                  </li>
+													<li>
+													<% if @business.twitter_link.present? %>
+														<%= link_to image_tag('ico-twitter2.gif', :alt => 'twitter', :width => '23', :height => '24'),{},  { :href => @business.twitter_link, :target => :_new } %>
+													<% end %>
+													</li>
+													<li>
+													<% if @business.facebook_link.present? %>
+														<%= link_to image_tag('ico-facebook2.gif', :alt => 'facebook', :width => '23', :height => '24'), {}, { :href => @business.facebook_link, :target => :_new } %>
+													<% end %>
+													</li>
+													<li>
+													<% if @business.yelp_url.present? %>
+														<%= link_to image_tag('ico-yelp.gif', :alt => 'yelp', :width => '23', :height => '24'), {}, { :href => @business.yelp_link, :target => :_new } %>
+													<% end %>
+													</li>
 												</ul>
 												<dl>
 													<dt>Hours:</dt>
-                                                                                                        <dd><%= (@business.hours || 'n/a').gsub(/;/,'<br/>') %></dd>
+                          <dd><%= (@business.hours || 'n/a').gsub(/,/,'<br/>') %></dd>
 												</dl>
 											</div>
 											<% if @business.user.logo.present? %>
@@ -51,9 +57,12 @@
 											</div>
 											<% end %>
 										</div>
-                                                                                <ul class="posts">
-                                                                                  <%= render :partial => 'business_offer', :collection => @business.offers.active %>
+										<ul class="posts">
+											<%= render :partial => 'business_offer', :collection => @business.offers.active %>
 										</ul>
+										<% if @business.yelp_rating_img_url.present? %>
+											<a href="http://www.yelp.com" target="blank_"><img alt="Reviews from Yelp" src="http://media2.px.yelpcdn.com/static/20091130675329781/i/developers/reviewsFromYelpWHT.gif"/></a>
+										<% end %>
 									</div>
 								</div>
 							</div>

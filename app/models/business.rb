@@ -1,15 +1,20 @@
 class Business < ActiveRecord::Base
   include Geokit::Geocoders
-
   acts_as_mappable
+  
   belongs_to :user
   has_and_belongs_to_many :offers
 
-  before_save :set_lat_lng
+  nilify_blanks :before => :validation
+  before_validation :get_yelp_data
+  before_save :get_lat_lng
 
-  before_update :set_yelp_rating
-
-  validates_presence_of :name, :address, :city, :state, :zipcode, :phone_1
+  validates :name, :presence => true
+  validates :address, :presence => true
+  validates :city, :presence => true
+  validates :state, :presence => true
+  validates :zipcode, :presence => true
+  validates :phone, :presence => true
 
   def short_or_name
     short_name.blank? ? name : short_name
@@ -53,7 +58,8 @@ class Business < ActiveRecord::Base
     end
   end
 
-  def set_lat_lng
+private
+  def get_lat_lng
     unless lat && lng
       loc = GoogleGeocoder.geocode(address_as_string)
       if loc.success
@@ -62,16 +68,31 @@ class Business < ActiveRecord::Base
     end
   end
 
-  def set_yelp_rating
-    return true if phone_1.nil?
-    client = Yelp::Client.new
-    request = Yelp::Phone::Request::Number.new(
-      :phone_number => phone_1.gsub(/\(|\)|\s|-/,''),
-      :yws_id => YELP_ID)
-    response =  client.search(request)['businesses'].first
-    self.yelp_url = response['url']
-    self.yelp_avg_rating_url = response['rating_img_url']
-    rescue
-      logger.info "Could't create yelp rating"
+  def get_yelp_data
+    return if yelp_url.empty?
+    consumer = OAuth::Consumer.new(YELP_CONSUMER_KEY, YELP_CONSUMER_SECRET, {:site => "http://api.yelp.com"})
+    access_token = OAuth::AccessToken.new(consumer, YELP_TOKEN, YELP_TOKEN_SECRET)
+    
+    path = "/v2/business/" + yelp_url
+    result = access_token.get(path).body
+    result = Yajl::Parser.parse(result)
+    
+    self.yelp_mobile_url = result["mobile_url"]
+    self.yelp_rating_img_url = result["rating_img_url"]
+    self.yelp_review_count = result["review_count"]
+    self.name = result["name"] unless name
+    self.phone = result["phone"] unless phone
+    location = result["location"]
+    self.address = location["address"][0] unless address
+    self.address_2 = location["address"][1] unless address_2
+    self.city = location["city"] unless city
+    self.state = location["state_code"] unless state
+    self.zipcode = location["postal_code"] unless zipcode
+    coordinate = location["coordinate"]
+    self.lat = coordinate["latitude"] unless lng
+    self.lng = coordinate["longitude"] unless lng
+    
+  rescue Exception => e
+    logger.info "Yelp failure: #{e.message}"
   end
 end

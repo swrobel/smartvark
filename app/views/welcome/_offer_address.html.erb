@@ -1,3 +1,4 @@
+<div class="address">
 <% offer_address.businesses.each do |business| %>
   <span><%= business.name %></span><br/>
   <span><%= business.address %></span>
@@ -8,3 +9,4 @@
   <span><%= business.city %>, <%= business.state %> <%= business.zipcode%></span>
   <p><%= link_to 'Map It', {}, :target => '_new', :href => "http://maps.google.com?q=#{business.address_as_string}" %></p>
 <% end %>
+</div>

@@ -41,7 +41,7 @@
 
 <p>
   <b>Phone 1:</b>
-  <%= @business.phone_1 %>
+  <%= @business.phone %>
 </p>
 
 <p>
@@ -81,8 +81,8 @@
 
 <p>
   <b>Yelp Avg Rating Img Url:</b>
-  <%= @business.yelp_avg_rating_url %>
-  <%= image_tag @business.yelp_avg_rating_url || ''%>
+  <%= @business.yelp_rating_img_url %>
+  <%= image_tag @business.yelp_rating_img_url || ''%>
 </p>
 
 <p>

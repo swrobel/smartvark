@@ -10,7 +10,7 @@
   <h2><%= @offer.businesses.first.name %></h2>
   <h3>
     <%=
-    [ @offer.businesses.first.address, @offer.businesses.first.address_2, @offer.businesses.first.city_state_zip, @offer.businesses.first.phone_1 ].delete_if {|x| x.empty?}.join('<br/>').html_safe
+    [ @offer.businesses.first.address, @offer.businesses.first.address_2, @offer.businesses.first.city_state_zip, @offer.businesses.first.phone ].delete_if {|x| x.empty?}.join('<br/>').html_safe
     %>
   </h3>
   <p><%= @offer.description %></p>

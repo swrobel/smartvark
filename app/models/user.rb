@@ -5,15 +5,13 @@ class User < ActiveRecord::Base
   
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :carrier, :category_ids
 
+  belongs_to :category
   has_many :comments
   has_many :opinions
-
   has_many :redemptions
   has_many :user_audits
-
-  has_and_belongs_to_many :categories
-
   has_many :businesses
+  has_and_belongs_to_many :categories
 
   has_attached_file :logo,
     :styles => { :thumb => ["120x120>", :png], :full => ["320x200>", :png] },
@@ -22,6 +20,8 @@ class User < ActiveRecord::Base
     :storage => :s3,
     :s3_credentials => "#{Rails.root}/config/s3.yml",
     :path => "/logos/:id/:style/:filename"
+    
+  nilify_blanks
 
   def name_or_email
     name.blank? ? email : name.split.first

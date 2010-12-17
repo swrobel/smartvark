@@ -41,28 +41,28 @@
 										<!-- info-area -->
 										<div class="info-area">
 											<!-- img -->
-                                                                                        <div class="img">
-                                                                                          <%= image_tag @offer.coupon.url, :alt => @offer.businesses.first.user.name + " logo" %>
+												<div class="img">
+													<%= image_tag @offer.coupon.url, :alt => @offer.businesses.first.user.name + " logo" %>
 											</div>
 											<!-- info-box -->
-                                                                                        <div class="info-box">
-																																												  <h3>Valid at these locations:</h3>
-                                                                                          <%= render :partial => 'offer_address', :object => @offer %>
-                                                                                          <% if @offer.expired? %>
-                                                                                            <%= image_tag('btn-expired.gif') %>
-                                                                                          <% else %>
-                                                                                            <a href="" id="btn-redeem<%= '-signup' unless logged_in? %>-open" class="btn">Redeem</a>
-                                                                                              <!-- Redeem popup -->
-                                                                                              <%= render :partial => 'redeem' %>
-                                                                                            <% end %>
+												<div class="info-box">
+													<h3>Valid at these locations:</h3>
+													<%= render :partial => 'offer_address', :object => @offer %>
+													<% if @offer.expired? %>
+														<%= image_tag('btn-expired.gif') %>
+													<% else %>
+														<a href="" id="btn-redeem<%= '-signup' unless logged_in? %>-open" class="btn">Redeem</a>
+															<!-- Redeem popup -->
+															<%= render :partial => 'redeem' %>
+														<% end %>
 											</div>
                                                                                       </div>
 										<!-- information -->
 										<div class="information">
-                                                                                    <h3>Expires: <%= std_date(@offer.expire_date) %></h3>
-                                                                                    <p><%= @offer.description %></p>
-                                                                                    <p><%= @offer.exclusivity_text %></p>
-                                                                                    <p><%= link_to 'View more deals from ' + @offer.businesses.first.name, viewbusiness_url(@offer.businesses.first.to_param) %></p>
+												<h3>Expires: <%= std_date(@offer.expire_date) %></h3>
+												<p><%= @offer.description %></p>
+												<p><%= @offer.exclusivity_text %></p>
+												<p><%= link_to 'View more deals from ' + @offer.businesses.first.name, viewbusiness_url(@offer.businesses.first.to_param) %></p>
 										</div>
 									</div>
                                                                         <!-- r-side -->

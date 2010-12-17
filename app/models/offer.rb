@@ -38,7 +38,8 @@ class Offer < ActiveRecord::Base
   has_many :dislikes,
     :class_name => 'Opinion',
     :conditions => { :liked => false }
-
+  
+  nilify_blanks
   before_update :unarchive_if_draft_or_activated
 
   def set_to_archived

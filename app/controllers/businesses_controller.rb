@@ -41,6 +41,7 @@ class BusinessesController < ApplicationController
   def edit
     @businesses = current_user.businesses
     @business = current_user.businesses.find(params[:id])
+    @business.phone = Phone.parse(@business.phone).format(:us)
   end
 
   # POST /businesses
@@ -48,11 +49,12 @@ class BusinessesController < ApplicationController
   def create
     @business = current_user.businesses.build(params[:business])
     @businesses = current_user.try(:businesses) || []
+    @business.phone = Phone.parse(@business.phone).to_s unless @business.phone.empty?
 
     respond_to do |format|
       if @business.save
-        flash[:notice] = 'Business was successfully created.'
-        format.html { redirect_to new_business_path }
+        flash[:notice] = 'Location was successfully created.'
+        format.html { redirect_to(edit_business_path(@business.id)) }
         format.xml  { render :xml => @business, :status => :created, :location => @business }
       else
         format.html { render :action => "new" }
@@ -66,10 +68,11 @@ class BusinessesController < ApplicationController
   def update
     @business = current_user.businesses.find(params[:id])
     @businesses = current_user.try(:businesses) || []
+    params[:business][:phone] = Phone.parse(params[:business][:phone]).to_s unless params[:business][:phone].empty?
 
     respond_to do |format|
       if @business.update_attributes(params[:business])
-        flash[:notice] = 'Business was successfully updated.'
+        flash[:notice] = 'Location was successfully updated.'
         format.html { redirect_to(edit_business_path(@business.id)) }
         format.xml  { head :ok }
       else

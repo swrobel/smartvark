@@ -11,11 +11,13 @@ class CreateBusinesses < ActiveRecord::Migration
       t.string :zipcode, :limit => 10
       t.string :phone, :limit => 12
       t.string :hours
-      t.string :url, :limit => 500
-      t.string :facebook_url, :limit => 500
-      t.string :twitter_url, :limit => 500
-      t.string :yelp_url, :limit => 500
-      t.string :yelp_avg_rating_url, :limit => 500
+      t.string :url
+      t.string :facebook_url
+      t.string :twitter_url
+      t.string :yelp_url
+      t.string :yelp_mobile_url
+      t.string :yelp_rating_img_url
+      t.integer :yelp_review_count, :default => 0
       t.float :lat
       t.float :lng
 

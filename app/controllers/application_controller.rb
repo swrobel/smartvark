@@ -40,10 +40,12 @@ class ApplicationController < ActionController::Base
     # only redirect to mobile site if mobile browser detected and not already on mobile site
     if is_mobile_browser? && !(request.fullpath+"/").include?("/m/")
       m_path = "/m" + request.fullpath
-      ActionController::Routing::Routes.recognize_path(m_path, :method => :get)
+      #logger.info "Redirecting mobile " + device_brand + " from " + request.fullpath
+      Rails.application.routes.recognize_path(m_path, :method => :get)
       redirect_to m_path
     end
-  rescue
+  rescue Exception => e
+    logger.info e.message
   end
 
   def log_user

@@ -8,7 +8,7 @@ $(function(){
 		$("#offer_category_id").val($(this).val());
 	});
 	
-	if ($.accordion) {
+	if ($().accordion) {
 		$('.accordion').accordion({
 			active: ".selected",
 			autoHeight: false,
@@ -18,7 +18,7 @@ $(function(){
 		});
 	}
 	
-	if ($.modal) {
+	if ($().modal) {
 		$.extend($.modal.defaults, {
 		    onOpen: function (dialog) {
 			dialog.overlay.fadeIn('fast');
@@ -65,15 +65,15 @@ $(function(){
 		});
 	}
 	
-	if ($.jMapping)
+	if ($().jMapping)
 		$('#map').jMapping();
 	
-	if ($.datepicker) {
+	if ($().datepicker) {
 		$("#offer_active_date").datepicker();
 		$("#offer_expire_date").datepicker();
 	}
 	
-	if ($.placehold) {
+	if ($().placehold) {
 		$("#search_terms").placehold();
 		$("#location").placehold();
 		$("#offer_lead").placehold();
@@ -82,13 +82,13 @@ $(function(){
 		$("#offer_redemption_code").placehold();
 	}
 	
-	if ($.textareaCount) {
+	if ($().textareaCount) {
 		$("#offer_lead").textareaCount({maxCharacterSize: 50}, function(data) {$("#offer_lead_count").html(data.left+" characters remaining");});
 		$("#offer_description").textareaCount({maxCharacterSize: 200}, function(data) {$("#offer_description_count").html(data.left+" characters remaining");});
 		$("#offer_exclusivity_text").textareaCount({maxCharacterSize: 200}, function(data) {$("#offer_exclusivity_text_count").html(data.left+" characters remaining");});
 	}
 	
-	if ($.fadeIn && $.fadeOut) {
+	if ($().fadeIn && $.fadeOut) {
 		$(".dashboard_chk").change(function(){
 			locID = '.' + $(this).val();
 			if ($(this).attr("checked")) $(locID).fadeIn('fast');

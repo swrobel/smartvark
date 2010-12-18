@@ -11,16 +11,6 @@ class Category < ActiveRecord::Base
     "#{id}-#{CGI.escape(name)}"
   end
 
-  def self.all_except(list)
-    all :conditions => [ 'name not in (?)', list ]
-  end
-  
-  def self.children_of(id)
-    other = Category.new(:name=>"Other")
-    other.id = id
-    self.all(:conditions => {:parent_id => id}, :order => :name) << other
-  end
-
   def clever_or_name
     clever_name.blank? ? name : clever_name
   end

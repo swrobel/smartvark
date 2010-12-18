@@ -49,7 +49,6 @@ class BusinessesController < ApplicationController
   def create
     @business = current_user.businesses.build(params[:business])
     @businesses = current_user.try(:businesses) || []
-    @business.phone = Phone.parse(@business.phone).to_s unless @business.phone.empty?
 
     respond_to do |format|
       if @business.save
@@ -68,7 +67,6 @@ class BusinessesController < ApplicationController
   def update
     @business = current_user.businesses.find(params[:id])
     @businesses = current_user.try(:businesses) || []
-    params[:business][:phone] = Phone.parse(params[:business][:phone]).to_s unless params[:business][:phone].empty?
 
     respond_to do |format|
       if @business.update_attributes(params[:business])

@@ -78,7 +78,7 @@ class WelcomeController < ApplicationController
     #  gmarker = GMarker.new(
     #    coordinates,
     #    :title => offer.businesses.first.try(:name),
-    #    :info_window => offer.lead)
+    #    :info_window => offer.title)
     #  @map.overlay_init(gmarker)
     #end
     #@map.center_zoom_init(coordinates,14)

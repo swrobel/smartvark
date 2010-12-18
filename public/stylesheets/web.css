@@ -2052,6 +2052,7 @@ a.facebook-signin {
 	margin: 1px;
 }
 #errorExplanation h2 { display:none; }
+.field_with_errors label { color: red; }
 .charleft { display:none; }
 #map {width:270px; height:360px;}
 #map p {

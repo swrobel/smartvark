@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :carrier, :category_ids
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :category_id
 
   belongs_to :category
   has_many :comments
@@ -22,6 +22,11 @@ class User < ActiveRecord::Base
     :path => "/logos/:id/:style/:filename"
     
   nilify_blanks
+  
+  HUMANIZED_ATTRIBUTES = {
+    :phone => "Mobile Phone",
+    :zipcode => "Zip"
+  }
 
   def name_or_email
     name.blank? ? email : name.split.first
@@ -41,7 +46,7 @@ class User < ActiveRecord::Base
                          else
                            other_business_ids & business_ids
                          end
-    Offer.select('DISTINCT offers.*').includes([:businesses,:likes, :dislikes, :redemptions]).joins(:businesses).where("businesses.id" => these_business_ids).order("offers.archived, offers.draft, offers.lead")
+    Offer.select('DISTINCT offers.*').includes([:businesses,:likes, :dislikes, :redemptions]).joins(:businesses).where("businesses.id" => these_business_ids).order("offers.archived, offers.draft, offers.title")
   end
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)

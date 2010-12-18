@@ -9,8 +9,8 @@
 </tr>
 <% @offers.each do |deal_on_dashboard| %>
   <tr class="<%= deal_on_dashboard.business_ids.join(' ') %> <%= deal_on_dashboard.status -%> dashboard_row">
-    <td><%= deal_on_dashboard.lead %></td>
-    <td><%= deal_on_dashboard.expire_date.try(:strftime, '%m/%d/%Y') %></td>
+    <td><%= deal_on_dashboard.title %></td>
+    <td><%= deal_on_dashboard.end_date.try(:strftime, '%m/%d/%Y') %></td>
     <td><%= deal_on_dashboard.redemptions.length %></td>
     <td><%= deal_on_dashboard.likes.length %></td>
     <td><%= deal_on_dashboard.dislikes.length %></td>

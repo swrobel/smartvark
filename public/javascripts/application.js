@@ -6,6 +6,7 @@ $(function(){
 	
 	$(".child_select").change(function() {
 		$("#offer_category_id").val($(this).val());
+		$("#user_category_id").val($(this).val());
 	});
 	
 	if ($().accordion) {
@@ -69,23 +70,23 @@ $(function(){
 		$('#map').jMapping();
 	
 	if ($().datepicker) {
-		$("#offer_active_date").datepicker();
-		$("#offer_expire_date").datepicker();
+		$("#offer_start_date").datepicker();
+		$("#offer_end_date").datepicker();
 	}
 	
 	if ($().placehold) {
 		$("#search_terms").placehold();
 		$("#location").placehold();
-		$("#offer_lead").placehold();
+		$("#offer_title").placehold();
 		$("#offer_description").placehold();
-		$("#offer_exclusivity_text").placehold();
+		$("#offer_fine_print").placehold();
 		$("#offer_redemption_code").placehold();
 	}
 	
 	if ($().textareaCount) {
-		$("#offer_lead").textareaCount({maxCharacterSize: 50}, function(data) {$("#offer_lead_count").html(data.left+" characters remaining");});
+		$("#offer_title").textareaCount({maxCharacterSize: 50}, function(data) {$("#offer_title_count").html(data.left+" characters remaining");});
 		$("#offer_description").textareaCount({maxCharacterSize: 200}, function(data) {$("#offer_description_count").html(data.left+" characters remaining");});
-		$("#offer_exclusivity_text").textareaCount({maxCharacterSize: 200}, function(data) {$("#offer_exclusivity_text_count").html(data.left+" characters remaining");});
+		$("#offer_fine_print").textareaCount({maxCharacterSize: 200}, function(data) {$("#offer_fine_print_count").html(data.left+" characters remaining");});
 	}
 	
 	if ($().fadeIn && $.fadeOut) {

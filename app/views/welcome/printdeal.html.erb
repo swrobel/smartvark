@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title><%= @offer.lead %> - smartvark</title>
+	<title><%= @offer.title %> - smartvark</title>
 </head>
 <body>
-  <h1><%= @offer.lead %></h1>
+  <h1><%= @offer.title %></h1>
   <%= image_tag @offer.coupon.url, :alt => @offer.businesses.first.user.name + " logo" %>
   <h2><%= @offer.businesses.first.name %></h2>
   <h3>
@@ -14,8 +14,8 @@
     %>
   </h3>
   <p><%= @offer.description %></p>
-  <p>Last day to redeem: <%= @offer.expire_date.try(:strftime, '%B %d, %Y') %></p>
-  <p>Fine print: <%= @offer.exclusivity_text %></p>
+  <p>Last day to redeem: <%= @offer.end_date.try(:strftime, '%B %d, %Y') %></p>
+  <p>Fine print: <%= @offer.fine_print %></p>
   <h2>Cashier use code: <%= @offer.redemption_code %></h2>
 </body>
 </html>

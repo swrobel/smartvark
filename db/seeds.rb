@@ -97,4 +97,4 @@ shopping.children.create(:name=>"Pet Stores")
 shopping.children.create(:name=>"Sporting Goods")
 shopping.children.create(:name=>"Toys & Games")
 
-%w(coupon deal event).each { |name| OfferType.create(:name => name) }
+%w(Coupon Deal Event).each { |name| OfferType.create(:name => name) }

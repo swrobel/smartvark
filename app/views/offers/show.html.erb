@@ -1,6 +1,6 @@
 <p>
   <b>Lead:</b>
-  <%= @offer.lead %>
+  <%= @offer.title %>
   </p>
 
 <p>
@@ -10,7 +10,7 @@
 
 <p>
   <b>Offer Becomes Active On:</b>
-  <%= @offer.active_date.try(:strftime,'%B %d, %Y') %>
+  <%= @offer.start_date.try(:strftime,'%B %d, %Y') %>
 </p>
 
 <p><b>Redemption by:</b>
@@ -27,7 +27,7 @@
 
 <p>
   <b>Exclusivity text:</b>
-  <%= @offer.exclusivity_text %>
+  <%= @offer.fine_print %>
 </p>
 
 <p>
@@ -37,12 +37,12 @@
 
 <p>
   <b>Quantity:</b>
-  <%= @offer.quantity %>
+  <%= @offer.redemption_limit %>
 </p>
 
 <p>
   <b>Expiry datetime:</b>
-  <%= @offer.expire_date %>
+  <%= @offer.end_date %>
 </p>
 
 <p>

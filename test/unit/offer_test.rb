@@ -14,7 +14,7 @@ class OfferTest < ActiveSupport::TestCase
         :lng => -118.5
       })
       @offer = Offer.create({
-        :lead => 'Free ice cream',
+        :title => 'Free ice cream',
         :business => business
       })
       assert @offer.valid?

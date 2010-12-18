@@ -1,9 +1,11 @@
 module BusinessesHelper
   def form_row(form, field_name, label, other={}, tooltip = '')
-    "<div class=\"row#{other[:tdc]}\">
-      <label for=\"#{field_name}\"><span>#{label}</span><span class=\"inf\" title=\"#{tooltip}\">Info</span></label>
+    label_html = "<span>#{label}</span><span class=\"inf\" title=\"#{tooltip}\">Info</span>".html_safe
+    output = "<div class=\"row#{other[:tdc]}\">
+      #{form.label(field_name,label_html)}
       <div class=\"right\">
     #{form.text_field(field_name, :class => 'txt')}
-    #{other[:bf]}</div></div>".html_safe
+    #{other[:bf]}</div></div>"
+    return output.html_safe
   end
 end

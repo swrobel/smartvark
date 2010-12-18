@@ -1,19 +1,19 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  lead: MyString
+  title: MyString
   description: MyString
-  exclusivity_text: MyString
-  quantity: 1
-  expire_date: 2010-04-26 22:17:31
+  fine_print: MyString
+  redemption_limit: 1
+  end_date: 2010-04-26 22:17:31
   category_id: 1
   business_id: 1
 
 two:
-  lead: MyString
+  title: MyString
   description: MyString
-  exclusivity_text: MyString
-  quantity: 1
-  expire_date: 2010-04-26 22:17:31
+  fine_print: MyString
+  redemption_limit: 1
+  end_date: 2010-04-26 22:17:31
   category_id: 1
   business_id: 1

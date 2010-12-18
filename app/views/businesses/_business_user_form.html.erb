@@ -7,17 +7,21 @@
 <% end %>
 <%= form_for(@user, { :url => registration_path(@user), :html => {:multipart => true} }) do |f| %>
   <fieldset>
-    <%= f.hidden_field :business, :value => true %>
     <%= f.label :name, '<span>Name</span><span class="inf" title="Name of the business entity (not seen by users)">Info</span>'.html_safe %>
     <div class="row"><%= f.text_field :name, :class => 'txt' %></div>
     <%= f.label :email, '<span>Email</span><span class="inf" title="Email used for login and communication from us">Info</span>'.html_safe %>
     <div class="row"><%= f.text_field :email, :class => 'txt' %></div>
     <div class="row" id="show_password_fields"><a href="#" onClick="$('#password_fields').show();$('#show_password_fields').hide();return false;">Change password</a></div>
     <div id="password_fields" style="display:none;">
-    <%= f.label :password, '<span>New Password</span><span class="inf" title="Only enter if you want to change your password">Info</span>'.html_safe %>
-    <div class="row"><%= f.password_field :password, :class => 'txt' %></div>
-    <%= f.label :password_confirmation, '<span>Re-enter New Password</span><span class="inf" title="This must match the previous field">Info</span>'.html_safe %>
-    <div class="row"><%= f.password_field :password_confirmation, :class => 'txt' %></div>
+      <%= f.label :password, '<span>New Password</span><span class="inf" title="Only enter if you want to change your password">Info</span>'.html_safe %>
+      <div class="row"><%= f.password_field :password, :class => 'txt' %></div>
+      <%= f.label :password_confirmation, '<span>Re-enter New Password</span><span class="inf" title="This must match the previous field">Info</span>'.html_safe %>
+      <div class="row"><%= f.password_field :password_confirmation, :class => 'txt' %></div>
+    </div>
+    <%= f.label :category_id, '<span>Default Category</span><span class="inf" title="Default category for all new offers (can be overridden when creating an offer)">Info</span>'.html_safe %>
+    <div class="row">
+      <%= render :partial => 'categories/category_selector', :object => @user.category %>
+      <%= f.hidden_field :category_id %>
     </div>
     <div class='row'><%= image_tag @user.logo.url(:thumb) if @user.logo.exists? %></div>
     <label for='logo'><span>Upload <%= "new" if @user.logo.exists? %> logo</span><span class="inf" title="Logo that will be shown to users">Info</span></label>

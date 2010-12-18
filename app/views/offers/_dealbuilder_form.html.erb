@@ -3,30 +3,27 @@
   <div class="offer-form">
     <%= f.error_messages %>
     <div class="row">
-      <%= f.label :offer_type, 'Offer type', :class => :width1 %>
-      <%= f.select :offer_type, options_for_select(OfferTypes, @offer.offer_type), { :include_blank => true }, {:class => :sel, :onchange => "$('##{@offer.id}_type').html($('#offer_offer_type').val());$('##{@offer.id}_type').removeClass();$('##{@offer.id}_type').addClass('c_'+$('#offer_offer_type').val())"} %>
+      <%= f.label :offer_type_id, :class => :width1 %>
+      <%= f.select :offer_type_id, options_from_collection_for_select(OfferType.all, :id, :name, @offer.offer_type_id), { :include_blank => true }, {:class => :sel, :onchange => "$('##{@offer.id}_type').html($('#offer_offer_type option:selected').text());$('##{@offer.id}_type').removeClass();$('##{@offer.id}_type').addClass('c_'+$('#offer_offer_type option:selected').text())"} %>
       <div class="caption two-lines">
         <span>Deals: sales, happy hours specials and other non-coupons Events: infrequent special promotions (ex: loyal shopper party)</span>
       </div>
     </div>
     <div class="row">
-      <%= f.label :category_id, 'Category', :class => :width1 %>
-      <%= select "category", "parents", options_from_collection_for_select(Category.all_parents.all_except('All'),'id','name',@offer.category.nil? ? nil : @offer.category.parent_or_id),{ :include_blank => true }, {:class => :sel2, :id => "parent_category" } %>
-      <% Category.all_parents.all_except('All').each do |parent_category| %>
-        <%= select "category", "children", options_from_collection_for_select(Category.children_of(parent_category.id),'id','name',@offer.category_id),{ :include_blank => true }, {:class => "sel2 child_select", :id => "children_of_"+parent_category.id.to_s, :style=> ("display:none;" unless @offer.category && @offer.category.parent_id == parent_category.id) } %>
-      <% end %>
-      <%= f.hidden_field :category_id, :value => @offer.category_id %>
+      <%= f.label :category_id, :class => :width1 %>
+      <%= render :partial => 'categories/category_selector', :object => @offer.category %>
+      <%= f.hidden_field :category_id %>
     </div>
     <div class="row">
-      <%= f.label :active_date, 'Starts on' %>
-      <%= f.text_field :active_date, :format => :us_date, :class => 'txt' %>
+      <%= f.label :start_date %>
+      <%= f.text_field :start_date, :format => :us_date, :class => 'txt' %>
       <div class="caption">
         <span>Date deal becomes active</span>
       </div>
     </div>
     <div class="row">
-      <%= f.label :expire_date , 'Ends on' %>
-      <%= f.text_field :expire_date, :format => :us_date, :class => 'txt' %>
+      <%= f.label :end_date %>
+      <%= f.text_field :end_date, :format => :us_date, :class => 'txt' %>
       <div class="caption">
         <span>Date deal expires (end of day)</span>
       </div>
@@ -35,10 +32,10 @@
 
     <div class="text-box text1">
       <div class="title">
-        <h3>Title of Offer (<span id="offer_lead_count">50 character maximum</span>)</h3>
+        <h3>Title of Offer (<span id="offer_title_count">50 character maximum</span>)</h3>
       </div>
       <div class="text text2">
-        <%= f.text_area :lead, :onchange => "$('##{@offer.id}_lead').html($('#offer_lead').val())", :placeholder => "Example: Save 50% on any full-price item" %>
+        <%= f.text_area :title, :onchange => "$('##{@offer.id}_title').html($('#offer_title').val())", :placeholder => "Example: Save 50% on any full-price item" %>
       </div>
     </div><!-- /text-box end -->
     <div class="text-box">
@@ -51,10 +48,10 @@
     </div><!-- /text-box end -->
     <div class="text-box">
       <div class="title">
-        <h3>Fine Print <span id="offer_exclusivity_text_count">(200 character maximum)</span></h3>
+        <h3>Fine Print <span id="offer_fine_print_count">(200 character maximum)</span></h3>
       </div>
       <div class="text text1">
-          <%= f.text_area :exclusivity_text, :placeholder => "Example: Not valid with any other offer. Not valid on already marked-down items" %>
+          <%= f.text_area :fine_print, :placeholder => "Example: Not valid with any other offer. Not valid on already marked-down items." %>
       </div>
     </div><!-- /text-box end -->
     <div class="text-box">
@@ -99,8 +96,8 @@
     </div>
     <div class="row">
       <div class="left">
-        <%= f.label :quantity, 'Redemption limit' %>
-        <%= f.text_field :quantity, :class => 'txt w1' %>
+        <%= f.label :redemption_limit %>
+        <%= f.text_field :redemption_limit, :class => 'txt w1' %>
       </div>
       <div class="right">
         <span>Maximum number of redemptions - blank for unlimited</span>
@@ -109,7 +106,7 @@
     <div class="row check">
       <div class="left">
         <%= f.check_box :allow_print, :class => :chk %>
-        <%= f.label :allow_print, 'Printable offer' %>
+        <%= f.label :allow_print %>
       </div>
       <div class="right">
         <span>Allow redemptions from a computer printout</span>
@@ -118,7 +115,7 @@
     <div class="row check">
       <div class="left">
           <%= f.check_box :allow_mobile, :class => :chk %>
-          <%= f.label :allow_mobile, 'Mobile offer' %>
+          <%= f.label :allow_mobile %>
       </div>
       <div class="right">
         <span>Allow redemptions from a mobile phone screen</span>

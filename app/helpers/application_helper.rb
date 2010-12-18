@@ -20,8 +20,8 @@ module ApplicationHelper
   end
 
   def coupon_body(offer)
-     "<span id='#{offer.id}_lead' class='subttl'>#{offer.lead}</span>
-     <p id='#{offer.id}_diz'>#{offer.description}  Offer expires <span id='#{offer.id}_ed'>#{offer.expire_date.try(:strftime,('%b. %d, %Y'))}</span></p>
+     "<span id='#{offer.id}_title' class='subttl'>#{offer.title}</span>
+     <p id='#{offer.id}_diz'>#{offer.description}  Offer expires <span id='#{offer.id}_ed'>#{offer.end_date.try(:strftime,('%b. %d, %Y'))}</span></p>
      <div class='code'>
        <p id='#{offer.id}_rc'>#{offer.redemption_code}</p>
      </div>"
@@ -34,7 +34,7 @@ module ApplicationHelper
     <div class=""img_box"">
       #{image_tag(offer.coupon.url(:thumb))}
     </div>
-    <span id='#{offer.id}_lead'>#{offer.lead}</span>".html_safe,
+    <span id='#{offer.id}_title'>#{offer.title}</span>".html_safe,
     viewdeal_url(offer.to_param))
   end
 

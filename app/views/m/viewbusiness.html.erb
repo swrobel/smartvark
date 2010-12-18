@@ -15,7 +15,7 @@
         <li data-role="list-divider">Deals available at this business</li>
       <% @business.offers.each do |offer| %>
         <li>
-          <h3><a href="/m/viewdeal/<%= offer.id %>"><%= offer.lead %></a></h3>
+          <h3><a href="/m/viewdeal/<%= offer.id %>"><%= offer.title %></a></h3>
           <p><%= offer.description %></p>
         </li>
       <% end %>

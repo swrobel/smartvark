@@ -8,9 +8,9 @@
 	<div data-role="content" data-theme="b">
 	  <div class="ui-body">
 		  <img src="http://s3.amazonaws.com/smartvark-dev/logos/1/thumb/smartvarklogo.png?1286834065" class="logo" />
-                  <h2><%= @offer.lead %></h2>
+                  <h2><%= @offer.title %></h2>
                   <h3><%= @offer.description %></h3>
-                  <h4>Expires <%= @offer.expire_date.try(:strftime, '%m/%d/%Y') %></h3>
+                  <h4>Expires <%= @offer.end_date.try(:strftime, '%m/%d/%Y') %></h3>
                   <%= render :partial => 'business', :locals => { :business => @offer.businesses.first } %>
 	    <div data-role="controlgroup" data-type="horizontal" >
 			  <%= link_to("+",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.id, :liked => true }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>
@@ -19,7 +19,7 @@
 			  <% end %>
 			  <%= link_to("-",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.id, :liked => false }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsdown") %>
 		  </div>
-                  <p><%= @offer.exclusivity_text %></p>
+                  <p><%= @offer.fine_print %></p>
                   <%= link_to "Biz info and other deals", mobile_viewbusiness_path(@offer.businesses.first.id), {"data-role" => "button"} %>
 		  <div data-role="collapsible" data-state="collapsed">
 		    <h3>Shout about it</h3>

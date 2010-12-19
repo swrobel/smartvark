@@ -21,7 +21,7 @@ class Business < ActiveRecord::Base
   validates :city, :presence => true
   validates :state, :presence => true
   validates :zipcode, :presence => true
-  validates :phone, :presence => true, :phone_format => true
+  validates :phone, :phone_format => true
 
   def short_or_name
     short_name.blank? ? name : short_name

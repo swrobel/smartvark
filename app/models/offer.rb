@@ -34,6 +34,7 @@ class Offer < ActiveRecord::Base
   validates :start_date, :presence => true
   validates :end_date, :presence => true
   validates :businesses, :presence => {:message => "You must select at least one location for this offer"}
+  validates :redemption_limit, :numericality => {:allow_blank => true}
   validates :allow_print, :presence => {:unless => "allow_mobile", :message => ", allow mobile or both must be selected"}
 
   def set_to_archived

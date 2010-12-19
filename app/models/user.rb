@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
     :phone => "Mobile Phone",
     :zipcode => "Zip"
   }
+  
+  validates :phone, :phone_format => {:allow_blank => true}
 
   def name_or_email
     name.blank? ? email : name.split.first

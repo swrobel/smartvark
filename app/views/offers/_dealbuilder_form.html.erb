@@ -40,7 +40,7 @@
     </div><!-- /text-box end -->
     <div class="text-box">
       <div class="title">
-        <h3>Details of Offer <span id="offer_description_count">(200 character maximum)</span></h3>
+        <h3>Details of Offer (<span id="offer_description_count">200 character maximum</span>)</h3>
       </div>
       <div class="text text1">
           <%= f.text_area :description, :onchange => "$('##{@offer.id}_diz').html($('#offer_description').val())", :placeholder => "Example: You'll find a wide variety of fashions in stock to get you ready for the season!" %>
@@ -48,7 +48,7 @@
     </div><!-- /text-box end -->
     <div class="text-box">
       <div class="title">
-        <h3>Fine Print <span id="offer_fine_print_count">(200 character maximum)</span></h3>
+        <h3>Fine Print (<span id="offer_fine_print_count">200 character maximum</span>)</h3>
       </div>
       <div class="text text1">
           <%= f.text_area :fine_print, :placeholder => "Example: Not valid with any other offer. Not valid on already marked-down items." %>

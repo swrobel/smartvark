@@ -21,7 +21,7 @@
 		  </div>
                   <p><%= @offer.fine_print %></p>
                   <%= link_to "Biz info and other deals", mobile_viewbusiness_path(@offer.businesses.first.id), {"data-role" => "button"} %>
-		  <div data-role="collapsible" data-state="collapsed">
+		  <div data-role="collapsible" data-collapsed="true">
 		    <h3>Shout about it</h3>
 		    <ul data-role="listview" data-inset="true" data-theme="d">
 			    <li>

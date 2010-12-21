@@ -9,7 +9,7 @@ gem "moonshado-sms"
 gem "aws-s3"
 gem "jquery-rails"
 gem "pg"
-gem 'active_device', :git => 'git://github.com/shenoudab/active_device.git'
+gem 'active_device'
 gem "thin", :group => :development
 gem "delocalize"
 gem "home_run"

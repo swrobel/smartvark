@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   include Geokit::Geocoders
   RADIUS=50
   
-  include ActiveDevice::Helper
   skip_before_filter :set_mobile_format # instead of requiring mobile pages to be .mobile.erb use .html.erb
   before_filter :mobile_redirect # check for mobile browser and redirect to mobile page
 
@@ -38,11 +37,13 @@ class ApplicationController < ActionController::Base
 
   def mobile_redirect
     # only redirect to mobile site if mobile browser detected and not already on mobile site
-    if is_mobile_browser? && !(request.fullpath+"/").include?("/m/")
+    if is_mobile_browser?
       logger.info "Mobile, brand: " + device_brand.to_s + ", model: " + device_model.to_s + " at " + request.fullpath
-      m_path = "/m" + request.fullpath
-      Rails.application.routes.recognize_path(m_path, :method => :get)
-      redirect_to m_path
+      if !(request.fullpath+"/").include?("/m/")
+        m_path = "/m" + request.fullpath
+        Rails.application.routes.recognize_path(m_path, :method => :get)
+        redirect_to m_path
+      end
     end
   rescue Exception => e
     logger.info e.message

@@ -18,8 +18,6 @@ class CreateBusinesses < ActiveRecord::Migration
       t.string :yelp_mobile_url
       t.string :yelp_rating_img_url
       t.integer :yelp_review_count, :default => 0
-      t.float :lat
-      t.float :lng
 
       t.timestamps
     end

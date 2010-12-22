@@ -2,9 +2,9 @@ class CreateOffers < ActiveRecord::Migration
   def self.up
     create_table :offers do |t|
       t.string :title, :limit => 100
-      t.string :description, :limit => 1000
-      t.string :fine_print, :limit => 100
-      t.string :redemption_code, :limit => 50
+      t.string :description, :limit => 500
+      t.string :fine_print, :limit => 500
+      t.string :redemption_code, :limit => 25
       t.integer :redemption_limit
       t.date :start_date
       t.date :end_date

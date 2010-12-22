@@ -1,13 +1,11 @@
 class Business < ActiveRecord::Base
-  include Geokit::Geocoders
-  acts_as_mappable
+  acts_as_geocodable :address => {:street => :address, :locality => :city, :region => :state, :postal_code => :zipcode}, :normalize_address => true
   
   belongs_to :user
   has_and_belongs_to_many :offers
 
   nilify_blanks :before => :validation
   before_validation :get_yelp_data
-  before_save :get_lat_lng
   before_save :format_phone
   
   HUMANIZED_ATTRIBUTES = {
@@ -70,14 +68,14 @@ MANIZED_ATTRIBUTES = {
   end
 
 private
-  def get_lat_lng
-    unless lat && lng
-      loc = GoogleGeocoder.geocode(address_as_string)
-      if loc.success
-        self.lat, self.lng = loc.lat, loc.lng
-      end
-    end
-  end
+  #def get_lat_lng
+  #  unless lat && lng
+  #    loc = GoogleGeocoder.geocode(address_as_string)
+  #    if loc.success
+  #      self.lat, self.lng = loc.lat, loc.lng
+  #    end
+  #  end
+  #end
 
   def get_yelp_data
     return if yelp_url.nil?

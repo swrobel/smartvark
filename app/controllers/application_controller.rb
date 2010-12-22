@@ -2,9 +2,6 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  include Geokit::Geocoders
-  RADIUS=50
-  
   skip_before_filter :set_mobile_format # instead of requiring mobile pages to be .mobile.erb use .html.erb
   before_filter :mobile_redirect # check for mobile browser and redirect to mobile page
 
@@ -15,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   after_filter :log_user
 
-  protected
+protected
   
   def set_location
     cookies[:geo_location] = { :value => params[:location], :expires => 1.day.from_now }
@@ -26,14 +23,10 @@ class ApplicationController < ActionController::Base
   end
 
   def close_business_ids
-    if Rails.env.production?
-      business_ids = Business.all(:select => 'id', :origin => location, :within => RADIUS)
-    else
-      @close_business_ids ||= Business.all(:select => 'id')
-    end
+    business_ids = Business.all(:select => 'id', :origin => location, :within => RADIUS)
   end
 
-  private
+private
 
   def mobile_redirect
     # only redirect to mobile site if mobile browser detected and not already on mobile site

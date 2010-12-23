@@ -21,7 +21,8 @@ module ApplicationHelper
 
   def coupon_body(offer)
      "<span id='#{offer.id}_title' class='subttl'>#{offer.title}</span>
-     <p id='#{offer.id}_diz'>#{offer.description}  Offer expires <span id='#{offer.id}_ed'>#{offer.end_date.try(:strftime,('%b. %d, %Y'))}</span></p>
+     <p id='#{offer.id}_fine_print'>#{offer.fine_print}</p>
+     <p>Offer expires <span id='#{offer.id}_end_date'>#{offer.end_date.try(:strftime,('%b %d, %Y'))}</span></p>
      <div class='code'>
        <p id='#{offer.id}_rc'>#{offer.redemption_code}</p>
      </div>"
@@ -39,18 +40,18 @@ module ApplicationHelper
   end
 
   def coupon(offer)
-    logo = current_user.logo.exists? ? image_tag(current_user.logo.url(:thumb)) : "Your Logo"
+    logo = image_tag(current_user.logo.url(:thumb)) if current_user.logo.exists?
     "
     <div class='coupon'>
       <h4 id='#{offer.id}_type' class='c_#{offer.offer_type || "Coupon"}'>#{offer.offer_type || 'coupon'}</h4>
         <div class='holder'>
           <div class='center'>
             <div class='add-logo'>
-            <a>#{logo}</a>
+              #{logo}
             </div>
           </div>
        </div>
-       #{coupon_body offer}
+       #{coupon_body(offer)}
      </div>
     "
   end

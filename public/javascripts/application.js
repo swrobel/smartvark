@@ -84,9 +84,20 @@ $(function(){
 	}
 	
 	if ($().textareaCount) {
-		$("#offer_title").textareaCount({maxCharacterSize: 50}, function(data) {$("#offer_title_count").html(data.left+" characters remaining");});
-		$("#offer_description").textareaCount({maxCharacterSize: 200}, function(data) {$("#offer_description_count").html(data.left+" characters remaining");});
-		$("#offer_fine_print").textareaCount({maxCharacterSize: 200}, function(data) {$("#offer_fine_print_count").html(data.left+" characters remaining");});
+		function createCount(field, max) {
+			var count_text = " characters remaining";
+			var count_field = field + "_count";
+			$(count_field).html(max + count_text);
+			$(field).textareaCount({maxCharacterSize: max}, function(data) {
+				if ($(field).val().substr(0, 8) != "Example:") {
+					$(count_field).html(data.left + count_text);
+				}
+			});
+		}
+		
+		createCount("#offer_title", 40);
+		createCount("#offer_description", 200);
+		createCount("#offer_fine_print", 200);
 	}
 	
 	if ($().fadeIn && $.fadeOut) {

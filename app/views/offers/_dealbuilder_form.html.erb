@@ -4,7 +4,7 @@
     <%= f.error_messages %>
     <div class="row">
       <%= f.label :offer_type_id, :class => :width1 %>
-      <%= f.select :offer_type_id, options_from_collection_for_select(OfferType.all, :id, :name, @offer.offer_type_id), { :include_blank => true }, {:class => :sel, :onchange => "$('##{@offer.id}_type').html($('#offer_offer_type option:selected').text());$('##{@offer.id}_type').removeClass();$('##{@offer.id}_type').addClass('c_'+$('#offer_offer_type option:selected').text())"} %>
+      <%= f.select :offer_type_id, options_from_collection_for_select(OfferType.all, :id, :name, @offer.offer_type_id), { :include_blank => true }, {:class => :sel, :onchange => "$('##{@offer.id}_type').html($('#offer_offer_type_id option:selected').text());$('##{@offer.id}_type').removeClass();$('##{@offer.id}_type').addClass('c_'+$('#offer_offer_type_id option:selected').text());"} %>
       <div class="caption two-lines">
         <span>Deals: sales, happy hours specials and other non-coupons Events: infrequent special promotions (ex: loyal shopper party)</span>
       </div>
@@ -16,14 +16,14 @@
     </div>
     <div class="row">
       <%= f.label :start_date %>
-      <%= f.text_field :start_date, :format => :us_date, :class => 'txt' %>
+      <%= f.text_field :start_date, :format => :us_date, :class => 'txt', :readOnly => true %>
       <div class="caption">
         <span>Date deal becomes active</span>
       </div>
     </div>
     <div class="row">
       <%= f.label :end_date %>
-      <%= f.text_field :end_date, :format => :us_date, :class => 'txt' %>
+      <%= f.text_field :end_date, :format => :us_date, :class => 'txt', :readOnly => true, :onchange => "$('##{@offer.id}_end_date').html($('#offer_end_date').val());" %>
       <div class="caption">
         <span>Date deal expires (end of day)</span>
       </div>
@@ -32,26 +32,26 @@
 
     <div class="text-box text1">
       <div class="title">
-        <h3>Title of Offer (<span id="offer_title_count">50 character maximum</span>)</h3>
+        <h3>Title of Offer (<span id="offer_title_count"></span>)</h3>
       </div>
       <div class="text text2">
-        <%= f.text_area :title, :onchange => "$('##{@offer.id}_title').html($('#offer_title').val())", :placeholder => "Example: Save 50% on any full-price item" %>
+        <%= f.text_area :title, :onchange => "$('##{@offer.id}_title').html($('#offer_title').val());", :placeholder => "Example: Save 50% on any full-price item" %>
       </div>
     </div><!-- /text-box end -->
     <div class="text-box">
       <div class="title">
-        <h3>Details of Offer (<span id="offer_description_count">200 character maximum</span>)</h3>
+        <h3>Details of Offer (<span id="offer_description_count"></span>)</h3>
       </div>
       <div class="text text1">
-          <%= f.text_area :description, :onchange => "$('##{@offer.id}_diz').html($('#offer_description').val())", :placeholder => "Example: You'll find a wide variety of fashions in stock to get you ready for the season!" %>
+          <%= f.text_area :description, :placeholder => "Example: You'll find a wide variety of fashions in stock to get you ready for the season!" %>
       </div>
     </div><!-- /text-box end -->
     <div class="text-box">
       <div class="title">
-        <h3>Fine Print (<span id="offer_fine_print_count">200 character maximum</span>)</h3>
+        <h3>Fine Print (<span id="offer_fine_print_count"></span>)</h3>
       </div>
       <div class="text text1">
-          <%= f.text_area :fine_print, :placeholder => "Example: Not valid with any other offer. Not valid on already marked-down items." %>
+          <%= f.text_area :fine_print, :placeholder => "Example: Not valid with any other offer. Not valid on already marked-down items.", :onchange => "$('##{@offer.id}_fine_print').html($('#offer_fine_print').val())" %>
       </div>
     </div><!-- /text-box end -->
     <div class="text-box">
@@ -88,7 +88,7 @@
     <div class="row">
       <div class="left">
         <%= f.label :redemption_code %>
-        <%= f.text_field :redemption_code, :class => :txt, :onchange => "$('##{@offer.id}_rc').html($('#offer_redemption_code').val())", :placeholder => "Ex: HALFOFFTUES" %>
+        <%= f.text_field :redemption_code, :class => :txt, :maxlength => 15, :onchange => "$('##{@offer.id}_rc').html($('#offer_redemption_code').val());", :placeholder => "Ex: HALFOFFTUES" %>
       </div>
       <div class="right">
         <span>Code for tracking this deal in your system</span>
@@ -97,7 +97,7 @@
     <div class="row">
       <div class="left">
         <%= f.label :redemption_limit %>
-        <%= f.text_field :redemption_limit, :class => 'txt w1' %>
+        <%= f.text_field :redemption_limit, :class => 'txt w1', :maxlength => 7 %>
       </div>
       <div class="right">
         <span>Maximum number of redemptions - blank for unlimited</span>

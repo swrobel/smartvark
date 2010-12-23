@@ -1540,7 +1540,7 @@ a.facebook-signin {
 .text-box .text2 {
 	color:#000000;
 	font-size:14px;
-	height:47px;
+	height:25px;
 	line-height:18px;
 	overflow:hidden;
 	padding:0 10px;
@@ -1565,7 +1565,7 @@ a.facebook-signin {
    }
 .text-box .text2 textarea{
 	border:medium none;
-	height:44px;
+	height:23px;
 	width:563px;
    }
 .text-box .text p{margin:0;}
@@ -1689,8 +1689,8 @@ a.facebook-signin {
 	width:182px;
 	background:#fff;
 	padding:0 8px 14px 11px;
-	font:11px/12px Arial, Helvetica, sans-serif;
-	color:#999;
+	font:14px Arial, Helvetica, sans-serif;
+	color:#444;
 	margin:26px 0 0 13px;
 }
 .coupon h4{
@@ -1735,7 +1735,7 @@ a.facebook-signin {
 	color:#000;
 	text-align:center;
 	display:block;
-	padding:0 0 3px;
+	padding:0 0 8px 0;
 }
 .coupon p{margin:0 0 11px;}
 .coupon .code{

@@ -19,11 +19,11 @@ protected
   end
 
   def geo_location
-    (cookies[:geo_location] ||= 'Los Angeles, CA').to_str
+    (cookies[:geo_location] ||= (remote_location || 'Los Angeles, CA')).to_str
   end
 
   def close_business_ids
-    business_ids = Business.all(:select => 'id', :origin => location, :within => RADIUS)
+    business_ids = Business.select(:id).origin(geo_location, :within => 25).order(:distance).limit(10)
   end
 
 private

@@ -30,11 +30,11 @@ class Business < ActiveRecord::Base
   end
 
   def city_state_zip
-    [city, state].join(',') << ' ' << zipcode
+    [city, state].join(', ') << ' ' << zipcode
   end
 
   def address_as_string
-    [ address, city_state_zip].join(',')
+    [ address, city_state_zip].join(', ')
   end
 
   def facebook_link
@@ -45,11 +45,7 @@ class Business < ActiveRecord::Base
       'http://facebook.com/' + facebook_url
     end
   end
-MANIZED_ATTRIBUTES = {
-    :allow_mobile => "",
-    :businesses => "",
-    :title => "Title"
-  }
+  
   def twitter_link
     return '' if twitter_url.blank?
     if twitter_url.include?('twitter.com/')
@@ -68,14 +64,6 @@ MANIZED_ATTRIBUTES = {
   end
 
 private
-  #def get_lat_lng
-  #  unless lat && lng
-  #    loc = GoogleGeocoder.geocode(address_as_string)
-  #    if loc.success
-  #      self.lat, self.lng = loc.lat, loc.lng
-  #    end
-  #  end
-  #end
 
   def get_yelp_data
     return if yelp_url.nil?
@@ -96,11 +84,7 @@ private
     self.address_2 = location["address"][1] unless address_2
     self.city = location["city"] unless city
     self.state = location["state_code"] unless state
-    self.zipcode = location["postal_code"] unless zipcode
-    coordinate = location["coordinate"]
-    self.lat = coordinate["latitude"] unless lng
-    self.lng = coordinate["longitude"] unless lng
-    
+    self.zipcode = location["postal_code"] unless zipcode    
   rescue Exception => e
     logger.info "Yelp failure: #{e.message}"
   end

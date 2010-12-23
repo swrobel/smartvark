@@ -1,7 +1,7 @@
 module WelcomeHelper
 
   def categories
-    @categories ||=Category.find_all_by_parent_id(nil)
+    @categories ||= Category.all_parents
   end
 
   def categories_count

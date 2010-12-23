@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   ROLES = %w[admin business user]
   
+  acts_as_geocodable :address => {:street => :address, :locality => :city, :region => :state, :postal_code => :zipcode}, :normalize_address => true
+  
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :category_id
@@ -22,13 +24,13 @@ class User < ActiveRecord::Base
     :path => "/logos/:id/:style/:filename"
     
   nilify_blanks
-  
-  HUMANIZED_ATTRIBUTES = {
-    :phone => "Mobile Phone",
-    :zipcode => "Zip"
-  }
+  before_save :format_phone
   
   validates :phone, :phone_format => {:allow_blank => true}
+  
+  def formatted_phone
+    Phone.parse(phone).format(:us) unless phone.blank?
+  end
 
   def name_or_email
     name.blank? ? email : name.split.first
@@ -69,4 +71,9 @@ class User < ActiveRecord::Base
     update_attributes(params) 
   end
 
+private
+
+  def format_phone
+    self.phone = Phone.parse(phone).to_s unless phone.blank?
+  end
 end

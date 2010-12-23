@@ -41,7 +41,7 @@ class BusinessesController < ApplicationController
   def edit
     @businesses = current_user.businesses
     @business = current_user.businesses.find(params[:id])
-    @business.phone = Phone.parse(@business.phone).format(:us)
+    @business.phone = @business.formatted_phone
   end
 
   # POST /businesses

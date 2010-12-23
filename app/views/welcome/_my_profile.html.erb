@@ -1,4 +1,9 @@
 <div class="profile-form">
+	<% if flash[:error] %>
+	<div id="errorExplanation">
+		<%= raw flash[:error] %>
+	</div>
+	<% end %>
   <fieldset>
     <div class="row">
       <%= f.label :name %>
@@ -16,7 +21,7 @@
       <%= f.label :city %>
       <div class="right">
         <%= f.text_field :city, :class => 'txt' %>
-        <%= select :user, :state, States::STATES, :class => 'sel', :selected => 'CA' %>
+        <%= f.select :state, States::STATES, :class => 'sel', :selected => 'CA' %>
       </div>
     </div>
     <div class="row short">

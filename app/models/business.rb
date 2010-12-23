@@ -21,6 +21,10 @@ class Business < ActiveRecord::Base
   validates :zipcode, :presence => true
   validates :phone, :phone_format => true
 
+  def formatted_phone
+    Phone.parse(phone).format(:us) unless phone.blank?
+  end
+
   def short_or_name
     short_name.blank? ? name : short_name
   end
@@ -66,7 +70,7 @@ class Business < ActiveRecord::Base
 private
 
   def get_yelp_data
-    return if yelp_url.nil?
+    return if yelp_url.blank?
     consumer = OAuth::Consumer.new(YELP_CONSUMER_KEY, YELP_CONSUMER_SECRET, {:site => "http://api.yelp.com"})
     access_token = OAuth::AccessToken.new(consumer, YELP_TOKEN, YELP_TOKEN_SECRET)
     
@@ -77,19 +81,19 @@ private
     self.yelp_mobile_url = result["mobile_url"]
     self.yelp_rating_img_url = result["rating_img_url"]
     self.yelp_review_count = result["review_count"]
-    self.name = result["name"] unless name
-    self.phone = result["phone"] unless phone
+    self.name = result["name"] if name.blank?
+    self.phone = result["phone"] if phone.blank?
     location = result["location"]
-    self.address = location["address"][0] unless address
-    self.address_2 = location["address"][1] unless address_2
-    self.city = location["city"] unless city
-    self.state = location["state_code"] unless state
-    self.zipcode = location["postal_code"] unless zipcode    
+    self.address = location["address"][0] if address.blank?
+    self.address_2 = location["address"][1] if address_2.blank?
+    self.city = location["city"] if city.blank?
+    self.state = location["state_code"] if state.blank?
+    self.zipcode = location["postal_code"] if zipcode.blank?
   rescue Exception => e
     logger.info "Yelp failure: #{e.message}"
   end
   
   def format_phone
-    self.phone = Phone.parse(phone).to_s
+    self.phone = Phone.parse(phone).to_s unless phone.blank?
   end
 end

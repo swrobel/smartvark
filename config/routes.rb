@@ -19,15 +19,15 @@ Smartvark::Application.routes.draw do
   match 'myprofile' => 'welcome#myprofile', :as => :myprofile
   match 'printdeal/:id' => 'welcome#printdeal', :as => :printdeal, :constraints => { :id => /.*/ }
   match 'search/:category_id' => 'welcome#search', :as => :search, :via => :get
-  match 'viewbusiness/:id' => 'welcome#viewbusiness', :as => :viewbusiness, :constraints => { :id => /.*/ }
-  match 'viewdeal/:id' => 'welcome#viewdeal', :as => :viewdeal, :constraints => { :id => /.*/ }
+  match 'business/:id' => 'welcome#viewbusiness', :as => :viewbusiness, :constraints => { :id => /.*/ }
+  match 'deal/:id' => 'welcome#viewdeal', :as => :viewdeal, :constraints => { :id => /.*/ }
   match 'shout/:id' => 'welcome#shout', :as => :shout, :via => :post
   match 'set_opinion' => 'welcome#set_opinion', :as => :set_opinion, :via => :post
   match 'undo_last_action' => 'welcome#undo_last_action', :as => :undo_last_action, :via => :post
   match '/m' => 'm#deals', :as => :mobile_deals
   match '/m/filter/:category_id' => 'm#filter', :as => :mobile_filter, :via => :get
-  match '/m/viewbusiness/:id' => 'm#viewbusiness', :as => :mobile_viewbusiness, :constraints => { :id => /.*/ }
-  match '/m/viewdeal/:id' => 'm#viewdeal', :as => :mobile_viewdeal, :constraints => { :id => /.*/ }
+  match '/m/business/:id' => 'm#viewbusiness', :as => :mobile_viewbusiness, :constraints => { :id => /.*/ }
+  match '/m/deal/:id' => 'm#viewdeal', :as => :mobile_viewdeal, :constraints => { :id => /.*/ }
   match '/m/redeem/:id' => 'm#redeem', :as => :mobile_redeem, :constraints => { :id => /.*/ }
   match '/m/search_form' => 'm#search_form', :as => :mobile_search_form
   match '/m/search/:category_id' => 'm#search', :as => :mobile_search, :via => :get

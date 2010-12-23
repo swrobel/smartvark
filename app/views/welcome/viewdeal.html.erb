@@ -10,7 +10,7 @@
 									<div class="l-side">
 										<!-- ttl-holder -->
 										<div class="ttl-holder">
-                                                                                  <h2><%= @offer.title %></h2>
+                        <h2><%= @offer.title %></h2>
 										</div>
 										<!-- share -->
 										<div class="share">
@@ -62,7 +62,6 @@
 												<h3>Expires: <%= std_date(@offer.end_date) %></h3>
 												<p><%= @offer.description %></p>
 												<p><%= @offer.fine_print %></p>
-												<p><%= link_to 'View more deals from ' + @offer.businesses.first.name, viewbusiness_url(@offer.businesses.first.to_param) %></p>
 										</div>
 									</div>
                                                                         <!-- r-side -->

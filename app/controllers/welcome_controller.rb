@@ -65,15 +65,20 @@ class WelcomeController < ApplicationController
     raise CanCan::AccessDenied unless can? :read, :mydeals
     session.delete(:liked)
     category_id = params[:category_id].to_i
-    if (category_id <= 1)
-      @likes = current_user.likes_offers[0,7]
-      @offers = Offer.active.all(:conditions => { :business_id => close_business_ids })
-      # ['id not in (?)', current_user.opinions.collect {|x| x.offer_id}]
+    if geo_location
+      @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:users]).joins(:businesses).where("businesses.id" => close_business_ids).active.order('offers.created_at DESC')
     else
-      @likes = current_user.likes_offers(category_id)[0,7]
-      @offers = Offer.active.all(:conditions => { :category_id => category_id,
-                            :business_id => close_business_ids  })
+      @offers = Offer.active.includes([:businesses, :users])
     end
+    @likes = current_user.likes_offers[0,7]
+    #if (category_id <= 1)
+    #  @likes = current_user.likes_offers[0,7]
+    #  @offers = Offer.active.where(:business_id => close_business_ids)
+    #else
+    #  @likes = current_user.likes_offers(category_id)[0,7]
+    #  @offers = Offer.active.all(:conditions => { :category_id => category_id,
+    #                        :business_id => close_business_ids  })
+    #end
   end
 
   def undo_last_action

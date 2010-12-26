@@ -1,11 +1,8 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
   skip_before_filter :set_mobile_format # instead of requiring mobile pages to be .mobile.erb use .html.erb
   before_filter :mobile_redirect # check for mobile browser and redirect to mobile page
 
-  helper :all # include all helpers, all the time
+  #helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   helper_method :logged_in?, :geo_location, :home_path

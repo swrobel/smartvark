@@ -15,7 +15,7 @@
       <i>You must be logged in to shout</i>
     <% elsif !@offer.commenters.include?(current_user) %>
       <div class="row">
-        <%= form_tag shout_url(@offer.id) do %>
+        <%= form_tag shout_path(@offer.id) do %>
           <%= text_area_tag 'comment[text]', '',:style => "width:100%", :id => 'shoutbox', :size => '40x3' %>
           <%= submit_tag 'Shout!', :id => :shout %>
         <% end %>

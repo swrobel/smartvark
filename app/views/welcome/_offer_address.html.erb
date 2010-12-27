@@ -6,6 +6,6 @@
     <span><%= business.address_2 %></span>
   <% end %>
   <span><%= business.city %>, <%= business.state %> <%= business.zipcode%></span>
-  <p><%= link_to 'Map It', "http://maps.google.com?q=#{business.address_as_string}", :target => '_new' %> <%= link_to 'More info', viewbusiness_url(business) %></p>
+  <p><%= link_to 'Map It', "http://maps.google.com?q=#{business.address_as_string}", :target => '_new' %> <%= link_to 'More info', viewbusiness_path(business) %></p>
 <% end %>
 </div>

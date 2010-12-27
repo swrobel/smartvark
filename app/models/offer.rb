@@ -1,4 +1,6 @@
 class Offer < ActiveRecord::Base
+  has_friendly_id :title, :use_slug => true
+  
   scope :active, where(:archived => false).where(:draft => false).order('created_at DESC')
   scope :draft, where(:archived => false).where(:draft => true).order('created_at DESC')
   scope :archived, where(:archived => true).where(:draft => false).order('created_at DESC')
@@ -47,10 +49,6 @@ class Offer < ActiveRecord::Base
   end
 
   LIMIT = 5
-
-  def to_param
-    "#{id}-#{URI.escape(CGI.escape(title),'.')}"
-  end
 
   def self.search(options = {})
     # TODO Refactor with merge_conditions

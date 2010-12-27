@@ -1,4 +1,5 @@
 class Business < ActiveRecord::Base
+  has_friendly_id :name, :use_slug => true
   acts_as_geocodable :address => {:street => :address, :locality => :city, :region => :state, :postal_code => :zipcode}, :normalize_address => true
   
   belongs_to :user
@@ -27,10 +28,6 @@ class Business < ActiveRecord::Base
 
   def short_or_name
     short_name.blank? ? name : short_name
-  end
-
-  def to_param
-    "#{id}-#{URI.escape(CGI.escape(name),'.')}"
   end
 
   def city_state_zip

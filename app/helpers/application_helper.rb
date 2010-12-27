@@ -36,7 +36,7 @@ module ApplicationHelper
       #{image_tag(offer.coupon.url(:thumb))}
     </div>
     <span id='#{offer.id}_title'>#{offer.title}</span>".html_safe,
-    viewdeal_url(offer.to_param))
+    viewdeal_path(offer))
   end
 
   def coupon(offer)
@@ -58,7 +58,7 @@ module ApplicationHelper
 
   def use_it_now_link offer
     if logged_in?
-      link_to("Use It Now", viewdeal_url(offer.to_param), {:class => "link"})
+      link_to("Use It Now", viewdeal_path(offer), {:class => "link"})
     else
       link_to_function("Use It Now", "$('#signup-popup').modal();", {:class => "link"})
     end

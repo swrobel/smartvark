@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101222220737) do
+ActiveRecord::Schema.define(:version => 20101226174210) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -30,12 +30,12 @@ ActiveRecord::Schema.define(:version => 20101222220737) do
     t.string   "yelp_mobile_url"
     t.string   "yelp_rating_img_url"
     t.integer  "yelp_review_count",                  :default => 0
-    t.float    "lat"
-    t.float    "lng"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cached_slug"
   end
 
+  add_index "businesses", ["cached_slug"], :name => "index_businesses_on_cached_slug", :unique => true
   add_index "businesses", ["user_id"], :name => "index_businesses_on_user_id"
 
   create_table "businesses_offers", :id => false, :force => true do |t|
@@ -134,9 +134,11 @@ ActiveRecord::Schema.define(:version => 20101222220737) do
     t.boolean  "draft"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cached_slug"
   end
 
   add_index "offers", ["archived", "draft", "start_date", "end_date", "category_id", "offer_type_id", "allow_mobile"], :name => "by_attributes"
+  add_index "offers", ["cached_slug"], :name => "index_offers_on_cached_slug", :unique => true
 
   create_table "opinions", :force => true do |t|
     t.boolean  "liked",      :null => false
@@ -161,6 +163,18 @@ ActiveRecord::Schema.define(:version => 20101222220737) do
 
   add_index "redemptions", ["offer_id"], :name => "index_redemptions_on_offer_id"
   add_index "redemptions", ["user_id", "offer_id"], :name => "index_redemptions_on_user_id_and_offer_id", :unique => true
+
+  create_table "slugs", :force => true do |t|
+    t.string   "name"
+    t.integer  "sluggable_id"
+    t.integer  "sequence",                     :default => 1, :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
+  add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "user_audits", :force => true do |t|
     t.integer  "user_id"

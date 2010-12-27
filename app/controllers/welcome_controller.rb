@@ -16,7 +16,7 @@ class WelcomeController < ApplicationController
 
   def printdeal
     raise CanCan::AccessDenied unless can? :read, :viewdeal
-    @offer = Offer.find params[:id]
+    @offer = Offer.find(params[:id], :include => :businesses)
     render :layout => false
   end
 

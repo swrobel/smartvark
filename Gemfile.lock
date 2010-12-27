@@ -39,6 +39,7 @@ GEM
       builder
       mime-types
       xml-simple
+    babosa (0.2.0)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
     cancan (1.4.1)
@@ -56,6 +57,8 @@ GEM
       addressable (~> 2.2.2)
       multipart-post (~> 1.0.1)
       rack (>= 1.1.0, < 2)
+    friendly_id (3.1.8)
+      babosa (~> 0.2.0)
     graticule (2.0.0)
       activesupport
       happymapper (>= 0.3.0)
@@ -148,6 +151,7 @@ DEPENDENCIES
   delocalize
   devise (= 1.2.rc)
   dynamic_form
+  friendly_id
   home_run
   jquery-rails
   moonshado-sms

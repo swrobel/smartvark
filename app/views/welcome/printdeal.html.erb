@@ -6,16 +6,23 @@
 </head>
 <body>
   <h1><%= @offer.title %></h1>
-  <%= image_tag @offer.coupon.url, :alt => @offer.businesses.first.user.name + " logo" %>
-  <h2><%= @offer.businesses.first.name %></h2>
-  <h3>
-    <%=
-    [ @offer.businesses.first.address, @offer.businesses.first.address_2, @offer.businesses.first.city_state_zip, @offer.businesses.first.phone ].delete_if {|x| x.empty?}.join('<br/>').html_safe
-    %>
-  </h3>
+  <h2><%= image_tag @offer.coupon.url, :alt => @offer.businesses.first.user.name %></h2>
+	<h3>Valid at these locations:</h3>
+	<% @offer.businesses.each do |business| %>
+		<p><strong><%= business.name %></strong><br/>
+		<%= business.address %><br/>
+		<% unless business.address_2.blank? %>
+		<%= business.address_2 %><br/>
+		<% end %>
+		<%= business.city %>, <%= business.state %> <%= business.zipcode%></p>
+	<% end %>
   <p><%= @offer.description %></p>
-  <p>Last day to redeem: <%= @offer.end_date.try(:strftime, '%B %d, %Y') %></p>
-  <p>Fine print: <%= @offer.fine_print %></p>
-  <h2>Cashier use code: <%= @offer.redemption_code %></h2>
+  <p>Not valid after: <%= @offer.end_date.try(:strftime, '%B %d, %Y') %></p>
+	<% unless @offer.fine_print.blank? %>
+		<p>Fine print: <%= @offer.fine_print %></p>
+	<% end %>
+	<% unless @offer.redemption_code.blank? %>
+		<h2>Cashier use code: <%= @offer.redemption_code %></h2>
+	<% end %>
 </body>
 </html>

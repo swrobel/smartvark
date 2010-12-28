@@ -11,6 +11,16 @@
 .ui-icon-thumbsdown{background-image: url(/images/icon-thumbsdown-white.png);}
 .ui-icon-thumbsup{background-image: url(/images/icon-thumbsup-white.png);}
 .ui-icon-search-white{background-image: url(/images/icon-search-white.png);}
+a.facebook-signin {
+  background: url(/images/signin_facebook.png) no-repeat;
+  width:150px;
+  height:22px;
+  text-indent:-9999px;
+  line-height:0;
+  border:0;
+  float: left;
+  margin-left:40px;
+}
 /* coupon */
 .coupon{
 	overflow:hidden;

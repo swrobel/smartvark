@@ -1,7 +1,11 @@
   <div data-role="header" data-theme="b">
 	  <a href="/m/mypicks" data-icon="star">My Picks</a>
 		<h1>Artie's Picks</h1>
-		<%= render :partial => "search_button" %>
+		<% if current_user %>
+      <%= render :partial => "search_button" %>
+    <% else %>
+      <%= link_to 'Sign in', signin_path, "data-icon" => "check", "data-transition" => "pop", :class => "ui-btn-right" %>
+    <% end %>
 	</div><!-- /header -->
 
 	<div data-role="content">

@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
   before_filter :set_current_page
 
   def set_current_page
-    session[:user_return_to] = request.url
+    session[:user_return_to] = request.fullpath
   end
   
   def dealdashboard

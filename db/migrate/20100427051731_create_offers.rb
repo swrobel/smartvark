@@ -12,8 +12,8 @@ class CreateOffers < ActiveRecord::Migration
       t.integer :category_id
       t.boolean :allow_print
       t.boolean :allow_mobile
-      t.boolean :archived
-      t.boolean :draft
+      t.boolean :archived, :default => false
+      t.boolean :draft, :default => false
 
       t.timestamps
     end

@@ -253,8 +253,15 @@ td, th{padding:0;}
 }
 .search .button{
 	float:left;
-	display:inline;
 	margin:0 0 0 11px;
+	width:74px;
+	height:28px;
+	display:block;
+	text-indent:-9999px;
+	overflow:hidden;
+	border:0;
+	cursor:pointer;
+	background:url(../images/btn-search.gif) no-repeat;
 }
 .nav{
 	width:100%;

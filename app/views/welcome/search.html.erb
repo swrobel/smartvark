@@ -15,7 +15,7 @@
 										<h2>Search Results</h2>
 										<!-- search-results -->
 										<div class="search-results">
-											<strong class="title">Results for &quot;<%= params[:search_terms] %>&quot; near <span><%= params[:location] %></span></strong>
+											<strong class="title">Results for &quot;<span><%= params[:search_terms] %></span>&quot; near <span><%= params[:location] %></span></strong>
 											<% if @offers.empty? %>
 												We couldn't find any deals for your search. You can search again or go back to <%= link_to 'my deals', mydeals_url %>.
 											<% else %>

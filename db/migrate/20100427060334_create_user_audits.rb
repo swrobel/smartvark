@@ -2,6 +2,8 @@ class CreateUserAudits < ActiveRecord::Migration
   def self.up
     create_table :user_audits do |t|
       t.integer :user_id
+      t.string :browser
+      t.string :os
       t.string :controller
       t.string :action
       t.string :request, :limit => 3000

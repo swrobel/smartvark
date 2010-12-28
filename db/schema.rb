@@ -130,8 +130,8 @@ ActiveRecord::Schema.define(:version => 20101226174210) do
     t.integer  "category_id"
     t.boolean  "allow_print"
     t.boolean  "allow_mobile"
-    t.boolean  "archived"
-    t.boolean  "draft"
+    t.boolean  "archived",                         :default => false
+    t.boolean  "draft",                            :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cached_slug"
@@ -178,6 +178,8 @@ ActiveRecord::Schema.define(:version => 20101226174210) do
 
   create_table "user_audits", :force => true do |t|
     t.integer  "user_id"
+    t.string   "browser"
+    t.string   "os"
     t.string   "controller"
     t.string   "action"
     t.string   "request",    :limit => 3000

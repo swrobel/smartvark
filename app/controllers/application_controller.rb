@@ -34,23 +34,13 @@ protected
 
 private
 
-  def mobile_redirect
-    # only redirect to mobile site if mobile browser detected and not already on mobile site
-    if is_mobile_browser?
-      logger.info "Mobile, brand: " + device_brand.to_s + ", model: " + device_model.to_s + " at " + request.fullpath
-      if !(request.fullpath+"/").include?("/m/")
-        m_path = "/m" + request.fullpath
-        Rails.application.routes.recognize_path(m_path, :method => :get)
-        redirect_to m_path
-      end
-    end
-  rescue Exception => e
-    logger.info e.message
-  end
-
   def log_user
     if current_user && params[:controller] && !params[:controller].include?("devise") && !params[:controller].include?("registrations")
-      current_user.user_audits.create(:controller => params[:controller], :action => params[:action], :request => params)
+      if is_mobile_browser?
+        current_user.user_audits.create(:browser => device_model.to_s, :os => device_brand.to_s, :controller => params[:controller], :action => params[:action], :request => params)
+      else
+        current_user.user_audits.create(:controller => params[:controller], :action => params[:action], :request => params)
+      end
     end
   end
   

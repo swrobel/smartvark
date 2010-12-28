@@ -59,6 +59,7 @@ class WelcomeController < ApplicationController
   def search
     raise CanCan::AccessDenied unless can? :read, :search
     @offers = Offer.search(params)
+    logger.info @offers.inspect
   end
 
   def mydeals

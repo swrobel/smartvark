@@ -48,49 +48,16 @@ class Offer < ActiveRecord::Base
     businesses.first.user.logo
   end
 
-  LIMIT = 5
-
   def self.search(options = {})
-    # TODO Refactor with merge_conditions
-    conditions = []
-    args = []
+    cat = options[:category_id].to_i
 
-    if (category = options[:category_id].to_i) > 1
-      conditions << 'category_id = ?'
-      args << category
+    if options[:location].blank?
+      loc = geo_location
+    else
+      loc = options[:location]
     end
 
-    unless options[:location].blank?
-      if options[:location] =~ /\d{5}/
-        conditions << 'businesses.zipcode = ?'
-        args << options[:location]
-      else
-        city, state = options[:location].split(/,/,2)
-        if city
-          conditions << 'lower(businesses.city) = ?'
-          args << city.strip.downcase
-        end
-
-        if state
-          conditions << 'lower(businesses.state) = ?'
-          args << state.strip.downcase
-        end
-      end
-    end
-
-    unless options[:user_admin]
-      conditions << "archived <> ?"
-      conditions << "draft <> ?"
-      args << true << true
-    end
-
-    if options[:search_terms]
-      conditions <<  '(title like ? OR businesses.name like ?)'
-      2.times { args << "%#{options[:search_terms]}%" }
-    end
-    Offer.all(:conditions => [ conditions.join(' AND '), *args ],
-              :include => [:businesses ], :limit => LIMIT)
-
+    (Offer.active.where(:category_id => Category.subtree_of(cat)).where(:title.matches => '%'+options[:search_terms]+'%') & Business.origin(loc, :within => 25)).limit(10).order('distance')
   end
 
   def active?

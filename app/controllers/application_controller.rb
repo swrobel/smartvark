@@ -1,7 +1,4 @@
 class ApplicationController < ActionController::Base
-  skip_before_filter :set_mobile_format # instead of requiring mobile pages to be .mobile.erb use .html.erb
-  before_filter :mobile_redirect # check for mobile browser and redirect to mobile page
-
   #helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
@@ -16,21 +13,23 @@ protected
   end
 
   def geo_location
-    if current_user
-      if current_user.geocode
-        if current_user.geocode.precision >= remote_location.precision
-          current_user.geocode
-        else
-          remote_location
-        end
-      end
-    else
-      cookies[:geo_location] || remote_location || 'Los Angeles, CA'
-    end
+    #if current_user
+    #  if current_user.geocode
+    #    if current_user.geocode.precision >= remote_location.precision
+    #      current_user.geocode
+    #    else
+    #      remote_location
+    #    end
+    #  end
+    #else
+    #  cookies[:geo_location] || remote_location || 'Los Angeles, CA'
+    #end
+    "Los Angeles, CA"
   end
 
   def close_business_ids
-    business_ids = Business.select("businesses.id").origin(geo_location, :within => 25).order(:distance).limit(10)
+    #business_ids = Business.select("businesses.id").origin(geo_location, :within => 25).order(:distance).limit(10)
+    business_ids = Business.select("businesses.id").limit(10)
   end
 
 private

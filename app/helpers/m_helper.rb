@@ -1,2 +1,0 @@
-module MHelper
-end

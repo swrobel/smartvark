@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   ROLES = %w[admin business user]
   
-  acts_as_geocodable :address => {:street => :address, :locality => :city, :region => :state, :postal_code => :zipcode}, :normalize_address => true
+  #acts_as_geocodable :address => {:street => :address, :locality => :city, :region => :state, :postal_code => :zipcode}, :normalize_address => true
   
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :category_id, :logo
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :category_id, :category_ids, :logo
 
   belongs_to :category
   has_many :comments
@@ -34,6 +34,26 @@ class User < ActiveRecord::Base
 
   def name_or_email
     name.blank? ? email : name.split.first
+  end
+
+  def profile_progress
+    pp = 0
+    pp += 10 unless name.blank?
+    pp += 10 unless phone.blank?
+    pp += 60 unless categories.count < 3
+    return pp
+  end
+  
+  def profile_next_step
+    if name.blank?
+      "name (+10%)"
+    elsif phone.blank?
+      "phone number (+10%)"
+    elsif categories.count < 3
+      "add your tastes (+60%)"
+    else
+      "&nbsp;".html_safe
+    end
   end
   
   def set_opinion(params)

@@ -21,7 +21,7 @@
       <%= f.label :city %>
       <div class="right">
         <%= f.text_field :city, :class => 'txt' %>
-        <%= f.select :state, States::STATES, :class => 'sel', :selected => 'CA' %>
+        <%= f.select :state, States::STATES, :class => 'sel', :include_blank => true %>
       </div>
     </div>
     <div class="row short">

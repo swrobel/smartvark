@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   ROLES = %w[admin business user]
   
-  #acts_as_geocodable :address => {:street => :address, :locality => :city, :region => :state, :postal_code => :zipcode}, :normalize_address => true
+  acts_as_geocodable :address => {:street => :address, :locality => :city, :region => :state, :postal_code => :zipcode}, :normalize_address => true
   
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   
@@ -37,20 +37,26 @@ class User < ActiveRecord::Base
   end
 
   def profile_progress
-    pp = 0
+    pp = 10
     pp += 10 unless name.blank?
-    pp += 10 unless phone.blank?
-    pp += 60 unless categories.count < 3
+    pp += 15 unless geocode.blank?
+    pp += 15 unless phone.blank?
+    pp += 25 unless categories.count < 10
+    #pp += 25 unless shares < 3
     return pp
   end
   
   def profile_next_step
     if name.blank?
-      "name (+10%)"
+      "add name (+10%)"
+    elsif geocode.blank?
+      "add location (+15%)"
     elsif phone.blank?
-      "phone number (+10%)"
-    elsif categories.count < 3
-      "add your tastes (+60%)"
+      "add phone num (+15%)"
+    elsif categories.count < 10
+      "add 10 tastes (+25%)"
+    #elsif shares < 3
+    #  "share 3 deals (+25%)"
     else
       "&nbsp;".html_safe
     end

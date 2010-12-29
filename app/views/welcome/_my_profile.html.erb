@@ -17,11 +17,11 @@
         <%= f.text_field :address, :class => 'txt' %>
       </div>
     </div>
-    <div class="row short">
+    <div class="row middle">
       <%= f.label :city %>
       <div class="right">
         <%= f.text_field :city, :class => 'txt' %>
-        <%= f.select :state, States::STATES, :class => 'sel', :include_blank => true %>
+        <%= f.select :state, States.abbrevs, {:include_blank => true}, {:class => 'sel'} %>
       </div>
     </div>
     <div class="row short">

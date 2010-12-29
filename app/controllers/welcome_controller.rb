@@ -59,6 +59,8 @@ class WelcomeController < ApplicationController
   def search
     raise CanCan::AccessDenied unless can? :read, :search
     @category_id = params[:category_id].blank? ? 1 : Category.find(params[:category_id]).id
+    params[:category_id] = @category_id
+    params[:location] = geo_location if params[:location].blank?
     @offers = Offer.search(params)
     logger.info @offers.inspect
   end
@@ -66,8 +68,7 @@ class WelcomeController < ApplicationController
   def mydeals
     raise CanCan::AccessDenied unless can? :read, :mydeals
     session.delete(:liked)
-    params[:category_id] = params[:category_id].blank? ? 1 : Category.find(params[:category_id]).id
-    params[:location] = geo_location if params[:location].blank?
+    @category_id = params[:category_id].blank? ? 1 : Category.find(params[:category_id]).id
     if geo_location
       @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:users]).joins(:businesses).where("businesses.id" => close_business_ids).active.order('offers.created_at DESC')
     else

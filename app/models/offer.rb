@@ -49,15 +49,7 @@ class Offer < ActiveRecord::Base
   end
 
   def self.search(options = {})
-    cat = options[:category_id].to_i
-
-    if options[:location].blank?
-      loc = geo_location
-    else
-      loc = options[:location]
-    end
-
-    (Offer.active.where(:category_id => Category.subtree_of(cat)).where(:title.matches => '%'+options[:search_terms]+'%') & Business.origin(loc, :within => 25)).limit(10).order('distance')
+    (Offer.active.where(:category_id => Category.subtree_of(options[:category_id])).where(:title.matches => '%'+options[:search_terms]+'%') & Business.origin(options[:location], :within => 25)).limit(10).order('distance')
   end
 
   def active?

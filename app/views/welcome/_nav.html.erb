@@ -1,0 +1,20 @@
+<!-- nav -->
+<div class="nav">
+  <div>
+    <ul>
+      <% categories = Category.all_parents %>
+      <% num_cats = categories.count %>
+      <% categories.each_with_index do |category, index| %>
+        <li class="<%= 'active' if @category_id == category.id %>">
+        <% if defined?(is_search) %>
+          <% link_path = search_path(category, {:search_terms => params[:search_terms], :location => params[:location]}) %>
+        <% else %>
+          <% link_path = category_mydeals_path(category) %>
+        <% end %>
+        <%= link_to "<span class='#{if index.zero? then 'first' elsif index == num_cats-1 then 'last' end}'>#{category.clever_or_name}</span>".html_safe, link_path %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+

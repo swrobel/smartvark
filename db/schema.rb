@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101226174210) do
+ActiveRecord::Schema.define(:version => 20101229171129) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -53,11 +53,13 @@ ActiveRecord::Schema.define(:version => 20101226174210) do
     t.boolean  "active",         :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cached_slug"
   end
 
   add_index "categories", ["active"], :name => "index_categories_on_active"
   add_index "categories", ["ancestry"], :name => "index_categories_on_ancestry"
   add_index "categories", ["ancestry_depth"], :name => "index_categories_on_ancestry_depth"
+  add_index "categories", ["cached_slug"], :name => "index_categories_on_cached_slug", :unique => true
 
   create_table "categories_users", :id => false, :force => true do |t|
     t.integer "category_id"
@@ -120,9 +122,9 @@ ActiveRecord::Schema.define(:version => 20101226174210) do
 
   create_table "offers", :force => true do |t|
     t.string   "title",            :limit => 100
-    t.string   "description",      :limit => 1000
-    t.string   "fine_print",       :limit => 100
-    t.string   "redemption_code",  :limit => 50
+    t.string   "description",      :limit => 500
+    t.string   "fine_print",       :limit => 500
+    t.string   "redemption_code",  :limit => 25
     t.integer  "redemption_limit"
     t.date     "start_date"
     t.date     "end_date"
@@ -130,8 +132,8 @@ ActiveRecord::Schema.define(:version => 20101226174210) do
     t.integer  "category_id"
     t.boolean  "allow_print"
     t.boolean  "allow_mobile"
-    t.boolean  "archived",                         :default => false
-    t.boolean  "draft",                            :default => false
+    t.boolean  "archived",                        :default => false
+    t.boolean  "draft",                           :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cached_slug"

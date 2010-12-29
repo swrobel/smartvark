@@ -1,25 +1,5 @@
 module WelcomeHelper
 
-  def categories
-    @categories ||= Category.all_parents
-  end
-
-  def categories_count
-    @categories_count ||= categories.length
-  end
-
-  def link_class(index)
-    if index.zero?
-      'first'
-    elsif index == categories_count-1
-      'last'
-    end
-  end
-
-  def li_class(index, category_id=nil)
-    'active' if index+1 == (category_id || 1).to_i
-  end
-
   def info_for_rollover(offer)
     escape_javascript("<strong class=\"title\">#{offer.businesses.first.name}: #{offer.title}</strong><p>#{offer.description}</p><p>#{offer.fine_print}</p><p>#{offer.businesses.first.city}, #{offer.businesses.first.state} #{offer.businesses.first.zipcode}</p><p>Expires #{std_date(offer.end_date)}</p>")
   end

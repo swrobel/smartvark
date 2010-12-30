@@ -31,7 +31,7 @@ module ApplicationHelper
   def deal_coupon(offer)
     link_to(
     "
-    <strong class=\"c_#{offer.offer_type}\">#{offer.offer_type}</strong>
+    <strong class=\"c_#{offer.offer_type.name}\">#{offer.offer_type.name}</strong>
     <div class=""img_box"">
       #{image_tag(offer.coupon.url(:thumb))}
     </div>
@@ -43,7 +43,7 @@ module ApplicationHelper
     logo = image_tag(current_user.logo.url(:thumb)) if current_user.logo.exists?
     "
     <div class='coupon'>
-      <h4 id='#{offer.id}_type' class='c_#{offer.offer_type || "Coupon"}'>#{offer.offer_type || 'coupon'}</h4>
+      <h4 id='#{offer.id}_type' class='c_#{offer.offer_type.name || "Coupon"}'>#{offer.offer_type.name || 'coupon'}</h4>
         <div class='holder'>
           <div class='center'>
             <div class='add-logo'>

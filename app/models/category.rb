@@ -13,6 +13,7 @@ class Category < ActiveRecord::Base
   end
   
   def parent_or_id
-    parent_id.nil? ? id : parent_id
+    # Only return parent_id for those that aren't children of All
+    parent_id.nil? || parent_id == 1 ? id : parent_id
   end
 end

@@ -1,6 +1,6 @@
 class Opinion < ActiveRecord::Base
-  scope :likes, :conditions => {:liked => true}, :order => 'created_at DESC'
-  scope :unlikes, :conditions => {:liked => false}, :order => 'created_at DESC'
+  scope :likes, :conditions => {:liked => true}
+  scope :unlikes, :conditions => {:liked => false}
 
   belongs_to :user
   belongs_to :offer

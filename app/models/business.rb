@@ -22,6 +22,10 @@ class Business < ActiveRecord::Base
   validates :zipcode, :presence => true
   validates :phone, :phone_format => true
 
+  def self.ids_close_to(loc)
+    Business.origin(loc, :within => 25).order("distance").limit(10).collect {|x| x.id}
+  end
+  
   def formatted_phone
     Phone.parse(phone).format(:us) unless phone.blank?
   end

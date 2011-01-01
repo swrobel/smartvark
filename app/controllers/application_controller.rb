@@ -8,28 +8,27 @@ class ApplicationController < ActionController::Base
 
 protected
   
-  def set_location
-    cookies[:geo_location] = { :value => params[:location], :expires => 1.day.from_now }
-  end
-
   def geo_location
-    #if current_user
-    #  if current_user.geocode
-    #    if current_user.geocode.precision >= remote_location.precision
-    #      current_user.geocode
-    #    else
-    #      remote_location
-    #    end
-    #  end
-    #else
-    #  cookies[:geo_location] || remote_location || 'Los Angeles, CA'
-    #end
-    "Los Angeles, CA"
-  end
-
-  def close_business_ids
-    #business_ids = Business.select("businesses.id").origin(geo_location, :within => 25).order(:distance).limit(10)
-    business_ids = Business.select("businesses.id").limit(10)
+    # workaround because remote_location returns a bunk value when running on localhost
+    if Rails.env.development?
+      ip_location = LA
+    else
+      ip_location = remote_location
+    end
+    
+    if current_user
+      if current_user.geocode && current_user.geocode.precision >= ip_location.precision
+        current_user.geocode
+      else
+        ip_location || LA
+      end
+    else
+      if cookies.signed[:geo_location]
+        Marshal.load(cookies.signed[:geo_location])
+      else
+        ip_location || LA
+      end
+    end
   end
 
 private
@@ -66,8 +65,8 @@ private
     session[:user_return_to] || root_path
   end
 
-  rescue_from CanCan::AccessDenied do |exception|
-    logger.info "CanCan access issue @ " + request.fullpath
+  rescue_from CanCan::AccessDenied do
+    logger.info "CanCan access issue @ #{request.fullpath}"
     
     # Don't show error if this redirect is due to sign in/out
     notice = flash[:notice]

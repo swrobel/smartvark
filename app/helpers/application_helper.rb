@@ -78,10 +78,10 @@ module ApplicationHelper
   </div>
   <div class="rate">' +
     link_to(image_tag('/images/btn-good.gif', :alt => "+"),
-                   { :controller => "welcome", :action => "set_opinion", :offer_id => offer.id, :liked => true }, :method => :post, :remote => true) +
+                   { :controller => "welcome", :action => "set_opinion", :offer_id => offer.id, :liked => 1 }, :method => :post, :remote => true) +
     use_it_now_link(offer) +
     link_to(image_tag('/images/btn-bad.gif', :alt => "-"),
-                   { :controller => "welcome", :action => "set_opinion", :offer_id => offer.id, :liked => false }, :method => :post, :remote => true) +
+                   { :controller => "welcome", :action => "set_opinion", :offer_id => offer.id, :liked => 0 }, :method => :post, :remote => true) +
   '</div>
 </li>'
   end

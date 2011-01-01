@@ -1,9 +1,9 @@
 class Offer < ActiveRecord::Base
   has_friendly_id :title, :use_slug => true
   
-  scope :active, where(:archived => false).where(:draft => false).order('created_at DESC')
-  scope :draft, where(:archived => false).where(:draft => true).order('created_at DESC')
-  scope :archived, where(:archived => true).where(:draft => false).order('created_at DESC')
+  scope :active, where(:archived => false).where(:draft => false)
+  scope :draft, where(:archived => false).where(:draft => true)
+  scope :archived, where(:archived => true).where(:draft => false)
   
   belongs_to :category
   belongs_to :offer_type
@@ -46,10 +46,6 @@ class Offer < ActiveRecord::Base
 
   def coupon
     businesses.first.user.logo
-  end
-
-  def self.search(options = {})
-    (Offer.active.where(:category_id => Category.subtree_of(options[:category_id])).where(:title.matches => '%'+options[:search_terms]+'%') & Business.origin(options[:location], :within => 25)).limit(10).order('distance')
   end
 
   def active?

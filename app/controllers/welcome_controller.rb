@@ -34,8 +34,6 @@ class WelcomeController < ApplicationController
   def deals
     raise CanCan::AccessDenied unless can? :read, :deals
     
-    logger.info session
-    
     # Set location based on user's input and display an error if Google can't find it
     if request.post? && params[:location]
       geo_loc = Geocode.create_by_query(params[:location]) rescue nil
@@ -62,8 +60,6 @@ class WelcomeController < ApplicationController
       @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:users]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(geo_location)]}).active
       @offers = @offers.where(:id - @likes) unless @likes.empty?
     end
-    
-    logger.info session
   end
   
   def mydeals
@@ -75,6 +71,7 @@ class WelcomeController < ApplicationController
     else
       @likes = current_user.likes_offers(category_id)
     end
+    @offers = @offers.where(:id - @likes) unless @likes.empty?
   end
 
   def viewdeal

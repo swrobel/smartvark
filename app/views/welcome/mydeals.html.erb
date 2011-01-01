@@ -1,6 +1,6 @@
 <% title "My Deals" %>
-                                                <%= render :partial => 'search_box' %>
-                                                <%= render :partial => 'nav' %>
+            <%= render :partial => 'search_box' %>
+            <%= render :partial => 'nav' %>
 						<!-- two-columns -->
 						<div class="two-columns">
 							<div class="t"></div>
@@ -13,18 +13,22 @@
 										<div class="ttl-holder">
 											<h2>Artie's Picks</h2>
 										</div>
-                                                                                <strong class="ttl">Just rate the deals below and Artie will sniff out more that you'll probably like.  The more you rate, the better we get to know you!</strong>
+                    <% if @offers.empty? %>
+                      <strong class="ttl">Sorry, we don't have any new deals for you today. Check back tomorrow!</strong>
+                    <% else %>
+                      <strong class="ttl">Just rate the deals below and Artie will sniff out more that you'll probably like.  The more you rate, the better we get to know you!</strong>
+                    <% end %>
 										<!-- info-section -->
 										<div class="info-section section-inner">
 											<div id='offer_info_rollover' class="info">
 											</div>
 											<!-- gallery -->
 											<div class="gallery">
-                                                                                          <ul>
-                                                                                            <% @offers.length.times do |n| %>
-                                                                                              <%= raw display_offer(@offers, n) %>
-                                                                                            <% end %>
-                                                                                          </ul>
+                        <ul>
+                          <% @offers.length.times do |n| %>
+                            <%= raw display_offer(@offers, n) %>
+                          <% end %>
+                        </ul>
 											</div>
 										</div>
 									</div>
@@ -34,12 +38,12 @@
 										<div class="ttl-holder">
 											<h2>My Picks</h2>
 										</div>
-                                                                                <div id='undo_last_action'></div>
+                    <div id='undo_last_action'></div>
 										<!-- list -->
 										<ul id='my_list' class="list">
-                                                                                  <% @likes.each do |offer| %>
-                                                                                    <%= raw list_offer(offer) %>
-                                                                                  <% end %>
+                      <% @likes.each do |offer| %>
+                        <%= raw list_offer(offer) %>
+                      <% end %>
 										</ul>
 									</div>
 								</div>

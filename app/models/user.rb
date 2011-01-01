@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   end
   
   def set_opinion(params)
-    self.opinions.build(:offer_id => params[:offer_id], :liked => params[:liked]=='true')
+    self.opinions.build(:offer_id => params[:offer_id], :liked => params[:liked]=="1")
   end
 
   def likes_offers(category=nil)
@@ -89,11 +89,16 @@ class User < ActiveRecord::Base
     end
   end
   
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      session[:likes].each { |id| user.opinions.build(:offer_id => id, :liked => true) } if session[:likes]
+      session[:dislikes].each { |id| user.opinions.build(:offer_id => id, :liked => false) } if session[:dislikes]
+    end
+  end
+  
   def update_with_password(params={})
-    if params[:password].blank? 
-      params.delete(:password) 
-      params.delete(:password_confirmation) if params[:password_confirmation].blank? 
-    end 
+    params.delete(:password) if params[:password].blank? 
+    params.delete(:password_confirmation) if params[:password_confirmation].blank?
     update_attributes(params) 
   end
 

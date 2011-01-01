@@ -16,19 +16,15 @@ protected
       ip_location = remote_location
     end
     
+    loc = ip_location || LA
     if current_user
-      if current_user.geocode && current_user.geocode.precision >= ip_location.precision
-        current_user.geocode
-      else
-        ip_location || LA
-      end
-    else
-      if cookies.signed[:geo_location]
-        Marshal.load(cookies.signed[:geo_location])
-      else
-        ip_location || LA
-      end
+      loc = current_user.geocode if current_user.geocode && current_user.geocode.precision >= ip_location.precision
+    elsif cookies.signed[:geo_location]
+      loc = Marshal.load(cookies.signed[:geo_location])
     end
+    
+    logger.info "Location info: #{loc} #{loc.to_location} #{loc.class}"
+    return loc
   end
 
 private

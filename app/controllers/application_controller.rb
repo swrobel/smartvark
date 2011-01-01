@@ -13,7 +13,7 @@ protected
     if Rails.env.development?
       ip_location = LA
     else
-      ip_location = remote_location
+      ip_location = Geocode.create_from_location(remote_location)
     end
     
     loc = ip_location || LA

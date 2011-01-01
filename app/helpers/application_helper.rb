@@ -41,9 +41,10 @@ module ApplicationHelper
 
   def coupon(offer)
     logo = image_tag(current_user.logo.url(:thumb)) if current_user.logo.exists?
+    type_name = offer.offer_type.name if offer.offer_type
     "
     <div class='coupon'>
-      <h4 id='#{offer.id}_type' class='c_#{offer.offer_type.name || "Coupon"}'>#{offer.offer_type.name || 'coupon'}</h4>
+      <h4 id='#{offer.id}_type' class='c_#{type_name || "Coupon"}'>#{type_name || 'coupon'}</h4>
         <div class='holder'>
           <div class='center'>
             <div class='add-logo'>

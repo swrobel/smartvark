@@ -1,6 +1,4 @@
 class WelcomeController < ApplicationController
-  helper_method :geo_location
-  
   before_filter :set_current_page, :except => [:undo_last_action, :set_opinion]
 
   def set_current_page

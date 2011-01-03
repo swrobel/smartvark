@@ -6,7 +6,7 @@
 </head>
 <body>
   <h1><%= @offer.title %></h1>
-  <h2><%= image_tag @offer.coupon.url, :alt => @offer.businesses.first.user.name %></h2>
+  <h2><%= image_tag @offer.coupon.url, :alt => @offer.user.name %></h2>
 	<h3>Valid at these locations:</h3>
 	<% @offer.businesses.each do |business| %>
 		<p><strong><%= business.name %></strong><br/>

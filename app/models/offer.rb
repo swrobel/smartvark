@@ -47,7 +47,7 @@ class Offer < ActiveRecord::Base
   end
 
   def coupon
-    businesses.first.user.logo
+    user.logo
   end
 
   def active?

@@ -97,7 +97,7 @@ class User < ActiveRecord::Base
         user.email = data["email"]
         user.name = data["name"]
         user.gender = data["gender"].first unless data["gender"].blank?
-        user.address = data["location"]["name"] unless data["location"].blank?
+        user.city = data["location"]["name"] unless data["location"].blank?
         user.birthday = data["birthday"]
         user.password = Devise.friendly_token[0,20]
       end

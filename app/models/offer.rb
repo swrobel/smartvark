@@ -3,9 +3,9 @@ class Offer < ActiveRecord::Base
   
   attr_protected :user_id
   
-  scope :active, where(:archived => false).where(:draft => false).where(:start_date <= Date.today)
-  scope :draft, where(:archived => false).where(:draft => true)
-  scope :archived, where(:archived => true).where(:draft => false)
+  scope :active, where((:archived >> false) & (:draft >> false) & (:start_date <= Date.today))
+  scope :draft, where((:archived >> false) & (:draft >> true))
+  scope :archived, where((:archived >> true) & (:draft >> false))
   
   belongs_to :user
   belongs_to :category

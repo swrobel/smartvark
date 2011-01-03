@@ -65,18 +65,14 @@ class WelcomeController < ApplicationController
     raise CanCan::AccessDenied unless can? :read, :mydeals
     @category_id = params[:category_id].blank? ? 1 : Category.find(params[:category_id]).id
     loc = geo_location
-    @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:user]).joins(:businesses).where("businesses.id" => Business.ids_close_to(loc)).active.order('offers.created_at DESC')
-    if (@category_id <= 1)
-      @likes = current_user.likes_offers
-    else
-      @likes = current_user.likes_offers(category_id)
-    end
+    @offers = Offer.select('DISTINCT offers.*').includes([:businesses, :user]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]} & (:category_id + Category.subtree_of(@category_id))).active
+    @likes = current_user.liked_offers(@category_id)
     @offers = @offers.where(:id - @likes) unless @likes.empty?
   end
 
   def viewdeal
     raise CanCan::AccessDenied unless can? :read, :viewdeal
-    @offer = Offer.find(params[:id], :include => [ :businesses, :comments ])
+    @offer = Offer.find(params[:id], :include => [:businesses, :comments])
   end
 
   def search
@@ -84,19 +80,21 @@ class WelcomeController < ApplicationController
     @category_id = params[:category_id].blank? ? 1 : Category.find(params[:category_id]).id
     cat = @category_id
     terms = '%' + params[:search_terms] + '%'
-    loc = params[:location].blank? ? geo_location : params[:location]
+    loc = Geocode.create_by_query(params[:location]) if params[:location] rescue nil
+    loc ||= geo_location
     
     @offers = Offer.active.joins(:businesses).joins(:category).where(
                 (:category_id + Category.subtree_of(cat)) &
+                (:business_ids + Business.ids_close_to(loc)) &
                 (
                   (:title =~ terms) |
                   {:businesses => [:name =~ terms]} |
                   {:category => [:name =~ terms]}
                 )
               )
-    # don't include offers that the user has already rated
+    # Don't include offers that the user has already rated
     if current_user
-      opinions = current_user.opinion_ids
+      opinions = current_user.opinions.map(&:offer_id)
     else
       opinions = []
       opinions += session[:likes] if session[:likes]

@@ -73,8 +73,8 @@ class User < ActiveRecord::Base
     self.opinions.build(:offer_id => params[:offer_id], :liked => params[:liked]=="1")
   end
 
-  def likes_offers(category=nil)
-    opinions.likes.collect(&:offer).delete_if { |b| b.nil? || !b.active? || (category && b.category_id != category) }
+  def liked_offers(category=1)
+    Offer.active.where((:category_id + Category.subtree_of(category)) & (:id + like_ids))
   end
 
   def offers_sorted_for_dealdashboard(other_business_ids=nil)

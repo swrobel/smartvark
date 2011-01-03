@@ -96,9 +96,11 @@ class WelcomeController < ApplicationController
               )
     # don't include offers that the user has already rated
     if current_user
-      opinions = current_user.opinions.collect {|x| x.offer_id}
+      opinions = current_user.opinion_ids
     else
-      opinions = session[:user].opinions.collect {|x| x.offer_id}
+      opinions = []
+      opinions += session[:likes] if session[:likes]
+      opinions += session[:dislikes] if session[:dislikes]
     end
     @offers = @offers.where(:id - opinions) unless opinions.empty?
   end

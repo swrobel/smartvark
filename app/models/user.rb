@@ -8,11 +8,18 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :category_id, :category_ids, :logo, :opinions
 
   belongs_to :category
+  has_many :businesses
+  has_many :offers
   has_many :comments
   has_many :opinions
+  has_many :likes,
+    :class_name => 'Opinion',
+    :conditions => { :liked => true }
+  has_many :dislikes,
+    :class_name => 'Opinion',
+    :conditions => { :liked => false }
   has_many :redemptions
   has_many :user_audits
-  has_many :businesses
   has_and_belongs_to_many :categories
 
   has_attached_file :logo,
@@ -71,12 +78,7 @@ class User < ActiveRecord::Base
   end
 
   def offers_sorted_for_dealdashboard(other_business_ids=nil)
-    these_business_ids = if other_business_ids.nil?
-                           business_ids
-                         else
-                           other_business_ids & business_ids
-                         end
-    Offer.select('DISTINCT offers.*').includes([:businesses,:likes, :dislikes, :redemptions]).joins(:businesses).where("businesses.id" => these_business_ids).order("offers.archived, offers.draft, offers.title")
+    Offer.select('DISTINCT offers.*').includes([:businesses, :opinions, :redemptions]).joins(:businesses).where({:businesses => [:user_id >> id]}).order([:archived, :draft, :title])
   end
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
@@ -84,8 +86,6 @@ class User < ActiveRecord::Base
     logger.info data.inspect
     if user = User.find_by_email(data["email"])
       user
-    else # Create an user with a stub password. 
-      User.create!(:email => data["email"], :password => Devise.friendly_token[0,20]) 
     end
   end
   
@@ -93,6 +93,14 @@ class User < ActiveRecord::Base
     super.tap do |user|
       session[:likes].each { |id| user.opinions.build(:offer_id => id, :liked => true) } if session[:likes]
       session[:dislikes].each { |id| user.opinions.build(:offer_id => id, :liked => false) } if session[:dislikes]
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["user_hash"]
+        user.email = data["email"]
+        user.name = data["name"]
+        user.gender = data["gender"].first unless data["gender"].blank?
+        user.address = data["location"]["name"] unless data["location"].blank?
+        user.birthday = data["birthday"]
+        user.password = Devise.friendly_token[0,20]
+      end
     end
   end
   

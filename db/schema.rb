@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20101229171129) do
   end
 
   create_table "offers", :force => true do |t|
+    t.integer  "user_id"
     t.string   "title",            :limit => 100
     t.string   "description",      :limit => 500
     t.string   "fine_print",       :limit => 500
@@ -202,6 +203,8 @@ ActiveRecord::Schema.define(:version => 20101229171129) do
     t.string   "state",                :limit => 2
     t.string   "zipcode",              :limit => 10
     t.string   "phone",                :limit => 12
+    t.string   "gender",               :limit => 1
+    t.date     "birthday"
     t.string   "role",                                :default => "user"
     t.integer  "category_id"
     t.datetime "remember_created_at"

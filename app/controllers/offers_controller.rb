@@ -51,7 +51,7 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.xml
   def create
-    @offer = Offer.new(params[:offer])
+    @offer = current_user.offers.build(params[:offer])
     @businesses = current_user.businesses
 
     respond_to do |format|

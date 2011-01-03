@@ -56,7 +56,7 @@ class WelcomeController < ApplicationController
       @out_of_area = true
       @offers = []
     else
-      @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:users]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]}).active
+      @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:user]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]}).active
       @offers = @offers.where(:id - @likes) unless @likes.empty?
     end
   end
@@ -65,7 +65,7 @@ class WelcomeController < ApplicationController
     raise CanCan::AccessDenied unless can? :read, :mydeals
     @category_id = params[:category_id].blank? ? 1 : Category.find(params[:category_id]).id
     loc = geo_location
-    @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:users]).joins(:businesses).where("businesses.id" => Business.ids_close_to(loc)).active.order('offers.created_at DESC')
+    @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:user]).joins(:businesses).where("businesses.id" => Business.ids_close_to(loc)).active.order('offers.created_at DESC')
     if (@category_id <= 1)
       @likes = current_user.likes_offers
     else

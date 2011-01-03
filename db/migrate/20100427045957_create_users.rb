@@ -8,6 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :state, :limit => 2
       t.string :zipcode, :limit => 10
       t.string :phone, :limit => 12
+      t.string :gender, :limit => 1
+      t.date :birthday
       t.string :role, :default => "user"
       t.integer :category_id
       t.rememberable

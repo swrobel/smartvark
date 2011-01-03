@@ -1,6 +1,7 @@
 class CreateOffers < ActiveRecord::Migration
   def self.up
     create_table :offers do |t|
+      t.integer :user_id
       t.string :title, :limit => 100
       t.string :description, :limit => 500
       t.string :fine_print, :limit => 500

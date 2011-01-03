@@ -1,10 +1,13 @@
 class Offer < ActiveRecord::Base
   has_friendly_id :title, :use_slug => true
   
+  attr_protected :user_id
+  
   scope :active, where(:archived => false).where(:draft => false)
   scope :draft, where(:archived => false).where(:draft => true)
   scope :archived, where(:archived => true).where(:draft => false)
   
+  belongs_to :user
   belongs_to :category
   belongs_to :offer_type
   has_and_belongs_to_many :businesses
@@ -15,10 +18,9 @@ class Offer < ActiveRecord::Base
     :class_name => 'User'
   has_many :redemptions
   has_many :opinions
-  has_many :users, :through => :opinions
   has_many :likes,
     :class_name => 'Opinion',
-    :conditions => { :liked =>true }
+    :conditions => { :liked => true }
   has_many :dislikes,
     :class_name => 'Opinion',
     :conditions => { :liked => false }

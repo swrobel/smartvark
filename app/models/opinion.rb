@@ -1,6 +1,6 @@
 class Opinion < ActiveRecord::Base
-  scope :likes, :conditions => {:liked => true}
-  scope :unlikes, :conditions => {:liked => false}
+  scope :likes, where(:liked => true)
+  scope :dislikes, where(:liked => false)
 
   belongs_to :user
   belongs_to :offer

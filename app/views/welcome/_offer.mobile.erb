@@ -1,5 +1,5 @@
 <li>
   <h3><%= link_to offer.title, viewdeal_path(offer) %></h3>
-  <p><strong><%= offer.businesses.first.try(:name) %></strong></p>
-  <p><%= offer.businesses.first.try(:city_state_zip) %></p>
+  <p><strong><%= offer.user.name %></strong></p>
+  <p><%= offer.description %></p>
 </li>

@@ -1,7 +1,6 @@
-
-                  <p>
-                  <%= business.phone %><br/>
-                  <%= business.address %><br/>
-                  <%= business.city_state_zip%><br/>
-                  <a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=<%= URI.escape([business.address, business.city_state_zip ].join(',')) %>">Map It</a>
-                  </p>
+<p>
+  <%= business.formatted_phone %><br/>
+  <%= business.address %><br/>
+  <%= business.city_state_zip%><br/>
+  <%= link_to 'Map It', "http://maps.google.com?q=#{business.address_as_string}", :target => '_new' %> <%= link_to 'More info', viewbusiness_path(business) %>
+</p>

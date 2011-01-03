@@ -7,20 +7,19 @@
 
 	<div data-role="content" data-theme="b">
 	  <div class="ui-body">
-		  <img src="http://s3.amazonaws.com/smartvark-dev/logos/1/thumb/smartvarklogo.png?1286834065" class="logo" />
-                  <h2><%= @offer.title %></h2>
-                  <h3><%= @offer.description %></h3>
-                  <h4>Expires <%= @offer.end_date.try(:strftime, '%m/%d/%Y') %></h3>
-                  <%= render :partial => 'business', :locals => { :business => @offer.businesses.first } %>
+		  <%= image_tag @offer.coupon.url(:thumb), :alt => @offer.user.name + " logo", :class => "logo" %>
+        <h2><%= @offer.title %></h2>
+        <h3><%= @offer.description %></h3>
+        <h4>Expires <%= std_date(@offer.end_date) %></h3>
+        <%= render :partial => 'business', :collection => @offer.businesses %>
 	    <div data-role="controlgroup" data-type="horizontal" >
-			  <%= link_to("+",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.id, :liked => true }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>
+			  <%= link_to("+",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.id, :liked => 1 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>
 			  <% if @offer.allow_mobile %>
 				<a href="/m/redeem/<%= @offer.id %>" data-role="button">Redeem</a>
 			  <% end %>
-			  <%= link_to("-",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.id, :liked => false }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsdown") %>
+			  <%= link_to("-",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.id, :liked => 0 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsdown") %>
 		  </div>
-                  <p><%= @offer.fine_print %></p>
-                  <%= link_to "Biz info and other deals", mobile_viewbusiness_path(@offer.businesses.first.id), {"data-role" => "button"} %>
+      <p><%= @offer.fine_print %></p>
 		  <div data-role="collapsible" data-collapsed="true">
 		    <h3>Shout about it</h3>
 		    <ul data-role="listview" data-inset="true" data-theme="d">

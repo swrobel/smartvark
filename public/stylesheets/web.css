@@ -612,6 +612,9 @@ td, th{padding:0;}
 }
 .section-inner .gallery ul .frame a:hover{
 	border-color:#add2ee;
+	-moz-box-shadow: 0 0 4px #AAAAAA;
+	-webkit-box-shadow: 0 0 4px #AAAAAA;
+	box-shadow: 0 0 4px #AAAAAA;
 }
 .section-inner .gallery ul .frame a:hover strong,
 .section-inner .gallery ul .frame a:hover{text-decoration: none;}

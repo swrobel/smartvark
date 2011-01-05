@@ -5,6 +5,19 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?, :geo_location, :home_path
 
   after_filter :log_user
+  
+  def makebiz
+    raise CanCan::AccessDenied unless can? :manage, :all
+    user = User.find_by_email(params[:email])
+    if user
+      user.role = 'business'
+      user.save
+      flash[:notice] = "#{user.email} is now a business user"
+    else
+      flash[:alert] = "Couldn't find #{params[:email]}"
+    end
+    redirect_to session[:user_return_to] || root_path
+  end
 
 protected
   
@@ -46,7 +59,7 @@ private
   def home_path
     if current_user
       if current_user.role == "admin"
-        admin_path
+        mydeals_path
       elsif current_user.role == "business"
         dealdashboard_path
       elsif current_user.role == "user"

@@ -23,6 +23,7 @@ Smartvark::Application.routes.draw do
   match 'shout/:id' => 'welcome#shout', :as => :shout, :via => :post
   match 'set_opinion' => 'welcome#set_opinion', :as => :set_opinion, :via => :post
   match 'undo_last_action' => 'welcome#undo_last_action', :as => :undo_last_action, :via => :post
+  match 'makebiz/:email' => 'application#makebiz', :as => :makebiz, :constraints => { :email => /.*/ }
   match 'signin' => 'welcome#signin', :as => :signin
   match 'signup' => 'welcome#signup', :as => :signup
 end

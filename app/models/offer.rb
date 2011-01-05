@@ -3,7 +3,7 @@ class Offer < ActiveRecord::Base
   
   attr_protected :user_id
   
-  scope :active, where(:archived => false).where(:draft => false).where(:start_date.lt => Date.today)
+  scope :active, where(:archived => false).where(:draft => false).where(:start_date.lte => Date.today)
   scope :draft, where(:archived => false).where(:draft => true)
   scope :archived, where(:archived => true).where(:draft => false)
   

@@ -85,7 +85,7 @@ class WelcomeController < ApplicationController
     
     @offers = Offer.active.joins(:businesses).joins(:category).where(
                 (:category_id + Category.subtree_of(cat)) &
-                (:business_ids + Business.ids_close_to(loc)) &
+                {:businesses => [:id + Business.ids_close_to(loc)]} &
                 (
                   (:title =~ terms) |
                   {:businesses => [:name =~ terms]} |

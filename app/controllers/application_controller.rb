@@ -7,13 +7,12 @@ class ApplicationController < ActionController::Base
   after_filter :log_user
   
   def makebiz
-    user = User.find_by_email(params[:email])
-    if user
-      user.role = 'business'
-      user.save
-      flash[:notice] = "#{user.email} is now a business user"
+    if current_user
+      current_user.role = 'business'
+      current_user.save
+      flash[:notice] = "#{current_user.email} is now a business user"
     else
-      flash[:alert] = "Couldn't find #{params[:email]}"
+      flash[:alert] = "You can only do this when logged in"
     end
     redirect_to session[:user_return_to] || root_path
   end

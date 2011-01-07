@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   after_filter :log_user
   
   def makebiz
-    raise CanCan::AccessDenied unless can? :manage, :all
     user = User.find_by_email(params[:email])
     if user
       user.role = 'business'

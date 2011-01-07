@@ -32,7 +32,7 @@ protected
     
     loc = ip_location || LA
     if current_user
-      loc = current_user.geocode if current_user.geocode && current_user.geocode.precision >= ip_location.precision
+      loc = current_user.geocode if current_user.geocode #&& current_user.geocode.precision >= ip_location.precision
     elsif cookies.signed[:geo_location]
       loc = Marshal.load(cookies.signed[:geo_location])
     end

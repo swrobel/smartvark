@@ -145,11 +145,10 @@ class WelcomeController < ApplicationController
   end
 
   def shout
-    @offer = Offer.find(params[:id], :include => [ :business, :commenters ])
+    @offer = Offer.find(params[:id], :include => :commenters )
 
     unless @offer.commenters.include?(current_user)
       params[:comment][:offer_id] = @offer.id
-      params[:comment][:business_id] = @offer.business_id
       params[:comment][:user_id] = current_user.id
 
       @offer.comments.create(params[:comment])

@@ -91,7 +91,7 @@ class OffersController < ApplicationController
     @offer.set_to_archived
 
     respond_to do |format|
-      format.html { redirect_to(dealdashboard_url(:id => @offer.business_id)) }
+      format.html { redirect_to(dealdashboard_path) }
       format.xml  { head :ok }
     end
   end

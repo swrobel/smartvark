@@ -89,7 +89,8 @@ class WelcomeController < ApplicationController
                 (
                   (:title =~ terms) |
                   {:businesses => [:name =~ terms]} |
-                  {:category => [:name =~ terms]}
+                  {:category => [:name =~ terms]} |
+                  {:category => [:parent_name =~ terms]}
                 )
               )
     # Don't include offers that the user has already rated

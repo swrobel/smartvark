@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   ROLES = %w[admin business user]
   
-  acts_as_geocodable :address => {:street => :address, :locality => :city, :region => :state, :postal_code => :zipcode}, :normalize_address => true
+  acts_as_geocodable :address => {:street => :address, :locality => :city, :region => :state, :postal_code => :zipcode}
   
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   
@@ -74,7 +74,7 @@ class User < ActiveRecord::Base
   end
 
   def liked_offers(category=1)
-    Offer.active.where((:category_id + Category.subtree_of(category)) & (:id + like_ids))
+    Offer.active.joins(:opinions).where((:category_id + Category.subtree_of(category)) & {:opinions => [:id + like_ids]})
   end
 
   def offers_sorted_for_dealdashboard(other_business_ids=nil)

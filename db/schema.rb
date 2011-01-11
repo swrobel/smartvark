@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101229171129) do
+ActiveRecord::Schema.define(:version => 20110108091228) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20101229171129) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cached_slug"
+    t.string   "parent_name"
   end
 
   add_index "categories", ["active"], :name => "index_categories_on_active"
@@ -156,7 +157,7 @@ ActiveRecord::Schema.define(:version => 20101229171129) do
   add_index "opinions", ["user_id", "offer_id"], :name => "index_opinions_on_user_id_and_offer_id", :unique => true
 
   create_table "redemptions", :force => true do |t|
-    t.integer  "qty",                :limit => 2
+    t.integer  "qty"
     t.integer  "user_id"
     t.integer  "offer_id"
     t.string   "transaction_number", :limit => 50

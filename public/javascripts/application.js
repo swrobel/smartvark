@@ -68,12 +68,12 @@ $(function(){
 	
 	if ($().jMapping) {
 		$('#map').jMapping({
-        default_zoom_level: 15,
-        default_point: {
-          lat: 34.0522342,
-          lng: -118.2436849
-          }
-			  });
+			default_zoom_level: 15,
+			default_point: {
+				lat: 34.0522342,
+				lng: -118.2436849
+			}
+		});
   }
 	
 	if ($().datepicker) {
@@ -107,7 +107,7 @@ $(function(){
 		createCount("#offer_fine_print", 200);
 	}
 	
-	if ($().fadeIn && $.fadeOut) {
+	if ($().fadeIn && $().fadeOut) {
 		$(".dashboard_chk").change(function(){
 			locID = '.' + $(this).val();
 			if ($(this).attr("checked")) $(locID).fadeIn('fast');

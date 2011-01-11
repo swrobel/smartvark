@@ -1,6 +1,6 @@
 class Business < ActiveRecord::Base
   has_friendly_id :name, :use_slug => true
-  acts_as_geocodable :address => {:street => :address, :locality => :city, :region => :state, :postal_code => :zipcode}, :normalize_address => true
+  acts_as_geocodable :address => {:street => :address, :locality => :city, :region => :state, :postal_code => :zipcode}
   
   belongs_to :user
   has_and_belongs_to_many :offers

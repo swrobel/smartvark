@@ -25,7 +25,7 @@
 													<% end %>
 													<strong><%= @business.city %>, <%= @business.state %> <%= @business.zipcode %></strong>
 												</div>
-												<strong class="phone"><%= @business.phone %></strong>
+												<strong class="phone"><%= @business.formatted_phone %></strong>
 												<% if @business.url.present? %>
 													<%= link_to @business.url, {}, :href => @business.url %>
 												<% end %>

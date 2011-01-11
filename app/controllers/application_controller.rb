@@ -5,20 +5,35 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?, :geo_location, :home_path
 
   after_filter :log_user
+  
+  def makebiz
+    if current_user
+      current_user.role = 'business'
+      current_user.save
+      flash[:notice] = "#{current_user.email} is now a business user"
+    else
+      flash[:alert] = "You can only do this when logged in"
+    end
+    redirect_to session[:user_return_to] || root_path
+  end
 
 protected
   
   def geo_location
+    # IP LOCATION DISABLED DUE TO INACCURACY
     # workaround because remote_location returns a bunk value when running on localhost
-    if Rails.env.development?
-      ip_location = LA
-    else
-      ip_location = Geocode.create_from_location(remote_location)
-    end
+    #if Rails.env.development?
+    #  ip_location = LA
+    #else
+    #  ip_location = remote_location
+    #  ip_location = Geocode.create_from_location(ip_location) if ip_location
+    #end
     
-    loc = ip_location || LA
+    #loc = ip_location || LA
+    
+    loc = LA
     if current_user
-      loc = current_user.geocode if current_user.geocode && current_user.geocode.precision >= ip_location.precision
+      loc = current_user.geocode if current_user.geocode #&& current_user.geocode.precision >= ip_location.precision
     elsif cookies.signed[:geo_location]
       loc = Marshal.load(cookies.signed[:geo_location])
     end
@@ -46,7 +61,7 @@ private
   def home_path
     if current_user
       if current_user.role == "admin"
-        admin_path
+        mydeals_path
       elsif current_user.role == "business"
         dealdashboard_path
       elsif current_user.role == "user"

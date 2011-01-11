@@ -1,5 +1,5 @@
 <%= select "category", "parents", options_from_collection_for_select(Category.at_depth(1),'id','name',category_selector.nil? ? nil : category_selector.parent_or_id),{ :include_blank => true }, {:class => :sel2, :id => "parent_category" } %>
 <% Category.at_depth(1).each do |parent_category| %>
   <% parent_category.name = "Other" %>
-  <%= select "category", "children", options_from_collection_for_select(Category.children_of(parent_category.id) << parent_category,'id','name',category_selector.nil? ? nil : category_selector.id),{ :include_blank => true }, {:class => "sel2 child_select", :id => "children_of_"+parent_category.id.to_s, :style=> ("display:none;" unless category_selector && category_selector.parent_id == parent_category.id) } %>
+  <%= select "category", "children", options_from_collection_for_select(Category.children_of(parent_category.id) << parent_category,'id','name',category_selector.nil? ? nil : category_selector.id),{ :include_blank => true }, {:class => "sel2 child_select", :id => "children_of_"+parent_category.id.to_s, :style=> ("display:none;" unless category_selector && category_selector.parent_or_id == parent_category.id) } %>
 <% end %>

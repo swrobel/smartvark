@@ -2,7 +2,7 @@ class Category < ActiveRecord::Base
   has_friendly_id :clever_or_name, :use_slug => true
   has_ancestry :cache_depth => true
 
-  scope :all_parents, to_depth(1)
+  scope :all_parents, to_depth(1).order(:id)
 
   has_many :offers
   has_many :users

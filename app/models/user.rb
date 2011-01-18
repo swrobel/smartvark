@@ -98,13 +98,13 @@ class User < ActiveRecord::Base
         user.name = data["name"]
         user.gender = data["gender"].first unless data["gender"].blank?
         user.city = data["location"]["name"] unless data["location"].blank?
-        if data["address"]
-          user.address = data["address"]["street"] unless data["address"]["street"].blank?
-          user.city = data["address"]["city"] unless data["address"]["city"].blank?
-          user.state = data["address"]["state"] unless data["address"]["state"].blank?
-          user.zipcode = data["address"]["zip"] unless data["address"]["zip"].blank?
-        end
-        user.phone = "+" + data["mobile_phone"] unless data["mobile_phone"].blank?
+        #if data["address"]
+        #  user.address = data["address"]["street"] unless data["address"]["street"].blank?
+        #  user.city = data["address"]["city"] unless data["address"]["city"].blank?
+        #  user.state = data["address"]["state"] unless data["address"]["state"].blank?
+        #  user.zipcode = data["address"]["zip"] unless data["address"]["zip"].blank?
+        #end
+        #user.phone = "+" + data["mobile_phone"] unless data["mobile_phone"].blank?
         user.birthday = data["birthday"]
         user.password = Devise.friendly_token[0,20]
       end

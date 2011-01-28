@@ -68,7 +68,6 @@ $(function(){
 	
 	if ($().jMapping) {
 		$('#map').jMapping({
-			default_zoom_level: 15,
 			default_point: {
 				lat: 34.0522342,
 				lng: -118.2436849

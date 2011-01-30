@@ -87,6 +87,9 @@ $(function(){
 		$("#offer_description").placehold();
 		$("#offer_fine_print").placehold();
 		$("#offer_redemption_code").placehold();
+		$("#user_email").placehold();
+		$("#user_password").placehold();
+		$("#user_password_confirmation").placehold();
 	}
 	
 	if ($().textareaCount) {

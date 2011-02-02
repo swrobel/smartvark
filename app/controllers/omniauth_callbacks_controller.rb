@@ -10,7 +10,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       session["devise.facebook_data"] = env["omniauth.auth"]
       flash[:alert] = "Facebook sign in failed, please try again."
-      redirect_to session[:user_return_to] || root_path
+      redirect_to session[:user_return_to] || home_path
     end
   end
 end

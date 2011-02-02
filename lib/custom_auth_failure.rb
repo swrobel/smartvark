@@ -1,6 +1,6 @@
 class CustomAuthFailure < Devise::FailureApp
   def redirect_url
-    session[:user_return_to] || root_path
+    session[:user_return_to] || home_path
   end
   
   def respond

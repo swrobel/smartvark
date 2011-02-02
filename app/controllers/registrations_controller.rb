@@ -21,7 +21,7 @@ class RegistrationsController < Devise::RegistrationsController
       end
       flash[:error] += "</ul>"
       clean_up_passwords(resource)
-      redirect_to session[:user_return_to] || root_path
+      redirect_to session[:user_return_to] || home_path
     end
   end
   
@@ -39,12 +39,12 @@ class RegistrationsController < Devise::RegistrationsController
       end
       flash[:error] += "</ul>"
       clean_up_passwords(resource)
-      redirect_to session[:user_return_to] || root_path
+      redirect_to session[:user_return_to] || home_path
     end
   end
   
   def after_update_path_for(resource)
-    session[:user_return_to] || root_path
+    session[:user_return_to] || home_path
   end
   
 end

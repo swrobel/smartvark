@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110108091228) do
+ActiveRecord::Schema.define(:version => 20110202065944) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -156,8 +156,15 @@ ActiveRecord::Schema.define(:version => 20110108091228) do
   add_index "opinions", ["user_id", "liked"], :name => "index_opinions_on_user_id_and_liked"
   add_index "opinions", ["user_id", "offer_id"], :name => "index_opinions_on_user_id_and_offer_id", :unique => true
 
+  create_table "potentials", :force => true do |t|
+    t.string   "email"
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "redemptions", :force => true do |t|
-    t.integer  "qty"
+    t.integer  "qty",                :limit => 2
     t.integer  "user_id"
     t.integer  "offer_id"
     t.string   "transaction_number", :limit => 50

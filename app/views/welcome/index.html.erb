@@ -1,33 +1,40 @@
-						<!-- welcome-box -->
-						<div class="welcome-box">
-							<!-- text -->
-							<div class="text">
-								<p>Welcome to the home of your local deal sniffer!  Artie, your smart shopping guide, scours the local scene and presents you with deals that you actually care about.  Once you rate the offers he will find more offers to match your preferences, while weeding out the junk!  </p>
-							</div>
-							<!-- promo-box -->
-							<div class="promo-box">
-								<strong class="ttl-give-a-try">Give it a try</strong>
-								<a href="/deals" class="btn-show-deals">Show me the deals!</a>
-							</div>
-						</div>
-						<!-- wide-box -->
-						<div class="wide-box">
-							<!-- holder -->
-							<div class="holder">
-								<div class="frame">
-									<h2>Some of the deals in your area</h2>
-									<!-- promo-section -->
-									<div class="promo-section">
-										<div class="item">
-											<a href="#"><img src="images/img01.gif" alt="image" /></a>
-										</div>
-										<div class="item">
-											<a href="#"><img src="images/img02.gif" alt="image" /></a>
-										</div>
-										<div class="item">
-											<a href="#"><img src="images/img03.gif" alt="image" /></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+<% title "LA deals" %>
+<!-- welcome-box -->
+<div class="welcome-box">
+  <!-- text -->
+  <div class="text">
+    <p>Welcome to the home of Artie the Aardvark, your deal-finding personal assistant! No more junk - just the deals that match your tastes. We're lining up some awesome deals for our launch in Los Angeles, so sign up below to find out when we launch.</p>
+  </div>
+  <!-- promo-box
+  <div class="promo-box">
+    <strong class="ttl-give-a-try">Give it a try</strong>
+    <a href="/deals" class="btn-show-deals">Show me the deals!</a>
+  </div> -->
+</div>
+<!-- wide-box -->
+<div class="wide-box">
+  <!-- holder -->
+  <div class="holder">
+    <div class="frame">
+      <h2>Fill in your info below and we'll notify you when we launch in your area</h2>
+      <!-- promo-section -->
+      <div class="promo-section">
+        <% if session[:potential] %>
+          <p>Thanks for signing up! You'll be hearing from us soon. <a href="#" onClick="$('.txt').val('');$('#potential-form').show();$(this).hide();return false;">Need to add another email to the list?</a></p>
+          <% hidden = true %>
+        <% end %>
+        <div id="potential-form" style="display:<%= 'none' if hidden %>;">
+          <%= form_for :potential do |f| %>
+            <%= f.error_messages %>
+            <%= f.label :email %>
+            <%= f.text_field :email, :class => :txt %>
+            <%= f.label :location %>
+            <%= f.text_field :location, :class => :txt %>
+            <%= f.submit "Notify Me!" %>
+          <% end %>
+          <p>We won't spam you ... promise!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

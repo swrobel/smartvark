@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     else
       flash[:alert] = "You can only do this when logged in"
     end
-    redirect_to session[:user_return_to] || root_path
+    redirect_to session[:user_return_to] || home_path
   end
 
 protected
@@ -68,12 +68,12 @@ private
         mydeals_path
       end
     else
-      root_path
+      deals_path
     end
   end
 
   def after_inactive_sign_up_path_for(resource)
-    session[:user_return_to] || root_path
+    session[:user_return_to] || home_path
   end
 
   rescue_from CanCan::AccessDenied do

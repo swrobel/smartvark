@@ -191,7 +191,7 @@ td, th{padding:0;}
 	float:left;
 	width:512px;
 	font:16px/19px "Trebuchet MS", Arial, Helvetica, sans-serif;
-	color:#fff;
+	color:#333;
 	padding:53px 20px 0;
 }
 .welcome-box .text p {margin:0;}
@@ -353,6 +353,20 @@ td, th{padding:0;}
 	height:100%;
 	vertical-align:middle;
 }
+.promo-section .txt{
+	width:210px;
+	font:14px Arial, Helvetica, sans-serif;
+	border:1px solid #999;
+	padding:4px 12px;
+	margin: 0 30px 0 4px;
+}
+.promo-section p{
+  font:14px Arial, Helvetica, sans-serif;
+}
+.promo-section label{
+	font:14px Arial, Helvetica, sans-serif;
+	margin:0;
+}
 * html .promo-section .item {
 	float:left;
 	height:181px;
@@ -361,7 +375,6 @@ td, th{padding:0;}
 	float:left;
 	height:181px;
 }
-.promo-section a {float:left;}
 .promo-section .item img {
 	display:block;
 	border:1px solid #b0b0b0;
@@ -2061,6 +2074,7 @@ a.facebook-signin {
 	margin: 1px;
 }
 #errorExplanation h2 { display:none; }
+.field_with_errors { display: inline; }
 .field_with_errors label { color: red; }
 .charleft { display:none; }
 #map {width:270px; height:360px;}

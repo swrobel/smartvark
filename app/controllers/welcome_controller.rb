@@ -5,10 +5,17 @@ class WelcomeController < ApplicationController
     session[:user_return_to] = request.fullpath
   end
   
+  def index
+    if params[:potential]
+      session[:potential] = false
+      @potential = Potential.new(params[:potential])
+      session[:potential] = true if @potential.save
+    end
+  end
+  
   def dealdashboard
     raise CanCan::AccessDenied unless can? :read, :dealdashboard
     @businesses = current_user.businesses
-
     @offers = current_user.offers_sorted_for_dealdashboard
   end
 

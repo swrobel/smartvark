@@ -1,17 +1,20 @@
-<div data-role="page">
+<div data-role="header" data-theme="b">
+  <h1>LA-area deals</h1>
+</div><!-- /header -->
 
-	<div data-role="header" data-theme="b">
-	  <a href="/m/mypicks" data-icon="star">My Picks</a>
-		<h1>Artie's Picks</h1>
-          <%= link_to "Search", mobile_search_url, :class => 'ui-btn-right', 'data-icon'=>'search_white','data-transition' => 'pop' %>
-	</div><!-- /header -->
-
-	<div data-role="content">
-          <div data-role="fieldcontain" id="list-header">
-          <%= render :partial => 'category_filter' %>
-          </div>
-          <ul data-role="listview" data-theme="d" id='offers_list'>
-            <%= render :partial => 'offers', :collection => @offers || [] %>
-		</ul>
-	</div><!-- /content -->
-</div><!-- /page -->
+<div data-role="content">
+  <div align="center"><img src="/images/logo-mobile.png"/></div>
+  <p>Welcome to the home of Artie the Aardvark, your deal-finding personal assistant! No more junk - just the deals that match your tastes. We're lining up some awesome deals for our launch in Los Angeles, so sign up below to find out when we launch.</p>
+  <% if session[:potential] %>
+    <p><strong>Thanks for signing up! You'll be hearing from us soon.</strong></p>
+  <% else %>
+    <%= form_for :potential do |f| %>
+      <%= f.error_messages %>
+      <%= f.label :email %>
+      <%= f.text_field :email, :class => :txt %>
+      <%= f.label :location %>
+      <%= f.text_field :location, :class => :txt %>
+      <%= f.submit "Notify Me!" %>
+    <% end %>
+  <% end %>
+</div><!-- /content -->

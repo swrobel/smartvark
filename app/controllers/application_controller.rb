@@ -84,7 +84,7 @@ private
     if notice && notice.include?("Signed")
       flash[:notice] = notice
     # Only show error message if they are accessing a path other than root
-    elsif request.fullpath != "/"
+    elsif request.fullpath != "/" && request.fullpath != "/deals"
       flash[:alert] = "You are not signed in or are not permitted to do that."
     end
     logger.info "Redirecting to " + home_path

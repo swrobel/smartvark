@@ -9,7 +9,7 @@
 <div data-role="page">
 	<div data-role="content" data-theme="a">
 		<h3>Search</h3>
-    <% form_tag(mobile_search_path(1), :method => :get) do %>
+    <% form_tag(search_path(1), :method => :get) do %>
             <label for="search_terms">Search For:</label>
             <%= text_field_tag 'search_terms', params[:search_terms], :placeholder => 'search terms' %>
 	    <label for="location">Location:</label>

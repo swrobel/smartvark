@@ -1,37 +1,34 @@
-<div data-role="page">
+<div data-role="header" data-theme="c">
+  <h1>Deal Detail</h1>
+  <%= render :partial => 'search_button' %>
+</div><!-- /header -->
 
-	<div data-role="header" data-theme="c">
-		<h1>Deal Detail</h1>
-		<a href="/m/search" data-icon="search-white" data-transition="pop" class="ui-btn-right">Search</a>
-	</div><!-- /header -->
-
-	<div data-role="content" data-theme="b">
-	  <div class="ui-body">
-		  <%= image_tag @offer.coupon.url(:thumb), :alt => @offer.user.name + " logo", :class => "logo" %>
-        <h2><%= @offer.title %></h2>
-        <h3><%= @offer.description %></h3>
-        <h4>Expires <%= std_date(@offer.end_date) %></h3>
-        <%= render :partial => 'business', :collection => @offer.businesses %>
-	    <div data-role="controlgroup" data-type="horizontal" >
-			  <%= link_to("+",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.id, :liked => 1 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>
-			  <% if @offer.allow_mobile %>
-				<a href="/m/redeem/<%= @offer.id %>" data-role="button">Redeem</a>
-			  <% end %>
-			  <%= link_to("-",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.id, :liked => 0 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsdown") %>
-		  </div>
-      <p><%= @offer.fine_print %></p>
-		  <div data-role="collapsible" data-collapsed="true">
-		    <h3>Shout about it</h3>
-		    <ul data-role="listview" data-inset="true" data-theme="d">
-			    <li>
-				    <h3>Shout message</h3>
-				    <p><strong>Name</strong></p>
-				    <p>Location</p>
-			    </li>
-    		</ul>
-    		<textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
-    		<a href="#" data-role="button">Shout!</a>
-		  </div>
-		</div>
-	</div><!-- /content -->
-</div><!-- /page -->
+<div data-role="content" data-theme="b">
+  <div class="ui-body">
+    <%= image_tag @offer.coupon.url(:thumb), :alt => @offer.user.name + " logo", :class => "logo" %>
+      <h2><%= @offer.title %></h2>
+      <h3><%= @offer.description %></h3>
+      <h4>Expires <%= std_date(@offer.end_date) %></h3>
+      <%= render :partial => 'business', :collection => @offer.businesses %>
+    <div data-role="controlgroup" data-type="horizontal" >
+      <%= link_to("+",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.id, :liked => 1 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>
+      <% if @offer.allow_mobile %>
+      <a href="/m/redeem/<%= @offer.id %>" data-role="button">Redeem</a>
+      <% end %>
+      <%= link_to("-",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.id, :liked => 0 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsdown") %>
+    </div>
+    <p><%= @offer.fine_print %></p>
+    <div data-role="collapsible" data-collapsed="true">
+      <h3>Shout about it</h3>
+      <ul data-role="listview" data-inset="true" data-theme="d">
+        <li>
+          <h3>Shout message</h3>
+          <p><strong>Name</strong></p>
+          <p>Location</p>
+        </li>
+      </ul>
+      <textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
+      <a href="#" data-role="button">Shout!</a>
+    </div>
+  </div>
+</div><!-- /content -->

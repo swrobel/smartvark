@@ -22,12 +22,14 @@ class WelcomeController < ApplicationController
   def printdeal
     raise CanCan::AccessDenied unless can? :read, :viewdeal
     @offer = Offer.find(params[:id], :include => :businesses)
+    raise "Deals cannot be accessed by ID" if !@offer.friendly_id_status.friendly?
     render :layout => false
   end
 
   def viewbusiness
     raise CanCan::AccessDenied unless can? :read, :viewbusiness
     @business = Business.find(params[:id])
+    raise "Businesses cannot be accessed by ID" if !@business.friendly_id_status.friendly?
   end
 
   def myprofile
@@ -80,6 +82,7 @@ class WelcomeController < ApplicationController
   def viewdeal
     raise CanCan::AccessDenied unless can? :read, :viewdeal
     @offer = Offer.find(params[:id], :include => [:businesses, :comments])
+    raise "Deals cannot be accessed by ID" if !@offer.friendly_id_status.friendly?
   end
 
   def search

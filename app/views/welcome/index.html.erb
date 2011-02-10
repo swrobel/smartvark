@@ -1,39 +1,37 @@
 <% title "LA deals" %>
 <!-- welcome-box -->
 <div class="welcome-box">
-  <!-- text -->
+  <%= form_for :potential do |f| %>
   <div class="text">
-    <%= render :partial => "index_copy" %>
+    <% if session[:potential] %>
+      <p>Thanks for signing up! You'll be hearing from us soon.</p>
+      <p><a href="#" onClick="$('.txt').val('');$('#potential-form').show();$(this).hide();return false;">Click here to add another email to the list</a></p>
+      <% hidden = true %>
+    <% end %>
+    <div id="potential-form" style="display:<%= 'none' if hidden %>;">
+      <%= f.error_messages %>
+      <%= f.label :email %>
+      <%= f.text_field :email, :class => :txt %>
+      <%= f.label :location %>
+      <%= f.text_field :location, :class => :txt %>
+    </div>
   </div>
-  <!-- promo-box
+  <!-- promo-box -->
   <div class="promo-box">
-    <strong class="ttl-give-a-try">Give it a try</strong>
-    <a href="/deals" class="btn-show-deals">Show me the deals!</a>
-  </div> -->
+    <strong class="ttl-find-out-first">Find out first</strong>
+    <%= f.submit "Notify Me!", class: "btn-notify-me" %>
+  </div>
+  <% end %>
 </div>
 <!-- wide-box -->
 <div class="wide-box">
   <!-- holder -->
   <div class="holder">
     <div class="frame">
-      <h2>Fill in your info below and we'll notify you when we launch in your area</h2>
+      <h2>What's a Smartvark, anyway?</h2>
       <!-- promo-section -->
       <div class="promo-section">
-        <% if session[:potential] %>
-          <p>Thanks for signing up! You'll be hearing from us soon. <a href="#" onClick="$('.txt').val('');$('#potential-form').show();$(this).hide();return false;">Need to add another email to the list?</a></p>
-          <% hidden = true %>
-        <% end %>
-        <div id="potential-form" style="display:<%= 'none' if hidden %>;">
-          <%= form_for :potential do |f| %>
-            <%= f.error_messages %>
-            <%= f.label :email %>
-            <%= f.text_field :email, :class => :txt %>
-            <%= f.label :location %>
-            <%= f.text_field :location, :class => :txt %>
-            <%= f.submit "Notify Me!" %>
-          <% end %>
-          <p>We won't spam you ... promise!</p>
-        </div>
+        <%= render :partial => "index_copy" %>
       </div>
     </div>
   </div>

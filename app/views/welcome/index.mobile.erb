@@ -1,14 +1,32 @@
+<% content_for(:head_additions) do %>
+<script type="text/javascript">
+  var _kmq = _kmq || [];
+  function _kms(u){
+    setTimeout(function(){
+      var s = document.createElement('script'); var f = document.getElementsByTagName('script')[0]; s.type = 'text/javascript'; s.async = true;
+      s.src = u; f.parentNode.insertBefore(s, f);
+    }, 1);
+  }
+  _kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/e3f924bcb188e79eee2462c203e2bb3fc21feaa8.1.js');
+</script>
+<script type="text/javascript">
+$(document).bind("mobileinit", function(){
+  $.mobile.ajaxEnabled = false;
+});
+</script>
+<% end %>
+
 <div data-role="header" data-theme="b">
-  <h1>LA-area deals</h1>
+  <div align="center"><img src="/images/logo-mobile.png"/></div>
 </div><!-- /header -->
 
 <div data-role="content">
-  <div align="center"><img src="/images/logo-mobile.png"/></div>
-  <%= render :partial => "index_copy" %>
   <% if session[:potential] %>
     <p><strong>Thanks for signing up! You'll be hearing from us soon.</strong></p>
+    <%= render :partial => "index_copy" %>
   <% else %>
-    <%= form_for :potential do |f| %>
+    <%= render :partial => "index_copy" %>
+    <%= form_for :potential, :html => {id: "notify_form"} do |f| %>
       <%= f.error_messages %>
       <%= f.label :email %>
       <%= f.text_field :email, :class => :txt %>
@@ -18,3 +36,8 @@
     <% end %>
   <% end %>
 </div><!-- /content -->
+
+<% content_for(:footer_additions) do %>
+<script type='text/javascript'>var mp_protocol = (('https:' == document.location.protocol) ? 'https://' : 'http://');document.write(unescape('%3Cscript src="' + mp_protocol + 'api.mixpanel.com/site_media/js/api/mixpanel.js" type="text/javascript"%3E%3C/script%3E'));</script><script type='text/javascript'>try { var mpmetrics = new MixpanelLib('7806576e26c5fcf03f5fc80f35bee7d5');} catch(err) {null_fn = function () {};var mpmetrics = { track: null_fn, track_funnel: null_fn, register: null_fn, register_once: null_fn,register_funnel: null_fn};}</script>
+<script type='text/javascript'>mpmetrics.track('Load Landing page');$('#potential_email').focus(mpmetrics.track('Focus Email field'));$('#potential_location').focus(mpmetrics.track('Focus Location field'));$('#notify_form').submit(mpmetrics.track('Submit Notify form'));</script>
+<% end %>

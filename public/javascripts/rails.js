@@ -4,7 +4,9 @@
  * Requires jQuery 1.4.3 or later.
  * https://github.com/rails/jquery-ujs
  */
-(function($){function fire(obj,name,data){var event=new $.Event(name);obj.trigger(event,data);return event.result!==false;}
+(function($){function CSRFProtection(fn){var token=$('meta[name="csrf-token"]').attr('content');if(token)fn(function(xhr){xhr.setRequestHeader('X-CSRF-Token',token)});}
+if($().jquery=='1.5'){var factory=$.ajaxSettings.xhr;$.ajaxSettings.xhr=function(){var xhr=factory();CSRFProtection(function(setHeader){var open=xhr.open;xhr.open=function(){open.apply(this,arguments);setHeader(this)};});return xhr;};}
+else $(document).ajaxSend(function(e,xhr){CSRFProtection(function(setHeader){setHeader(xhr)});});function fire(obj,name,data){var event=new $.Event(name);obj.trigger(event,data);return event.result!==false;}
 function handleRemote(element){var method,url,data,dataType=element.attr('data-type')||($.ajaxSettings&&$.ajaxSettings.dataType);if(element.is('form')){method=element.attr('method');url=element.attr('action');data=element.serializeArray();var button=element.data('ujs:submit-button');if(button){data.push(button);element.data('ujs:submit-button',null);}}else{method=element.attr('data-method');url=element.attr('href');data=null;}
 $.ajax({url:url,type:method||'GET',data:data,dataType:dataType,beforeSend:function(xhr,settings){if(settings.dataType===undefined){xhr.setRequestHeader('accept','*/*;q=0.5, '+settings.accepts.script);}
 return fire(element,'ajax:beforeSend',[xhr,settings]);},success:function(data,status,xhr){element.trigger('ajax:success',[data,status,xhr]);},complete:function(xhr,status){element.trigger('ajax:complete',[xhr,status]);},error:function(xhr,status,error){element.trigger('ajax:error',[xhr,status,error]);}});}

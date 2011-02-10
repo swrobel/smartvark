@@ -74,3 +74,7 @@ a.facebook-signin {
 	text-align:center;
 }
 .coupon .code p{margin:0;}
+#errorExplanation h2 { display:none; }
+#errorExplanation p { display:none; }
+#errorExplanation { color:red; }
+.field_with_errors { color:red; }

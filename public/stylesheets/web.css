@@ -669,9 +669,6 @@ td, th{padding:0;}
 	float:left;
 	color:#238ecb;
 }
-/* rollover state */
-.share ul a:hover,
-.share ul a:hover span{text-decoration:underline;}
 /* info area */
 .info-area{
 	width:546px;
@@ -713,9 +710,9 @@ td, th{padding:0;}
 .info-box p a{
 	color:#238ecb;
 	font-weight:bold;
-	text-decoration:underline;
+	text-decoration:none;
 }
-.info-box p a:hover{text-decoration:none;}
+.info-box p a:hover{text-decoration:underline;}
 /* button */
 .info-box .btn{
 	width:94px;
@@ -757,9 +754,9 @@ td, th{padding:0;}
 }
 .r-side h3 a{
 	color:#2264a6;
-	text-decoration:underline;
+	text-decoration:none;
 }
-.r-side h3 a:hover{text-decoration:none;}
+.r-side h3 a:hover{text-decoration:underline;}
 /* mark */
 .r-side .mark{
 	width:277px;
@@ -774,9 +771,9 @@ td, th{padding:0;}
 }
 .r-side .mark a{
 	color:#238ecb;
-	text-decoration:underline;
+	text-decoration:none;
 }
-.r-side .mark a:hover{text-decoration:none;}
+.r-side .mark a:hover{text-decoration:underline;}
 /* list */
 .r-side .list{
 	margin:0 0 0 -2px;
@@ -1165,14 +1162,14 @@ td, th{padding:0;}
 }
 .btn-signup-open{
     color:#2264a6;
-	text-decoration:underline;
+	text-decoration:none;
 }
 .btn-signin-open{
 	color:#2264a6;
-	text-decoration:underline;
+	text-decoration:none;
 }
-.btn-signin-open:hover{text-decoration:none;}
-.btn-signup-open:hover{text-decoration:none;}
+.btn-signin-open:hover{text-decoration:underline;}
+.btn-signup-open:hover{text-decoration:underline;}
 .account-area .holder{
 	float:right;
 	padding:4px 0 4px;
@@ -1357,8 +1354,8 @@ a.facebook-signin {
 }
 .merchant-area .contact .address strong{display:block;}
 .merchant-area .contact .phone{display:block;}
-.merchant-area .contact a{text-decoration:underline;}
-.merchant-area .contact a:hover{text-decoration:none;}
+.merchant-area .contact a{text-decoration:none;}
+.merchant-area .contact a:hover{text-decoration:underline;}
 .contact .social{
 	margin:0;
 	padding:10px 0 8px;
@@ -1398,8 +1395,8 @@ a.facebook-signin {
 	font-size:16px;
 	line-height:16px;
 }
-.posts h3 a{text-decoration:underline;}
-.posts h3 a:hover{text-decoration:none;}
+.posts h3 a{text-decoration:none;}
+.posts h3 a:hover{text-decoration:underline;}
 .posts p{
 	text-indent:0;
 	margin:0;

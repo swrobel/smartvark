@@ -51,12 +51,15 @@ class WelcomeController < ApplicationController
       end
     end
     
+    opinions = []
     if params[:kill]
       @likes = []
       session.delete(:likes)
       session.delete(:dislikes)
     else
       @likes = Offer.find_all_by_id(session[:likes])
+      opinions += session[:likes] if session[:likes]
+      opinions += session[:dislikes] if session[:dislikes]
     end
     
     @out_of_area = false
@@ -66,7 +69,7 @@ class WelcomeController < ApplicationController
       @offers = []
     else
       @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:user]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]}).active
-      @offers = @offers.where(:id - @likes) unless @likes.empty?
+      @offers = @offers.where(:id - opinions) unless opinions.empty?
     end
   end
   
@@ -76,7 +79,8 @@ class WelcomeController < ApplicationController
     loc = geo_location
     @offers = Offer.select('DISTINCT offers.*').includes([:businesses, :user]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]} & (:category_id + Category.subtree_of(@category_id))).active
     @likes = current_user.liked_offers(@category_id)
-    @offers = @offers.where(:id - @likes) unless @likes.empty?
+    opinions = current_user.opinions.map(&:offer_id)
+    @offers = @offers.where(:id - opinions) unless opinions.empty?
   end
 
   def viewdeal

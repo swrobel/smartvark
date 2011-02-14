@@ -69,8 +69,8 @@ class User < ActiveRecord::Base
     end
   end
   
-  def set_opinion(params)
-    self.opinions.build(:offer_id => params[:offer_id], :liked => params[:liked]=="1")
+  def set_opinion(offer_id, liked)
+    self.opinions.build(offer_id: offer_id, liked: liked)
   end
 
   def liked_offers(category=1)

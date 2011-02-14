@@ -72,14 +72,13 @@ module ApplicationHelper
   end
 
   def undo_last_action_link(offer, liked=true)
+    liked_bit = liked ? 1 : 0
+    undo_link = link_to("Undo", { controller: "welcome", action: "undo_last_action", liked: liked_bit }, method: :post, remote: true)
     res = '<span class="mark">'
     if liked
-      res << "You added \"#{offer.title}\" deal to My Picks. " +
-      link_to("Undo", { :controller => "welcome", :action => "undo_last_action", :offer_id => offer.id, :liked => 1 }, :method => :post, :remote => true) + " or " +
-      use_it_now_link(offer) + "."
+      res << "You added <strong>#{offer.title}</strong> to My Picks. " + undo_link + " or " + use_it_now_link(offer) + "."
     else
-      res << "You removed \"#{offer.title}\" deal from Artie's Picks. " +
-      link_to("Undo", { :controller => "welcome", :action => "undo_last_action", :offer_id => offer.id, :liked => 0 }, :method => :post, :remote => true) + "."
+      res << "You removed <strong>#{offer.title}</strong> from Artie's Picks. " + undo_link + "."
     end
     res << "</span>"
   end
@@ -105,11 +104,11 @@ module ApplicationHelper
     '</div>
   </div>
   <div class="rate">' +
-    link_to(image_tag('/images/btn-good.gif', :alt => "+"),
-                   { :controller => "welcome", :action => "set_opinion", :offer_id => offer.id, :liked => 1 }, :method => :post, :remote => true) +
+    link_to(image_tag('/images/btn-good.gif', alt: "+"),
+            { controller: "welcome", action: "set_opinion", offer_id: offer.friendly_id, liked: 1 }, method: :post, remote: true) +
     use_it_now_link(offer) +
-    link_to(image_tag('/images/btn-bad.gif', :alt => "-"),
-                   { :controller => "welcome", :action => "set_opinion", :offer_id => offer.id, :liked => 0 }, :method => :post, :remote => true) +
+    link_to(image_tag('/images/btn-bad.gif', alt: "-"),
+            { controller: "welcome", action: "set_opinion", offer_id: offer.friendly_id, liked: 0 }, method: :post, remote: true) +
   '</div>
 </li>'
   end

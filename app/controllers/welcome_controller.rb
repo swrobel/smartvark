@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  before_filter :set_current_page, :except => [:undo_last_action, :set_opinion]
+  before_filter :set_current_page, :except => [:undo_last_action, :set_opinion, :shout]
 
   def set_current_page
     session[:user_return_to] = request.fullpath
@@ -115,14 +115,17 @@ class WelcomeController < ApplicationController
   end
 
   def undo_last_action
+    @offer_id = 0
     if current_user
-      current_user.opinions.find_by_offer_id(params[:offer_id]).delete
-      current_user.save
+      opinion = current_user.opinions.order(:updated_at).last
+      logger.info opinion.inspect
+      @offer_id = opinion.offer_id
+      opinion.delete
     else
       if params[:liked] == "1"
-        session[:likes].pop
+        @offer_id = session[:likes].pop
       else
-        session[:dislikes].pop
+        @offer_id = session[:dislikes].pop
       end
     end
 
@@ -139,7 +142,7 @@ class WelcomeController < ApplicationController
     session[:dislikes] ||= []
     
     if current_user
-      current_user.set_opinion(params)
+      current_user.set_opinion(@offer.id, @liked)
       current_user.save
     else
       if @liked

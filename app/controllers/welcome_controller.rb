@@ -122,7 +122,6 @@ class WelcomeController < ApplicationController
     @offer_id = 0
     if current_user
       opinion = current_user.opinions.order(:updated_at).last
-      logger.info opinion.inspect
       @offer_id = opinion.offer_id
       opinion.delete
     else

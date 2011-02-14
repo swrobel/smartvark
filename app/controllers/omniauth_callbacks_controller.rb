@@ -1,5 +1,6 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
+    logger.info env["omniauth.auth"]
     @user = User.find_for_facebook_oauth(env["omniauth.auth"], current_user)
     @user ||= User.new_with_session(params, session)
     @user.save unless @user.persisted?

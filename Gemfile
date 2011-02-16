@@ -13,7 +13,7 @@ gem 'active_device'
 gem "delocalize"
 gem "home_run"
 gem "dynamic_form"
-gem "devise", "1.2.rc"
+gem 'devise', :git => 'git://github.com/plataformatec/devise', :branch => 'master'
 gem "oa-oauth", :require => "omniauth/oauth"
 gem "cancan"
 gem "oauth"

@@ -48,7 +48,7 @@
 												</ul>
 												<dl>
 													<dt>Hours:</dt>
-                          <dd><%= (@business.hours || 'n/a').gsub(/,/,'<br/>') %></dd>
+                          <dd><%= (@business.hours || 'n/a').gsub(/,/,'<br/>').html_safe %></dd>
 												</dl>
 											</div>
 											<% if @business.user.logo.present? %>

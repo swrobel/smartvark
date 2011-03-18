@@ -23,7 +23,7 @@ class Business < ActiveRecord::Base
   validates :phone, :phone_format => true
 
   def self.ids_close_to(loc)
-    Business.origin(loc, :within => 25).order("distance").limit(10).collect {|x| x.id}
+    Business.origin(loc, :within => 25).order("distance").collect {|x| x.id}
   end
   
   def formatted_phone

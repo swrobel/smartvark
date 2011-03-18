@@ -155,6 +155,12 @@ td, th{padding:0;}
 	padding:1px 1px 4px 15px;
 	width:862px;
 }
+.main-frame .like-box{
+  font:16px Arial, Helvetica, sans-serif;
+  color:#FFFFFF;
+  margin:5px 230px;
+}
+.main-frame iframe{vertical-align:bottom;}
 .main-frame .filter-results {
     text-align:center;
     font:bold 19px/19px Arial, Helvetica, sans-serif;
@@ -168,7 +174,6 @@ td, th{padding:0;}
 	height:142px;
 	overflow:hidden;
 	padding:0 0 15px 14px;
-	margin:0 0 25px;
 }
 .welcome-box .text {
 	float:left;

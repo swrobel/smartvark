@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "rails", "3.0.4"
+gem "rails", "3.0.5"
 gem "thin", :group => :development
 gem "ancestry"
 gem "paperclip"
@@ -13,7 +13,7 @@ gem 'active_device'
 gem "delocalize"
 gem "home_run"
 gem "dynamic_form"
-gem 'devise', :git => 'git://github.com/plataformatec/devise', :branch => 'master'
+gem "devise", "1.2.rc2"
 gem "oa-oauth", :require => "omniauth/oauth"
 gem "cancan"
 gem "oauth"

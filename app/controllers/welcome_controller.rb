@@ -78,9 +78,9 @@ class WelcomeController < ApplicationController
     @category_id = params[:category_id].blank? ? 1 : Category.find(params[:category_id]).id
     loc = geo_location
     @offers = Offer.select('DISTINCT offers.*').includes([:businesses, :user]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]} & (:category_id + Category.subtree_of(@category_id))).active
-    @likes = current_user.liked_offers(@category_id)
     opinions = current_user.opinions.map(&:offer_id)
     @offers = @offers.where(:id - opinions) unless opinions.empty?
+    @likes = current_user.liked_offers(@category_id)
   end
 
   def viewdeal
@@ -170,7 +170,7 @@ class WelcomeController < ApplicationController
 
       @offer.comments.create(params[:comment])
     end
-    redirect_to :viewdeal, :id => @offer
+    redirect_to viewdeal_path(@offer.to_param)
   end
 
 end

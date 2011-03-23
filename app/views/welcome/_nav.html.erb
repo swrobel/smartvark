@@ -11,7 +11,7 @@
         <% else %>
           <% link_path = category_mydeals_path(category) %>
         <% end %>
-        <%= link_to "<span class='#{if index.zero? then 'first' elsif index == num_cats-1 then 'last' end}'>#{category.clever_or_name}</span>".html_safe, link_path %>
+        <%= link_to "<span class='#{if index.zero? then 'first' elsif index == num_cats-1 then 'last' end}'><img src='/images/#{category.parent_or_friendly_id}-white.png'/>#{category.clever_or_name}</span>".html_safe, link_path %>
         </li>
       <% end %>
     </ul>

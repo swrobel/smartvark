@@ -307,10 +307,14 @@ td, th{padding:0;}
 	background:url(/images/bg-nav.gif) repeat-x;
 }
 .nav ul a span{
-	padding:6px 14px;
+	padding:6px 10px 6px 6px;
 	height:21px;
 	float:left;
 	cursor:pointer;
+}
+.nav ul a span img{
+	vertical-align:top;
+	margin-right:3px;
 }
 .nav ul .active a,
 .nav ul a:hover{
@@ -609,6 +613,12 @@ td, th{padding:0;}
   text-align:center;
   text-transform: uppercase;
 }
+.section-inner .gallery ul .frame a strong img{
+	vertical-align: top;
+	margin: 2px 2px 0 2px;
+}
+.section-inner .gallery ul .frame a strong .left{float:left;}
+.section-inner .gallery ul .frame a strong .right{float:right;}
 .section-inner .gallery ul .frame a .c_Coupon{background:#3FB52B;}
 .section-inner .gallery ul .frame a .c_Deal{background:#ff5f00;}
 .section-inner .gallery ul .frame a .c_Event{background:#238ecb;}

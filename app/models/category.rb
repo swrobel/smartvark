@@ -16,4 +16,9 @@ class Category < ActiveRecord::Base
     # Only return parent_id for those that aren't children of All
     parent_id.nil? || parent_id == 1 ? id : parent_id
   end
+  
+  def parent_or_friendly_id
+    # Only return parent friendly_id for those that aren't children of All
+    parent_id.nil? || parent_id == 1 ? friendly_id : parent.friendly_id
+  end
 end

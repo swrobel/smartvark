@@ -1,4 +1,5 @@
 <li>
+  <img src="/images/<%= offer.category.parent_or_friendly_id %>.png" class="ui-li-icon"/>
   <h3><%= link_to offer.title, viewdeal_path(offer) %></h3>
   <p><strong><%= offer.user.name %></strong></p>
   <p><%= offer.description %></p>

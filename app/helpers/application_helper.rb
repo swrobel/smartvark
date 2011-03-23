@@ -30,9 +30,8 @@ module ApplicationHelper
 
   def deal_coupon(offer)
     link_to(
-    "
-    <strong class=\"c_#{offer.offer_type.name}\">#{offer.offer_type.name}</strong>
-    <div class=""img_box"">
+    "<strong class='c_#{offer.offer_type.name}'><img class='left' src='/images/#{offer.category.parent_or_friendly_id}-white.png'/>#{offer.offer_type.name}<img class='right' src='/images/#{offer.category.parent_or_friendly_id}-white.png'/></strong>
+    <div class='img_box'>
       #{image_tag(offer.coupon.url(:thumb))}
     </div>
     <span id='#{offer.id}_title'>#{offer.title}</span>".html_safe,

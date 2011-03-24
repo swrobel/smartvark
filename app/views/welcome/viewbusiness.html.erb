@@ -20,7 +20,7 @@
 						</div>
 						<div class="address">
 							<strong><%= @business.address %></strong>
-							<% if @business.address_2 %>
+							<% if @business.address_2.present? %>
 								<strong><%= @business.address_2 %></strong>
 							<% end %>
 							<strong><%= @business.city %>, <%= @business.state %> <%= @business.zipcode %></strong>
@@ -46,10 +46,12 @@
 							<% end %>
 							</li>
 						</ul>
-						<dl>
-							<dt>Hours:</dt>
-							<dd><%= (@business.hours || 'n/a').gsub(/,/,'<br/>').html_safe %></dd>
-						</dl>
+						<% if @business.hours.present? %>
+							<dl>
+								<dt>Hours:</dt>
+								<dd><%= (@business.hours || 'n/a').gsub(/,/,'<br/>').html_safe %></dd>
+							</dl>
+						<% end %>
 					</div>
 					<% if @business.user.logo.present? %>
 					<div class="img">

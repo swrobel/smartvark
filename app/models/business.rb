@@ -43,6 +43,7 @@ class Business < ActiveRecord::Base
   end
 
   def facebook_link
+    return if facebook_url.blank?
     if facebook_url.include?('facebook.com/')
       facebook_url
     else
@@ -51,6 +52,7 @@ class Business < ActiveRecord::Base
   end
   
   def twitter_link
+    return if twitter_url.blank?
     if twitter_url.include?('twitter.com/')
       twitter_url
     else
@@ -59,6 +61,7 @@ class Business < ActiveRecord::Base
   end
   
   def yelp_link
+    return if yelp_url.blank?
     if yelp_url.include?('yelp.com/')
       yelp_url
     else

@@ -43,7 +43,6 @@ class Business < ActiveRecord::Base
   end
 
   def facebook_link
-    return '' if facebook_url.blank?
     if facebook_url.include?('facebook.com/')
       facebook_url
     else
@@ -52,7 +51,6 @@ class Business < ActiveRecord::Base
   end
   
   def twitter_link
-    return '' if twitter_url.blank?
     if twitter_url.include?('twitter.com/')
       twitter_url
     else
@@ -72,11 +70,13 @@ private
 
   def get_yelp_data
     return if yelp_url.blank?
+    self.yelp_url = yelp_url.split("#").first
     consumer = OAuth::Consumer.new(YELP_CONSUMER_KEY, YELP_CONSUMER_SECRET, {:site => "http://api.yelp.com"})
     access_token = OAuth::AccessToken.new(consumer, YELP_TOKEN, YELP_TOKEN_SECRET)
     
     path = "/v2/business/" + yelp_url
     result = access_token.get(path).body
+    logger.info result.inspect
     result = Yajl::Parser.parse(result)
     
     self.yelp_mobile_url = result["mobile_url"]

@@ -1,12 +1,12 @@
 <div id='redeem-popup' class="popup">
   <% if logged_in? %>
     <h3><%= @offer.title %></h3>
-    <% form_for @offer, :url => printdeal_path do |f| %>
+    <% form_for @offer, :url => redeem_path do |f| %>
         <% if @offer.allow_print? %>
           <div class="popup-row">
             <%=
               f.submit "Print deal", :class => 'simplemodal-close',
-                :onclick => "window.open('#{printdeal_path(@offer)}');return false;"
+                :onclick => "window.open('#{redeem_path(@offer)}');return false;"
             %>
           </div>
         <% end %>

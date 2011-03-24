@@ -25,6 +25,7 @@ class Ability
     end
     
     # Everyone can see these
+    can :read, :mypicks
     can :read, :viewdeal
     can :read, :viewbusiness
     can :read, :search

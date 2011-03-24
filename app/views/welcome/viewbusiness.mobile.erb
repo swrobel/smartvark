@@ -1,24 +1,23 @@
-<div data-role="page">
+<% title @business.name %>
+<div data-role="header" data-theme="c">
+  <h1>Biz Detail</h1>
+  <% if current_user %>
+    <%= render :partial => "search_button" %>
+  <% else %>
+    <%= link_to 'Sign in', signin_path, "data-icon" => "check", "data-transition" => "pop", :class => "ui-btn-right" %>
+  <% end %>
+</div><!-- /header -->
 
-	<div data-role="header" data-theme="c">
-		<h1>Offer Lead</h1>
-		<a href="/m/search" data-icon="search" data-transition="pop" class="ui-btn-right">Search</a>
-	</div><!-- /header -->
-
-	<div data-role="content" data-theme="b">
-	  <div class="ui-body">
-		  <img src="http://s3.amazonaws.com/smartvark-dev/logos/1/thumb/smartvarklogo.png?1286834065" class="logo" />
-      <h2><%= @business.name %></h2>
-      <%= render :partial => 'business', :locals => { :business => @business } %>
-    </div>
-      <ul data-role="listview" data-theme="d">
-        <li data-role="list-divider">Deals available at this business</li>
-      <% @business.offers.each do |offer| %>
-        <li>
-          <h3><a href="/m/viewdeal/<%= offer.id %>"><%= offer.title %></a></h3>
-          <p><%= offer.description %></p>
-        </li>
-      <% end %>
-      </ul>
-	</div><!-- /content -->
-</div><!-- /page -->
+<div data-role="content" data-theme="b">
+  <div class="ui-body">
+    <% if @business.user.logo.present? %>
+      <%= image_tag @business.user.logo.url(:thumb), :alt => @business.name + " logo", :class => "logo" %>
+    <% end %>
+    <h2><%= @business.name %></h2>
+    <%= render :partial => 'business', :locals => { :business => @business } %>
+  </div>
+  <ul data-role="listview" data-theme="d">
+    <li data-role="list-divider">Deals available at this business</li>
+    <%= render :partial => 'offer', :collection => @business.offers %>
+  </ul>
+</div><!-- /content -->

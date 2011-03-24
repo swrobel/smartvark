@@ -1,0 +1,12 @@
+<% title "My Deals" %>
+<div data-role="header" data-theme="b">
+  <%= link_to 'My Picks', mypicks_path, "data-icon" => "check" %>
+  <h1>Artie's Picks</h1>
+  <%= render :partial => "search_button" %>
+</div><!-- /header -->
+
+<div data-role="content">
+  <ul data-role="listview" data-theme="d">
+    <%= render :partial => 'offer', :collection => @offers %>
+  </ul>
+</div><!-- /content -->

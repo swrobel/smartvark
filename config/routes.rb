@@ -15,9 +15,11 @@ Smartvark::Application.routes.draw do
   match 'deals' => 'welcome#deals', :as => :deals
   match 'mydeals' => 'welcome#mydeals', :as => :mydeals
   match 'mydeals/:category_id' => 'welcome#mydeals', :as => :category_mydeals
+  match 'mypicks' => 'welcome#mypicks', :as => :mypicks
+  match 'mypicks/:category_id' => 'welcome#mypicks', :as => :category_mypicks
   match 'myprofile' => 'welcome#myprofile', :as => :myprofile
   match 'deal/:id' => 'welcome#viewdeal', :as => :viewdeal
-  match 'printdeal/:id' => 'welcome#printdeal', :as => :printdeal
+  match 'redeem/:id' => 'welcome#redeem', :as => :redeem
   match 'search/:category_id' => 'welcome#search', :as => :search, :via => :get
   match 'biz/:id' => 'welcome#viewbusiness', :as => :viewbusiness
   match 'shout/:id' => 'welcome#shout', :as => :shout, :via => :post
@@ -26,4 +28,6 @@ Smartvark::Application.routes.draw do
   match 'makebiz' => 'application#makebiz', :as => :makebiz
   match 'signin' => 'welcome#signin', :as => :signin
   match 'signup' => 'welcome#signup', :as => :signup
+  match 'search_form' => 'welcome#search_form', :as => :search_form
+  match 'mobile_filter/:category_id' => 'welcome#mobile_filter', :as => :mobile_filter
 end

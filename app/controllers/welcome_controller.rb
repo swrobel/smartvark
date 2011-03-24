@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  before_filter :set_current_page, :except => [:undo_last_action, :set_opinion, :shout]
+  before_filter :set_current_page, :except => [:undo_last_action, :set_opinion, :shout, :signup, :signin]
 
   def set_current_page
     session[:user_return_to] = request.fullpath
@@ -17,13 +17,6 @@ class WelcomeController < ApplicationController
     raise CanCan::AccessDenied unless can? :read, :dealdashboard
     @businesses = current_user.businesses
     @offers = current_user.offers_sorted_for_dealdashboard
-  end
-
-  def printdeal
-    raise CanCan::AccessDenied unless can? :read, :viewdeal
-    @offer = Offer.find(params[:id], :include => :businesses)
-    raise "Deals cannot be accessed by ID" if !@offer.friendly_id_status.friendly?
-    render :layout => false
   end
 
   def viewbusiness
@@ -82,11 +75,29 @@ class WelcomeController < ApplicationController
     @offers = @offers.where(:id - opinions) unless opinions.empty?
     @likes = current_user.liked_offers(@category_id)
   end
+  
+  def mypicks
+    raise CanCan::AccessDenied unless can? :read, :mypicks
+    @category_id = params[:category_id].blank? ? 1 : Category.find(params[:category_id]).id
+    if current_user
+      @likes = current_user.liked_offers(@category_id)
+    else
+      @likes = Offer.find_all_by_id(session[:likes])
+    end
+  end
 
   def viewdeal
     raise CanCan::AccessDenied unless can? :read, :viewdeal
     @offer = Offer.find(params[:id], :include => [:businesses, :comments])
     raise "Deals cannot be accessed by ID" if !@offer.friendly_id_status.friendly?
+    logger.info session[:likes]
+  end
+  
+  def redeem
+    raise CanCan::AccessDenied unless can? :read, :viewdeal
+    @offer = Offer.find(params[:id], :include => :businesses)
+    raise "Deals cannot be accessed by ID" if !@offer.friendly_id_status.friendly?
+    render :layout => false unless is_mobile_browser?
   end
 
   def search
@@ -171,6 +182,13 @@ class WelcomeController < ApplicationController
       @offer.comments.create(params[:comment])
     end
     redirect_to viewdeal_path(@offer.to_param)
+  end
+  
+  def mobile_filter
+    @offers = Offer.active.find_all_by_category_id(params[:category_id])
+    respond_to do |format|
+      format.js
+    end
   end
 
 end

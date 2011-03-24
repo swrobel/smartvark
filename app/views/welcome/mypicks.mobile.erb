@@ -1,22 +1,20 @@
-<div data-role="page">
+<% title "My Picks" %>
+<div data-role="header" data-theme="e">
+  <h1>My Picks</h1>
+  <%= render :partial => "search_button" %>
+</div><!-- /header -->
 
-	<div data-role="header" data-theme="e">
-		<h1>My Picks</h1>
-		<a href="/m/search" data-icon="search" data-transition="pop" class="ui-btn-right">Search</a>
-	</div><!-- /header -->
-
-	<div data-role="content">
-		<div data-role="fieldcontain" id="list-header">
-	    <label for="category-filter" class="select">Category:</label>
-	    <select name="category-filter" id="category-filter">
-		    <option value="all">All</option>
-		    <option value="food">Feed Me</option>
-		    <option value="clothes">Dress Me</option>
-		    <option value="shopping">Retail Me</option>
-	    </select>
-	  </div>
-          <ul data-role="listview" data-theme="d" data-filter="true">
-            <%= render :partial => 'offers', @offers %>
-		</ul>
-	</div><!-- /content -->
-</div><!-- /page -->
+<div data-role="content">
+  <div data-role="fieldcontain" id="list-header">
+    <label for="category-filter" class="select">Category:</label>
+    <select name="category-filter" id="category-filter">
+      <option value="all">All</option>
+      <option value="food">Feed Me</option>
+      <option value="clothes">Dress Me</option>
+      <option value="shopping">Retail Me</option>
+    </select>
+  </div>
+  <ul data-role="listview" data-theme="d" data-filter="true">
+    <%= render :partial => 'offer', :collection => @likes %>
+  </ul>
+</div><!-- /content -->

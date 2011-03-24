@@ -46,7 +46,7 @@ class Offer < ActiveRecord::Base
     update_attribute(:archived,true)
   end
 
-  def coupon
+  def logo
     user.logo
   end
 

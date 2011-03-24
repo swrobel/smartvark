@@ -1,34 +1,48 @@
+<% title @offer.title %>
 <div data-role="header" data-theme="c">
   <h1>Deal Detail</h1>
-  <%= render :partial => 'search_button' %>
+  <% if current_user %>
+    <%= render :partial => "search_button" %>
+  <% else %>
+    <%= link_to 'Sign in', signin_path, "data-icon" => "check", "data-transition" => "pop", :class => "ui-btn-right" %>
+  <% end %>
 </div><!-- /header -->
 
 <div data-role="content" data-theme="b">
   <div class="ui-body">
-    <%= image_tag @offer.coupon.url(:thumb), :alt => @offer.user.name + " logo", :class => "logo" %>
-      <h2><%= @offer.title %></h2>
-      <h3><%= @offer.description %></h3>
-      <h4>Expires <%= std_date(@offer.end_date) %></h3>
-      <%= render :partial => 'business', :collection => @offer.businesses %>
+    <%= image_tag @offer.logo.url(:thumb), :alt => @offer.user.name + " logo", :class => "logo" %>
+    <h2><%= @offer.title %></h2>
+    <h3><%= @offer.description %></h3>
+    <h4>Expires <%= std_date(@offer.end_date) %></h4>
+    <h4>Valid at these locations:</h4>
+    <%= render :partial => 'business', :collection => @offer.businesses %>
     <div data-role="controlgroup" data-type="horizontal" >
-      <%= link_to("+",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.id, :liked => 1 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>
-      <% if @offer.allow_mobile %>
-      <a href="/m/redeem/<%= @offer.id %>" data-role="button">Redeem</a>
+      <%= link_to("+",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 1 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>
+      <% if current_user && @offer.allow_mobile %>
+      <%= link_to("Redeem", redeem_path(@offer), "data-role" => "button") %>
       <% end %>
-      <%= link_to("-",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.id, :liked => 0 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsdown") %>
+      <%= link_to("-",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 0 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsdown") %>
     </div>
     <p><%= @offer.fine_print %></p>
-    <div data-role="collapsible" data-collapsed="true">
-      <h3>Shout about it</h3>
-      <ul data-role="listview" data-inset="true" data-theme="d">
-        <li>
-          <h3>Shout message</h3>
-          <p><strong>Name</strong></p>
-          <p>Location</p>
-        </li>
-      </ul>
-      <textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
-      <a href="#" data-role="button">Shout!</a>
-    </div>
+    <ul data-role="listview" data-inset="true" data-theme="d">
+      <li data-role="list-divider">Shout about it!</li>
+      <% @offer.comments.each do |comment| %>
+      <li>
+        <h3><%= comment.text %></h3>
+        <p><strong><%= comment.commenter.first %></strong></p>
+        <p><%= comment.commenter.last %></p>
+      </li>
+      <% end %>
+      <% if !logged_in? %>
+        <i>You must be logged in to shout</i>
+      <% elsif !@offer.commenters.include?(current_user) %>
+        <div class="row">
+          <%= form_tag shout_path(@offer.id) do %>
+            <%= text_area_tag 'comment[text]', '', :id => 'shoutbox', :size => '40x3' %>
+            <%= submit_tag 'Shout!', :id => :shout %>
+          <% end %>
+        </div>
+      <% end %>
+    </ul>
   </div>
 </div><!-- /content -->

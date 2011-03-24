@@ -1,23 +1,20 @@
-  <div data-role="header" data-theme="b">
-	  <a href="/m/mypicks" data-icon="star">My Picks</a>
-		<h1>Artie's Picks</h1>
-		<% if current_user %>
-      <%= render :partial => "search_button" %>
-    <% else %>
-      <%= link_to 'Sign in', signin_path, "data-icon" => "check", "data-transition" => "pop", :class => "ui-btn-right" %>
-    <% end %>
-	</div><!-- /header -->
+<% title "Deals near you" %>
+<div data-role="header" data-theme="b">
+  <%= link_to "My Picks", mypicks_path, "data-icon" => "star" %>
+  <h1>Artie's Picks</h1>
+  <%= link_to 'Sign in', signin_path, "data-icon" => "check", "data-transition" => "pop", :class => "ui-btn-right" %>
+</div><!-- /header -->
 
-	<div data-role="content">
-	  <div data-role="collapsible" data-collapsed="true" id="list-header">
-            <h3>Deals near <%= geo_location.to_location %></h3>
-	    <label for="location" class="select">I'm actually looking for deals near...</label>
-            <%= form_tag do %>
-              <%= text_field_tag 'location', nil, :placeholder => "city, state or zip" %>
-              <button type="submit" data-theme="d">Update</button>
-            <% end %>
-	  </div>
-          <ul data-role="listview" data-theme="d">
-            <%= render :partial => 'offer', :collection => @offers %>
-          </ul>
-	</div><!-- /content -->
+<div data-role="content">
+  <div data-role="collapsible" data-collapsed="true" id="list-header">
+    <h3>Deals near <%= geo_location.to_location %></h3>
+    <label for="location" class="select">I'm actually looking for deals near...</label>
+    <%= form_tag do %>
+      <%= text_field_tag 'location', nil, :placeholder => "city, state or zip" %>
+      <button type="submit" data-theme="d">Update</button>
+    <% end %>
+  </div>
+  <ul data-role="listview" data-theme="d">
+    <%= render :partial => 'offer', :collection => @offers %>
+  </ul>
+</div><!-- /content -->

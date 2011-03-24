@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     else
       flash[:alert] = "You can only do this when logged in"
     end
-    redirect_to session[:user_return_to] || home_path
+    redirect_to new_business_path
   end
 
 protected

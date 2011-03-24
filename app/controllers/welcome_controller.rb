@@ -2,10 +2,15 @@ class WelcomeController < ApplicationController
   before_filter :set_current_page, :except => [:undo_last_action, :set_opinion, :shout, :signup, :signin]
 
   def set_current_page
-    session[:user_return_to] = request.fullpath
+    if request.fullpath == "biz"
+      session[:user_return_to] = dealdashboard_path
+    else
+      session[:user_return_to] = request.fullpath
+    end
   end
   
   def index
+    raise CanCan::AccessDenied unless can? :read, :index
     if params[:potential]
       session[:potential] = false
       @potential = Potential.new(params[:potential])

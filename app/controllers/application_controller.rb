@@ -71,9 +71,15 @@ private
       deals_path
     end
   end
-
-  def after_inactive_sign_up_path_for(resource)
-    session[:user_return_to] || home_path
+  
+  # Override Devise method to redirect Biz users to Deal Dashboard
+  # Everyone else goes to where they were before
+  def redirect_location(scope, resource)
+    if resource.is_a?(User) && resource.role == "business"
+      dealdashboard_path
+    else
+      stored_location_for(scope) || after_sign_in_path_for(resource)
+    end
   end
 
   rescue_from CanCan::AccessDenied do

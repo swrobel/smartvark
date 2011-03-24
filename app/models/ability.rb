@@ -21,6 +21,7 @@ class Ability
         end
       end
     else # "Guest" users
+      can :read, :index
       can :read, :deals
     end
     

@@ -190,15 +190,16 @@ td, th{padding:0;}
 	color:#2264A6;
 }
 .welcome-box .txt{
-	width:178px;
-	font:14px Arial, Helvetica, sans-serif;
+	width:300px;
+	font:20px Arial, Helvetica, sans-serif;
 	border:1px solid #999;
-	padding: 4px 0;
 }
 .welcome-box label{
-	font:17px/19px Arial, Helvetica, sans-serif;
-	margin:0;
+	font:24px Arial, Helvetica, sans-serif;
+	margin-right:6px;
+  vertical-align:bottom;
 }
+#potential-form{float:right;}
 .welcome-box .right-label{
 	margin-left: 12px;
 }

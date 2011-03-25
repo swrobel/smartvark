@@ -1,3 +1,3 @@
 class Potential < ActiveRecord::Base
-  validates_presence_of :email, :location
+  validates_presence_of :email
 end

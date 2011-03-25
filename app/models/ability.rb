@@ -8,6 +8,7 @@ class Ability
       elsif user.role == "user"
         can :read, :mydeals
         can :read, :myprofile
+        can :read, :redeem
       elsif user.role == "business"
         can :read, :mydeals
         can :read, :dealdashboard

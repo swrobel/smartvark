@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  before_filter :set_current_page, :except => [:undo_last_action, :set_opinion, :shout, :signup, :signin]
+  before_filter :set_current_page, :except => [:undo_last_action, :set_opinion, :sms, :redeem, :shout, :signup, :signin]
 
   def set_current_page
     if request.fullpath == "biz"
@@ -27,7 +27,7 @@ class WelcomeController < ApplicationController
   def viewbusiness
     raise CanCan::AccessDenied unless can? :read, :viewbusiness
     @business = Business.find(params[:id])
-    raise "Businesses cannot be accessed by ID" if !@business.friendly_id_status.friendly?
+    raise "Businesses cannot be accessed by ID" unless @business.friendly_id_status.friendly?
   end
 
   def myprofile
@@ -94,14 +94,17 @@ class WelcomeController < ApplicationController
   def viewdeal
     raise CanCan::AccessDenied unless can? :read, :viewdeal
     @offer = Offer.find(params[:id], :include => [:businesses, :comments])
-    raise "Deals cannot be accessed by ID" if !@offer.friendly_id_status.friendly?
-    logger.info session[:likes]
+    raise "Deals cannot be accessed by ID" unless @offer.friendly_id_status.friendly?
   end
   
   def redeem
-    raise CanCan::AccessDenied unless can? :read, :viewdeal
+    raise CanCan::AccessDenied unless can? :read, :redeem
     @offer = Offer.find(params[:id], :include => :businesses)
-    raise "Deals cannot be accessed by ID" if !@offer.friendly_id_status.friendly?
+    raise "Deals cannot be accessed by ID" unless @offer.friendly_id_status.friendly?
+    raise "You have already redeemed this offer" if current_user.redemptions.map(&:offer_id).include?(@offer.id)
+    current_user.set_opinion(@offer.id, true) unless current_user.opinions.map(&:offer_id).include?(@offer.id)
+    current_user.redemptions.build(offer_id: @offer.id)
+    current_user.save!
     render :layout => false unless is_mobile_browser?
   end
 
@@ -194,6 +197,17 @@ class WelcomeController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+  
+  def sms
+    @offer = Offer.find(params[:id])
+    if current_user.phone.present?
+      msg = "Smartvark deal: " + @offer.title + " @ http://smartvark.com/deal/" + @offer.cached_slug
+      logger.info msg
+      sms = Moonshado::Sms.new(current_user.phone, msg)
+      sms.deliver_sms
+    end
+    redirect_to viewdeal_path(@offer)
   end
 
 end

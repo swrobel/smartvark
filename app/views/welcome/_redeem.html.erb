@@ -1,30 +1,22 @@
 <div id='redeem-popup' class="popup">
   <% if logged_in? %>
     <h3><%= @offer.title %></h3>
-    <% form_for @offer, :url => redeem_path do |f| %>
-        <% if @offer.allow_print? %>
-          <div class="popup-row">
-            <%=
-              f.submit "Print deal", :class => 'simplemodal-close',
-                :onclick => "window.open('#{redeem_path(@offer)}');return false;"
-            %>
-          </div>
-        <% end %>
-        <% if @offer.allow_mobile? %>
-          <div class="popup-row">
-            <%= f.submit "Send to phone via text", :class => 'simplemodel-close' %>
-          </div>
-          <div class="popup-row">
-            <%= f.submit "Send to mobile device via email", :class => 'simplemodel-close' %>
-          </div>
-        <% end %>
+    <%= form_tag sms_path(@offer.id) do %>
+      <% if @offer.allow_print? %>
+        <div class="popup-row">
+          <%=
+            submit_tag "Print deal", :class => 'simplemodal-close',
+              :onclick => "window.open('#{redeem_path(@offer)}');return false;"
+          %>
+        </div>
       <% end %>
-    <% else %>
-      <p>
-        <h3>Please sign in before redeeming<h3>
-      </p>
+      <% if @offer.allow_mobile? %>
+        <div class="popup-row">
+          <%= submit_tag "Text to phone", :class => 'simplemodel-close' %>
+        </div>
+      <% end %>
     <% end %>
-    <div class="popup-row">
-      <input class="btn-signin-cancel simplemodal-close" type="submit" value="Cancel" />
-    </div>
+  <% else %>
+    <h3>Please sign in before redeeming<h3>
+  <% end %>
 </div>

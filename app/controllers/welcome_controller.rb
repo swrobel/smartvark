@@ -203,7 +203,7 @@ class WelcomeController < ApplicationController
   def sms
     @offer = Offer.find(params[:id])
     if current_user.phone.present?
-      msg = "Smartvark deal: " + @offer.title + " @ http://smartvark.com/deal/" + @offer.cached_slug
+      msg = @offer.title + " http://smartvark.com/deal/" + @offer.cached_slug
       logger.info msg
       sms = Moonshado::Sms.new(current_user.phone, msg)
       sms.deliver_sms

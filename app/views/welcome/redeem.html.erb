@@ -4,9 +4,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><%= @offer.title %> - smartvark</title>
 </head>
-<body>
-  <h1><%= @offer.title %></h1>
-  <h2><%= image_tag @offer.logo.url, :alt => @offer.user.name %></h2>
+<body style="font-family: Arial, Helvetica, sans-serif;">
+  <%= image_tag "/images/logo.png", alt: "Smartvark Logo" %>
+  <hr>
+  <h1><%= @offer.user.name %></h1>
+  <h2><%= @offer.title %></h2>
 	<h3>Valid at these locations:</h3>
 	<% @offer.businesses.each do |business| %>
 		<p><strong><%= business.name %></strong><br/>

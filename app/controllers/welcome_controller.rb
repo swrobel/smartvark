@@ -102,6 +102,7 @@ class WelcomeController < ApplicationController
     @offer = Offer.find(params[:id], :include => :businesses)
     raise "Deals cannot be accessed by ID" unless @offer.friendly_id_status.friendly?
     raise "You have already redeemed this offer" if current_user.redemptions.map(&:offer_id).include?(@offer.id)
+    raise "Sorry, this deal is not available for mobile redemption. Please print it from your computer." if !@offer.allow_mobile && is_mobile_browser?
     current_user.set_opinion(@offer.id, true) unless current_user.opinions.map(&:offer_id).include?(@offer.id)
     current_user.redemptions.build(offer_id: @offer.id)
     current_user.save!

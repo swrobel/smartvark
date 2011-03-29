@@ -79,6 +79,8 @@ class WelcomeController < ApplicationController
     opinions = current_user.opinions.map(&:offer_id)
     @offers = @offers.where(:id - opinions) unless opinions.empty?
     @likes = current_user.liked_offers(@category_id)
+    redemptions = current_user.redemptions.map(&:offer_id)
+    @likes = @likes.where(:id - redemptions) unless redemptions.empty?
   end
   
   def mypicks
@@ -86,6 +88,8 @@ class WelcomeController < ApplicationController
     @category_id = params[:category_id].blank? ? 1 : Category.find(params[:category_id]).id
     if current_user
       @likes = current_user.liked_offers(@category_id)
+      redemptions = current_user.redemptions.map(&:offer_id)
+      @likes = @likes.where(:id - redemptions) unless redemptions.empty?
     else
       @likes = Offer.find_all_by_id(session[:likes])
     end
@@ -100,13 +104,18 @@ class WelcomeController < ApplicationController
   def redeem
     raise CanCan::AccessDenied unless can? :read, :redeem
     @offer = Offer.find(params[:id], :include => :businesses)
-    raise "Deals cannot be accessed by ID" unless @offer.friendly_id_status.friendly?
-    raise "You have already redeemed this offer" if current_user.redemptions.map(&:offer_id).include?(@offer.id)
-    raise "Sorry, this deal is not available for mobile redemption. Please print it from your computer." if !@offer.allow_mobile && is_mobile_browser?
-    current_user.set_opinion(@offer.id, true) unless current_user.opinions.map(&:offer_id).include?(@offer.id)
-    current_user.redemptions.build(offer_id: @offer.id)
-    current_user.save!
-    render :layout => false unless is_mobile_browser?
+    alert = "You have already redeemed this offer" if @offer.offer_type.id == 1 && current_user.redemptions.map(&:offer_id).include?(@offer.id)
+    alert = "Sorry, this deal is not available for mobile redemption. Please print it from your computer." if !@offer.allow_mobile && is_mobile_browser?
+    alert = "Deals cannot be accessed by ID" unless @offer.friendly_id_status.friendly?
+    if alert
+      flash[:alert] = alert
+      redirect_to session[:user_return_to]
+    else
+      current_user.set_opinion(@offer.id, true) unless current_user.opinions.map(&:offer_id).include?(@offer.id)
+      current_user.redemptions.build(offer_id: @offer.id) unless current_user.redemptions.map(&:offer_id).include?(@offer.id)
+      current_user.save!
+      render :layout => false unless is_mobile_browser?
+    end
   end
 
   def search

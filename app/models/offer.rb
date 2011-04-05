@@ -78,7 +78,7 @@ class Offer < ActiveRecord::Base
   end
   
   def self.archive_expired
-    connection.execute("update offers set archived = true where end_date <= current_date")
+    connection.execute("update offers set archived = true, updated_at = now() where id in (select o1.id from offers o1 left join (select o.id, count(r.id) as redemption_count from offers o join redemptions r on o.id = r.offer_id group by o.id) o2 on o1.id = o2.id where archived = false and (coalesce(o2.redemption_count,0) >= o1.redemption_limit or o1.end_date <= current_date))update offers set archived = true, updated_at = now() where id in (select o1.id from offers o1 left join (select o.id, count(r.id) as redemption_count from offers o join redemptions r on o.id = r.offer_id group by o.id) o2 on o1.id = o2.id where archived = false and (coalesce(o2.redemption_count,0) >= o1.redemption_limit or o1.end_date <= current_date))")
   end
 
   def self.human_attribute_name(attr, options={})

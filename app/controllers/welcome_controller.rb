@@ -103,9 +103,9 @@ class WelcomeController < ApplicationController
   
   def redeem
     raise CanCan::AccessDenied unless can? :read, :redeem
-    @offer = Offer.find(params[:id], :include => [:businesses, :offer_types, :redemptions])
+    @offer = Offer.find(params[:id], :include => [:businesses, :offer_type, :redemptions])
     alert = "You have already redeemed this offer" if @offer.offer_type.id == 1 && current_user.redemptions.map(&:offer_id).include?(@offer.id)
-    alert = "This deal has reached its redemption limit" if @offer.redemptions.count >= @offer.redemption_limit
+    alert = "This deal has reached its redemption limit" if @offer.redemption_limit && @offer.redemptions.count >= @offer.redemption_limit
     alert = "Sorry, this deal is not available for mobile redemption. Please print it from your computer." if !@offer.allow_mobile && is_mobile_browser?
     alert = "Deals cannot be accessed by ID" unless @offer.friendly_id_status.friendly?
     if alert

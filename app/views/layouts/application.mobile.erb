@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <% if controller.action_name == "index" %>
-	<title>Smartvark: Local Deals. Personalized.</title>
-	<% else %>
-  <title><%= content_for?(:title) ? yield(:title) : controller.action_name.titlecase %> - Smartvark</title>
-	<% end %>
+	<title>Smartvark</title>
 	<%= stylesheet_link_tag 'jquery-mobile' %>
 	<%= stylesheet_link_tag 'mobile' %>
 	<%= javascript_include_tag 'jquery', 'rails' %>

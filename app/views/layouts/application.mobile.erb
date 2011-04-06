@@ -2,11 +2,10 @@
 <html>
 <head>
 	<title>Smartvark</title>
-	<%= stylesheet_link_tag 'jquery-mobile' %>
-	<%= stylesheet_link_tag 'mobile' %>
+	<%= stylesheet_link_tag 'jquery-mobile', 'mobile' %>
 	<%= javascript_include_tag 'jquery', 'rails' %>
   <%= content_for?(:head_additions) ? yield(:head_additions) : nil -%>
-  <%= javascript_include_tag 'jquery-mobile', 'misc' %>
+  <%= javascript_include_tag 'jquery-mobile', 'mobile' %>
 	<%= favicon_link_tag %>
 	<link rel="apple-touch-icon-precomposed" href="/images/touch-icon.png" />
 	<link rel="apple-touch-startup-image" href="/images/splash.png" />

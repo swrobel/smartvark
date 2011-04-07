@@ -3,7 +3,7 @@
     <%= link_to "Sign up with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b" %>
     <h3>or sign in with a Smartvark account</h3>
     <label for="email">Email:</label>
-    <%= f.text_field :email, :id => 'email', :placeholder => 'email adress' %>
+    <%= f.email_field :email, :id => 'email', :placeholder => 'email adress' %>
     <label for="password">Password:</label>
     <%= f.password_field :password, :placeholder => 'password' %>
     <label for="password_confirmation">Re-enter Password:</label>

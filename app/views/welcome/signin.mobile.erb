@@ -1,5 +1,5 @@
 <div id="content" data-role="content" data-theme="a">
-  <%= form_for :user, :as => :user, :url => session_path(:user) do |f| %>
+  <%= form_for :user, :as => :user, :url => session_path(:user), :html => {"data-ajax" => "false"} do |f| %>
     <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b" %>
     <h3>or sign in with a Smartvark account</h3>
     <label for="email">Email:</label>
@@ -17,9 +17,3 @@
     <%= link_to "Don't have an account yet? Sign up!", signup_path %>
   <% end %>
 </div><!-- /content -->
-<script type="text/javascript">
-  $("#content").live('ajax:error', function(event, xhr, status) {
-    //$(this).append(xhr.responseText)
-    alert("test!");
-  })
-</script

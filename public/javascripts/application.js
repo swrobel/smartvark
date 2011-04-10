@@ -53,6 +53,11 @@ $(function(){
 			  return false;
 		});
 		
+		$('#btn-video-open').click(function (e) {
+			$('#video-popup').modal();
+			  return false;
+		});
+		
 		$('#signin-from-signup').click(function () {
 			$.modal.close();
 			window.setTimeout(function() {$('#signin-popup').modal()}, 500);

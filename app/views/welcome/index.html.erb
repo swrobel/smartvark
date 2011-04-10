@@ -10,6 +10,39 @@
   _kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/e3f924bcb188e79eee2462c203e2bb3fc21feaa8.1.js');
 </script>
 <% end %>
+<div class="wide-box business-box">
+	<div class="holder">
+		<div class="frame">
+			<h2>Smartvark is a new twist on local deal sites</h2>
+			<div class="business-holder">
+        <div class="col-r-wide">
+          <div class="row">
+            <p>Save the hassle of remembering another account</p>
+          </div>
+          <%= form_for :user do |f| %>
+            <div class="row">
+              <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), :class => "facebook-signin-big", :title => "We don't get your login details from Facebook, we only confirm that you are who you say you are" %>
+            </div>
+            <div class="row">
+              <p>or create a Smartvark account</p>
+            </div>
+            <div class="row">
+              <%= f.email_field :email, class: "txt", placeholder: 'Enter your email' %>
+              <%= f.submit "Sign up", class: "submit" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="intro-text">
+          <%= render :partial => "index_copy" %>
+        </div>
+			</div><!-- business-holder end -->
+		</div>
+	</div>
+</div><!-- business-box end -->
+<div id='video-popup' class="popup video-popup">
+  <iframe title="YouTube video player" width="480" height="300" src="http://www.youtube.com/embed/efI6IMjUcII?autoplay=1&rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+<% if false %><!--
 <div class="welcome-box">
   <%= form_for :potential, :html => {id: "notify_form"} do |f| %>
   <div class="text">
@@ -21,7 +54,7 @@
     <div id="potential-form" style="display:<%= 'none' if hidden %>;">
       <%= f.error_messages %>
       <%= f.label :email, "Email address:" %>
-      <%= f.text_field :email, :class => :txt %>
+      <%= f.email_field :email, :class => :txt %>
     </div>
   </div>
   <div class="promo-box">
@@ -31,9 +64,7 @@
   <% end %>
 </div>
 <div class="like-box">Click <iframe src="http://www.facebook.com/plugins/like.php?href=facebook.com%2Fsmartvark&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:21px;" allowTransparency="true"></iframe> to get updates from us on Facebook</div>
-<!-- wide-box -->
 <div class="wide-box">
-  <!-- holder -->
   <div class="holder">
     <div class="frame">
       <h2>What's a Smartvark, anyway?</h2>
@@ -44,6 +75,7 @@
     </div>
   </div>
 </div>
+--><% end %>
 <% content_for(:footer_additions) do %>
 <script type="text/javascript">document.write(unescape('%3Cscript type="text/javascript" src="'+document.location.protocol+'//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/3564.js"%3E%3C%2Fscript%3E'))</script>
 <script type='text/javascript'>var mp_protocol = (('https:' == document.location.protocol) ? 'https://' : 'http://');document.write(unescape('%3Cscript src="' + mp_protocol + 'api.mixpanel.com/site_media/js/api/mixpanel.js" type="text/javascript"%3E%3C/script%3E'));</script><script type='text/javascript'>try { var mpmetrics = new MixpanelLib('7806576e26c5fcf03f5fc80f35bee7d5');} catch(err) {null_fn = function () {};var mpmetrics = { track: null_fn, track_funnel: null_fn, register: null_fn, register_once: null_fn,register_funnel: null_fn};}</script>

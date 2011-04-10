@@ -1,4 +1,4 @@
-  <a href="" id="btn-signup-open" class="btn-signup-open">New user</a>
+  <a href="" id="btn-signup-open" class="btn-popup-open">New user</a>
   <div id='signup-popup' class="popup">
     <%= form_for :user, :as => :user, :url => registration_path(:user) do |f| %>
       <fieldset>
@@ -9,7 +9,7 @@
         </div>
         <div id="facebook-area">
           <div class="popup-row">
-            <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :class => "facebook-signin white", :title => "We don't get your login details from Facebook, we only confirm that you are who you say you are" %>
+            <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), :class => "facebook-signin white", :title => "We don't get your login details from Facebook, we only confirm that you are who you say you are" %>
           </div>
           <div class="popup-row">
             <p><a href="#" onClick="$('#facebook-area').hide('drop',{ direction:'up'});$('#form-area').show('drop',{ direction:'up'});return false;">Don't have Facebook? Click here.</a></p>
@@ -18,7 +18,7 @@
         <div id="form-area" style="display:none;">
           <div class="popup-row">
             <%= f.label :email, "email" %>
-            <%= f.text_field :email, :class => 'txt', :placeholder => 'must be a valid e-mail address' %>
+            <%= f.email_field :email, :class => 'txt', :placeholder => 'must be a valid e-mail address' %>
           </div>
           <div class="popup-row">
             <%= f.label :password, "password" %>

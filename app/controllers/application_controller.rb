@@ -60,12 +60,14 @@ private
   
   def home_path
     if current_user
-      if current_user.role == "admin"
+      if current_user.role == "pending"
+        new_user_invitation_path
+      elsif current_user.role == "user"
+        mydeals_path
+      elsif current_user.role == "admin"
         mydeals_path
       elsif current_user.role == "business"
         dealdashboard_path
-      elsif current_user.role == "user"
-        mydeals_path
       end
     else
       deals_path

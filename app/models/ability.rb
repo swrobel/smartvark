@@ -9,6 +9,11 @@ class Ability
         can :read, :mydeals
         can :read, :myprofile
         can :read, :redeem
+        # Below are here until invite system is removed, then Everyone at bottom
+        can :read, :mypicks
+        can :read, :viewdeal
+        can :read, :viewbusiness
+        can :read, :search
       elsif user.role == "business"
         can :read, :mydeals
         can :read, :dealdashboard
@@ -23,13 +28,10 @@ class Ability
       end
     else # "Guest" users
       can :read, :index
-      can :read, :deals
+      # Not until invite system is removed: can :read, :deals
     end
     
     # Everyone can see these
-    can :read, :mypicks
-    can :read, :viewdeal
-    can :read, :viewbusiness
-    can :read, :search
+    # Nothing here until invite system is removed
   end
 end

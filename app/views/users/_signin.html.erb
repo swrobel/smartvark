@@ -3,11 +3,11 @@
     <fieldset>
       <h3>Sign in</h3>
       <div class="popup-row">
-	<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :class => 'facebook-signin', :style => 'margin-top:10px;', :title => "We don't get your login details from Facebook, we only confirm that you are who you say you are" %>
+	<%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), :class => 'facebook-signin', :style => 'margin-top:10px;', :title => "We don't get your login details from Facebook, we only confirm that you are who you say you are" %>
       </div>
       <div class="popup-row">
 	<%= f.label :email, "email" %>
-	<%= f.text_field :email, :class => 'txt', :placeholder => 'must be a valid e-mail address' %>
+	<%= f.email_field :email, :class => 'txt', :placeholder => 'must be a valid e-mail address' %>
       </div>
       <div class="popup-row">
 	<%= f.label :password, "password" %>

@@ -11,11 +11,17 @@ class WelcomeController < ApplicationController
   
   def index
     raise CanCan::AccessDenied unless can? :read, :index
-    if params[:potential]
-      session[:potential] = false
-      @potential = Potential.new(params[:potential])
-      session[:potential] = true if @potential.save
+    session[:user_return_to] = new_user_invitation_path
+    if params[:user]
+      new_user = User.invite!(:email => params[:user][:email], :skip_invitation => true)
+      session[:potential] = true if new_user
+      redirect_to accept_invitation_path(new_user, :invitation_token => new_user.invitation_token)
     end
+    #if params[:potential]
+    #  session[:potential] = false
+    #  @potential = Potential.new(params[:potential])
+    #  session[:potential] = true if @potential.save
+    #end
   end
   
   def dealdashboard

@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   
   acts_as_geocodable :address => {:street => :address, :locality => :city, :region => :state, :postal_code => :zipcode}
   
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+  devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :category_id, :category_ids, :logo, :opinions
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :category_id, :category_ids, :logo, :opinions, :skip_invitation
 
   belongs_to :category
   has_many :businesses

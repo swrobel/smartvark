@@ -21,6 +21,15 @@ $(document).bind("mobileinit", function(){
 </div><!-- /header -->
 
 <div data-role="content">
+  <%= render :partial => "index_copy" %>
+  <%= form_for :user, :as => :user, :url => registration_path(:user) do |f| %>
+    <%= f.label :facebook, "Save the trouble of remembering another account" %>
+    <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b" %>
+    <%= f.label :email, "Or create a Smartvark account:" %>
+    <%= f.email_field :email, :id => 'email', :placeholder => 'Enter your email' %>
+    <%= f.submit "Sign up", :'data-theme' => 'a' %>
+  <% end %>
+  <% if false %><!--
   <% if session[:potential] %>
     <p><strong>Thanks for signing up! You'll be hearing from us soon.</strong></p>
     <%= render :partial => "index_copy" %>
@@ -29,11 +38,12 @@ $(document).bind("mobileinit", function(){
     <%= form_for :potential, :html => {id: "notify_form"} do |f| %>
       <%= f.error_messages %>
       <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.email_field :email %>
       <%= f.submit "Notify Me!" %>
     <% end %>
   <% end %>
   <iframe title="YouTube video player" width="300" height="180" src="http://www.youtube.com/embed/efI6IMjUcII" frameborder="0" allowfullscreen></iframe>
+  --><% end %>
 </div><!-- /content -->
 
 <% content_for(:footer_additions) do %>

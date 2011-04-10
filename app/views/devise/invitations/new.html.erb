@@ -1,0 +1,30 @@
+<% title "Priority list" %>
+<div class="wide-box business-box">
+	<div class="holder">
+		<div class="frame">
+			<h2>You're on the priority list!</h2>
+			<div class="business-holder">
+        <p>Your account has been created but isn't active yet.<br/>
+        The response has been overwhelming, and we can only activate a limited users each day.</p>
+        
+        <p>If you refer 3 people who sign up, your account will be activated.<br/>
+        You can email them an invite or share your personalized link to Facebook, Twitter, etc below.</p>
+        
+				<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name) do |f| %>
+          <div class="row">
+            <%= devise_error_messages! %>
+          </div>
+        
+          <div class="row">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, class: "txt" %></p>
+          </div>
+        
+          <div class="row">
+            <%= f.submit "Send an invitation", class: "submit" %>
+          </div>
+        <% end %>
+			</div><!-- business-holder end -->
+		</div>
+	</div>
+</div><!-- business-box end -->

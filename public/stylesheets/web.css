@@ -5,17 +5,17 @@
 	width:300px;
 	text-align:center;
 	color:white;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
 	display:none;
-	-moz-box-shadow: 2px 2px 2px #000;
-	-webkit-box-shadow: 2px 2px 2px #000;
-	box-shadow: 2px 2px 2px #000;
+	-moz-box-shadow:2px 2px 2px #000;
+	-webkit-box-shadow:2px 2px 2px #000;
+	box-shadow:2px 2px 2px #000;
 	/* For IE 8 */
-	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	-ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
 	/* For IE 5.5 - 7 */
-	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+	filter:progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
 }
 #flash-notice {
     background:green;
@@ -26,14 +26,14 @@
 	border:10px solid red;
 }
 .archived  {
-  background-color: #DDD;
+  background-color:#DDD;
 }
 .draft {
-  color: #F90;
+  color:#F90;
 }
 .tryit-box {
 	background:url(/images/bg-welcome-box.gif) no-repeat;
-	background-position: 0 -42px;
+	background-position:0 -42px;
 	width:848px;
 	height:100px;
 	overflow:hidden;
@@ -64,20 +64,6 @@
 	margin:0 0 0 7px;
 	font:14px/16px Arial, Helvetica, sans-serif;
 }
-
-.tryit-box .placeholder{
-	width:125px;
-	height:16px;
-	float:left;
-	display:inline;
-	background:#f7f8f8;
-	border:1px solid #7abadf;
-	padding:5px 8px;
-	margin:0 0 0 7px;
-	font:14px/16px Arial, Helvetica, sans-serif;
-	color:#999;
-}
-
 .tryit-box .button{
 	float:left;
 	display:inline;
@@ -165,7 +151,7 @@ td, th{padding:0;}
     text-align:center;
     font:bold 19px/19px Arial, Helvetica, sans-serif;
     color:#fff;
-    text-shadow: 1px 1px 1px #CCC;
+    text-shadow:1px 1px 1px #CCC;
 }
 /* welcome-box */
 .welcome-box {
@@ -184,7 +170,7 @@ td, th{padding:0;}
 }
 .welcome-box .text p{
 	margin:0 0 12px 0;
-	text-align: center;
+	text-align:center;
 }
 .welcome-box .text a{
 	color:#2264A6;
@@ -201,7 +187,7 @@ td, th{padding:0;}
 }
 #potential-form{float:right;}
 .welcome-box .right-label{
-	margin-left: 12px;
+	margin-left:12px;
 }
 .welcome-box .promo-box {
 	float:right;
@@ -247,18 +233,6 @@ td, th{padding:0;}
 	border:1px solid #7abadf;
 	padding:5px 8px;
 	margin:0 0 0 7px;
-	font:14px/16px Arial, Helvetica, sans-serif;
-}
-.search .placeholder{
-	width:125px;
-	height:16px;
-	float:left;
-	display:inline;
-	background:#f7f8f8;
-	border:1px solid #7abadf;
-	padding:5px 8px;
-	margin:0 0 0 7px;
-	color:#999;
 	font:14px/16px Arial, Helvetica, sans-serif;
 }
 .search .button{
@@ -341,9 +315,9 @@ td, th{padding:0;}
 }
 .wide-box h2 {
 	margin:0 0 31px;
-	font: normal 24px/28px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font:normal 24px/28px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	color:#2264a6;
-	text-shadow: 2px 1px 2px #CCC;
+	text-shadow:2px 1px 2px #CCC;
 }
 /* promo-section */
 .promo-section {
@@ -352,8 +326,8 @@ td, th{padding:0;}
 	display:table;
 }
 .promo-section p {
-	margin: 0;
-	font: 18px/22px Arial, Helvetica, sans-serif;
+	margin:0;
+	font:18px/22px Arial, Helvetica, sans-serif;
 }
 #main .wrap {width:100%;}
 #main .wrap:after {
@@ -382,7 +356,7 @@ td, th{padding:0;}
 	color:#1b7ddf;
 	overflow:hidden;
 	white-space:nowrap;
-	text-shadow: 2px 1px 2px #CCC;
+	text-shadow:2px 1px 2px #CCC;
 }
 /* search-results */
 .search-results .title {
@@ -437,7 +411,7 @@ td, th{padding:0;}
 	margin:0;
 	color:#1b7ddf;
 	font:28px/32px "Trebuchet MS", Arial, Helvetica, sans-serif;
-	text-shadow: 2px 1px 2px #CCC;
+	text-shadow:2px 1px 2px #CCC;
 }
 .two-columns .t{
 	height:49px;
@@ -543,7 +517,7 @@ td, th{padding:0;}
 .gallery .rate{
 	position:relative;
 	bottom:16px;
-	padding: 15px 10px 10px;
+	padding:15px 10px 10px;
 	text-align:center;
 }
 .gallery .rate a{margin:0 15px;}
@@ -569,7 +543,7 @@ td, th{padding:0;}
 	margin:6px -1px 0 0;
 }
 .section-inner{
-	background-position: 416px 0;
+	background-position:416px 0;
 	margin:0 0 0 -18px;
 	width:559px;
 }
@@ -580,15 +554,15 @@ td, th{padding:0;}
 .section-inner .gallery ul{padding:0 0 20px 2px;}
 .section-inner .gallery ul li{
 	width:207px;
-	margin: 0;
-	display: inline;
-	padding: 0 0 20px 0;
+	margin:0;
+	display:inline;
+	padding:0 0 20px 0;
 }
 .section-inner .gallery ul .frame{
 	width:201px;
 	height:auto;
 	display:block;
-	height: auto;
+	height:auto;
 }
 .section-inner .gallery ul .frame a{
   border:1px solid #7D7D7D;
@@ -596,27 +570,27 @@ td, th{padding:0;}
   display:block;
   position:relative;
   height:209px;
-  overflow: hidden;
+  overflow:hidden;
 }
 .section-inner .gallery ul .frame a:hover{
 	border-color:#add2ee;
-	-moz-box-shadow: 0 0 4px #AAAAAA;
-	-webkit-box-shadow: 0 0 4px #AAAAAA;
-	box-shadow: 0 0 4px #AAAAAA;
+	-moz-box-shadow:0 0 4px #AAAAAA;
+	-webkit-box-shadow:0 0 4px #AAAAAA;
+	box-shadow:0 0 4px #AAAAAA;
 }
 .section-inner .gallery ul .frame a:hover strong,
-.section-inner .gallery ul .frame a:hover{text-decoration: none;}
+.section-inner .gallery ul .frame a:hover{text-decoration:none;}
 .section-inner .gallery ul .frame a strong{
   background:none repeat scroll 0 0;
   color:#FFFFFF;
   display:block;
   font:20px/28px "Trebuchet MS",Arial,Helvetica,sans-serif;
   text-align:center;
-  text-transform: uppercase;
+  text-transform:uppercase;
 }
 .section-inner .gallery ul .frame a strong img{
-	vertical-align: top;
-	margin: 2px 2px 0 2px;
+	vertical-align:top;
+	margin:2px 2px 0 2px;
 }
 .section-inner .gallery ul .frame a strong .left{float:left;}
 .section-inner .gallery ul .frame a strong .right{float:right;}
@@ -635,14 +609,14 @@ td, th{padding:0;}
 	overflow:hidden;
 	width:160px;
 	position:static;
-	margin-top: 6px;
+	margin-top:6px;
 }
 .section-inner .gallery .rate a{
 	margin:0 5px;
 	float:left;
 }
 .section-inner .gallery .rate .link {
-	color: #666;
+	color:#666;
 	font-size:13px;
 	line-height:26px;
 	color:#666;
@@ -987,7 +961,7 @@ td, th{padding:0;}
 	height:15px;
 	float:left;
 }
-.options-form label{float:left; line-height: 19px;}
+.options-form label{float:left; line-height:19px;}
 /* location */
 .location{
 	width:586px;
@@ -1115,11 +1089,11 @@ td, th{padding:0;}
 }
 .profile-form .row a{
 	float:left;
-	padding-left: 114px;
+	padding-left:114px;
 }
 .profile-form .row .btns a{
 	float:right;
-	padding-top: 5px;
+	padding-top:5px;
 }
 .profile-form .btn-clear{
 	float:right;
@@ -1170,22 +1144,17 @@ td, th{padding:0;}
 /* viewbusiness page styles*/
 /* signin/account area */
 .account-area{
-    margin-right: 10px;
+    margin-right:10px;
 	float:right;
 	font:24px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	line-height:28px;
 	position:relative;
 }
-.btn-signup-open{
-    color:#2264a6;
-	text-decoration:none;
-}
-.btn-signin-open{
+.btn-popup-open{
 	color:#2264a6;
 	text-decoration:none;
 }
-.btn-signin-open:hover{text-decoration:underline;}
-.btn-signup-open:hover{text-decoration:underline;}
+.btn-popup-open:hover{text-decoration:underline;}
 .account-area .holder{
 	float:right;
 	padding:4px 0 4px;
@@ -1207,14 +1176,15 @@ td, th{padding:0;}
 /* simplemodal popup */
 .popup{
 	background:#238ecb;
-	border: 10px solid #56b1e5;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
+	border:10px solid #56b1e5;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
 	display:none;
 	width:236px;
 	padding:0 12px;
 }
+.video-popup{width:480px;}
 #simplemodal-overlay {background-color:#000;}
 .popup h3{
 	margin:0;
@@ -1230,7 +1200,6 @@ td, th{padding:0;}
 	overflow:hidden;
 	margin:0 0 10px;
 }
-.popup-row .placeholder{color:#999}
 .popup .txt{
 	float:left;
 	width:210px;
@@ -1278,15 +1247,24 @@ td, th{padding:0;}
 	cursor:pointer;
 	padding:0;
 }
-a.facebook-signin {
-  background: url(/images/signin_facebook.png) no-repeat;
-  width:150px;
-  height:22px;
+a.facebook-signin-big {
+  background:url(/images/btn-fb-connect-large.png) no-repeat;
+  width:300px;
+  height:50px;
   text-indent:-9999px;
   line-height:0;
   border:0;
-  float: left;
-  margin-left:40px;
+  float:right;
+}
+a.facebook-signin {
+  background:url(/images/btn-fb-connect-small.png) no-repeat;
+  width:200px;
+  height:33px;
+  text-indent:-9999px;
+  line-height:0;
+  border:0;
+  float:left;
+  margin-left:18px;
 }
 .remember{
 	margin:0px auto;
@@ -1552,13 +1530,12 @@ a.facebook-signin {
 	height:1%;
 }
 .text-box .text input.sp{
-    color: #000;
-    border: none;
-    width: 563px;
+    color:#000;
+    border:none;
+    width:563px;
 
 
 }
-.text-box .placeholder{color:#999}
 .text-box .text textarea{
 	border:medium none;
 	height:76px;
@@ -1684,7 +1661,6 @@ a.facebook-signin {
 	background:url(/images/btn-cancel4.gif) no-repeat;
 	width:73px;
 }
-.form1 .placeholder{color:#999}
 /* coupon */
 .coupon{
 	overflow:hidden;
@@ -1702,7 +1678,7 @@ a.facebook-signin {
 	margin:0 -8px 5px -11px;
 	font:20px/22px 'Trebuchet MS', Arial, sans-serif;
 	padding:5px 0 3px;
-	text-transform: uppercase;
+	text-transform:uppercase;
 }
 .coupon .c_Coupon{background:#3FB52B;}
 .coupon .c_Deal{background:#ff5f00;}
@@ -1995,73 +1971,106 @@ a.facebook-signin {
 /* business-box */
 .business-box{margin-top:49px;}
 .business-box .frame{
-	padding: 12px 33px 39px;
+	padding:12px 33px 39px;
 	width:auto;
-	overflow: hidden;
+	overflow:hidden;
 }
 .business-holder{
-	width: 100%;
-	overflow: hidden;
+	width:100%;
+	overflow:hidden;
 }
 .business-box .frame h2{
 	font-size:28px;
-	color: #1b7ddf;
-	margin: 0 0 24px -16px;
+	color:#1b7ddf;
+	margin:0 0 24px -16px;
 }
-
 .business-box .col-r{
-	width:266px;
-	float: right;
+  width:266px;
+	float:right;
 	padding:0 11px 0 20px;
 }
 .business-box .col-r img{vertical-align:top;}
+.business-box .intro-text{padding-top:5px;}
+.business-box .intro-text p{font:16px Arial, Helvetica, sans-serif;}
+.business-box .row{
+	width:100%;
+	overflow:hidden;
+}
+.business-box .txt{
+	width:200px;
+	font:20px Arial, Helvetica, sans-serif;
+	border:1px solid #999;
+  margin-bottom:14px;
+}
+.business-box label{
+	font:14px Arial, Helvetica, sans-serif;
+  color:#000000;
+}
+.business-box .submit{font:20px Arial, Helvetica, sans-serif;}
+.business-box .col-r-wide{
+  background:#BBBBBB;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	text-align:center;
+	width:300px;
+  float:right;
+	padding:15px;
+  margin-left:20px;
+}
+.business-box .col-r-wide p{
+  font:13px Arial, Helvetica, sans-serif;
+  padding-bottom:16px;
+  margin:0;
+}
+.business-box .col-r-wide .txt{margin-bottom:0;}
 .btn-contact{
 	width:150px;
-	text-align: center;
-	display: block;
-	overflow: hidden;
-	color: #fff;
-	font: 20px/14px "Trebuchet MS", Arial, Helvetica, sans-serif;
-	background: url(/images/btn-contact.gif) no-repeat;
+	text-align:center;
+	display:block;
+	overflow:hidden;
+	color:#fff;
+	font:20px/14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	background:url(/images/btn-contact.gif) no-repeat;
 	margin:43px auto 0;
 	padding:24px 0 30px;
-	text-shadow: 2px 1px 2px #CCC;
+	text-shadow:2px 1px 2px #CCC;
 }
 .business-holder p, .business-holder ul{
-	color: #1b1718;
+	color:#1b1718;
 	font-size:14px;
 	line-height:17px;
-	margin: 0 0 22px;
+	margin:0 0 22px;
 }
-.business-holder p strong em{color: #0079c2;}
+.business-holder p strong em{color:#0079c2;}
 .business-holder p span em{
-	color: #ff5c16;
-	font-weight: bold;
+	color:#ff5c16;
+	font-weight:bold;
 }
 .business-holder h3{
 	font:24px/25px Arial, Helvetica, sans-serif;
-	margin: 0
+	margin:0
 }
-.connect-hold h3{color: #0079c2;}
-.engage-hold h3{color: #ff5c16;}
+.connect-hold h3{color:#0079c2;}
+.engage-hold h3{color:#ff5c16;}
 .business-holder .engage-hold p{margin-bottom:13px;}
-.business-holder .engage-hold p a{text-decoration: underline;}
-.business-holder .engage-hold p a:hover{text-decoration: none;}
-#errorExplanation { border: 2px solid red; }
+.business-holder .engage-hold p a{text-decoration:underline;}
+.business-holder .engage-hold p a:hover{text-decoration:none;}
+#errorExplanation { border:2px solid red; }
 #errorExplanation ul {
-	padding-left: 15px;
-	margin: 1px;
+	padding-left:15px;
+	margin:1px;
 }
 #errorExplanation h2 { display:none; }
 #errorExplanation p { display:none; }
-.field_with_errors { display: inline; }
-.field_with_errors label { color: red; }
+.field_with_errors { display:inline; }
+.field_with_errors label { color:red; }
 .charleft { display:none; }
 #map {width:270px; height:360px;}
 #map p {
-  color: black;
+  color:black;
 }
-#map-side-bar {display: none;}
+#map-side-bar {display:none;}
 #simplemodal-container a.modalCloseImg {
 	background:url(/images/x.png) no-repeat;
 	width:25px;
@@ -2073,3 +2082,4 @@ a.facebook-signin {
 	right:-18px;
 	cursor:pointer;
 }
+.placeholder{color:#999;}

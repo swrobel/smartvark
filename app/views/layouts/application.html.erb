@@ -19,7 +19,7 @@
   <div id="wrapper">
     <div class="wrapper-holder">
       <div id="header">
-				<h1 class="logo"><%= link_to "Smartvark", controller.action_name == "index" ? root_path : home_path %></h1>
+				<h1 class="logo"><%= link_to "Smartvark", home_path %></h1>
 				<div class="flash-holder" id="flash-<%=if notice then 'notice' else 'alert' end%>"><%= raw notice %><%= raw alert %></div>
 				<%= render :partial => 'layouts/account_area', locals: { new_user: !%w(forbusiness index).include?(controller.action_name) } unless controller.action_name == "index" %>
       </div>

@@ -70,7 +70,7 @@ private
         dealdashboard_path
       end
     else
-      deals_path
+      root_path
     end
   end
   

@@ -1,69 +1,68 @@
-						<!-- twocolumns -->
-						<div class="twocolumns">
-                                                    <div class="deal">
 <% title "Dashboard" %>
-                                                      <%= link_to 'Create Deal', new_offer_url, :class => 'btn-deal' %>
-                                                    </div>
-							<div class="holder">
-								<!-- left-col -->
-								<div class="left-col">
-									<div class="frame-b">
-										<div class="heading">
-											<div class="frame-b">
-												<div class="frame-t">
-                                                                                                  <h2><%= current_user.name %> Dashboard</h2>
-												</div>
-											</div>
-										</div>
-										<!-- options-form -->
-										<div class="options-form">
-													<ul class="options">
-              <li id='biz_true'>
-                <a href="#" onClick="checkall(true);return false;">Select All</a>
-              </li>
-              <li id='biz_false'>
-              <a href="#" onClick="checkall(false);return false;">Select None</a>
-              </li>
-
-                                                                                                              </ul>
-                                                                                              <form id='business'>
-												<fieldset>
-<% @businesses.in_groups_of(4) do |group| %>
-<ul class="row">
-<% group.compact.each do |business| %>
-  <li>
-    <label>
-      <%= check_box_tag 'business_ids[]', business.id, true, :class => 'chk dashboard_chk' %>
-      <%= business.short_or_name %>
-    </label>
-  </li>
-<% end %>
-</ul>
-<% end %>
-												</fieldset>
-											</form>
-										 </div>
-                                                                                 <!-- location -->
-                                                                                 <div id='deal_table'>
-                                                                                  <%= render :partial => 'deal_on_dashboard' %>
-                                                                              </div>
-									</div>
-								</div>
-								<!-- right-col -->
-								<div class="right-col">
-									<div class="heading">
-										<div class="frame-b">
-											<div class="frame-t">
-												<h3>Smart Tips</h3>
-											</div>
-										</div>
-									</div>
-									<!-- tips -->
-									<ul class="tips">
-										<li>50% off coupons are achieving a 20% redemption rate at restaurants.</li>
-										<li>The best day to release offers is Thursday. Why? Most coupons are used during the weekend.</li>
-										<li>Free soft drink offers are currently the most successful offers, according to Restaurant Weekly magazine.</li>
-									</ul>
-								</div>
-							</div>
+<div class="twocolumns">
+	<div class="deal">
+		<%= link_to 'Create Deal', new_offer_url, :class => 'btn-deal' %>
+	</div>
+	<div class="holder">
+		<div class="left-col">
+			<div class="frame-b">
+				<div class="heading">
+					<div class="frame-b">
+						<div class="frame-t">
+							<h2><%= current_user.name %> Dashboard</h2>
 						</div>
+					</div>
+				</div>
+				<div class="options-form">
+					<ul class="options">
+						<li id='biz_true'>
+							<a href="#" onClick="checkall(true);return false;">Select All</a>
+						</li>
+						<li id='biz_false'>
+							<a href="#" onClick="checkall(false);return false;">Select None</a>
+						</li>
+					</ul>
+					<form id='business'>
+						<fieldset>
+							<% @businesses.in_groups_of(4) do |group| %>
+							<ul class="row">
+							<% group.compact.each do |business| %>
+								<li>
+									<label>
+										<%= check_box_tag 'business_ids[]', business.id, true, :class => 'chk dashboard_chk' %>
+										<%= business.short_or_name %>
+									</label>
+								</li>
+							<% end %>
+							</ul>
+							<% end %>
+						</fieldset>
+					</form>
+				 </div>
+				<div id="deal_table">
+					<%= render :partial => 'deal_on_dashboard' %>
+				</div>
+				<div class="legend">
+					<strong>Offer status legend:</strong><br/>
+					Active Offer: visible on the site and eligible for redemption unless prior to offer start date<br/>
+					<span class="draft">Draft Offer:</span> not visible to users until activated<br/>
+					<span class="archived">Expired Offer:</span> past expiration date, reached redemption limit, or canceled by the business
+				</div>
+			</div>
+		</div>
+		<div class="right-col">
+			<div class="heading">
+				<div class="frame-b">
+					<div class="frame-t">
+						<h3>Smart Tips</h3>
+					</div>
+				</div>
+			</div>
+			<ul class="tips">
+				<li>50% off coupons are achieving a 20% redemption rate at restaurants.</li>
+				<li>The best day to release offers is Thursday. Why? Most coupons are used during the weekend.</li>
+				<li>Free soft drink offers are currently the most successful offers, according to Restaurant Weekly magazine.</li>
+			</ul>
+		</div>
+	</div>
+</div>

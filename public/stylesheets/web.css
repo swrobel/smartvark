@@ -962,6 +962,12 @@ td, th{padding:0;}
 	float:left;
 }
 .options-form label{float:left; line-height:19px;}
+.legend{
+	padding:21px 0 0 15px;
+	font-size:12px;
+	line-height:16px;
+	color:#333;
+}
 /* location */
 .location{
 	width:586px;

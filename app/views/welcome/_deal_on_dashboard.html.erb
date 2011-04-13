@@ -1,24 +1,12 @@
-<table class="location">
-<tr>
-  <th class="offer">Offer</th>
-  <th class="expiration">Expiration</th>
-  <th class="used">Used</th>
-  <th><img src="/images/ico-for.gif" alt="" width="15" height="16" /></th>
-  <th><img src="/images/ico-against.gif" alt="" width="15" height="16" /></th>
-  <th class="actions">View Edit Delete</th>
+<tr class="<%= deal_on_dashboard.business_ids.join(' ') %> <%= deal_on_dashboard.status -%> dashboard_row">
+  <td><%= link_to deal_on_dashboard.title, edit_offer_path(deal_on_dashboard.id) %></td>
+  <td><%= deal_on_dashboard.end_date.try(:strftime, '%m/%d/%Y') %></td>
+  <td><%= deal_on_dashboard.redemptions.length %></td>
+  <td><%= deal_on_dashboard.likes.length %></td>
+  <td><%= deal_on_dashboard.dislikes.length %></td>
+  <td>
+    <%= link_to image_tag("ico-view.png", :width =>'16', :height => '16'), viewdeal_path(deal_on_dashboard), class: "left", alt: "View Offer", title: "View Offer" %>
+    <%= link_to image_tag("ico-edit.png", :width =>'16', :height => '16'), edit_offer_path(deal_on_dashboard.id), class: 'left', alt: "Edit Offer", title: "Edit Offer" %>
+    <%= link_to image_tag("ico-delete.png", :width =>'16', :height => '16'), deal_on_dashboard, :confirm => 'Are you sure you want to deactivate offer?', :method => :delete, class: 'left', alt: "Deactivate Offer", title: "Deactivate Offer" %>
+  </td>
 </tr>
-<% @offers.each do |deal_on_dashboard| %>
-  <tr class="<%= deal_on_dashboard.business_ids.join(' ') %> <%= deal_on_dashboard.status -%> dashboard_row">
-    <td><%= link_to deal_on_dashboard.title, edit_offer_path(deal_on_dashboard.id) %></td>
-    <td><%= deal_on_dashboard.end_date.try(:strftime, '%m/%d/%Y') %></td>
-    <td><%= deal_on_dashboard.redemptions.length %></td>
-    <td><%= deal_on_dashboard.likes.length %></td>
-    <td><%= deal_on_dashboard.dislikes.length %></td>
-    <td>
-      <%= link_to image_tag("ico-view.png", :width =>'16', :height => '16'), viewdeal_path(deal_on_dashboard), class: "left", alt: "View Offer", title: "View Offer" %>
-      <%= link_to image_tag("ico-edit.png", :width =>'16', :height => '16'), edit_offer_path(deal_on_dashboard.id), class: 'left', alt: "Edit Offer", title: "Edit Offer" %>
-      <%= link_to image_tag("ico-delete.png", :width =>'16', :height => '16'), deal_on_dashboard, :confirm => 'Are you sure you want to deactivate offer?', :method => :delete, class: 'left', alt: "Deactivate Offer", title: "Deactivate Offer" %>
-    </td>
-  </tr>
-<% end %>
-</table>

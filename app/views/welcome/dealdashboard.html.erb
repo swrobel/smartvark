@@ -13,41 +13,59 @@
 						</div>
 					</div>
 				</div>
-				<div class="options-form">
-					<ul class="options">
-						<li id='biz_true'>
-							<a href="#" onClick="checkall(true);return false;">Select All</a>
-						</li>
-						<li id='biz_false'>
-							<a href="#" onClick="checkall(false);return false;">Select None</a>
-						</li>
-					</ul>
-					<form id='business'>
-						<fieldset>
-							<% @businesses.in_groups_of(4) do |group| %>
-							<ul class="row">
-							<% group.compact.each do |business| %>
-								<li>
-									<label>
-										<%= check_box_tag 'business_ids[]', business.id, true, :class => 'chk dashboard_chk' %>
-										<%= business.short_or_name %>
-									</label>
+				<% unless @offers.blank? %>
+					<% if @businesses.count > 1 %>
+						<div class="options-form">
+							<ul class="options">
+								<li id='biz_true'>
+									<a href="#" onClick="checkall(true);return false;">Select All</a>
 								</li>
-							<% end %>
+								<li id='biz_false'>
+									<a href="#" onClick="checkall(false);return false;">Select None</a>
+								</li>
 							</ul>
-							<% end %>
-						</fieldset>
-					</form>
-				 </div>
-				<div id="deal_table">
-					<%= render :partial => 'deal_on_dashboard' %>
-				</div>
-				<div class="legend">
-					<strong>Offer status legend:</strong><br/>
-					Active Offer: visible on the site and eligible for redemption unless prior to offer start date<br/>
-					<span class="draft">Draft Offer:</span> not visible to users until activated<br/>
-					<span class="archived">Expired Offer:</span> past expiration date, reached redemption limit, or manually deactivated
-				</div>
+							<form id='business'>
+								<fieldset>
+									<% @businesses.in_groups_of(4) do |group| %>
+										<ul class="row">
+										<% group.compact.each do |business| %>
+											<li>
+												<label>
+													<%= check_box_tag 'business_ids[]', business.id, true, :class => 'chk dashboard_chk' %>
+													<%= business.short_or_name %>
+												</label>
+											</li>
+										<% end %>
+										</ul>
+									<% end %>
+								</fieldset>
+							</form>
+						</div>
+					<% end %>
+					<div id="deal_table">
+						<table class="location">
+							<tr>
+								<th class="offer">Offer</th>
+								<th class="expiration">Expiration</th>
+								<th class="used">Used</th>
+								<th><img src="/images/ico-for.gif" alt="" width="15" height="16" /></th>
+								<th><img src="/images/ico-against.gif" alt="" width="15" height="16" /></th>
+								<th class="actions">View Edit Delete</th>
+							</tr>
+							<%= render :partial => 'deal_on_dashboard', :collection => @offers %>
+						</table>
+					</div>
+					<div class="legend">
+						<strong>Offer status legend:</strong><br/>
+						Active Offer: visible on the site and eligible for redemption unless prior to offer start date<br/>
+						<span class="draft">Draft Offer:</span> not visible to users until activated<br/>
+						<span class="archived">Expired Offer:</span> past expiration date, reached redemption limit, or manually deactivated
+					</div>
+				<% else %>
+					<div class="options-form">
+						<p>You haven't created any offers. Click the orange button in the top right to get started!</p>
+					</div>
+				<% end %>
 			</div>
 		</div>
 		<div class="right-col">

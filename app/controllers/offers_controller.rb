@@ -31,7 +31,8 @@ class OffersController < ApplicationController
     :category_id => current_user.category_id,
     :start_date => Time.now,
     :end_date => 1.month.from_now,
-    :allow_print => true
+    :allow_print => true,
+    :allow_mobile => true
     )
 
     @businesses = current_user.businesses

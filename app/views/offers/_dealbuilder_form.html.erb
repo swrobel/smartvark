@@ -18,14 +18,14 @@
       <%= f.label :start_date %>
       <%= f.text_field :start_date, :format => :us_date, :class => 'txt', :readOnly => true %>
       <div class="caption">
-        <span>Deal won't show up on our site until this date</span>
+        <span>Offer won't show up on our site until this date</span>
       </div>
     </div>
     <div class="row">
       <%= f.label :end_date %>
       <%= f.text_field :end_date, :format => :us_date, :class => 'txt', :readOnly => true, :onchange => "$('##{@offer.id}_end_date').html($('#offer_end_date').val());" %>
       <div class="caption">
-        <span>Date deal expires (end of day)</span>
+        <span>Date offer expires (end of day)</span>
       </div>
     </div>
   </div><!-- /offer-form end -->
@@ -91,7 +91,7 @@
         <%= f.text_field :redemption_code, :class => :txt, :maxlength => 15, :onchange => "$('##{@offer.id}_rc').html($('#offer_redemption_code').val());", :placeholder => "Ex: HALFOFFTUES" %>
       </div>
       <div class="right">
-        <span>Code for tracking this deal in your system</span>
+        <span>Code for tracking this offer in your system</span>
       </div>
     </div>
     <div class="row">
@@ -125,7 +125,7 @@
     <div class="btns-holder">
     <div class="center">
       <ul class="btns">
-        <li><%= link_to_function "Activate Deal", "$('#offer_draft').val('false');$('form:first').submit();return false;", :class => 'activate-deal' %></li>
+        <li><%= link_to_function "Activate Offer", "$('#offer_draft').val('false');$('form:first').submit();return false;", :class => 'activate-deal' %></li>
         <li><%= link_to_function "Save as Draft", "$('#offer_draft').val('true');$('form:first').submit();return false;", :class => 'save-draft' %></li>
         <li><%= link_to_function 'cancel', "if (confirm('Are you sure?')) { window.location.href='#{dealdashboard_url}';return true; } else { return false; }", :class => 'cancel' %></li>
     </ul><!-- /btns end -->

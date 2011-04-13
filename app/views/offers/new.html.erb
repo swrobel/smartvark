@@ -1,48 +1,42 @@
 <% title "Deal Builder" %>
 <% head_additions stylesheet_link_tag 'jquery-ui' %>
-						<!-- twocolumns -->
-						<div class="offer-box">
-							<div class="twocolumns">
-								<div class="holder">
-									<!-- left-col -->
-									<div class="left-col">
-										<div class="frame-b">
-											<div class="heading">
-												<div class="frame-b">
-													<div class="frame-t">
-														<h2>Create an Offer</h2>
-													</div>
-												</div>
-											</div>
-                                                                                        <%= render :partial => 'dealbuilder_form' %>
-											<!-- location -->
-										</div>
-									</div>
-									<!-- right-col -->
-									<div class="right-col">
-										<div class="heading">
-											<div class="frame-b">
-												<div class="frame-t">
-													<h3>Smart Tips</h3>
-												</div>
-											</div>
-										</div>
-										<!-- tips -->
-										<ul class="tips">
-											<li>50% off coupons are achieving a 20% redemption rate at restaurants.</li>
-											<li>The best day to release offers is Thursday. Why? Most coupons are used during the weekend.</li>
-										</ul>
-									</div><!-- /right-col end -->
-									<div class="right-col">
-										<div class="heading">
-											<div class="frame-b">
-												<div class="frame-t">
-													<h3>Preview Your Offer</h3>
-												</div>
-											</div>
-                                                                                      </div>
-                                                                                      <%= raw coupon(@offer) %>
-									</div><!-- /right-col end -->
-								</div>
-							</div>
-						</div>
+<div class="offer-box">
+  <div class="twocolumns">
+    <div class="holder">
+      <div class="left-col">
+        <div class="frame-b">
+          <div class="heading">
+            <div class="frame-b">
+              <div class="frame-t">
+                <h2>Create an Offer</h2>
+              </div>
+            </div>
+          </div>
+          <%= render :partial => 'dealbuilder_form' %>
+        </div>
+      </div>
+      <div class="right-col">
+        <div class="heading">
+          <div class="frame-b">
+            <div class="frame-t">
+              <h3>Smart Tips</h3>
+            </div>
+          </div>
+        </div>
+        <ul class="tips">
+          <li>Helpful hints for creating effective offers coming here soon!</li>
+        </ul>
+      </div><!-- /right-col end -->
+      <div class="right-col">
+        <div class="heading">
+          <div class="frame-b">
+            <div class="frame-t">
+              <h3>Preview Your Offer</h3>
+            </div>
+          </div>
+        </div>
+        <%= raw coupon(@offer) %>
+      </div><!-- /right-col end -->
+    </div>
+  </div>
+</div>

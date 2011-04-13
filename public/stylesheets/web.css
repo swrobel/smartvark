@@ -992,9 +992,9 @@ td, th{padding:0;}
 .location .loc{width:75px;}
 .location .offer{width:260px;}
 .location .expiration{width:60px;}
-.location .Used{width:40px;}
+.location .used{width:40px;}
 .location .actions{
-	width:80px;
+	width:90px;
 	text-align:center;
 }
 /* twocolumns right column */

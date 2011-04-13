@@ -20,7 +20,7 @@
         <li><%= link_to_unless_current 'business profile', new_business_path %></li>
       </ul>
     </div>
-  <% else %>
+  <% elsif current_user.role == "user" %>
     <div class="frame">
       <div class="account-area">
         <div class="holder">

@@ -861,9 +861,9 @@ td, th{padding:0;}
 .twocolumns .btn-deal{
 	float:right;
 	text-indent:-9999px;
-	background:url(/images/btn-create-deal.gif) no-repeat;
-	width:105px;
-	height:31px;
+	background:url(/images/btn-create-offer.png) no-repeat;
+	width:111px;
+	height:37px;
 }
 .twocolumns h2{
 	margin:0;

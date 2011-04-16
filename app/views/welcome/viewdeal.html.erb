@@ -1,75 +1,63 @@
-	<% title @offer.title %>
-            <%= render :partial => 'search_box' %>
-						<!-- two-columns -->
-						<div class="two-columns">
-							<div class="t"></div>
-							<div class="c">
-								<!-- holder -->
-								<div class="holder">
-									<!-- l-side -->
-									<div class="l-side">
-										<!-- ttl-holder -->
-										<div class="ttl-holder">
-                        <h2><%= @offer.title %></h2>
-										</div>
-										<!-- share -->
-										<div class="share">
-											<!-- share-holder -->
-											<div class="share-holder">
-												<strong class="title">Share the Love:</strong>
-												<ul>
-													<li>
-														<a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="smartvark">Tweet</a>
-													</li>
-													<li>
-													  <a title="Post to Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="small-button" data-imageurl="http://smartvark.com/images/logo-mobile.png"></a>
-													</li>
-													<li>
-														<fb:like layout="button_count"></fb:like>
-													</li>
-													<!--
-													<li>
-														<a href="#">
-															<img src="/images/ico-mail.gif" alt="Mail" />
-															<span>Email</span>
-														</a>
-													</li>
-													-->
-												</ul>
-											</div>
-										</div>
-										<!-- info-area -->
-										<div class="info-area">
-											<!-- img -->
-												<div class="img">
-													<%= image_tag @offer.logo.url, :alt => @offer.user.name + " logo" %>
-											</div>
-											<!-- info-box -->
-												<div class="info-box">
-													<h3>Valid at these locations:</h3>
-													<%= render :partial => 'offer_address', :object => @offer %>
-													<% if @offer.expired? %>
-														<%= image_tag('btn-expired.gif') %>
-													<% else %>
-														<a href="" id="btn-redeem<%= '-signup' unless logged_in? %>-open" class="btn">Redeem</a>
-															<!-- Redeem popup -->
-															<%= render :partial => 'redeem' %>
-														<% end %>
-											</div>
-                                                                                      </div>
-										<!-- information -->
-										<div class="information">
-												<h3>Expires: <%= std_date(@offer.end_date) %></h3>
-												<p><%= @offer.description %></p>
-												<p><%= @offer.fine_print %></p>
-										</div>
-									</div>
-                                                                        <!-- r-side -->
-                  <%= render :partial => 'shout' %>
-								</div>
-							</div>
-							<div class="b"></div>
+<% title @offer.title %>
+<%= render :partial => 'search_box' %>
+<div class="two-columns">
+	<div class="t"></div>
+	<div class="c">
+		<div class="holder">
+			<div class="l-side">
+				<div class="ttl-holder">
+						<h2><%= @offer.title %></h2>
+				</div>
+				<div class="share">
+					<div class="share-holder">
+						<strong class="title">Share the Love:</strong>
+						<ul>
+							<li>
+								<a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="smartvark">Tweet</a>
+							</li>
+							<li>
+								<a title="Post to Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="small-button" data-imageurl="http://smartvark.com/images/logo-mobile.png"></a>
+							</li>
+							<li>
+								<fb:like layout="button_count"></fb:like>
+							</li>
+							<!--
+							<li>
+								<a href="#">
+									<img src="/images/ico-mail.gif" alt="Mail" />
+									<span>Email</span>
+								</a>
+							</li>
+							-->
+						</ul>
+					</div>
+				</div>
+				<div class="info-area">
+						<div class="img">
+							<%= image_tag @offer.logo.url, :alt => @offer.user.name + " logo" %>
 						</div>
-								<% content_for(:footer_additions) do %>
-								<%= javascript_include_tag "http://platform.twitter.com/widgets.js", "http://connect.facebook.net/en_US/all.js#xfbml=1", "http://www.google.com/buzz/api/button.js" %>
+						<div class="info-box">
+							<h3>Valid at these locations:</h3>
+							<%= render :partial => 'offer_address', :object => @offer %>
+							<% if @offer.expired? %>
+								<%= image_tag('btn-expired.gif') %>
+							<% else %>
+								<a href="" id="btn-redeem<%= '-signup' unless logged_in? %>-open" class="btn">Redeem</a>
+									<%= render :partial => 'redeem' %>
 								<% end %>
+					</div>
+				</div>
+				<div class="information">
+						<h3>Expires: <%= std_date(@offer.end_date) %></h3>
+						<p><%= @offer.description %></p>
+						<p><%= @offer.fine_print %></p>
+				</div>
+			</div>
+			<%= render :partial => 'shout' %>
+		</div>
+	</div>
+	<div class="b"></div>
+</div>
+<% content_for(:footer_additions) do %>
+	<%= javascript_include_tag "http://platform.twitter.com/widgets.js", "http://connect.facebook.net/en_US/all.js#xfbml=1", "http://www.google.com/buzz/api/button.js" %>
+<% end %>

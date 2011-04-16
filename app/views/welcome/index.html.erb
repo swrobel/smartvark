@@ -27,6 +27,7 @@
               <p>or create a Smartvark account</p>
             </div>
             <div class="row">
+              <%= f.hidden_field :invited_by_id, :value => @invited_by.id if @invited_by %>
               <%= f.email_field :email, class: "txt", placeholder: 'Enter your email' %>
               <%= f.submit "Sign up", class: "submit" %>
             </div>

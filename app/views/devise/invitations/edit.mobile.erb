@@ -1,0 +1,16 @@
+<div data-role="header" data-theme="b">
+  <h1>Almost there</h1>
+</div><!-- /header -->
+
+<div data-role="content">
+  <p>Choose a password to finish creating your account</p>
+	<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+    <%= devise_error_messages! %>
+    <%= f.hidden_field :invitation_token %>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: "txt", placeholder: "at least 6 characters" %>
+    <%= f.label :password_confirmation, "Re-enter password" %>
+    <%= f.password_field :password_confirmation, class: "txt", placeholder: "must match previous field" %>
+    <%= f.submit "Set my password", class: "submit" %>
+  <% end %>
+</div><!-- /content -->

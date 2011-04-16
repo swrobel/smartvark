@@ -1,6 +1,6 @@
 <div data-role="content" data-theme="a">
   <%= form_for :user, :as => :user, :url => registration_path(:user) do |f| %>
-    <h3>Save the trouble of remembering another account</h3>
+    <h3>Save the hassle of remembering another account</h3>
     <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b" %>
     <h3>or create a Smartvark account</h3>
     <%= f.label :email, "Email:" %>

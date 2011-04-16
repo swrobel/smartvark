@@ -1,0 +1,17 @@
+<div data-role="header" data-theme="b">
+  <h1>Priority list</h1>
+</div><!-- /header -->
+
+<div data-role="content">
+  <h2>You're on the priority list!</h2>
+  <p>Your account has been created but isn't active yet. The response has been overwhelming, and we can only activate a limited number of users each day.</p>
+  
+  <p>If you refer 3 people who sign up, your account will be activated. You can email them an invite or share your personalized link to Facebook, Twitter, etc below.</p>
+  
+  <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name) do |f| %>
+    <%= devise_error_messages! %>
+    <%= f.label :email %>
+    <%= f.email_field :email, class: "txt" %>
+    <%= f.submit "Send an invitation", class: "submit" %>
+  <% end %>
+</div><!-- /content -->

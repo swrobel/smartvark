@@ -15,6 +15,10 @@ class Ability
         can :read, :viewbusiness
         can :read, :search
       elsif user.role == "business"
+        # Below are here until invite system is removed, then Everyone at bottom
+        can :read, :viewdeal
+        can :read, :viewbusiness
+        # end
         can :read, :mydeals
         can :read, :dealdashboard
         can :create, Business

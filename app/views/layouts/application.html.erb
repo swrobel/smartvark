@@ -1,14 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<% limited_page = controller.action_name == "index" || controller.controller_name == "invitations" %>
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-	<% if controller.action_name == "index" %>
-	<title>Smartvark: Local Deals. Personalized.</title>
-	<% else %>
   <title><%= content_for?(:title) ? yield(:title) : controller.action_name.titlecase %> - Smartvark</title>
-	<% end %>
   <%= stylesheet_link_tag 'web' %>
   <!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
   <%= content_for?(:head_additions) ? yield(:head_additions) : nil -%>
@@ -21,7 +19,7 @@
       <div id="header">
 				<h1 class="logo"><%= link_to "Smartvark", home_path %></h1>
 				<div class="flash-holder" id="flash-<%=if notice then 'notice' else 'alert' end%>"><%= raw notice %><%= raw alert %></div>
-				<%= render :partial => 'layouts/account_area', locals: { new_user: !%w(forbusiness index).include?(controller.action_name) } unless controller.action_name == "index" %>
+				<%= render :partial => 'layouts/account_area', locals: { new_user: !%w(forbusiness index).include?(controller.action_name) } unless limited_page %>
       </div>
       <div id="main">
 				<div class="main-holder">
@@ -32,7 +30,7 @@
       </div>
     </div>
   </div>
-  <%= render :partial => 'layouts/common_footer' unless controller.action_name == "index" %>
+  <%= render :partial => 'layouts/common_footer' unless limited_page %>
   <%= javascript_include_tag 'jquery', 'jquery-ui', 'jquery-plugins', 'rails' %>
 	<%= content_for?(:footer_additions) ? yield(:footer_additions) : nil -%>
 	<%= javascript_include_tag 'application' %>

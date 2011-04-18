@@ -4,29 +4,37 @@
 		<div class="frame">
 			<h2>Almost there...</h2>
 			<div class="business-holder">
-        <p>Choose a password to finish creating your account</p>
-        
-				<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
-          <div class="row">
-            <%= devise_error_messages! %>
-          </div>
-          <%= f.hidden_field :invitation_token %>
-        
-          <div class="row">
-            <%= f.label :password %><br />
-            <%= f.password_field :password, class: "txt", placeholder: "at least 6 characters" %>
-          </div>
-        
-          <div class="row">
-            <%= f.label :password_confirmation, "Re-enter password" %><br />
-            <%= f.password_field :password_confirmation, class: "txt", placeholder: "must match previous field" %>
-          </div>
-        
-          <div class="row">
-            <%= f.submit "Set my password", class: "submit" %>
-          </div>
-        <% end %>
+        <div class="col-r-wide">
+          <%= render partial: "/welcome/index_copy", locals: { for_invite: true } %>
+        </div>
+        <div style="width:400px;">
+          <p>Choose a password to finish creating your account</p>
+          
+          <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+            <div class="row">
+              <%= devise_error_messages! %>
+            </div>
+            <%= f.hidden_field :invitation_token %>
+          
+            <div class="row">
+              <%= f.label :password %><br />
+              <%= f.password_field :password, class: "txt", placeholder: "at least 6 characters" %>
+            </div>
+          
+            <div class="row">
+              <%= f.label :password_confirmation, "Re-enter password" %><br />
+              <%= f.password_field :password_confirmation, class: "txt", placeholder: "must match previous field" %>
+            </div>
+          
+            <div class="row">
+              <%= f.submit "Set my password", class: "submit" %>
+            </div>
+          <% end %>
+        </div>
 			</div><!-- business-holder end -->
 		</div>
 	</div>
 </div><!-- business-box end -->
+<div id='video-popup' class="popup video-popup">
+  <iframe title="YouTube video player" width="480" height="300" src="http://www.youtube.com/embed/efI6IMjUcII?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>

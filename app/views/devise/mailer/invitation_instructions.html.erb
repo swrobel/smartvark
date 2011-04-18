@@ -1,5 +1,7 @@
-<p><%= @resource.invited_by.email %> has invited you to get priority access to Smartvark: Local Deals. Personalized. If you'd like to know more about the site, <%= link_to 'click here to watch our short Youtube video', 'http://www.youtube.com/watch?v=efI6IMjUcII' %>.
+<p>Congratulations! <%= @resource.invited_by.email %> has invited you to get priority access to deals at Los Angeles stores and restaurants that are personalized to your tastes.</p>
 
-<p><%= link_to 'Click here to go to Smartvark.com and accept the invitation', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
+<p><%= link_to 'Click or tap here to go to Smartvark.com and accept the invitation', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %> (our site works great on both computers and smartphones)</p>
+
+<p>If you'd like to find out more about the site first, <%= link_to 'click here to watch our short Youtube video', 'http://www.youtube.com/watch?v=efI6IMjUcII' %>.</p>
 
 <p>If you don't want to accept the invitation, please ignore this email. We won't email you again.</p>

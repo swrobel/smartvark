@@ -13,7 +13,7 @@
     </div>
     <div class="frame">
 	    &nbsp;
-	</div>
+		</div>
     <div class="frame">
       <ul class="menu">
         <li><%= link_to_unless_current 'dashboard', dealdashboard_path %></li>
@@ -33,25 +33,25 @@
     </div>
     <div class="frame">
       <ul class="menu">
-	<li><%= link_to_unless_current 'my deals', mydeals_path %></li>
-	<li><%= link_to_unless_current 'my profile', myprofile_path %></li>
+				<li><%= link_to_unless_current 'my deals', mydeals_path %></li>
+				<li><%= link_to_unless_current 'my profile', myprofile_path %></li>
       </ul>
   </div>
   <% end %>
 <% else %>
-    <div class="frame">
-      <div class="account-area">
-        <a href="" id="btn-signin-open" class="btn-popup-open">Sign in</a>
-        <% if new_user %> or
-          <%= render :partial => 'users/signup' %>
-        <% end %>
-        <%= render :partial => 'users/signin' %>
-      </div>
-    </div>
-    <% if flash[:error] %>
-    <div id="error_explanation" style="float:right;">
-      <%= raw flash[:error] %>
-    </div>
-    <% end %>
+	<div class="frame">
+		<div class="account-area">
+			<a href="" id="btn-signin-open" class="btn-popup-open">Sign in</a>
+			<% if new_user %> or
+				<%= render :partial => 'users/signup' %>
+			<% end %>
+			<%= render :partial => 'users/signin' %>
+		</div>
+	</div>
+	<% if flash[:error] %>
+	<div id="error_explanation" style="float:right;">
+		<%= raw flash[:error] %>
+	</div>
+	<% end %>
 <% end %>
 </div>

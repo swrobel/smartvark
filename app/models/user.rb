@@ -81,8 +81,7 @@ class User < ActiveRecord::Base
     Offer.select('DISTINCT offers.*').includes([:businesses, :opinions, :redemptions]).joins(:businesses).where({:businesses => [:user_id >> id]}).order([:archived, :draft, :title])
   end
   
-  def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
-    data = access_token['extra']['user_hash']
+  def self.find_for_facebook_oauth(data, signed_in_resource=nil)
     if user = User.find_by_email(data["email"])
       user
     end
@@ -92,7 +91,7 @@ class User < ActiveRecord::Base
     super.tap do |user|
       session[:likes].each { |id| user.opinions.build(:offer_id => id, :liked => true) } if session[:likes]
       session[:dislikes].each { |id| user.opinions.build(:offer_id => id, :liked => false) } if session[:dislikes]
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["user_hash"]
+      if data = session["devise.facebook_data"]
         user.email = data["email"]
         user.name = data["name"]
         user.gender = data["gender"].first unless data["gender"].blank?

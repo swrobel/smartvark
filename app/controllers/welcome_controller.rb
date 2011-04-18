@@ -13,20 +13,18 @@ class WelcomeController < ApplicationController
     raise CanCan::AccessDenied unless can? :read, :index
     session[:user_return_to] = new_user_invitation_path
     if params[:user_id]
-      @invited_by = User.find_by_id(params[:user_id].to_i(36))
+      session["devise.invited_by_id"] = params[:user_id].to_i(36)
     elsif params[:user]
       existing_user = User.find_by_email(params[:user][:email])
       if existing_user
         flash[:alert] = "A user with that email has already been registered"
       else
-        if params[:user][:invited_by_id]
-          existing_user = User.find_by_id(params[:user][:invited_by_id])
-          logger.info existing_user
+        if session["devise.invited_by_id"]
+          existing_user = User.find_by_id(session["devise.invited_by_id"])
           new_user = User.invite!({:email => params[:user][:email], :skip_invitation => true}, existing_user )
         else
           new_user = User.invite!({:email => params[:user][:email], :skip_invitation => true})
         end
-        session[:potential] = true if new_user
         redirect_to accept_invitation_path(new_user, :invitation_token => new_user.invitation_token)
       end
     end

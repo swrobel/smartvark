@@ -4,35 +4,41 @@
 		<div class="frame">
 			<h2>You're on the priority list!</h2>
 			<div class="business-holder">
-        <p>Your account has been created but isn't active yet.<br/>
-        The response has been overwhelming, and we can only activate a limited number of users each day.</p>
-        
-        <p>If you refer 3 people who sign up, your account will be activated.<br/>
-        You can email them an invite or share your personalized link to Facebook, Twitter, etc below.</p>
-        
-				<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name) do |f| %>
-          <div class="row">
-            <%= devise_error_messages! %>
-          </div>
-          <%= current_user.invitation_token %>
-          <div class="row">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, class: "txt" %>
-          </div>
-        
-          <div class="row">
-            <%= f.submit "Send an invitation", class: "submit" %>
-          </div>
-        <% end %>
+        <%= render :partial => "new_copy" %>
         <% referral_url = root_url + current_user.id.to_s(36) %>
-        <input type="text" value="<%= referral_url %>"/>
-        <fb:like href="<%= referral_url %>" layout="button_count" show_faces="false" action="recommend" font=""></fb:like>
-        <a href="http://twitter.com/share" class="twitter-share-button" data-text="Check it out!" data-url="<%= referral_url %>" data-count="none" data-via="smartvark">Tweet</a>
-        <a title="Post to Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="small-button" data-imageurl="http://smartvark.com/images/logo-mobile.png"></a>
+        <table>
+          <tr>
+            <th>Invite via email</th>
+            <th>Your invitation link</th>
+            <th>Post it on Facebook</th>
+            <th>Post it on Twitter</th>
+            <th>Post it on Google Buzz</th>
+          </tr>
+          <tr>
+            <td>
+              <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name) do |f| %>
+                <div class="row">
+                  <%= devise_error_messages! %>
+                </div>
+                <div class="row">
+                  <%= f.email_field :email, class: "txt", placeholder: "Email address to invite" %>
+                </div>
+              
+                <div class="row">
+                  <%= f.submit "Send the email invitation", class: "submit" %>
+                </div>
+              <% end %>
+            </td>
+            <td><input type="text" readonly class="txt" value="<%= referral_url %>"/><br/>Copy and paste this wherever you want to share it, or use the links to the right for quick posting to social networks</td>
+            <td><fb:like href="<%= referral_url %>" layout="button_count" show_faces="false" action="recommend" font=""></fb:like></td>
+            <td><a href="http://twitter.com/share" class="twitter-share-button" data-text="Tired of getting spammed with local deals you don't want? Check out @Smartvark: Local Deals. Personalized." data-url="<%= referral_url %>" data-count="none">Tweet</a></td>
+            <td><a title="Post to Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-message="Tired of getting spammed with local deals you don't want? Check out Smartvark: Local Deals. Personalized." data-url="<%= referral_url %>" data-button-style="small-button" data-imageurl="http://smartvark.com/images/logo-mobile.png"></a></td>
+          </tr>
+        </table>
 			</div><!-- business-holder end -->
 		</div>
 	</div>
 </div><!-- business-box end -->
 <% content_for(:footer_additions) do %>
   <%= javascript_include_tag "http://platform.twitter.com/widgets.js", "http://connect.facebook.net/en_US/all.js#xfbml=1", "http://www.google.com/buzz/api/button.js" %>
-  <% end %>
+<% end %>

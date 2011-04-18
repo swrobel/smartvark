@@ -1,0 +1,12 @@
+<p>The response has been overwhelming, and we can only activate a limited number of users each day.</p>
+<p>We've created a personalized invitation link for you to share. If 3 people sign up using that link, your account will be activated.</p>
+<% invited = User.where(:invited_by_id => current_user.id) %>
+<% if invited.count > 0 %>
+  <% signed_up = invited.where(:invitation_token => nil).count %>
+  <p>
+    You have invited <strong><%= invited.count %></strong> people and <strong><%= signed_up %></strong> of them have signed up. 
+    <% if signed_up < 3 %>
+      Only <strong><%= 3 - signed_up %></strong> more to go!
+    <% end %>
+  </p>
+<% end %>

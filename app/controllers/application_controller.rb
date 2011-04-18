@@ -37,8 +37,6 @@ protected
     elsif cookies.signed[:geo_location]
       loc = Marshal.load(cookies.signed[:geo_location])
     end
-    
-    logger.info "Location info: #{loc} #{loc.to_location} #{loc.class}"
     return loc
   end
 
@@ -89,7 +87,7 @@ private
     
     # Don't show error if this redirect is due to sign in/out
     notice = flash[:notice]
-    if notice && notice.include?("Signed")
+    if notice
       flash[:notice] = notice
     # Only show error message if they are accessing a path other than root
     elsif request.fullpath != "/" && request.fullpath != "/deals"

@@ -1973,7 +1973,7 @@ a.facebook-signin{
 }
 .business-box .txt{
 	width:200px;
-	font:20px Arial, Helvetica, sans-serif;
+	font:16px Arial, Helvetica, sans-serif;
 	border:1px solid #999;
   margin-bottom:14px;
 }
@@ -1981,7 +1981,7 @@ a.facebook-signin{
 	font:14px Arial, Helvetica, sans-serif;
   color:#000000;
 }
-.business-box .submit{font:20px Arial, Helvetica, sans-serif;}
+.business-box .submit{font:16px Arial, Helvetica, sans-serif;}
 .business-box .col-r-wide{
   background:#BBBBBB;
 	-moz-border-radius:10px;
@@ -2004,7 +2004,7 @@ a.facebook-signin{
 	text-align:center;
 	display:block;
 	overflow:hidden;
-	color:#fff;
+	color:#FFFFFF;
 	font:20px/14px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	background:url(/images/btn-contact.gif) no-repeat;
 	margin:43px auto 0;
@@ -2026,18 +2026,32 @@ a.facebook-signin{
 	font:24px/25px Arial, Helvetica, sans-serif;
 	margin:0
 }
+.business-holder table{
+  height:200px;
+  width:100%;
+}
+.business-holder th{
+  font:13px Arial, Helvetica, sans-serif;
+  font-weight:bold;
+  color:#000000;
+}
+.business-holder td{
+  padding:10px;
+  vertical-align:top;
+  text-align:center;
+}
 .connect-hold h3{color:#0079c2;}
 .engage-hold h3{color:#ff5c16;}
 .business-holder .engage-hold p{margin-bottom:13px;}
 .business-holder .engage-hold p a{text-decoration:underline;}
 .business-holder .engage-hold p a:hover{text-decoration:none;}
-#errorExplanation{border:2px solid red; }
-#errorExplanation ul{
+#error_explanation{border:2px solid red; }
+#error_explanation ul{
 	padding-left:15px;
 	margin:1px;
 }
-#errorExplanation h2{ display:none; }
-#errorExplanation p{display:none;}
+#error_explanation h2{ display:none; }
+#error_explanation p{display:none;}
 .field_with_errors{display:inline;}
 .field_with_errors label{color:red;}
 .charleft{display:none;}

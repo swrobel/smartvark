@@ -106,6 +106,8 @@ class User < ActiveRecord::Base
         #user.phone = "+" + data["mobile_phone"] unless data["mobile_phone"].blank?
         user.birthday = data["birthday"]
         user.password = Devise.friendly_token[0,20]
+        user.invited_by_id = session["devise.invited_by_id"]
+        user.invited_by_type = "User"
       end
     end
   end

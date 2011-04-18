@@ -2,10 +2,13 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     logger.info env["omniauth.auth"]
     fbdata = env["omniauth.auth"]["extra"]["user_hash"]
+    fbdata.delete("hometown")
     fbdata.delete("work")
     fbdata.delete("education")
     fbdata.delete("quotes")
+    fbdata.delete("bio")
     logger.info fbdata
+    session["devise.facebook_data"] = fbdata
     @user = User.find_for_facebook_oauth(fbdata, current_user)
     @user ||= User.new_with_session(params, session)
     @user.save unless @user.persisted?

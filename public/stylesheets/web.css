@@ -1018,8 +1018,8 @@ td, th{padding:0;}
 	padding:16px 0 0;
 	font:14px Arial, Helvetica, sans-serif;
 	color:#000;
-	width:521px;
-	margin:0 0 0 -4px;
+	width:530px;
+	margin:0 0 0 -6px;
 }
 .profile-form label{
 	float:left;
@@ -1751,7 +1751,6 @@ a.facebook-signin{
 	background:url(/images/ico04.png) no-repeat;
 	width:16px;
 	height:18px;
-	cursor:pointer;
 	text-indent:-9999px;
 	overflow:hidden;
 }
@@ -1780,7 +1779,7 @@ a.facebook-signin{
 }
 .profile-box .profile-form .row{margin:0 0 23px;}
 .profile-box .profile-form label{
-	width:119px;
+	width:121px;
 	overflow:hidden;
 	padding:5px 0 0;
 }

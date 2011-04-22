@@ -1,6 +1,9 @@
 <div class="bottom">
 <!-- profile-form -->
   <div class="profile-form">
+    <div class="row">
+      Fields marked with an asterisk(*) must be filled in before saving
+    </div>
     <%= form_for(@business) do |f| %>
       <%= f.error_messages %>
       <fieldset>
@@ -10,20 +13,20 @@
         <%= form_row f, :address_2, 'Address 2', {}, '(Optional) Unit or Suite number, etc' %>
         <%= form_row f, :city, 'City*', {}, '(Required) City' %>
         <div class="row">
-          <%= f.label :state, '<span>State*</span><span class="inf" title="(Required) State">Info</span>'.html_safe %>
+          <%= f.label :state, '<span>State*</span><span class="inf" title="(Required) State"></span>'.html_safe %>
           <div class="right width1">
             <%= f.select :state, States::STATES, :class => 'sel', :selected => 'CA' %>
             <div class="select-area width2">
-              <%= f.label :zipcode, '<span>Zip*</span><span class="inf" title="(Required) Zip Code">Info</span>'.html_safe %>
+              <%= f.label :zipcode, '<span>Zip*</span><span class="inf" title="(Required) Zip Code"></span>'.html_safe %>
               <%= f.text_field :zipcode, :class => 'txt' %>
             </div>
           </div>
         </div>
         <%= form_row f, :phone, 'Phone*', { :tdc => ' width3' }, '(Required) Phone number so that users can call you' %>
-        <%= form_row f, :hours, 'Hours', {}, '(Optional) Separate hours with a comma, ex: M-F 9-5,Sat-Sun 10-4' %>
-        <%= form_row f, :yelp_url, 'Yelp', { :tdc => ' width6', :bf => '<p>http://yelp.com/biz/</p>' }, '(Optional) Yelp business ID for this location' %>
-        <%= form_row f, :twitter_url, 'Twitter', { :tdc => ' width4', :bf => '<p>http://twitter.com/</p>' }, '(Optional) Twitter username for this location' %>
-        <%= form_row f, :facebook_url, 'Facebook', { :tdc => ' width5', :bf => '<p>http://facebook.com/</p>' }, '(Optional) Facebook page name for this location' %>
+        <%= form_row f, :hours, 'Hours', {}, '(Optional) Separate days with a comma, ex: M-F 9-5,Sat-Sun 10-4' %>
+        <%= form_row f, :yelp_url, 'Yelp', {}, '(Optional) Address of Yelp page for this location' %>
+        <%= form_row f, :twitter_url, 'Twitter', {}, '(Optional) Address of Twitter page for this location' %>
+        <%= form_row f, :facebook_url, 'Facebook', {}, '(Optional) Address of Facebook page for this location' %>
         <div class="btns-holder">
           <div class="btns">
             <input class="btn-clear" type="reset" value="Clear" />

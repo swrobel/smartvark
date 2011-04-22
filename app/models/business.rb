@@ -10,7 +10,7 @@ class Business < ActiveRecord::Base
   before_save :format_phone
   
   HUMANIZED_ATTRIBUTES = {
-    :name => "Location Name",
+    :name => "Location name",
     :address => "Address 1",
     :zipcode => "Zip"
   }
@@ -72,14 +72,13 @@ class Business < ActiveRecord::Base
 private
 
   def get_yelp_data
-    return if yelp_url.blank?
+    return if yelp_url.blank? || !name.blank?
     self.yelp_url = yelp_url.split("#").first
     consumer = OAuth::Consumer.new(YELP_CONSUMER_KEY, YELP_CONSUMER_SECRET, {:site => "http://api.yelp.com"})
     access_token = OAuth::AccessToken.new(consumer, YELP_TOKEN, YELP_TOKEN_SECRET)
     
-    path = "/v2/business/" + yelp_url
+    path = "/v2/business/" + yelp_url.split("/").last
     result = access_token.get(path).body
-    logger.info result.inspect
     result = Yajl::Parser.parse(result)
     
     self.yelp_mobile_url = result["mobile_url"]

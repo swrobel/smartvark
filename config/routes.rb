@@ -3,7 +3,9 @@ Smartvark::Application.routes.draw do
   resources :comments
   resources :redemptions
   resources :businesses
-  resources :offers
+  resources :offers do
+    get 'print', :on => :collection
+  end
   resources :categories
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations" }
   match 'biz' => 'welcome#forbusiness', :as => :biz

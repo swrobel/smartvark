@@ -60,7 +60,7 @@
 					<% end %>
 				</div>
 				<ul class="posts">
-					<%= render :partial => 'business_offer', :collection => @business.offers.active %>
+					<%= render :partial => 'business_offer', :collection => @business.offers.active.order(:created_at.desc) %>
 				</ul>
 				<% if @business.yelp_rating_img_url.present? %>
 					<a href="http://www.yelp.com" target="blank_"><img alt="Reviews from Yelp" src="http://media2.px.yelpcdn.com/static/20091130675329781/i/developers/reviewsFromYelpWHT.gif"/></a>

@@ -1,5 +1,5 @@
 .archived{background-color:#DDDDDD;}
-.draft{background-color:#FFBB00;}
+.draft{background-color:#FFEE00;}
 .tryit-box{
 	background:url(/images/bg-welcome-box.gif) no-repeat;
 	background-position:0 -42px;
@@ -936,6 +936,10 @@ td, th{padding:0;}
 	font-size:12px;
 	line-height:16px;
 	color:#333;
+}
+.print-link{
+  margin-right:25px;
+  float:right;
 }
 /* location */
 .location{

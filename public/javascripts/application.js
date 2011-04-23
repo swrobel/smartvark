@@ -116,14 +116,21 @@ $(function(){
 	
 	if ($().fadeIn && $().fadeOut) {
 		$(".dashboard_chk").change(function(){
-			locID = '.' + $(this).val();
-			if ($(this).attr("checked")) $(locID).fadeIn('fast');
-			else $(locID).fadeOut('fast');
+			bizID = $(this).val();
+			$("#unchecked-bizs").toggleClass(bizID);
+			if ($(this).attr("checked")) $("."+bizID).fadeIn("fast");
+			else {
+				bizIDs = $("#unchecked-bizs").attr("class");
+				alert(bizIDs);
+				$("tr[class='"+bizIDs+"  dashboard_row']").fadeOut("fast");
+				$("tr[class='"+bizIDs+" draft dashboard_row']").fadeOut("fast");
+				$("tr[class='"+bizIDs+" archived dashboard_row']").fadeOut("fast");
+			}
 		});
 	}
     
 	if ($(".flash-holder").html() != "") {
-	    $(".flash-holder").show("drop", { direction: "up" }, 1000).delay(5000).hide("drop", { direction: "up" }, 1000);
+	    $(".flash-holder").show("drop", { direction: "up" }, 1000).delay(10000).hide("drop", { direction: "up" }, 1000);
 	}
 });
 function checkall_offer_form(n) {

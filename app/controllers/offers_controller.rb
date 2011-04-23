@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  load_resource :only => [:edit, :update]
+  load_resource :only => [:edit, :update, :destroy]
   authorize_resource
 
   # GET /offers
@@ -9,6 +9,15 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.xml  { render :xml => @offers }
+    end
+  end
+  
+  def print
+    @offers = current_user.offers.active.includes(:businesses).order(:end_date.asc)
+    
+    respond_to do |format|
+      format.html { render :layout => false }
       format.xml  { render :xml => @offers }
     end
   end

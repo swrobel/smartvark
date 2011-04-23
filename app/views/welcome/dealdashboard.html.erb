@@ -25,6 +25,7 @@
 								</li>
 							</ul>
 							<form id='business'>
+								<input type="hidden" id="unchecked-bizs"/>
 								<fieldset>
 									<% @businesses.in_groups_of(4) do |group| %>
 										<ul class="row">
@@ -54,6 +55,9 @@
 							</tr>
 							<%= render :partial => 'deal_on_dashboard', :collection => @offers %>
 						</table>
+					</div>
+					<div class="print-link">
+						<%= link_to image_tag("print.png", :width =>'16', :height => '16'), print_offers_path, target: "_blank", alt: "Print current list of offers", title: "Print current list of offers" %>
 					</div>
 					<div class="legend">
 						<strong>Offer status legend:</strong><br/>

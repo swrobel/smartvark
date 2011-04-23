@@ -83,7 +83,7 @@ class WelcomeController < ApplicationController
       @out_of_area = true
       @offers = []
     else
-      @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:user]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]}).active
+      @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:user]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]}).active.order(:created_at.desc)
       @offers = @offers.where(:id - opinions) unless opinions.empty?
     end
   end
@@ -92,7 +92,7 @@ class WelcomeController < ApplicationController
     raise CanCan::AccessDenied unless can? :read, :mydeals
     @category_id = params[:category_id].blank? ? 1 : Category.find(params[:category_id]).id
     loc = geo_location
-    @offers = Offer.select('DISTINCT offers.*').includes([:businesses, :user]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]} & (:category_id + Category.subtree_of(@category_id))).active
+    @offers = Offer.select('DISTINCT offers.*').includes([:businesses, :user]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]} & (:category_id + Category.subtree_of(@category_id))).active.order(:created_at.desc)
     opinions = current_user.opinions.map(&:offer_id)
     @offers = @offers.where(:id - opinions) unless opinions.empty?
     @likes = current_user.liked_offers(@category_id)
@@ -153,7 +153,7 @@ class WelcomeController < ApplicationController
                   {:category => [:name =~ terms]} |
                   {:category => [:parent_name =~ terms]}
                 )
-              )
+              ).order(:created_at.desc)
     # Don't include offers that the user has already rated
     if current_user
       opinions = current_user.opinions.map(&:offer_id)

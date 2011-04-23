@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Valid offers as of <%= Date.today.try(:strftime,'%b %d, %Y') %></title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif;">
+  <%= image_tag "/images/logo.png", alt: "Smartvark Logo" %>
+  <h1>Valid offers as of <%= Date.today.try(:strftime,'%b %d, %Y') %></h1>
+  <table style="border-collapse:collapse;" width="100%">
+    <tr>
+      <th>Offer</th>
+      <th>Description</th>
+      <th>Fine Print</th>
+      <th>Last day valid</th>
+      <th>Valid at</th>
+      <th>Code</th>
+    </tr>
+    <% @offers.each do |offer| %>
+      <tr style="border-top: 1px solid #000000;" >
+        <td><%= offer.title %></td>
+        <td><%= offer.description %></td>
+        <td><%= offer.fine_print %></td>
+        <td><%= offer.end_date.try(:strftime,'%b %d, %Y') %></td>
+        <td><%= offer.businesses.collect(&:short_or_name).join(", ") %></td>
+        <td><%= offer.redemption_code %></td>
+      </tr>
+    <% end %>
+  </table>
+  <p><i>* This page prints best in landscape mode</i></p>
+</body>
+</html>

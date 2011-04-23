@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   validates :phone, :phone_format => {:allow_blank => true}
   
   def formatted_phone
-    Phone.parse(phone).format(:us) unless phone.blank?
+    Phoner::Phone.parse(phone).format(:us) unless phone.blank?
   end
 
   def name_or_email
@@ -120,6 +120,6 @@ class User < ActiveRecord::Base
 private
 
   def format_phone
-    self.phone = Phone.parse(phone).to_s unless phone.blank?
+    self.phone = Phoner::Phone.parse(phone).to_s unless phone.blank?
   end
 end

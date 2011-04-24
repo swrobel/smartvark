@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Lead search-o-matic</title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif;">
+  <%= form_tag(leads_path, :method => "get") do %>
+    <%= label_tag(:q, "Search for:") %>
+    <%= text_field_tag(:q, params[:q]) %>
+    <%= submit_tag("Search") %>
+  <% end %>
+  <hr>
+  <% if @lead %>
+    <h3>Results for "<%= @lead %>"</h3>
+    <% lead = CGI.escape('"'+@lead+'"') %>
+    <ul>
+      <li><%= link_to "Google for Owner or Manager", "http://www.google.com/search?q="+lead+"+owner+OR+manager", target: "_blank" %></li>
+      <li><%= link_to "Google for Discount, Coupon, Deal or Sale", "http://www.google.com/search?q="+lead+"+discount+OR+coupon+OR+deal+OR+sale", target: "_blank" %></li>
+      <li><%= link_to "LinkedIn Company Search", "http://www.linkedin.com/csearch/results?type=companies&keywords="+lead, target: "_blank" %></li>
+      <li><%= link_to "LinkedIn People Search", "http://www.linkedin.com/search/fpsearch?keywords="+lead, target: "_blank" %></li>
+      <li><%= link_to "Yelp Search", "http://www.yelp.com/search?find_loc=Los+Angeles%2C+CA&find_desc="+lead, target: "_blank" %></li>
+    </ul>
+  <% end %>
+</body>
+</html>

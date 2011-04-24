@@ -237,5 +237,12 @@ class WelcomeController < ApplicationController
     end
     redirect_to viewdeal_path(@offer)
   end
+  
+  def leads
+    if params[:q]
+      @lead = params[:q]
+    end
+    render :layout => false
+  end
 
 end

@@ -30,7 +30,13 @@
       </div>
     </div>
   </div>
-  <%= render :partial => 'layouts/common_footer' unless limited_page %>
+	<div id="footer">
+		<%= render :partial => 'layouts/common_footer' unless limited_page %>
+		<% if limited_page %>
+			<p><%= link_to "Are you a business owner? Find out more about advertising with us!", biz_path %></p>
+		<% end %>
+		<p>&copy; <%= Time.now.year %> Smartvark, Inc.<% if %w(deals mydeals).include?(controller.action_name) %> (some icons courtesy of <a href="http://glyphish.com/">glyphish.com</a>)<% elsif controller.action_name == "dealdashboard" || controller.controller_name == "businesses" %> (some icons courtesy of <a href="http://iconza.com/">iconza.com</a>)<% end %></p>
+	</div>
   <%= javascript_include_tag 'jquery', 'jquery-ui', 'jquery-plugins', 'rails' %>
 	<%= content_for?(:footer_additions) ? yield(:footer_additions) : nil -%>
 	<%= javascript_include_tag 'application' %>

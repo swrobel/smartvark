@@ -3,22 +3,22 @@
     <fieldset>
       <h3>Sign in</h3>
       <div class="popup-row">
-	<%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), :class => 'facebook-signin', :style => 'margin-top:10px;', :title => "We don't get your login details from Facebook, we only confirm that you are who you say you are" %>
+				<%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), :class => 'facebook-signin', :style => 'margin-top:10px;', :title => "We don't get your login details from Facebook, we only confirm that you are who you say you are" unless controller.action_name == "biz" %>
       </div>
       <div class="popup-row">
-	<%= f.label :email, "email" %>
-	<%= f.email_field :email, :class => 'txt', :placeholder => 'must be a valid e-mail address' %>
+				<%= f.label :email, "email" %>
+				<%= f.email_field :email, :class => 'txt', :placeholder => 'must be a valid e-mail address' %>
       </div>
       <div class="popup-row">
-	<%= f.label :password, "password" %>
-	<%= f.password_field :password, :class => 'txt', :placeholder => 'minimum of 6 characters' %>
+				<%= f.label :password, "password" %>
+				<%= f.password_field :password, :class => 'txt', :placeholder => 'minimum of 6 characters' %>
       </div>
       <div class="remember">
-	<%= f.check_box :remember_me, :class => 'chk' %><%= f.label :remember_me %>
+				<%= f.check_box :remember_me, :class => 'chk' %><%= f.label :remember_me %>
       </div>
       <div class="popup-buttons">
-	<%= f.submit "Sign in", :class => 'btn-signin' %>
-	<input class="btn-signin-cancel simplemodal-close" type="submit" value="Cancel" />
+				<%= f.submit "Sign in", :class => 'btn-signin' %>
+				<input class="btn-signin-cancel simplemodal-close" type="submit" value="Cancel" />
       </div>
       <div class="popup-buttons">
         <a href="#" id="signup-from-signin">Don't have an account? Sign up!</a>

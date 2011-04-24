@@ -1,12 +1,9 @@
-<div id="footer">
-  <ul>
-    <li><%= link_to "what’s a smartvark anyway?", about_path %></li>
-    <li><%= link_to "what about my privacy?", privacy_path %></li>
-    <!--<li><a href="/contact">our team</a></li>
-    <li><a href="/contact">contact</a></li>-->
-    <li><a href="http://twitter.com/smartvark" target="_blank">twitter</a></li>
-    <li><a href="http://facebook.com/smartvark" target="_blank">facebook</a></li>
-    <li><%= link_to "smartvark for businesses", biz_path %></li>
-  </ul>
-  <p>&copy; <%= Time.now.year %> Smartvark, Inc.<% if %w(deals mydeals).include?(controller.action_name) %> (some icons courtesy of <a href="http://glyphish.com/">glyphish.com</a>)<% elsif controller.action_name == "dealdashboard" || controller.controller_name == "businesses" %> (some icons courtesy of <a href="http://iconza.com/">iconza.com</a>)<% end %></p>
-</div>
+<ul>
+  <li><%= link_to "what’s a smartvark anyway?", about_path %></li>
+  <li><%= link_to "what about my privacy?", privacy_path %></li>
+  <!--<li><a href="/contact">our team</a></li>
+  <li><a href="/contact">contact</a></li>-->
+  <li><a href="http://twitter.com/smartvark" target="_blank">twitter</a></li>
+  <li><a href="http://facebook.com/smartvark" target="_blank">facebook</a></li>
+  <li><%= link_to "smartvark for businesses", biz_path %></li>
+</ul>

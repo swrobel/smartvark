@@ -15,6 +15,7 @@
 <body>
   <div data-role="page">
     <%= yield %>
+    <p>&copy; <%= Time.now.year %> Smartvark, Inc.</p>
   </div>
   <% if alert || notice %>
   <script type="text/javascript">

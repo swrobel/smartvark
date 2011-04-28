@@ -16,10 +16,12 @@
     <% lead = CGI.escape('"'+@lead+'"') %>
     <ul>
       <li><%= link_to "Google for Owner or Manager", "http://www.google.com/search?q="+lead+"+owner+OR+manager", target: "_blank" %></li>
-      <li><%= link_to "Google for Discount, Coupon, Deal or Sale", "http://www.google.com/search?q="+lead+"+discount+OR+coupon+OR+deal+OR+sale", target: "_blank" %></li>
+      <li><%= link_to "Google for Groupon, Discount, Coupon, Deal or Sale", "http://www.google.com/search?q="+lead+"+groupon+OR+discount+OR+coupon+OR+deal+OR+sale", target: "_blank" %></li>
       <li><%= link_to "LinkedIn Company Search", "http://www.linkedin.com/csearch/results?type=companies&keywords="+lead, target: "_blank" %></li>
       <li><%= link_to "LinkedIn People Search", "http://www.linkedin.com/search/fpsearch?keywords="+lead, target: "_blank" %></li>
-      <li><%= link_to "Yelp Search", "http://www.yelp.com/search?find_loc=Los+Angeles%2C+CA&find_desc="+lead, target: "_blank" %></li>
+      <li><%= link_to "Yelp Search", "http://www.yelp.com/search?find_loc=Los+Angeles%2C+CA&find_desc="+lead, target: "_blank" %> (suggestions: search reviews for Deal, Coupon, Owner, Manager, etc.)</li>
+      <li><%= link_to "Find Facebook page", "http://www.google.com/search?q="+lead+"+site%3Afacebook.com", target: "_blank" %> (suggestion: comb feed for previous deals)</li>
+      <li><%= link_to "Find Twitter page", "http://www.google.com/search?q="+lead+"+site%3Atwitter.com", target: "_blank" %> (suggestion: comb feed for previous deals)</li>
     </ul>
   <% end %>
 </body>

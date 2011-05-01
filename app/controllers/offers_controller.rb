@@ -1,4 +1,6 @@
 class OffersController < ApplicationController
+  skip_filter :set_mobile_format
+  
   load_resource :only => [:edit, :update, :destroy]
   authorize_resource
 

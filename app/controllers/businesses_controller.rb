@@ -1,4 +1,6 @@
 class BusinessesController < ApplicationController
+  skip_filter :set_mobile_format
+  
   load_and_authorize_resource
   # GET /businesses
   # GET /businesses.xml

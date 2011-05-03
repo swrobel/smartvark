@@ -16,7 +16,7 @@
     <% elsif !@offer.commenters.include?(current_user) %>
       <div class="row">
         <%= form_tag shout_path(@offer.id) do %>
-          <%= text_area_tag 'comment[text]', '',:style => "width:100%", :id => 'shoutbox', :size => '40x3' %>
+          <%= text_area_tag 'comment[text]', '',:style => "width:100%", :id => 'shoutbox', :size => '40x3', :placeholder => "Here's your chance to share your experience with the deal and leave helpful tips for other users!" %>
           <%= submit_tag 'Shout!', :id => :shout %>
         <% end %>
       </div>

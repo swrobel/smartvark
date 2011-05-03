@@ -90,6 +90,7 @@ $(function(){
 		$("#user_email").placehold();
 		$("#user_password").placehold();
 		$("#user_password_confirmation").placehold();
+		$("#shoutbox").placehold();
 	}
 	
 	if ($().textareaCount) {

@@ -16,10 +16,7 @@
 								<a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="smartvark">Tweet</a>
 							</li>
 							<li>
-								<a title="Post to Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="small-button" data-imageurl="http://smartvark.com/images/logo-mobile.png"></a>
-							</li>
-							<li>
-								<fb:like layout="button_count"></fb:like>
+								<fb:like layout="button_count" send="true"></fb:like>
 							</li>
 							<!--
 							<li>
@@ -59,5 +56,5 @@
 	<div class="b"></div>
 </div>
 <% content_for(:footer_additions) do %>
-	<%= javascript_include_tag "http://platform.twitter.com/widgets.js", "http://connect.facebook.net/en_US/all.js#xfbml=1", "http://www.google.com/buzz/api/button.js" %>
+	<%= javascript_include_tag "http://platform.twitter.com/widgets.js", "http://connect.facebook.net/en_US/all.js#xfbml=1" %>
 <% end %>

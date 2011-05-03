@@ -1,4 +1,4 @@
-<p>The response has been overwhelming, and we can only activate a limited number of users each day.</p>
+<p>We can only activate a limited number of users each day, so here's a challenge:</p>
 <p>We've created a personalized invitation link for you to share. If 3 people sign up using that link, your account will be activated.</p>
 <% invited = User.where(:invited_by_id => current_user.id) %>
 <% if invited.count > 0 %>

@@ -49,7 +49,7 @@
 			<% if new_user %> or
 				<%= render :partial => 'users/signup' %>
 			<% end %>
-			<%= render :partial => 'users/signin' %>
+			<%= render :partial => 'users/signin', locals: { new_user: new_user } %>
 		</div>
 	</div>
 	<% if flash[:error] %>

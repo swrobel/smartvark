@@ -1,10 +1,13 @@
+<% new_user = true if local_assigns[:new_user].nil? %>
 <div id="signin-popup" class="popup">
   <%= form_for :user, :as => :user, :url => session_path(:user) do |f| %>
     <fieldset>
       <h3>Sign in</h3>
-      <div class="popup-row">
-				<%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), :class => 'facebook-signin', :style => 'margin-top:10px;', :title => "We don't get your login details from Facebook, we only confirm that you are who you say you are" unless controller.action_name == "biz" %>
-      </div>
+			<% if new_user %>
+				<div class="popup-row">
+					<%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), :class => 'facebook-signin', :style => 'margin-top:10px;', :title => "We don't get your login details from Facebook, we only confirm that you are who you say you are" unless controller.action_name == "biz" %>
+				</div>
+			<% end %>
       <div class="popup-row">
 				<%= f.label :email, "email" %>
 				<%= f.email_field :email, :class => 'txt', :placeholder => 'must be a valid e-mail address' %>
@@ -20,9 +23,11 @@
 				<%= f.submit "Sign in", :class => 'btn-signin' %>
 				<input class="btn-signin-cancel simplemodal-close" type="submit" value="Cancel" />
       </div>
-      <div class="popup-buttons">
-        <a href="#" id="signup-from-signin">Don't have an account? Sign up!</a>
-      </div>
+			<% if new_user %>
+				<div class="popup-buttons">
+					<a href="#" id="signup-from-signin">Don't have an account? Sign up!</a>
+				</div>
+			<% end %>
     </fieldset>
   <% end %>
 </div>

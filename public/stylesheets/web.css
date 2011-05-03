@@ -1163,7 +1163,6 @@ td, th{padding:0;}
 	width:236px;
 	padding:0 12px;
 }
-.video-popup{width:480px;}
 #simplemodal-overlay{background-color:#000;}
 .popup h3{
 	margin:0;
@@ -2002,6 +2001,9 @@ a.facebook-signin{
   margin:0;
 }
 .business-box .col-r-wide .txt{margin-bottom:0;}
+.business-box .video-box {
+	margin:15px 0 0 140px;
+}
 .btn-contact{
 	width:150px;
 	text-align:center;

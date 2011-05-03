@@ -23,6 +23,7 @@ $(document).bind("mobileinit", function(){
 <div data-role="content">
   <h3>Smartvark is a new twist on local deals</h3>
   <%= render :partial => "index_copy" %>
+  <p><a href="http://www.youtube.com/watch?v=efI6IMjUcII" target="_blank">Watch a video to get the whole scoop in less than 90 seconds</a></p>
   <%= form_for :user do |f| %>
     <%= f.label :facebook, "Save the hassle of remembering another account" %>
     <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b" %>

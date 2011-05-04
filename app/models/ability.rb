@@ -21,6 +21,7 @@ class Ability
         # end
         can :read, :mydeals
         can :read, :dealdashboard
+        can :read, :agreement
         can :create, Business
         can :update, Business do |business|
           business.try(:user) == user

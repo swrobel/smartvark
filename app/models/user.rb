@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   
   devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :category_id, :category_ids, :logo, :opinions, :skip_invitation
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :category_id, :category_ids, :logo, :opinions, :skip_invitation, :facebook_user
 
   belongs_to :category
   has_many :businesses
@@ -107,6 +107,7 @@ class User < ActiveRecord::Base
         user.password = Devise.friendly_token[0,20]
         user.invited_by_id = session["devise.invited_by_id"]
         user.invited_by_type = "User"
+        user.facebook_user = true
       end
     end
   end

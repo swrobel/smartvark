@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
 
   def set_current_page
     if request.fullpath == "biz"
-      session[:user_return_to] = dealdashboard_path
+      session[:user_return_to] = agreement_path
     else
       session[:user_return_to] = request.fullpath
     end
@@ -165,6 +165,18 @@ class WelcomeController < ApplicationController
       opinions += session[:dislikes] if session[:dislikes]
     end
     @offers = @offers.where(:id - opinions) unless opinions.empty?
+  end
+  
+  def merchant_agreement
+    raise CanCan::AccessDenied unless can? :read, :agreement
+    if current_user && !current_user.contract_accepted_at.blank?
+      redirect_to dealdashboard_path
+    end
+    if params[:accept] && params[:accept] == "true"
+      current_user.contract_accepted_at = Time.now
+      current_user.save
+      redirect_to dealdashboard_path
+    end
   end
 
   def undo_last_action

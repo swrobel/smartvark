@@ -11,14 +11,8 @@ class Ability
         can :read, :redeem
         # Below are here until invite system is removed, then Everyone at bottom
         can :read, :mypicks
-        can :read, :viewdeal
-        can :read, :viewbusiness
         can :read, :search
       elsif user.role == "business"
-        # Below are here until invite system is removed, then Everyone at bottom
-        can :read, :viewdeal
-        can :read, :viewbusiness
-        # end
         can :read, :mydeals
         can :read, :dealdashboard
         can :read, :agreement
@@ -33,6 +27,8 @@ class Ability
       end
     else # "Guest" users
       can :read, :index
+      can :read, :viewdeal
+      can :read, :viewbusiness
       # Not until invite system is removed: can :read, :deals
     end
     

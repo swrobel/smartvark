@@ -11,16 +11,22 @@ class Business < ActiveRecord::Base
   
   HUMANIZED_ATTRIBUTES = {
     :name => "Location name",
+    :short_name => "Nickname",
     :address => "Address 1",
     :zipcode => "Zip"
   }
 
   validates :name, :presence => true
+  validates :short_name, :length => { :maximum => 20 }
   validates :address, :presence => true
   validates :city, :presence => true
   validates :state, :presence => true
   validates :zipcode, :presence => true
   validates :phone, :phone_format => true
+  
+  def self.human_attribute_name(attr, options={})
+    HUMANIZED_ATTRIBUTES[attr.to_sym] || super
+  end
 
   def self.ids_close_to(loc)
     Business.origin(loc, :within => 25).order("distance").collect {|x| x.id}

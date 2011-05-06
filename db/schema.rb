@@ -164,7 +164,7 @@ ActiveRecord::Schema.define(:version => 20110504005843) do
   end
 
   create_table "redemptions", :force => true do |t|
-    t.integer  "qty",                :limit => 2
+    t.integer  "qty"
     t.integer  "user_id"
     t.integer  "offer_id"
     t.string   "transaction_number", :limit => 50

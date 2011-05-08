@@ -44,40 +44,6 @@
 		</div>
 	</div>
 </div><!-- business-box end -->
-<% if false %><!--
-<div class="welcome-box">
-  <%= form_for :potential, :html => {id: "notify_form"} do |f| %>
-  <div class="text">
-    <% if session[:potential] %>
-      <p>Thanks for signing up! You'll be hearing from us soon.</p>
-      <p><a href="#" onClick="$('.txt').val('');$('#potential-form').show();$(this).hide();return false;">Click here to add another email to the list</a></p>
-      <% hidden = true %>
-    <% end %>
-    <div id="potential-form" style="display:<%= 'none' if hidden %>;">
-      <%= f.error_messages %>
-      <%= f.label :email, "Email address:" %>
-      <%= f.email_field :email, :class => :txt %>
-    </div>
-  </div>
-  <div class="promo-box">
-    <strong class="ttl-find-out-first">Find out first</strong>
-    <%= f.submit "Notify Me!", class: "btn-notify-me" %>
-  </div>
-  <% end %>
-</div>
-<div class="like-box">Click <iframe src="http://www.facebook.com/plugins/like.php?href=facebook.com%2Fsmartvark&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:21px;" allowTransparency="true"></iframe> to get updates from us on Facebook</div>
-<div class="wide-box">
-  <div class="holder">
-    <div class="frame">
-      <h2>What's a Smartvark, anyway?</h2>
-      <div class="promo-section">
-        <%= render :partial => "index_copy" %>
-        <iframe title="YouTube video player" width="800" height="480" src="http://www.youtube.com/embed/efI6IMjUcII" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-</div>
---><% end %>
 <% content_for(:footer_additions) do %>
 <script type="text/javascript">document.write(unescape('%3Cscript type="text/javascript" src="'+document.location.protocol+'//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/3564.js"%3E%3C%2Fscript%3E'))</script>
 <% end %>

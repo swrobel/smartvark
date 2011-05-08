@@ -32,22 +32,4 @@ $(document).bind("mobileinit", function(){
     <%= f.email_field :email, :id => 'email', :placeholder => 'Enter your email' %>
     <%= f.submit "Sign up", :'data-theme' => 'a' %>
   <% end %>
-  <% if false %><!--
-  <% if session[:potential] %>
-    <p><strong>Thanks for signing up! You'll be hearing from us soon.</strong></p>
-    <%= render :partial => "index_copy" %>
-  <% else %>
-    <%= render :partial => "index_copy" %>
-    <%= form_for :potential, :html => {id: "notify_form"} do |f| %>
-      <%= f.error_messages %>
-      <%= f.label :email %>
-      <%= f.email_field :email %>
-      <%= f.submit "Notify Me!" %>
-    <% end %>
-  <% end %>
-  <iframe title="YouTube video player" width="300" height="180" src="http://www.youtube.com/embed/efI6IMjUcII" frameborder="0" allowfullscreen></iframe>
-  --><% end %>
-</div><!-- /content -->
-
-<% content_for(:footer_additions) do %>
-<% end %>
+</div><!-- /content --

@@ -31,6 +31,7 @@
     <%= f.submit "Send the email invitation", class: "submit" %>
   <% end %>
   <% referral_url = root_url + current_user.id.to_s(36) %>
+  <p>Post your invite link to social networks</p>
   <fb:like href="<%= referral_url %>" layout="button_count" show_faces="false" action="recommend" send="true" font=""></fb:like>
   <a href="http://twitter.com/share" class="twitter-share-button" data-text="Tired of getting spammed with local deals you don't want? Check out @Smartvark: Local Deals. Personalized." data-url="<%= referral_url %>" data-count="none">Tweet</a>
 </div><!-- /content -->

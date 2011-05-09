@@ -23,7 +23,7 @@
 </div><!-- /header -->
 
 <div data-role="content">
-  <h2>You're on the priority list!</h2>
+  <h3>You're on the priority list!</h3>
   <%= render :partial => "new_copy" %>
   <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name) do |f| %>
     <%= devise_error_messages! %>

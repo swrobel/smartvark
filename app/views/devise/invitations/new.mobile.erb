@@ -1,18 +1,25 @@
 <% content_for(:head_additions) do %>
-<script type="text/javascript">
-  var _kmq = _kmq || [];
-  function _kms(u){
-    setTimeout(function(){
-      var s = document.createElement('script'); var f = document.getElementsByTagName('script')[0]; s.type = 'text/javascript'; s.async = true;
-      s.src = u; f.parentNode.insertBefore(s, f);
-    }, 1);
-  }
-  _kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/e3f924bcb188e79eee2462c203e2bb3fc21feaa8.1.js');
-</script>
+	<% if Rails.env.production? %>
+		<script type="text/javascript">
+			var _kmq = _kmq || [];
+			function _kms(u){
+				setTimeout(function(){
+					var s = document.createElement('script'); var f = document.getElementsByTagName('script')[0]; s.type = 'text/javascript'; s.async = true;
+					s.src = u; f.parentNode.insertBefore(s, f);
+				}, 1);
+			}
+			_kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/e3f924bcb188e79eee2462c203e2bb3fc21feaa8.1.js');
+		</script>
+	<% end %>
+	<script type="text/javascript">
+	$(document).bind("mobileinit", function(){
+		$.mobile.ajaxEnabled = false;
+	});
+	</script>
 <% end %>
 
-<div data-role="header" data-theme="b">
-  <h1>Priority list</h1>
+<div data-role="header" data-theme="b" data-backbtn="false">
+  <div align="center"><img src="/images/logo-mobile.png"/></div>
 </div><!-- /header -->
 
 <div data-role="content">
@@ -23,4 +30,11 @@
     <%= f.email_field :email, class: "txt", placeholder: "Email address to invite" %>
     <%= f.submit "Send the email invitation", class: "submit" %>
   <% end %>
+  <% referral_url = root_url + current_user.id.to_s(36) %>
+  <fb:like href="<%= referral_url %>" layout="button_count" show_faces="false" action="recommend" send="true" font=""></fb:like>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-text="Tired of getting spammed with local deals you don't want? Check out @Smartvark: Local Deals. Personalized." data-url="<%= referral_url %>" data-count="none">Tweet</a>
 </div><!-- /content -->
+
+<% content_for(:footer_additions) do %>
+  <%= javascript_include_tag "http://platform.twitter.com/widgets.js", "http://connect.facebook.net/en_US/all.js#xfbml=1" %>
+<% end %>

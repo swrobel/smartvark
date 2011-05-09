@@ -1,22 +1,24 @@
 <% content_for(:head_additions) do %>
-<script type="text/javascript">
-  var _kmq = _kmq || [];
-  function _kms(u){
-    setTimeout(function(){
-      var s = document.createElement('script'); var f = document.getElementsByTagName('script')[0]; s.type = 'text/javascript'; s.async = true;
-      s.src = u; f.parentNode.insertBefore(s, f);
-    }, 1);
-  }
-  _kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/e3f924bcb188e79eee2462c203e2bb3fc21feaa8.1.js');
-</script>
-<script type="text/javascript">
-$(document).bind("mobileinit", function(){
-  $.mobile.ajaxEnabled = false;
-});
-</script>
+	<% if Rails.env.production? %>
+		<script type="text/javascript">
+			var _kmq = _kmq || [];
+			function _kms(u){
+				setTimeout(function(){
+					var s = document.createElement('script'); var f = document.getElementsByTagName('script')[0]; s.type = 'text/javascript'; s.async = true;
+					s.src = u; f.parentNode.insertBefore(s, f);
+				}, 1);
+			}
+			_kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/e3f924bcb188e79eee2462c203e2bb3fc21feaa8.1.js');
+		</script>
+	<% end %>
+	<script type="text/javascript">
+	$(document).bind("mobileinit", function(){
+		$.mobile.ajaxEnabled = false;
+	});
+	</script>
 <% end %>
 
-<div data-role="header" data-theme="b">
+<div data-role="header" data-theme="b" data-backbtn="false">
   <div align="center"><img src="/images/logo-mobile.png"/></div>
 </div><!-- /header -->
 
@@ -25,7 +27,7 @@ $(document).bind("mobileinit", function(){
   <%= render :partial => "index_copy" %>
   <p><a href="http://www.youtube.com/watch?v=efI6IMjUcII" target="_blank">Watch a video to get the whole scoop in less than 90 seconds</a></p>
   <%= form_for :user do |f| %>
-    <%= f.label :facebook, "Save the hassle of remembering another account" %>
+    <%= f.label :facebook, "Save the hassle of remembering another account:" %>
     <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b" %>
     <br/><br/>
     <%= f.label :email, "Or create a Smartvark account:" %>

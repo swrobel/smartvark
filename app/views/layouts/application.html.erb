@@ -5,14 +5,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
 <head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title><%= content_for?(:title) ? yield(:title) : controller.action_name.titlecase %> - Smartvark</title>
   <%= stylesheet_link_tag 'web' %>
   <!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
   <%= content_for?(:head_additions) ? yield(:head_additions) : nil -%>
-  <meta property="fb:page_id" content="120811371274054" />
   <%= favicon_link_tag %>
   <%= csrf_meta_tag %>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta property="fb:page_id" content="120811371274054" />
+  <meta property="og:title" content="Smartvark: Local Deals. Personalized."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="<%= root_url %>images/touch-icon.png"/>
+  <meta property="og:site_name" content="Smartvark: Local Deals. Personalized."/>
+  <meta property="og:description" content="Artie the Aardvark tracks down deals that match your tastes. We don't spam you with junk you don't want. It's that simple. Oh, and we don't charge you for our deals. They're FREE."/>
 </head>
 <body>
   <div id="wrapper">

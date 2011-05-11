@@ -12,6 +12,7 @@ Smartvark::Application.routes.draw do
   match 'about' => 'welcome#about', :as => :about
   match 'privacy' => 'welcome#privacy_policy', :as => :privacy
   match 'agreement' => 'welcome#merchant_agreement', :as => :agreement
+  match 'terms' => 'welcome#terms_of_service', :as => :terms
   #match 'contact' => 'welcome#contact', :as => :contact
   #match 'admin' => 'offers#index', :as => :admin
   match 'dashboard' => 'welcome#dealdashboard', :as => :dealdashboard

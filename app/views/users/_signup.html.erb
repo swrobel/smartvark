@@ -3,16 +3,17 @@
     <%= form_for :user, :as => :user, :url => registration_path(:user) do |f| %>
       <fieldset>
         <h3>Sign up</h3>
-        <div class="popup-row">
-          <p>To use the deals you've collected, you need to create an account.</p>
-          <p>Don't worry, we won't give your personal info away.</p>
-        </div>
+        <% if controller.action_name == "deals" %>
+          <div class="popup-row">
+            <p>To use the deals you've collected, you need to create an account.</p>
+          </div>
+        <% end %>
         <div id="facebook-area">
           <div class="popup-row">
             <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), :class => "facebook-signin white", :title => "We don't get your login details from Facebook, we only confirm that you are who you say you are" %>
           </div>
           <div class="popup-row">
-            <p><a href="#" onClick="$('#facebook-area').hide('drop',{ direction:'up'});$('#form-area').show('drop',{ direction:'up'});return false;">Don't have Facebook? Click here.</a></p>
+            <p>Don't have Facebook? <a href="#" onClick="$('#facebook-area').hide('drop',{ direction:'up'});$('#form-area').show('drop',{ direction:'up'});return false;">Click here.</a></p>
           </div>
         </div>
         <div id="form-area" style="display:none;">
@@ -33,7 +34,8 @@
             <input class="btn-signin-cancel simplemodal-close" type="submit" value="Cancel" />
           </div>
         </div>
-        <p><a href="#" id="signin-from-signup">Already have an account? Sign in!</a></p>
+        <p>Already have an account? <a href="#" id="signin-from-signup">Sign in!</a></p>
+        <p>by signing up you indicate that you accept our <%= link_to "terms of service", terms_path %> and <%= link_to "privacy policy", privacy_path %></p>
       </fieldset>
     <% end %>
   </div>

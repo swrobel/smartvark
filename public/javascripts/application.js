@@ -64,6 +64,16 @@ $(function(){
 			window.setTimeout(function() {$('#signup-popup').modal()}, 500);
 			  return false;
 		});
+		
+		$('#show-terms').click(function (e) {
+			$('#terms-popup').modal();
+			  return false;
+		});
+		
+		$('#show-privacy').click(function (e) {
+			$('#privacy-popup').modal();
+			  return false;
+		});
 	}
 	
 	if ($().jMapping) {

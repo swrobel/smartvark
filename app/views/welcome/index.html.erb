@@ -35,6 +35,9 @@
               <%= f.email_field :email, class: "txt", placeholder: 'Enter your email' %>
               <%= f.submit "Sign up", class: "submit" %>
             </div>
+						<div class="row">
+              <p class="bottom-row">by signing up you indicate that you accept our <%= link_to "terms of service", terms_path, id: "show-terms" %> and <%= link_to "privacy policy", privacy_path, id: "show-privacy" %></p>
+            </div>
           <% end %>
         </div>
         <div class="intro-text">
@@ -48,6 +51,14 @@
 		</div>
 	</div>
 </div><!-- business-box end -->
+<div id="terms-popup" class="popup contract-popup">
+	<h3>Terms of Service</h3>
+	<%= render partial: "terms_of_service" %>
+</div>
+<div id="privacy-popup" class="popup contract-popup">
+	<h3>Privacy Policy</h3>
+	<%= render partial: "privacy_policy" %>
+</div>
 <% if Rails.env.production? %>
 	<% content_for(:footer_additions) do %>
 	<script type="text/javascript">document.write(unescape('%3Cscript type="text/javascript" src="'+document.location.protocol+'//dnn506yrbagrg.cloudfront.net/pages/scripts/0011/3564.js"%3E%3C%2Fscript%3E'))</script>

@@ -1162,6 +1162,7 @@ td, th{padding:0;}
 	display:none;
 	width:236px;
 	padding:0 12px;
+	overflow:auto;
 }
 #simplemodal-overlay{background-color:#000;}
 .popup h3{
@@ -1170,9 +1171,12 @@ td, th{padding:0;}
 	color:#fff;
 	text-align:center;
 }
-.popup a, .popup p{
+.popup p, .popup ul{color:#FFF;}
+.popup a{
     color:#FFF;
+		text-decoration:underline;
 }
+.popup a:hover{text-decoration:none;}
 .popup-row{
 	width:100%;
 	overflow:hidden;
@@ -1190,6 +1194,10 @@ td, th{padding:0;}
 	overflow:hidden;
 	height:1%;
 	padding:6px 24px 3px 19px;
+}
+.contract-popup{
+	width:800px;
+	height:90%;
 }
 .btn-signin{
 	float:left;
@@ -1999,6 +2007,9 @@ a.facebook-signin{
   font:13px Arial, Helvetica, sans-serif;
   padding-bottom:16px;
   margin:0;
+}
+.business-box .col-r-wide .bottom-row{
+  padding:16px 0 0 0;
 }
 .business-box .col-r-wide .txt{margin-bottom:0;}
 .business-box .video-box {

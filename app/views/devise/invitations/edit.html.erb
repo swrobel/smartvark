@@ -43,6 +43,10 @@
             <div class="row">
               <%= f.submit "Set my password", class: "submit" %>
             </div>
+						
+						<div class="row">
+              <p class="bottom-row">by signing up you indicate that you accept our <%= link_to "terms of service", terms_path, id: "show-terms" %> and <%= link_to "privacy policy", privacy_path, id: "show-privacy" %></p>
+            </div>
           <% end %>
         </div>
 				<div class="video-box">
@@ -53,3 +57,11 @@
 		</div>
 	</div>
 </div><!-- business-box end -->
+<div id="terms-popup" class="popup contract-popup">
+	<h3>Terms of Service</h3>
+	<%= render partial: "welcome/terms_of_service" %>
+</div>
+<div id="privacy-popup" class="popup contract-popup">
+	<h3>Privacy Policy</h3>
+	<%= render partial: "welcome/privacy_policy" %>
+</div>

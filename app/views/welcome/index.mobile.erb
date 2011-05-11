@@ -13,7 +13,7 @@
 	<% end %>
 	<script type="text/javascript">
 	$(document).bind("mobileinit", function(){
-		$.mobile.ajaxEnabled = false;
+		$.mobile.ajaxFormsEnabled = false;
 	});
 	</script>
 <% end %>
@@ -34,4 +34,5 @@
     <%= f.email_field :email, :id => 'email', :placeholder => 'Enter your email' %>
     <%= f.submit "Sign up", :'data-theme' => 'a' %>
   <% end %>
+  <p>by signing up you indicate that you accept our <%= link_to "terms of service", terms_path %> and <%= link_to "privacy policy", privacy_path %></p>
 </div><!-- /content --

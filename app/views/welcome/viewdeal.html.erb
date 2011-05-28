@@ -31,7 +31,9 @@
 				</div>
 				<div class="info-area">
 						<div class="img">
-							<%= image_tag @offer.logo.url, :alt => @offer.user.name + " logo" %>
+							<% if @offer.logo.present? %>
+								<%= image_tag @offer.logo.url, :alt => @offer.user.name + " logo" %>
+							<% end %>
 						</div>
 						<div class="info-box">
 							<h3>Valid at these locations:</h3>

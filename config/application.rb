@@ -5,6 +5,8 @@ Date::Format::STYLE[:slash] = :mdy # use mm/dd/yyyy format for parse
 
 require 'rails/all'
 
+require 'rack/pagespeed'
+
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
@@ -44,5 +46,15 @@ module Smartvark
     
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    
+    config.middleware.use Rack::PageSpeed, :public => Rails.public_path do
+      store :memcached
+      inline_javascript :max_size => 4000
+      inline_images :max_size => 4000
+      inline_css
+      minify_javascripts
+      combine_javascripts
+      combine_css
+    end
   end
 end

@@ -27,11 +27,10 @@ class Ability
       end
     else # "Guest" users
       can :read, :index
-      can :read, :viewdeal
-      can :read, :viewbusiness
       # Not until invite system is removed: can :read, :deals
     end
-    
+    can :read, :viewdeal
+    can :read, :viewbusiness
     # Everyone can see these
     # Nothing here until invite system is removed
   end

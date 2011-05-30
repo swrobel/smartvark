@@ -29,20 +29,38 @@ module ApplicationHelper
   end
 
   def deal_coupon(offer)
+    logo = "missing logo"
+    if offer.user
+      if offer.logo.file?
+        logo = image_tag(offer.logo.url(:thumb))
+      else
+        logo = "<p><strong>" + offer.user.name + "</strong></p>"
+      end
+    end
     link_to(
     "<strong class='c_#{offer.offer_type.name}'><img class='left' src='/images/#{offer.category.parent_or_friendly_id}-white.png'/>#{offer.offer_type.name}<img class='right' src='/images/#{offer.category.parent_or_friendly_id}-white.png'/></strong>
     <div class='img_box'>
-      #{image_tag(offer.logo.url(:thumb))}
+      #{logo}
     </div>
     <span id='#{offer.id}_title'>#{offer.title}</span>".html_safe,
     viewdeal_path(offer))
   end
 
   def coupon(offer)
+    logo = "missing logo"
     if offer.user
-      logo = image_tag(offer.logo.url(:thumb)) if offer.logo.exists?
-    else
-      logo = image_tag(current_user.logo.url(:thumb)) if current_user.logo.exists?
+      if offer.logo.file?
+        logo = image_tag(offer.logo.url(:thumb))
+      else
+        logo = "<p><strong>" + offer.user.name + "</strong></p>"
+      end
+    end
+    if current_user && current_user.role == "business"
+      if current_user.logo.file?
+        logo = image_tag(current_user.logo.url(:thumb))
+      else
+        logo = "<p><strong>" + current_user.name + "</strong></p>"
+      end
     end
     type_name = offer.offer_type.name if offer.offer_type
     "

@@ -10,10 +10,12 @@
 
 <div data-role="content" data-theme="b">
   <div class="ui-body">
-    <%= image_tag @offer.logo.url(:thumb), :alt => @offer.user.name + " logo", :class => "logo" %>
+    <% if @offer.logo.file? %>
+      <%= image_tag @offer.logo.url(:thumb), :alt => @offer.user.name + " logo", :class => "logo" %>
+    <% end %>
     <h2><%= @offer.title %></h2>
-    <h3><%= @offer.description %></h3>
-    <h4>Expires <%= std_date(@offer.end_date) %></h4>
+    <h3><%= auto_link(@offer.description, :html => { :target => '_blank' }).html_safe %></h3>
+    <h4>Not valid after <%= std_date(@offer.end_date) %></h4>
     <h4>Valid at these locations:</h4>
     <%= render :partial => 'business', :collection => @offer.businesses %>
     <div data-role="controlgroup" data-type="horizontal" >

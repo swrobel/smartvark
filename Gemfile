@@ -25,3 +25,4 @@ gem "friendly_id"
 gem "meta_where"
 gem "rack-rewrite"
 gem "hoptoad_notifier"
+gem "dalli", :group => [:production, :staging, :demo]

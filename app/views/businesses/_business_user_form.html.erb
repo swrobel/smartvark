@@ -23,8 +23,8 @@
       <%= render :partial => 'categories/category_selector', :object => @user.category %>
       <%= f.hidden_field :category_id %>
     </div>
-    <div class='row'><%= image_tag @user.logo.url(:thumb) if @user.logo.exists? %></div>
-    <label for='logo'><span>Upload <%= "new" if @user.logo.exists? %> logo</span><span class="inf" title="Logo that will be shown to users"></span></label>
+    <div class='row'><%= image_tag @user.logo.url(:thumb) if @user.logo.file? %></div>
+    <label for='logo'><span>Upload <%= "new" if @user.logo.file? %> logo</span><span class="inf" title="Logo that will be shown to users"></span></label>
     <div class='row'><%= f.file_field :logo %></div>
 
     <div class="row">

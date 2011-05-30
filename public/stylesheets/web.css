@@ -557,6 +557,10 @@ td, th{padding:0;}
   text-align:center;
   text-transform:uppercase;
 }
+.section-inner .gallery ul .frame a .img_box p strong{
+	color:#000000;
+	text-transform:none;
+}
 .section-inner .gallery ul .frame a strong img{
 	vertical-align:top;
 	margin:2px 2px 0 2px;

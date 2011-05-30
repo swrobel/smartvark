@@ -53,7 +53,7 @@
 							</dl>
 						<% end %>
 					</div>
-					<% if @business.user.logo.present? %>
+					<% if @business.user.logo.file? %>
 					<div class="img">
 						<%= image_tag @business.user.logo.url, :alt => @business.user.name + " logo" %>
 					</div>

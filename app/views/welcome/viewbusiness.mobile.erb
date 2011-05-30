@@ -10,7 +10,7 @@
 
 <div data-role="content" data-theme="b">
   <div class="ui-body">
-    <% if @business.user.logo.present? %>
+    <% if @business.user.logo.file? %>
       <%= image_tag @business.user.logo.url(:thumb), :alt => @business.name + " logo", :class => "logo" %>
     <% end %>
     <h2><%= @business.name %></h2>

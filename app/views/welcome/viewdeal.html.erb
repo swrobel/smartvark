@@ -31,7 +31,7 @@
 				</div>
 				<div class="info-area">
 						<div class="img">
-							<% if @offer.logo.present? %>
+							<% if @offer.logo.file? %>
 								<%= image_tag @offer.logo.url, :alt => @offer.user.name + " logo" %>
 							<% end %>
 						</div>
@@ -47,8 +47,8 @@
 					</div>
 				</div>
 				<div class="information">
-						<h3>Expires: <%= std_date(@offer.end_date) %></h3>
-						<p><%= @offer.description %></p>
+						<h3>Not valid after <%= std_date(@offer.end_date) %></h3>
+						<p><%= auto_link(@offer.description, :html => { :target => '_blank' }).html_safe %></p>
 						<p><%= @offer.fine_print %></p>
 				</div>
 			</div>

@@ -31,7 +31,7 @@ module ApplicationHelper
   def deal_coupon(offer)
     logo = "missing logo"
     if offer.user
-      if offer.logo.exists?
+      if offer.logo.file?
         logo = image_tag(offer.logo.url(:thumb))
       else
         logo = "<p><strong>" + offer.user.name + "</strong></p>"
@@ -49,14 +49,14 @@ module ApplicationHelper
   def coupon(offer)
     logo = "missing logo"
     if offer.user
-      if offer.logo.exists?
+      if offer.logo.file?
         logo = image_tag(offer.logo.url(:thumb))
       else
         logo = "<p><strong>" + offer.user.name + "</strong></p>"
       end
     end
     if current_user && current_user.role == "business"
-      if current_user.logo.exists?
+      if current_user.logo.file?
         logo = image_tag(current_user.logo.url(:thumb))
       else
         logo = "<p><strong>" + current_user.name + "</strong></p>"

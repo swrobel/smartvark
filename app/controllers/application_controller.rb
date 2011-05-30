@@ -65,7 +65,7 @@ private
       elsif current_user.role == "admin"
         mydeals_path
       elsif current_user.role == "business"
-        dealdashboard_path
+        agreement_path
       end
     else
       root_path
@@ -76,7 +76,11 @@ private
   # Everyone else goes to where they were before
   def redirect_location(scope, resource)
     if resource.is_a?(User) && resource.role == "business"
-      dealdashboard_path
+      if resource.contract_accepted_at.blank?
+        agreement_path
+      else
+        dealdashboard_path
+      end
     else
       stored_location_for(scope) || after_sign_in_path_for(resource)
     end

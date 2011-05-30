@@ -4,11 +4,7 @@ class WelcomeController < ApplicationController
   skip_filter :set_mobile_format, :only => [:forbusiness, :dealdashboard]
 
   def set_current_page
-    if request.fullpath == "biz"
-      session[:user_return_to] = agreement_path
-    else
-      session[:user_return_to] = request.fullpath
-    end
+    session[:user_return_to] = request.fullpath
   end
   
   def index
@@ -168,7 +164,7 @@ class WelcomeController < ApplicationController
   end
   
   def merchant_agreement
-    #raise CanCan::AccessDenied unless can? :read, :agreement
+    raise CanCan::AccessDenied unless can? :read, :agreement
     if current_user && !current_user.contract_accepted_at.blank?
       redirect_to dealdashboard_path
     end

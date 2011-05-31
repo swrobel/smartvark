@@ -65,7 +65,7 @@ private
       elsif current_user.role == "admin"
         mydeals_path
       elsif current_user.role == "business"
-        agreement_path
+        dealdashboard_path
       end
     else
       root_path

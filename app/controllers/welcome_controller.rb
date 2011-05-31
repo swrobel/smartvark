@@ -165,9 +165,6 @@ class WelcomeController < ApplicationController
   
   def merchant_agreement
     raise CanCan::AccessDenied unless can? :read, :agreement
-    if current_user && !current_user.contract_accepted_at.blank?
-      redirect_to dealdashboard_path
-    end
     if params[:accept] && params[:accept] == "true"
       current_user.contract_accepted_at = Time.now
       current_user.save

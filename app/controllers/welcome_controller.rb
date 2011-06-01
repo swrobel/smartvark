@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   before_filter :set_current_page, :except => [:undo_last_action, :set_opinion, :sms, :redeem, :shout, :signup, :signin]
   
-  skip_filter :set_mobile_format, :only => [:forbusiness, :dealdashboard, :merchant_agreement]
+  skip_filter :set_mobile_format, :only => [:forbusiness, :dealdashboard, :merchant_agreement, :myprofile]
 
   def set_current_page
     session[:user_return_to] = request.fullpath

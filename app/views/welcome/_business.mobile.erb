@@ -1,6 +1,10 @@
 <p>
+  <%= business.name %><br/>
   <%= business.formatted_phone %><br/>
   <%= business.address %><br/>
   <%= business.city_state_zip%><br/>
-  <%= link_to 'Map It', "http://maps.google.com?q=#{business.address_as_string}", :target => '_new' %> <%= link_to 'More info', viewbusiness_path(business) %>
+  <%= link_to 'Map It', "http://maps.google.com?q=#{business.address_as_string}", :target => '_new' %>
+  <% if false %>
+  <%= link_to 'More info', viewbusiness_path(business) %>
+  <% end %>
 </p>

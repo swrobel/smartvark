@@ -1,8 +1,8 @@
 <% title @offer.title %>
 <div data-role="header" data-theme="c">
-  <h1>Deal Detail</h1>
+  <h1><%= @offer.offer_type.name %></h1>
   <% if current_user %>
-    <%= render :partial => "search_button" %>
+    <%= link_to 'Home', root_path, "data-icon" => "home", :class => "ui-btn-right" %>
   <% else %>
     <%= link_to 'Sign in', signin_path, "data-icon" => "check", "data-transition" => "pop", :class => "ui-btn-right" %>
   <% end %>
@@ -12,12 +12,16 @@
   <div class="ui-body">
     <% if @offer.logo.file? %>
       <%= image_tag @offer.logo.url(:thumb), :alt => @offer.user.name + " logo", :class => "logo" %>
+    <% else %>
+      <h1><%= @offer.user.name %></h1>
     <% end %>
     <h2><%= @offer.title %></h2>
-    <h3><%= auto_link(@offer.description, :html => { :target => '_blank' }).html_safe %></h3>
-    <h4>Not valid after <%= std_date(@offer.end_date) %></h4>
-    <h4>Valid at these locations:</h4>
+    <h2><img src='/images/<%= @offer.category.parent_or_friendly_id %>.png'/> <%= @offer.category.name %></h2>
+    <h4><%= auto_link(@offer.description, :html => { :target => '_blank' }).html_safe %></h3>
+    <p>Valid thru <strong><%= @offer.end_date.try(:strftime,('%b %d, %Y')) %></strong> at:</p>
     <%= render :partial => 'business', :collection => @offer.businesses %>
+    <p>Fine print: <%= auto_link(@offer.fine_print, :html => { :target => '_blank' }).html_safe %></p>
+    <% if false %>
     <div data-role="controlgroup" data-type="horizontal" >
       <%= link_to("+",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 1 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>
       <% if current_user && @offer.allow_mobile %>
@@ -25,7 +29,6 @@
       <% end %>
       <%= link_to("-",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 0 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsdown") %>
     </div>
-    <p><%= @offer.fine_print %></p>
     <ul data-role="listview" data-inset="true" data-theme="d">
       <li data-role="list-divider">Shout about it!</li>
       <% @offer.comments.each do |comment| %>
@@ -46,5 +49,6 @@
         </div>
       <% end %>
     </ul>
+    <% end %>
   </div>
 </div><!-- /content -->

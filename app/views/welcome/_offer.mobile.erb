@@ -1,8 +1,10 @@
 <li>
-  <a href="<%= viewdeal_path(offer) %>">
+  <a href="<%= current_user ? viewdeal_path(offer) : signup_path %>">
     <img src="/images/<%= offer.category.parent_or_friendly_id %>.png" class="ui-li-icon"/>
     <h3><%= offer.title %></h3>
-    <p><strong><%= offer.user.name %></strong></p>
-    <p><%= offer.description %></p>
+    <% if current_user %>
+      <p><strong><%= offer.user.name %></strong></p>
+      <p><%= offer.description %></p>
+    <% end %>
   </a>
 </li>

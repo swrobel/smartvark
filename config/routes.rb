@@ -1,5 +1,5 @@
 Smartvark::Application.routes.draw do
-  root :to => 'welcome#index'
+  root :to => 'welcome#deals'
   resources :comments
   resources :redemptions
   resources :businesses

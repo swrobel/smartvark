@@ -45,6 +45,32 @@ module ApplicationHelper
     <span id='#{offer.id}_title'>#{offer.title}</span>".html_safe,
     viewdeal_path(offer))
   end
+  
+  def mobile_coupon(offer)
+    logo = "missing logo"
+    if offer.user
+      if offer.logo.file?
+        logo = image_tag(offer.logo.url(:thumb))
+      else
+        logo = "<p><strong>" + offer.user.name + "</strong></p>"
+      end
+    end
+    type_name = offer.offer_type.name if offer.offer_type
+    "
+    <div class='coupon'>
+      <h4 class='c_#{type_name || "Coupon"}'><img class='left' src='/images/#{offer.category.parent_or_friendly_id}-white.png'/>#{type_name || 'coupon'}<img class='right' src='/images/#{offer.category.parent_or_friendly_id}-white.png'/></h4>
+        <div class='holder'>
+          <div class='center'>
+            <div class='add-logo'>
+              #{logo}
+            </div>
+          </div>
+       </div>
+       <span class='subttl'>#{offer.title}</span>
+        <p>#{auto_link(offer.description, :html => { :target => '_blank' })}</p>
+     </div>
+    "
+  end
 
   def coupon(offer)
     logo = "missing logo"

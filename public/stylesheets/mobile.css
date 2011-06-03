@@ -17,12 +17,12 @@
 	width:182px;
 	background:#fff;
 	padding:0 8px 14px 11px;
-	font:11px/12px Arial, Helvetica, sans-serif;
-	color:#999;
+	font:13px/14px Arial, Helvetica, sans-serif;
+	color:#555555;
 	margin:0 auto;
 }
 .coupon h4{
-	color:#fff;
+	color:#ffffff;
 	text-align:center;
 	width:201px;
 	margin:0 -8px 5px -11px;
@@ -30,6 +30,8 @@
 	padding:5px 0 3px;
 	text-transform: uppercase;
 }
+.coupon h4 .left{float:left;}
+.coupon h4 .right{float:right;}
 .coupon .c_Coupon{background:#3FB52B;}
 .coupon .c_Deal{background:#ff5f00;}
 .coupon .c_Event{background:#238ecb;}
@@ -47,6 +49,8 @@
 	float:left;
 	position:relative;
 	left:-50%;
+  font:20px/22px 'Trebuchet MS', Arial, sans-serif;
+  color:#000000;
 }
 .coupon .subttl{
 	font-size:18px;
@@ -64,6 +68,47 @@
 	text-align:center;
 }
 .coupon .code p{margin:0;}
+.frame{
+	width:201px;
+	height:auto;
+	display:block;
+	height:auto;
+}
+.frame a{
+  border:1px solid #7D7D7D;
+  cursor:pointer;
+  display:block;
+  position:relative;
+  height:209px;
+  overflow:hidden;
+}
+.frame a:hover{
+	border-color:#add2ee;
+	-moz-box-shadow:0 0 4px #AAAAAA;
+	-webkit-box-shadow:0 0 4px #AAAAAA;
+	box-shadow:0 0 4px #AAAAAA;
+}
+.frame a:hover strong,
+.frame a:hover{text-decoration:none;}
+.frame a strong{
+  background:none repeat scroll 0 0;
+  color:#FFFFFF;
+  display:block;
+  font:20px/28px "Trebuchet MS",Arial,Helvetica,sans-serif;
+  text-align:center;
+  text-transform:uppercase;
+}
+.frame a .img_box p strong{
+	color:#000000;
+	text-transform:none;
+}
+.frame a strong img{
+	vertical-align:top;
+	margin:2px 2px 0 2px;
+}
+.frame a .c_Coupon{background:#3FB52B;}
+.frame a .c_Deal{background:#ff5f00;}
+.frame a .c_Event{background:#238ecb;}
 #error_explanation h2 { display:none; }
 #error_explanation p { display:none; }
 #error_explanation { color:red; }

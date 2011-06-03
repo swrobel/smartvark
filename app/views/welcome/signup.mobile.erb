@@ -1,5 +1,5 @@
 <div data-role="content" data-theme="a">
-  <%= form_for :user, :as => :user, :url => registration_path(:user) do |f| %>
+  <%= form_for :user, :as => :user, :url => registration_path(:user), :html => {"data-ajax" => "false"} do |f| %>
     <h3>Save the hassle of remembering another account</h3>
     <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b" %>
     <h3>or create a Smartvark account</h3>
@@ -19,4 +19,5 @@
     </fieldset>
   <% end %>
   <p>by signing up you indicate that you accept our <%= link_to "terms of service", terms_path %> and <%= link_to "privacy policy", privacy_path %></p>
+  <p><%= link_to "Already a member? Sign in!", signin_path %></p>
 </div><!-- /content -->

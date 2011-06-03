@@ -1,6 +1,6 @@
 <% title @offer.title %>
-<div data-role="header" data-theme="c">
-  <h1><%= @offer.offer_type.name %></h1>
+<div data-role="header" data-theme="b" data-backbtn="false">
+  <img src="/images/logo-mobile.png"/>
   <% if current_user %>
     <%= link_to 'Home', root_path, "data-icon" => "home", :class => "ui-btn-right" %>
   <% else %>
@@ -10,14 +10,15 @@
 
 <div data-role="content" data-theme="b">
   <div class="ui-body">
-    <% if @offer.logo.file? %>
-      <%= image_tag @offer.logo.url(:thumb), :alt => @offer.user.name + " logo", :class => "logo" %>
-    <% else %>
-      <h1><%= @offer.user.name %></h1>
-    <% end %>
-    <h2><%= @offer.title %></h2>
-    <h2><img src='/images/<%= @offer.category.parent_or_friendly_id %>.png'/> <%= @offer.category.name %></h2>
-    <h4><%= auto_link(@offer.description, :html => { :target => '_blank' }).html_safe %></h3>
+    <%= raw mobile_coupon @offer %>
+    <div class="ui-grid-a">
+      <div class="ui-block-a">
+        <%= link_to("Like",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 1 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>
+      </div>
+      <div class="ui-block-b">
+        <%= link_to("Nah",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 0 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsdown", "data-theme" => "a") %>
+      </div>
+    </div>
     <p>Valid thru <strong><%= @offer.end_date.try(:strftime,('%b %d, %Y')) %></strong> at:</p>
     <%= render :partial => 'business', :collection => @offer.businesses %>
     <p>Fine print: <%= auto_link(@offer.fine_print, :html => { :target => '_blank' }).html_safe %></p>

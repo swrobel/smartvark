@@ -1,8 +1,10 @@
 <% title "My Deals" %>
-<div data-role="header" data-theme="b">
+<div data-role="header" data-theme="b" data-backbtn="false">
+  <img src="/images/logo-mobile.png"/>
+  <% if false %>
   <%= link_to 'My Picks', mypicks_path, "data-icon" => "check" %>
-  <h1>Artie's Picks</h1>
   <%= render :partial => "search_button" %>
+  <% end %>
 </div><!-- /header -->
 
 <div data-role="content">

@@ -127,7 +127,6 @@ $(function(){
 			if ($(this).attr("checked")) $("."+bizID).fadeIn("fast");
 			else {
 				bizIDs = $("#unchecked-bizs").attr("class");
-				alert(bizIDs);
 				$("tr[class='"+bizIDs+"  dashboard_row']").fadeOut("fast");
 				$("tr[class='"+bizIDs+" draft dashboard_row']").fadeOut("fast");
 				$("tr[class='"+bizIDs+" archived dashboard_row']").fadeOut("fast");

@@ -92,7 +92,7 @@ class WelcomeController < ApplicationController
     loc = geo_location
     @offers = Offer.select('DISTINCT offers.*').includes([:businesses, :user]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]} & (:category_id + Category.subtree_of(@category_id))).active.order(:created_at.desc)
     opinions = current_user.opinions.map(&:offer_id)
-    @offers = @offers.where(:id - opinions) unless opinions.empty?
+    @offers = @offers.where(:id - opinions) unless opinions.empty? || is_mobile_browser?
     @likes = current_user.liked_offers(@category_id)
     redemptions = current_user.redemptions.map(&:offer_id)
     @likes = @likes.where(:id - redemptions) unless redemptions.empty?

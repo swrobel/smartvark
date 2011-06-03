@@ -25,9 +25,6 @@
     <p>Valid thru <strong><%= @offer.end_date.try(:strftime,('%b %d, %Y')) %></strong> at:</p>
     <%= render :partial => 'business', :collection => @offer.businesses %>
     <p>Fine print: <%= auto_link(@offer.fine_print, :html => { :target => '_blank' }).html_safe %></p>
-    <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="smartvark">Tweet</a>
-    <iframe src="http://www.facebook.com/plugins/like.php?app_id=226866050658159&amp;href&amp;send=false&amp;layout=button_count&amp;width=250&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:21px;" allowTransparency="true"></iframe>
-    <% if false %>
     <div data-role="controlgroup" data-type="horizontal" >
       <%= link_to("+",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 1 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>
       <% if current_user && @offer.allow_mobile %>

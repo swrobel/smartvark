@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110504005843) do
+ActiveRecord::Schema.define(:version => 20110603162637) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -203,7 +203,7 @@ ActiveRecord::Schema.define(:version => 20110504005843) do
   add_index "user_audits", ["user_id"], :name => "index_user_audits_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "",        :null => false
+    t.string   "email",                               :default => "",     :null => false
     t.string   "encrypted_password",   :limit => 128, :default => ""
     t.string   "name",                 :limit => 100
     t.string   "address",              :limit => 100
@@ -213,7 +213,7 @@ ActiveRecord::Schema.define(:version => 20110504005843) do
     t.string   "phone",                :limit => 12
     t.string   "gender",               :limit => 1
     t.date     "birthday"
-    t.string   "role",                                :default => "pending"
+    t.string   "role",                                :default => "user"
     t.integer  "category_id"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",                       :default => 0

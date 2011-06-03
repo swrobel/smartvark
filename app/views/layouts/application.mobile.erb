@@ -27,11 +27,11 @@
   <% if alert || notice %>
 		<script type="text/javascript">
 			$(function(){
-				$("<div class='ui-loader ui-overlay-shadow ui-body-e ui-corner-all'><h1><%= raw alert || notice %></h1></div>")
+				$("<div class='ui-loader ui-overlay-shadow ui-body-e ui-corner-all'><h1><%= raw alert || notice %><%= raw flash[:error] %></h1></div>")
 					.css({ "display": "block", "opacity": 0.96, "top": $(window).scrollTop() + 100 })
 					.appendTo( $.mobile.pageContainer )
 					.delay( 800 )
-					.fadeOut( 600, function(){
+					.fadeOut( 2000, function(){
 						$(this).remove();
 					})
 			});

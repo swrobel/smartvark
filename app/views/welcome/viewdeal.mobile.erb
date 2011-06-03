@@ -4,7 +4,7 @@
   <% if current_user %>
     <%= link_to 'Home', root_path, "data-icon" => "home", :class => "ui-btn-right" %>
   <% else %>
-    <%= link_to 'Sign in', signin_path, "data-icon" => "check", "data-transition" => "pop", :class => "ui-btn-right" %>
+    <%= link_to 'Sign in', new_user_session_path, "data-icon" => "check", "data-transition" => "pop", :class => "ui-btn-right" %>
   <% end %>
 </div><!-- /header -->
 

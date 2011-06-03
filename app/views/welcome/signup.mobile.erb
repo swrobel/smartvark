@@ -1,14 +1,14 @@
 <div data-role="content" data-theme="a">
   <%= form_for :user, :as => :user, :url => registration_path(:user), :html => {"data-ajax" => "false"} do |f| %>
     <h3>Save the hassle of remembering another account</h3>
-    <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b" %>
+    <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b", "data-ajax" => "false" %>
     <h3>or create a Smartvark account</h3>
     <%= f.label :email, "Email:" %>
-    <%= f.email_field :email, :id => 'email', :placeholder => 'email adress' %>
+    <%= f.email_field :email, :id => 'email' %>
     <%= f.label :password, "Password:" %>
     <%= f.password_field :password, :placeholder => 'at least 6 characters' %>
     <%= f.label :password_confirmation, "Re-enter password:" %>
-    <%= f.password_field :password_confirmation, :placeholder => 're-enter password' %>
+    <%= f.password_field :password_confirmation %>
     <fieldset class="ui-grid-a">
       <div class="ui-block-a">
         <%= f.submit "Sign up", :'data-theme' => 'a' %>
@@ -19,5 +19,5 @@
     </fieldset>
   <% end %>
   <p>by signing up you indicate that you accept our <%= link_to "terms of service", terms_path %> and <%= link_to "privacy policy", privacy_path %></p>
-  <p><%= link_to "Already a member? Sign in!", signin_path %></p>
+  <p><%= link_to "Already a member? Sign in!", new_user_session_path %></p>
 </div><!-- /content -->

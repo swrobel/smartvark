@@ -30,8 +30,6 @@ Smartvark::Application.routes.draw do
   match 'set_opinion' => 'welcome#set_opinion', :as => :set_opinion, :via => :post
   match 'undo_last_action' => 'welcome#undo_last_action', :as => :undo_last_action, :via => :post
   match 'makebiz' => 'application#makebiz', :as => :makebiz
-  match 'signin' => 'welcome#signin', :as => :signin
-  match 'signup' => 'welcome#signup', :as => :signup
   match 'search_form' => 'welcome#search_form', :as => :search_form
   match 'mobile_filter/:category_id' => 'welcome#mobile_filter', :as => :mobile_filter
   match 'sms/:id' => 'welcome#sms', :as => :sms, :via => :post

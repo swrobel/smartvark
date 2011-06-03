@@ -11,14 +11,16 @@
 <div data-role="content" data-theme="b">
   <div class="ui-body">
     <%= raw mobile_coupon @offer %>
-    <div class="ui-grid-a">
-      <div class="ui-block-a">
-        <%= link_to("Like",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 1 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>
+    <% unless current_user.opinions.map(&:offer_id).include?(@offer.id) %>
+      <div id="like-buttons" class="ui-grid-a">
+        <div class="ui-block-a">
+          <%= link_to("Like",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 1 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>
+        </div>
+        <div class="ui-block-b">
+          <%= link_to("Nah",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 0 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsdown", "data-theme" => "a") %>
+        </div>
       </div>
-      <div class="ui-block-b">
-        <%= link_to("Nah",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 0 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsdown", "data-theme" => "a") %>
-      </div>
-    </div>
+  <% end %>
     <p>Valid thru <strong><%= @offer.end_date.try(:strftime,('%b %d, %Y')) %></strong> at:</p>
     <%= render :partial => 'business', :collection => @offer.businesses %>
     <p>Fine print: <%= auto_link(@offer.fine_print, :html => { :target => '_blank' }).html_safe %></p>

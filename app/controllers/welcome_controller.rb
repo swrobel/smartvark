@@ -9,7 +9,6 @@ class WelcomeController < ApplicationController
   
   def index
     raise CanCan::AccessDenied unless can? :read, :index
-    session[:user_return_to] = new_user_invitation_path
     if params[:user_id]
       session["devise.invited_by_id"] = params[:user_id].to_i(36)
     elsif params[:user]

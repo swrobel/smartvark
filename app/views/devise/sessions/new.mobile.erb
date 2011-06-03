@@ -1,19 +1,19 @@
 <div id="content" data-role="content" data-theme="a">
   <%= form_for :user, :as => :user, :url => session_path(:user), :html => {"data-ajax" => "false"} do |f| %>
-    <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b" %>
-    <h3>or sign in with a Smartvark account</h3>
+    <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b", "data-ajax" => "false" %>
+    <h4>or use your Smartvark account</h4>
     <%= f.label :email, "Email:" %>
     <%= f.email_field :email, :placeholder => 'email address' %>
     <%= f.label :password, "Password:" %>
     <%= f.password_field :password, :placeholder => 'password' %>
     <fieldset class="ui-grid-a">
       <div class="ui-block-a">
-        <%= f.submit "Sign in", 'data-theme' => 'a' %>
+        <%= f.submit "Sign in", 'data-theme' => 'd' %>
       </div>
       <div class="ui-block-b">
-        <a href='#' data-rel="back" data-role="button" data-theme="d">Cancel</a>
+        <a href='#' data-rel="back" data-role="button" data-theme="a">Cancel</a>
       </div>
     </fieldset>
-    <%= link_to "Don't have an account yet? Sign up!", new_user_registration_path %>
+    <%= link_to "Don't have an account? Sign up!", new_user_registration_path %>
   <% end %>
 </div><!-- /content -->

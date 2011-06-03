@@ -1,0 +1,25 @@
+<% title "Sign up" %>
+<div class="wide-box business-box">
+	<div class="holder">
+		<div class="frame">
+			<h2>Sign up</h2>
+			<div class="business-holder">
+				<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+       
+          <div class="row"><%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), :class => 'facebook-signin', :style => 'margin-top:10px;', :title => "We don't get your login details from Facebook, we only confirm that you are who you say you are" %></div>
+          <p><%= f.label :email %><br />
+          <%= f.email_field :email %></p>
+        
+          <p><%= f.label :password %><br />
+          <%= f.password_field :password %></p>
+        
+          <p><%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation %></p>
+        
+          <p><%= f.submit "Sign up" %></p>
+        <% end %>
+			</div><!-- business-holder end -->
+		</div>
+	</div>
+</div><!-- business-box end -->

@@ -1,8 +1,8 @@
 <div data-role="content" data-theme="a">
   <%= form_for :user, :as => :user, :url => registration_path(:user), :html => {"data-ajax" => "false"} do |f| %>
-    <h3>Save the hassle of remembering another account</h3>
+    <h4>Save the hassle of remembering another account</h4>
     <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b", "data-ajax" => "false" %>
-    <h3>or create a Smartvark account</h3>
+    <h4>or create a Smartvark account</h4>
     <%= f.label :email, "Email:" %>
     <%= f.email_field :email, :id => 'email' %>
     <%= f.label :password, "Password:" %>
@@ -11,10 +11,10 @@
     <%= f.password_field :password_confirmation %>
     <fieldset class="ui-grid-a">
       <div class="ui-block-a">
-        <%= f.submit "Sign up", :'data-theme' => 'a' %>
+        <%= f.submit "Sign up", :'data-theme' => 'd' %>
       </div>
       <div class="ui-block-b">
-        <a href='#' data-rel="back" data-role="button" data-theme="d">Cancel</a>
+        <a href='#' data-rel="back" data-role="button" data-theme="a">Cancel</a>
       </div>
     </fieldset>
   <% end %>

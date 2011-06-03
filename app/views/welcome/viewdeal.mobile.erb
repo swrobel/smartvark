@@ -20,10 +20,12 @@
           <%= link_to("Nah",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 0 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsdown", "data-theme" => "a") %>
         </div>
       </div>
-  <% end %>
+    <% end %>
     <p>Valid thru <strong><%= @offer.end_date.try(:strftime,('%b %d, %Y')) %></strong> at:</p>
     <%= render :partial => 'business', :collection => @offer.businesses %>
     <p>Fine print: <%= auto_link(@offer.fine_print, :html => { :target => '_blank' }).html_safe %></p>
+    <fb:like layout="button_count" show_faces="false" send="true"></fb:like>
+    <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="smartvark">Tweet</a>
     <% if false %>
     <div data-role="controlgroup" data-type="horizontal" >
       <%= link_to("+",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 1 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>
@@ -55,3 +57,6 @@
     <% end %>
   </div>
 </div><!-- /content -->
+<% content_for(:footer_additions) do %>
+  <%= javascript_include_tag "http://platform.twitter.com/widgets.js", "http://connect.facebook.net/en_US/all.js#xfbml=1" %>
+<% end %>

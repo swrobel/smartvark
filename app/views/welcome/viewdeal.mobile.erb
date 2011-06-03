@@ -20,6 +20,7 @@
           <%= link_to("Nah",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 0 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsdown", "data-theme" => "a") %>
         </div>
       </div>
+      <p>Rate deals to make Smartvark more relevant to <em>you</em></p>
     <% end %>
     <p>Valid thru <strong><%= @offer.end_date.try(:strftime,('%b %d, %Y')) %></strong> at:</p>
     <%= render :partial => 'business', :collection => @offer.businesses %>

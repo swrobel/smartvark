@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
 <head>
-  <title><%= content_for?(:title) ? yield(:title) : controller.action_name.titlecase %> - Smartvark</title>
+  <title><%= content_for?(:title) ? yield(:title) : controller.action_name.titlecase %> - Smartvark<%= " (" + Rails.env.upcase + ")" unless Rails.env.production? %></title>
   <%= stylesheet_link_tag 'web' %>
   <!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
   <%= content_for?(:head_additions) ? yield(:head_additions) : nil -%>
@@ -24,6 +24,7 @@
   <div id="wrapper">
     <div class="wrapper-holder">
       <div id="header">
+        <%= raw "<h1>" + Rails.env.capitalize + " server</h1>" unless Rails.env.production? %>
 				<h1 class="logo"><%= link_to "Smartvark", home_path %></h1>
 				<div class="flash-holder" id="flash-<%=if notice then 'notice' else 'alert' end%>"><%= raw notice %><%= raw alert %></div>
 				<%= render :partial => 'layouts/account_area', locals: { new_user: !%w(forbusiness index).include?(controller.action_name) } unless limited_page %>

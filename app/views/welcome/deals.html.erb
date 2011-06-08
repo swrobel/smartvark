@@ -1,66 +1,65 @@
-<% title "Deals near you" %>
-                    	<!-- welcome-box -->
-						<div class="tryit-box">
-							<!-- text -->
-							<div class="text">
-                <p>Showing deals near <strong><%= geo_location.to_location %></strong>. To change your location, enter it here:</p>
-							</div>
-							<!-- promo-box -->
-              <div class="promo-box">
-                <%= form_tag do %>
-                  <%= text_field_tag 'location', nil, :class => 'text-input', :placeholder => 'city, state or zip' %>
-                  <%= image_submit_tag "/images/btn-update.gif", :class => 'button', :alt => 'Update' %>
-                <% end %>
-							</div>
-						</div>
-						<!-- two-columns -->
-						<div class="two-columns">
-							<div class="t"></div>
-							<div class="c">
-								<!-- holder -->
-								<div class="holder">
-									<!-- l-side -->
-									<div class="l-side">
-										<!-- ttl-holder -->
-										<div class="ttl-holder">
-											<h2>Artie's Picks</h2>
-										</div>
-                    <% if @out_of_area %>
-                      <strong class="ttl">Unfortunately our deals are only available in Los Angeles right now</strong>
-                    <% else %>
-                      <strong class="ttl">Just rate the deals below and Artie will sniff out more that you'll probably like.  The more you rate, the better we get to know your tastes!</strong>
-                    <% end %>
-										<!-- info-section -->
-										<div class="info-section section-inner">
-                      <div id='offer_info_rollover' class="info"></div>
-											<!-- gallery -->
-											<div class="gallery">
-                        <% unless @out_of_area || @offers.nil? %>
-                          <ul>
-                            <% @offers.length.times do |n| %>
-                              <%= raw display_offer(@offers, n) %>
-                            <% end %>
-                          </ul>
-                        <% end %>
-											</div>
-										</div>
-									</div>
-									<!-- r-side -->
-									<div class="r-side">
-										<!-- ttl-holder -->
-										<div class="ttl-holder">
-											<h2>My Picks</h2>
-                    </div>
-                    <div id='undo_last_action'></div>
-										<!-- list -->
-                      <ul id='my_list' class="list">
-                        <% @likes.each do |offer| %>
-                          <%= raw list_offer(offer) %>
-                        <% end %>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="b"></div>
-						</div>
-            <%= render :partial => 'search_box' %>
+<% content_for :title, "Deals near you" %>
+<div class="tryit-box">
+	<!-- text -->
+	<div class="text">
+		<p>Showing deals near <strong><%= geo_location.to_location %></strong>. To change your location, enter it here:</p>
+	</div>
+	<!-- promo-box -->
+	<div class="promo-box">
+		<%= form_tag do %>
+			<%= text_field_tag 'location', nil, :class => 'text-input', :placeholder => 'city, state or zip' %>
+			<%= image_submit_tag "/images/btn-update.gif", :class => 'button', :alt => 'Update' %>
+		<% end %>
+	</div>
+</div>
+<!-- two-columns -->
+<div class="two-columns">
+	<div class="t"></div>
+	<div class="c">
+		<!-- holder -->
+		<div class="holder">
+			<!-- l-side -->
+			<div class="l-side">
+				<!-- ttl-holder -->
+				<div class="ttl-holder">
+					<h2>Artie's Picks</h2>
+				</div>
+				<% if @out_of_area %>
+					<strong class="ttl">Unfortunately our deals are only available in Los Angeles right now</strong>
+				<% else %>
+					<strong class="ttl">Just rate the deals below and Artie will sniff out more that you'll probably like.  The more you rate, the better we get to know your tastes!</strong>
+				<% end %>
+				<!-- info-section -->
+				<div class="info-section section-inner">
+					<div id='offer_info_rollover' class="info"></div>
+					<!-- gallery -->
+					<div class="gallery">
+						<% unless @out_of_area || @offers.nil? %>
+							<ul>
+								<% @offers.length.times do |n| %>
+									<%= raw display_offer(@offers, n) %>
+								<% end %>
+							</ul>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<!-- r-side -->
+			<div class="r-side">
+				<!-- ttl-holder -->
+				<div class="ttl-holder">
+					<h2>My Picks</h2>
+				</div>
+				<div id='undo_last_action'></div>
+				<!-- list -->
+					<ul id='my_list' class="list">
+						<% @likes.each do |offer| %>
+							<%= raw list_offer(offer) %>
+						<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="b"></div>
+</div>
+<%= render :partial => 'search_box' %>

@@ -3,21 +3,6 @@ module ApplicationHelper
   def std_date(date)
     date ?  date.strftime('%m/%d/%y') : 'N/A'
   end
-  
-  def title(page_title)
-    content_for(:title) { page_title }
-  end
-  
-  def head_additions(elements)
-    content_for(:head_additions) { elements + "\n" }
-  end
-  
-  def footer_additions(elements)
-    if elements == "jmapping"
-      elements = javascript_include_tag('http://maps.google.com/maps/api/js?v=3.3&sensor=false', 'jmapping')
-    end
-    content_for(:footer_additions) { elements + "\n" }
-  end
 
   def coupon_body(offer)
      "<span id='#{offer.id}_title' class='subttl'>#{offer.title}</span>

@@ -1,5 +1,5 @@
-<% title @business.name %>
-<% footer_additions 'jmapping' %>
+<% content_for :title, @business.name %>
+<% content_for :footer_additions, javascript_include_tag('http://maps.google.com/maps/api/js?v=3.3&sensor=false', 'jmapping') %>
 <%= render :partial => 'search_box' %>
 <!-- wrap -->
 <div class="merchant-area">

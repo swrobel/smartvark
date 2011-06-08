@@ -446,7 +446,7 @@ td, th{padding:0;}
 }
 .gallery{
   float:left;
-  /*max-height:515px;*/
+  max-height:515px;
   overflow:hidden;
 }
 /* gallery list */

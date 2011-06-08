@@ -97,6 +97,16 @@ td, th{padding:0;}
 	height:116px;
 	cursor:pointer;
 }
+.logo p {
+	position:absolute;
+	top:0px;
+	left:90px;
+	width:100%;
+	text-indent:0;
+	font:bold 28px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color:#000000;
+	margin:0;
+}
 /* main */
 #main {
 	width:100%;

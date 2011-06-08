@@ -38,6 +38,12 @@ class OffersController < ApplicationController
   # GET /offers/new
   # GET /offers/new.xml
   def new
+    # Force user to fill out profile before creating offer
+    if current_user.name.blank? || current_user.businesses.blank?
+      flash[:alert] = "Please input Business Name and a Location"
+      redirect_to new_business_path and return
+    end
+    
     @offer = Offer.new(
     :category_id => current_user.category_id,
     :start_date => Time.now,

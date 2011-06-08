@@ -19,6 +19,7 @@
 							<% end %>
 						</div>
 						<div class="address">
+              <%= auto_link(@business.website, :html => { :target => '_blank' }).html_safe if @business.website.present? %>
 							<strong><%= @business.address %></strong>
 							<% if @business.address_2.present? %>
 								<strong><%= @business.address_2 %></strong>

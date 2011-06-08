@@ -14,6 +14,7 @@
       <%= image_tag @business.user.logo.url(:thumb), :alt => @business.name + " logo", :class => "logo" %>
     <% end %>
     <h2><%= @business.name %></h2>
+    <p><%= auto_link(@business.website, :html => { :target => '_blank' }).html_safe if @business.website.present? %></p>
     <%= render :partial => 'business', :locals => { :business => @business } %>
   </div>
   <ul data-role="listview" data-theme="d">

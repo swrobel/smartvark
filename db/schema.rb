@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110603162637) do
+ActiveRecord::Schema.define(:version => 20110608054252) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20110603162637) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cached_slug"
+    t.string   "website"
   end
 
   add_index "businesses", ["cached_slug"], :name => "index_businesses_on_cached_slug", :unique => true

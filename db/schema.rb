@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110608054252) do
+ActiveRecord::Schema.define(:version => 20110608235953) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -236,6 +236,7 @@ ActiveRecord::Schema.define(:version => 20110608054252) do
     t.string   "invited_by_type"
     t.datetime "contract_accepted_at"
     t.boolean  "facebook_user",                       :default => false
+    t.integer  "credits",                             :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

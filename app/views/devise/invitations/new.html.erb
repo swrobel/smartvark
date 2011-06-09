@@ -22,7 +22,7 @@
 			<div class="business-holder">
         <%= render :partial => "new_copy" %>
         <% referral_url = root_url + current_user.id.to_s(36) %>
-        <table>
+        <table id="invite-table">
           <tr>
             <th>Invite via email</th>
             <th>Your invitation link</th>

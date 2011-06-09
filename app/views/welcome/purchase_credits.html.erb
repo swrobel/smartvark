@@ -1,0 +1,25 @@
+<% content_for :title, "Purchase Credits" %>
+<div class="wide-box business-box">
+	<div class="holder">
+		<div class="frame">
+			<h2>Purchase Offer Credits</h2>
+			<div class="business-holder">
+				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+          <input type="hidden" name="cmd" value="_s-xclick">
+          <input type="hidden" name="hosted_button_id" value="HAEY8SLNBRZ3U">
+          <table>
+          <tr><td><input type="hidden" name="on0" value="Available packages below">Available packages below</td></tr><tr><td><select name="os0">
+            <option value="1 credit">1 credit $250.00</option>
+            <option value="3 credits (save 10%)">3 credits (save 10%) $675.00</option>
+            <option value="6 credits (save 15%)">6 credits (save 15%) $1,275.00</option>
+            <option value="12 credits (save 20%)">12 credits (save 20%) $2,400.00</option>
+          </select> </td></tr>
+          </table>
+          <input type="hidden" name="currency_code" value="USD">
+          <input type="image" src="https://www.sandbox.paypal.com/WEBSCR-640-20110429-1/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+          <img alt="" border="0" src="https://www.sandbox.paypal.com/WEBSCR-640-20110429-1/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+			</div><!-- business-holder end -->
+		</div>
+	</div>
+</div><!-- business-box end -->

@@ -70,12 +70,24 @@ class OffersController < ApplicationController
   # POST /offers.xml
   def create
     @offer = current_user.offers.build(params[:offer])
-    @businesses = current_user.businesses
+    forced_draft = current_user.credits.zero? && !@offer.draft
+    @offer.draft = changed_to_draft
 
     respond_to do |format|
       if @offer.save
-        flash[:notice] = 'Offer was successfully created.'
-        format.html { redirect_to dealdashboard_path }
+        unless @offer.draft
+          current_user.credits -= 1
+          current_user.save
+        end
+        
+        if forced_draft
+          session[:pending_offer_id] = @offer.id
+          flash[:notice] = 'Insufficient credits to activate this offer.'
+          format.html { redirect_to purchase_credits_path }
+        else
+          flash[:notice] = 'Offer was successfully created.'
+          format.html { redirect_to dealdashboard_path }
+        end
         format.xml  { render :xml => @offer, :status => :created, :location => @offer }
       else
         format.html { render :action => "new" }
@@ -88,12 +100,24 @@ class OffersController < ApplicationController
   # PUT /offers/1.xml
   def update
     @offer = Offer.find(params[:id])
-    @businesses = current_user.businesses
+    activated = @offer.draft && !params[:offer][:draft]
+    params[:offer][:draft] = activated && current_user.credits.zero?
 
     respond_to do |format|
       if @offer.update_attributes(params[:offer])
-        flash[:notice] = 'Offer was successfully updated.'
-        format.html { redirect_to dealdashboard_path }
+        unless @offer.draft
+          current_user.credits -= 1
+          current_user.save
+        end
+        
+        if @offer.draft && activated
+          session[:pending_offer_id] = @offer.id
+          flash[:notice] = 'Insufficient credits to activate this offer.'
+          format.html { redirect_to purchase_credits_path }
+        else
+          flash[:notice] = 'Offer was successfully updated.'
+          format.html { redirect_to dealdashboard_path }
+        end
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

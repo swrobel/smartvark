@@ -6,9 +6,9 @@
       <div class="account-area">
         <!-- holder -->
         <div class="holder">
-          <strong class="ttl">Welcome <span><%= current_user.name %></span></strong>
+          <strong class="ttl">Welcome <span><%= current_user.name_or_email %></span> (<%= link_to "sign out", destroy_user_session_path %>)</strong>
         </div>
-        <p><%= link_to "sign out", destroy_user_session_path %>&nbsp;&nbsp;</p>
+        <p><strong><%= current_user.credits %> offer credits</strong> <%= link_to "purchase more", purchase_credits_path %></p>
       </div>
     </div>
     <div class="frame">

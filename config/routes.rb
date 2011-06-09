@@ -16,6 +16,7 @@ Smartvark::Application.routes.draw do
   #match 'contact' => 'welcome#contact', :as => :contact
   #match 'admin' => 'offers#index', :as => :admin
   match 'dashboard' => 'welcome#dealdashboard', :as => :dealdashboard
+  match 'credits' => 'welcome#purchase_credits', :as => :purchase_credits
   match 'deals' => 'welcome#deals', :as => :deals
   match 'mydeals' => 'welcome#mydeals', :as => :mydeals
   match 'mydeals/:category_id' => 'welcome#mydeals', :as => :category_mydeals

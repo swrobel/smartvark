@@ -2056,16 +2056,16 @@ a.facebook-signin{
 	font:24px/25px Arial, Helvetica, sans-serif;
 	margin:0
 }
-.business-holder table{
+#invite-table{
   height:200px;
   width:100%;
 }
-.business-holder th{
+#invite-table th{
   font:13px Arial, Helvetica, sans-serif;
   font-weight:bold;
   color:#000000;
 }
-.business-holder td{
+#invite-table td{
   padding:10px;
   vertical-align:top;
   text-align:center;

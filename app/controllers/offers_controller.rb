@@ -70,19 +70,23 @@ class OffersController < ApplicationController
   # POST /offers.xml
   def create
     @offer = current_user.offers.build(params[:offer])
-    forced_draft = current_user.credits.zero? && !@offer.draft
-    @offer.draft = changed_to_draft
+    @businesses = current_user.businesses
+    
+    forced_draft = !@offer.draft && @offer.credits_required > current_user.credits
+    @offer.draft = forced_draft
 
     respond_to do |format|
       if @offer.save
+        # Offer has been saved, now deduct appropriate # of credits
         unless @offer.draft
-          current_user.credits -= 1
+          current_user.credits -= @offer.credits_required
           current_user.save
         end
         
+        # Redirect as appropriate
         if forced_draft
           session[:pending_offer_id] = @offer.id
-          flash[:notice] = 'Insufficient credits to activate this offer.'
+          flash[:alert] = 'Insufficient credits to create offer. Draft saved.'
           format.html { redirect_to purchase_credits_path }
         else
           flash[:notice] = 'Offer was successfully created.'
@@ -100,19 +104,23 @@ class OffersController < ApplicationController
   # PUT /offers/1.xml
   def update
     @offer = Offer.find(params[:id])
-    activated = @offer.draft && !params[:offer][:draft]
-    params[:offer][:draft] = activated && current_user.credits.zero?
+    @businesses = current_user.businesses
+    
+    activated = params[:offer][:draft] == "false"
+    params[:offer][:draft] = @offer.credits_required > current_user.credits
 
     respond_to do |format|
       if @offer.update_attributes(params[:offer])
+        # Offer has been updated, now deduct appropriate # of credits
         unless @offer.draft
-          current_user.credits -= 1
+          current_user.credits -= (@offer.credits_required - @offer.credits_used)
           current_user.save
         end
         
+        # Redirect as appropriate
         if @offer.draft && activated
           session[:pending_offer_id] = @offer.id
-          flash[:notice] = 'Insufficient credits to activate this offer.'
+          flash[:alert] = 'Insufficient credits to update offer. Draft saved.'
           format.html { redirect_to purchase_credits_path }
         else
           flash[:notice] = 'Offer was successfully updated.'

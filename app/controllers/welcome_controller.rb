@@ -170,6 +170,11 @@ class WelcomeController < ApplicationController
       redirect_to dealdashboard_path
     end
   end
+  
+  def purchase_credits
+    raise CanCan::AccessDenied unless can? :read, :purchase_credits
+    @offer = Offer.find(session[:pending_offer_id], :include => [:businesses]) if session[:pending_offer_id]
+  end
 
   def undo_last_action
     @offer_id = 0
@@ -249,5 +254,4 @@ class WelcomeController < ApplicationController
     end
     render :layout => false
   end
-
 end

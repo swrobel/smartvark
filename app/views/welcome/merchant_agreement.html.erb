@@ -110,9 +110,13 @@
 				
 				<p>21. Independent Contractors. Each of Smartvark and Customer are an independent contractor in relation to the other party with respect to all matters arising under this Agreement.</p>
 				
-				<p>FOR ADEQUATE CONSIDERATION AND INTENDING TO BE LEGALLY BOUND, THE PARTIES HERETO HAVE CAUSED THIS AGREEMENT TO BE ENTERED INTO AND MADE EFFECTIVE BY CUSTOMER’S ACCEPTANCE OF THIS AGREEMENT BY CLICKING THE “I ACCEPT” BUTTON BELOW.</p>
+				<% if current_user.contract_accepted_at.blank? %>
+					<p>FOR ADEQUATE CONSIDERATION AND INTENDING TO BE LEGALLY BOUND, THE PARTIES HERETO HAVE CAUSED THIS AGREEMENT TO BE ENTERED INTO AND MADE EFFECTIVE BY CUSTOMER’S ACCEPTANCE OF THIS AGREEMENT BY CLICKING THE “I ACCEPT” BUTTON BELOW.</p>
 				
-				<%= link_to "I Accept", params.merge(:accept => true), class: "btn-contact" %>
+					<%= link_to "I Accept", params.merge(:accept => true), class: "btn-contact" %>
+				<% else %>
+					<p>AGREEMENT WAS ACCEPTED ON <%= l current_user.contract_accepted_at, :format => :us_date %></p>
+				<% end %>
 			</div><!-- business-holder end -->
 		</div>
 	</div>

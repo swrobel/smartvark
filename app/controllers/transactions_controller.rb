@@ -7,7 +7,8 @@ class TransactionsController < ApplicationController
     logger.info notify.inspect
   
     # make sure this transaction id is not already logged
-    if !Transaction.count("*", :conditions => ["transaction_id = ?", notify.transaction_id]).zero?
+    if Transaction.count("*", :conditions => ["transaction_id = ?", notify.transaction_id]).zero?
+      logger.info "Acknowledging..."
       if notify.acknowledge
         begin
           if notify.complete?

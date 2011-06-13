@@ -95,6 +95,7 @@ class User < ActiveRecord::Base
       :amount => price,
       :item_name => description,
       :quantity => num_credits,
+      :undefined_quantity => 1
     }
    
     signed = OpenSSL::PKCS7::sign(OpenSSL::X509::Certificate.new(APP_PAYPAL_CERT), OpenSSL::PKey::RSA.new(APP_PAYPAL_KEY, ''), values.map { |k, v| "#{k}=#{v}" }.join("\n"), [], OpenSSL::PKCS7::BINARY)  

@@ -74,6 +74,7 @@ class OffersController < ApplicationController
     
     forced_draft = !@offer.draft && @offer.credits_required > current_user.credits
     @offer.draft = forced_draft
+    @offer.credits_used = @offer.credits_required unless @offer.draft
 
     respond_to do |format|
       if @offer.save
@@ -107,13 +108,15 @@ class OffersController < ApplicationController
     @businesses = current_user.businesses
     
     activated = params[:offer][:draft] == "false"
-    params[:offer][:draft] = @offer.credits_required > current_user.credits
+    params[:offer][:draft] = (@offer.credits_required - @offer.credits_used) > current_user.credits
+    credits_already_used = @offer.credits_used
+    params[:offer][:credits_used] = @offer.credits_required if activated
 
     respond_to do |format|
       if @offer.update_attributes(params[:offer])
         # Offer has been updated, now deduct appropriate # of credits
-        unless @offer.draft
-          current_user.credits -= (@offer.credits_required - @offer.credits_used)
+        unless @offer.draft || credits_already_used >= @offer.credits_used
+          current_user.credits -= (@offer.credits_used - credits_already_used)
           current_user.save
         end
         

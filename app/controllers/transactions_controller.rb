@@ -9,7 +9,7 @@ class TransactionsController < ApplicationController
     if Transaction.where(:transaction_id => notify.transaction_id).where(:status => "Completed").count.zero?
       if notify.acknowledge
         begin
-          Transaction.create!(:params => params, :user_id => params[:custom], :credits => params[:quantity], :status => status, :transaction_id => params[:txn_id] )
+          Transaction.create!(:params => params, :user_id => params[:custom], :credits => params[:quantity], :status => params[:payment_status], :transaction_id => params[:txn_id] )
         rescue => e
           logger.info e
         ensure

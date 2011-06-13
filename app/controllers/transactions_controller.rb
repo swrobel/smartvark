@@ -9,14 +9,14 @@ class TransactionsController < ApplicationController
     if Transaction.where(:transaction_id => notify.transaction_id).where(:status => "Completed").count.zero?
       if notify.acknowledge
         begin
-          Transaction.create!(:params => params, :user_id => invoice, :credits => params[:custom], :status => status, :transaction_id => transaction_id )
+          Transaction.create!(:params => params, :user_id => params[:custom], :credits => params[:quantity], :status => status, :transaction_id => transaction_id )
         rescue => e
           logger.info e
         ensure
-          logger.info "Txn user: " + notify.invoice + " status: " + notify.status + " credits: " + params[:custom] + " id: " + notify.transaction_id
+          logger.info "Txn user: " + params[:custom] + " status: " + notify.status + " credits: " + params[:quantity] + " id: " + notify.transaction_id
         end
       else #transaction was not acknowledged
-        logger.info "UNACKNOWLEDGED Txn user: " + notify.invoice + " status: " + notify.status + " credits: " + params[:custom] + " id: " + notify.transaction_id
+        logger.info "UNACKNOWLEDGED Txn user: " + params[:custom] + " status: " + notify.status + " credits: " + params[:quantity] + " id: " + notify.transaction_id
       end
     end
   

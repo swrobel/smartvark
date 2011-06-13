@@ -55,4 +55,7 @@ Smartvark::Application.configure do
       config.api_key = ENV['MOONSHADOSMS_URL']
     end
   end
+  
+  ActiveMerchant::Billing::Base.gateway_mode = :test
+  ActiveMerchant::Billing::Base.integration_mode = :test
 end

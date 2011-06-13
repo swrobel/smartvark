@@ -4,28 +4,19 @@ class TransactionsController < ApplicationController
   
   def create
     notify = Paypal::Notification.new(request.raw_post)
-    logger.info notify.inspect
   
     # make sure this transaction id is not already logged
-    if Transaction.count("*", :conditions => ["transaction_id = ?", notify.transaction_id]).zero?
-      logger.info "Acknowledging..."
+    if Transaction.where(:transaction_id => notify.transaction_id).where(:status => "Completed").count.zero?
       if notify.acknowledge
         begin
-          if notify.complete?
-            #Transaction.create!(:params => params, :user_id => params[:invoice], :status => params[:payment_status], :transaction_id => params[:txn_id] )  
-            logger.info "ACKNOWLEDGED!!!"
-            logger.info notify.inspect
-          else
-             #Reason to be suspicious
-          end
-    
+          Transaction.create!(:params => params, :user_id => invoice, :credits => params[:custom], :status => status, :transaction_id => transaction_id )
         rescue => e
           logger.info e
         ensure
-          #make sure we logged everything we must
+          logger.info "Txn user: " + notify.invoice + " status: " + notify.status + " credits: " + notify.custom + " id: " + notify.transaction_id
         end
       else #transaction was not acknowledged
-        logger.info "NOT ACKNOWLEDGED???"
+        logger.info "UNACKNOWLEDGED Txn user: " + notify.invoice + " status: " + notify.status + " credits: " + notify.custom + " id: " + notify.transaction_id
       end
     end
   

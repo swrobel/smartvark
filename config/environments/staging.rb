@@ -58,5 +58,5 @@ Smartvark::Application.configure do
   
   ActiveMerchant::Billing::Base.gateway_mode = :test
   ActiveMerchant::Billing::Base.integration_mode = :test
-  ActiveMerchant::Billing::PaypalGateway.pem_file = File.read(Rails.root.to_s + '/certs/smartvark_cert.pem')
+  ActiveMerchant::Billing::PaypalGateway.pem_file = APP_PAYPAL_CERT
 end

@@ -81,6 +81,26 @@ class User < ActiveRecord::Base
     Offer.select('DISTINCT offers.*').includes([:businesses, :opinions, :redemptions]).joins(:businesses).where({:businesses => [:user_id >> id]}).order([:archived, :draft, :title])
   end
   
+  def paypal_encrypted(return_url, notify_url, num_credits, price, description)  
+    values = {  
+      :business => "stefan_1307486076_biz@smartvark.com",
+      :cmd => "_cart",  
+      :upload => 1,  
+      :return => return_url,  
+      :user_id => id,
+      :credits => num_credits,
+      :notify_url => notify_url,  
+      :cert_id => "RW8PPYNCB6UF6",
+      :amount_1 => price,
+      :item_name_1 => description,
+      :item_number_1 => "1",
+      :quantity_1 => "1"
+    }
+   
+    signed = OpenSSL::PKCS7::sign(OpenSSL::X509::Certificate.new(APP_PAYPAL_CERT), OpenSSL::PKey::RSA.new(APP_PAYPAL_KEY, ''), values.map { |k, v| "#{k}=#{v}" }.join("\n"), [], OpenSSL::PKCS7::BINARY)  
+    OpenSSL::PKCS7::encrypt([OpenSSL::X509::Certificate.new(PAYPAL_CERT)], signed.to_der, OpenSSL::Cipher::Cipher::new("DES3"), OpenSSL::PKCS7::BINARY).to_s.gsub("\n", "")   
+  end
+  
   def self.find_for_facebook_oauth(data, signed_in_resource=nil)
     if user = User.find_by_email(data["email"])
       user

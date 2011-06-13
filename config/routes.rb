@@ -36,5 +36,6 @@ Smartvark::Application.routes.draw do
   match 'sms/:id' => 'welcome#sms', :as => :sms, :via => :post
   match 'leads' => 'welcome#leads', :as => :leads
   match 'ppipn' => 'transactions#create'
+  match 'paypal_return' => 'welcome#paypal_return'
   match '/:user_id' => 'welcome#index'
 end

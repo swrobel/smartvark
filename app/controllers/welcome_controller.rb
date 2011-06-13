@@ -175,6 +175,16 @@ class WelcomeController < ApplicationController
     raise CanCan::AccessDenied unless can? :read, :purchase_credits
     @offer = Offer.find(session[:pending_offer_id], :include => [:businesses]) if session[:pending_offer_id]
   end
+  
+  def paypal_return
+    raise CanCan::AccessDenied unless can? :read, :purchase_credits
+    @offer = Offer.find(session[:pending_offer_id], :include => [:businesses]) if session[:pending_offer_id]
+    if @offer
+      redirect_to edit_offer_path(@offer.id)
+    else
+      redirect_to dealdashboard_path
+    end
+  end
 
   def undo_last_action
     @offer_id = 0

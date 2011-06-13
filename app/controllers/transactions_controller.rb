@@ -12,18 +12,19 @@ class TransactionsController < ApplicationController
         begin
           if notify.complete?
             #Transaction.create!(:params => params, :user_id => params[:invoice], :status => params[:payment_status], :transaction_id => params[:txn_id] )  
+            logger.info "ACKNOWLEDGED!!!"
             logger.info notify.inspect
           else
              #Reason to be suspicious
           end
     
         rescue => e
-          #Houston we have a bug
+          logger.info e
         ensure
           #make sure we logged everything we must
         end
       else #transaction was not acknowledged
-        # another reason to be suspicious
+        logger.info "NOT ACKNOWLEDGED???"
       end
     end
   

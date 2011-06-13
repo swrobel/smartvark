@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  before_filter :set_current_page, :except => [:undo_last_action, :set_opinion, :sms, :redeem, :shout, :signup, :signin]
+  before_filter :set_current_page, :except => [:index, :undo_last_action, :set_opinion, :sms, :redeem, :shout, :signup, :signin]
   
   skip_filter :set_mobile_format, :only => [:forbusiness, :dealdashboard, :merchant_agreement, :myprofile]
 

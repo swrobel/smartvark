@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  params: MyText
+  status: MyString
+  transaction_id: MyString
+  user_id: 1
+  credits: 1
+
+two:
+  params: MyText
+  status: MyString
+  transaction_id: MyString
+  user_id: 1
+  credits: 1

@@ -35,5 +35,6 @@ Smartvark::Application.routes.draw do
   match 'mobile_filter/:category_id' => 'welcome#mobile_filter', :as => :mobile_filter
   match 'sms/:id' => 'welcome#sms', :as => :sms, :via => :post
   match 'leads' => 'welcome#leads', :as => :leads
+  match 'ppipn' => 'transactions#create'
   match '/:user_id' => 'welcome#index'
 end

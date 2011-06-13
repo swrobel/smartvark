@@ -13,10 +13,10 @@ class TransactionsController < ApplicationController
         rescue => e
           logger.info e
         ensure
-          logger.info "Txn user: " + notify.invoice + " status: " + notify.status + " credits: " + notify.custom + " id: " + notify.transaction_id
+          logger.info "Txn user: " + notify.invoice + " status: " + notify.status + " credits: " + params[:custom] + " id: " + notify.transaction_id
         end
       else #transaction was not acknowledged
-        logger.info "UNACKNOWLEDGED Txn user: " + notify.invoice + " status: " + notify.status + " credits: " + notify.custom + " id: " + notify.transaction_id
+        logger.info "UNACKNOWLEDGED Txn user: " + notify.invoice + " status: " + notify.status + " credits: " + params[:custom] + " id: " + notify.transaction_id
       end
     end
   

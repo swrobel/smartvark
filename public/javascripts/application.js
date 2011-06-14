@@ -134,10 +134,6 @@ $(function(){
 			}
 		});
 	}
-    
-	if ($(".flash-holder").html() != "") {
-	    $(".flash-holder").show("drop", { direction: "up" }, 1000).delay(10000).hide("drop", { direction: "up" }, 1000);
-	}
 });
 function checkall_offer_form(n) {
 	$(".location_chk").attr('checked',n);

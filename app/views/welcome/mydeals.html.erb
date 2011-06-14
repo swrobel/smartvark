@@ -1,52 +1,61 @@
 <% content_for :title, "My Deals" %>
-            <%= render :partial => 'search_box' %>
-            <%= render :partial => 'nav' %>
-						<!-- two-columns -->
-						<div class="two-columns">
-							<div class="t"></div>
-							<div class="c">
-								<!-- holder -->
-								<div class="holder">
-									<!-- l-side -->
-									<div class="l-side">
-										<!-- ttl-holder -->
-										<div class="ttl-holder">
-											<h2>Artie's Picks</h2>
-										</div>
-                    <% if @offers.empty? %>
-                      <strong class="ttl">Sorry, we don't have any new deals for you today. Check back tomorrow!</strong>
-                    <% else %>
-                      <strong class="ttl">Just rate the deals below and Artie will sniff out more that you'll probably like.  The more you rate, the better we get to know you!</strong>
-                    <% end %>
-										<!-- info-section -->
-										<div class="info-section section-inner">
-											<div id='offer_info_rollover' class="info">
-											</div>
-											<!-- gallery -->
-											<div class="gallery">
-                        <ul>
-                          <% @offers.length.times do |n| %>
-                            <%= raw display_offer(@offers, n) %>
-                          <% end %>
-                        </ul>
-											</div>
-										</div>
-									</div>
-									<!-- r-side -->
-									<div class="r-side">
-										<!-- ttl-holder -->
-										<div class="ttl-holder">
-											<h2>My Picks</h2>
-										</div>
-                    <div id='undo_last_action'></div>
-										<!-- list -->
-										<ul id='my_list' class="list">
-                      <% @likes.each do |offer| %>
-                        <%= raw list_offer(offer) %>
-                      <% end %>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="b"></div>
-						</div>
+<%= render :partial => 'search_box' %>
+<%= render :partial => 'nav' %>
+<!-- two-columns -->
+<div class="two-columns">
+  <div class="t"></div>
+  <div class="c">
+    <!-- holder -->
+    <div class="holder">
+      <!-- l-side -->
+      <div class="l-side">
+        <!-- ttl-holder -->
+        <div class="ttl-holder">
+          <h2>Artie's Picks</h2>
+        </div>
+        <% if @offers.empty? %>
+          <strong class="ttl">Sorry, we don't have any new deals for you today. Check back tomorrow!</strong>
+        <% else %>
+          <strong class="ttl">Just rate the deals below and Artie will sniff out more that you'll probably like.  The more you rate, the better we get to know you!</strong>
+        <% end %>
+        <!-- info-section -->
+        <div class="info-section section-inner">
+          <div id='offer_info_rollover' class="info">
+          </div>
+          <!-- gallery -->
+          <div class="gallery">
+            <ul>
+              <% @offers.length.times do |n| %>
+                <%= raw display_offer(@offers, n) %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- r-side -->
+      <div class="r-side">
+        <!-- ttl-holder -->
+        <div class="ttl-holder">
+          <h2>My Picks</h2>
+        </div>
+        <div id='undo_last_action'></div>
+        <!-- list -->
+        <ul id='my_list' class="list">
+          <% @likes.each do |offer| %>
+            <%= raw list_offer(offer) %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="b"></div>
+</div>
+<% content_for(:footer_additions) do %>
+  <script type="text/javascript">
+    $(function(){
+      if ($.jnotify) {
+        $.jnotify('Invite your friends to get in on the deals! <%= link_to "Click Here", new_user_invitation_path %>', 'warning', true);
+      }
+    });
+  </script>
+<% end %>

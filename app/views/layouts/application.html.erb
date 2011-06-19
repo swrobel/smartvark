@@ -46,17 +46,19 @@
   <%= javascript_include_tag 'jquery', 'jquery-ui', 'jquery-plugins', 'rails' %>
 	<%= content_for?(:footer_additions) ? content_for(:footer_additions) : nil -%>
 	<%= javascript_include_tag 'application' %>
-  <script type="text/javascript">
-    $(function(){
-      if ($.jnotify) {
-        <% if notice %>
-          $.jnotify("<%= notice %>");
-        <% elsif alert %>
-          $.jnotify("<%= alert %>","error");
-        <% end %>
-      }
-    });
-  </script>
+  <% if notice || alert %>
+    <script type="text/javascript">
+      $(function(){
+        if ($.jnotify) {
+          <% if notice %>
+            $.jnotify("<%= notice %>");
+          <% elsif alert %>
+            $.jnotify("<%= alert %>","error");
+          <% end %>
+        }
+      });
+    </script>
+  <% end %>
 	<% if Rails.env.production? %>
     <!-- analytics -->
 		<script type="text/javascript">

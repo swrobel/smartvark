@@ -85,14 +85,14 @@ class User < ActiveRecord::Base
   def paypal_encrypted(return_url, notify_url, num_credits, price, description)  
     allow_quantity_change = (num_credits == 1 ? 1: 0) # only allow if buying one credit
     values = {  
-      :business => "stefan_1307486076_biz@smartvark.com",
+      :business => PAYPAL_EMAIL,
       :cmd => "_xclick",
       :no_shipping => 1,
       :return => return_url,
       :email => email,
       :custom => id,
       :notify_url => notify_url,
-      :cert_id => "RW8PPYNCB6UF6",
+      :cert_id => PAYPAL_CERT_ID,
       :amount => price,
       :item_name => description,
       :quantity => num_credits,

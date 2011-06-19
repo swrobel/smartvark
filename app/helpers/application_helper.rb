@@ -149,7 +149,7 @@ module ApplicationHelper
     form_tag ActiveMerchant::Billing::Integrations::Paypal.service_url do
       hidden_field_tag(:cmd, "_s-xclick") +
       hidden_field_tag(:encrypted, current_user.paypal_encrypted(paypal_return_url, ppipn_url, num_credits, price, "Smartvark credit")) +
-      image_submit_tag("https://www.sandbox.paypal.com/WEBSCR-640-20110429-1/en_US/i/btn/btn_paynowCC_LG.gif", alt: "PayPal - The safer, easier way to pay online!", name: "submit")
+      image_submit_tag("http://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif", alt: "PayPal - The safer, easier way to pay online!", name: "submit")
     end
   end
 end

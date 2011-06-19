@@ -8,7 +8,7 @@
         <div class="holder">
           <strong class="ttl">Welcome <span><%= current_user.name_or_email %></span> (<%= link_to "sign out", destroy_user_session_path %>)</strong>
         </div>
-        <p><strong><%= current_user.credits %> offer credits</strong> <%= link_to "purchase more", purchase_credits_path %></p>
+        <p><strong><%= current_user.credits %> offer credit<%= "s" if current_user.credits != 1 %></strong> <%= link_to "purchase more", purchase_credits_path %></p>
       </div>
     </div>
     <div class="frame">

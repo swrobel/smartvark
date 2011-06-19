@@ -7,13 +7,49 @@
         <% if @offer %>
           <p>Your account has <strong><%= current_user.credits %> credits</strong>. The offer you activated requires <strong><%= @offer.credits_required %> credits</strong> (<%= @offer.num_locations %> locations x <%= @offer.num_months %> months). For more details on how this is calculated, refer to the <%= link_to "Merchant Agreement", agreement_path %>.</p>
         <% end %>
-        <p>1 credit for $250</p>
-				<%= form_tag ActiveMerchant::Billing::Integrations::Paypal.service_url do %>
-          <%= hidden_field_tag :cmd, "_s-xclick" %>  
-          <%= hidden_field_tag :encrypted, current_user.paypal_encrypted(paypal_return_url, ppipn_url, 1, 250, "Smartvark credit") %>
-          <input type="image" src="https://www.sandbox.paypal.com/WEBSCR-640-20110429-1/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-          <img alt="" border="0" src="https://www.sandbox.paypal.com/WEBSCR-640-20110429-1/en_US/i/scr/pixel.gif" width="1" height="1">
-        <% end %>
+        <table id="pricing">
+          <thead>
+            <tr>
+              <th class="pricingDescription">&nbsp;</th>
+              <th><h4>1 credit</h4></th>
+              <th class="pricingHighlighted"><h4>3 credits<small>Most Popular</small></h4></th>
+              <th><h4>6 credits</h4></th>
+              <th><h4>12 credits</h4></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="odd">
+              <td class="pricingDescription">Price<small>per credit</small></td>
+              <td>$250</td>
+              <td class="pricingHighlighted">$250</td>
+              <td>$250</td>
+              <td>$250</td>
+            </tr>
+            <tr>
+              <td class="pricingDescription">Discount<small>&nbsp;</small></td>
+              <td></td>
+              <td class="pricingHighlighted">-10%</td>
+              <td>-15%</td>
+              <td>-20%</td>
+            </tr>
+            <tr class="odd bottom">
+              <td class="pricingDescription">You pay<small>per credit</small></td>
+              <td>$250</td>
+              <td class="pricingHighlighted">$225</td>
+              <td>$212.50</td>
+              <td>$200</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="pricingDescription">&nbsp;</td>
+              <td><%= pay_button(1, 250) %></td>
+              <td class="pricingHighlighted"><%= pay_button(3, 225) %></td>
+              <td><%= pay_button(6, 212.5) %></td>
+              <td><%= pay_button(12, 200) %></td>
+            </tr>
+          </tfoot>
+        </table>
 			</div><!-- business-holder end -->
 		</div>
 	</div>

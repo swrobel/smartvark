@@ -83,6 +83,7 @@ class User < ActiveRecord::Base
   end
   
   def paypal_encrypted(return_url, notify_url, num_credits, price, description)  
+    allow_quantity_change = (num_credits == 1 ? 1: 0) # only allow if buying one credit
     values = {  
       :business => "stefan_1307486076_biz@smartvark.com",
       :cmd => "_xclick",
@@ -95,7 +96,7 @@ class User < ActiveRecord::Base
       :amount => price,
       :item_name => description,
       :quantity => num_credits,
-      :undefined_quantity => 1
+      :undefined_quantity => allow_quantity_change
     }
    
     signed = OpenSSL::PKCS7::sign(OpenSSL::X509::Certificate.new(APP_PAYPAL_CERT), OpenSSL::PKey::RSA.new(APP_PAYPAL_KEY, ''), values.map { |k, v| "#{k}=#{v}" }.join("\n"), [], OpenSSL::PKCS7::BINARY)  

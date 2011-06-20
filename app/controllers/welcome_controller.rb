@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   before_filter :set_current_page, :except => [:index, :undo_last_action, :set_opinion, :sms, :redeem, :shout, :signup, :signin]
   
-  skip_filter :set_mobile_format, :only => [:forbusiness, :dealdashboard, :merchant_agreement, :myprofile]
+  skip_filter :set_mobile_format, :only => [:forbusiness, :dealdashboard, :merchant_agreement, :myprofile, :purchase_credits]
 
   def set_current_page
     session[:user_return_to] = request.fullpath
@@ -170,6 +170,22 @@ class WelcomeController < ApplicationController
       redirect_to dealdashboard_path
     end
   end
+  
+  def purchase_credits
+    raise CanCan::AccessDenied unless can? :read, :purchase_credits
+    @offer = Offer.find(session[:pending_offer_id], :include => [:businesses]) if session[:pending_offer_id]
+  end
+  
+  def paypal_return
+    raise CanCan::AccessDenied unless can? :read, :purchase_credits
+    @offer = Offer.find(session[:pending_offer_id], :include => [:businesses]) if session[:pending_offer_id]
+    flash[:notice] = "Your account now has " + current_user.credits + " credit" + ("s" if current_user.credits != 1)
+    if @offer
+      redirect_to edit_offer_path(@offer.id)
+    else
+      redirect_to dealdashboard_path
+    end
+  end
 
   def undo_last_action
     @offer_id = 0
@@ -249,5 +265,4 @@ class WelcomeController < ApplicationController
     end
     render :layout => false
   end
-
 end

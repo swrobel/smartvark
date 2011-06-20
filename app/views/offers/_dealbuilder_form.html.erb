@@ -73,7 +73,7 @@
   <% group.compact.each do |business| %>
     <li>
       <label>
-        <%= check_box_tag 'offer[business_ids][]', business.id, @offer.new_record? ? true : @offer.business_ids.include?(business.id), :class => 'chk location_chk' %>
+        <%= check_box_tag 'offer[business_ids][]', business.id, @offer.business_ids.blank? ? true : @offer.business_ids.include?(business.id), :class => 'chk location_chk' %>
         <%= business.short_or_name %>
       </label>
     </li>

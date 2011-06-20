@@ -1,5 +1,5 @@
-<% title @business.name %>
-<% footer_additions 'jmapping' %>
+<% content_for :title, @business.name %>
+<% content_for :footer_additions, javascript_include_tag('http://maps.google.com/maps/api/js?v=3.3&sensor=false', 'jmapping') %>
 <%= render :partial => 'search_box' %>
 <!-- wrap -->
 <div class="merchant-area">
@@ -19,6 +19,7 @@
 							<% end %>
 						</div>
 						<div class="address">
+              <%= auto_link(@business.website, :html => { :target => '_blank' }).html_safe if @business.website.present? %>
 							<strong><%= @business.address %></strong>
 							<% if @business.address_2.present? %>
 								<strong><%= @business.address_2 %></strong>

@@ -3,21 +3,6 @@ module ApplicationHelper
   def std_date(date)
     date ?  date.strftime('%m/%d/%y') : 'N/A'
   end
-  
-  def title(page_title)
-    content_for(:title) { page_title }
-  end
-  
-  def head_additions(elements)
-    content_for(:head_additions) { elements + "\n" }
-  end
-  
-  def footer_additions(elements)
-    if elements == "jmapping"
-      elements = javascript_include_tag('http://maps.google.com/maps/api/js?v=3.3&sensor=false', 'jmapping')
-    end
-    content_for(:footer_additions) { elements + "\n" }
-  end
 
   def coupon_body(offer)
      "<span id='#{offer.id}_title' class='subttl'>#{offer.title}</span>
@@ -158,5 +143,13 @@ module ApplicationHelper
             { controller: "welcome", action: "set_opinion", offer_id: offer.friendly_id, liked: 0 }, method: :post, remote: true) +
   '</div>
 </li>'
+  end
+
+  def pay_button(num_credits, price)
+    form_tag ActiveMerchant::Billing::Integrations::Paypal.service_url do
+      hidden_field_tag(:cmd, "_s-xclick") +
+      hidden_field_tag(:encrypted, current_user.paypal_encrypted(paypal_return_url, ppipn_url, num_credits, price, "Smartvark credit")) +
+      image_submit_tag("http://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif", alt: "PayPal - The safer, easier way to pay online!", name: "submit")
+    end
   end
 end

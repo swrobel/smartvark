@@ -1,4 +1,4 @@
-<% title params[:search_terms] + " near " + params[:location] %>
+<% content_for :title, params[:search_terms] + " near " + params[:location] %>
 <div data-role="header" data-theme="e">
   <h1>Search Results</h1>
   <%= render :partial => "search_button" %>

@@ -38,6 +38,12 @@ class OffersController < ApplicationController
   # GET /offers/new
   # GET /offers/new.xml
   def new
+    # Force user to fill out profile before creating offer
+    if current_user.name.blank? || current_user.businesses.blank?
+      flash[:alert] = "Please input Business Name and a Location"
+      redirect_to new_business_path and return
+    end
+    
     @offer = Offer.new(
     :category_id => current_user.category_id,
     :start_date => Time.now,
@@ -65,11 +71,28 @@ class OffersController < ApplicationController
   def create
     @offer = current_user.offers.build(params[:offer])
     @businesses = current_user.businesses
+    
+    forced_draft = !@offer.draft && @offer.credits_required > current_user.credits
+    @offer.draft = forced_draft
+    @offer.credits_used = @offer.credits_required unless @offer.draft
 
     respond_to do |format|
       if @offer.save
-        flash[:notice] = 'Offer was successfully created.'
-        format.html { redirect_to dealdashboard_path }
+        # Offer has been saved, now deduct appropriate # of credits
+        unless @offer.draft
+          current_user.credits -= @offer.credits_required
+          current_user.save
+        end
+        
+        # Redirect as appropriate
+        if forced_draft
+          session[:pending_offer_id] = @offer.id
+          flash[:alert] = 'Insufficient credits to create offer. Draft saved.'
+          format.html { redirect_to purchase_credits_path }
+        else
+          flash[:notice] = 'Offer was successfully created.'
+          format.html { redirect_to dealdashboard_path }
+        end
         format.xml  { render :xml => @offer, :status => :created, :location => @offer }
       else
         format.html { render :action => "new" }
@@ -83,11 +106,29 @@ class OffersController < ApplicationController
   def update
     @offer = Offer.find(params[:id])
     @businesses = current_user.businesses
+    
+    activated = params[:offer][:draft] == "false"
+    params[:offer][:draft] = (@offer.credits_required - @offer.credits_used) > current_user.credits
+    credits_already_used = @offer.credits_used
+    params[:offer][:credits_used] = @offer.credits_required if activated
 
     respond_to do |format|
       if @offer.update_attributes(params[:offer])
-        flash[:notice] = 'Offer was successfully updated.'
-        format.html { redirect_to dealdashboard_path }
+        # Offer has been updated, now deduct appropriate # of credits
+        unless @offer.draft || credits_already_used >= @offer.credits_used
+          current_user.credits -= (@offer.credits_used - credits_already_used)
+          current_user.save
+        end
+        
+        # Redirect as appropriate
+        if @offer.draft && activated
+          session[:pending_offer_id] = @offer.id
+          flash[:alert] = 'Insufficient credits to update offer. Draft saved.'
+          format.html { redirect_to purchase_credits_path }
+        else
+          flash[:notice] = 'Offer was successfully updated.'
+          format.html { redirect_to dealdashboard_path }
+        end
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

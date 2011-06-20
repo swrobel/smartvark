@@ -41,6 +41,18 @@ class Offer < ActiveRecord::Base
   validates :redemption_limit, :numericality => {:allow_blank => true}
   validates :allow_print, :presence => {:unless => "allow_mobile", :message => ", allow mobile or both must be selected"}
 
+  def credits_required
+    num_locations * num_months
+  end
+  
+  def num_locations
+    businesses.size
+  end
+  
+  def num_months
+    ((end_date - start_date)/31.0).ceil
+  end
+  
   def set_to_archived
     @do_not_unarchive=true
     update_attribute(:archived,true)

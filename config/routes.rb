@@ -16,6 +16,7 @@ Smartvark::Application.routes.draw do
   #match 'contact' => 'welcome#contact', :as => :contact
   #match 'admin' => 'offers#index', :as => :admin
   match 'dashboard' => 'welcome#dealdashboard', :as => :dealdashboard
+  match 'credits' => 'welcome#purchase_credits', :as => :purchase_credits
   match 'deals' => 'welcome#deals', :as => :deals
   match 'mydeals' => 'welcome#mydeals', :as => :mydeals
   match 'mydeals/:category_id' => 'welcome#mydeals', :as => :category_mydeals
@@ -34,5 +35,7 @@ Smartvark::Application.routes.draw do
   match 'mobile_filter/:category_id' => 'welcome#mobile_filter', :as => :mobile_filter
   match 'sms/:id' => 'welcome#sms', :as => :sms, :via => :post
   match 'leads' => 'welcome#leads', :as => :leads
+  match 'ppipn' => 'transactions#create'
+  match 'paypal_return' => 'welcome#paypal_return'
   match '/:user_id' => 'welcome#index'
 end

@@ -55,4 +55,10 @@ Smartvark::Application.configure do
       config.api_key = ENV['MOONSHADOSMS_URL']
     end
   end
+  
+  ActiveMerchant::Billing::Base.gateway_mode = :test
+  ActiveMerchant::Billing::Base.integration_mode = :test
+  PAYPAL_CERT = File.read("#{Rails.root}/certs/paypal_dev_cert.pem")
+  PAYPAL_CERT_ID = "RW8PPYNCB6UF6"
+  PAYPAL_EMAIL = "stefan_1307486076_biz@smartvark.com"
 end

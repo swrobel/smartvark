@@ -1,4 +1,6 @@
-<% title @offer.title %>
+<% content_for :title, @offer.title %>
+<% content_for :fb_desc, @offer.description %>
+<% content_for :fb_img, @offer.logo.url if @offer.logo.file? %>
 <div data-role="header" data-theme="b" data-backbtn="false">
   <img src="/images/logo-mobile.png"/>
   <% if current_user %>

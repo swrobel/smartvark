@@ -78,6 +78,8 @@ private
     if resource.is_a?(User) && resource.role == "business"
       if resource.contract_accepted_at.blank?
         agreement_path
+      elsif resource.name.blank? || resource.businesses.blank?
+        new_business_path
       else
         dealdashboard_path
       end

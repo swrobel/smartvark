@@ -16,6 +16,10 @@ GEM
       rack-test (~> 0.5.7)
       tzinfo (~> 0.3.23)
     active_device (1.2.0)
+    activemerchant (1.15.0)
+      activesupport (>= 2.3.8)
+      braintree (>= 2.0.0)
+      builder (>= 2.0.0)
     activemodel (3.0.7)
       activesupport (= 3.0.7)
       builder (~> 2.1.2)
@@ -41,6 +45,8 @@ GEM
       xml-simple
     babosa (0.3.3)
     bcrypt-ruby (2.1.4)
+    braintree (2.10.1)
+      builder (>= 2.0.0)
     builder (2.1.2)
     cancan (1.6.4)
     daemons (1.1.3)
@@ -70,7 +76,6 @@ GEM
       json
     happymapper (0.3.2)
       libxml-ruby (~> 1.1.3)
-    hirb (0.4.5)
     home_run (1.0.2)
     hoptoad_notifier (2.4.9)
       activesupport
@@ -159,6 +164,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_device
+  activemerchant
   acts_as_geocodable
   ancestry
   aws-s3
@@ -169,7 +175,6 @@ DEPENDENCIES
   devise_invitable
   dynamic_form
   friendly_id
-  hirb
   home_run
   hoptoad_notifier
   jquery-rails

@@ -5,27 +5,26 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
 <head>
-  <title><%= content_for?(:title) ? yield(:title) : controller.action_name.titlecase %> - Smartvark</title>
+  <title><%= content_for?(:title) ? content_for(:title) : controller.action_name.titlecase %> - Smartvark<%= " (" + Rails.env.upcase + ")" unless Rails.env.production? %></title>
   <%= stylesheet_link_tag 'web' %>
   <!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
-  <%= content_for?(:head_additions) ? yield(:head_additions) : nil -%>
+  <%= content_for?(:head_additions) ? content_for(:head_additions) : nil -%>
   <%= favicon_link_tag %>
   <%= csrf_meta_tag %>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <meta property="fb:page_id" content="120811371274054" />
-  <meta property="og:title" content="Smartvark: Local Deals. Personalized."/>
+  <meta property="og:title" content="<%= content_for?(:title) ? content_for(:title) : controller.action_name.titlecase %> - Smartvark"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:image" content="<%= root_url %>images/touch-icon.png"/>
+  <meta property="og:image" content="<%= content_for?(:fb_img) ? content_for(:fb_img) : root_url + "images/touch-icon.png" %>"/>
   <meta property="og:site_name" content="Smartvark: Local Deals. Personalized."/>
   <meta property="og:url" content="<%= request.url %>"/>
-  <meta property="og:description" content="Artie the Aardvark tracks down deals that match your tastes. We don't spam you with junk you don't want. It's that simple. Oh, and we don't charge you for our deals. They're FREE."/>
+  <meta property="og:description" content="<%= content_for?(:fb_desc) ? content_for(:fb_desc) : "Artie the Aardvark tracks down deals that match your tastes. We don't spam you with junk you don't want. It's that simple. Oh, and we don't charge you for our deals. They're FREE."%>"/>
 </head>
 <body>
   <div id="wrapper">
     <div class="wrapper-holder">
       <div id="header">
-				<h1 class="logo"><%= link_to "Smartvark", home_path %></h1>
-				<div class="flash-holder" id="flash-<%=if notice then 'notice' else 'alert' end%>"><%= raw notice %><%= raw alert %></div>
+				<h1 class="logo"><%= link_to "Smartvark", home_path %><%= raw "<p>" + Rails.env.capitalize + " server</p>" unless Rails.env.production? %></h1>
 				<%= render :partial => 'layouts/account_area', locals: { new_user: !%w(forbusiness index).include?(controller.action_name) } %>
       </div>
       <div id="main">
@@ -45,8 +44,21 @@
 		<p>&copy; <%= Time.now.year %> Smartvark, Inc.<% if %w(deals mydeals).include?(controller.action_name) %> (some icons courtesy of <a href="http://glyphish.com/">glyphish.com</a>)<% elsif controller.action_name == "dealdashboard" || controller.controller_name == "businesses" %> (some icons courtesy of <a href="http://iconza.com/">iconza.com</a>)<% end %></p>
 	</div>
   <%= javascript_include_tag 'jquery', 'jquery-ui', 'jquery-plugins', 'rails' %>
-	<%= content_for?(:footer_additions) ? yield(:footer_additions) : nil -%>
+	<%= content_for?(:footer_additions) ? content_for(:footer_additions) : nil -%>
 	<%= javascript_include_tag 'application' %>
+  <% if notice || alert %>
+    <script type="text/javascript">
+      $(function(){
+        if ($.jnotify) {
+          <% if notice %>
+            $.jnotify("<%= notice %>");
+          <% elsif alert %>
+            $.jnotify("<%= alert %>","error");
+          <% end %>
+        }
+      });
+    </script>
+  <% end %>
 	<% if Rails.env.production? %>
     <!-- analytics -->
 		<script type="text/javascript">

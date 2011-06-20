@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
     :conditions => { :liked => false }
   has_many :redemptions
   has_many :user_audits
+  has_many :transactions
   has_and_belongs_to_many :categories
 
   has_attached_file :logo,
@@ -79,6 +80,27 @@ class User < ActiveRecord::Base
 
   def offers_sorted_for_dealdashboard(other_business_ids=nil)
     Offer.select('DISTINCT offers.*').includes([:businesses, :opinions, :redemptions]).joins(:businesses).where({:businesses => [:user_id >> id]}).order([:archived, :draft, :title])
+  end
+  
+  def paypal_encrypted(return_url, notify_url, num_credits, price, description)  
+    allow_quantity_change = (num_credits == 1 ? 1: 0) # only allow if buying one credit
+    values = {  
+      :business => PAYPAL_EMAIL,
+      :cmd => "_xclick",
+      :no_shipping => 1,
+      :return => return_url,
+      :email => email,
+      :custom => id,
+      :notify_url => notify_url,
+      :cert_id => PAYPAL_CERT_ID,
+      :amount => price,
+      :item_name => description,
+      :quantity => num_credits,
+      :undefined_quantity => allow_quantity_change
+    }
+   
+    signed = OpenSSL::PKCS7::sign(OpenSSL::X509::Certificate.new(APP_PAYPAL_CERT), OpenSSL::PKey::RSA.new(APP_PAYPAL_KEY, ''), values.map { |k, v| "#{k}=#{v}" }.join("\n"), [], OpenSSL::PKCS7::BINARY)  
+    OpenSSL::PKCS7::encrypt([OpenSSL::X509::Certificate.new(PAYPAL_CERT)], signed.to_der, OpenSSL::Cipher::Cipher::new("DES3"), OpenSSL::PKCS7::BINARY).to_s.gsub("\n", "")   
   end
   
   def self.find_for_facebook_oauth(data, signed_in_resource=nil)

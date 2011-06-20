@@ -27,4 +27,4 @@ gem "meta_where"
 gem "rack-rewrite"
 gem "hoptoad_notifier"
 gem "dalli", :group => [:production, :staging, :demo]
-gem "hirb"
+gem "activemerchant"

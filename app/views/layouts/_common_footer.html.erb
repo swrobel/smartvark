@@ -1,12 +1,19 @@
-<ul>
-  <li><%= link_to "what’s a smartvark anyway?", about_path %></li>
-  <li><%= link_to "privacy", privacy_path %></li>
-  <li><%= link_to "terms", terms_path %></li>
-  <% if false %>
-  <li><a href="/contact">our team</a></li>
-  <li><a href="/contact">contact</a></li>
-  <% end %>
-  <li><a href="http://twitter.com/smartvark" target="_blank">twitter</a></li>
-  <li><a href="http://facebook.com/smartvark" target="_blank">facebook</a></li>
-  <li><%= link_to "for businesses", biz_path %></li>
-</ul>
+<% if current_user && current_user.role == "business" %>
+  <ul>
+    <li><%= link_to "merchant agreement", agreement_path %></li>
+    <li><%= auto_link "questions? email bizsupport@smartvark.com or call us at (888) 740-3914".html_safe %>
+  </ul>
+<% else %>
+  <ul>
+    <li><%= link_to "what’s a smartvark anyway?", about_path %></li>
+    <li><%= link_to "privacy", privacy_path %></li>
+    <li><%= link_to "terms", terms_path %></li>
+    <% if false %>
+    <li><a href="/contact">our team</a></li>
+    <li><a href="/contact">contact</a></li>
+    <% end %>
+    <li><a href="http://twitter.com/smartvark" target="_blank">twitter</a></li>
+    <li><a href="http://facebook.com/smartvark" target="_blank">facebook</a></li>
+    <li><%= link_to "for businesses", biz_path %></li>
+  </ul>
+<% end %>

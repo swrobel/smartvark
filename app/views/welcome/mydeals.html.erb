@@ -1,4 +1,4 @@
-<% title "My Deals" %>
+<% content_for :title, "My Deals" %>
 <%= render :partial => 'search_box' %>
 <%= render :partial => 'nav' %>
 <!-- two-columns -->
@@ -54,7 +54,7 @@
   <script type="text/javascript">
     $(function(){
       if ($.jnotify) {
-        $.jnotify('Invite your friends to get in on the deals! <%= link_to "Click Here", new_user_invitation_path %>', 'warning', true)
+        $.jnotify('Invite your friends to get in on the deals! <%= link_to "Click Here", new_user_invitation_path %>', 'warning', true);
       }
     });
   </script>

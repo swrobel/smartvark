@@ -78,6 +78,7 @@ $(function(){
 	
 	if ($().jMapping) {
 		$('#map').jMapping({
+			default_zoom_level: 13,
 			default_point: {
 				lat: 34.0522342,
 				lng: -118.2436849
@@ -132,10 +133,6 @@ $(function(){
 				$("tr[class='"+bizIDs+" archived dashboard_row']").fadeOut("fast");
 			}
 		});
-	}
-    
-	if ($(".flash-holder").html() != "") {
-	    $(".flash-holder").show("drop", { direction: "up" }, 1000).delay(10000).hide("drop", { direction: "up" }, 1000);
 	}
 });
 function checkall_offer_form(n) {

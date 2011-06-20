@@ -1,0 +1,56 @@
+<% content_for :title, "Purchase Credits" %>
+<div class="wide-box business-box">
+	<div class="holder">
+		<div class="frame">
+			<h2>Purchase Offer Credits</h2>
+			<div class="business-holder">
+        <% if @offer %>
+          <p>Your account has <strong><%= current_user.credits %> credits</strong>. The offer you activated requires <strong><%= @offer.credits_required %> credits</strong> (<%= @offer.num_locations %> locations x <%= @offer.num_months %> months). For more details on how this is calculated, refer to the <%= link_to "Merchant Agreement", agreement_path %>.</p>
+        <% end %>
+        <table id="pricing">
+          <thead>
+            <tr>
+              <th class="pricingDescription">&nbsp;</th>
+              <th><h4>1 credit</h4></th>
+              <th class="pricingHighlighted"><h4>3 credits<small>Most Popular</small></h4></th>
+              <th><h4>6 credits</h4></th>
+              <th><h4>12 credits</h4></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="odd">
+              <td class="pricingDescription">Price<small>per credit</small></td>
+              <td>$250</td>
+              <td class="pricingHighlighted">$250</td>
+              <td>$250</td>
+              <td>$250</td>
+            </tr>
+            <tr>
+              <td class="pricingDescription">Discount<small>&nbsp;</small></td>
+              <td></td>
+              <td class="pricingHighlighted">-10%</td>
+              <td>-15%</td>
+              <td>-20%</td>
+            </tr>
+            <tr class="odd bottom">
+              <td class="pricingDescription">You pay<small>per credit</small></td>
+              <td>$250</td>
+              <td class="pricingHighlighted">$225</td>
+              <td>$212.50</td>
+              <td>$200</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="pricingDescription">&nbsp;</td>
+              <td><%= pay_button(1, 250) %></td>
+              <td class="pricingHighlighted"><%= pay_button(3, 225) %></td>
+              <td><%= pay_button(6, 212.5) %></td>
+              <td><%= pay_button(12, 200) %></td>
+            </tr>
+          </tfoot>
+        </table>
+			</div><!-- business-holder end -->
+		</div>
+	</div>
+</div><!-- business-box end -->

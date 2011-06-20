@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110613034106) do
+ActiveRecord::Schema.define(:version => 20110620210342) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(:version => 20110613034106) do
     t.datetime "updated_at"
     t.string   "cached_slug"
     t.integer  "credits_used"
+    t.boolean  "new_cust_only"
   end
 
   add_index "offers", ["archived", "draft", "start_date", "end_date", "category_id", "offer_type_id", "allow_mobile"], :name => "by_attributes"

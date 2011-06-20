@@ -29,7 +29,8 @@ class Offer < ActiveRecord::Base
   before_update :unarchive_if_draft_or_activated
   
   HUMANIZED_ATTRIBUTES = {
-    :businesses => ""
+    :businesses => "",
+    :new_cust_only => "Limit this offer to new customers only"
   }
   
   validates :offer_type_id, :presence => true

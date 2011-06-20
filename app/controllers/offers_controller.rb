@@ -49,7 +49,8 @@ class OffersController < ApplicationController
     :start_date => Time.now,
     :end_date => 1.month.from_now,
     :allow_print => true,
-    :allow_mobile => true
+    :allow_mobile => true,
+    :new_cust_only => false
     )
 
     @businesses = current_user.businesses
@@ -104,16 +105,17 @@ class OffersController < ApplicationController
   # PUT /offers/1
   # PUT /offers/1.xml
   def update
-    @offer = Offer.find(params[:id])
     @businesses = current_user.businesses
-    
-    activated = params[:offer][:draft] == "false"
-    params[:offer][:draft] = (@offer.credits_required - @offer.credits_used) > current_user.credits
+    @offer = Offer.find(params[:id])
     credits_already_used = @offer.credits_used
-    params[:offer][:credits_used] = @offer.credits_required if activated
+    @offer.attributes = params[:offer]
+    
+    activated = !@offer.draft
+    @offer.draft = (@offer.credits_required - @offer.credits_used) > current_user.credits
+    @offer.credits_used = @offer.credits_required unless @offer.draft
 
     respond_to do |format|
-      if @offer.update_attributes(params[:offer])
+      if @offer.save
         # Offer has been updated, now deduct appropriate # of credits
         unless @offer.draft || credits_already_used >= @offer.credits_used
           current_user.credits -= (@offer.credits_used - credits_already_used)

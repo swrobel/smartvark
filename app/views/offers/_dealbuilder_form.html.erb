@@ -121,6 +121,12 @@
         <span>Allow redemptions from a mobile phone screen</span>
       </div>
     </div>
+    <div class="row check">
+      <div class="left">
+          <%= f.check_box :new_cust_only, :class => :chk %>
+          <%= f.label :new_cust_only %>
+      </div>
+    </div>
     <%= f.hidden_field :draft %>
     <div class="btns-holder">
     <div class="center">

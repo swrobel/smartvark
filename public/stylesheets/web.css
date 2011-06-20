@@ -859,6 +859,7 @@ td, th{padding:0;}
 	background:url(/images/sep-menu.gif) no-repeat 0 5px;
 	margin:0 0 0 -1px;
 }
+#header .menu li:first-child{background:none;}
 #header .menu a{color:#238ecb;}
 /* twocolumns */
 .twocolumns{margin:0 7px 0 -4px;}

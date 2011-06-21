@@ -89,6 +89,7 @@ class User < ActiveRecord::Base
       :cmd => "_xclick",
       :no_shipping => 1,
       :return => return_url,
+      :rm => 1, # send user back to our site using GET instead of POST
       :email => email,
       :custom => id,
       :notify_url => notify_url,

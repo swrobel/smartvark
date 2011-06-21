@@ -140,8 +140,8 @@ ActiveRecord::Schema.define(:version => 20110620210342) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cached_slug"
-    t.integer  "credits_used"
     t.boolean  "new_cust_only"
+    t.integer  "credits_used",                    :default => 0
   end
 
   add_index "offers", ["archived", "draft", "start_date", "end_date", "category_id", "offer_type_id", "allow_mobile"], :name => "by_attributes"

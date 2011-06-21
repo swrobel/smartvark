@@ -99,7 +99,7 @@ private
     elsif request.fullpath != "/" && request.fullpath != "/deals"
       flash[:alert] = "You are not signed in or are not permitted to do that."
     end
-    logger.info "Redirecting to " + home_path
+    logger.info "Redirecting to #{home_path}"
     redirect_to home_path
   end
 end

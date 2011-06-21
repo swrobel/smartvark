@@ -19,7 +19,7 @@ module ApplicationHelper
       if offer.logo.file?
         logo = image_tag(offer.logo.url(:thumb))
       else
-        logo = "<p><strong>" + offer.user.name + "</strong></p>"
+        logo = "<p><strong>#{offer.user.name}</strong></p>"
       end
     end
     link_to(
@@ -37,7 +37,7 @@ module ApplicationHelper
       if offer.logo.file?
         logo = image_tag(offer.logo.url(:thumb))
       else
-        logo = "<p><strong>" + offer.user.name + "</strong></p>"
+        logo = "<p><strong>#{offer.user.name}</strong></p>"
       end
     end
     type_name = offer.offer_type.name if offer.offer_type
@@ -63,14 +63,14 @@ module ApplicationHelper
       if offer.logo.file?
         logo = image_tag(offer.logo.url(:thumb))
       else
-        logo = "<p><strong>" + offer.user.name + "</strong></p>"
+        logo = "<p><strong>#{offer.user.name}</strong></p>"
       end
     end
     if current_user && current_user.role == "business"
       if current_user.logo.file?
         logo = image_tag(current_user.logo.url(:thumb))
       else
-        logo = "<p><strong>" + current_user.name + "</strong></p>"
+        logo = "<p><strong>#{current_user.name}</strong></p>"
       end
     end
     type_name = offer.offer_type.name if offer.offer_type
@@ -108,9 +108,9 @@ module ApplicationHelper
     undo_link = link_to("Undo", { controller: "welcome", action: "undo_last_action", liked: liked_bit }, method: :post, remote: true)
     res = '<span class="mark">'
     if liked
-      res << "You added <strong>#{offer.title}</strong> to My Picks. " + undo_link + " or " + use_it_now_link(offer) + "."
+      res << "You added <strong>#{offer.title}</strong> to My Picks. #{undo_link} or #{use_it_now_link(offer)}."
     else
-      res << "You removed <strong>#{offer.title}</strong> from Artie's Picks. " + undo_link + "."
+      res << "You removed <strong>#{offer.title}</strong> from Artie's Picks. #{undo_link}."
     end
     res << "</span>"
   end
@@ -149,7 +149,7 @@ module ApplicationHelper
     form_tag ActiveMerchant::Billing::Integrations::Paypal.service_url do
       hidden_field_tag(:cmd, "_s-xclick") +
       hidden_field_tag(:encrypted, current_user.paypal_encrypted(paypal_return_url, ppipn_url, num_credits, price, "Smartvark credit")) +
-      image_submit_tag("http://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif", alt: "PayPal - The safer, easier way to pay online!", name: "submit")
+      image_submit_tag("http://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif", alt: "Pay Now", name: "submit")
     end
   end
 end

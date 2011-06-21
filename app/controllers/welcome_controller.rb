@@ -179,7 +179,7 @@ class WelcomeController < ApplicationController
   def paypal_return
     raise CanCan::AccessDenied unless can? :read, :purchase_credits
     @offer = Offer.find(session[:pending_offer_id], :include => [:businesses]) if session[:pending_offer_id]
-    flash[:notice] = "Your account now has " + current_user.credits + " credit" + ("s" if current_user.credits != 1)
+    flash[:notice] = "Your account now has #{current_user.credits} credit" + ("s" if current_user.credits != 1)
     if @offer
       redirect_to edit_offer_path(@offer.id)
     else

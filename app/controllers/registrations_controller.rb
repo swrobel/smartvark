@@ -18,7 +18,7 @@ class RegistrationsController < Devise::RegistrationsController
       flash[:alert] = "Could not complete signup. See errors below."
       flash[:error] = "<ul>"
       resource.errors.full_messages.each do |msg|
-        flash[:error] += "<li>" + msg + "</li>"
+        flash[:error] += "<li>#{msg}</li>"
       end
       flash[:error] += "</ul>"
       clean_up_passwords(resource)
@@ -37,7 +37,7 @@ class RegistrationsController < Devise::RegistrationsController
       flash[:alert] = "Could not update your account. See errors below."
       flash[:error] = "<ul>"
       resource.errors.full_messages.each do |msg|
-        flash[:error] += "<li>" + msg + "</li>"
+        flash[:error] += "<li>#{msg}</li>"
       end
       flash[:error] += "</ul>"
       clean_up_passwords(resource)

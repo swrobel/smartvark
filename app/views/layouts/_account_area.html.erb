@@ -17,7 +17,7 @@
     <div class="frame">
       <ul class="menu">
         <li><%= link_to_unless_current 'dashboard', dealdashboard_path %></li>
-				<% if current_user.businesses.count > 0 %>
+				<% if current_user.businesses.count > 0 && current_user.businesses.last.persisted? %>
 					<li><%= link_to_unless_current 'business profile', edit_business_path(current_user.businesses.last) %></li>
 				<% else %>
 					<li><%= link_to_unless_current 'business profile', new_business_path %></li>

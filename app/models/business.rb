@@ -18,7 +18,6 @@ class Business < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :short_name, :length => { :maximum => 20 }
-  validates :address, :presence => true
   validates :city, :presence => true
   validates :state, :presence => true
   validates :zipcode, :presence => true

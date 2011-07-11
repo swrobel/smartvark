@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110620210342) do
+ActiveRecord::Schema.define(:version => 20110710203843) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -140,8 +140,9 @@ ActiveRecord::Schema.define(:version => 20110620210342) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cached_slug"
-    t.boolean  "new_cust_only"
     t.integer  "credits_used",                    :default => 0
+    t.boolean  "new_cust_only"
+    t.string   "redemption_link"
   end
 
   add_index "offers", ["archived", "draft", "start_date", "end_date", "category_id", "offer_type_id", "allow_mobile"], :name => "by_attributes"
@@ -167,7 +168,7 @@ ActiveRecord::Schema.define(:version => 20110620210342) do
   end
 
   create_table "redemptions", :force => true do |t|
-    t.integer  "qty",                :limit => 2
+    t.integer  "qty"
     t.integer  "user_id"
     t.integer  "offer_id"
     t.string   "transaction_number", :limit => 50
@@ -216,40 +217,40 @@ ActiveRecord::Schema.define(:version => 20110620210342) do
   add_index "user_audits", ["user_id"], :name => "index_user_audits_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "",     :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => ""
-    t.string   "name",                   :limit => 100
-    t.string   "address",                :limit => 100
-    t.string   "city",                   :limit => 50
-    t.string   "state",                  :limit => 2
-    t.string   "zipcode",                :limit => 10
-    t.string   "phone",                  :limit => 12
-    t.string   "gender",                 :limit => 1
+    t.string   "email",                               :default => "",     :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => ""
+    t.string   "name",                 :limit => 100
+    t.string   "address",              :limit => 100
+    t.string   "city",                 :limit => 50
+    t.string   "state",                :limit => 2
+    t.string   "zipcode",              :limit => 10
+    t.string   "phone",                :limit => 12
+    t.string   "gender",               :limit => 1
     t.date     "birthday"
-    t.string   "role",                                  :default => "user"
+    t.string   "role",                                :default => "user"
     t.integer  "category_id"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
+    t.integer  "sign_in_count",                       :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "logo_file_name"
     t.integer  "logo_file_size"
     t.string   "logo_content_type"
     t.datetime "logo_updated_at"
-    t.string   "invitation_token",       :limit => 60
+    t.string   "invitation_token",     :limit => 60
     t.datetime "invitation_sent_at"
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.datetime "contract_accepted_at"
-    t.boolean  "facebook_user",                         :default => false
-    t.integer  "credits",                               :default => 0
+    t.boolean  "facebook_user",                       :default => false
+    t.integer  "credits",                             :default => 0
+    t.boolean  "web_redemptions",                     :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

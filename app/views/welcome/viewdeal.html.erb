@@ -42,10 +42,14 @@
 							<%= render :partial => 'offer_address', :object => @offer %>
 							<% if @offer.expired? %>
 								<%= image_tag('btn-expired.gif') %>
+							<% elsif !current_user %>
+								<%= link_to "Redeem", "#", :id => "btn-redeem-signup-open", :class => :btn %>
+							<% elsif @offer.redemption_link.blank? %>
+								<%= link_to "Redeem", "#", :id => "btn-redeem-open", :class => :btn %>
+								<%= render :partial => 'redeem' %>
 							<% else %>
-								<a href="" id="btn-redeem<%= '-signup' unless logged_in? %>-open" class="btn">Redeem</a>
-									<%= render :partial => 'redeem' %>
-								<% end %>
+								<%= link_to "Redeem", redeem_path(@offer), :class => :btn %>
+							<% end %>
 					</div>
 				</div>
 				<div class="information">

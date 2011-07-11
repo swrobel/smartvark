@@ -85,6 +85,12 @@
   </div><!-- /text-box end -->
 
   <div class='form1'>
+    <% if current_user.web_redemptions %>
+    <div class="row">
+      <%= f.label :redemption_link %>
+      <%= f.text_field :redemption_link, :class => "txt txt-wide" %>
+    </div>
+    <% end %>
     <div class="row">
       <div class="left">
         <%= f.label :redemption_code %>

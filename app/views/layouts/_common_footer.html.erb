@@ -1,7 +1,7 @@
 <% if current_user && current_user.role == "business" %>
   <ul>
     <li><%= link_to "merchant agreement", agreement_path %></li>
-    <li><%= raw auto_link "questions? email bizsupport@smartvark.com or call us at (888) 740-3914" %>
+    <li><%= raw auto_link "questions? email support@smartvark.com or call us at (888) 740-3914" %>
   </ul>
 <% else %>
   <ul>

@@ -27,3 +27,4 @@ gem "rack-rewrite"
 gem "hoptoad_notifier"
 gem "dalli", :group => [:production, :staging, :demo]
 gem "activemerchant"
+gem "remote_syslog_logger", :group => :production

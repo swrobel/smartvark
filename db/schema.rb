@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110726035716) do
+ActiveRecord::Schema.define(:version => 20110726043314) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -133,8 +133,8 @@ ActiveRecord::Schema.define(:version => 20110726035716) do
     t.date     "end_date"
     t.integer  "offer_type_id"
     t.integer  "category_id"
-    t.boolean  "allow_print"
-    t.boolean  "allow_mobile"
+    t.boolean  "allow_print",                     :default => true
+    t.boolean  "allow_mobile",                    :default => true
     t.boolean  "archived",                        :default => false
     t.boolean  "draft",                           :default => false
     t.datetime "created_at"
@@ -143,6 +143,10 @@ ActiveRecord::Schema.define(:version => 20110726035716) do
     t.integer  "credits_used",                    :default => 0
     t.string   "redemption_link"
     t.boolean  "new_cust_only",                   :default => false
+    t.integer  "yipit_id"
+    t.string   "source"
+    t.string   "image_url_big"
+    t.string   "image_url_small"
   end
 
   add_index "offers", ["archived", "draft", "start_date", "end_date", "category_id", "offer_type_id", "allow_mobile"], :name => "by_attributes"

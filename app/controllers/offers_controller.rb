@@ -47,10 +47,7 @@ class OffersController < ApplicationController
     @offer = Offer.new(
     :category_id => current_user.category_id,
     :start_date => Time.now,
-    :end_date => 1.month.from_now,
-    :allow_print => true,
-    :allow_mobile => true,
-    :new_cust_only => false
+    :end_date => 1.month.from_now
     )
 
     @businesses = current_user.businesses

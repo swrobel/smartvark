@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  yipit_slug: MyString
+  category_id: 
+
+two:
+  yipit_slug: MyString
+  category_id: 

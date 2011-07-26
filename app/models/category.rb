@@ -7,6 +7,7 @@ class Category < ActiveRecord::Base
   has_many :offers
   has_many :users
   has_and_belongs_to_many :users
+  has_many :yipit_categories
 
   def clever_or_name
     clever_name.blank? ? name : clever_name

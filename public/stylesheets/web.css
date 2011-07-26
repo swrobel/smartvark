@@ -490,6 +490,8 @@ td, th{padding:0;}
 .gallery ul .frame img{
     vertical-align:middle;
     border:none;
+    max-width:120px;
+    max-height:120px;
 }
 .gallery ul .frame a:hover img{border-color:#add2ee;}
 /* rate box */
@@ -1699,9 +1701,11 @@ a.facebook-signin{
 	float:left;
 	position:relative;
 	left:-50%;
-	/*background:#ccc;*/
 }
-
+.coupon .add-logo img{
+    max-width:120px;
+    max-height:120px;
+}
 .coupon .add-logo a{
 	color:#000;
 	font-size:18px;

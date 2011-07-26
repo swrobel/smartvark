@@ -52,6 +52,10 @@
   font:20px/22px 'Trebuchet MS', Arial, sans-serif;
   color:#000000;
 }
+.coupon .add-logo img{
+    max-width:120px;
+    max-height:120px;
+}
 .coupon .subttl{
 	font-size:18px;
 	line-height:22px;
@@ -101,6 +105,10 @@
 .frame a .img_box p strong{
 	color:#000000;
 	text-transform:none;
+}
+.frame a .img_box img{
+	max-width:120px;
+    max-height:120px;
 }
 .frame a strong img{
 	vertical-align:top;

@@ -20,7 +20,6 @@ class Business < ActiveRecord::Base
   validates :short_name, :length => { :maximum => 20 }
   validates :city, :presence => true
   validates :state, :presence => true
-  validates :zipcode, :presence => true
   validates :phone, :phone_format => true
   
   def self.human_attribute_name(attr, options={})

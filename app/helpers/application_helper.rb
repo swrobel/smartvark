@@ -15,7 +15,9 @@ module ApplicationHelper
 
   def deal_coupon(offer)
     logo = "missing logo"
-    if offer.user
+    if offer.image_url_small
+      logo = image_tag(offer.image_url_small)
+    elsif offer.user
       if offer.logo.file?
         logo = image_tag(offer.logo.url(:thumb))
       else
@@ -33,7 +35,9 @@ module ApplicationHelper
   
   def mobile_coupon(offer)
     logo = "missing logo"
-    if offer.user
+    if offer.image_url_small
+      logo = image_tag(offer.image_url_small)
+    elsif offer.user
       if offer.logo.file?
         logo = image_tag(offer.logo.url(:thumb))
       else
@@ -59,7 +63,9 @@ module ApplicationHelper
 
   def coupon(offer)
     logo = "missing logo"
-    if offer.user
+    if offer.image_url_small
+      logo = image_tag(offer.image_url_small)
+    elsif offer.user
       if offer.logo.file?
         logo = image_tag(offer.logo.url(:thumb))
       else
@@ -90,13 +96,13 @@ module ApplicationHelper
   end
   
   def info_for_rollover(offer)
-    escape_javascript("<strong class=\"title\">#{offer.user.name}: #{offer.title}</strong><p>#{offer.description}</p><p>#{offer.fine_print}</p><p>Expires #{std_date(offer.end_date)}</p>")
+    escape_javascript("<strong class=\"title\">#{offer.user.name.blank? ? offer.businesses.first.name : offer.user.name}: #{offer.title}</strong><p>#{offer.description}</p><p>#{offer.fine_print}</p><p>Expires #{std_date(offer.end_date)}</p>")
   end
 
   def list_offer(offer)
     "<li id='my_offer_#{offer.id}'>" +
     hidden_field_tag("user[offer_ids][]", offer.id) +
-    link_to("<h3>#{offer.user.name}: #{offer.title}</h3>".html_safe, viewdeal_path(offer),
+    link_to("<h3>#{offer.user.name.blank? ? offer.businesses.first.name : offer.user.name}: #{offer.title}</h3>".html_safe, viewdeal_path(offer),
       :onMouseOver => "$('#offer_info_rollover').html('#{info_for_rollover(offer)}');",
       :onMouseOut => "$('#offer_info_rollover').empty();"
     ) +

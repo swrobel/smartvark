@@ -33,7 +33,9 @@
 				</div>
 				<div class="info-area">
 						<div class="img">
-							<% if @offer.logo.file? %>
+							<% if @offer.image_url_big %>
+								<%= image_tag @offer.image_url_big, :alt => @offer.businesses.first.name + " logo" %>
+							<% elsif @offer.logo.file? %>
 								<%= image_tag @offer.logo.url, :alt => @offer.user.name + " logo" %>
 							<% end %>
 						</div>

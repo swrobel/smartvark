@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20110726043314) do
     t.datetime "updated_at"
     t.string   "cached_slug"
     t.string   "website"
+    t.integer  "yipit_id"
   end
 
   add_index "businesses", ["cached_slug"], :name => "index_businesses_on_cached_slug", :unique => true

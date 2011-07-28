@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  import_id: 1
+  offer_id: 1
+  yipit_id: 1
+  data: MyText
+  errors: MyText
+
+two:
+  import_id: 1
+  offer_id: 1
+  yipit_id: 1
+  data: MyText
+  errors: MyText

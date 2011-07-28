@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110726043314) do
+ActiveRecord::Schema.define(:version => 20110728015116) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -116,6 +116,14 @@ ActiveRecord::Schema.define(:version => 20110726043314) do
   add_index "geocodings", ["geocodable_id"], :name => "geocodings_geocodable_id_index"
   add_index "geocodings", ["geocodable_type"], :name => "geocodings_geocodable_type_index"
   add_index "geocodings", ["geocode_id"], :name => "geocodings_geocode_id_index"
+
+  create_table "imports", :force => true do |t|
+    t.integer  "source_rows"
+    t.integer  "success_rows"
+    t.text     "errors"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "offer_types", :force => true do |t|
     t.string   "name",       :limit => 20
@@ -266,6 +274,18 @@ ActiveRecord::Schema.define(:version => 20110726043314) do
   create_table "yipit_categories", :force => true do |t|
     t.string   "yipit_slug"
     t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "yipit_rows", :force => true do |t|
+    t.integer  "import_id"
+    t.integer  "offer_id"
+    t.integer  "yipit_id"
+    t.boolean  "created_biz"
+    t.boolean  "created_offer"
+    t.text     "data"
+    t.text     "errors"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

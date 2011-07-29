@@ -3,7 +3,7 @@ class CreateImports < ActiveRecord::Migration
     create_table :imports do |t|
       t.integer :source_rows
       t.integer :success_rows
-      t.text :errors
+      t.text :import_errors
       t.timestamps
     end
   end

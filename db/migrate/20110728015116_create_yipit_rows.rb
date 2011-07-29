@@ -6,8 +6,8 @@ class CreateYipitRows < ActiveRecord::Migration
       t.integer :yipit_id
       t.boolean :created_biz
       t.boolean :created_offer
-      t.text :data
-      t.text :errors
+      t.text :row_data
+      t.text :row_errors
 
       t.timestamps
     end

@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(:version => 20110728015116) do
   create_table "imports", :force => true do |t|
     t.integer  "source_rows"
     t.integer  "success_rows"
-    t.text     "errors"
+    t.text     "import_errors"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -284,8 +284,8 @@ ActiveRecord::Schema.define(:version => 20110728015116) do
     t.integer  "yipit_id"
     t.boolean  "created_biz"
     t.boolean  "created_offer"
-    t.text     "data"
-    t.text     "errors"
+    t.text     "row_data"
+    t.text     "row_errors"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

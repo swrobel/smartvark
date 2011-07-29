@@ -1,6 +1,6 @@
 class YipitRow < ActiveRecord::Base
-  serialize :data
-  serialize :errors
+  serialize :row_data
+  serialize :row_errors
 
   belongs_to :import
   belongs_to :offer

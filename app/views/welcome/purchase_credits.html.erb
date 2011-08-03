@@ -40,15 +40,27 @@
               <td>$200</td>
             </tr>
           </tbody>
-          <tfoot>
-            <tr>
-              <td class="pricingDescription">&nbsp;</td>
-              <td><%= pay_button(1, 250) %></td>
-              <td class="pricingHighlighted"><%= pay_button(3, 225) %></td>
-              <td><%= pay_button(6, 212.5) %></td>
-              <td><%= pay_button(12, 200) %></td>
-            </tr>
-          </tfoot>
+          <% if current_user.role == "admin" %>
+            <tfoot>
+              <tr>
+                <td class="pricingDescription">&nbsp;</td>
+                <td><%= pay_button(1, 5) %></td>
+                <td class="pricingHighlighted"><%= pay_button(3, 5) %></td>
+                <td><%= pay_button(6, 5) %></td>
+                <td><%= pay_button(12, 5) %></td>
+              </tr>
+            </tfoot>
+          <% else %>
+            <tfoot>
+              <tr>
+                <td class="pricingDescription">&nbsp;</td>
+                <td><%= pay_button(1, 250) %></td>
+                <td class="pricingHighlighted"><%= pay_button(3, 225) %></td>
+                <td><%= pay_button(6, 212.5) %></td>
+                <td><%= pay_button(12, 200) %></td>
+              </tr>
+            </tfoot>
+          <% end %>
         </table>
 			</div><!-- business-holder end -->
 		</div>

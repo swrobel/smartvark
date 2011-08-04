@@ -21,11 +21,14 @@ class Import < ActiveRecord::Base
       row_errors = []
       created_biz = false
 
+      row_errors << "No locations for business" if biz["locations"] == []
+
       biz["locations"].each { |loc|
         begin
           business = Business.find_by_yipit_id(loc["id"])
           unless business
             business = user.businesses.create!(yipit_id: loc["id"], name: biz["name"], address: loc["address"], city: loc["smart_locality"], state: loc["state"], zipcode: loc["zip_code"], phone: loc["phone"], website: biz["url"])
+            logger.info business
             created_biz = true
           end
           business_ids << business.id
@@ -41,13 +44,15 @@ class Import < ActiveRecord::Base
           offer = user.offers.create!(yipit_id: deal["id"], offer_type_id: offer_type_id, category_id: category_id, business_ids: business_ids, title: deal["yipit_title"], description: deal["title"], start_date: deal["date_added"], end_date: deal["end_date"], redemption_link: deal["url"], source: deal["source"]["name"], image_url_big: deal["images"]["image_big"], image_url_small: deal["images"]["image_small"])
           created_offer = true
         end
-        self.success_rows += 1
+        self.success_rows += 1 if offer
       rescue Exception => ex
         row_errors << ex
       ensure
         offer_id = offer.nil? ? nil : offer.id
+        row_errors = nil if row_errors == []
         self.yipit_rows.create(yipit_id: deal["id"], offer_id: offer_id, created_offer: created_offer, created_biz: created_biz, row_data: deal, row_errors: row_errors)
       end
     }
+  return nil
   end
 end

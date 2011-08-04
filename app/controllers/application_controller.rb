@@ -20,16 +20,16 @@ class ApplicationController < ActionController::Base
 protected
   
   def geo_location
-    # IP LOCATION DISABLED DUE TO INACCURACY
     # workaround because remote_location returns a bunk value when running on localhost
-    #if Rails.env.development?
-    #  ip_location = LA
-    #else
-    #  ip_location = remote_location
-    #  ip_location = Geocode.create_from_location(ip_location) if ip_location
-    #end
+    if Rails.env.development?
+      ip_location = LA
+    else
+      ip_location = request.location
+      logger.info request.location
+      ip_location = Geocode.create_from_location(ip_location) if ip_location
+    end
     
-    #loc = ip_location || LA
+    loc = ip_location || LA
     
     loc = LA
     if current_user

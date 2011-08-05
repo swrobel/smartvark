@@ -25,9 +25,11 @@ protected
       ip_location = LA
     else
       ip_location = request.location
+      logger.info ip_location
+      logger.info ip_location.latitude.to_s+","+ip_location.longitude.to_s
       ip_location = Geocode.find_or_create_by_query(ip_location.latitude.to_s+","+ip_location.longitude.to_s)
     end
-    
+    logger.info ip_location
     loc = ip_location || LA
     
     loc = LA

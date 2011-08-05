@@ -11,7 +11,6 @@ class Ability
         can :read, :redeem
         # Below are here until invite system is removed, then Everyone at bottom
         can :read, :mypicks
-        can :read, :search
       elsif user.role == "business"
         can :read, :mydeals
         can :read, :dealdashboard
@@ -31,6 +30,7 @@ class Ability
       can :read, :deals
     end
     # Everyone can see these
+    can :read, :search
     can :read, :viewdeal
     can :read, :viewbusiness
   end

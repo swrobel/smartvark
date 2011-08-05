@@ -158,4 +158,13 @@ module ApplicationHelper
       image_submit_tag("http://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif", alt: "Pay Now", name: "submit")
     end
   end
+
+  def geo_location_formatted
+    loc = geo_location
+    result = ""
+    result << loc.locality.to_s + ", " if loc.locality
+    result << loc.region.to_s
+    result << " " + loc.postal_code if loc.postal_code
+    result
+  end
 end

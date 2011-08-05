@@ -121,9 +121,13 @@ module ApplicationHelper
     res << "</span>"
   end
 
-  def use_it_now_link offer
+  def use_it_now_link(offer)
     if logged_in?
-      link_to("Use It Now", viewdeal_path(offer), {:class => "link"})
+      if offer.redemption_link.blank?
+        link_to("Use It Now", viewdeal_path(offer), {:class => "link"})
+      else
+        link_to("Get It Now", redeem_path(offer), {:class => "link"})
+      end
     else
       link_to_function("Use It Now", "$('#signup-popup').modal();", {:class => "link"})
     end

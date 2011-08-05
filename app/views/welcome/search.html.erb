@@ -20,6 +20,7 @@
             We couldn't find any deals for your search. You can search again or go back to <%= link_to 'my deals', mydeals_url %>.
           <% else %>
             <%= render :partial => 'search_offer', :collection => @offers %>
+            <p><a href="http://yipit.com" target="_blank">Powered by <%= image_tag "/images/yipit.jpg", :alt => "yipit", :title => "yipit.com" %> Click for more deals and coupons.</a></p>
           <% end%>
         </div>
       </div>

@@ -25,7 +25,7 @@ protected
       ip_location = LA
     else
       ip_location = request.location
-      ip_location = Geocode.create_from_location(Location.new(:latitude => ip_location.latitude, :longitude => ip_location.longitude) if ip_location
+      ip_location = Geocode.create_from_location(Location.new(:latitude => ip_location.latitude, :longitude => ip_location.longitude)) if ip_location
     end
     
     loc = ip_location || LA

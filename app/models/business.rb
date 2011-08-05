@@ -27,7 +27,7 @@ class Business < ActiveRecord::Base
   end
 
   def self.ids_close_to(loc)
-    Business.origin(loc, :within => 25).order("distance").collect {|x| x.id}
+    Business.origin(loc, :within => 10).order("distance").collect {|x| x.id}
   end
   
   def formatted_phone

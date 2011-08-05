@@ -55,7 +55,7 @@ class WelcomeController < ApplicationController
     
     # Set location based on user's input and display an error if Google can't find it
     if request.post? && params[:location]
-      geo_loc = Geocode.create_by_query(params[:location]) rescue nil
+      geo_loc = Geocode.find_or_create_by_query(params[:location]) rescue nil
       if geo_loc
         cookies.permanent.signed[:geo_location] = Marshal.dump(geo_loc)
       else
@@ -142,7 +142,7 @@ class WelcomeController < ApplicationController
     @category_id = params[:category_id].blank? ? 1 : Category.find(params[:category_id]).id
     cat = @category_id
     terms = '%' + params[:search_terms] + '%'
-    loc = Geocode.create_by_query(params[:location]) if params[:location] rescue nil
+    loc = Geocode.find_or_create_by_query(params[:location]) if params[:location] rescue nil
     loc ||= geo_location
     
     @offers = Offer.active.joins(:businesses).joins(:category).where(

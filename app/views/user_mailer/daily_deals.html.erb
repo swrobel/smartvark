@@ -405,10 +405,6 @@
     #utility div{
     /*@editable*/ text-align:center;
     }
-    
-    #monkeyRewards img{
-    max-width:190px;
-    }
   </style>
   </head>
   <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
@@ -425,8 +421,8 @@
                   <table border="0" cellpadding="10" cellspacing="0" width="100%">
                     <tr>
                       <td valign="top">
-                        <div mc:edit="std_preheader_content">
-                           Use this area to offer a short teaser of your email's content. Text here will show in the preview area of some email clients.
+                        <div>
+                           Artie the Aardvark scours the local deals scene and sends you 2 deals he thinks you'll love every day
                         </div>
                       </td>
                     </tr>
@@ -444,11 +440,10 @@
                   <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader">
                     <tr>
                       <td class="headerContent">
-                      
                         <!-- // Begin Module: Standard Header Image \\ -->
-                        <img src="http://gallery.mailchimp.com/653153ae841fd11de66ad181a/images/placeholder_600.gif" style="max-width:600px;" id="headerImage campaign-icon" mc:label="header_image" mc:edit="header_image" mc:allowdesigner mc:allowtext />
+                        <img src="http://smartvark.s3.amazonaws.com/assets/smartvarklogo_with_tagline_small.jpg" style="max-width:600px;" id="headerImage campaign-icon" />
                         <!-- // End Module: Standard Header Image \\ -->
-                      
+                        <h1>Choose your deal</h1>
                       </td>
                     </tr>
                   </table>
@@ -464,13 +459,12 @@
                       
                         <!-- // Begin Module: Top Image with Content \\ -->
                         <table border="0" cellpadding="20" cellspacing="0" width="100%">
-                          <tr mc:repeatable>
+                          <tr>
                             <td valign="top">
-                              <img src="http://gallery.mailchimp.com/653153ae841fd11de66ad181a/images/placeholder_260.gif" style="max-width:260px;" mc:label="image" mc:edit="tiwc300_image00" />
-                              <div mc:edit="tiwc300_content00">
-                               <h4 class="h4">Heading 4</h4>
-                                 <strong>Repeatable content blocks:</strong> Repeatable sections are noted with plus and minus signs so that you can add and subtract content blocks. You can also <a href="http://www.mailchimp.com/kb/article/how-do-i-work-with-repeatable-content-blocks" target="_blank">get a little fancy</a>: repeat blocks and remove all text to make image "gallery" sections, or do the opposite and remove images for text-only blocks!
-
+                              <%= image_tag @offer_1.image_url_small %>
+                              <div>
+                               <h4 class="h4"><%= @offer_1.title %></h4>
+                               <%= @offer_1.description %>
                               </div>
                             </td>
                           </tr>
@@ -482,13 +476,12 @@
                       
                         <!-- // Begin Module: Top Image with Content \\ -->
                         <table border="0" cellpadding="20" cellspacing="0" width="100%">
-                          <tr mc:repeatable>
+                          <tr>
                             <td valign="top">
-                              <img src="http://gallery.mailchimp.com/653153ae841fd11de66ad181a/images/placeholder_260.gif" style="max-width:260px;" mc:label="image" mc:edit="tiwc300_image01" />
-                              <div mc:edit="tiwc300_content01">
-                               <h4 class="h4">Heading 4</h4>
-                                 <strong>Repeatable content blocks:</strong> Repeatable sections are noted with plus and minus signs so that you can add and subtract content blocks. You can also <a href="http://www.mailchimp.com/kb/article/how-do-i-work-with-repeatable-content-blocks" target="_blank">get a little fancy</a>: repeat blocks and remove all text to make image "gallery" sections, or do the opposite and remove images for text-only blocks!
-
+                              <%= image_tag @offer_2.image_url_small %>
+                              <div>
+                               <h4 class="h4"><%= @offer_2.title %></h4>
+                               <%= @offer_2.description %>
                               </div>
                             </td>
                           </tr>
@@ -504,15 +497,8 @@
                         <table border="0" cellpadding="20" cellspacing="0" width="100%">
                           <tr>
                             <td valign="top">
-                              <div mc:edit="std_content00">
-                                <h1 class="h1">Heading 1</h1>
-                                <h2 class="h2">Heading 2</h2>
-                                <h3 class="h3">Heading 3</h3>
-                                <h4 class="h4">Heading 4</h4>
-                                <strong>Getting started:</strong> Customize your template by clicking on the style editor tabs up above. Set your fonts, colors, and styles. After setting your styling is all done you can click here in this area, delete the text, and start adding your own awesome content!
-                                <br />
-                                <br />
-                                After you enter your content, highlight the text you want to style and select the options you set in the style editor in the "styles" drop down box. Want to <a href="http://www.mailchimp.com/kb/article/im-using-the-style-designer-and-i-cant-get-my-formatting-to-change" target="_blank">get rid of styling on a bit of text</a>, but having trouble doing it? Just use the "remove formatting" button to strip the text of any formatting and reset your style.
+                              <div>
+                                <%= link_to "<h2>Not happy with the choices above? See more at Smartvark.com</h2>".html_safe, root_url %>
                               </div>
               </td>
                           </tr>
@@ -536,28 +522,28 @@
                         <table border="0" cellpadding="10" cellspacing="0" width="100%">
                           <tr>
                             <td colspan="2" valign="middle" id="social">
-                              <div mc:edit="std_social">
+                              <div>
                                 &nbsp;<a href="http://twitter.com/smartvark">follow on Twitter</a> | <a href="http://facebook.com/smartvark">friend on Facebook</a>&nbsp;
                               </div>
                             </td>
                           </tr>
                           <tr>
                             <td valign="top" width="350">
-                              <div mc:edit="std_footer">
-                <em>Copyright &copy; *|CURRENT_YEAR|* *|LIST:COMPANY|*, All rights reserved.</em>
-                <br />
-                *|IFNOT:ARCHIVE_PAGE|* *|LIST:DESCRIPTION|*
+                              <div>
+                <em>Copyright &copy; <%= Time.now.year %> Smartvark, Inc., All rights reserved.</em>
                 <br />
                 <strong>Our mailing address is:</strong>
                 <br />
-                *|HTML:LIST_ADDRESS_HTML|**|END:IF|* 
+                3159 Donald Douglas Loop South, Suite 200, Santa Monica, CA 90405 
                               </div>
                             </td>
                           </tr>
                           <tr>
                             <td colspan="2" valign="middle" id="utility">
-                              <div mc:edit="std_utility">
-                                &nbsp;<a href="*|UNSUB|*">unsubscribe from this list</a> | <a href="*|UPDATE_PROFILE|*">update subscription preferences</a>&nbsp;
+                              <div>
+                              <% if false %>
+                                &nbsp;<a href="#">unsubscribe from this list</a> | <a href="*|UPDATE_PROFILE|*">update subscription preferences</a>&nbsp;
+                              <% end %>
                               </div>
                             </td>
                           </tr>

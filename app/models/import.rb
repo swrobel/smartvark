@@ -7,7 +7,7 @@ class Import < ActiveRecord::Base
     user = User.find_by_email("api@yipit.com")
     offer_type_id = OfferType.find_by_name("Coupon").id
     begin
-      result = Net::HTTP.get URI.parse("http://api.yipit.com/v1/deals/?key=tFkn69TXrYFuHZgC&division=#{division}&limit=5000&paid=1")
+      result = Net::HTTP.get URI.parse("http://api.yipit.com/v1/deals/?key=tFkn69TXrYFuHZgC&division=#{division}&limit=5000")
       data = Yajl::Parser.parse(result)
     rescue Exception => ex
       self.import_errors = ex

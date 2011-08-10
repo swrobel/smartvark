@@ -3,16 +3,16 @@ class Import < ActiveRecord::Base
 
   has_many :yipit_rows
 
-  def from_yipit(data)#="los-angeles")
+  def from_yipit(division = "los-angeles")
     user = User.find_by_email("api@yipit.com")
     offer_type_id = OfferType.find_by_name("Coupon").id
-    # begin
-    #   result = Net::HTTP.get URI.parse("http://api.yipit.com/v1/deals/?key=tFkn69TXrYFuHZgC&division=#{division}&limit=5000&paid=1")
-    #   data = Yajl::Parser.parse(result)
-    # rescue Exception => ex
-    #   self.import_errors = ex
-    #   return false
-    # end
+    begin
+      result = Net::HTTP.get URI.parse("http://api.yipit.com/v1/deals/?key=tFkn69TXrYFuHZgC&division=#{division}&limit=5000&paid=1")
+      data = Yajl::Parser.parse(result)
+    rescue Exception => ex
+      self.import_errors = ex
+      return false
+    end
     self.source_rows = data["response"]["deals"].count
     self.success_rows = 0
     data["response"]["deals"].each { |deal|

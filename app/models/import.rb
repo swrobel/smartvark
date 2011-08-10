@@ -40,9 +40,13 @@ class Import < ActiveRecord::Base
         offer = Offer.find_by_yipit_id(deal["id"])
         created_offer = false
         unless offer || business_ids == []
-          category_id = YipitCategory.find_by_yipit_slug(deal["tags"].first["slug"]).category_id
-          offer = user.offers.create!(yipit_id: deal["id"], offer_type_id: offer_type_id, category_id: category_id, business_ids: business_ids, title: deal["yipit_title"], description: deal["title"], start_date: deal["date_added"], end_date: deal["end_date"], redemption_link: deal["url"], source: deal["source"]["name"], image_url_big: deal["images"]["image_big"], image_url_small: deal["images"]["image_small"])
-          created_offer = true
+          if deal["tags"] == []
+            row_errors << "No categories for offer"
+          else
+            category_id = YipitCategory.find_by_yipit_slug(deal["tags"].first["slug"]).category_id
+            offer = user.offers.create!(yipit_id: deal["id"], offer_type_id: offer_type_id, category_id: category_id, business_ids: business_ids, title: deal["yipit_title"], description: deal["title"], start_date: deal["date_added"], end_date: deal["end_date"], redemption_link: deal["url"], source: deal["source"]["name"], image_url_big: deal["images"]["image_big"], image_url_small: deal["images"]["image_small"])
+            created_offer = true
+          end
         end
         self.success_rows += 1 if offer
       rescue Exception => ex

@@ -12,7 +12,7 @@ class Import < ActiveRecord::Base
         data = Yajl::Parser.parse(result)
       rescue Exception => ex
         self.import_errors = ex
-        return
+        return false
       end
       self.source_rows = data["response"]["deals"].count
       self.success_rows = 0
@@ -59,6 +59,6 @@ class Import < ActiveRecord::Base
         end
       }
     end
-    return nil
+    return true
   end
 end

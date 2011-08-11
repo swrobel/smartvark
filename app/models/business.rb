@@ -39,11 +39,11 @@ class Business < ActiveRecord::Base
   end
 
   def city_state_zip
-    [city, state].join(', ') << ' ' << zipcode
+    [[city, state].join(', '), zipcode].join(' ').strip
   end
 
   def address_as_string
-    [ address, city_state_zip].join(', ')
+    address.nil? ? city_state_zip : [address, city_state_zip].join(', ')
   end
 
   def facebook_link

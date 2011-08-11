@@ -1,0 +1,15 @@
+<div data-role="header" data-theme="b">
+  <div align="center"><img src="/images/logo-mobile.png"/></div>
+</div><!-- /header -->
+
+<div data-role="content">
+  <h3>Forgot your password?</h3>
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+
+    <%= f.submit "Send reset instructions" %>
+  <% end %>
+</div>

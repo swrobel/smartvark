@@ -1,12 +1,18 @@
-<h2>Forgot your password?</h2>
+<% content_for :title, "Forgot your password?" %>
+<div class="wide-box business-box">
+  <div class="holder">
+    <div class="frame">
+      <h2>Forgot your password?</h2>
+      <div class="business-holder">
+        <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+          <%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+          <p><%= f.label :email %><br />
+          <%= f.email_field :email %></p>
 
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
-
-  <p><%= f.submit "Send me reset password instructions" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+          <p><%= f.submit "Send me reset password instructions" %></p>
+        <% end %>
+      </div><!-- business-holder end -->
+    </div>
+  </div>
+</div><!-- business-box end -->

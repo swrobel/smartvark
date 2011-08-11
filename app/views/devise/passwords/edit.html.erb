@@ -1,16 +1,22 @@
-<h2>Change your password</h2>
+<% content_for :title, "Change your password" %>
+<div class="wide-box business-box">
+  <div class="holder">
+    <div class="frame">
+      <h2>Change your password</h2>
+      <div class="business-holder">
+        <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+          <%= devise_error_messages! %>
+          <%= f.hidden_field :reset_password_token %>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+          <p><%= f.label :password, "New password" %><br />
+          <%= f.password_field :password %></p>
 
-  <p><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password %></p>
+          <p><%= f.label :password_confirmation, "Confirm new password" %><br />
+          <%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.submit "Change my password" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+          <p><%= f.submit "Change my password" %></p>
+        <% end %>
+      </div><!-- business-holder end -->
+    </div>
+  </div>
+</div><!-- business-box end -->

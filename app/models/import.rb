@@ -28,7 +28,6 @@ class Import < ActiveRecord::Base
           business = Business.find_by_yipit_id(loc["id"])
           unless business
             business = user.businesses.create!(yipit_id: loc["id"], name: biz["name"], address: loc["address"], city: loc["smart_locality"], state: loc["state"], zipcode: loc["zip_code"], phone: loc["phone"], website: biz["url"])
-            logger.info business
             created_biz = true
           end
           business_ids << business.id

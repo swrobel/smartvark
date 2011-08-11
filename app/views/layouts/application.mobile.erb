@@ -3,10 +3,10 @@
 <head>
 	<title>Smartvark</title>
 	<%= stylesheet_link_tag 'jquery-mobile', 'mobile' %>
-	<%= javascript_include_tag 'jquery', 'rails' %>
+	<%= javascript_include_tag 'jquery.min', 'jquery_ujs' %>
   <%= content_for?(:head_additions) ? yield(:head_additions) : nil -%>
   <meta property="fb:page_id" content="120811371274054" />
-  <%= javascript_include_tag 'jquery-mobile', 'mobile' %>
+  <%= javascript_include_tag 'mobile', 'jquery-mobile' %>
 	<%= favicon_link_tag %>
 	<link rel="apple-touch-icon-precomposed" href="/images/touch-icon.png" />
 	<link rel="apple-touch-startup-image" href="/images/splash.png" />
@@ -20,7 +20,7 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div data-role="page">
+  <div data-role="page" <%= 'data-add-back-btn="true"' if %w(privacy_policy terms_of_service).include?(controller.action_name) %>>
     <%= yield %>
     <p>&copy; <%= Time.now.year %> Smartvark, Inc. (icons from <a href="http://glyphish.com/">glyphish</a>)</p>
   </div>

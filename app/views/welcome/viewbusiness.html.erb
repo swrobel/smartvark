@@ -1,5 +1,5 @@
 <% content_for :title, @business.name %>
-<% content_for :footer_additions, javascript_include_tag('http://maps.google.com/maps/api/js?v=3.3&sensor=false', 'jmapping') %>
+
 <%= render :partial => 'search_box' %>
 <!-- wrap -->
 <div class="merchant-area">
@@ -79,3 +79,19 @@
 		</div>
 	</div>
 </div>
+<% content_for :footer_additions do %>
+  <%= javascript_include_tag('http://maps.google.com/maps/api/js?v=3.3&sensor=false', 'jmapping') %>
+  <script type="text/javascript">
+		$(function(){
+			if ($().jMapping) {
+				$('#map').jMapping({
+					default_zoom_level: 13,
+					default_point: {
+						lat: 34.0522342,
+						lng: -118.2436849
+					}
+				});
+			}
+		});
+	</script>
+<% end %>

@@ -34,7 +34,7 @@
 					<div id='offer_info_rollover' class="info"></div>
 					<!-- gallery -->
 					<div class="gallery">
-						<% unless @out_of_area || @offers.nil? %>
+						<% unless @out_of_area || @offers.blank? %>
 							<ul>
 								<% @offers.length.times do |n| %>
 									<%= raw display_offer(@offers, n) %>
@@ -53,11 +53,13 @@
 				</div>
 				<div id='undo_last_action'></div>
 				<!-- list -->
-					<ul id='my_list' class="list">
-						<% @likes.each do |offer| %>
-							<%= raw list_offer(offer) %>
-						<% end %>
-				</ul>
+					<% unless @likes.blank? %>
+						<ul id='my_list' class="list">
+							<% @likes.each do |offer| %>
+								<%= raw list_offer(offer) %>
+							<% end %>
+						</ul>
+					<% end %>
 			</div>
 		</div>
 	</div>

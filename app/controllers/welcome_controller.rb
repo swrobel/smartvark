@@ -69,7 +69,7 @@ class WelcomeController < ApplicationController
       session.delete(:likes)
       session.delete(:dislikes)
     else
-      @likes = Offer.find_all_by_id(session[:likes])
+      @likes = Offer.includes(:businesses).find_all_by_id(session[:likes]) unless session[:likes].blank?
       opinions += session[:likes] if session[:likes]
       opinions += session[:dislikes] if session[:dislikes]
     end
@@ -80,7 +80,7 @@ class WelcomeController < ApplicationController
       @out_of_area = true
       @offers = []
     else
-      @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:user]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]}).active.order(:created_at.desc)
+      @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:user,:offer_type,:category]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]}).active.order(:created_at.desc)
       @offers = @offers.where(:id - opinions) unless opinions.empty?
     end
   end
@@ -89,10 +89,10 @@ class WelcomeController < ApplicationController
     raise CanCan::AccessDenied unless can? :read, :mydeals
     @category_id = params[:category_id].blank? ? 1 : Category.find(params[:category_id]).id
     loc = geo_location
-    @offers = Offer.select('DISTINCT offers.*').includes([:businesses, :user]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]} & (:category_id + Category.subtree_of(@category_id))).active.order(:created_at.desc)
+    @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:user,:offer_type,:category]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]} & (:category_id + Category.subtree_of(@category_id))).active.order(:created_at.desc)
     opinions = current_user.opinions.map(&:offer_id)
     @offers = @offers.where(:id - opinions) unless opinions.empty? || is_mobile_browser?
-    @likes = current_user.liked_offers(@category_id)
+    @likes = current_user.liked_offers(@category_id).includes(:businesses)
     redemptions = current_user.redemptions.map(&:offer_id)
     @likes = @likes.where(:id - redemptions) unless redemptions.empty?
   end
@@ -145,7 +145,7 @@ class WelcomeController < ApplicationController
     loc = Geocode.find_or_create_by_query(params[:location]) if params[:location] rescue nil
     loc ||= geo_location
     
-    @offers = Offer.active.joins(:businesses).joins(:category).where(
+    @offers = Offer.active.includes(:businesses => [{:geocoding => :geocode}]).joins(:businesses, :category).where(
                 (:category_id + Category.subtree_of(cat)) &
                 {:businesses => [:id + Business.ids_close_to(loc)]} &
                 (

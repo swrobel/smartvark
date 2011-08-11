@@ -1,5 +1,5 @@
 <% content_for :title, params[:search_terms] + " near " + params[:location] %>
-<% content_for :footer_additions, javascript_include_tag('http://maps.google.com/maps/api/js?v=3.3&sensor=false', 'jmapping') %>
+
 <%= render :partial => 'search_box' %>
 <!-- nav -->
 <p class="filter-results">Filter these results:</p>
@@ -15,13 +15,17 @@
         <h2>Search Results</h2>
         <!-- search-results -->
         <div class="search-results">
-          <strong class="title">Results for &quot;<span><%= params[:search_terms] %></span>&quot; near <span><%= params[:location] %></span></strong>
-          <% if @offers.empty? %>
-            We couldn't find any deals for your search. You can search again or go back to <%= link_to 'my deals', mydeals_url %>.
+          <% if params[:search_terms] == "" && params[:location] == "" %>
+            <strong class="title">Please enter some search terms or a location and try again</strong>
           <% else %>
-            <%= render :partial => 'search_offer', :collection => @offers %>
-            <p><a href="http://yipit.com" target="_blank">Powered by <%= image_tag "/images/yipit.jpg", :alt => "yipit", :title => "yipit.com" %> Click for more deals and coupons.</a></p>
-          <% end%>
+            <strong class="title">Results for &quot;<span><%= params[:search_terms] %></span>&quot; near <span><%= params[:location] %></span></strong>
+            <% if @offers.empty? %>
+              We couldn't find any deals for your search. You can search again or go back to <%= link_to 'my deals', mydeals_url %>.
+            <% else %>
+              <%= render :partial => 'search_offer', :collection => @offers %>
+              <p><a href="http://yipit.com" target="_blank">Powered by <%= image_tag "/images/yipit.jpg", :alt => "yipit", :title => "yipit.com" %> Click for more deals and coupons.</a></p>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -29,12 +33,29 @@
   <!-- aside -->
   <div class="aside">
     <div class="map-holder">
-      <div id="map"></div>
-      <div id="map-side-bar">
-        <% @offers.each do |offer| %>
-        <%= render :partial => 'map_business', :collection => offer.businesses %>
-        <% end %>
-      </div>
+      <% unless (params[:search_terms] == "" && params[:location] == "") || @offers.empty? %>
+        <div id="map"></div>
+        <div id="map-side-bar">
+          <% @offers.each do |offer| %>
+            <%= render :partial => 'map_business', :collection => offer.businesses %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
+<% content_for :footer_additions do %>
+  <%= javascript_include_tag('http://maps.google.com/maps/api/js?v=3.3&sensor=false', 'jmapping') %>
+  <script type="text/javascript">
+    $(function(){
+      if ($().jMapping) {
+        $('#map').jMapping({
+          default_point: {
+            lat: 34.0522342,
+            lng: -118.2436849
+          }
+        });
+      }
+    });
+  </script>
+<% end %>

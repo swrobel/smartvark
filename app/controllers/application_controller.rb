@@ -94,9 +94,15 @@ private
       flash[:notice] = notice
     # Only show error message if they are accessing a path other than root
     elsif request.fullpath != "/" && request.fullpath != "/deals"
-      flash[:alert] = "You are not signed in or are not permitted to do that."
+      if current_user
+        flash[:alert] = "You are not permitted to do that."
+      else
+        flash[:alert] = "Please sign in before continuing."
+      end
     end
-    logger.info "Redirecting to #{home_path}"
-    redirect_to home_path
+    #redirect_path = %w(set_opinion).include?(action_name) ? new_user_session_path : home_path
+    redirect_path = home_path
+    logger.info "Redirecting to #{redirect_path}"
+    redirect_to redirect_path
   end
 end

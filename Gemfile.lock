@@ -62,6 +62,8 @@ GEM
       devise (~> 1.4.1)
       rails (>= 3.0.0, < 3.2)
     dynamic_form (1.1.4)
+    email_preview (1.2.0)
+      mail (>= 2.2.3)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     eventmachine (0.12.10)
@@ -182,6 +184,7 @@ DEPENDENCIES
   devise
   devise_invitable
   dynamic_form
+  email_preview
   friendly_id
   geocoder
   home_run

@@ -28,3 +28,4 @@ gem "hoptoad_notifier"
 gem "dalli", :group => [:production, :staging, :demo]
 gem "activemerchant"
 gem "geocoder"
+gem "email_preview", :group => :development

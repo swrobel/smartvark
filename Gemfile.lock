@@ -155,6 +155,7 @@ GEM
     rdoc (3.9.1)
     rest-client (1.6.0)
       mime-types (>= 1.16)
+    silent-postgres (0.0.8)
     thin (1.2.11)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -200,5 +201,6 @@ DEPENDENCIES
   phone
   rack-rewrite
   rails (= 3.0.9)
+  silent-postgres
   thin
   yajl-ruby

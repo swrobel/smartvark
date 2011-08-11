@@ -29,3 +29,4 @@ gem "dalli", :group => [:production, :staging, :demo]
 gem "activemerchant"
 gem "geocoder"
 gem "email_preview", :group => :development
+gem "silent-postgres", :group => :development

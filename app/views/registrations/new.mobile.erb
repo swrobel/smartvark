@@ -5,11 +5,11 @@
     <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b", "data-ajax" => "false" %>
     <h4>or create a Smartvark account</h4>
     <%= f.label :email, "Email:" %>
-    <%= f.email_field :email, :id => 'email' %>
+    <%= f.email_field :email, :placeholder => "we don't spam" %>
     <%= f.label :password, "Password:" %>
     <%= f.password_field :password, :placeholder => 'at least 6 characters' %>
     <%= f.label :password_confirmation, "Re-enter password:" %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, :placeholder => 'must match above' %>
     <fieldset class="ui-grid-a">
       <div class="ui-block-a">
         <%= f.submit "Sign up", :'data-theme' => 'd' %>

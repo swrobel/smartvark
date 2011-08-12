@@ -1,11 +1,12 @@
-<div id="content" data-role="content" data-theme="a">
+<div data-role="content" data-theme="a">
   <%= form_for :user, :as => :user, :url => session_path(:user), :html => {"data-ajax" => "false"} do |f| %>
     <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b", "data-ajax" => "false" %>
     <h4>or use your Smartvark account</h4>
     <%= f.label :email, "Email:" %>
-    <%= f.email_field :email, :placeholder => 'email address' %>
+    <%= f.email_field :email %>
     <%= f.label :password, "Password:" %>
-    <%= f.password_field :password, :placeholder => 'password' %>
+    <%= f.password_field :password %>
+    <p><%= link_to "Forgot your password?", new_password_path(resource_name) %></p>
     <fieldset class="ui-grid-a">
       <div class="ui-block-a">
         <%= f.submit "Sign in", 'data-theme' => 'd' %>
@@ -14,7 +15,6 @@
         <a href='#' data-rel="back" data-role="button" data-theme="a">Cancel</a>
       </div>
     </fieldset>
-    <%= link_to "Forgot your password?", new_password_path(resource_name) %>
-    <%= link_to "Don't have an account? Sign up!", new_user_registration_path %>
+    <p><%= link_to "Don't have an account? Sign up!", new_user_registration_path %></p>
   <% end %>
 </div><!-- /content -->

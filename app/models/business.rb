@@ -26,8 +26,8 @@ class Business < ActiveRecord::Base
     HUMANIZED_ATTRIBUTES[attr.to_sym] || super
   end
 
-  def self.ids_close_to(loc)
-    Business.origin(loc, :within => 10).order("distance").collect {|x| x.id}
+  def self.ids_close_to(loc, dist=10)
+    Business.origin(loc, :within => dist).order("distance").map(&:id)
   end
   
   def formatted_phone

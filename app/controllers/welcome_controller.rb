@@ -147,7 +147,7 @@ class WelcomeController < ApplicationController
     
     @offers = Offer.active.includes(:businesses => [{:geocoding => :geocode}]).joins(:businesses, :category).where(
                 (:category_id + Category.subtree_of(cat)) &
-                {:businesses => [:id + Business.ids_close_to(loc)]} &
+                {:businesses => [:id + Business.ids_close_to(loc, 20)]} &
                 (
                   (:title =~ terms) |
                   {:businesses => [:name =~ terms]} |

@@ -165,10 +165,13 @@ module ApplicationHelper
 
   def geo_location_formatted
     loc = geo_location
-    result = ""
-    result << loc.locality.to_s + ", " if loc.locality
-    result << loc.region.to_s
-    result << " " + loc.postal_code if loc.postal_code
-    result
+    if loc.postal_code.blank?
+      result = ""
+      result << loc.locality.to_s + ", " unless loc.locality.blank?
+      result << loc.region.to_s
+      result
+    else
+      loc.postal_code.to_s
+    end
   end
 end

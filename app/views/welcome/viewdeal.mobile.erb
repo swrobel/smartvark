@@ -16,10 +16,10 @@
     <% unless !current_user || current_user.opinions.map(&:offer_id).include?(@offer.id) %>
       <div id="like-buttons" class="ui-grid-a">
         <div class="ui-block-a">
-          <%= link_to("Like",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 1 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsup") %>
+          <%= rate_link(@offer, 1, "Like", "mobile") %>
         </div>
         <div class="ui-block-b">
-          <%= link_to("Nah",{ :controller => "welcome", :action => "set_opinion", :offer_id => @offer.friendly_id, :liked => 0 }, :method => :post, :remote => true, "data-role" => "button", "data-icon" => "thumbsdown", "data-theme" => "a") %>
+          <%= rate_link(@offer, 0, "Nah", "mobile") %>
         </div>
       </div>
       <p>Rate deals to make Smartvark more relevant to <em>you</em></p>

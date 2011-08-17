@@ -221,18 +221,34 @@ class WelcomeController < ApplicationController
     @liked = params[:liked] == "1"
     @offer = Offer.find(params[:offer_id])
     @prompt_signup = false
+    @response_type = params[:response_type]
     session[:likes] ||= []
     session[:dislikes] ||= []
+    opinions = []
+    loc = geo_location
     
     if current_user
       current_user.set_opinion(@offer.id, @liked)
       current_user.save
+      unless @liked || @response_type != "topbar"
+        @next_offer = Offer.active.includes([:businesses,:user,:offer_type,:category]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]} & (:category_id + Category.subtree_of(@category_id))).order("random()").limit(1)
+        opinions = current_user.opinions.map(&:offer_id)
+        @next_offer = @next_offer.where(:id - opinions) unless opinions.empty?
+        @next_offer = @next_offer.first
+      end
     else
       if @liked
         session[:likes] << @offer.id
         @prompt_signup = session[:likes].length % 3 == 0
       else
         session[:dislikes] << @offer.id
+        if @response_type == "topbar"
+          opinions += session[:likes] if session[:likes]
+          opinions += session[:dislikes] if session[:dislikes]
+          @next_offer = Offer.active.includes([:businesses,:user,:offer_type,:category]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]}).order("random()").limit(1)
+          @next_offer = @next_offer.where(:id - opinions) unless opinions.empty?
+          @next_offer = @next_offer.first
+        end
       end
     end
 

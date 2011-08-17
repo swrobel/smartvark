@@ -6,38 +6,39 @@ html,body,iframe {
 
 body {
   background: #FFFFFF;
-  overflow: hidden; }
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif; }
 
 #smartvark-bar {
   position: absolute;
   height: 28px;
   width: 100%;
   background-color: #238ECB;
+  text-align: center;
   z-index: 1234;
   border-bottom: 3px solid #CCCCCC; }
+#smartvark-bar a {
+  display: block;
+  color: white;
+  text-decoration: none;}
+#smartvark-bar a:hover, #smartvark-bar a:active, #smartvark-bar a:visited {
+  color: white;
+  text-decoration: none; }
+#smartvark-bar span{float:left;}
 
 .bar-element {
   position: relative;
   height: 100%;
   float: left;
   color: white;
-  font: bold 11px Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
   overflow: visible;
-  line-height: 28px;
   padding: 0 7px 0px 7px;
   border-right: 1px solid #4CB0D0; }
 .bar-element:hover, #close-button:hover {
   background-color: #4CB0D0;
   border-bottom: 3px solid #333333; }
-.bar-element a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  height: 100%;
-  width: 100%; }
-.bar-element a:hover, .bar-element a:active, .bar-element a:visited {
-  color: white;
-  text-decoration: none; }
 
 #smartvark-logo {
   background: url(/images/smartvarklogo_bar.png) no-repeat 0 2px;
@@ -48,15 +49,8 @@ body {
   z-index: 3;
   overflow: visible;
   border-right: none; }
-#smartvark-logo a {
-  height: 120%;
-  width: 80%;
-  display: block; }
 
-#tagline {
-  line-height: 14px;
-  text-align: center;
-  padding-left: 3px;}
+#tagline {padding-left: 3px;}
 
 #close-button {
   height: 28px;
@@ -94,7 +88,7 @@ body {
 .tipsy-inner { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
 
 /* Uncomment for shadow */
-/*.tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }*/
+.tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }
 
 .tipsy-arrow { position: absolute; width: 0; height: 0; border: 5px solid transparent; }
 

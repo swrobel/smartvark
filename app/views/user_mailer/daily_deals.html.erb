@@ -42,7 +42,7 @@
     margin-right:0;
     margin-bottom:10px;
     margin-left:0;
-     text-align:left;
+     text-align:center;
     }
 
     h2, .h2{
@@ -56,7 +56,7 @@
     margin-right:0;
     margin-bottom:10px;
     margin-left:0;
-     text-align:left;
+     text-align:center;
     }
 
     h3, .h3{
@@ -70,21 +70,20 @@
     margin-right:0;
     margin-bottom:10px;
     margin-left:0;
-     text-align:left;
+     text-align:center;
     }
 
     h4, .h4{
-     color:#202020;
     display:block;
      font-family:Arial;
-     font-size:22px;
+     font-size:18px;
      font-weight:bold;
      line-height:100%;
     margin-top:0;
     margin-right:0;
     margin-bottom:10px;
     margin-left:0;
-     text-align:left;
+     text-align:center;
     }
     
     /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: PREHEADER /\/\/\/\/\/\/\/\/\/\ */
@@ -92,13 +91,15 @@
     #templatePreheader{
      background-color:#e0eef8;
     }
+
+    #templatePreHeader td, #templateContainer td {text-align:center;}
     
     .preheaderContent div{
      color:#505050;
      font-family:Arial;
      font-size:10px;
      line-height:100%;
-     text-align:left;
+     text-align:center;
     }
     
     .preheaderContent div a:link, .preheaderContent div a:visited, /* Yahoo! Mail Override */ .preheaderContent div a .yshortcuts /* Yahoo! Mail Override */{
@@ -258,6 +259,7 @@
       <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="backgroundTable">
         <tr>
           <td align="center" valign="top">
+          <% if false %>
             <!-- // Begin Template Preheader \\ -->
             <table border="0" cellpadding="10" cellspacing="0" width="600" id="templatePreheader">
               <tr>
@@ -268,7 +270,7 @@
                     <tr>
                       <td valign="top">
                         <div>
-                           Artie the Aardvark found two deals he thinks you'll love
+                          Artie the Aardvark found two deals he thinks you'll love
                         </div>
                       </td>
                     </tr>
@@ -279,6 +281,7 @@
               </tr>
             </table>
             <!-- // End Template Preheader \\ -->
+            <% end %>
             <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateContainer">
               <tr>
                 <td align="center" valign="top">
@@ -289,7 +292,7 @@
                         <!-- // Begin Module: Standard Header Image \\ -->
                         <img src="http://smartvark.s3.amazonaws.com/assets/smartvarklogo_with_tagline_small.jpg" style="max-width:600px;" id="headerImage campaign-icon" />
                         <!-- // End Module: Standard Header Image \\ -->
-                        <h1>Choose your deal</h1>
+                        <h2>Here are the deals Artie dug up for you today:</h2>
                       </td>
                     </tr>
                   </table>
@@ -302,38 +305,10 @@
                   <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
                     <tr>
                       <td valign="top" width="280" class="leftColumnContent">
-                      
-                        <!-- // Begin Module: Top Image with Content \\ -->
-                        <table border="0" cellpadding="20" cellspacing="0" width="100%">
-                          <tr>
-                            <td valign="top">
-                              <%= image_tag @offer_1.image_url_small %>
-                              <div>
-                               <h4 class="h4"><%= @offer_1.title %></h4>
-                               <%= @offer_1.description %>
-                              </div>
-                            </td>
-                          </tr>
-                        </table>
-                        <!-- // End Module: Top Image with Content \\ -->
-                      
+                        <%= render :partial => 'offer', :locals => { :offer => @offer_food } %>
                       </td>
                       <td valign="top" width="280" class="rightColumnContent">
-                      
-                        <!-- // Begin Module: Top Image with Content \\ -->
-                        <table border="0" cellpadding="20" cellspacing="0" width="100%">
-                          <tr>
-                            <td valign="top">
-                              <%= image_tag @offer_2.image_url_small %>
-                              <div>
-                               <h4 class="h4"><%= @offer_2.title %></h4>
-                               <%= @offer_2.description %>
-                              </div>
-                            </td>
-                          </tr>
-                        </table>
-                        <!-- // End Module: Top Image with Content \\ -->
-                      
+                        <%= render :partial => 'offer', :locals => { :offer => @offer_other } %>
                       </td>
                     </tr>
                     <tr>
@@ -344,7 +319,7 @@
                           <tr>
                             <td valign="top">
                               <div>
-                                <%= link_to "<h4>Did Artie miss the mark this time? See more deals at Smartvark.com</h4>".html_safe, root_url %>
+                                <%= link_to "<h4>Did Artie miss the mark this time?<br/>Click here to see more deals at Smartvark.com</h4>".html_safe, root_url %>
                               </div>
                             </td>
                           </tr>
@@ -356,7 +331,7 @@
                   </table>
                   <!-- // End Template Body \\ -->
                 </td>
-              </tr>
+              </tr>l
               <tr>
                 <td align="center" valign="top">
                   <!-- // Begin Template Footer \\ -->
@@ -369,7 +344,7 @@
                           <tr>
                             <td colspan="2" valign="middle" id="social">
                               <div>
-                                &nbsp;<a href="http://twitter.com/smartvark">follow on Twitter</a> | <a href="http://facebook.com/smartvark">friend on Facebook</a>&nbsp;
+                                &nbsp;<a href="http://twitter.com/smartvark">Follow Artie on Twitter</a> | <a href="http://facebook.com/smartvark">Friend Artie on Facebook</a>&nbsp;
                               </div>
                             </td>
                           </tr>
@@ -384,7 +359,7 @@
                               </div>
                             </td>
                           </tr>
-                          <% if false %>
+                          <% if false # hide this until unsubscribe is built-in %>
                           <tr>
                             <td colspan="2" valign="middle" id="utility">
                               <div>

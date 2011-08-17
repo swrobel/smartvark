@@ -1,0 +1,24 @@
+<a href="<%= offer.redemption_link %>" target="_blank">
+  <!-- // Begin Module: Top Image with Content \\ -->
+  <table border="0" cellpadding="20" cellspacing="0" width="100%">
+    <tr>
+      <td valign="top">
+        <%= link_to link_url(offer), target: "blank" do %>
+          <%= image_tag offer.image_url_small %>
+          <div>
+           <h4 class="h4"><%= offer.title %></h4>
+           <p><%= offer.description %></p>
+           <p>
+             Available in:<br/>
+             <%= offer.businesses.first.city_state_zip %>
+             <% if offer.businesses.count > 1 %>
+              <br/> ... and <%= offer.businesses.count - 1 %> more locations
+             <% end %>
+           </p>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+  <!-- // End Module: Top Image with Content \\ -->
+</a>

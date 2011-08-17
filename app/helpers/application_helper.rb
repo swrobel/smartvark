@@ -146,13 +146,16 @@ module ApplicationHelper
     '</div>
   </div>
   <div class="rate">' +
-    link_to(image_tag('/images/btn-good.gif', alt: "+"),
-            { controller: "welcome", action: "set_opinion", offer_id: offer.friendly_id, liked: 1 }, method: :post, remote: true) +
+    rate_link(offer, 1, '/images/btn-good.gif', "+") +
     use_it_now_link(offer) +
-    link_to(image_tag('/images/btn-bad.gif', alt: "-"),
-            { controller: "welcome", action: "set_opinion", offer_id: offer.friendly_id, liked: 0 }, method: :post, remote: true) +
+    rate_link(offer, 0, '/images/btn-bad.gif', "-") +
   '</div>
 </li>'
+  end
+
+  def rate_link(offer, liked, image, alt)
+    link_to(image_tag(image, alt: alt),
+      { controller: "welcome", action: "set_opinion", offer_id: offer.friendly_id, liked: liked }, method: :post, remote: true)
   end
 
   def pay_button(num_credits, price)

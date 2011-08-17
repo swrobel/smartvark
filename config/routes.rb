@@ -25,6 +25,7 @@ Smartvark::Application.routes.draw do
   match 'myprofile' => 'welcome#myprofile', :as => :myprofile
   match 'deal/:id' => 'welcome#viewdeal', :as => :viewdeal
   match 'redeem/:id' => 'welcome#redeem', :as => :redeem
+  match 'link/:id' => 'welcome#link', :as => :link
   match 'search/:category_id' => 'welcome#search', :as => :search, :via => :get
   match 'biz/:id' => 'welcome#viewbusiness', :as => :viewbusiness
   match 'shout/:id' => 'welcome#shout', :as => :shout, :via => :post

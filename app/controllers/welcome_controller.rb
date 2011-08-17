@@ -84,6 +84,13 @@ class WelcomeController < ApplicationController
       @offers = @offers.where(:id - opinions) unless opinions.empty?
     end
   end
+
+  def link
+    raise CanCan::AccessDenied unless can? :read, :viewdeal
+    @offer = Offer.find(params[:id])
+    raise "Deals cannot be accessed by ID" unless @offer.friendly_id_status.friendly?
+    render :layout => false
+  end
   
   def mydeals
     raise CanCan::AccessDenied unless can? :read, :mydeals

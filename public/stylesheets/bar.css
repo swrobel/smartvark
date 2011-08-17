@@ -1,0 +1,89 @@
+html,body,iframe {
+  border:0;
+  margin:0;
+  padding:0;
+  height: 100%;}
+
+body {
+  background: #FFFFFF;
+  overflow: hidden; }
+
+#smartvark-bar {
+  position: absolute;
+  height: 28px;
+  width: 100%;
+  background-color: #238ECB;
+  z-index: 1234;
+  border-bottom: 3px solid #CCCCCC; }
+
+.bar-element {
+  position: relative;
+  height: 100%;
+  float: left;
+  color: white;
+  font: bold 11px Arial, Helvetica, sans-serif;
+  overflow: visible;
+  line-height: 28px;
+  padding: 0 7px 0px 7px;
+  border-right: 1px solid #4CB0D0; }
+.bar-element:hover, #close-button:hover {
+  background-color: #4CB0D0;
+  border-bottom: 3px solid #333333; }
+.bar-element a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  height: 100%;
+  width: 100%; }
+.bar-element a:hover, .bar-element a:active, .bar-element a:visited {
+  color: white;
+  text-decoration: none; }
+
+#smartvark-logo {
+  background: url(/images/smartvarklogo_bar.png) no-repeat 0 2px;
+  padding-bottom: 6px;
+  padding-right: 0;
+  width: 133px;
+  height: 22px;
+  z-index: 3;
+  overflow: visible;
+  border-right: none; }
+#smartvark-logo a {
+  height: 120%;
+  width: 80%;
+  display: block; }
+
+#tagline {
+  line-height: 14px;
+  text-align: center;
+  padding-left: 3px;}
+
+#close-button {
+  height: 28px;
+  width: 29px;
+  background: url(/images/x.png) no-repeat 0 1px;
+  float: left;
+  cursor: pointer; }
+.rate {
+  padding:0;
+  height:100%;
+  width:30px;
+  text-align:center;}
+.rate img{padding-top:4px;}
+.bar-right {float: right;}
+.bar-right .social {
+  padding-top:3px;
+  height:25px;}
+
+#smartvark-frame {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+#smartvark-frame .spacer {
+  background: #FFFFFF;
+  height: 30px;
+  width: 100%; }
+
+#offer-frame {
+  width: 100%;
+  border-width: 0px; }

@@ -6,6 +6,7 @@
     <%= f.email_field :email %>
     <%= f.label :password, "Password:" %>
     <%= f.password_field :password %>
+    <%= f.hidden_field :remember_me, value: 1 %>
     <p><%= link_to "Forgot your password?", new_password_path(resource_name) %></p>
     <fieldset class="ui-grid-a">
       <div class="ui-block-a">

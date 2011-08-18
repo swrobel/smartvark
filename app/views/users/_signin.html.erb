@@ -16,9 +16,7 @@
 				<%= f.label :password, "password" %>
 				<%= f.password_field :password, :class => 'txt', :placeholder => 'minimum of 6 characters' %>
       </div>
-      <div class="remember">
-				<%= f.check_box :remember_me, :class => 'chk' %><%= f.label :remember_me %>
-      </div>
+			<%= f.hidden_field :remember_me, value: 1 %>
       <div class="popup-buttons">
 				<%= f.submit "Sign in", :class => 'btn-signin' %>
 				<input class="btn-signin-cancel simplemodal-close" type="submit" value="Cancel" />

@@ -7,6 +7,7 @@
           <%= image_tag offer.image_url_small %>
           <div>
            <h4 class="h4"><%= offer.title %></h4>
+           <div class="get-button"><%= image_tag "http://smartvark.s3.amazonaws.com/assets/get_it_now.jpg" %></div>
            <p><%= offer.description %></p>
            <p>
              Available in:<br/>
@@ -16,6 +17,12 @@
              <% end %>
            </p>
           </div>
+          <% map_url = "http://maps.googleapis.com/maps/api/staticmap?size=250x250&sensor=false&format=jpg&markers=" %>
+          <% offer.businesses.each do |business| %>
+            <% map_url << "|" + business.address_as_string %>
+          <% end %>
+          <% map_url << "&zoom=10" if offer.businesses.count == 1 %>
+          <%= image_tag map_url %>
         <% end %>
       </td>
     </tr>

@@ -89,7 +89,11 @@ class WelcomeController < ApplicationController
     raise CanCan::AccessDenied unless can? :read, :viewdeal
     @offer = Offer.find(params[:id])
     raise "Deals cannot be accessed by ID" unless @offer.friendly_id_status.friendly?
-    render :layout => false
+    if @offer.source == "kgb deals"
+      redirect_to @offer.redemption_link
+    else
+      render :layout => false
+    end
   end
   
   def mydeals

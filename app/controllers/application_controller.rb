@@ -65,7 +65,7 @@ private
         dealdashboard_path
       end
     else
-      root_path
+      new_user_session_path
     end
   end
   
@@ -100,7 +100,6 @@ private
         flash[:alert] = "Please sign in before continuing."
       end
     end
-    #redirect_path = %w(set_opinion).include?(action_name) ? new_user_session_path : home_path
     redirect_path = home_path
     logger.info "Redirecting to #{redirect_path}"
     redirect_to redirect_path

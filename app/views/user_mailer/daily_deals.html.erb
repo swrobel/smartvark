@@ -15,6 +15,7 @@
     
     /* Reset Styles */
     body{margin:0; padding:0;}
+    a,a:visited{text-decoration:none;}
     img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
     table td{border-collapse:collapse;}
     #backgroundTable{height:100% !important; margin:0; padding:0; width:100% !important;}
@@ -85,9 +86,7 @@
     margin-left:0;
      text-align:center;
     }
-    
-    /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: PREHEADER /\/\/\/\/\/\/\/\/\/\ */
-    
+        
     #templatePreheader{
      background-color:#e0eef8;
     }
@@ -252,6 +251,8 @@
     #utility div{
      text-align:center;
     }
+
+    .get-button{text-align:center !important;}
   </style>
   </head>
   <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
@@ -290,9 +291,9 @@
                     <tr>
                       <td class="headerContent">
                         <!-- // Begin Module: Standard Header Image \\ -->
-                        <img src="http://smartvark.s3.amazonaws.com/assets/smartvarklogo_with_tagline_small.jpg" style="max-width:600px;" id="headerImage campaign-icon" />
+                        <%= link_to image_tag("http://smartvark.s3.amazonaws.com/assets/email_logo.jpg", id: "headerImage"), root_url, target: "_blank" %>
                         <!-- // End Module: Standard Header Image \\ -->
-                        <h2>Here are the deals Artie dug up for you today:</h2>
+                        <h3>Artie dug up two great deals for you today:</h3>
                       </td>
                     </tr>
                   </table>
@@ -319,7 +320,8 @@
                           <tr>
                             <td valign="top">
                               <div>
-                                <%= link_to "<h4>Did Artie miss the mark this time?<br/>Click here to see more deals at Smartvark.com</h4>".html_safe, root_url %>
+                                <%= link_to "<h4>Did Artie miss the mark this time?<br/>Click here to see more deals at Smartvark.com</h4>".html_safe, root_url, target: "_blank" %>
+                                <p>If you have any feedback, please feel free to respond to this email.<br/>You'll get a response from a real person!</p>
                               </div>
                             </td>
                           </tr>
@@ -344,7 +346,7 @@
                           <tr>
                             <td colspan="2" valign="middle" id="social">
                               <div>
-                                &nbsp;<a href="http://twitter.com/smartvark">Follow Artie on Twitter</a> | <a href="http://facebook.com/smartvark">Friend Artie on Facebook</a>&nbsp;
+                                &nbsp;<a href="http://twitter.com/smartvark" target="_blank">Follow Artie on Twitter</a> | <a href="http://facebook.com/smartvark" target="_blank">Friend Artie on Facebook</a>&nbsp;
                               </div>
                             </td>
                           </tr>
@@ -352,6 +354,8 @@
                             <td valign="top" width="350">
                               <div>
                                 <em>Copyright &copy; <%= Time.now.year %> Smartvark, Inc., All rights reserved.</em>
+                                <br />
+                                <%= link_to "Smartvark.com: Local Deals. Personalized.", root_url, target: "_blank" %>
                                 <br />
                                 <strong>Our mailing address is:</strong>
                                 <br />

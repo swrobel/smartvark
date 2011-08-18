@@ -11,6 +11,7 @@
         <%= f.text_field :name, :class => 'txt' %>
       </div>
     </div>
+  <% if false %>
     <div class="row">
       <%= f.label :address %>
       <div class="right">
@@ -24,18 +25,21 @@
         <%= f.select :state, States.abbrevs, {:include_blank => true}, {:class => 'sel'} %>
       </div>
     </div>
-    <div class="row short">
+  <% end %>
+    <div class="row">
       <%= f.label :zipcode %>
       <div class="right">
         <%= f.text_field :zipcode, :class => 'txt', :maxlength => 10 %>
       </div>
     </div>
+  <% if false %>
     <div class="row short">
       <%= f.label :phone %>
       <div class="right">
         <%= f.text_field :phone, :class => 'txt', :maxlength => 15 %>
       </div>
     </div>
+  <% end %>
     <div class="row">
       <%= f.label :email %>
       <div class="right">

@@ -3,18 +3,19 @@
 	<h2>My Tastes</h2>
 </div>
 <!-- accordion -->
+If you change your tastes, make sure to save them using the button below!
 <ul class="accordion">
   <% Category.all_parents.each_with_index do |category, index| %>
   <% next if category.name == "All" %>
 	<li>
 		<%= link_to category.clever_or_name, "#", {:class => "opener"} %>
-                <div class="slide">
-                  <% category.children.each do |sub_category| %>
-                    <label>
-                      <%= check_box_tag 'user[category_ids][]', sub_category.id, @user.categories.include?(sub_category) %><%= sub_category.name %><br/>
-                    </label>
-                  <% end %>
-                </div>
+      <div class="slide">
+        <% category.children.order(:name).each do |sub_category| %>
+          <label>
+            <%= check_box_tag "user[category_ids][]", sub_category.id, @user.categories.include?(sub_category) %><%= sub_category.name %><br/>
+          </label>
+        <% end %>
+      </div>
 	</li>
 	<% end %>
 </ul>

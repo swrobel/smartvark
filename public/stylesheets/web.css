@@ -1108,7 +1108,7 @@ td, th{padding:0;}
 	margin:0 0 0 60px;
 	display:inline;
 }
-.profile-form .btn-save{
+.profile-form .btn-save, .r-side .btn-save{
 	float:left;
 	text-indent:-9999px;
 	background:url(/images/btn-save.gif) no-repeat;
@@ -1118,6 +1118,7 @@ td, th{padding:0;}
 	border:0;
 	cursor:pointer;
 }
+.r-side .btn-save{margin:20px 0 0 75px;}
 /* accordion */
 .accordion{
 	width:240px;

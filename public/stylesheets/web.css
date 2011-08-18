@@ -697,6 +697,11 @@ td, th{padding:0;}
 	overflow:hidden;
 	background:url(/images/btn-redeem.gif) no-repeat;
 }
+.info-box .get-it{
+	width:111px;
+	height:37px;
+	background:url(/images/get_it_now.jpg) no-repeat;
+}
 /* information */
 .information{
 	width:536px;

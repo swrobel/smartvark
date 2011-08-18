@@ -47,13 +47,13 @@
 							<%= render :partial => 'offer_address', :object => @offer %>
 							<% if @offer.expired? %>
 								<%= image_tag('btn-expired.gif') %>
+							<% elsif !@offer.redemption_link.blank? %>
+								<%= link_to "Get It Now", link_path(@offer), :class => "btn get-it" %>
 							<% elsif !current_user %>
 								<%= link_to "Redeem", "#", :id => "btn-redeem-signup-open", :class => :btn %>
-							<% elsif @offer.redemption_link.blank? %>
+							<% else %>
 								<%= link_to "Redeem", "#", :id => "btn-redeem-open", :class => :btn %>
 								<%= render :partial => 'redeem' %>
-							<% else %>
-								<%= link_to "Redeem", redeem_path(@offer), :class => :btn %>
 							<% end %>
 					</div>
 				</div>

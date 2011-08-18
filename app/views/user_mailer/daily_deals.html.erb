@@ -1,388 +1,142 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <!-- Facebook sharing information tags -->
-    <meta property="og:title" content="<%= message.subject %>" />
+    <meta property="og:title" content="<%= message.subject %>">
     
     <title><%= message.subject %></title>
-    <style type="text/css">
-    /* Client-specific Styles */
-    #outlook a{padding:0;} /* Force Outlook to provide a "view in browser" button. */
-    body{width:100% !important;} .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display emails at full width */
-    body{-webkit-text-size-adjust:none;} /* Prevent Webkit platforms from changing default text sizes. */
     
-    /* Reset Styles */
-    body{margin:0; padding:0;}
-    a,a:visited{text-decoration:none;}
-    img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
-    table td{border-collapse:collapse;}
-    #backgroundTable{height:100% !important; margin:0; padding:0; width:100% !important;}
-    
-    /* Template Styles */
-    
-    /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: COMMON PAGE ELEMENTS /\/\/\/\/\/\/\/\/\/\ */
-    
-    body, #backgroundTable{
-     background-color:#e0eef8;
-    }
-    
-    #templateContainer{
-     border: 1px solid #DDDDDD;
-    }
-    
-    h1, .h1{
-     color:#202020;
-    display:block;
-     font-family:Arial;
-     font-size:34px;
-     font-weight:bold;
-     line-height:100%;
-    margin-top:0;
-    margin-right:0;
-    margin-bottom:10px;
-    margin-left:0;
-     text-align:center;
-    }
-
-    h2, .h2{
-     color:#202020;
-    display:block;
-     font-family:Arial;
-     font-size:30px;
-     font-weight:bold;
-     line-height:100%;
-    margin-top:0;
-    margin-right:0;
-    margin-bottom:10px;
-    margin-left:0;
-     text-align:center;
-    }
-
-    h3, .h3{
-     color:#202020;
-    display:block;
-     font-family:Arial;
-     font-size:26px;
-     font-weight:bold;
-     line-height:100%;
-    margin-top:0;
-    margin-right:0;
-    margin-bottom:10px;
-    margin-left:0;
-     text-align:center;
-    }
-
-    h4, .h4{
-    display:block;
-     font-family:Arial;
-     font-size:18px;
-     font-weight:bold;
-     line-height:100%;
-    margin-top:0;
-    margin-right:0;
-    margin-bottom:10px;
-    margin-left:0;
-     text-align:center;
-    }
-        
-    #templatePreheader{
-     background-color:#e0eef8;
-    }
-
-    #templatePreHeader td, #templateContainer td {text-align:center;}
-    
-    .preheaderContent div{
-     color:#505050;
-     font-family:Arial;
-     font-size:10px;
-     line-height:100%;
-     text-align:center;
-    }
-    
-    .preheaderContent div a:link, .preheaderContent div a:visited, /* Yahoo! Mail Override */ .preheaderContent div a .yshortcuts /* Yahoo! Mail Override */{
-     color:#336699;
-     font-weight:normal;
-     text-decoration:underline;
-    }
-
-    /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: HEADER /\/\/\/\/\/\/\/\/\/\ */
-    
-    #templateHeader{
-     background-color:#FFFFFF;
-     border-bottom:0;
-    }
-    
-    .headerContent{
-     color:#202020;
-     font-family:Arial;
-     font-size:34px;
-     font-weight:bold;
-     line-height:100%;
-     padding:0;
-     text-align:center;
-     vertical-align:middle;
-    }
-    
-    .headerContent a:link, .headerContent a:visited, /* Yahoo! Mail Override */ .headerContent a .yshortcuts /* Yahoo! Mail Override */{
-     color:#336699;
-     font-weight:normal;
-     text-decoration:underline;
-    }
-    
-    #headerImage{
-    height:auto;
-    max-width:600px;
-    }
-    
-    /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: COLUMNS; LEFT, RIGHT /\/\/\/\/\/\/\/\/\/\ */
-    
-    .leftColumnContent{
-     background-color:#FFFFFF;
-    }
-    
-    .leftColumnContent div{
-     color:#505050;
-     font-family:Arial;
-     font-size:14px;
-     line-height:150%;
-     text-align:left;
-    }
-    
-    .leftColumnContent div a:link, .leftColumnContent div a:visited, /* Yahoo! Mail Override */ .leftColumnContent div a .yshortcuts /* Yahoo! Mail Override */{
-     color:#336699;
-     font-weight:normal;
-     text-decoration:underline;
-    }
-    
-    .leftColumnContent img{
-    display:inline;
-    height:auto;
-    }
-    
-    .rightColumnContent{
-     background-color:#FFFFFF;
-    }
-    
-    .rightColumnContent div{
-     color:#505050;
-     font-family:Arial;
-     font-size:14px;
-     line-height:150%;
-     text-align:left;
-    }
-    
-    .rightColumnContent div a:link, .rightColumnContent div a:visited, /* Yahoo! Mail Override */ .rightColumnContent div a .yshortcuts /* Yahoo! Mail Override */{
-     color:#336699;
-     font-weight:normal;
-     text-decoration:underline;
-    }
-    
-    .rightColumnContent img{
-    display:inline;
-    height:auto;
-    }
-    
-    /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: MAIN BODY /\/\/\/\/\/\/\/\/\/\ */
-    
-    #templateContainer, .bodyContent{
-     background-color:#FFFFFF;
-    }
-    
-    .bodyContent div{
-     color:#505050;
-     font-family:Arial;
-     font-size:14px;
-     line-height:150%;
-     text-align:left;
-    }
-    
-    .bodyContent div a:link, .bodyContent div a:visited, /* Yahoo! Mail Override */ .bodyContent div a .yshortcuts /* Yahoo! Mail Override */{
-     color:#336699;
-     font-weight:normal;
-     text-decoration:underline;
-    }
-    
-    .bodyContent img{
-    display:inline;
-    height:auto;
-    }
-    
-    /* /\/\/\/\/\/\/\/\/\/\ STANDARD STYLING: FOOTER /\/\/\/\/\/\/\/\/\/\ */
-    
-    #templateFooter{
-     background-color:#e0eef8;
-     border-top:0;
-    }
-    
-    .footerContent div{
-     color:#707070;
-     font-family:Arial;
-     font-size:12px;
-     line-height:125%;
-     text-align:left;
-    }
-    
-    .footerContent div a:link, .footerContent div a:visited, /* Yahoo! Mail Override */ .footerContent div a .yshortcuts /* Yahoo! Mail Override */{
-     color:#336699;
-     font-weight:normal;
-     text-decoration:underline;
-    }
-    
-    .footerContent img{
-    display:inline;
-    }
-    
-    #social{
-     background-color:#e0eef8;
-     border:0;
-    }
-    
-    #social div{
-     text-align:center;
-    }
-    
-    #utility{
-     background-color:#e0eef8;
-     border:0;
-    }
-
-    #utility div{
-     text-align:center;
-    }
-
-    .get-button{text-align:center !important;}
-  </style>
   </head>
-  <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+  <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="-webkit-text-size-adjust: none;margin: 0;padding: 0;background-color: #e0eef8;width: 100%;">
     <center>
-      <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="backgroundTable">
+      <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="backgroundTable" style="margin: 0;padding: 0;background-color: #e0eef8;height: 100%;width: 100%;">
         <tr>
-          <td align="center" valign="top">
+          <td align="center" valign="top" style="border-collapse: collapse;">
           <% if false %>
-            <!-- // Begin Template Preheader \\ -->
-            <table border="0" cellpadding="10" cellspacing="0" width="600" id="templatePreheader">
+            <!-- // Begin Template Preheader \ -->
+            <table border="0" cellpadding="10" cellspacing="0" width="600" id="templatePreheader" style="background-color: #e0eef8;">
               <tr>
-                <td valign="top" class="preheaderContent">
+                <td valign="top" class="preheaderContent" style="border-collapse: collapse;">
                 
-                  <!-- // Begin Module: Standard Preheader \ -->
+                  <!-- // Begin Module: Standard Preheader  -->
                   <table border="0" cellpadding="10" cellspacing="0" width="100%">
                     <tr>
-                      <td valign="top">
-                        <div>
+                      <td valign="top" style="border-collapse: collapse;">
+                        <div style="color: #505050;font-family: Arial;font-size: 10px;line-height: 100%;text-align: center;">
                           Artie the Aardvark found two deals he thinks you'll love
                         </div>
                       </td>
                     </tr>
                   </table>
-                  <!-- // End Module: Standard Preheader \ -->
+                  <!-- // End Module: Standard Preheader  -->
                 
                 </td>
               </tr>
             </table>
-            <!-- // End Template Preheader \\ -->
+            <!-- // End Template Preheader \ -->
             <% end %>
-            <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateContainer">
+            <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateContainer" style="border: 1px solid #DDDDDD;background-color: #FFFFFF;">
               <tr>
-                <td align="center" valign="top">
-                  <!-- // Begin Template Header \\ -->
-                  <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader">
+                <td align="center" valign="top" style="border-collapse: collapse;text-align: center;">
+                  <!-- // Begin Template Header \ -->
+                  <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader" style="background-color: #FFFFFF;border-bottom: 0;">
                     <tr>
-                      <td class="headerContent">
-                        <!-- // Begin Module: Standard Header Image \\ -->
+                      <td class="headerContent" style="border-collapse: collapse;color: #202020;font-family: Arial;font-size: 34px;font-weight: bold;line-height: 100%;padding: 0;text-align: center;vertical-align: middle;">
+                        <!-- // Begin Module: Standard Header Image \ -->
                         <%= link_to image_tag("http://smartvark.s3.amazonaws.com/assets/email_logo.jpg", id: "headerImage"), root_url, target: "_blank" %>
-                        <!-- // End Module: Standard Header Image \\ -->
-                        <h3>Artie dug up two great deals for you today:</h3>
+                        <!-- // End Module: Standard Header Image \ -->
+                        <h3 style="color: #202020;display: block;font-family: Arial;font-size: 26px;font-weight: bold;line-height: 100%;margin-top: 0;margin-right: 0;margin-bottom: 10px;margin-left: 0;text-align: center;">Artie dug up two great deals for you today:</h3>
                       </td>
                     </tr>
                   </table>
-                  <!-- // End Template Header \\ -->
+                  <!-- // End Template Header \ -->
                 </td>
               </tr>
               <tr>
-                <td align="center" valign="top">
-                  <!-- // Begin Template Body \\ -->
+                <td align="center" valign="top" style="border-collapse: collapse;text-align: center;">
+                  <!-- // Begin Template Body \ -->
                   <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
                     <tr>
-                      <td valign="top" width="280" class="leftColumnContent">
+                      <td valign="top" width="280" class="leftColumnContent" style="border-collapse: collapse;background-color: #FFFFFF;text-align: center;">
                         <%= render :partial => 'offer', :locals => { :offer => @offer_food } %>
                       </td>
-                      <td valign="top" width="280" class="rightColumnContent">
+                      <td valign="top" width="280" class="rightColumnContent" style="border-collapse: collapse;background-color: #FFFFFF;text-align: center;">
                         <%= render :partial => 'offer', :locals => { :offer => @offer_other } %>
                       </td>
                     </tr>
                     <tr>
-                      <td colspan="3" valign="top" class="bodyContent">
+                      <td colspan="3" valign="top" class="bodyContent" style="border-collapse: collapse;background-color: #FFFFFF;text-align: center;">
                       
-                        <!-- // Begin Module: Standard Content \\ -->
+                        <!-- // Begin Module: Standard Content \ -->
                         <table border="0" cellpadding="20" cellspacing="0" width="100%">
                           <tr>
-                            <td valign="top">
-                              <div>
-                                <%= link_to "<h4>Did Artie miss the mark this time?<br/>Click here to see more deals at Smartvark.com</h4>".html_safe, root_url, target: "_blank" %>
-                                <p>If you have any feedback, please feel free to respond to this email.<br/>You'll get a response from a real person!</p>
+                            <td valign="top" style="border-collapse: collapse;text-align: center;">
+                              <div style="color: #505050;font-family: Arial;font-size: 14px;line-height: 150%;text-align: left;">
+                                <%= link_to "<h4>Did Artie miss the mark this time?<br/>Click here to see more deals at Smartvark.com</h4>".html_safe, root_url, target: "_blank", style: "text-decoration: none;" %>
+                                <p>If you have any feedback, please feel free to respond to this email.<br>You'll get a response from a real person!</p>
                               </div>
                             </td>
                           </tr>
                         </table>
-                        <!-- // End Module: Standard Content \\ -->
+                        <!-- // End Module: Standard Content \ -->
                       
                       </td>
                     </tr>
                   </table>
-                  <!-- // End Template Body \\ -->
+                  <!-- // End Template Body \ -->
                 </td>
               </tr>l
               <tr>
-                <td align="center" valign="top">
-                  <!-- // Begin Template Footer \\ -->
-                  <table border="0" cellpadding="10" cellspacing="0" width="600" id="templateFooter">
+                <td align="center" valign="top" style="border-collapse: collapse;text-align: center;">
+                  <!-- // Begin Template Footer \ -->
+                  <table border="0" cellpadding="10" cellspacing="0" width="600" id="templateFooter" style="background-color: #e0eef8;border-top: 0;">
                     <tr>
-                      <td valign="top" class="footerContent">
+                      <td valign="top" class="footerContent" style="border-collapse: collapse;text-align: center;">
                       
-                        <!-- // Begin Module: Standard Footer \\ -->
+                        <!-- // Begin Module: Standard Footer \ -->
                         <table border="0" cellpadding="10" cellspacing="0" width="100%">
                           <tr>
-                            <td colspan="2" valign="middle" id="social">
-                              <div>
-                                &nbsp;<a href="http://twitter.com/smartvark" target="_blank">Follow Artie on Twitter</a> | <a href="http://facebook.com/smartvark" target="_blank">Friend Artie on Facebook</a>&nbsp;
+                            <td colspan="2" valign="middle" id="social" style="border-collapse: collapse;background-color: #e0eef8;border: 0;text-align: center;">
+                              <div style="color: #707070;font-family: Arial;font-size: 12px;line-height: 125%;text-align: center;">
+                                &nbsp;<a href="http://twitter.com/smartvark" target="_blank" style="text-decoration: underline;color: #336699;font-weight: normal;">Follow Artie on Twitter</a> | <a href="http://facebook.com/smartvark" target="_blank" style="text-decoration: underline;color: #336699;font-weight: normal;">Friend Artie on Facebook</a>&nbsp;
                               </div>
                             </td>
                           </tr>
                           <tr>
-                            <td valign="top" width="350">
-                              <div>
+                            <td valign="top" width="350" style="border-collapse: collapse;text-align: center;">
+                              <div style="color: #707070;font-family: Arial;font-size: 12px;line-height: 125%;text-align: left;">
                                 <em>Copyright &copy; <%= Time.now.year %> Smartvark, Inc., All rights reserved.</em>
-                                <br />
+                                <br>
                                 <%= link_to "Smartvark.com: Local Deals. Personalized.", root_url, target: "_blank" %>
-                                <br />
+                                <br>
                                 <strong>Our mailing address is:</strong>
-                                <br />
+                                <br>
                                 3159 Donald Douglas Loop South, Suite 200, Santa Monica, CA 90405 
                               </div>
                             </td>
                           </tr>
                           <% if false # hide this until unsubscribe is built-in %>
                           <tr>
-                            <td colspan="2" valign="middle" id="utility">
-                              <div>
-                                &nbsp;<a href="#">unsubscribe from this list</a> | <a href="*|UPDATE_PROFILE|*">update subscription preferences</a>&nbsp;
+                            <td colspan="2" valign="middle" id="utility" style="border-collapse: collapse;background-color: #e0eef8;border: 0;text-align: center;">
+                              <div style="color: #707070;font-family: Arial;font-size: 12px;line-height: 125%;text-align: center;">
+                                &nbsp;<a href="#" style="text-decoration: underline;color: #336699;font-weight: normal;">unsubscribe from this list</a> | <a href="*|UPDATE_PROFILE|*" style="text-decoration: underline;color: #336699;font-weight: normal;">update subscription preferences</a>&nbsp;
                               </div>
                             </td>
                           </tr>
                           <% end %>
                         </table>
-                        <!-- // End Module: Standard Footer \\ -->
+                        <!-- // End Module: Standard Footer \ -->
                       
                       </td>
                     </tr>
                   </table>
-                  <!-- // End Template Footer \\ -->
+                  <!-- // End Template Footer \ -->
                 </td>
               </tr>
             </table>
-            <br />
+            <br>
           </td>
         </tr>
       </table>

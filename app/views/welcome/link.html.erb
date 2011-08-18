@@ -25,8 +25,17 @@
           <span id="tagline">Local Deals.<br/>Personalized.</span>
         </div>
       <% end %>
-      <div class="bar-element rate tooltip" title="Tell Artie that you like this deal to get better recommendations in the future"><%= rate_link(@offer, 1, image_tag('/images/icon-thumbsup-white.png', alt: "+"), "topbar") %></div>
-      <div class="bar-element rate tooltip" title="Tell Artie this deal isn't up your alley and he'll show you a new one"><%= rate_link(@offer, 0, image_tag('/images/icon-thumbsdown-white.png', alt: "-"), "topbar") %></div>
+      <div class="bar-element rate tooltip" title="Tell Artie that you like this deal to get better recommendations in the future">
+        <%= rate_link(@offer, 1, image_tag('/images/icon-thumbsup-white.png', alt: "+"), "topbar") %>
+      </div>
+      <div class="bar-element rate tooltip" title="Tell Artie this deal isn't up your alley and he'll show you a new one">
+        <%= rate_link(@offer, 0, image_tag('/images/icon-thumbsdown-white.png', alt: "-"), "topbar") %>
+      </div>
+      <% unless current_user %>
+        <div class="bar-element tooltip" title="Sign in or sign up to build your profile on Smartvark.com and get personalized deal recommendations">
+          <%= link_to "Sign in", "#", id: "signin-link" %>
+        </div>
+      <% end %>
       <div class="bar-right">
         <div class="bar-element social"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="smartvark">Tweet</a></div>
         <div class="bar-element social"><g:plusone size="medium" count="false"></g:plusone></div>
@@ -38,6 +47,7 @@
       <div class="spacer"></div>
       <iframe id="offer-frame" frameborder="0" src="<%= @offer.redemption_link %>"></iframe>
     </div>
+    <%= render :partial => 'users/signin', locals: { new_user: false } unless current_user %>
   <script type="text/javascript">
     var uvOptions = {};
     (function() {
@@ -50,6 +60,10 @@
   <script type="text/javascript">
     $(".tooltip").tipsy();
     $("#close-button").tipsy({gravity:'nw'});
+    $('#signin-link').click(function (e) {
+      $('#signin-popup').modal();
+        return false;
+    });
   </script>
 </body>
 </html>

@@ -8,6 +8,7 @@ class UserMailer < ActionMailer::Base
     other_cats = Category.where(:id - food_cats).map(&:id)
     @offer_other = Offer.active.where(:category_id => other_cats).order("random()").limit(1).first
     
-    mail(:to => email, :from => "Smartvark Deals <deals@smartvark.com>", :subject => "Your personalized daily deal picks from Smartvark")  
+    subject = "Today's Deal Battle: " + @offer_food.businesses.first.name + " vs " + @offer_other.businesses.first.name
+    mail(:to => email, :from => "Smartvark Deals <deals@smartvark.com>", :subject => subject)  
   end
 end

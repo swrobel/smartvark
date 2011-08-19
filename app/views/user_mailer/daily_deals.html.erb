@@ -45,9 +45,9 @@
                     <tr>
                       <td class="headerContent" style="border-collapse: collapse;color: #202020;font-family: Arial;font-size: 34px;font-weight: bold;line-height: 100%;padding: 0;text-align: center;vertical-align: middle;">
                         <!-- // Begin Module: Standard Header Image \ -->
-                        <%= link_to '<img src="http://smartvark.s3.amazonaws.com/assets/email_logo.jpg" id="headerImage"/>'.html_safe, root_url, target: "_blank" %>
+                        <%= link_to '<img src="http://smartvark.s3.amazonaws.com/assets/email_logo.jpg"/>'.html_safe, root_url, target: "_blank" %>
                         <!-- // End Module: Standard Header Image \ -->
-                        <h3 style="color: #202020;display: block;font-family: Arial;font-size: 26px;font-weight: bold;line-height: 100%;margin-top: 0;margin-right: 0;margin-bottom: 10px;margin-left: 0;text-align: center;">Artie dug up two great deals for you today:</h3>
+                        <h3 style="color: #202020;display: block;font-family: Arial;font-size: 26px;font-weight: bold;line-height: 100%;margin-top: 0;margin-right: 0;margin-bottom: 10px;margin-left: 0;text-align: center;">Choose your winner:</h3>
                       </td>
                     </tr>
                   </table>
@@ -59,10 +59,11 @@
                   <!-- // Begin Template Body \ -->
                   <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
                     <tr>
-                      <td valign="top" width="280" class="leftColumnContent" style="border-collapse: collapse;background-color: #FFFFFF;text-align: center;">
+                      <td valign="top" width="280" class="leftColumnContent" style="border-collapse: collapse;border:3px solid #FF5C16;background-color: #FFFFFF;text-align: center;">
                         <%= render :partial => 'offer', :locals => { :offer => @offer_food } %>
                       </td>
-                      <td valign="top" width="280" class="rightColumnContent" style="border-collapse: collapse;background-color: #FFFFFF;text-align: center;">
+                      <td valign="center" width="40" style="font-size:32px;">VS</td>
+                      <td valign="top" width="280" class="rightColumnContent" style="border-collapse: collapse;border:3px solid #0079C2;background-color: #FFFFFF;text-align: center;">
                         <%= render :partial => 'offer', :locals => { :offer => @offer_other } %>
                       </td>
                     </tr>
@@ -75,6 +76,7 @@
                             <td valign="top" style="border-collapse: collapse;text-align: center;">
                               <div style="color: #505050;font-family: Arial;font-size: 14px;line-height: 150%;text-align: left;">
                                 <%= link_to '<h4 style="text-align:center;">Did Artie miss the mark today?<br/>Click here to see more deals at Smartvark.com</h4>'.html_safe, root_url, target: "_blank", style: "text-decoration: none;" %>
+                                <p><strong>What is this?</strong><br/>Artie the Aardvark tracks down deals that match your tastes. Help him figure out what you like by picking a winner in your daily deal battle.</p>
                                 <p>If you have any feedback, please feel free to respond to this email.<br>You'll get a response from a real person!</p>
                               </div>
                             </td>

@@ -1,4 +1,4 @@
-<% content_for(:head_additions) do %>
+<%= content_for(:head_additions) do %>
 	<% if Rails.env.production? %>
 		<script type="text/javascript">
 			var _kmq = _kmq || [];
@@ -36,6 +36,6 @@
   <a href="http://twitter.com/share" class="twitter-share-button" data-text="Tired of getting spammed with local deals you don't want? Check out @Smartvark: Local Deals. Personalized." data-url="<%= referral_url %>" data-count="none">Tweet</a>
 </div><!-- /content -->
 
-<% content_for(:footer_additions) do %>
+<%= content_for(:footer_additions) do %>
   <%= javascript_include_tag "http://platform.twitter.com/widgets.js", "http://connect.facebook.net/en_US/all.js#xfbml=1" %>
 <% end %>

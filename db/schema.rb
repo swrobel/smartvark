@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804023900) do
+ActiveRecord::Schema.define(:version => 20110827062217) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -134,8 +134,8 @@ ActiveRecord::Schema.define(:version => 20110804023900) do
   create_table "offers", :force => true do |t|
     t.integer  "user_id"
     t.string   "title",            :limit => 100
-    t.string   "description",      :limit => 500
-    t.string   "fine_print",       :limit => 500
+    t.text     "description"
+    t.text     "fine_print"
     t.string   "redemption_code",  :limit => 25
     t.integer  "redemption_limit"
     t.date     "start_date"
@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(:version => 20110804023900) do
     t.string   "source"
     t.string   "image_url_big"
     t.string   "image_url_small"
+    t.integer  "sqoot_id"
   end
 
   add_index "offers", ["archived", "draft", "start_date", "end_date", "category_id", "offer_type_id", "allow_mobile"], :name => "by_attributes"
@@ -203,6 +204,25 @@ ActiveRecord::Schema.define(:version => 20110804023900) do
 
   add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
+
+  create_table "sqoot_categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sqoot_rows", :force => true do |t|
+    t.integer  "import_id"
+    t.integer  "offer_id"
+    t.integer  "sqoot_id"
+    t.boolean  "created_biz"
+    t.boolean  "created_offer"
+    t.text     "row_data"
+    t.text     "row_errors"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "transactions", :force => true do |t|
     t.text     "params"

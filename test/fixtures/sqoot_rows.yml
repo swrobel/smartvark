@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  import_id: 1
+  offer_id: 1
+  sqoot_id: 1
+  created_biz: false
+  created_offer: false
+  row_data: MyText
+  row_errors: MyText
+
+two:
+  import_id: 1
+  offer_id: 1
+  sqoot_id: 1
+  created_biz: false
+  created_offer: false
+  row_data: MyText
+  row_errors: MyText

@@ -25,6 +25,7 @@ class Offer < ActiveRecord::Base
     :class_name => 'Opinion',
     :conditions => { :liked => false }
   has_many :yipit_rows
+  has_many :sqoot_rows
   
   nilify_blanks
   before_update :unarchive_if_draft_or_activated

@@ -2,6 +2,66 @@ class Import < ActiveRecord::Base
   serialize :import_errors
 
   has_many :yipit_rows
+  has_many :sqoot_rows
+
+  def from_sqoot(location = "los%20angeles")
+    user = User.find_by_email("api@sqoot.com")
+    offer_type_id = OfferType.find_by_name("Coupon").id
+    begin
+      result = Net::HTTP.get URI.parse("http://api.sqoot.com/v1/offers?affiliate_token=cz17bb&location=#{location}&radius=40&order=expires_at&per_page=250&providers_not=Restaurant.com,GrubHub,Goldstar,SeatGeek,Half%20Off%20Depot")
+      data = Yajl::Parser.parse(result)
+      self.source_rows = data["offers"].count
+      self.success_rows = 0
+      data["offers"].each { |deal|
+        deal = deal["offer"]
+        biz = deal["locations"]
+        business_ids = []
+        row_errors = []
+        created_biz = false
+
+        row_errors << "No locations for business" if biz == []
+
+        biz.each { |loc|
+          begin
+            business = Business.find_by_phone(Phoner::Phone.parse(loc["phone"]).to_s)
+            unless business
+              business = user.businesses.create!(name: loc["name"], address: loc["address"], city: loc["city"], state: loc["state"], zipcode: loc["zip"], phone: loc["phone"], website: loc["url"])
+              created_biz = true
+            end
+            business_ids << business.id
+          rescue Exception => ex
+            row_errors << ex
+          end
+        } if biz
+        begin
+          offer = Offer.find_by_sqoot_id(deal["id"])
+          created_offer = false
+          unless offer || business_ids == []
+            if deal["tags"] == []
+              row_errors << "No categories for offer"
+            else
+              category_id = SqootCategory.find_by_name(deal["categories"].first).category_id
+              start_date = Date.today
+              end_date = Time.zone.parse(deal["expires_at"]).to_date
+              offer = user.offers.create!(sqoot_id: deal["id"], offer_type_id: offer_type_id, category_id: category_id, business_ids: business_ids.uniq, title: deal["short_title"], description: deal["description"], start_date: start_date, end_date: end_date, redemption_link: deal["url"], source: deal["source"], image_url_big: deal["image"][10], image_url_small: deal["image"][9])
+              created_offer = true
+            end
+          end
+          self.success_rows += 1 if offer
+        rescue Exception => ex
+          row_errors << ex
+        ensure
+          offer_id = offer.nil? ? nil : offer.id
+          row_errors = nil if row_errors == []
+          self.sqoot_rows.create(sqoot_id: deal["id"], offer_id: offer_id, created_offer: created_offer, created_biz: created_biz, row_data: deal, row_errors: row_errors)
+        end
+      }
+    rescue Exception => ex
+      self.import_errors = ex
+      return false
+    end
+    return true
+  end
 
   def from_yipit(division = "los-angeles")
     user = User.find_by_email("api@yipit.com")

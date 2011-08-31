@@ -14,30 +14,31 @@ class Import < ActiveRecord::Base
       self.success_rows = 0
       data["offers"].each { |deal|
         deal = deal["offer"]
-        biz = deal["locations"]
+        biz = deal["merchant_name"]
         business_ids = []
         row_errors = []
         created_biz = false
 
-        row_errors << "No locations for business" if biz == []
+        row_errors << "No locations for business" if !deal["locations"] || deal["locations"] == []
 
-        biz.each { |loc|
+        deal["locations"].each { |loc|
           begin
             business = Business.find_by_phone(Phoner::Phone.parse(loc["phone"]).to_s)
             unless business
-              business = user.businesses.create!(name: loc["name"], address: loc["address"], city: loc["city"], state: loc["state"], zipcode: loc["zip"], phone: loc["phone"], website: loc["url"])
+              name = loc["name"] || biz
+              business = user.businesses.create!(name: name, address: loc["address"], city: loc["city"], state: loc["state"], zipcode: loc["zip"], latitude: loc["latitude"], longitude: loc["longitude"], phone: loc["phone"], website: loc["url"])
               created_biz = true
             end
             business_ids << business.id
           rescue Exception => ex
             row_errors << ex
           end
-        } if biz
+        } if deal["locations"]
         begin
           offer = Offer.find_by_sqoot_id(deal["id"])
           created_offer = false
           unless offer || business_ids == []
-            if deal["tags"] == []
+            if !deal["categories"] || deal["categories"] == []
               row_errors << "No categories for offer"
             else
               category_id = SqootCategory.find_by_name(deal["categories"].first).category_id

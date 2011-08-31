@@ -10,7 +10,7 @@ class Business < ActiveRecord::Base
       obj.zipcode = geo.postal_code
     end
   end
-  after_validation :geocode, :reverse_geocode
+  before_validation :geocode, :reverse_geocode
   
   belongs_to :user
   has_and_belongs_to_many :offers

@@ -23,7 +23,7 @@
 <body>
   <div data-role="page" <%= 'data-add-back-btn="true"' if %w(privacy_policy terms_of_service).include?(controller.action_name) %>>
     <%= yield %>
-    <p><font size="-2">&copy; <%= Time.now.year %> Smartvark, Inc. some icons by <a href="http://glyphish.com/" target="_blank" data-ajax="false">glyphish</a>|powered by <a href="http://yipit.com" target="_blank" data-ajax="false">yipit</a></font></p>
+    <p><font size="-2">&copy; <%= Time.now.year %> Smartvark, Inc. some icons by <a href="http://glyphish.com/" target="_blank" data-ajax="false">glyphish</a></font></p>
   </div>
   <% if alert || notice %>
 		<script type="text/javascript">

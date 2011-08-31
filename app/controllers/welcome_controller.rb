@@ -60,7 +60,6 @@ class WelcomeController < ApplicationController
     if request.post? && params[:location]
       @formatted_location = params[:location]
       loc = Geocoder.search(params[:location]).first.coordinates rescue nil
-      loc = loc.coordinates
       if loc
         cookies.permanent.signed[:geo_location] = Marshal.dump(loc)
       else

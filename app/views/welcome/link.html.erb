@@ -11,7 +11,7 @@
   <meta property="og:image" content="<%= @offer.image_url_big %>"/>
   <meta property="og:site_name" content="Smartvark: Local Deals. Personalized."/>
   <meta property="og:url" content="<%= request.url %>"/>
-  <meta property="og:description" content="<%= @offer.description %>"/>
+  <meta property="og:description" content="<%= strip_tags(@offer.description) %>"/>
   <%= stylesheet_link_tag 'bar' %>
 </head>
 <body>

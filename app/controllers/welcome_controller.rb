@@ -52,12 +52,17 @@ class WelcomeController < ApplicationController
 
   def deals
     raise CanCan::AccessDenied unless can? :read, :deals
+
+    loc = nil
+    @formatted_location = nil
     
     # Set location based on user's input and display an error if Google can't find it
     if request.post? && params[:location]
-      geo_loc = Geocode.find_or_create_by_query(params[:location]) rescue nil
-      if geo_loc
-        cookies.permanent.signed[:geo_location] = Marshal.dump(geo_loc)
+      @formatted_location = params[:location]
+      loc = Geocoder.search(params[:location]).first.coordinates rescue nil
+      loc = loc.coordinates
+      if loc
+        cookies.permanent.signed[:geo_location] = Marshal.dump(loc)
       else
         flash[:alert] = "Could not locate #{params[:location]}"
       end
@@ -75,8 +80,10 @@ class WelcomeController < ApplicationController
     end
     
     @out_of_area = false
-    loc = geo_location
-    if LA.distance_to(loc) > 50
+    loc ||= geo_location
+    @formatted_location ||= [[request.location.city, request.location.region_code].join(', '), request.location.zipcode].join(' ').strip unless Rails.env.development?
+    @formatted_location ||= LA.formatted_address
+    if Geocoder::Calculations.distance_between(LA.coordinates,loc) > 50
       @out_of_area = true
       @offers = []
     else
@@ -153,10 +160,10 @@ class WelcomeController < ApplicationController
     @category_id = params[:category_id].blank? ? 1 : Category.find(params[:category_id]).id
     cat = @category_id
     terms = '%' + params[:search_terms] + '%'
-    loc = Geocode.find_or_create_by_query(params[:location]) if params[:location] rescue nil
+    loc = Geocoder.search(params[:location]).first.coordinates if params[:location] rescue nil
     loc ||= geo_location
     
-    @offers = Offer.active.includes(:businesses => [{:geocoding => :geocode}]).joins(:businesses, :category).where(
+    @offers = Offer.active.includes(:businesses).joins(:businesses, :category).where(
                 (:category_id + Category.subtree_of(cat)) &
                 {:businesses => [:id + Business.ids_close_to(loc, 20)]} &
                 (

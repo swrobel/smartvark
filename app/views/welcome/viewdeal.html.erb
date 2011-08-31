@@ -1,6 +1,6 @@
 <% content_for :title, @offer.title %>
-<% content_for :fb_desc, @offer.description %>
-<% content_for :fb_img, @offer.logo.url if @offer.logo.file? %>
+<% content_for :fb_desc, strip_tags(@offer.description) %>
+<% content_for :fb_img, @offer.logo.file? ? @offer.logo.url : @offer.image_url_big %>
 <%= render :partial => 'search_box' %>
 <div class="two-columns">
 	<div class="t"></div>

@@ -19,7 +19,7 @@
     <% @offers.each do |offer| %>
       <tr style="border-top: 1px solid #000000;" >
         <td><%= offer.title %></td>
-        <td><%= offer.description %></td>
+        <td><%= offer.description.html_safe %></td>
         <td><%= offer.fine_print %></td>
         <td><%= offer.end_date.try(:strftime,'%b %d, %Y') %></td>
         <td><%= offer.businesses.collect(&:short_or_name).join(", ") %></td>

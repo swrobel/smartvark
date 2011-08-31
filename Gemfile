@@ -4,7 +4,6 @@ gem "rails", "3.0.9"
 gem "thin", :group => :development
 gem "ancestry"
 gem "paperclip"
-gem "acts_as_geocodable"
 gem "moonshado-sms"
 gem "aws-s3"
 gem "jquery-rails"

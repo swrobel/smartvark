@@ -19,21 +19,15 @@ class ApplicationController < ActionController::Base
 
 protected
   
-  def geo_location
-    # workaround because remote_location returns a bunk value when running on localhost
-    if Rails.env.development?
-      ip_location = LA
-    else
-      ip_location = request.location
-      ip_location = Geocode.find_or_create_by_query(ip_location.latitude.to_s+","+ip_location.longitude.to_s) if ip_location
-    end
-    loc = ip_location || LA
-    
-    if current_user
-      loc = current_user.geocode if current_user.geocode #&& current_user.geocode.precision >= ip_location.precision
+  def geo_location  
+    if current_user && current_user.geocoded?
+      loc = current_user.to_coordinates
     elsif cookies.signed[:geo_location]
       loc = Marshal.load(cookies.signed[:geo_location])
+    elsif !Rails.env.development?
+      loc = request.location.coordinates
     end
+    loc ||= LA.coordinates
     return loc
   end
 

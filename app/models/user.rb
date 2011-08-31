@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   ROLES = %w[admin business user]
   
-  acts_as_geocodable :address => {:street => :address, :locality => :city, :region => :state, :postal_code => :zipcode}
+  geocoded_by :address_as_string
+  after_validation :geocode, :if => lambda{ |obj| obj.zipcode_changed? }
   
   devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   
@@ -40,6 +41,14 @@ class User < ActiveRecord::Base
     Phoner::Phone.parse(phone).format(:us) unless phone.blank?
   end
 
+  def city_state_zip
+    [[city, state].join(', '), zipcode].join(' ').strip
+  end
+
+  def address_as_string
+    [address, city_state_zip].compact.join(', ')
+  end
+
   def name_or_email
     name.blank? ? email : name.split.first
   end
@@ -47,7 +56,7 @@ class User < ActiveRecord::Base
   def profile_progress
     pp = 10
     pp += 10 unless name.blank?
-    pp += 15 unless geocode.blank?
+    pp += 15 unless geocoded?
     pp += 15 unless phone.blank?
     pp += 25 unless categories.count < 10
     #pp += 25 unless shares < 3

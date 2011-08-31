@@ -18,7 +18,7 @@
 		<% end %>
 		<%= business.city %>, <%= business.state %> <%= business.zipcode%></p>
 	<% end %>
-  <p><%= @offer.description %></p>
+  <p><%= @offer.description.html_safe %></p>
   <p>Not valid after: <%= @offer.end_date.try(:strftime, '%B %d, %Y') %></p>
 	<% unless @offer.fine_print.blank? %>
 		<p>Fine print: <%= @offer.fine_print %></p>

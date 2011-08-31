@@ -1,6 +1,16 @@
 class Business < ActiveRecord::Base
   has_friendly_id :name, :use_slug => true
-  acts_as_geocodable :address => {:street => :address, :locality => :city, :region => :state, :postal_code => :zipcode}
+  
+  geocoded_by :address_as_string
+  reverse_geocoded_by :latitude, :longitude do |obj,results|
+    if geo = results.first
+      obj.address = geo.address
+      obj.city    = geo.city
+      obj.state   = geo.state_code
+      obj.zipcode = geo.postal_code
+    end
+  end
+  after_validation :geocode, :reverse_geocode
   
   belongs_to :user
   has_and_belongs_to_many :offers
@@ -27,7 +37,7 @@ class Business < ActiveRecord::Base
   end
 
   def self.ids_close_to(loc, dist=10)
-    Business.origin(loc, :within => dist).order("distance").map(&:id)
+    Business.near(loc, dist).map(&:id)
   end
   
   def formatted_phone
@@ -43,7 +53,7 @@ class Business < ActiveRecord::Base
   end
 
   def address_as_string
-    address.nil? ? city_state_zip : [address, city_state_zip].join(', ')
+    [address, city_state_zip].compact.join(', ')
   end
 
   def facebook_link

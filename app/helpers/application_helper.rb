@@ -56,7 +56,7 @@ module ApplicationHelper
           </div>
        </div>
        <span class='subttl'>#{offer.title}</span>
-        <p>#{auto_link(offer.description, :html => { :target => '_blank' })}</p>
+        <p>#{auto_link(offer.description, :html => { :target => '_blank' }).html_safe}</p>
      </div>
     "
   end
@@ -96,7 +96,7 @@ module ApplicationHelper
   end
   
   def info_for_rollover(offer)
-    escape_javascript("<strong class=\"title\">#{offer.user.name.blank? ? offer.businesses.first.name : offer.user.name}: #{offer.title}</strong><p>#{offer.description}</p><p>#{offer.fine_print}</p><p>Expires #{std_date(offer.end_date)}</p>")
+    escape_javascript("<strong class=\"title\">#{offer.user.name.blank? ? offer.businesses.first.name : offer.user.name}: #{offer.title}</strong><p>#{offer.description.html_safe}</p><p>#{offer.fine_print}</p><p>Expires #{std_date(offer.end_date)}</p>")
   end
 
   def list_offer(offer)
@@ -162,18 +162,6 @@ module ApplicationHelper
       hidden_field_tag(:cmd, "_s-xclick") +
       hidden_field_tag(:encrypted, current_user.paypal_encrypted(paypal_return_url, ppipn_url, num_credits, price, "Smartvark credit")) +
       image_submit_tag("http://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif", alt: "Pay Now", name: "submit")
-    end
-  end
-
-  def geo_location_formatted
-    loc = geo_location
-    if loc.postal_code.blank?
-      result = ""
-      result << loc.locality.to_s + ", " unless loc.locality.blank?
-      result << loc.region.to_s
-      result
-    else
-      loc.postal_code.to_s
     end
   end
 end

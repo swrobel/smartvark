@@ -2,10 +2,11 @@
 <div class="tryit-box">
 	<!-- text -->
 	<div class="text">
-		<p>Showing deals near <strong><%= geo_location_formatted %></strong>. To change your location, enter it here:</p>
+		<p>Showing deals near <strong><%= @formatted_location %></strong></p>
 	</div>
 	<!-- promo-box -->
 	<div class="promo-box">
+	  <p>To change your location, enter a new one here:</p>
 		<%= form_tag do %>
 			<%= text_field_tag 'location', nil, :class => 'text-input', :placeholder => 'city, state or zip' %>
 			<%= image_submit_tag "/images/btn-update.gif", :class => 'button', :alt => 'Update' %>

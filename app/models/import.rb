@@ -13,28 +13,28 @@ class Import < ActiveRecord::Base
       self.source_rows = data["offers"].count
       self.success_rows = 0
       data["offers"].each { |deal|
-        deal = deal["offer"]
-        biz = deal["merchant_name"]
-        business_ids = []
-        row_errors = []
-        created_biz = false
-
-        row_errors << "No locations for business" if !deal["locations"] || deal["locations"] == []
-
-        deal["locations"].each { |loc|
-          begin
-            business = Business.find_by_phone(Phoner::Phone.parse(loc["phone"]).to_s)
-            unless business
-              name = loc["name"] || biz
-              business = user.businesses.create!(name: name, address: loc["address"], city: loc["city"], state: loc["state"], zipcode: loc["zip"], latitude: loc["latitude"], longitude: loc["longitude"], phone: loc["phone"], website: loc["url"])
-              created_biz = true
-            end
-            business_ids << business.id
-          rescue Exception => ex
-            row_errors << ex
-          end
-        } if deal["locations"]
         begin
+          deal = deal["offer"]
+          biz = deal["merchant_name"]
+          business_ids = []
+          row_errors = []
+          created_biz = false
+
+          row_errors << "No locations for business" if !deal["locations"] || deal["locations"] == []
+
+          deal["locations"].each { |loc|
+            begin
+              business = Business.find_by_phone(Phoner::Phone.parse(loc["phone"]).to_s)
+              unless business
+                name = loc["name"] || biz
+                business = user.businesses.create!(name: name, address: loc["address"], city: loc["city"], state: loc["state"], zipcode: loc["zip"], latitude: loc["latitude"], longitude: loc["longitude"], phone: loc["phone"], website: loc["url"])
+                created_biz = true
+              end
+              business_ids << business.id
+            rescue Exception => ex
+              row_errors << ex
+            end
+          } if deal["locations"]
           offer = Offer.find_by_sqoot_id(deal["id"])
           created_offer = false
           unless offer || business_ids == []
@@ -44,7 +44,10 @@ class Import < ActiveRecord::Base
               category_id = SqootCategory.find_by_name(deal["categories"].first).category_id
               start_date = Date.today
               end_date = Time.zone.parse(deal["expires_at"]).to_date
-              offer = user.offers.create!(sqoot_id: deal["id"], offer_type_id: offer_type_id, category_id: category_id, business_ids: business_ids.uniq, title: deal["short_title"], description: deal["description"], start_date: start_date, end_date: end_date, redemption_link: deal["url"], source: deal["source"], image_url_big: deal["image"][10], image_url_small: deal["image"][9])
+              img_small = deal["image"].try(:slice, 9)
+              img_big = deal["image"].try(:slice, 10)
+              img_big ||= img_small
+              offer = user.offers.create!(sqoot_id: deal["id"], offer_type_id: offer_type_id, category_id: category_id, business_ids: business_ids.uniq, title: deal["short_title"], description: deal["description"], start_date: start_date, end_date: end_date, redemption_link: deal["url"], source: deal["source"], image_url_big: img_big, image_url_small: img_small)
               created_offer = true
             end
           end
@@ -100,7 +103,7 @@ class Import < ActiveRecord::Base
         offer = Offer.find_by_yipit_id(deal["id"])
         created_offer = false
         unless offer || business_ids == []
-          if deal["tags"] == []
+          if !deal["tags"] || deal["tags"] == []
             row_errors << "No categories for offer"
           else
             category_id = YipitCategory.find_by_yipit_slug(deal["tags"].first["slug"]).category_id

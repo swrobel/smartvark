@@ -4,13 +4,14 @@ class Business < ActiveRecord::Base
   geocoded_by :address_as_string
   reverse_geocoded_by :latitude, :longitude do |obj,results|
     if geo = results.first
-      obj.address = geo.address
+      obj.address = geo.address.split(",").first
       obj.city    = geo.city
       obj.state   = geo.state_code
       obj.zipcode = geo.postal_code
     end
   end
-  before_validation :geocode, :reverse_geocode
+  after_validation :geocode, :if => "latitude.blank?"
+  before_validation :reverse_geocode, :if => "address_as_string.blank?"
   
   belongs_to :user
   has_and_belongs_to_many :offers

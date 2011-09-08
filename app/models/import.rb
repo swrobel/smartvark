@@ -27,7 +27,7 @@ class Import < ActiveRecord::Base
               business = Business.find_by_phone(Phoner::Phone.parse(loc["phone"]).to_s)
               unless business
                 name = loc["name"] || biz
-                business = user.businesses.create!(name: name, address: loc["address"], city: loc["city"], state: loc["state"], zipcode: loc["zip"], latitude: loc["latitude"], longitude: loc["longitude"], phone: loc["phone"], website: loc["url"])
+                business = user.businesses.create!(name: name, address: loc["street_address_1"], city: loc["city"], state: loc["state"], zipcode: loc["zip"], latitude: loc["latitude"], longitude: loc["longitude"], phone: loc["phone"], website: loc["url"])
                 created_biz = true
               end
               business_ids << business.id

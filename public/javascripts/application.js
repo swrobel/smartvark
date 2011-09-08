@@ -107,7 +107,7 @@ $(function(){
 		}
 		
 		createCount("#offer_title", 40);
-		createCount("#offer_description", 200);
+		createCount("#offer_description", 1000);
 		createCount("#offer_fine_print", 200);
 	}
 	

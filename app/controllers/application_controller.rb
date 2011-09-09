@@ -25,7 +25,7 @@ protected
     elsif cookies.signed[:geo_location]
       loc = Marshal.load(cookies.signed[:geo_location])
     elsif !Rails.env.development?
-      loc = request.location.coordinates
+      loc = request.location.coordinates if request.location
     end
     loc ||= LA.coordinates
     return loc

@@ -80,7 +80,7 @@ class WelcomeController < ApplicationController
     
     @out_of_area = false
     loc ||= geo_location
-    @formatted_location ||= [[request.location.city, request.location.state_code].join(', '), request.location.postal_code].join(' ').strip unless Rails.env.development?
+    @formatted_location ||= [[request.location.city, request.location.state_code].join(', '), request.location.postal_code].join(' ').strip if !Rails.env.development? && request.location
     @formatted_location ||= LA.formatted_address
     if Geocoder::Calculations.distance_between(LA.coordinates,loc) > 50
       @out_of_area = true

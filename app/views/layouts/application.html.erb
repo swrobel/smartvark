@@ -6,8 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
 <head>
   <title><%= content_for?(:title) ? content_for(:title) : controller.action_name.titlecase %> - Smartvark<%= " (#{Rails.env.upcase})" unless Rails.env.production? %></title>
-  <link rel="stylesheet" type="text/css" href="http://www.webputty.net/css/agtzfmNzc2ZpZGRsZXIMCxIEUGFnZRiE0hUM" />
-  <script type="text/javascript">(function(w,d){if(w.location!=w.parent.location||w.location.search.indexOf('__preview_css__')>-1){var t=d.createElement('script');t.type='text/javascript';t.async=true;t.src='http://www.webputty.net/js/agtzfmNzc2ZpZGRsZXIMCxIEUGFnZRiE0hUM';(d.body||d.documentElement).appendChild(t);}})(window,document);</script>
+  <%= stylesheet_link_tag 'web' %>
   <!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
   <%= content_for?(:head_additions) ? content_for(:head_additions) : nil -%>
   <%= favicon_link_tag %>

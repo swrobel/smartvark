@@ -32,10 +32,15 @@
         <%= rate_link(@offer, 0, image_tag("/images/icon-thumbsdown-white#{'-checked' if current_user && current_user.dislikes.map(&:offer_id).include?(@offer.id)}.png", alt: "-", id: "thumbsdown"), "topbar") %>
       </div>
       <% unless current_user %>
-        <div class="bar-element tooltip" title="Sign in or sign up to build your profile on Smartvark.com and get personalized deal recommendations">
+        <div class="bar-element tooltip one-liner" title="Sign in or sign up to build your profile on Smartvark.com and get personalized deal recommendations">
           <%= link_to "Sign in", "#", id: "signin-link" %>
         </div>
-        <% end %>
+      <% end %>
+      <% unless @offer.redemption_code.blank? %>
+        <div class="bar-element tooltip one-liner" title="To get the discount, input this code when prompted">
+          <%= "Use code: #{@offer.redemption_code}" %>
+        </div>
+      <% end %>
       <div class="bar-right">
         <div class="bar-element social"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="smartvark">Tweet</a></div>
         <div class="bar-element social"><g:plusone size="medium" count="false"></g:plusone></div>

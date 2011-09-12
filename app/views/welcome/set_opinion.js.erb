@@ -1,5 +1,5 @@
 <% if @response_type == "gallery" %>
-  $("#undo_last_action").html("<%= escape_javascript(undo_last_action_link(@offer, @liked).html_safe) %>")
+  $("#undo_last_action").html("<%= escape_javascript(undo_last_action_link(@offer, @liked).html_safe) %>");
   <% if @liked %>
     $("#my_list").prepend($("<%= escape_javascript(list_offer(@offer).html_safe) %>").fadeIn("slow"));
   <% end %>
@@ -8,7 +8,9 @@
   <% end %>
   $("#offer_<%= @offer.id %>").hide("shrink");
 <% elsif @response_type == "topbar" %>
-  <% if @next_offer %>
+  <% if @liked %>
+    $("#thumbsup").attr("src","/images/icon-thumbsup-white-checked.png");
+  <% else %>
     window.location = "<%= link_url(@next_offer) %>";
   <% end %>
 <% elsif @response_type == "mobile" %>

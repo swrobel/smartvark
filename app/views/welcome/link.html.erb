@@ -26,16 +26,16 @@
         </div>
       <% end %>
       <div class="bar-element rate tooltip" title="Tell Artie that you like this deal to get better recommendations in the future">
-        <%= rate_link(@offer, 1, image_tag('/images/icon-thumbsup-white.png', alt: "+"), "topbar") %>
+        <%= rate_link(@offer, 1, image_tag("/images/icon-thumbsup-white#{'-checked' if current_user && current_user.likes.map(&:offer_id).include?(@offer.id)}.png", alt: "+", id: "thumbsup"), "topbar") %>
       </div>
       <div class="bar-element rate tooltip" title="Tell Artie this deal isn't up your alley and he'll show you a new one">
-        <%= rate_link(@offer, 0, image_tag('/images/icon-thumbsdown-white.png', alt: "-"), "topbar") %>
+        <%= rate_link(@offer, 0, image_tag("/images/icon-thumbsdown-white#{'-checked' if current_user && current_user.dislikes.map(&:offer_id).include?(@offer.id)}.png", alt: "-", id: "thumbsdown"), "topbar") %>
       </div>
       <% unless current_user %>
         <div class="bar-element tooltip" title="Sign in or sign up to build your profile on Smartvark.com and get personalized deal recommendations">
           <%= link_to "Sign in", "#", id: "signin-link" %>
         </div>
-      <% end %>
+        <% end %>
       <div class="bar-right">
         <div class="bar-element social"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="smartvark">Tweet</a></div>
         <div class="bar-element social"><g:plusone size="medium" count="false"></g:plusone></div>

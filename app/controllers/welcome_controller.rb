@@ -241,7 +241,7 @@ class WelcomeController < ApplicationController
       current_user.set_opinion(@offer.id, @liked)
       current_user.save
       unless @liked || @response_type != "topbar"
-        @next_offer = Offer.active.includes([:businesses,:user,:offer_type,:category]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]} & (:category_id + Category.subtree_of(@category_id))).order("random()").limit(1)
+        @next_offer = Offer.active.includes([:businesses,:user,:offer_type,:category]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]}).order("random()").limit(1)
         opinions = current_user.opinions.map(&:offer_id)
         @next_offer = @next_offer.where(:id - opinions) unless opinions.empty?
         @next_offer = @next_offer.first
@@ -255,7 +255,7 @@ class WelcomeController < ApplicationController
         if @response_type == "topbar"
           opinions += session[:likes] if session[:likes]
           opinions += session[:dislikes] if session[:dislikes]
-          @next_offer = Offer.active.includes([:businesses,:user,:offer_type,:category]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]}).order("random()").limit(1)
+          @next_offer = Offer.active.includes([:businesses,:user,:offer_type,:category]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]}).where(:link_url ^ nil).order("random()").limit(1)
           @next_offer = @next_offer.where(:id - opinions) unless opinions.empty?
           @next_offer = @next_offer.first
         end

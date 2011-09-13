@@ -153,8 +153,8 @@ module ApplicationHelper
 </li>'
   end
 
-  def rate_link(offer, liked, display, response_type="gallery")
-    link_to(display, { controller: "welcome", action: "set_opinion", offer_id: offer.friendly_id, liked: liked, response_type: response_type }, method: :post, remote: true, "data-ajax" => "false", "data-role" => "button", "data-icon" => (liked == 1 ? "thumbsup" : "thumbsdown"))
+  def rate_link(offer, liked, display, response_type="gallery", html_class=nil)
+    link_to(display, { controller: "welcome", action: "set_opinion", offer_id: offer.friendly_id, liked: liked, response_type: response_type }, method: :post, remote: true, class: html_class, "data-ajax" => "false", "data-role" => "button", "data-icon" => (liked == 1 ? "thumbsup" : "thumbsdown"))
   end
 
   def pay_button(num_credits, price)

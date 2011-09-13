@@ -68,8 +68,10 @@ a img {border:none;}
 .rate img{padding-top:4px;}
 .bar-right {float: right;}
 .bar-right .social {
-  padding-top:3px;
-  height:25px;}
+  padding:3px 2px 0;
+  height:25px;
+  max-width:104px;
+  border:none;}
 
 #smartvark-frame {
   width: 100%;

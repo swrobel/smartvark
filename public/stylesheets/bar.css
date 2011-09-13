@@ -38,7 +38,7 @@ a img {border:none;}
   overflow: visible;
   padding: 0 7px 0px 7px;
   border-right: 1px solid #4CB0D0; }
-.bar-element:hover, #close-button:hover {
+.hover-effect:hover {
   background-color: #4CB0D0;
   border-bottom: 3px solid #333333; }
 

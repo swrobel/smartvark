@@ -4,8 +4,8 @@ task :cron => :environment do
   import.from_sqoot
   import.save
   Offer.archive_expired
-  emails = ["swrobel@gmail.com"]
-  emails.each do |email|
-    UserMailer.daily_deals(email).deliver
+  users = User.near("Los Angeles, CA",40).where(:role => "user")
+  users.each do |user|
+    UserMailer.daily_deals(user).deliver
   end
 end

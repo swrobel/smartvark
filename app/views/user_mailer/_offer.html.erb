@@ -3,10 +3,13 @@
 <table border="0" cellpadding="8" cellspacing="0" width="100%">
   <tr>
     <td valign="top" style="border-collapse: collapse;text-align: center;">
-      <%= image_tag offer.image_url_small %>
       <div style="color: #505050;font-family: Arial;font-size: 14px;line-height: 150%;text-align: left;">
        <h4 class="h4" style="display: block;font-family: Arial;font-size: 18px;font-weight: bold;line-height: 100%;margin-top: 0;margin-right: 0;margin-bottom: 10px;margin-left: 0;text-align: center;"><%= offer.title %></h4>
-       <div class="get-button" style="color: #505050;font-family: Arial;font-size: 14px;line-height: 150%;text-align: center;">
+       <div style="text-align: center;">
+        <%= image_tag offer.image_url_small %>
+       </div>
+       <br/>
+       <div style="text-align: center;">
           <%= image_tag "http://smartvark.s3.amazonaws.com/assets/pick_#{color}.jpg", alt: "Pick This Deal" %>
        </div>
        <p>
@@ -17,11 +20,11 @@
          <% end %>
        </p>
       </div>
-      <% map_url = "http://maps.googleapis.com/maps/api/staticmap?size=250x250&sensor=false&format=jpg&markers=" %>
+      <% map_url = "http://maps.googleapis.com/maps/api/staticmap?size=240x240&sensor=false&format=jpg&markers=" %>
       <% offer.businesses.each do |business| %>
         <% map_url << "|" + business.address_as_string %>
       <% end %>
-      <% map_url << "&zoom=10" if offer.businesses.count == 1 %>
+      <% map_url << "&zoom=11" if offer.businesses.count == 1 %>
       <%= image_tag map_url %>
     </td>
   </tr>

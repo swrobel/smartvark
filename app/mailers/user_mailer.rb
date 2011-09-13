@@ -1,7 +1,9 @@
 class UserMailer < ActionMailer::Base
   default :from => "Smartvark <noreply@smartvark.com>"
 
-  def daily_deals(email)
+  def daily_deals(user)
+    @user = user
+
     food_cats = Category.find("feed-me").subtree.map(&:id)
     @offer_food = Offer.active.where(:category_id => food_cats).order("random()").limit(1).first
     
@@ -9,6 +11,6 @@ class UserMailer < ActionMailer::Base
     @offer_other = Offer.active.where(:category_id => other_cats).order("random()").limit(1).first
     
     subject = "Today's Deal Battle: " + @offer_food.businesses.first.name + " vs " + @offer_other.businesses.first.name
-    mail(:to => email, :from => "Smartvark Deals <deals@smartvark.com>", :subject => subject)  
+    mail(:to => user.email, :from => "Smartvark Deals <deals@smartvark.com>", :subject => subject)  
   end
 end

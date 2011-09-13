@@ -67,8 +67,8 @@ a img {border:none;}
   text-align:center;}
 .rate img{padding-top:4px;}
 .bar-right {float: right;}
-.bar-right .social {
-  padding:3px 2px 0;
+.social {
+  padding:3px 0 0 6px;
   height:25px;
   border:none;}
 

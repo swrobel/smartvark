@@ -43,11 +43,10 @@ class Import < ActiveRecord::Base
             else
               category_id = SqootCategory.find_by_name(deal["categories"].first).category_id
               start_date = Date.today
-              end_date = Time.zone.parse(deal["expires_at"]).to_date
               img_small = deal["image"].try(:slice, 9)
               img_big = deal["image"].try(:slice, 10)
               img_big ||= img_small
-              offer = user.offers.create!(sqoot_id: deal["id"], offer_type_id: offer_type_id, category_id: category_id, business_ids: business_ids.uniq, title: deal["short_title"], description: deal["description"], start_date: start_date, end_date: end_date, redemption_link: deal["url"], source: deal["source"], image_url_big: img_big, image_url_small: img_small)
+              offer = user.offers.create!(sqoot_id: deal["id"], offer_type_id: offer_type_id, category_id: category_id, business_ids: business_ids.uniq, title: deal["short_title"], description: deal["description"], start_date: start_date, end_date: deal["expires_at"], redemption_link: deal["url"], source: deal["source"], image_url_big: img_big, image_url_small: img_small)
               created_offer = true
             end
           end

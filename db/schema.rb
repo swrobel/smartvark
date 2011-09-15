@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830220743) do
+ActiveRecord::Schema.define(:version => 20110915205300) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -110,7 +111,7 @@ ActiveRecord::Schema.define(:version => 20110830220743) do
     t.string   "redemption_code",  :limit => 25
     t.integer  "redemption_limit"
     t.date     "start_date"
-    t.date     "end_date"
+    t.datetime "end_date"
     t.integer  "offer_type_id"
     t.integer  "category_id"
     t.boolean  "allow_print",                     :default => true

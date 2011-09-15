@@ -11,7 +11,7 @@ class Business < ActiveRecord::Base
     end
   end
   after_validation :geocode, :if => "latitude.blank?"
-  before_validation :reverse_geocode, :if => "address_as_string.blank?"
+  before_validation :reverse_geocode, :if => "city.blank? || state.blank? || zipcode.blank?"
   
   belongs_to :user
   has_and_belongs_to_many :offers

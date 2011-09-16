@@ -45,7 +45,7 @@
 <% else %>
 	<div class="frame">
 		<div class="account-area">
-			<a href="" id="btn-signin-open" class="btn-popup-open">Sign in</a>
+			<%= link_to "Sign in", new_user_session_path, id: "btn-signin-open", class: "btn-popup-open" %>
 			<% if new_user %> or
 				<%= render :partial => 'users/signup' %>
 			<% end %>

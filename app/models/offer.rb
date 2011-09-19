@@ -53,7 +53,7 @@ class Offer < ActiveRecord::Base
   end
   
   def num_months
-    ((end_date - start_date)/31.0).ceil
+    ((end_date.to_date - start_date)/31.0).ceil
   end
   
   def set_to_archived

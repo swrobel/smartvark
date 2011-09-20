@@ -10,11 +10,11 @@ task :cron => :environment do
   
   puts "Cron: Email users @ #{Time.now}"
   exclusive = Offer.find(85)
-  UserMailer.daily_deals(User.find_by_email("swrobel@gmail.com"), exclusive).deliver
-  # users = User.near("Los Angeles, CA",40).where(:role => "user")
-  # users.each do |user|
-  #   UserMailer.daily_deals(user, exclusive).deliver
-  # end
+  #UserMailer.daily_deals(User.find_by_email("swrobel@gmail.com"), exclusive).deliver
+  users = User.near("Los Angeles, CA",40).where(:role => "user")
+  users.each do |user|
+    UserMailer.daily_deals(user, exclusive).deliver
+  end
 
   puts "Cron: Done @ #{Time.now}"
 end

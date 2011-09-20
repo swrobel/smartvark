@@ -2,6 +2,14 @@ class User < ActiveRecord::Base
   ROLES = %w[admin business user]
   
   geocoded_by :address_as_string
+  reverse_geocoded_by :latitude, :longitude do |obj,results|
+    if geo = results.first
+      obj.address = geo.address.split(",").first
+      obj.city    = geo.city
+      obj.state   = geo.state_code
+      obj.zipcode = geo.postal_code
+    end
+  end
   after_validation :geocode, :if => lambda{ |obj| obj.zipcode_changed? }
   
   devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable

@@ -16,44 +16,44 @@
   <%= stylesheet_link_tag 'bar' %>
 </head>
 <body>
-    <div id="smartvark-bar">
-      <%= link_to @offer.redemption_link, :class => "close-button" do %>
-        <div id="close-button" class="hover-effect" title="Remove the Smartvark bar"></div>
-      <% end %>
-      <%= link_to viewdeal_path(@offer) do %>
-        <div class="bar-element tooltip hover-effect" title="Go to Smartvark.com to see more deals hand-picked by Artie personally for YOU">
-          <span id="smartvark-logo"></span>
-          <span id="tagline">Local Deals.<br/>Personalized.</span>
-        </div>
-      <% end %>
-      <div class="bar-element rate tooltip hover-effect" title="Tell Artie that you like this deal to get better recommendations in the future">
-        <%= rate_link(@offer, 1, image_tag("/images/icon-thumbsup-white#{'-checked' if current_user && current_user.likes.map(&:offer_id).include?(@offer.id)}.png", alt: "+", id: "thumbsup"), "topbar", "#{'show-modal' unless current_user}") %>
+  <div id="smartvark-bar">
+    <%= link_to @offer.redemption_link, :class => "close-button" do %>
+      <div id="close-button" class="hover-effect" title="Remove the Smartvark bar"></div>
+    <% end %>
+    <%= link_to viewdeal_path(@offer) do %>
+      <div class="bar-element tooltip hover-effect" title="Go to Smartvark.com to see more deals hand-picked by Artie personally for YOU">
+        <span id="smartvark-logo"></span>
+        <span id="tagline">Local Deals.<br/>Personalized.</span>
       </div>
-      <div class="bar-element rate tooltip hover-effect" title="Tell Artie this deal isn't up your alley and he'll show you a new one">
-        <%= rate_link(@offer, 0, image_tag("/images/icon-thumbsdown-white#{'-checked' if current_user && current_user.dislikes.map(&:offer_id).include?(@offer.id)}.png", alt: "-", id: "thumbsdown"), "topbar", "#{'show-modal' unless current_user}") %>
-      </div>
-      <% unless current_user %>
-        <div class="bar-element tooltip one-liner hover-effect" title="Sign in or sign up to build your profile on Smartvark.com and get personalized deal recommendations">
-          <%= link_to "Sign in", "#", id: "signin-link", class: "show-modal" %>
-        </div>
-      <% end %>
-      <% unless @offer.redemption_code.blank? %>
-        <div class="bar-element tooltip one-liner" title="To get the discount, input this code when prompted">
-          <%= "Use code: #{@offer.redemption_code}" %>
-        </div>
-      <% end %>
-      <div class="bar-element social"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="smartvark">Tweet</a></div>
-      <div class="bar-element social"><g:plusone size="medium" count="false"></g:plusone></div>
-      <div class="bar-element social"><fb:like layout="button_count" send="true"></fb:like></div>
-      <div class="bar-right">
-        <div class="bar-element hover-effect"><a href="javascript:UserVoice.showPopupWidget();" class="tooltip" title="We want your feedback, good and bad!">Problems? Suggestions?<br/>Send us your feedback!</a></div>
-      </div>
+    <% end %>
+    <div class="bar-element rate tooltip hover-effect" title="Tell Artie that you like this deal to get better recommendations in the future">
+      <%= rate_link(@offer, 1, image_tag("/images/icon-thumbsup-white#{'-checked' if current_user && current_user.likes.map(&:offer_id).include?(@offer.id)}.png", alt: "+", id: "thumbsup"), "topbar", "#{'show-modal' unless current_user}") %>
     </div>
-    <div id="smartvark-frame">
-      <div class="spacer"></div>
-      <iframe id="offer-frame" frameborder="0" src="<%= @offer.redemption_link %>"></iframe>
+    <div class="bar-element rate tooltip hover-effect" title="Tell Artie this deal isn't up your alley and he'll show you a new one">
+      <%= rate_link(@offer, 0, image_tag("/images/icon-thumbsdown-white#{'-checked' if current_user && current_user.dislikes.map(&:offer_id).include?(@offer.id)}.png", alt: "-", id: "thumbsdown"), "topbar", "#{'show-modal' unless current_user}") %>
     </div>
-    <%= render :partial => 'users/signin', locals: { new_user: false } unless current_user %>
+    <% unless current_user %>
+      <div class="bar-element tooltip one-liner hover-effect" title="Sign in or sign up to build your profile on Smartvark.com and get personalized deal recommendations">
+        <%= link_to "Sign in", "#", id: "signin-link", class: "show-modal" %>
+      </div>
+    <% end %>
+    <% unless @offer.redemption_code.blank? %>
+      <div class="bar-element tooltip one-liner" title="To get the discount, input this code when prompted">
+        <%= "Use code: #{@offer.redemption_code}" %>
+      </div>
+    <% end %>
+    <div class="bar-element social"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="smartvark">Tweet</a></div>
+    <div class="bar-element social"><g:plusone size="medium" count="false"></g:plusone></div>
+    <div class="bar-element social"><fb:like layout="button_count" send="true"></fb:like></div>
+    <div class="bar-right">
+      <div class="bar-element hover-effect"><a href="javascript:UserVoice.showPopupWidget();" class="tooltip" title="We want your feedback, good and bad!">Problems? Suggestions?<br/>Send us your feedback!</a></div>
+    </div>
+  </div>
+  <div id="smartvark-frame">
+    <div class="spacer"></div>
+    <iframe id="offer-frame" frameborder="0" src="<%= @offer.redemption_link %>"></iframe>
+  </div>
+  <%= render :partial => 'users/signin', locals: { new_user: false } unless current_user %>
   <script type="text/javascript">
     var uvOptions = {};
     (function() {
@@ -62,13 +62,33 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
     })();
   </script>
+  <% if Rails.env.production? %>
+    <!-- analytics -->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-12016668-2']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script src="http://static.getclicky.com/js" type="text/javascript"></script>
+    <script type="text/javascript">try{ clicky.init(66371765); }catch(err){}</script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="http://in.getclicky.com/66371765ns.gif" /></p></noscript>
+    <!-- end analytics -->
+  <% end %>
   <%= javascript_include_tag :defaults, "jquery-plugins", "http://platform.twitter.com/widgets.js", "http://connect.facebook.net/en_US/all.js#xfbml=1", "http://apis.google.com/js/plusone.js" %>
   <script type="text/javascript">
-    $(".tooltip").tipsy();
-    $("#close-button").tipsy({gravity:'nw'});
-    $('.show-modal').click(function (e) {
-      $('#signin-popup').modal();
-        return false;
+    $(function(){
+      $(".tooltip").tipsy();
+      $("#close-button").tipsy({gravity:'nw'});
+      $('.show-modal').click(function (e) {
+        $('#signin-popup').modal();
+          return false;
+      });
     });
   </script>
 </body>

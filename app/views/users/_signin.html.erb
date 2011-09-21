@@ -3,7 +3,7 @@
   <%= form_for :user, :as => :user, :url => session_path(:user) do |f| %>
     <fieldset>
       <h3>Sign in</h3>
-			<% if new_user || controller.action_name == "index" %>
+			<% if new_user || controller.action_name == "index" || controller.action_name == "link" %>
 				<div class="popup-row">
 					<%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), :class => 'facebook-signin', :style => 'margin-top:10px;', :title => "We don't get your login details from Facebook, we only confirm that you are who you say you are" unless controller.action_name == "biz" %>
 				</div>

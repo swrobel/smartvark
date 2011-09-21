@@ -7,13 +7,15 @@ task :cron => :environment do
   
   puts "Cron: Archive expired offers @ #{Time.now}"
   Offer.archive_expired
-  
-  puts "Cron: Email users @ #{Time.now}"
-  exclusive = Offer.find(85)
-  #UserMailer.daily_deals(User.find_by_email("swrobel@gmail.com"), exclusive).deliver
-  users = User.near("Los Angeles, CA",40).where(:role => "user")
-  users.each do |user|
-    UserMailer.daily_deals(user, exclusive).deliver
+
+  if Time.now.hour == 8  
+    puts "Cron: Email users @ #{Time.now}"
+    exclusive = Offer.find(85)
+    #UserMailer.daily_deals(User.find_by_email("swrobel@gmail.com"), exclusive).deliver
+    users = User.near("Los Angeles, CA",40).where(:role => "user")
+    users.each do |user|
+      UserMailer.daily_deals(user, exclusive).deliver
+    end
   end
 
   puts "Cron: Done @ #{Time.now}"

@@ -10,7 +10,7 @@ class Import < ActiveRecord::Base
     begin
       result = Net::HTTP.get URI.parse(URI.escape("http://api.sqoot.com/v1/offers?affiliate_token=cz17bb&location=#{location}&radius=40&order=expires_at&per_page=250&providers_not=Restaurant.com,GrubHub,Goldstar,SeatGeek,Half Off Depot,Your Best Deals,Mobile Spinach"))
       data = Yajl::Parser.parse(result)
-      self.source_rows = data["offers"].count
+      self.source_rows = data["total"]
       self.success_rows = 0
       data["offers"].each { |deal|
         begin
@@ -20,7 +20,7 @@ class Import < ActiveRecord::Base
           row_errors = []
           created_biz = false
 
-          row_errors << {message: "No locations for business"} if !deal["locations"] || deal["locations"] == []
+          row_errors << {message: "No locations for business"} if deal["locations"].blank?
 
           deal["locations"].each { |loc|
             begin
@@ -37,13 +37,13 @@ class Import < ActiveRecord::Base
           } if deal["locations"]
           offer = Offer.find_by_sqoot_id(deal["id"])
           created_offer = false
-          unless offer || business_ids == []
-            if !deal["categories"] || deal["categories"] == []
+          unless offer || business_ids.blank?
+            if deal["categories"].blank?
               row_errors << {message: "No categories for offer"}
             else
               category_id = nil
               deal["categories"].each { |cat|
-                category_id = SqootCategory.find_by_name(cat).try(:category_id)
+                category_id = SqootCategory.find_by_slug(cat).try(:category_id)
                 break if category_id
               }
               if category_id
@@ -63,7 +63,7 @@ class Import < ActiveRecord::Base
           row_errors << {message: ex.message, backtrace: ex.backtrace}
         ensure
           offer_id = offer.nil? ? nil : offer.id
-          row_errors = nil if row_errors == []
+          row_errors = nil if row_errors.blank?
           self.sqoot_rows.create(sqoot_id: deal["id"], offer_id: offer_id, created_offer: created_offer, created_biz: created_biz, row_data: deal, row_errors: row_errors)
         end
       }
@@ -92,7 +92,7 @@ class Import < ActiveRecord::Base
       row_errors = []
       created_biz = false
 
-      row_errors << "No locations for business" if biz["locations"] == []
+      row_errors << "No locations for business" if biz["locations"].blank?
 
       biz["locations"].each { |loc|
         begin
@@ -109,8 +109,8 @@ class Import < ActiveRecord::Base
       begin
         offer = Offer.find_by_yipit_id(deal["id"])
         created_offer = false
-        unless offer || business_ids == []
-          if !deal["tags"] || deal["tags"] == []
+        unless offer || business_ids.blank?
+          if deal["tags"].blank?
             row_errors << "No categories for offer"
           else
             category_id = YipitCategory.find_by_yipit_slug(deal["tags"].first["slug"]).category_id
@@ -125,7 +125,7 @@ class Import < ActiveRecord::Base
         row_errors << ex
       ensure
         offer_id = offer.nil? ? nil : offer.id
-        row_errors = nil if row_errors == []
+        row_errors = nil if row_errors.blank?
         self.yipit_rows.create(yipit_id: deal["id"], offer_id: offer_id, created_offer: created_offer, created_biz: created_biz, row_data: deal, row_errors: row_errors)
       end
     }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110915205300) do
+ActiveRecord::Schema.define(:version => 20110922190552) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -179,10 +179,14 @@ ActiveRecord::Schema.define(:version => 20110915205300) do
 
   create_table "sqoot_categories", :force => true do |t|
     t.string   "name"
+    t.string   "slug"
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "sqoot_categories", ["category_id"], :name => "index_sqoot_categories_on_category_id"
+  add_index "sqoot_categories", ["slug"], :name => "index_sqoot_categories_on_slug"
 
   create_table "sqoot_rows", :force => true do |t|
     t.integer  "import_id"

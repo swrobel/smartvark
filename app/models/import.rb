@@ -4,11 +4,11 @@ class Import < ActiveRecord::Base
   has_many :yipit_rows
   has_many :sqoot_rows
 
-  def from_sqoot(location = "los%20angeles")
+  def from_sqoot(location = "Los Angeles")
     user = User.find_by_email("api@sqoot.com")
     offer_type_id = OfferType.find_by_name("Coupon").id
     begin
-      result = Net::HTTP.get URI.parse("http://api.sqoot.com/v1/offers?affiliate_token=cz17bb&location=#{location}&radius=40&order=expires_at&per_page=250&providers_not=Restaurant.com,GrubHub,Goldstar,SeatGeek,Half%20Off%20Depot")
+      result = Net::HTTP.get URI.parse(URI.escape("http://api.sqoot.com/v1/offers?affiliate_token=cz17bb&location=#{location}&radius=40&order=expires_at&per_page=250&providers_not=Restaurant.com,GrubHub,Goldstar,SeatGeek,Half Off Depot,Your Best Deals,Mobile Spinach"))
       data = Yajl::Parser.parse(result)
       self.source_rows = data["offers"].count
       self.success_rows = 0
@@ -41,13 +41,21 @@ class Import < ActiveRecord::Base
             if !deal["categories"] || deal["categories"] == []
               row_errors << {message: "No categories for offer"}
             else
-              category_id = SqootCategory.find_by_name(deal["categories"].first).category_id
-              start_date = Date.today
-              img_small = deal["image"].try(:slice, 9)
-              img_big = deal["image"].try(:slice, 10)
-              img_big ||= img_small
-              offer = user.offers.create!(sqoot_id: deal["id"], offer_type_id: offer_type_id, category_id: category_id, business_ids: business_ids.uniq, title: deal["short_title"], description: deal["description"], start_date: start_date, end_date: deal["expires_at"], redemption_link: deal["url"], source: deal["source"], image_url_big: img_big, image_url_small: img_small)
-              created_offer = true
+              category_id = nil
+              deal["categories"].each { |cat|
+                category_id = SqootCategory.find_by_name(cat).try(:category_id)
+                break if category_id
+              }
+              if category_id
+                start_date = Date.today
+                img_small = deal["image"].try(:slice, 9)
+                img_big = deal["image"].try(:slice, 10)
+                img_big ||= img_small
+                offer = user.offers.create!(sqoot_id: deal["id"], offer_type_id: offer_type_id, category_id: category_id, business_ids: business_ids.uniq, title: deal["short_title"], description: deal["description"], start_date: start_date, end_date: deal["expires_at"], redemption_link: deal["url"], source: deal["source"], image_url_big: img_big, image_url_small: img_small)
+                created_offer = true
+              else
+                row_errors << {message: "No matching Sqoot categories"}
+              end
             end
           end
           self.success_rows += 1 if offer

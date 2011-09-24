@@ -8,7 +8,7 @@ class Import < ActiveRecord::Base
     user = User.find_by_email("api@sqoot.com")
     offer_type_id = OfferType.find_by_name("Coupon").id
     begin
-      result = Net::HTTP.get URI.parse(URI.escape("http://api.sqoot.com/v1/offers?affiliate_token=cz17bb&location=#{location}&radius=40&order=expires_at&per_page=250&providers_not=Restaurant.com,GrubHub,Goldstar,SeatGeek,Half Off Depot,Your Best Deals,Mobile Spinach"))
+      result = Net::HTTP.get URI.parse(URI.escape("http://api.sqoot.com/v1/offers?affiliate_token=cz17bb&location=#{location}&radius=40&order=expires_at&per_page=250&providers_not=Restaurant.com,GrubHub,Goldstar,SeatGeek,Half Off Depot,Your Best Deals,Mobile Spinach,LiveOpenly,jdeal"))
       data = Yajl::Parser.parse(result)
       self.source_rows = data["total"]
       self.success_rows = 0

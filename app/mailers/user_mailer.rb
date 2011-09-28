@@ -5,11 +5,20 @@ class UserMailer < ActionMailer::Base
     @user = user
     @exclusive = exclusive
 
+    opinions = user.opinions.map(&:offer_id)
+
+    loc = user.to_coordinates || LA.coordinates
+
+
     food_cats = Category.find("feed-me").subtree.map(&:id)
-    @offer_food = Offer.active.where({:category_id => food_cats} & (:source ^ nil) & (:image_url_small ^ nil)).order("random()").limit(1).first
+    @offer_food = Offer.active.joins(:businesses).where({:category_id => food_cats} & (:source ^ nil) & (:image_url_small ^ nil) & {:businesses => [:id + Business.ids_close_to(loc)]}).order("random()").limit(1)
+    @offer_food = @offer_food.where(:id - opinions) unless opinions.empty?
+    @offer_food = @offer_food.first
     
     other_cats = Category.where(:id - food_cats).map(&:id)
-    @offer_other = Offer.active.where({:category_id => other_cats} & (:source ^ nil) & (:image_url_small ^ nil)).order("random()").limit(1).first
+    @offer_other = Offer.active.joins(:businesses).where({:category_id => other_cats} & (:source ^ nil) & (:image_url_small ^ nil) & {:businesses => [:id + Business.ids_close_to(loc)]}).order("random()").limit(1)
+    @offer_other = @offer_other.where(:id - opinions) unless opinions.empty?
+    @offer_other = @offer_other.first
     
     subject = "Today's Deal Battle: " + @offer_food.businesses.first.name + " vs " + @offer_other.businesses.first.name
     mail(:to => user.email, :from => "Smartvark Deals <deals@smartvark.com>", :subject => subject)  

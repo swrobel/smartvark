@@ -14,7 +14,11 @@ task :cron => :environment do
     #UserMailer.daily_deals(User.find_by_email("swrobel@gmail.com"), exclusive).deliver
     users = User.near("Los Angeles, CA",40).where(:role => "user")
     users.each do |user|
-      UserMailer.daily_deals(user, exclusive).deliver
+      begin
+        UserMailer.daily_deals(user, exclusive).deliver
+      rescue
+        HoptoadNotifier.notify($!)
+      end
     end
   end
 

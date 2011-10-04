@@ -9,7 +9,7 @@
   <%= stylesheet_link_tag 'web' %>
   <!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
   <%= content_for?(:head_additions) ? content_for(:head_additions) : nil -%>
-  <%= favicon_link_tag %>
+  <%= favicon_link_tag "http://s3.amazonaws.com/smartvark/assets/favicon.ico" %>
   <%= csrf_meta_tag %>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <meta property="fb:page_id" content="120811371274054" />

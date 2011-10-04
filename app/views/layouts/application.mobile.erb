@@ -7,7 +7,7 @@
   <%= content_for?(:head_additions) ? yield(:head_additions) : nil -%>
   <meta property="fb:page_id" content="120811371274054" />
   <%= javascript_include_tag 'mobile', 'jquery-mobile' %>
-	<%= favicon_link_tag %>
+	<%= favicon_link_tag "http://s3.amazonaws.com/smartvark/assets/favicon.png", :type => 'image/png' %>
 	<link rel="apple-touch-icon-precomposed" href="/images/touch-icon.png" />
 	<link rel="apple-touch-startup-image" href="/images/splash.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -96,7 +96,7 @@ module ApplicationHelper
   end
   
   def info_for_rollover(offer)
-    escape_javascript("<strong class=\"title\">#{offer.user.name.blank? ? offer.businesses.first.name : offer.user.name}: #{offer.title}</strong><p>#{strip_links(offer.description).html_safe}</p><p>#{offer.fine_print}</p><p>Expires #{std_date(offer.end_date)}</p>")
+    escape_javascript("<strong class=\"title\">#{offer.user.name.blank? ? offer.businesses.first.name : offer.user.name}: #{offer.title}</strong><p>#{strip_links(offer.description).try(:html_safe)}</p><p>#{offer.fine_print}</p><p>Expires #{std_date(offer.end_date)}</p>")
   end
 
   def list_offer(offer)

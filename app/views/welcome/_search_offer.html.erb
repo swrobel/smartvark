@@ -4,7 +4,7 @@
           <%= link_to "#{search_offer.title}" , viewdeal_path(search_offer) %>
         </span>
       </h3>
-    <p><%= search_offer.description.html_safe %></p>
+    <p><%= search_offer.description.try(:html_safe) %></p>
   </div>
   <%= render :partial => 'offer_address', :object=> search_offer %>
 </div>

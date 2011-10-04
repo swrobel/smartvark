@@ -56,7 +56,7 @@ module ApplicationHelper
           </div>
        </div>
        <span class='subttl'>#{offer.title}</span>
-        <p>#{auto_link(offer.description, :html => { :target => '_blank' }).html_safe}</p>
+        <p>#{auto_link(offer.description, :html => { :target => '_blank' }).try(:html_safe)}</p>
      </div>
     "
   end

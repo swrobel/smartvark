@@ -38,10 +38,7 @@
     </div>
   </div>
 	<div id="footer">
-		<%= render :partial => 'layouts/common_footer' unless limited_page %>
-		<% if limited_page %>
-			<p><%= link_to "Are you a business owner? Find out more about advertising with us!", biz_path %></p>
-		<% end %>
+		<%= render :partial => 'layouts/common_footer' %>
 		<p>&copy; <%= Time.now.year %> Smartvark, Inc.<% if %w(deals mydeals).include?(controller.action_name) %> (some icons courtesy of <a href="http://glyphish.com/">glyphish.com</a>)<% elsif controller.action_name == "dealdashboard" || controller.controller_name == "businesses" %> (some icons courtesy of <a href="http://iconza.com/">iconza.com</a>)<% end %></p>
 	</div>
   <%= javascript_include_tag :defaults, 'jquery-plugins' %>

@@ -6,7 +6,7 @@
       <div style="color: #505050;font-family: Arial;font-size: 14px;line-height: 150%;text-align: left;">
        <h4 class="h4" style="display: block;font-family: Arial;font-size: 18px;font-weight: bold;line-height: 100%;margin-top: 0;margin-right: 0;margin-bottom: 10px;margin-left: 0;text-align: center;"><%= offer.title %></h4>
        <div style="text-align: center;">
-        <%= image_tag offer.image_url_small %>
+        <%= image_tag offer.image_url_small, alt: offer.title + " image" %>
        </div>
        <br/>
        <div style="text-align: center;">
@@ -22,10 +22,10 @@
       </div>
       <% map_url = "http://maps.googleapis.com/maps/api/staticmap?size=240x240&sensor=false&format=jpg&markers=" %>
       <% offer.businesses.each do |business| %>
-        <% map_url << "|" + business.address_as_string %>
+        <% map_url << "|" + URI.escape(business.address_as_string) %>
       <% end %>
       <% map_url << "&zoom=11" if offer.businesses.count == 1 %>
-      <%= image_tag map_url %>
+      <%= image_tag map_url, alt: offer.title + " map" %>
     </td>
   </tr>
 </table>

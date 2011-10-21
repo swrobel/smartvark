@@ -4,15 +4,26 @@ class Import < ActiveRecord::Base
   has_many :yipit_rows
   has_many :sqoot_rows
 
-  def from_sqoot(location = "Los Angeles")
+  def from_sqoot(location = "Los Angeles", radius = 40)
     user = User.find_by_email("api@sqoot.com")
     offer_type_id = OfferType.find_by_name("Coupon").id
+    endpoint = "http://api.sqoot.com/v1/offers?affiliate_token=cz17bb&location=#{location}&radius=#{radius}&order=expires_at&per_page=250&providers_not=Restaurant.com,GrubHub,Goldstar,SeatGeek,Half Off Depot,Your Best Deals,Mobile Spinach,LiveOpenly,jdeal"
+    self.import_errors = []
+    self.success_rows = 0
     begin
-      result = Net::HTTP.get URI.parse(URI.escape("http://api.sqoot.com/v1/offers?affiliate_token=cz17bb&location=#{location}&radius=40&order=expires_at&per_page=250&providers_not=Restaurant.com,GrubHub,Goldstar,SeatGeek,Half Off Depot,Your Best Deals,Mobile Spinach,LiveOpenly,jdeal"))
-      data = Yajl::Parser.parse(result)
-      self.source_rows = data["total"]
-      self.success_rows = 0
-      data["offers"].each { |deal|
+      begin
+        offers = []
+        page = 0
+        begin
+          page += 1
+          data = URI.escape(endpoint + "&page=#{page}").to_uri.get.deserialize
+          self.source_rows = data["total"]
+          offers += data["offers"]
+        end until page * 250 >= self.source_rows
+      rescue => ex
+        self.import_errors << {message: ex.message, backtrace: ex.backtrace}
+      end
+      offers.each { |deal|
         begin
           deal = deal["offer"]
           biz = deal["merchant_name"]
@@ -68,9 +79,10 @@ class Import < ActiveRecord::Base
         end
       }
     rescue => ex
-      self.import_errors = {message: ex.message, backtrace: ex.backtrace}
+      self.import_errors << {message: ex.message, backtrace: ex.backtrace}
       return false
     end
+    self.import_errors = nil if self.import_errors.blank?
     return true
   end
 

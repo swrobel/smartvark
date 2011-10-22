@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111013022130) do
+ActiveRecord::Schema.define(:version => 20111022045558) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20111013022130) do
   end
 
   add_index "businesses", ["cached_slug"], :name => "index_businesses_on_cached_slug", :unique => true
+  add_index "businesses", ["latitude", "longitude"], :name => "index_businesses_on_latitude_and_longitude"
   add_index "businesses", ["user_id"], :name => "index_businesses_on_user_id"
 
   create_table "businesses_offers", :id => false, :force => true do |t|
@@ -89,6 +90,21 @@ ActiveRecord::Schema.define(:version => 20111013022130) do
   add_index "comments", ["ancestry_depth"], :name => "index_comments_on_ancestry_depth"
   add_index "comments", ["offer_id", "active"], :name => "index_comments_on_offer_id_and_active"
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
   create_table "imports", :force => true do |t|
     t.integer  "source_rows"
     t.integer  "success_rows"
@@ -133,6 +149,9 @@ ActiveRecord::Schema.define(:version => 20111013022130) do
 
   add_index "offers", ["archived", "draft", "start_date", "end_date", "category_id", "offer_type_id", "allow_mobile"], :name => "by_attributes"
   add_index "offers", ["cached_slug"], :name => "index_offers_on_cached_slug", :unique => true
+  add_index "offers", ["category_id"], :name => "index_offers_on_category_id"
+  add_index "offers", ["sqoot_id"], :name => "index_offers_on_sqoot_id"
+  add_index "offers", ["user_id"], :name => "index_offers_on_user_id"
 
   create_table "opinions", :force => true do |t|
     t.boolean  "liked",      :null => false
@@ -184,6 +203,8 @@ ActiveRecord::Schema.define(:version => 20111013022130) do
     t.datetime "updated_at"
   end
 
+  add_index "sqoot_categories", ["category_id"], :name => "index_sqoot_categories_on_category_id"
+
   create_table "sqoot_rows", :force => true do |t|
     t.integer  "import_id"
     t.integer  "offer_id"
@@ -196,6 +217,9 @@ ActiveRecord::Schema.define(:version => 20111013022130) do
     t.datetime "updated_at"
   end
 
+  add_index "sqoot_rows", ["import_id"], :name => "index_sqoot_rows_on_import_id"
+  add_index "sqoot_rows", ["offer_id"], :name => "index_sqoot_rows_on_offer_id"
+
   create_table "transactions", :force => true do |t|
     t.text     "params"
     t.string   "status"
@@ -205,6 +229,9 @@ ActiveRecord::Schema.define(:version => 20111013022130) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "transactions", ["transaction_id"], :name => "index_transactions_on_transaction_id"
+  add_index "transactions", ["user_id"], :name => "index_transactions_on_user_id"
 
   create_table "user_audits", :force => true do |t|
     t.integer  "user_id"
@@ -264,7 +291,9 @@ ActiveRecord::Schema.define(:version => 20111013022130) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token"
   add_index "users", ["invited_by_id"], :name => "index_users_on_invited_by_id"
+  add_index "users", ["latitude", "longitude"], :name => "index_users_on_latitude_and_longitude"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["role"], :name => "index_users_on_role"
 
   create_table "yipit_categories", :force => true do |t|
     t.string   "yipit_slug"

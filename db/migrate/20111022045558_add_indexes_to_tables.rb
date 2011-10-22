@@ -4,7 +4,6 @@ class AddIndexesToTables < ActiveRecord::Migration
     add_index :offers, :category_id
     add_index :offers, :sqoot_id
     add_index :offers, :user_id
-    add_index :sqoot_categories, :category_id
     add_index :sqoot_rows, :import_id
     add_index :sqoot_rows, :offer_id
     add_index :transactions, :transaction_id
@@ -18,7 +17,6 @@ class AddIndexesToTables < ActiveRecord::Migration
     remove_index :offers, :category_id
     remove_index :offers, :sqoot_id
     remove_index :offers, :user_id
-    remove_index :sqoot_categories, :category_id
     remove_index :sqoot_rows, :import_id
     remove_index :sqoot_rows, :offer_id
     remove_index :transactions, :transaction_id

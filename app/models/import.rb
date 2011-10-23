@@ -62,7 +62,7 @@ class Import < ActiveRecord::Base
                 img_small = deal["image"].try(:slice, 10)
                 img_big = deal["image"].try(:slice, 11)
                 img_big ||= img_small
-                offer = user.offers.create!(sqoot_id: deal["id"], offer_type_id: offer_type_id, category_id: category_id, business_ids: business_ids.uniq, title: deal["short_title"], description: deal["description"], start_date: start_date, end_date: deal["expires_at"], redemption_link: deal["url"], source: deal["source"], image_url_big: img_big, image_url_small: img_small)
+                offer = user.offers.create!(sqoot_id: deal["id"], offer_type_id: offer_type_id, category_id: category_id, business_ids: business_ids.uniq, title: deal["short_title"], description: deal["description"], start_date: start_date, end_date: deal["expires_at"], redemption_link: deal["url"], source: deal["source"], image_url_big: img_big, image_url_small: img_small, commission: deal["commission"], num_sold: deal["number_sold"])
                 created_offer = true
               else
                 row_errors << {message: "No matching Sqoot categories"}

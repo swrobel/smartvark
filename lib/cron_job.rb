@@ -2,7 +2,7 @@ class CronJob
   def perform  
     puts "Cron: Import from Sqoot @ #{Time.now}"
     import = Import.create
-    import.from_sqoot
+    import.from_sqoot("Los Angeles", 5000)
     import.save
     
     puts "Cron: Archive expired offers @ #{Time.now}"
@@ -11,8 +11,7 @@ class CronJob
     if Time.now.hour == 8  
       puts "Cron: Email users @ #{Time.now}"
       exclusive = Offer.find(85)
-      #UserMailer.daily_deals(User.find_by_email("swrobel@gmail.com"), exclusive).deliver
-      users = User.near("Los Angeles, CA",40).where(:role => "user")
+      users = User.where(:role => "user")
       users.each do |user|
         begin
           UserMailer.daily_deals(user, exclusive).deliver

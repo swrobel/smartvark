@@ -48,7 +48,9 @@ class Import < ActiveRecord::Base
           } if deal["locations"]
           offer = Offer.find_by_sqoot_id(deal["id"])
           created_offer = false
-          unless offer || business_ids.blank?
+          if business_ids.blank?
+            row_errors << {message: "No businesses for offer"}
+          else
             if deal["categories"].blank?
               row_errors << {message: "No categories for offer"}
             else
@@ -62,8 +64,12 @@ class Import < ActiveRecord::Base
                 img_small = deal["image"].try(:slice, 10)
                 img_big = deal["image"].try(:slice, 11)
                 img_big ||= img_small
-                offer = user.offers.create!(sqoot_id: deal["id"], offer_type_id: offer_type_id, category_id: category_id, business_ids: business_ids.uniq, title: deal["short_title"], description: deal["description"], start_date: start_date, end_date: deal["expires_at"], redemption_link: deal["url"], source: deal["source"], image_url_big: img_big, image_url_small: img_small, commission: deal["commission"], num_sold: deal["number_sold"])
-                created_offer = true
+                if offer
+                  offer.update_attributes(category_id: category_id, business_ids: business_ids.uniq, title: deal["short_title"], description: deal["description"], start_date: start_date, end_date: deal["expires_at"], redemption_link: deal["url"], source: deal["source"], image_url_big: img_big, image_url_small: img_small, commission: deal["commission"], num_sold: deal["number_sold"])
+                else 
+                  offer = user.offers.create!(sqoot_id: deal["id"], offer_type_id: offer_type_id, category_id: category_id, business_ids: business_ids.uniq, title: deal["short_title"], description: deal["description"], start_date: start_date, end_date: deal["expires_at"], redemption_link: deal["url"], source: deal["source"], image_url_big: img_big, image_url_small: img_small, commission: deal["commission"], num_sold: deal["number_sold"])
+                  created_offer = true
+                end
               else
                 row_errors << {message: "No matching Sqoot categories"}
               end

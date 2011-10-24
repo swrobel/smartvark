@@ -11,7 +11,7 @@ class CronJob
     if Time.now.hour == 8  
       puts "Cron: Email users @ #{Time.now}"
       exclusive = Offer.find(85)
-      users = User.where(:role => "user")
+      users = User.where(:role => "user").where(:latitude ^ nil)
       users.each do |user|
         begin
           UserMailer.daily_deals(user, exclusive).deliver

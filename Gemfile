@@ -31,4 +31,5 @@ gem "email_preview", :group => :development
 gem "silent-postgres", :group => :development
 gem "wrest"
 gem "delayed_job"
-gem "workless", :group => :production
+gem "workless", :group => [:production, :staging, :demo]
+gem "rapleaf_api"

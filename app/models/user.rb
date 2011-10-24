@@ -30,6 +30,9 @@ class User < ActiveRecord::Base
   has_many :redemptions
   has_many :user_audits
   has_many :transactions
+  has_many :emails
+  has_many :emailed_offers
+  has_many :views
   has_and_belongs_to_many :categories
 
   has_attached_file :logo,

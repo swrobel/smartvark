@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111023211617) do
+ActiveRecord::Schema.define(:version => 20111023234905) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -104,6 +104,26 @@ ActiveRecord::Schema.define(:version => 20111023211617) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "emailed_offers", :force => true do |t|
+    t.integer  "email_id"
+    t.integer  "user_id"
+    t.integer  "offer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "emailed_offers", ["email_id"], :name => "index_emailed_offers_on_email_id"
+  add_index "emailed_offers", ["offer_id"], :name => "index_emailed_offers_on_offer_id"
+  add_index "emailed_offers", ["user_id"], :name => "index_emailed_offers_on_user_id"
+
+  create_table "emails", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "emails", ["user_id"], :name => "index_emails_on_user_id"
 
   create_table "imports", :force => true do |t|
     t.integer  "source_rows"
@@ -298,6 +318,16 @@ ActiveRecord::Schema.define(:version => 20111023211617) do
   add_index "users", ["latitude", "longitude"], :name => "index_users_on_latitude_and_longitude"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["role"], :name => "index_users_on_role"
+
+  create_table "views", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "offer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "views", ["offer_id"], :name => "index_views_on_offer_id"
+  add_index "views", ["user_id"], :name => "index_views_on_user_id"
 
   create_table "yipit_categories", :force => true do |t|
     t.string   "yipit_slug"

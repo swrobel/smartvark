@@ -26,6 +26,8 @@ class Offer < ActiveRecord::Base
     :conditions => { :liked => false }
   has_many :yipit_rows
   has_many :sqoot_rows
+  has_many :emailed_offers
+  has_many :views
   
   nilify_blanks
   before_update :unarchive_if_draft_or_activated

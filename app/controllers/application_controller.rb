@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :logged_in?, :geo_location, :home_path
 
-  after_filter :log_user
+  after_filter :log_user, except: [:viewdeal, :link]
   
   def makebiz
     if current_user

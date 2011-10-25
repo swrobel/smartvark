@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
       obj.address = geo.address.split(",").first
       obj.city    = geo.city
       obj.state   = geo.state_code
-      obj.zipcode = geo.postal_code
+      obj.zipcode = geo.uzip
     end
   end
   after_validation :geocode, :if => lambda{ |obj| obj.zipcode_changed? }

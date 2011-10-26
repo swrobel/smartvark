@@ -8,7 +8,7 @@ class CronJob
     puts "Cron: Archive expired offers @ #{Time.now}"
     Offer.archive_expired
 
-    if Time.now.hour == 8  
+    if Time.now.hour == 9
       puts "Cron: Email users @ #{Time.now}"
       exclusive = Offer.find(85)
       users = User.where(:role => "user").where(:latitude ^ nil)

@@ -112,9 +112,10 @@
                           <tr>
                             <td colspan="2" valign="middle" id="social" style="border-collapse: collapse;background-color:#FFD699;border: 0;text-align: center;">
                               <div style="color: #505050;font-family: Arial;font-size: 12px;line-height: 125%;text-align: center;">
+                                <div style="float:left;"><%= image_tag(@exclusive.logo.url(:thumb), alt: @exclusive.title + " image") if @exclusive.logo %></div>
                                 <h2>Smartvark Exclusive: <%= @exclusive.title %></h2>
                                 <p><%= @exclusive.description %><p>
-                                <p>Click here to find out more</p>
+                                <%= link_to "<strong>Click here to find out more</strong>".html_safe, link_url(@exclusive), target: "_blank", style: "text-decoration: none;" %>
                               </div>
                             </td>
                           </tr>

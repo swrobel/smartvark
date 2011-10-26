@@ -76,7 +76,7 @@ class WelcomeController < ApplicationController
     @out_of_area = false
     loc ||= geo_location
     @formatted_location ||= [[request.location.city, request.location.state_code].join(', '), request.location.postal_code].join(' ').strip if !Rails.env.development? && request.location
-    @formatted_location ||= LA.formatted_address
+    @formatted_location ||= LA.address
     if Geocoder::Calculations.distance_between(LA.coordinates,loc) > 50
       @out_of_area = true
       @offers = []
@@ -153,14 +153,14 @@ class WelcomeController < ApplicationController
 
   def search
     raise CanCan::AccessDenied unless can? :read, :search
-    @category_id = params[:category_id].blank? ? 1 : Category.find(params[:category_id]).id
+    return if params[:category_id].blank? && params[:search_terms].blank?
+    @category_id = params[:category_id].blank? ? nil : Category.find(params[:category_id]).id
     cat = @category_id
     terms = '%' + params[:search_terms] + '%'
     loc = Geocoder.search(params[:location]).first.coordinates if params[:location] rescue nil
     loc ||= geo_location
     
-    @offers = Offer.active.includes(:businesses).joins(:businesses, :category).where(
-                (:category_id + Category.subtree_of(cat)) &
+    @offers = Offer.active.includes(:businesses).joins(:businesses).where(
                 {:businesses => [:id + Business.ids_close_to(loc, 20)]} &
                 (
                   (:title =~ terms) |
@@ -178,6 +178,7 @@ class WelcomeController < ApplicationController
       opinions += session[:dislikes] if session[:dislikes]
     end
     @offers = @offers.where(:id - opinions) unless opinions.empty?
+    @offers = @offers.joins(:category).where(:category_id + Category.subtree_of(cat)) if @category_id
   end
   
   def merchant_agreement

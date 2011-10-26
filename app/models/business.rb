@@ -38,7 +38,7 @@ class Business < ActiveRecord::Base
   end
 
   def self.ids_close_to(loc, dist=10)
-    Business.near(loc, dist).map(&:id)
+    Business.near(loc, dist).select(:id).map(&:id)
   end
   
   def formatted_phone

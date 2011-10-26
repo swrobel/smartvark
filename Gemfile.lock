@@ -183,6 +183,8 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.30)
+    valium (0.4.0)
+      activerecord (>= 3.0.2)
     warden (1.0.6)
       rack (>= 1.0)
     workless (0.2.0)
@@ -235,6 +237,7 @@ DEPENDENCIES
   rapleaf_api
   silent-postgres
   thin
+  valium
   workless
   wrest
   yajl-ruby

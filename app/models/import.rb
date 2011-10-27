@@ -11,6 +11,8 @@ class Import < ActiveRecord::Base
     self.import_errors = []
     self.success_rows = 0
     begin
+
+      # Pull all pages from Sqoot
       begin
         offers = []
         page = 0
@@ -23,6 +25,8 @@ class Import < ActiveRecord::Base
       rescue => ex
         self.import_errors << {message: ex.message, backtrace: ex.backtrace}
       end
+
+      # Process Sqoot data
       offers.each { |deal|
         begin
           deal = deal["offer"]
@@ -30,48 +34,50 @@ class Import < ActiveRecord::Base
           business_ids = []
           row_errors = []
           created_biz = false
-
-          row_errors << {message: "No locations for business"} if deal["locations"].blank?
-
-          deal["locations"].each { |loc|
-            begin
-              business = Business.find_by_phone(Phoner::Phone.parse(loc["phone_number"]).to_s)
-              unless business
-                name = loc["name"] || biz
-                business = user.businesses.create!(name: name, address: loc["street_address_1"], city: loc["city"], state: loc["state"], zipcode: loc["zip"], latitude: loc["latitude"], longitude: loc["longitude"], phone: loc["phone_number"], website: loc["url"])
-                created_biz = true
-              end
-              business_ids << business.id
-            rescue => ex
-              row_errors << {message: ex.message, backtrace: ex.backtrace}
-            end
-          } if deal["locations"]
-          offer = Offer.find_by_sqoot_id(deal["id"])
           created_offer = false
-          if business_ids.blank?
-            row_errors << {message: "No businesses for offer"}
+
+          if deal["categories"].blank?
+            row_errors << {message: "No categories for offer"}
           else
-            if deal["categories"].blank?
-              row_errors << {message: "No categories for offer"}
+            category_id = nil
+            deal["categories"].each { |cat|
+              category_id = SqootCategory.find_by_slug(cat).try(:category_id)
+              break if category_id
+            }
+
+            if category_id.blank?
+              row_errors << {message: "No matching Sqoot categories"}
             else
-              category_id = nil
-              deal["categories"].each { |cat|
-                category_id = SqootCategory.find_by_slug(cat).try(:category_id)
-                break if category_id
-              }
-              if category_id
-                start_date = Date.today
-                img_small = deal["image"].try(:slice, 10)
-                img_big = deal["image"].try(:slice, 11)
-                img_big ||= img_small
-                if offer
-                  offer.update_attributes(category_id: category_id, business_ids: business_ids.uniq, title: deal["short_title"], description: deal["description"], start_date: start_date, end_date: deal["expires_at"], redemption_link: deal["url"], source: deal["source"], image_url_big: img_big, image_url_small: img_small, commission: deal["commission"], num_sold: deal["number_sold"])
-                else 
+              start_date = Date.today
+              img_small = deal["image"].try(:slice, 10)
+              img_big = deal["image"].try(:slice, 11)
+              img_big ||= img_small
+
+              offer = Offer.find_by_sqoot_id(deal["id"])
+
+              if offer
+                offer.update_attributes(category_id: category_id, title: deal["short_title"], description: deal["description"], start_date: start_date, end_date: deal["expires_at"], redemption_link: deal["url"], source: deal["source"], image_url_big: img_big, image_url_small: img_small, commission: deal["commission"], num_sold: deal["number_sold"])
+              else
+                deal["locations"].each { |loc|
+                  begin
+                    business = Business.find_by_phone(Phoner::Phone.parse(loc["phone_number"]).to_s)
+                    unless business
+                      name = loc["name"] || biz
+                      business = user.businesses.create!(name: name, address: loc["street_address_1"], city: loc["city"], state: loc["state"], zipcode: loc["zip"], latitude: loc["latitude"], longitude: loc["longitude"], phone: loc["phone_number"], website: loc["url"])
+                      created_biz = true
+                    end
+                    business_ids << business.id
+                  rescue => ex
+                    row_errors << {message: ex.message, backtrace: ex.backtrace}
+                  end
+                } unless deal["locations"].blank?
+
+                if business_ids.blank?
+                  row_errors << {message: "No businesses for offer"}
+                else
                   offer = user.offers.create!(sqoot_id: deal["id"], offer_type_id: offer_type_id, category_id: category_id, business_ids: business_ids.uniq, title: deal["short_title"], description: deal["description"], start_date: start_date, end_date: deal["expires_at"], redemption_link: deal["url"], source: deal["source"], image_url_big: img_big, image_url_small: img_small, commission: deal["commission"], num_sold: deal["number_sold"])
                   created_offer = true
-                end
-              else
-                row_errors << {message: "No matching Sqoot categories"}
+                end              
               end
             end
           end

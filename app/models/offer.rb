@@ -30,7 +30,7 @@ class Offer < ActiveRecord::Base
   has_many :views
   
   nilify_blanks
-  before_update :unarchive_if_draft_or_activated
+  #before_update :unarchive_if_draft_or_activated
   
   HUMANIZED_ATTRIBUTES = {
     :businesses => "",
@@ -58,10 +58,10 @@ class Offer < ActiveRecord::Base
     ((end_date.to_date - start_date)/31.0).ceil
   end
   
-  def set_to_archived
-    @do_not_unarchive=true
-    update_attribute(:archived,true)
-  end
+  # def set_to_archived
+  #   @do_not_unarchive=true
+  #   update_attribute(:archived,true)
+  # end
 
   def logo
     user.logo
@@ -87,12 +87,12 @@ class Offer < ActiveRecord::Base
     archived? || expired_by_date?
   end
 
-  def unarchive_if_draft_or_activated
-    if archived? && !expired_by_date? && @do_not_unarchive.nil?
-      self.archived=false
-    end
-    true
-  end
+  # def unarchive_if_draft_or_activated
+  #   if archived? && !expired_by_date? && @do_not_unarchive.nil?
+  #     self.archived=false
+  #   end
+  #   true
+  # end
   
   def self.archive_expired
     connection.execute("update offers set archived = true, updated_at = now() where id in (select o1.id from offers o1 left join (select o.id, count(r.id) as redemption_count from offers o join redemptions r on o.id = r.offer_id group by o.id) o2 on o1.id = o2.id where archived = false and (coalesce(o2.redemption_count,0) >= o1.redemption_limit or o1.end_date <= now()))")

@@ -28,11 +28,11 @@
     <div class="frame">
       <div class="account-area">
         <div class="holder">
-          <p><%= link_to current_user.profile_next_step, myprofile_path %></p>
+          <p>&nbsp;<%= link_to(current_user.profile_next_step, myprofile_path) if false %></p>
           <strong class="ttl">Welcome <span><%= current_user.name_or_email %></span></strong>
           <div class="progress-bar"><span style="width:<%= (current_user.profile_progress * 1.28).round %>px">&nbsp;</span></div>
         </div>
-        <p>not you? <%= link_to "sign out", destroy_user_session_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;profile <%= current_user.profile_progress %>% complete</p>
+        <p>not you? <%= link_to "sign out", destroy_user_session_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;profile <%= current_user.profile_progress %>% complete</p>
       </div>
     </div>
     <div class="frame">

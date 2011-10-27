@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   
   devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :category_id, :category_ids, :logo, :opinions, :skip_invitation, :facebook_user
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :category_id, :category_ids, :logo, :opinions, :skip_invitation, :facebook_user, :latitude, :longitude
 
   belongs_to :category
   has_many :businesses

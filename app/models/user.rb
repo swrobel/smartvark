@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   
   devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :category_id, :category_ids, :logo, :opinions, :skip_invitation, :facebook_user, :latitude, :longitude
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :category_id, :category_ids, :logo, :opinions, :skip_invitation, :facebook_user, :latitude, :longitude, :age, :gender
 
   belongs_to :category
   has_many :businesses
@@ -122,6 +122,33 @@ class User < ActiveRecord::Base
    
     signed = OpenSSL::PKCS7::sign(OpenSSL::X509::Certificate.new(APP_PAYPAL_CERT), OpenSSL::PKey::RSA.new(APP_PAYPAL_KEY, ''), values.map { |k, v| "#{k}=#{v}" }.join("\n"), [], OpenSSL::PKCS7::BINARY)  
     OpenSSL::PKCS7::encrypt([OpenSSL::X509::Certificate.new(PAYPAL_CERT)], signed.to_der, OpenSSL::Cipher::Cipher::new("DES3"), OpenSSL::PKCS7::BINARY).to_s.gsub("\n", "")   
+  end
+
+  def rapleaf_update
+    api = RapleafApi::Api.new('4cc2e2db81daf4d8e24014838ca47276')
+    r = api.query_by_email(email)
+    update = false
+    if latitude.blank? && r["location"] && r["location"] != "United States"
+      self.city = r["location"]
+      self.geocode
+      self.reverse_geocode
+      update = true
+    end
+    if r["gender"]
+      self.gender = r["gender"][0].downcase
+      update = true
+    end
+    if r["age"]
+      if r["age"].last == "+"
+        self.birthday = Date.today - 65.years
+      else
+        min = r["age"].split("-").first.to_i
+        max = r["age"].split("-").last.to_i
+        self.birthday = Date.today - ((min + max)/2).years
+      end
+      update = true
+    end
+    return r
   end
   
   def self.find_for_facebook_oauth(data, signed_in_resource=nil)

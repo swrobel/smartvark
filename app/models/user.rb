@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   
   devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :category_id, :category_ids, :logo, :opinions, :skip_invitation, :facebook_user
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :address, :city, :state, :zipcode, :phone, :category_id, :category_ids, :logo, :opinions, :skip_invitation, :facebook_user, :latitude, :longitude, :age, :gender
 
   belongs_to :category
   has_many :businesses
@@ -122,6 +122,39 @@ class User < ActiveRecord::Base
    
     signed = OpenSSL::PKCS7::sign(OpenSSL::X509::Certificate.new(APP_PAYPAL_CERT), OpenSSL::PKey::RSA.new(APP_PAYPAL_KEY, ''), values.map { |k, v| "#{k}=#{v}" }.join("\n"), [], OpenSSL::PKCS7::BINARY)  
     OpenSSL::PKCS7::encrypt([OpenSSL::X509::Certificate.new(PAYPAL_CERT)], signed.to_der, OpenSSL::Cipher::Cipher::new("DES3"), OpenSSL::PKCS7::BINARY).to_s.gsub("\n", "")   
+  end
+
+  def rapleaf_update
+    api = RapleafApi::Api.new('4cc2e2db81daf4d8e24014838ca47276')
+    r = api.query_by_email(email)
+    fields = {:updated => []}
+
+    field = "location"
+    if latitude.blank? && r[field] && r[field] != "United States"
+      self.city = r[field]
+      self.geocode
+      self.reverse_geocode
+      fields[:updated] << field
+    end
+
+    field = "gender"
+    if gender.blank? && r[field]
+      self.gender = r[field][0].downcase
+      fields[:updated] << field
+    end
+
+    field = "age"
+    if birthday.blank? && r[field]
+      if r[field].last == "+"
+        self.birthday = Date.today - 65.years
+      else
+        min = r[field].split("-").first.to_i
+        max = r[field].split("-").last.to_i
+        self.birthday = Date.today - ((min + max)/2).years
+      end
+      fields[:updated] << field
+    end
+    return r.merge(fields)
   end
   
   def self.find_for_facebook_oauth(data, signed_in_resource=nil)

@@ -4,7 +4,7 @@
     <h3><%= offer.title %></h3>
     <% if current_user %>
       <p><strong><%= offer.user.name %></strong></p>
-      <p><%= offer.description.html_safe %></p>
+      <p><%= offer.description.try(:html_safe) %></p>
     <% end %>
   </a>
 </li>

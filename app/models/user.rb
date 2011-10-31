@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   ROLES = %w[admin business user]
   
-  geocoded_by :address_as_string
+  geocoded_by :zipcode
   reverse_geocoded_by :latitude, :longitude do |obj,results|
     if geo = results.first
       obj.address = geo.address.split(",").first

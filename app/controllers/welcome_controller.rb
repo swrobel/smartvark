@@ -42,7 +42,7 @@ class WelcomeController < ApplicationController
   def myprofile
     raise CanCan::AccessDenied unless can? :read, :myprofile
     @user = current_user
-    @user.phone = @user.formatted_phone
+    #@user.phone = @user.formatted_phone
   end
 
   def deals

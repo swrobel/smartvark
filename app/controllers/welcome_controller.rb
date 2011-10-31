@@ -36,7 +36,7 @@ class WelcomeController < ApplicationController
   def viewbusiness
     raise CanCan::AccessDenied unless can? :read, :viewbusiness
     @business = Business.find(params[:id])
-    raise "Businesses cannot be accessed by ID" unless @business.friendly_id_status.friendly?
+    raise ActionController::RoutingError.new('Not Found') unless @business.friendly_id_status.friendly?
   end
 
   def myprofile
@@ -84,7 +84,7 @@ class WelcomeController < ApplicationController
   def link
     raise CanCan::AccessDenied unless can? :read, :viewdeal
     @offer = Offer.find(params[:id])
-    raise "Deals cannot be accessed by ID" unless @offer.friendly_id_status.friendly?
+    raise ActionController::RoutingError.new('Not Found') unless @offer.friendly_id_status.friendly?
     current_user.views.create(offer_id: @offer.id) if current_user
     if @offer.source.try(:downcase).try(:include?,"kgb")
       redirect_to @offer.redemption_link
@@ -120,7 +120,7 @@ class WelcomeController < ApplicationController
   def viewdeal
     raise CanCan::AccessDenied unless can? :read, :viewdeal
     @offer = Offer.find(params[:id], :include => [:businesses, :comments])
-    raise "Deals cannot be accessed by ID" unless @offer.friendly_id_status.friendly?
+    raise ActionController::RoutingError.new('Not Found') unless @offer.friendly_id_status.friendly?
     current_user.views.create(offer_id: @offer.id) if current_user
   end
   

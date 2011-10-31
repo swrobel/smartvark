@@ -77,13 +77,8 @@ class WelcomeController < ApplicationController
     loc ||= geo_location
     @formatted_location ||= [[request.location.city, request.location.state_code].join(', '), request.location.postal_code].join(' ').strip if !Rails.env.development? && request.location
     @formatted_location ||= LA.address
-    if Geocoder::Calculations.distance_between(LA.coordinates,loc) > 50
-      @out_of_area = true
-      @offers = []
-    else
-      @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:user,:offer_type,:category]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]}).active.order(:created_at.desc)
-      @offers = @offers.where(:id - opinions) unless opinions.empty?
-    end
+    @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:user,:offer_type,:category]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]}).active.order(:created_at.desc)
+    @offers = @offers.where(:id - opinions) unless opinions.empty?
   end
 
   def link

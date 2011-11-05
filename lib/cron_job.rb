@@ -16,7 +16,7 @@ class CronJob
         begin
           UserMailer.daily_deals(user, exclusive).deliver
         rescue
-          HoptoadNotifier.notify($!)
+          Airbrake.notify($!, email: user.email)
         end
       end
     end

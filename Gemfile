@@ -23,7 +23,7 @@ gem "nilify_blanks"
 gem "friendly_id"
 gem "meta_where"
 gem "rack-rewrite"
-gem "hoptoad_notifier"
+gem "airbrake"
 gem "dalli", :group => [:production, :staging, :demo]
 gem "activemerchant"
 gem "geocoder"

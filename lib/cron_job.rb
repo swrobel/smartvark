@@ -15,8 +15,8 @@ class CronJob
       users.each do |user|
         begin
           UserMailer.daily_deals(user, exclusive).deliver
-        rescue
-          Airbrake.notify($!, email: user.email)
+        rescue => ex
+          Airbrake.notify($!, {email: user.email})
         end
       end
     end

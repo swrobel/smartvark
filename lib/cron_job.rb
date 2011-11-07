@@ -16,7 +16,7 @@ class CronJob
         begin
           UserMailer.daily_deals(user, exclusive).deliver
         rescue => ex
-          Airbrake.notify($!, {email: user.email})
+          Airbrake.notify(error_class: "CronJob", error_message: ex.message, parameters: {email: user.email})
         end
       end
     end

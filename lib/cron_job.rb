@@ -14,7 +14,8 @@ class CronJob
       users = User.where(:role => "user").where(:zipcode ^ nil).where(:latitude ^ nil)
       users.each do |user|
         begin
-          UserMailer.daily_deals(user, exclusive).deliver
+          mail = UserMailer.daily_deals(user, exclusive)
+          mail.deliver if mail
         rescue => ex
           Airbrake.notify(ex, parameters: {email: user.email})
         end

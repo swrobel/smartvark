@@ -1,5 +1,5 @@
 <li>
 <h3><%=link_to  business_offer.title, viewdeal_path(business_offer.to_param) %></h3>
-<p><%= business_offer.description.html_safe %></p>
+<p><%= business_offer.description.try(:html_safe) %></p>
 </li>
 

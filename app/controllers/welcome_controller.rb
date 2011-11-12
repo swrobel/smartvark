@@ -148,9 +148,10 @@ class WelcomeController < ApplicationController
 
   def search
     raise CanCan::AccessDenied unless can? :read, :search
-    return if params[:category_id].blank? && params[:search_terms].blank?
+    return if params[:location].blank? && params[:search_terms].blank?
     @category_id = params[:category_id].blank? ? nil : Category.find(params[:category_id]).id
     cat = @category_id
+    params[:search_terms] ||= ''
     terms = '%' + params[:search_terms] + '%'
     loc = Geocoder.search(params[:location]).first.coordinates if params[:location] rescue nil
     loc ||= geo_location

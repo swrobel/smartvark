@@ -10,7 +10,7 @@ class CronJob
 
     if Rails.env.production? && Time.now.hour == 9
       puts "Cron: Email users @ #{Time.now}"
-      exclusive = Offer.find(85)
+      exclusive = Offer.find(30372)
       users = User.where(:role => "user").where(:zipcode ^ nil).where(:latitude ^ nil)
       users.each do |user|
         begin

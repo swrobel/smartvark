@@ -59,7 +59,7 @@ private
         dealdashboard_path
       end
     else
-      new_user_session_path
+      root_path
     end
   end
   

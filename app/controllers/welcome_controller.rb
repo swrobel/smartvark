@@ -77,7 +77,7 @@ class WelcomeController < ApplicationController
     loc ||= geo_location
     @formatted_location ||= [[request.location.city, request.location.state_code].join(', '), request.location.postal_code].join(' ').strip if !Rails.env.development? && request.location
     @formatted_location ||= LA.address
-    @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:user,:offer_type,:category]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]}).active.order("random()")
+    @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:user,:offer_type,:category]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]}).active.order(:created_at.desc)
     @offers = @offers.where(:id - opinions) unless opinions.empty?
   end
 
@@ -97,7 +97,7 @@ class WelcomeController < ApplicationController
     raise CanCan::AccessDenied unless can? :read, :mydeals
     @category_id = params[:category_id].blank? ? 1 : Category.find(params[:category_id]).id
     loc = geo_location
-    @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:user,:offer_type,:category]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]} & (:category_id + Category.subtree_of(@category_id))).active.order("random()")
+    @offers = Offer.select('DISTINCT offers.*').includes([:businesses,:user,:offer_type,:category]).joins(:businesses).where({:businesses => [:id + Business.ids_close_to(loc)]} & (:category_id + Category.subtree_of(@category_id))).active.order(:created_at.desc)
     opinions = current_user.opinions.map(&:offer_id)
     @offers = @offers.where(:id - opinions) unless opinions.empty? || is_mobile_browser?
     @likes = current_user.liked_offers(@category_id).includes(:businesses)

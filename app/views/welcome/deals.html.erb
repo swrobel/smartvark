@@ -53,13 +53,11 @@
 				</div>
 				<div id='undo_last_action'></div>
 				<!-- list -->
-					<% unless @likes.blank? %>
-						<ul id='my_list' class="list">
-							<% @likes.each do |offer| %>
-								<%= raw list_offer(offer) %>
-							<% end %>
-						</ul>
-					<% end %>
+					<ul id='my_list' class="list">
+						<% @likes.each do |offer| %>
+							<%= raw list_offer(offer) %>
+						<% end %>
+					</ul>
 			</div>
 		</div>
 	</div>

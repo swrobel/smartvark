@@ -50,6 +50,7 @@ class WelcomeController < ApplicationController
 
     loc = nil
     @formatted_location = nil
+    @likes = []
     
     # Set location based on user's input and display an error if Google can't find it
     if request.post? && params[:location]
@@ -64,7 +65,6 @@ class WelcomeController < ApplicationController
     
     opinions = []
     if params[:kill]
-      @likes = []
       session.delete(:likes)
       session.delete(:dislikes)
     else

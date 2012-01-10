@@ -1,4 +1,8 @@
-<% content_for :title, params[:search_terms] + " near " + params[:location] %>
+<% if params[:search_terms].blank? && params[:location].blank? %>
+  <% content_for :title, "Search" %>
+<% else %>
+  <% content_for :title, params[:search_terms] + " near " + params[:location] %>
+<% end %>
 
 <%= render :partial => 'search_box' %>
 <!-- nav -->
@@ -15,7 +19,7 @@
         <h2>Search Results</h2>
         <!-- search-results -->
         <div class="search-results">
-          <% if params[:search_terms] == "" && params[:location] == "" %>
+          <% if params[:search_terms].blank? && params[:location].blank? %>
             <strong class="title">Please enter some search terms or a location and try again</strong>
           <% else %>
             <strong class="title">Results for &quot;<span><%= params[:search_terms] %></span>&quot; near <span><%= params[:location] %></span></strong>
@@ -32,7 +36,7 @@
   <!-- aside -->
   <div class="aside">
     <div class="map-holder">
-      <% unless (params[:search_terms] == "" && params[:location] == "") || @offers.empty? %>
+      <% unless (params[:search_terms].blank? && params[:location].blank?) || @offers.empty? %>
         <div id="map"></div>
         <div id="map-side-bar">
           <% @offers.each do |offer| %>

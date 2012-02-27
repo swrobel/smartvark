@@ -202,7 +202,7 @@ GEM
       builder (> 2.0)
       multi_json (~> 1.0)
     xml-simple (1.1.1)
-    yajl-ruby (1.0.0)
+    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby

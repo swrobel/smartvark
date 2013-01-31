@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "rails", "3.0.19"
+gem "rails", "3.0.20"
 gem "thin", :group => :development
 gem "ancestry"
 gem "paperclip"

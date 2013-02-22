@@ -1,0 +1,24 @@
+development:
+  bucket: smartvark-dev
+  access_key_id: ENV['AWS_ACCESS_KEY']
+  secret_access_key: ENV['AWS_SECRET_KEY']
+
+test:
+  bucket: smartvark-dev
+  access_key_id: ENV['AWS_ACCESS_KEY']
+  secret_access_key: ENV['AWS_SECRET_KEY']
+
+production:
+  bucket: smartvark
+  access_key_id: ENV['AWS_ACCESS_KEY']
+  secret_access_key: ENV['AWS_SECRET_KEY']
+
+staging:
+  bucket: smartvark-dev
+  access_key_id: ENV['AWS_ACCESS_KEY']
+  secret_access_key: ENV['AWS_SECRET_KEY']
+  
+demo:
+  bucket: smartvark-demo
+  access_key_id: ENV['AWS_ACCESS_KEY']
+  secret_access_key: ENV['AWS_SECRET_KEY']

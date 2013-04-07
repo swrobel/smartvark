@@ -1,5 +1,8 @@
 class CreateYipitCategories < ActiveRecord::Migration
   def self.up
+    seeds_path = File.expand_path("#{Rails.root}/db/seeds.rb")
+    require(seeds_path)
+
     create_table :yipit_categories do |t|
       t.string :yipit_slug
       t.integer :category_id

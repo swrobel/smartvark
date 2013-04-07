@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111024225923) do
+ActiveRecord::Schema.define(:version => 20111023234905) do
 
   create_table "businesses", :force => true do |t|
     t.integer  "user_id"
@@ -158,8 +158,8 @@ ActiveRecord::Schema.define(:version => 20111024225923) do
     t.datetime "updated_at"
     t.string   "cached_slug"
     t.integer  "credits_used",                    :default => 0
-    t.string   "redemption_link"
     t.boolean  "new_cust_only",                   :default => false
+    t.string   "redemption_link"
     t.integer  "yipit_id"
     t.string   "source"
     t.string   "image_url_big"
@@ -195,7 +195,7 @@ ActiveRecord::Schema.define(:version => 20111024225923) do
   end
 
   create_table "redemptions", :force => true do |t|
-    t.integer  "qty"
+    t.integer  "qty",                :limit => 2
     t.integer  "user_id"
     t.integer  "offer_id"
     t.string   "transaction_number", :limit => 50
@@ -292,6 +292,7 @@ ActiveRecord::Schema.define(:version => 20111024225923) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "logo_file_name"

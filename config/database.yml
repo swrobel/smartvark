@@ -1,0 +1,13 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: smartvark
+  pool: 5
+  host: 127.0.0.1
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: smartvark_test
+  pool: 5
+  host: 127.0.0.1

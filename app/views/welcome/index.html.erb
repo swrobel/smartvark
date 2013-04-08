@@ -26,14 +26,14 @@
           </div>
           <%= form_for :user do |f| %>
             <div class="row">
-              <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), :class => "facebook-signin-big", :title => "We don't get your login details from Facebook, we only confirm that you are who you say you are" %>
+              <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), :class => "facebook-signin-big", :title => "We don't get your login details from Facebook, we only confirm that you are who you say you are", onclick: 'javascript:alert("Sorry, we aren\'t accepting new registrations at this time");return false;' %>
             </div>
             <div class="row">
               <p>or create a Smartvark account</p>
             </div>
             <div class="row">
-              <%= f.email_field :email, class: "txt", placeholder: 'Enter your email' %>
-              <%= f.submit "Sign up", class: "submit" %>
+              <%= f.email_field :email, class: "txt", placeholder: "Sorry, we're closed!" %>
+              <%= f.submit "Sign up", class: "submit", disabled: "disabled" %>
             </div>
 						<div class="row">
               <p class="bottom-row">by signing up you indicate that you accept our <%= link_to "terms of service", terms_path, id: "show-terms" %> and <%= link_to "privacy policy", privacy_path, id: "show-privacy" %></p>

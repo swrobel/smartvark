@@ -28,11 +28,11 @@
   <p><a href="http://www.youtube.com/watch?v=efI6IMjUcII" target="_blank" data-ajax="false">Watch a video to get the whole scoop in less than 90 seconds</a></p>
   <%= form_for :user do |f| %>
     <%= f.label :facebook, "Save the hassle of remembering another account:" %>
-    <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b", "data-ajax" => "false" %>
+    <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b", "data-ajax" => "false", onclick: 'javascript:alert("Sorry, we aren\'t accepting new registrations at this time");return false;' %>
     <br/><br/>
     <%= f.label :email, "Or create a Smartvark account:" %>
-    <%= f.email_field :email, :id => 'email', :placeholder => 'Enter your email' %>
-    <%= f.submit "Sign up", :'data-theme' => 'a' %>
+    <%= f.email_field :email, :id => 'email', :placeholder => "Sorry we're closed!" %>
+    <%= f.submit "Sign up", :'data-theme' => 'a', disabled: "disabled" %>
   <% end %>
   <p>by signing up you indicate that you accept our <%= link_to "terms of service", terms_path %> and <%= link_to "privacy policy", privacy_path %></p>
 </div><!-- /content -->

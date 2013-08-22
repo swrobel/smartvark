@@ -4,10 +4,8 @@ Default database is postgres. If you'd like to use something else, edit the Gemf
 
 1. `rake db:create`
 2. `rake db:migrate`
-3. `rake secret`
-4. Copy the output from #3
-5. `export COOKIE_SECRET=<paste here>`
-6. `rails s`
-7. profit
+3. echo "COOKIE_SECRET="`rake secret` > .env
+4. `rails s`
+5. profit
 
-New user accounts are disabled. Undo the last commit if you want to re-enable them.
+New user accounts are disabled. `git revert 7cb75b0c8fa8fa660326cd90af6ca89a90b5e34a` if you want to re-enable them.

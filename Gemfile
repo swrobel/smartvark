@@ -33,3 +33,4 @@ gem "delayed_job"
 gem "workless", :group => [:production, :staging, :demo]
 gem "rapleaf_api"
 gem "valium"
+gem "dotenv-rails"

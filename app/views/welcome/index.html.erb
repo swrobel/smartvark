@@ -21,9 +21,6 @@
 			<h2>Smartvark is a new twist on local deals</h2>
 			<div class="business-holder">
         <div class="col-r-wide">
-          <div class="row">
-            <p>Save the hassle of remembering another account</p>
-          </div>
           <%= form_for :user do |f| %>
             <div class="row">
               <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), :class => "facebook-signin-big", :title => "We don't get your login details from Facebook, we only confirm that you are who you say you are", onclick: 'javascript:alert("Sorry, we aren\'t accepting new registrations at this time");return false;' %>
@@ -46,9 +43,6 @@
 					<p>Watch this video to find out more:</p>
         </div>
         <div style="clear:both;"></div>
-				<div class="video-box">
-					<iframe title="YouTube video player" width="480" height="300" src="http://www.youtube.com/embed/efI6IMjUcII?rel=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>
-				</div> 
 			</div><!-- business-holder end -->
 		</div>
 	</div>

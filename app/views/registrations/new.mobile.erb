@@ -1,7 +1,6 @@
 <div data-role="content" data-theme="a">
   <%= form_for :user, :as => :user, :url => registration_path(:user), :html => {"data-ajax" => "false"} do |f| %>
     <h3>Sign up to access our deals</h3>
-    <h4>Save the hassle of remembering another account</h4>
     <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook), "data-role" => "button", "data-icon" => "facebook", "data-theme" => "b", "data-ajax" => "false" %>
     <h4>or create a Smartvark account</h4>
     <%= f.label :email, "Email:" %>

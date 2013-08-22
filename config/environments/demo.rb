@@ -26,9 +26,6 @@ Smartvark::Application.configure do
   config.logger = Logger.new(STDOUT)
   config.logger.level = Logger::INFO
 
-  # Use a different cache store in production
-  config.cache_store = :dalli_store
-
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
   config.serve_static_assets = false
@@ -49,7 +46,7 @@ Smartvark::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  
+
   config.after_initialize do
     Moonshado::Sms.configure do |config|
       config.api_key = ENV['MOONSHADOSMS_URL']

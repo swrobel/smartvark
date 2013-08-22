@@ -1,4 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 
 gem "rails", "3.0.20"
 gem "thin", :group => :development
@@ -24,7 +24,6 @@ gem "friendly_id"
 gem "meta_where"
 gem "rack-rewrite"
 gem "airbrake"
-gem "dalli", :group => [:production, :staging, :demo]
 gem "activemerchant"
 gem "geocoder"
 gem "email_preview", :group => :development

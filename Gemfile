@@ -1,35 +1,36 @@
 source 'https://rubygems.org'
 
-gem "rails", "3.0.20"
-gem "thin", :group => :development
-gem "ancestry"
-gem "paperclip"
-gem "moonshado-sms"
-gem "aws-s3"
-gem "jquery-rails"
-gem "pg"
+gem 'rails', git: 'https://github.com/makandra/rails.git', branch: '3-0-lts'
+
+gem 'thin', group: :development
+gem 'ancestry'
+gem 'paperclip'
+gem 'moonshado-sms'
+gem 'aws-s3'
+gem 'jquery-rails'
+gem 'pg'
 gem 'active_device'
-gem "delocalize"
-gem "home_run"
-gem "dynamic_form"
-gem "devise"
-gem "devise_invitable"
-gem "oa-oauth", :require => "omniauth/oauth"
-gem "cancan"
-gem "oauth"
-gem "yajl-ruby"
-gem "phone"
-gem "nilify_blanks"
-gem "friendly_id"
-gem "meta_where"
-gem "airbrake"
-gem "activemerchant"
-gem "geocoder"
-gem "email_preview", :group => :development
-gem "silent-postgres", :group => :development
-gem "wrest"
-gem "delayed_job"
-gem "workless", :group => [:production, :staging, :demo]
-gem "rapleaf_api"
-gem "valium"
-gem "dotenv-rails"
+gem 'delocalize'
+gem 'home_run'
+gem 'dynamic_form'
+gem 'devise'
+gem 'devise_invitable'
+gem 'oa-oauth', require: 'omniauth/oauth'
+gem 'cancan'
+gem 'oauth'
+gem 'yajl-ruby'
+gem 'phone'
+gem 'nilify_blanks'
+gem 'friendly_id'
+gem 'meta_where'
+gem 'airbrake'
+gem 'activemerchant'
+gem 'geocoder'
+gem 'email_preview', group: :development
+gem 'silent-postgres', group: :development
+gem 'wrest'
+gem 'delayed_job'
+gem 'workless', group: [:production, :staging, :demo]
+gem 'rapleaf_api'
+gem 'valium'
+gem 'dotenv-rails'

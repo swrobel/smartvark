@@ -1,7 +1,8 @@
-GEM
-  remote: https://rubygems.org/
+GIT
+  remote: https://github.com/makandra/rails.git
+  revision: e24533bf48099b3cd05883bce1e18334c84b491f
+  branch: 3-0-lts
   specs:
-    abstract (1.0.0)
     actionmailer (3.0.20)
       actionpack (= 3.0.20)
       mail (~> 2.2.19)
@@ -15,18 +16,6 @@ GEM
       rack-mount (~> 0.6.14)
       rack-test (~> 0.5.7)
       tzinfo (~> 0.3.23)
-    active_device (1.2.0)
-    active_utils (1.0.1)
-      activesupport (>= 2.3.11)
-      i18n
-    activemerchant (1.18.1)
-      active_utils (>= 1.0.1)
-      activesupport (>= 2.3.11)
-      braintree (>= 2.0.0)
-      builder (>= 2.0.0)
-      i18n
-      json (>= 1.5.1)
-      money
     activemodel (3.0.20)
       activesupport (= 3.0.20)
       builder (~> 2.1.2)
@@ -40,6 +29,38 @@ GEM
       activemodel (= 3.0.20)
       activesupport (= 3.0.20)
     activesupport (3.0.20)
+    rails (3.0.20)
+      actionmailer (= 3.0.20)
+      actionpack (= 3.0.20)
+      activerecord (= 3.0.20)
+      activeresource (= 3.0.20)
+      activesupport (= 3.0.20)
+      bundler (~> 1.0)
+      railties (= 3.0.20)
+    railties (3.0.20)
+      actionpack (= 3.0.20)
+      activesupport (= 3.0.20)
+      railslts-version (= 3.0.20.5)
+      rake (>= 0.8.7)
+      rdoc (~> 3.4)
+      thor (~> 0.14.4)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    abstract (1.0.0)
+    active_device (1.2.0)
+    active_utils (1.0.1)
+      activesupport (>= 2.3.11)
+      i18n
+    activemerchant (1.18.1)
+      active_utils (>= 1.0.1)
+      activesupport (>= 2.3.11)
+      braintree (>= 2.0.0)
+      builder (>= 2.0.0)
+      i18n
+      json (>= 1.5.1)
+      money
     addressable (2.2.8)
     airbrake (3.0.4)
       activesupport
@@ -135,29 +156,16 @@ GEM
       activesupport (>= 2.3.2)
       cocaine (>= 0.0.2)
       mime-types
-    pg (0.11.0)
+    pg (0.17.1)
     phone (1.1)
-    polyglot (0.3.3)
+    polyglot (0.3.5)
     rack (1.2.8)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
     rack-test (0.5.7)
       rack (>= 1.0)
-    rails (3.0.20)
-      actionmailer (= 3.0.20)
-      actionpack (= 3.0.20)
-      activerecord (= 3.0.20)
-      activeresource (= 3.0.20)
-      activesupport (= 3.0.20)
-      bundler (~> 1.0)
-      railties (= 3.0.20)
-    railties (3.0.20)
-      actionpack (= 3.0.20)
-      activesupport (= 3.0.20)
-      rake (>= 0.8.7)
-      rdoc (~> 3.4)
-      thor (~> 0.14.4)
-    rake (10.1.0)
+    railslts-version (3.0.20.5)
+    rake (10.3.2)
     rapleaf_api (1.2.3.3)
       json
     rdoc (3.12.2)
@@ -177,7 +185,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.37)
+    tzinfo (0.3.42)
     valium (0.4.0)
       activerecord (>= 3.0.2)
     warden (1.0.6)
@@ -223,7 +231,7 @@ DEPENDENCIES
   paperclip
   pg
   phone
-  rails (= 3.0.20)
+  rails!
   rapleaf_api
   silent-postgres
   thin

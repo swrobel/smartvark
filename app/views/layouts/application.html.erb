@@ -20,6 +20,19 @@
   <meta property="og:site_name" content="Smartvark: Local Deals. Personalized."/>
   <meta property="og:url" content="<%= request.url %>"/>
   <meta property="og:description" content="<%= content_for?(:fb_desc) ? content_for(:fb_desc) : "Artie the Aardvark tracks down deals that match your tastes. We don't spam you with junk you don't want. It's that simple. Oh, and we don't charge you for our deals. They're FREE."%>"/>
+  <% if Rails.env.production? %>
+    <!-- analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-12016668-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <!-- end analytics -->
+  <% end %>
 </head>
 <body>
   <div id="wrapper">
@@ -60,42 +73,5 @@
       });
     </script>
   <% end %>
-	<% if Rails.env.production? %>
-    <!-- analytics -->
-		<script type="text/javascript">
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-12016668-2']);
-			_gaq.push(['_trackPageview']);
-
-			(function() {
-				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			})();
-		</script>
-		<script src="http://static.getclicky.com/js" type="text/javascript"></script>
-		<script type="text/javascript">try{ clicky.init(66371765); }catch(err){}</script>
-		<noscript><p><img alt="Clicky" width="1" height="1" src="http://in.getclicky.com/66371765ns.gif" /></p></noscript>
-    <!-- end analytics -->
-    <% unless limited_page %>
-      <!-- uservoice -->
-      <script type="text/javascript">
-        var uvOptions = {};
-        (function() {
-          var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-          uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/RVobmTsXNS7GiE9rJHaVg.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
-        })();
-      </script>
-      <!-- end uservoice -->
-    <% end %>
-    <% if current_user && current_user.role == "business" %>
-      <!-- olark -->
-      <script type='text/javascript'>/*{literal}<![CDATA[*/window.olark||(function(i){var e=window,h=document,a=e.location.protocol=="https:"?"https:":"http:",g=i.name,b="load";(function(){e[g]=function(){(c.s=c.s||[]).push(arguments)};var c=e[g]._={},f=i.methods.length; while(f--){(function(j){e[g][j]=function(){e[g]("call",j,arguments)}})(i.methods[f])} c.l=i.loader;c.i=arguments.callee;c.f=setTimeout(function(){if(c.f){(new Image).src=a+"//"+c.l.replace(".js",".png")+"&"+escape(e.location.href)}c.f=null},20000);c.p={0:+new Date};c.P=function(j){c.p[j]=new Date-c.p[0]};function d(){c.P(b);e[g](b)}e.addEventListener?e.addEventListener(b,d,false):e.attachEvent("on"+b,d); (function(){function l(j){j="head";return["<",j,"></",j,"><",z,' onl'+'oad="var d=',B,";d.getElementsByTagName('head')[0].",y,"(d.",A,"('script')).",u,"='",a,"//",c.l,"'",'"',"></",z,">"].join("")}var z="body",s=h[z];if(!s){return setTimeout(arguments.callee,100)}c.P(1);var y="appendChild",A="createElement",u="src",r=h[A]("div"),G=r[y](h[A](g)),D=h[A]("iframe"),B="document",C="domain",q;r.style.display="none";s.insertBefore(r,s.firstChild).id=g;D.frameBorder="0";D.id=g+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){D.src="javascript:false"} D.allowTransparency="true";G[y](D);try{D.contentWindow[B].open()}catch(F){i[C]=h[C];q="javascript:var d="+B+".open();d.domain='"+h.domain+"';";D[u]=q+"void(0);"}try{var H=D.contentWindow[B];H.write(l());H.close()}catch(E){D[u]=q+'d.write("'+l().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}c.P(2)})()})()})({loader:(function(a){return "static.olark.com/jsclient/loader0.js?ts="+(a?a[1]:(+new Date))})(document.cookie.match(/olarkld=([0-9]+)/)),name:"olark",methods:["configure","extend","declare","identify"]});
-      olark.identify('8363-691-10-8275');olark('api.chat.updateVisitorNickname', {snippet: "<%= current_user.email %>"});olark('api.chat.updateVisitorStatus', {snippet: "Viewing <%= content_for?(:title) ? content_for(:title) : controller.action_name.titlecase %>"});/*]]>{/literal}*/
-      </script>
-      <!-- end olark -->
-    <% end %>
-	<% end %>
 </body>
 </html>

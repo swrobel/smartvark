@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/makandra/rails.git
-  revision: e24533bf48099b3cd05883bce1e18334c84b491f
+  revision: 1f3508cef03da4c9c2567feff9c7fe3f9cc4b0d9
   branch: 3-0-lts
   specs:
     actionmailer (3.0.20)
@@ -111,7 +111,6 @@ GEM
     geocoder (1.0.5)
     heroku-api (0.3.15)
       excon (~> 0.25.1)
-    home_run (1.0.4)
     i18n (0.5.0)
     jquery-rails (1.0.16)
       railties (~> 3.0)
@@ -221,7 +220,6 @@ DEPENDENCIES
   email_preview
   friendly_id
   geocoder
-  home_run
   jquery-rails
   meta_where
   moonshado-sms

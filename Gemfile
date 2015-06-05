@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
+ruby '1.9.3'
 
 gem 'rails', git: 'https://github.com/makandra/rails.git', branch: '3-0-lts'
 
-gem 'thin', group: :development
+gem 'thin'
 gem 'ancestry'
 gem 'paperclip'
 gem 'moonshado-sms'
@@ -11,7 +12,6 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'active_device'
 gem 'delocalize'
-gem 'home_run'
 gem 'dynamic_form'
 gem 'devise'
 gem 'devise_invitable'

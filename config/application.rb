@@ -1,8 +1,5 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'home_run'
-Date::Format::STYLE[:slash] = :mdy # use mm/dd/yyyy format for parse
-
 require 'rails/all'
 
 # If you have a Gemfile, require the gems listed there, including any gems
@@ -41,7 +38,7 @@ module Smartvark
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password, :password_confirmation]
-    
+
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
   end

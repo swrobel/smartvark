@@ -24,6 +24,8 @@ module ApplicationHelper
         logo = "<p><strong>#{offer.user.name}</strong></p>"
       end
     end
+    # All images are broken at this point, just use placeholders
+    logo = image_tag('http://placehold.it/150x150')
     link_to(
     "<strong class='c_#{offer.offer_type.name}'><img class='left' src='/images/#{offer.category.parent_or_friendly_id}-white.png'/>#{offer.offer_type.name}<img class='right' src='/images/#{offer.category.parent_or_friendly_id}-white.png'/></strong>
     <div class='img_box'>
@@ -32,7 +34,7 @@ module ApplicationHelper
     <span id='#{offer.id}_title'>#{offer.title}</span>".html_safe,
     viewdeal_path(offer))
   end
-  
+
   def mobile_coupon(offer)
     logo = "missing logo"
     if offer.image_url_small
@@ -94,7 +96,7 @@ module ApplicationHelper
      </div>
     "
   end
-  
+
   def info_for_rollover(offer)
     escape_javascript("<strong class=\"title\">#{offer.user.name.blank? ? offer.businesses.first.name : offer.user.name}: #{offer.title}</strong><p>#{strip_links(offer.description).try(:html_safe)}</p><p>#{offer.fine_print}</p><p>Expires #{std_date(offer.end_date)}</p>")
   end
@@ -138,19 +140,19 @@ module ApplicationHelper
     offer = offers[index]
     return if offer.nil?
 
-"<li id='offer_#{offer.id}' #{"style='display:none;'" if hidden} onmouseover=\"$('#offer_info_rollover').html('"+ h(info_for_rollover(offer))+ "');\"
-           onmouseout=\"$('#offer_info_rollover').empty()\" >"  +
-  '<div class="frame">
-    <div>' +
-      deal_coupon(offer) +
-    '</div>
-  </div>
-  <div class="rate">' +
-    rate_link(offer, 1, image_tag('/images/btn-good.gif', alt: "+")) +
-    use_it_now_link(offer) +
-    rate_link(offer, 0, image_tag('/images/btn-bad.gif', alt: "-")) +
-  '</div>
-</li>'
+    "<li id='offer_#{offer.id}' #{"style='display:none;'" if hidden} onmouseover=\"$('#offer_info_rollover').html('"+ h(info_for_rollover(offer))+ "');\"
+               onmouseout=\"$('#offer_info_rollover').empty()\" >"  +
+      '<div class="frame">
+        <div>' +
+          deal_coupon(offer) +
+        '</div>
+      </div>
+      <div class="rate">' +
+        rate_link(offer, 1, image_tag('/images/btn-good.gif', alt: "+")) +
+        use_it_now_link(offer) +
+        rate_link(offer, 0, image_tag('/images/btn-bad.gif', alt: "-")) +
+      '</div>
+    </li>'
   end
 
   def rate_link(offer, liked, display, response_type="gallery", html_class=nil)
